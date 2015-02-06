@@ -2,7 +2,6 @@
 /* Drop Triggers */
 
 DROP TRIGGER TRI_event_comment_comment_code;
-DROP TRIGGER TRI_image_img_code;
 DROP TRIGGER TRI_review_comment_comment_code;
 DROP TRIGGER TRI_stores_store_code;
 DROP TRIGGER TRI_wish_list_wish_list_code;
@@ -28,7 +27,6 @@ DROP TABLE store_type CASCADE CONSTRAINTS;
 /* Drop Sequences */
 
 DROP SEQUENCE SEQ_event_comment_comment_code;
-DROP SEQUENCE SEQ_image_img_code;
 DROP SEQUENCE SEQ_review_comment_comment_code;
 DROP SEQUENCE SEQ_stores_store_code;
 DROP SEQUENCE SEQ_wish_list_wish_list_code;
@@ -39,7 +37,6 @@ DROP SEQUENCE SEQ_wish_list_wish_list_code;
 /* Create Sequences */
 
 CREATE SEQUENCE SEQ_event_comment_comment_code INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE SEQ_image_img_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_review_comment_comment_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_stores_store_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_wish_list_wish_list_code INCREMENT BY 1 START WITH 1;
@@ -244,16 +241,6 @@ FOR EACH ROW
 BEGIN
 	SELECT SEQ_event_comment_comment_code.nextval
 	INTO :new.comment_code
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_image_img_code BEFORE INSERT ON image
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_image_img_code.nextval
-	INTO :new.img_code
 	FROM dual;
 END;
 
