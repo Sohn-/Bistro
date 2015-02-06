@@ -15,7 +15,6 @@ DROP TABLE coupon CASCADE CONSTRAINTS;
 DROP TABLE event_comment CASCADE CONSTRAINTS;
 DROP TABLE wish_list CASCADE CONSTRAINTS;
 DROP TABLE review_comment CASCADE CONSTRAINTS;
-DROP TABLE image CASCADE CONSTRAINTS;
 DROP TABLE stores CASCADE CONSTRAINTS;
 DROP TABLE users CASCADE CONSTRAINTS;
 DROP TABLE grade CASCADE CONSTRAINTS;
@@ -73,6 +72,7 @@ CREATE TABLE event_comment
 	store_code number NOT NULL,
 	persons_code number NOT NULL,
 	service_type_code number NOT NULL,
+	delete_request varchar2(1),
 	PRIMARY KEY (comment_code)
 );
 
@@ -82,15 +82,6 @@ CREATE TABLE grade
 	grade_code number NOT NULL,
 	grade_name varchar2(1) NOT NULL,
 	PRIMARY KEY (grade_code)
-);
-
-
-CREATE TABLE image
-(
-	img_code number NOT NULL,
-	img_soruce varchar2(1000) NOT NULL,
-	store_code number NOT NULL UNIQUE,
-	PRIMARY KEY (img_code)
 );
 
 
@@ -216,12 +207,6 @@ ALTER TABLE event_comment
 
 
 ALTER TABLE review_comment
-	ADD FOREIGN KEY (store_code)
-	REFERENCES stores (store_code)
-;
-
-
-ALTER TABLE image
 	ADD FOREIGN KEY (store_code)
 	REFERENCES stores (store_code)
 ;
