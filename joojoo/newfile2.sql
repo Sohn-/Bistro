@@ -7,14 +7,15 @@ DROP TRIGGER TRI_stores_store_code;
 DROP TRIGGER TRI_wish_list_wish_list_code;
 
 
-
+ON DELETE SET NULL;
 /* Drop Tables */
 
 DROP TABLE coupon CASCADE CONSTRAINTS;
+DROP TABLE coupon_status CASCADE CONSTRAINTS;
 DROP TABLE event_comment CASCADE CONSTRAINTS;
-DROP TABLE wish_list CASCADE CONSTRAINTS;
 DROP TABLE review_comment CASCADE CONSTRAINTS;
 DROP TABLE stores CASCADE CONSTRAINTS;
+DROP TABLE wish_list CASCADE CONSTRAINTS;
 DROP TABLE users CASCADE CONSTRAINTS;
 DROP TABLE grade CASCADE CONSTRAINTS;
 DROP TABLE persons CASCADE CONSTRAINTS;
@@ -50,10 +51,18 @@ CREATE TABLE coupon
 	coupon_code varchar2(20) NOT NULL,
 	start_date date NOT NULL,
 	end_date date NOT NULL,
-	is_valid varchar2(1) NOT NULL,
 	id varchar2(10) NOT NULL,
 	comment_code number NOT NULL,
+	coupon_status_code number NOT NULL,
 	PRIMARY KEY (coupon_code)
+);
+
+
+CREATE TABLE coupon_status
+(
+	coupon_status_code number NOT NULL,
+	coupon_status varchar2(10) NOT NULL,
+	PRIMARY KEY (coupon_status_code)
 );
 
 
@@ -63,7 +72,7 @@ CREATE TABLE event_comment
 	id varchar2(10) NOT NULL,
 	title varchar2(200) NOT NULL,
 	content char NOT NULL,
-	reg_date date NOT NULL,
+	reg_date date DEFAULT SYSDATE NOT NULL,
 	start_date date NOT NULL,
 	end_date date NOT NULL,
 	store_code number NOT NULL,
@@ -104,7 +113,7 @@ CREATE TABLE review_comment
 	id varchar2(10) NOT NULL,
 	title varchar2(200) NOT NULL,
 	content char NOT NULL,
-	reg_date date NOT NULL,
+	reg_date date DEFAULT SYSDATE NOT NULL,
 	star_point number NOT NULL,
 	store_code number NOT NULL,
 	PRIMARY KEY (comment_code)
@@ -138,7 +147,7 @@ CREATE TABLE store_type
 (
 	type_name varchar2(10),
 	type_code number NOT NULL,
-	PRIMARY KEY (type_code)
+	PRIMARY KEY (comment_code)
 );
 
 
@@ -164,12 +173,33 @@ CREATE TABLE wish_list
 );
 
 
+/* Constraint */
+
+ALTER TABLE COUPON
+ADD CONSTRAINT COUPON_CONST_COMMENT_CODE
+FOREIGN KEY(COMMENT_CODE) REFERENCES EVENET_COMMENT(COMMENT_CODE)
+ON DELETE SET NULL;
+
+ALTER TABLE COUPON
+ADD CONSTRAINT COUPON_CONST_USER_ID
+FOREIGN KEY(ID) REFERENCES USERS(ID)
+ON DELETE SET NULL;
+
+
 
 /* Create Foreign Keys */
 
 ALTER TABLE coupon
+	ADD FOREIGN KEY (coupon_status_code)
+	REFERENCES coupon_status (coupon_status_code)
+	
+;
+
+
+ALTER TABLE coupon
 	ADD FOREIGN KEY (comment_code)
 	REFERENCES event_comment (comment_code)
+	
 ;
 
 
@@ -215,12 +245,6 @@ ALTER TABLE stores
 ;
 
 
-ALTER TABLE wish_list
-	ADD FOREIGN KEY (id)
-	REFERENCES users (id)
-;
-
-
 ALTER TABLE coupon
 	ADD FOREIGN KEY (id)
 	REFERENCES users (id)
@@ -228,6 +252,12 @@ ALTER TABLE coupon
 
 
 ALTER TABLE stores
+	ADD FOREIGN KEY (id)
+	REFERENCES users (id)
+;
+
+
+ALTER TABLE wish_list
 	ADD FOREIGN KEY (id)
 	REFERENCES users (id)
 ;
