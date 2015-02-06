@@ -106,7 +106,7 @@ CREATE TABLE review_comment
 	content char NOT NULL,
 	reg_date date NOT NULL,
 	star_point number NOT NULL,
-	store_code number NOT NULL UNIQUE,
+	store_code number NOT NULL,
 	PRIMARY KEY (comment_code)
 );
 
@@ -121,7 +121,7 @@ CREATE TABLE service_type
 
 CREATE TABLE stores
 (
-	store_code number NOT NULL UNIQUE,
+	store_code number NOT NULL,
 	store_name varchar2(20) NOT NULL,
 	store_adress varchar2(30) NOT NULL,
 	store_phone number NOT NULL,
