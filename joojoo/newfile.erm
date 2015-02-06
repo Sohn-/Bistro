@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-02-03 16:43:24</creation_date>
-			<updated_date>2015-02-06 14:21:14</updated_date>
+			<updated_date>2015-02-06 14:27:17</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -3137,21 +3137,6 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>SEQ_image_img_code</name>
-			<schema></schema>
-			<increment>1</increment>
-			<min_value></min_value>
-			<max_value></max_value>
-			<start>1</start>
-			<cache></cache>
-			<nocache>false</nocache>
-			<cycle>false</cycle>
-			<order>false</order>
-			<description></description>
-			<data_type></data_type>
-			<decimal_size>0</decimal_size>
-		</sequence>
-		<sequence>
 			<name>SEQ_review_comment_comment_code</name>
 			<schema></schema>
 			<increment>1</increment>
@@ -3202,12 +3187,6 @@
 			<name>TRI_event_comment_comment_code</name>
 			<schema></schema>
 			<sql>BEFORE INSERT ON event_comment&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_event_comment_comment_code.nextval&#x0D;&#x0A;&#x09;INTO :new.comment_code&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
-			<description></description>
-		</trigger>
-		<trigger>
-			<name>TRI_image_img_code</name>
-			<schema></schema>
-			<sql>BEFORE INSERT ON image&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_image_img_code.nextval&#x0D;&#x0A;&#x09;INTO :new.img_code&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
 			<description></description>
 		</trigger>
 		<trigger>
