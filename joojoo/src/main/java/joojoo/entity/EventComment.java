@@ -19,9 +19,6 @@ public class EventComment implements Serializable {
 	/** comment_code. */
 	private Integer commentCode;
 
-	/** id. */
-	private String id;
-
 	/** title. */
 	private String title;
 
@@ -52,11 +49,15 @@ public class EventComment implements Serializable {
 	/** 새 테이블 목록. */
 	private Set<Coupon> couponSet;
 
+	/** 새 테이블 목록. */
+	private Set<WishList> wishListSet;
+
 	/**
 	 * 생성자.
 	 */
 	public EventComment() {
 		this.couponSet = new HashSet<Coupon>();
+		this.wishListSet = new HashSet<WishList>();
 	}
 
 	/**
@@ -76,25 +77,6 @@ public class EventComment implements Serializable {
 	 */
 	public Integer getCommentCode() {
 		return this.commentCode;
-	}
-
-	/**
-	 * id을 설정합니다..
-	 * 
-	 * @param id
-	 *            id
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	/**
-	 * id을 가져옵니다..
-	 * 
-	 * @return id
-	 */
-	public String getId() {
-		return this.id;
 	}
 
 	/**
@@ -295,6 +277,35 @@ public class EventComment implements Serializable {
 	 */
 	public Set<Coupon> getCouponSet() {
 		return this.couponSet;
+	}
+
+	/**
+	 * 새 테이블 목록을 설정합니다..
+	 * 
+	 * @param wishListSet
+	 *            새 테이블 목록
+	 */
+	public void setWishListSet(Set<WishList> wishListSet) {
+		this.wishListSet = wishListSet;
+	}
+
+	/**
+	 * 새 테이블를 추가합니다..
+	 * 
+	 * @param wishList
+	 *            새 테이블
+	 */
+	public void addWishList(WishList wishList) {
+		this.wishListSet.add(wishList);
+	}
+
+	/**
+	 * 새 테이블 목록을 가져옵니다..
+	 * 
+	 * @return 새 테이블 목록
+	 */
+	public Set<WishList> getWishListSet() {
+		return this.wishListSet;
 	}
 
 	/**

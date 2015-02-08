@@ -1,7 +1,6 @@
 package joojoo.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 새 테이블 모델 클래스.
@@ -17,20 +16,17 @@ public class Coupon implements Serializable {
 	/** coupon_code. */
 	private String couponCode;
 
-	/** start_date. */
-	private Date startDate;
-
-	/** end_date. */
-	private Date endDate;
-
-	/** is_valid. */
-	private String isValid;
+	/** 새 테이블. */
+	private Owners owners;
 
 	/** 새 테이블. */
 	private Users users;
 
 	/** 새 테이블. */
 	private EventComment eventComment;
+
+	/** 새 테이블. */
+	private CouponStatus couponStatus;
 
 	/**
 	 * 생성자.
@@ -58,60 +54,22 @@ public class Coupon implements Serializable {
 	}
 
 	/**
-	 * start_date을 설정합니다..
+	 * 새 테이블을 설정합니다..
 	 * 
-	 * @param startDate
-	 *            start_date
+	 * @param owners
+	 *            새 테이블
 	 */
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setOwners(Owners owners) {
+		this.owners = owners;
 	}
 
 	/**
-	 * start_date을 가져옵니다..
+	 * 새 테이블을 가져옵니다..
 	 * 
-	 * @return start_date
+	 * @return 새 테이블
 	 */
-	public Date getStartDate() {
-		return this.startDate;
-	}
-
-	/**
-	 * end_date을 설정합니다..
-	 * 
-	 * @param endDate
-	 *            end_date
-	 */
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
-	/**
-	 * end_date을 가져옵니다..
-	 * 
-	 * @return end_date
-	 */
-	public Date getEndDate() {
-		return this.endDate;
-	}
-
-	/**
-	 * is_valid을 설정합니다..
-	 * 
-	 * @param isValid
-	 *            is_valid
-	 */
-	public void setIsValid(String isValid) {
-		this.isValid = isValid;
-	}
-
-	/**
-	 * is_valid을 가져옵니다..
-	 * 
-	 * @return is_valid
-	 */
-	public String getIsValid() {
-		return this.isValid;
+	public Owners getOwners() {
+		return this.owners;
 	}
 
 	/**
@@ -150,6 +108,25 @@ public class Coupon implements Serializable {
 	 */
 	public EventComment getEventComment() {
 		return this.eventComment;
+	}
+
+	/**
+	 * 새 테이블을 설정합니다..
+	 * 
+	 * @param couponStatus
+	 *            새 테이블
+	 */
+	public void setCouponStatus(CouponStatus couponStatus) {
+		this.couponStatus = couponStatus;
+	}
+
+	/**
+	 * 새 테이블을 가져옵니다..
+	 * 
+	 * @return 새 테이블
+	 */
+	public CouponStatus getCouponStatus() {
+		return this.couponStatus;
 	}
 
 	/**

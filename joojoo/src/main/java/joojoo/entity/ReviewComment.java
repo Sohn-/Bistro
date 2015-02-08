@@ -17,8 +17,8 @@ public class ReviewComment implements Serializable {
 	/** comment_code. */
 	private Integer commentCode;
 
-	/** id. */
-	private String id;
+	/** owner_id. */
+	private String ownerId;
 
 	/** title. */
 	private String title;
@@ -61,22 +61,22 @@ public class ReviewComment implements Serializable {
 	}
 
 	/**
-	 * id을 설정합니다..
+	 * owner_id을 설정합니다..
 	 * 
-	 * @param id
-	 *            id
+	 * @param ownerId
+	 *            owner_id
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	/**
-	 * id을 가져옵니다..
+	 * owner_id을 가져옵니다..
 	 * 
-	 * @return id
+	 * @return owner_id
 	 */
-	public String getId() {
-		return this.id;
+	public String getOwnerId() {
+		return this.ownerId;
 	}
 
 	/**

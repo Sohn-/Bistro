@@ -19,6 +19,9 @@ public class WishList implements Serializable {
 	/** 새 테이블. */
 	private Users users;
 
+	/** 새 테이블. */
+	private EventComment eventComment;
+
 	/**
 	 * 생성자.
 	 */
@@ -61,6 +64,25 @@ public class WishList implements Serializable {
 	 */
 	public Users getUsers() {
 		return this.users;
+	}
+
+	/**
+	 * 새 테이블을 설정합니다..
+	 * 
+	 * @param eventComment
+	 *            새 테이블
+	 */
+	public void setEventComment(EventComment eventComment) {
+		this.eventComment = eventComment;
+	}
+
+	/**
+	 * 새 테이블을 가져옵니다..
+	 * 
+	 * @return 새 테이블
+	 */
+	public EventComment getEventComment() {
+		return this.eventComment;
 	}
 
 	/**

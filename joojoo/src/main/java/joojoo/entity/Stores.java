@@ -27,11 +27,8 @@ public class Stores implements Serializable {
 	/** store_phone. */
 	private Integer storePhone;
 
-	/** owner_name. */
-	private String ownerName;
-
 	/** 새 테이블. */
-	private Users users;
+	private Owners owners;
 
 	/** 새 테이블. */
 	private Region region;
@@ -43,10 +40,10 @@ public class Stores implements Serializable {
 	private Integer starPoint;
 
 	/** 새 테이블 목록. */
-	private Set<ReviewComment> reviewCommentSet;
+	private Set<EventComment> eventCommentSet;
 
 	/** 새 테이블 목록. */
-	private Set<EventComment> eventCommentSet;
+	private Set<ReviewComment> reviewCommentSet;
 
 	/**
 	 * 생성자.
@@ -133,32 +130,13 @@ public class Stores implements Serializable {
 	}
 
 	/**
-	 * owner_name을 설정합니다..
-	 * 
-	 * @param ownerName
-	 *            owner_name
-	 */
-	public void setOwnerName(String ownerName) {
-		this.ownerName = ownerName;
-	}
-
-	/**
-	 * owner_name을 가져옵니다..
-	 * 
-	 * @return owner_name
-	 */
-	public String getOwnerName() {
-		return this.ownerName;
-	}
-
-	/**
 	 * 새 테이블을 설정합니다..
 	 * 
-	 * @param users
+	 * @param owners
 	 *            새 테이블
 	 */
-	public void setUsers(Users users) {
-		this.users = users;
+	public void setOwners(Owners owners) {
+		this.owners = owners;
 	}
 
 	/**
@@ -166,8 +144,8 @@ public class Stores implements Serializable {
 	 * 
 	 * @return 새 테이블
 	 */
-	public Users getUsers() {
-		return this.users;
+	public Owners getOwners() {
+		return this.owners;
 	}
 
 	/**
@@ -230,35 +208,6 @@ public class Stores implements Serializable {
 	/**
 	 * 새 테이블 목록을 설정합니다..
 	 * 
-	 * @param reviewCommentSet
-	 *            새 테이블 목록
-	 */
-	public void setReviewCommentSet(Set<ReviewComment> reviewCommentSet) {
-		this.reviewCommentSet = reviewCommentSet;
-	}
-
-	/**
-	 * 새 테이블를 추가합니다..
-	 * 
-	 * @param reviewComment
-	 *            새 테이블
-	 */
-	public void addReviewComment(ReviewComment reviewComment) {
-		this.reviewCommentSet.add(reviewComment);
-	}
-
-	/**
-	 * 새 테이블 목록을 가져옵니다..
-	 * 
-	 * @return 새 테이블 목록
-	 */
-	public Set<ReviewComment> getReviewCommentSet() {
-		return this.reviewCommentSet;
-	}
-
-	/**
-	 * 새 테이블 목록을 설정합니다..
-	 * 
 	 * @param eventCommentSet
 	 *            새 테이블 목록
 	 */
@@ -283,6 +232,35 @@ public class Stores implements Serializable {
 	 */
 	public Set<EventComment> getEventCommentSet() {
 		return this.eventCommentSet;
+	}
+
+	/**
+	 * 새 테이블 목록을 설정합니다..
+	 * 
+	 * @param reviewCommentSet
+	 *            새 테이블 목록
+	 */
+	public void setReviewCommentSet(Set<ReviewComment> reviewCommentSet) {
+		this.reviewCommentSet = reviewCommentSet;
+	}
+
+	/**
+	 * 새 테이블를 추가합니다..
+	 * 
+	 * @param reviewComment
+	 *            새 테이블
+	 */
+	public void addReviewComment(ReviewComment reviewComment) {
+		this.reviewCommentSet.add(reviewComment);
+	}
+
+	/**
+	 * 새 테이블 목록을 가져옵니다..
+	 * 
+	 * @return 새 테이블 목록
+	 */
+	public Set<ReviewComment> getReviewCommentSet() {
+		return this.reviewCommentSet;
 	}
 
 	/**
