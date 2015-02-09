@@ -113,7 +113,6 @@ CREATE TABLE region
 CREATE TABLE review_comment
 (
 	comment_code number NOT NULL,
-	owner_id varchar2(20) NOT NULL,
 	title varchar2(200) NOT NULL,
 	content varchar2(500) NOT NULL,
 	reg_date date DEFAULT SYSDATE NOT NULL,
@@ -184,13 +183,13 @@ ALTER TABLE coupon
 ;
 
 
-ALTER TABLE wish_list
+ALTER TABLE coupon
 	ADD FOREIGN KEY (comment_code)
 	REFERENCES event_comment (comment_code)
 ;
 
 
-ALTER TABLE coupon
+ALTER TABLE wish_list
 	ADD FOREIGN KEY (comment_code)
 	REFERENCES event_comment (comment_code)
 ;
@@ -244,7 +243,7 @@ ALTER TABLE stores
 ;
 
 
-ALTER TABLE coupon
+ALTER TABLE wish_list
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -256,7 +255,7 @@ ALTER TABLE review_comment
 ;
 
 
-ALTER TABLE wish_list
+ALTER TABLE coupon
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
