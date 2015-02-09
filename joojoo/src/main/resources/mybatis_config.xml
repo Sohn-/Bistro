@@ -24,15 +24,11 @@
 
 	<mappers>
 		<mapper resource="mappers/CouponMapper.xml" />
-		 <mapper resource="mappers/EventCommentMapper.xml" />
-		 
-		 
- 		 <mapper resource="mappers/OwnersMapper.xml" />		
+		<mapper resource="mappers/EventCommentMapper.xml" />
+ 		<mapper resource="mappers/OwnersMapper.xml" />		
 		<mapper resource="mappers/ReviewCommentMapper.xml" /> 
 		<mapper resource="mappers/StoresMapper.xml" />
-
 		<mapper resource="mappers/UsersMapper.xml" />
-
 		<mapper resource="mappers/WishListMapper.xml" />
 	</mappers>
 
