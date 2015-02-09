@@ -116,19 +116,20 @@
 		insert into Coupon 
 		values(#{couponCode},#{ownerId},#{userId},#{commentCode}, #{couponStatusCode})	
 	</insert> 
-<!--  
+ 
 	<update id="updateCoupon" parameterType="Coupon">
 		UPDATE Coupon SET
-		owner_id = #{departmentName},
-		user_id = #{managerId},
-		comment_code = #{locationId}
-		WHERE department_id = #{departmentId}
+		owner_id = #{ownerId},
+		user_id = #{userId},
+		comment_code = #{commentCode}
+		WHERE coupon_code = #{couponCode}
 	</update>
  	
-	<delete id="deleteDepartment" parameterType="Integer">
+ 	<!--  이게 스트링인지... VARCHAR인지..? -->
+	<delete id="deleteCoupon" parameterType="String">
 		DELETE FROM departments
-		WHERE department_id = #{departmentId}
-	</delete> -->
+		WHERE coupon_code = #{couponCode}
+	</delete>
 <!--
 	<delete id="deleteCommentByUserId" parameterType="TComment">
 		DELETE FROM

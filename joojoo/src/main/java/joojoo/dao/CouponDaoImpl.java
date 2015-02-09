@@ -2,13 +2,16 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.Coupon;
+
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import joojoo.entity.Coupon;
-
 public class CouponDaoImpl implements CouponDao{
+	static final Logger logger = LoggerFactory.getLogger(CouponDaoImpl.class);
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSessionTemplate sqlSession;
@@ -25,14 +28,20 @@ public class CouponDaoImpl implements CouponDao{
 
 	@Override
 	public int updateDepartment(Coupon coupon) {
-		// TODO Auto-generated method stub
-		return 0;
+		String statement = nameSpace + "updateCoupon";
+		int result = sqlSession.update(statement, coupon);
+		/*if(true){
+			throw new ServiceFailException("무조건 실패한다");
+		}*/
+		logger.trace("updateDepartment종료...");
+		return result;
 	}
 
 	@Override
 	public int deleteDepartment(String couponCode) {
-		// TODO Auto-generated method stub
-		return 0;
+		String statement = nameSpace + "deleteCoupon";
+		int result = sqlSession.delete(statement, couponCode);
+		return result;
 	}
 
 	@Override
