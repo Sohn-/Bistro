@@ -49,9 +49,9 @@ CREATE SEQUENCE SEQ_wish_list_wish_list_code INCREMENT BY 1 START WITH 1;
 -- event_comment_code + sequenceNumber(1~5) -> hash
 CREATE TABLE coupon
 (
-	coupon_code varchar2(20) NOT NULL,
-	owner_id varchar2(20) NOT NULL,
-	user_id varchar2(20) NOT NULL,
+	coupon_code varchar2(100) NOT NULL,
+	owner_id varchar2(50) NOT NULL,
+	user_id varchar2(50) NOT NULL,
 	comment_code number NOT NULL,
 	coupon_status_code number NOT NULL,
 	PRIMARY KEY (coupon_code)
@@ -77,15 +77,15 @@ CREATE TABLE event_comment
 	store_code number NOT NULL,
 	persons_code number NOT NULL,
 	service_type_code number NOT NULL,
-	delete_request varchar2(20),
+	delete_request varchar2(50),
 	PRIMARY KEY (comment_code)
 );
 
 
 CREATE TABLE owners
 (
-	owner_id varchar2(20) NOT NULL,
-	owner_password varchar2(20) NOT NULL,
+	owner_id varchar2(50) NOT NULL,
+	owner_password varchar2(50) NOT NULL,
 	owner_name varchar2(20) NOT NULL,
 	owner_mail varchar2(50) NOT NULL,
 	owner_phone varchar2(50) NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE persons
 
 CREATE TABLE region
 (
-	region_name varchar2(10),
+	region_name varchar2(50),
 	region_code number NOT NULL,
 	PRIMARY KEY (region_code)
 );
@@ -118,7 +118,7 @@ CREATE TABLE review_comment
 	reg_date date DEFAULT SYSDATE NOT NULL,
 	star_point number NOT NULL,
 	store_code number NOT NULL,
-	user_id varchar2(20) NOT NULL,
+	user_id varchar2(50) NOT NULL,
 	PRIMARY KEY (comment_code)
 );
 
@@ -137,7 +137,7 @@ CREATE TABLE stores
 	store_name varchar2(100) NOT NULL,
 	store_adress varchar2(1000) NOT NULL,
 	store_phone varchar2(50) NOT NULL,
-	owner_id varchar2(20) NOT NULL,
+	owner_id varchar2(50) NOT NULL,
 	region_code number NOT NULL,
 	type_code number NOT NULL,
 	star_point number,
@@ -147,7 +147,7 @@ CREATE TABLE stores
 
 CREATE TABLE store_type
 (
-	type_name varchar2(10),
+	type_name varchar2(50),
 	type_code number NOT NULL,
 	PRIMARY KEY (type_code)
 );
@@ -155,8 +155,8 @@ CREATE TABLE store_type
 
 CREATE TABLE users
 (
-	user_id varchar2(20) NOT NULL,
-	user_password varchar2(20) NOT NULL,
+	user_id varchar2(50) NOT NULL,
+	user_password varchar2(50) NOT NULL,
 	user_name varchar2(20) NOT NULL,
 	user_mail varchar2(50) NOT NULL,
 	user_phone varchar2(50) NOT NULL,
@@ -168,7 +168,7 @@ CREATE TABLE users
 CREATE TABLE wish_list
 (
 	wish_list_code number NOT NULL,
-	user_id varchar2(20) NOT NULL,
+	user_id varchar2(50) NOT NULL,
 	comment_code number NOT NULL,
 	PRIMARY KEY (wish_list_code)
 );
@@ -195,13 +195,13 @@ ALTER TABLE wish_list
 ;
 
 
-ALTER TABLE coupon
+ALTER TABLE stores
 	ADD FOREIGN KEY (owner_id)
 	REFERENCES owners (owner_id)
 ;
 
 
-ALTER TABLE stores
+ALTER TABLE coupon
 	ADD FOREIGN KEY (owner_id)
 	REFERENCES owners (owner_id)
 ;
@@ -249,13 +249,17 @@ ALTER TABLE wish_list
 ;
 
 
-ALTER TABLE review_comment
+ALTER TABLE wish_list
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
 
 
+<<<<<<< HEAD
 ALTER TABLE coupon
+=======
+ALTER TABLE review_comment
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
