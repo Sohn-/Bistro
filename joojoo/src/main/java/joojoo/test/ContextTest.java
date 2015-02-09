@@ -15,7 +15,7 @@ public class ContextTest {
 	
 	public static void main(String[] args) {
 		
-		ApplicationContext ctx = new GenericXmlApplicationContext("application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
 		ContextTest test = new ContextTest();
 		
 		
