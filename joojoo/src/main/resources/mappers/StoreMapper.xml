@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="joojoo.mappers.StoreMapper">
+
+
+
+	<insert id="insertStore" parameterType="Stores">
+		insert into stores (store_name, store_adress, store_phone , owner_id, region_code,type_code)
+		values(#{storeName}, #{storeAdress}, #{storePhone}, #{ownerId},#{regionCode},#{typeCode})
+	</insert>
+  
+  	<update id="updateStore" parameterType="Stores">
+  	
+  	update stores
+  	set store_name = #{storeName},
+  		store_adress=#{storeAdress},
+  		store_phone=#{storePhone},
+  		owner_id = #{ownerId},
+  		region_code = #{regionCode},
+  		type_code = #{typeCode},
+  		star_point = #{starPoint}
+  	where store_code=#{storeCode}  	
+  	
+  	</update>
+  	
+  	<delete id="deleteStore" parameterType="Integer">
+  	delete from stores
+  	where store_code=#{storeCode}
+  	</delete>
+  	
+  	<select id = "getStoresByOwnerId" resultType="String">
+	select *
+	from stores
+	where owner_id=#{ownerId}
+	</select>
+  	
+  	<select id = "getStoreByStoreCode" resultType="Integer">
+	select *
+	from stores
+	where store_code=#{storeCode}
+	
+	</select>
+	
+	
+  
+</mapper>

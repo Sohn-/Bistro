@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import joojoo.entity.Stores;
 
-//@Repository
+@Repository
 public class StoreDaoImpl implements StoreDao{
 	
 	@Autowired
