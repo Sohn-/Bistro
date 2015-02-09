@@ -39,10 +39,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     
-      <servlet-mapping>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
     
     <filter>
     	<filter-name>encodingfilter</filter-name>
