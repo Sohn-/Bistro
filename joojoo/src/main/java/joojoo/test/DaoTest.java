@@ -18,7 +18,6 @@ public class DaoTest {
 	static final Logger LOG = LoggerFactory.getLogger(DaoTest.class);
 	
 	@Autowired
-	//@Qualifier("CouponDao")
 	UsersDao dao;
 	
 	public DaoTest(){
@@ -36,17 +35,16 @@ public class DaoTest {
 	
 	
 	public void daoTest(){
-	 String userId ="eyesia";
-	 String userPassword="tkrndbr";
-	 String userName="이재용";
-	 String userMail="eyesia@naver.com";
-	 String userPhone= "01026464844";
-	 Integer chance=3;
-
-		Users user = new Users(userId, userPassword, userName, userMail, userPhone, chance);
+		Users user1 = new Users();
+		user1.setUserId("eyesia1");
+		user1.setUserPassword("1111");
+		user1.setUserName("이재용");
+		user1.setUserMail("112");
+		user1.setUserPhone("010988");
+		user1.setChance(5);
 		
 		//dao.insertUser(user);		
-		LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.insertUser(user)); //OK
+		LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.insertUser(user1)); //OK
 		//LOG.trace("수업 2:"+dao.getDepartmentByIdNoMapping(120));
 		//LOG.trace("수업 3:"+dao.getDepartmentCountByLocationId(1700)); //OK
 		//LOG.trace("수업 4:"+dao.getDepartmentsByLocationId(1700));	//OK
