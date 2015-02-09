@@ -11,6 +11,5 @@ public interface UserService {
 	int Userinsert(Users user);
 	
 	
-	
 
 }
