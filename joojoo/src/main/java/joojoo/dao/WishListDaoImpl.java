@@ -1,4 +1,4 @@
-package joojoo.dao;
+/*package joojoo.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,3 +32,4 @@ public class WishListDaoImpl implements WishListDao{
 	
 
 }
+*/
