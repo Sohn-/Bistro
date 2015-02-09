@@ -29,32 +29,38 @@ public class ReviewCommentDaoImpl implements ReviewCommentDao {
 
 	@Override
 	public int updateReviewComment(ReviewComment reviewComment) {
-		// TODO Auto-generated method stub
-		return 0;
+		String statement = nameSpace + "updateReviewComment";
+		int result = sqlSession.update(statement, reviewComment);
+		return result;
 	}
 
 	@Override
 	public int deleteReviewComment(int commentCode) {
-		// TODO Auto-generated method stub
-		return 0;
+		String statement = nameSpace + "deleteReviewComment";
+		int result = sqlSession.delete(statement, commentCode);
+		return result;
 	}
 
 	@Override
 	public List<ReviewComment> getReviewCommentsByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		String statement = nameSpace + "getReviewCommentsByUserId";
+		List<ReviewComment> result = sqlSession.selectList(statement, userId);
+		
+		return result;
 	}
 
 	@Override
 	public List<ReviewComment> getReviewCommentsByStoreCode(String storeCode) {
-		// TODO Auto-generated method stub
-		return null;
+		String statement = nameSpace + "getReviewCommentsByStoreCode";
+		List<ReviewComment> result = sqlSession.selectList(statement, storeCode);		
+		return result;
 	}
 
 	@Override
 	public List<ReviewComment> getReviewCommentsBySearchKeyword(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		String statement = nameSpace + "getReviewCommentsBySearchKeyword";
+		List<ReviewComment> result = sqlSession.selectList(statement, keyword);		
+		return result;
 	}
 
 }
