@@ -8,7 +8,7 @@
   	<resultMap type="ReviewComment" id="ReviewCommentMap">
 		
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />		
-		<id column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
+		<id column="userId" jdbcType="VARCHAR" property="userId" />		
 		<id column="title" jdbcType="VARCHAR" property="title" />		
 		<id column="content" jdbcType="VARCHAR" property="content" />		
 		<id column="regDate" jdbcType="DATE" property="regDate" />		
@@ -16,7 +16,7 @@
 		<id column="storeCode" jdbcType="INTEGER" property="storeCode" />		
 		
 		<result column="commentCode" jdbcType="INTEGER" property="commentCode" />		
-		<result column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
+		<result column="userId" jdbcType="VARCHAR" property="userId" />		
 		<result column="title" jdbcType="VARCHAR" property="title" />		
 		<result column="content" jdbcType="VARCHAR" property="content" />		
 		<result column="regDate" jdbcType="DATE" property="regDate" />		
@@ -35,13 +35,12 @@
 	user_id varchar2(20) NOT NULL, -->
 	
 	 <insert id="insertReviewComment" parameterType="ReviewComment">
-		insert into review_comment(user_id, title, content, star_point, store_code) 
-		values(#{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
+		insert into review_comment(comment_code, user_id, title, content, star_point, store_code) 
+		values(#{commentCode}, #{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
 	</insert> 
 	
-<!-- 	<update id="updateReviewComment" parameterType="ReviewComment">
+ 	<update id="updateReviewComment" parameterType="ReviewComment">
 		UPDATE review_comment SET
-		owner_id = #{ownerId},
 		user_id = #{userId},
 		title = #{title},
 		content = #{content},
@@ -54,10 +53,6 @@
 		DELETE FROM review_comment
 		WHERE comment_code = #{commentCode}
 	</delete>
-	
-		List<ReviewComment> getReviewCommentsByUserId(String userId);
-	List<ReviewComment> getReviewCommentsByStoreCode(String storeCode);
-	List<ReviewComment> getReviewCommentsBySearchKeyword(String keyword);
 	
 	<select id= "getReviewCommentsByUserId" parameterType="String"
 						resultMap="ReviewCommentMap">
@@ -80,8 +75,8 @@
 		join stores s using(store_code)
 		join region r using(region_code)
 		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
+		<!-- join persons p using(persons_code) -->
+		<!-- join service_type using(service_type_code) -->
 		join owners using(owner_id)	
 		
 		where title like '%${keyword}%'
@@ -91,11 +86,10 @@
 		or owner_name like '%${keyword}%'
 		or region_name like '%${keyword}%'
 		or type_name like '%${keyword}%'
-		or persons_level like '%${keyword}%'
-		or service_type_name like '%${keyword}%'
+<!-- 		or persons_level like '%${keyword}%' -->
+		<!-- or service_type_name like '%${keyword}%' -->
 
 	</select> 
-	 -->
 	
 	<!-- <insert id="insertEventComment" parameterType="EventComment">
 		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 

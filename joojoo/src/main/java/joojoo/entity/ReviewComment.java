@@ -40,6 +40,7 @@ public class ReviewComment implements Serializable {
 	public ReviewComment() {
 	}
 	
+	
 	public ReviewComment(String userId, String title, String content,
 			Integer starPoint, Integer storeCode) {
 		super();
@@ -50,6 +51,19 @@ public class ReviewComment implements Serializable {
 		this.storeCode = storeCode;
 	}
 	
+	
+
+	public ReviewComment(Integer commentCode, String userId, String title,
+			String content, Integer starPoint, Integer storeCode) {
+		super();
+		this.commentCode = commentCode;
+		this.userId = userId;
+		this.title = title;
+		this.content = content;
+		this.starPoint = starPoint;
+		this.storeCode = storeCode;
+	}
+
 
 	public Integer getCommentCode() {
 		return commentCode;

@@ -3,6 +3,7 @@ package joojoo.test;
 import java.text.ParseException;
 
 import joojoo.dao.ReviewCommentDao;
+import joojoo.entity.Category;
 import joojoo.entity.ReviewComment;
 
 import org.slf4j.Logger;
@@ -38,7 +39,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 	}
 	
 	public void reviewCommentTest() throws ParseException{
-		String ownerId = "sohn";
+		int commentCode = 1;
 		String userId = "user";
 		String title = "자바로삽입";
 		String content = "자바로삽입";
@@ -48,20 +49,26 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		values(#{ownerId}, #{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	*/
 
 
-		ReviewComment reviewComment = new ReviewComment(userId, title, content, starPoint, storeCode);
+		ReviewComment reviewComment = new ReviewComment(commentCode, userId, title, content, starPoint, storeCode);
 
 
-
-		//dao.insertEventComment(eventComment);
-		dao.insertReviewComment(reviewComment);
+		//dao.insertReviewComment(reviewComment);
 		
-		//eventComment.setTitle("변경됨");
-		//eventComment.setCommentCode(5);
-		//dao.updateEventComment(eventComment);
+		/*reviewComment.setTitle("변경됨");
+		reviewComment.setCommentCode(1);
+		dao.updateReviewComment(reviewComment);*/
 		
-		//dao.deleteEventComment(5);
+		//dao.deleteReviewComment(1);
 		
-/*		int regionCode = 0;
+		
+		/*List<ReviewComment> getReviewCommentsByUserId(String userId);
+		List<ReviewComment> getReviewCommentsByStoreCode(String storeCode);
+		List<ReviewComment> getReviewCommentsBySearchKeyword(String keyword);*/
+		
+		//dao.getReviewCommentsByUserId(userId);
+		//dao.getReviewCommentsByStoreCode(storeCode);
+		
+	int regionCode = 0;
 		int typeCode = 0;
 		int personsCode = 0;
 		int serviceTypeCode = 0;
@@ -70,7 +77,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		//dao.getEventCommentsByCategory(category);
 		
 		
-		dao.getEventCommentsBySearchKeyword(category);*/
+		dao.getReviewCommentsBySearchKeyword(category);
 
 	}
 }

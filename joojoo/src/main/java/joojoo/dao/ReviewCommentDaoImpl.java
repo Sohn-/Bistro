@@ -2,13 +2,13 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.Category;
 import joojoo.entity.ReviewComment;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -56,7 +56,7 @@ public class ReviewCommentDaoImpl implements ReviewCommentDao{
 	}
 
 	@Override
-	public List<ReviewComment> getReviewCommentsByStoreCode(String storeCode) {
+	public List<ReviewComment> getReviewCommentsByStoreCode(int storeCode) {
 		String statement = nameSpace + "getReviewCommentsByStoreCode";
 		List<ReviewComment> result = sqlSession.selectList(statement, storeCode);
 		
@@ -64,9 +64,9 @@ public class ReviewCommentDaoImpl implements ReviewCommentDao{
 	}
 
 	@Override
-	public List<ReviewComment> getReviewCommentsBySearchKeyword(String keyword) {
+	public List<ReviewComment> getReviewCommentsBySearchKeyword(Category category) {
 		String statement = nameSpace + "getReviewCommentsBySearchKeyword";
-		List<ReviewComment> result = sqlSession.selectList(statement, keyword);
+		List<ReviewComment> result = sqlSession.selectList(statement, category);
 		
 		return result;
 	}
