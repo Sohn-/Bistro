@@ -2,11 +2,12 @@ package joojoo.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import joojoo.entity.Owners;
 import joojoo.entity.Stores;
 
-
+@Repository
 public class OwnersDaoImpl implements OwnersDao {
 	
 	@Autowired

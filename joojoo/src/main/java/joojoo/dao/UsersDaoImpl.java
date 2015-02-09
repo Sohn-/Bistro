@@ -16,7 +16,7 @@ public class UsersDaoImpl implements UsersDao{
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	private final String nameSpace = "joojoo.mappers.UserMapper.";
+	private final String nameSpace = "joojoo.mappers.UsersMapper.";
 
 	@Override
 	public int insertUser(Users user) {

@@ -6,7 +6,6 @@
 <mapper namespace="joojoo.mappers.StoresMapper">
 
 
-
 	<insert id="insertStore" parameterType="Stores">
 		insert into stores (store_name, store_adress, store_phone , owner_id, region_code,type_code)
 		values(#{storeName}, #{storeAdress}, #{storePhone}, #{ownerId},#{regionCode},#{typeCode})
