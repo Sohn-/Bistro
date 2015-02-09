@@ -10,6 +10,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
 <context:component-scan base-package="joojoo.dao">
+
 	<!-- <context:exclude-filter type="assignable" expression="jdbc.dao.DepartmentDaoIJdbcImpl"/>
 	<context:exclude-filter type="regex" expression=".*jdbc.*"/> -->
 	<!-- <context:exclude-filter type="aspectj" expression="jdbc..*MybatisImpl"/> -->
@@ -28,7 +29,7 @@
 	<constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
 </bean>
 
-     
+  
 <!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
  		<property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
