@@ -18,7 +18,7 @@ public class DaoTest {
 	CouponDao dao;
 	
 	public DaoTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("application_config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("application-config.xml");
 		dao = ctx.getBean(CouponDao.class);
 		
 	}
