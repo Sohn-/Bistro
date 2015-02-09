@@ -44,6 +44,7 @@ public class Owners{
 		this.ownerMail = ownrMail;
 		this.ownerPhone = ownerPhone;
 		this.licenseNumber = licenseNumber;
+		
 	}
 
 

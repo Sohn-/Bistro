@@ -49,3 +49,4 @@ values(4,'포차');
 insert into store_type (type_code, type_name)
 values(5,'호프');
 
+
