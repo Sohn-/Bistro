@@ -39,16 +39,6 @@
 
 
 
-	<context:property-placeholder location="classpath:/oracle.properties" />
-	
-	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}"></jee:jndi-lookup>
-	
-	
-	<context:component-scan base-package="joojoo.dao">
-		<context:exclude-filter type="aspectj"
-			expression="joojoo..*DaoImpl" /><!-- 레퍼지터리되있는 빈 가져오는거 필터링 -->
-	</context:component-scan>
-
 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="dataSource"></property>
 	<property name="configLocation" value="classpath:/mybatis_config.xml"></property>
