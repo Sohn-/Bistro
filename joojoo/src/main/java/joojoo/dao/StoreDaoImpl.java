@@ -16,7 +16,7 @@ public class StoreDaoImpl implements StoreDao{
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	private final String nameSpace = "joojoo.mappers.StoreMapper.";
+	private final String nameSpace = "joojoo.mappers.StoresMapper.";
 
 	@Override
 	public int insertStore(Stores store) {

@@ -12,7 +12,7 @@ public class OwnersDaoImpl implements OwnersDao {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	private final String nameSpace = "joojoo.mappers.OwnerMapper.";
+	private final String nameSpace = "joojoo.mappers.OwnersMapper.";
 
 
 	@Override
