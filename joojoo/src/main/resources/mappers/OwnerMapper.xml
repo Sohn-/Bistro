@@ -1,0 +1,62 @@
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="joojoo.mappers.OwnerMapper">
+
+
+
+	<insert id="insertOwner" parameterType="Owners">
+	insert into owners (owner_id, owner_password, owner_name, owner_mail, owner_phone, license_number)
+	values(#{ownerId}, #{ownerPassword}, #{ownerName}, #{ownerMail},#{ownerPhone},#{licenseNumber})
+	</insert>
+  
+  	<update id="updateOwner" parameterType="Owners">
+  	update owners
+  	set owner_password = #{ownerPassword},
+  		owner_mail=#{ownerMail},
+  		ownerPhone=#{ownerPhone}	
+  	where owner_id=#{ownerId}  	
+  	</update>
+  	
+  	<delete id="deleteOwner" parameterType="String">
+  	delete from owners
+  	where owner_id=#{ownerId}
+  	</delete>
+  	
+  	<select id = "getOwnersByOwnerId" resultType="Owners">
+	select *
+	from owners
+	where owner_id=#{ownerId}
+	</select>
+  	
+  	<select id = "getOwnersByOwnerMail" resultType="Owners">
+	select *
+	from owners
+	where owner_mail=#{ownerMail}
+	
+	</select>
+	
+	<select id = "getOwnersByLicenseNumber" resultType="Owners">
+	select *
+	from owners
+	where license_number=#{licenseNumber} 
+
+	</select>
+	
+	
+	<select id = "getOwnersForIdFind" resultType="Owners">
+	select *
+	from owners
+	where owner_mail=#{ownerMail} and owner_name=#{ownerName} and license_number=#{licenseNumber}
+	
+	</select>
+	
+	<select id = "getOwnersForPassWordFind" resultType="Owners">
+	select *
+	from owners
+	where owner_mail=#{ownerMail} and owner_name=#{ownerName} and owner_id=#{ownerId}
+	</select>
+	
+  
+</mapper>
