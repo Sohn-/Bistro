@@ -16,7 +16,7 @@
 	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}"></jee:jndi-lookup>
 	
 	
-	<context:component-scan base-package="joojoo.*">
+	<context:component-scan base-package="joojoo.dao">
 		<context:exclude-filter type="aspectj"
 			expression="joojoo..*DaoImpl" /><!-- 레퍼지터리되있는 빈 가져오는거 필터링 -->
 	</context:component-scan>
