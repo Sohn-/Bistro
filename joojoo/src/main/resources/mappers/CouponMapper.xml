@@ -130,6 +130,14 @@
 		DELETE FROM departments
 		WHERE coupon_code = #{couponCode}
 	</delete>
+	
+	<select id= "getCouponByUserId" parameterType="String"
+						resultMap="CouponMap">
+		select * 
+		from departments 
+		where coupon_code=#{couponCode}					
+	</select>
+	
 <!--
 	<delete id="deleteCommentByUserId" parameterType="TComment">
 		DELETE FROM
