@@ -41,7 +41,7 @@
 		<suspend_validator>false</suspend_validator>
 		<export_setting>
 			<export_ddl_setting>
-				<output_path>newfile8.sql</output_path>
+				<output_path>newfile9.sql</output_path>
 				<encoding>UTF-8</encoding>
 				<line_feed>CR+LF</line_feed>
 				<is_open_after_saved>true</is_open_after_saved>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-02-03 16:43:24</creation_date>
-			<updated_date>2015-02-09 16:51:12</updated_date>
+			<updated_date>2015-02-09 17:14:39</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -1367,7 +1367,7 @@
 			<connections>
 				<relation>
 					<id>2</id>
-					<source>11</source>
+					<source>8</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1411,7 +1411,7 @@
 				</relation>
 				<relation>
 					<id>4</id>
-					<source>8</source>
+					<source>11</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1574,7 +1574,7 @@
 				<normal_column>
 					<id>15</id>
 					<referenced_column>50</referenced_column>
-					<relation>2</relation>
+					<relation>4</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1608,7 +1608,7 @@
 				<normal_column>
 					<id>16</id>
 					<referenced_column>34</referenced_column>
-					<relation>4</relation>
+					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1782,7 +1782,7 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>1</word_id>
+					<word_id>2</word_id>
 					<id>19</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -1914,7 +1914,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>20</word_id>
+					<word_id>21</word_id>
 					<id>23</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2398,7 +2398,7 @@
 			<connections>
 				<relation>
 					<id>7</id>
-					<source>10</source>
+					<source>11</source>
 					<target>9</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2464,7 +2464,7 @@
 				</relation>
 				<relation>
 					<id>10</id>
-					<source>11</source>
+					<source>10</source>
 					<target>9</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2528,7 +2528,7 @@
 				<normal_column>
 					<id>36</id>
 					<referenced_column>50</referenced_column>
-					<relation>10</relation>
+					<relation>7</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2596,7 +2596,7 @@
 				<normal_column>
 					<id>38</id>
 					<referenced_column>40</referenced_column>
-					<relation>7</relation>
+					<relation>10</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2686,7 +2686,7 @@
 			<connections>
 				<relation>
 					<id>11</id>
-					<source>5</source>
+					<source>4</source>
 					<target>10</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2730,7 +2730,7 @@
 				</relation>
 				<relation>
 					<id>13</id>
-					<source>4</source>
+					<source>5</source>
 					<target>10</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2759,7 +2759,7 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>2</word_id>
+					<word_id>1</word_id>
 					<id>40</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2858,7 +2858,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>21</word_id>
+					<word_id>20</word_id>
 					<id>43</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2959,7 +2959,7 @@
 				<normal_column>
 					<id>46</id>
 					<referenced_column>11</referenced_column>
-					<relation>11</relation>
+					<relation>13</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2993,7 +2993,7 @@
 				<normal_column>
 					<id>47</id>
 					<referenced_column>9</referenced_column>
-					<relation>13</relation>
+					<relation>11</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
