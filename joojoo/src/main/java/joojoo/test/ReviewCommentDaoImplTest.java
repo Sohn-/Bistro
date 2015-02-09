@@ -3,7 +3,6 @@ package joojoo.test;
 import java.text.ParseException;
 
 import joojoo.dao.ReviewCommentDao;
-import joojoo.entity.Category;
 import joojoo.entity.ReviewComment;
 
 import org.slf4j.Logger;
@@ -40,6 +39,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 	
 	public void reviewCommentTest() throws ParseException{
 		String ownerId = "sohn";
+		String userId = "user";
 		String title = "자바로삽입";
 		String content = "자바로삽입";
 		int starPoint = 5;
@@ -47,7 +47,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		
 
 
-		ReviewComment reviewComment = new ReviewComment(ownerId, title, content, starPoint, storeCode);
+		ReviewComment reviewComment = new ReviewComment(ownerId, userId, title, content, starPoint, storeCode);
 
 
 
