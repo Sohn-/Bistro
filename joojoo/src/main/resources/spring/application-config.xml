@@ -39,6 +39,7 @@
 
 </bean> -->
 
+<jee:jndi-lookup id ="dataSource" jndi-name="${jndi.name}"></jee:jndi-lookup>
 
 
 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
