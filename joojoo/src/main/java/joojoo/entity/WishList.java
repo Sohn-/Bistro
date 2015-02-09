@@ -15,6 +15,8 @@ public class WishList{
 	private int wishListCode;
 	private String userId;
 	private int commentCode;
+	
+	
 	public int getWishListCode() {
 		return wishListCode;
 	}

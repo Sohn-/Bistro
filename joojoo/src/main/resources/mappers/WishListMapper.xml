@@ -7,8 +7,8 @@
 
 
 	<insert id="insertWishList" parameterType="WishList">
-		insert into stores (wish_list_code, user_id,comment_code)
-		values(#{wishListCode}, #{userId}, #{commentCode})
+		insert into wish_list (user_id,comment_code)
+		values(#{userId}, #{commentCode})
 	</insert>
 	
 	
