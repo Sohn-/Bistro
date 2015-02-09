@@ -8,7 +8,7 @@ insert into stores(store_name, store_adress, store_phone, owner_id, region_code,
 values('가게이름','가게주소','가게번호','sohn',0, 0);
 
 insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code)
-values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 0, 0, 0);
+values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, 0, 0);
 
 insert into persons (persons_code, persons_level)
 values(0,'4명이하');
