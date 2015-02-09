@@ -7,7 +7,7 @@ public class Stores  {
 	public Stores(){}	
 	
 	public Stores(int storeCode, String storeName, String storeAdress,
-			int storePhone, String ownerId, int regionCode, int typeCode,
+			String storePhone, String ownerId, int regionCode, int typeCode,
 			int starPoint) {
 		super();
 		this.storeCode = storeCode;
@@ -20,16 +20,16 @@ public class Stores  {
 		this.starPoint = starPoint;
 	}
 
-
 	private int storeCode;
 	private String storeName;
 	private String storeAdress;
-	private int storePhone;
+	private String storePhone;
 	private String ownerId;
 	private int regionCode;
 	private int typeCode;
 	private int starPoint;
 	
+
 	public int getStoreCode() {
 		return storeCode;
 	}
@@ -48,10 +48,10 @@ public class Stores  {
 	public void setStoreAdress(String storeAdress) {
 		this.storeAdress = storeAdress;
 	}
-	public int getStorePhone() {
+	public String getStorePhone() {
 		return storePhone;
 	}
-	public void setStorePhone(int storePhone) {
+	public void setStorePhone(String storePhone) {
 		this.storePhone = storePhone;
 	}
 	public String getOwnerId() {
@@ -78,8 +78,7 @@ public class Stores  {
 	public void setStarPoint(int starPoint) {
 		this.starPoint = starPoint;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "Stores [storeCode=" + storeCode + ", storeName=" + storeName
@@ -87,6 +86,11 @@ public class Stores  {
 				+ ", ownerId=" + ownerId + ", regionCode=" + regionCode
 				+ ", typeCode=" + typeCode + ", starPoint=" + starPoint + "]";
 	}
+
+
+
+
+
 	
 	
 	
