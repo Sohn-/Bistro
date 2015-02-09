@@ -20,8 +20,10 @@ public class DaoTest {
 	static final Logger LOG = LoggerFactory.getLogger(DaoTest.class);
 	
 	@Autowired
+
 	//@Qualifier("CouponDao")
 	OwnersDao dao;
+
 	
 	public DaoTest(){
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
@@ -38,6 +40,7 @@ public class DaoTest {
 	
 	
 	public void daoTest(){
+
 	Owners owner = new Owners();
 	
 	owner.setOwnerId("eyesia");
@@ -46,8 +49,12 @@ public class DaoTest {
 	owner.setOwnerPhone("01026464844");
 	owner.setOwnrMail("eyesia@naver.com");
 	owner.setLicenseNumber("332211");
-		
+
 		LOG.trace("수업 1 : Owner [dao]: "+dao.insertOwner(owner)); //OK
+
+		//dao.insertUser(user);		
+	
+
 		//LOG.trace("수업 2:"+dao.getDepartmentByIdNoMapping(120));
 		//LOG.trace("수업 3:"+dao.getDepartmentCountByLocationId(1700)); //OK
 		//LOG.trace("수업 4:"+dao.getDepartmentsByLocationId(1700));	//OK

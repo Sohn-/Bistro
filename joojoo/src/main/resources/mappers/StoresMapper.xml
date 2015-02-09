@@ -30,13 +30,13 @@
   	where store_code=#{storeCode}
   	</delete>
   	
-  	<select id = "getStoresByOwnerId" resultType="String">
+  	<select id = "getStoresByOwnerId" resultType="Stores">
 	select *
 	from stores
 	where owner_id=#{ownerId}
 	</select>
   	
-  	<select id = "getStoreByStoreCode" resultType="Integer">
+  	<select id = "getStoreByStoreCode" resultType="Stores">
 	select *
 	from stores
 	where store_code=#{storeCode}
