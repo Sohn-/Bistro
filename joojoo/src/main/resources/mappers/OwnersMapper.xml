@@ -15,7 +15,7 @@
   	update owners
   	set owner_password = #{ownerPassword},
   		owner_mail=#{ownerMail},
-  		ownerPhone=#{ownerPhone}	
+  		owner_phone=#{ownerPhone}	
   	where owner_id=#{ownerId}  	
   	</update>
   	

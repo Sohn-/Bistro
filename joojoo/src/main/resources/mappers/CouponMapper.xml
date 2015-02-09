@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="joojoo.mapper.CouponMapper">
-<!--   	<resultMap type="Coupon" id="CouponMap">
+  	<resultMap type="Coupon" id="CouponMap">
 		<id column="couponCode" jdbcType="VARCHAR" property="couponCode" />
 		<id column="ownerId" jdbcType="VARCHAR" property="ownerId" />
 		<id column="userId" jdbcType="VARCHAR" property="userId" />
@@ -15,24 +15,25 @@
 		<result column="userId" jdbcType="VARCHAR" property="userId" />
 		<result column="commentCode" jdbcType="INTEGER" property="commentCode" />
 		<result column="couponStatusCode" jdbcType="INTEGER" property="couponStatusCode" />
-	</resultMap>  -->
+	</resultMap>  
 	
  	<insert id="insertCoupon" parameterType="Coupon">
 		insert into Coupon 
 		values(#{couponCode},#{ownerId},#{userId},#{commentCode}, #{couponStatusCode})	
 	</insert> 
  
-<!-- 	<update id="updateCoupon" parameterType="Coupon">
+ 	<update id="updateCoupon" parameterType="Coupon">
 		UPDATE Coupon SET
 		owner_id = #{ownerId},
 		user_id = #{userId},
-		comment_code = #{commentCode}
+		comment_code = #{commentCode},
+		coupon_status_code = #{couponStatusCode}
 		WHERE coupon_code = #{couponCode}
 	</update>
  	
- 	 이게 스트링인지... VARCHAR인지..?
+ 	 <!-- 이게 스트링인지... VARCHAR인지..? -->
 	<delete id="deleteCoupon" parameterType="String">
-		DELETE FROM departments
+		DELETE FROM Coupon
 		WHERE coupon_code = #{couponCode}
 	</delete>
 	
@@ -55,6 +56,6 @@
 		select * 
 		from coupon 
 		where coupon_status_code=#{couponStatusCode}					
-	</select> -->
+	</select>
 
 </mapper>
