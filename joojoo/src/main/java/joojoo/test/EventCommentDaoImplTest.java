@@ -47,8 +47,8 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		int serviceTypeCode = 1;
 		String deleteRequest;
 		
-		EventComment eventComment = new EventComment(couponCode, ownerId, userId, commentCode, couponStatusCode);
+		/*EventComment eventComment = new EventComment(couponCode, ownerId, userId, commentCode, couponStatusCode);
 		
-		dao.insertCoupon(coupon);
+		dao.insertCoupon(coupon);*/
 	}
 }

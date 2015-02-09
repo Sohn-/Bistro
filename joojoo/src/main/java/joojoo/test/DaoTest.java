@@ -37,20 +37,15 @@ public class DaoTest {
 	
 	public void daoTest(){
 	 String userId ="eyesia";
-
-	String userPassword="tkrndbr";
-
+	 String userPassword="tkrndbr";
 	 String userName="이재용";
-
 	 String userMail="eyesia@naver.com";
-
 	 String userPhone= "01026464844";
-
 	 Integer chance=3;
 
 		Users user = new Users(userId, userPassword, userName, userMail, userPhone, chance);
 		
-		dao.insertUser(user);		
+		//dao.insertUser(user);		
 		LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.insertUser(user)); //OK
 		//LOG.trace("수업 2:"+dao.getDepartmentByIdNoMapping(120));
 		//LOG.trace("수업 3:"+dao.getDepartmentCountByLocationId(1700)); //OK
