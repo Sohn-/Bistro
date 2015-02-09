@@ -5,10 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import sohn.mvc.dao.DepartmentDao;
-import sohn.mvc.service.DepartmentService;
 
 
 
@@ -35,21 +31,21 @@ public class ContextTest {
 		//test.myBatisTest(ctx);
 
 	}
-	public void daoTest(ApplicationContext ctx){
+/*	public void daoTest(ApplicationContext ctx){
 		
 		DepartmentDao dao = ctx.getBean(DepartmentDao.class);
 		//LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.getDepartmentCount());
 		//LOG.trace("수업 2:"+dao.getDepartmentByIdNoMapping(120));
 		LOG.trace("수업 3:"+dao.getDepartmentCountByLocationId(1700));
 		//LOG.trace("수업 4:"+dao.getDepartmentsByLocationId(1700));
-	}
+	}*/
 	
 	
-	public void serviceTest(ApplicationContext ctx){
+/*	public void serviceTest(ApplicationContext ctx){
 		
 		DepartmentDao dao = ctx.getBean(DepartmentDao.class);
 		DepartmentService service = ctx.getBean(DepartmentService.class);
 		LOG.trace("수업 : 부서의 개수는 [서비스]: "+service.getDeptCnt());
-	}
+	}*/
 
 }
