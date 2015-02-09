@@ -3,40 +3,55 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="joojoo.mapper.EventCommentMapper">
-  	<resultMap type="EventComment" id="CouponMap">
-		<id column="couponCode" jdbcType="VARCHAR" property="couponCode" />
-		<id column="ownerId" jdbcType="VARCHAR" property="ownerId" />
-		<id column="userId" jdbcType="VARCHAR" property="userId" />
+  	<resultMap type="EventComment" id="EventCommentMap">
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />
-		<id column="couponStatusCode" jdbcType="INTEGER" property="couponStatusCode" />
+		<id column="title" jdbcType="VARCHAR" property="title" />
+		<id column="content" jdbcType="VARCHAR" property="content" />
+		<id column="regDate" jdbcType="DATE" property="regDate" />
+		<id column="startDate" jdbcType="DATE" property="startDate" />
+		<id column="endDate" jdbcType="DATE" property="endDate" />
+		<id column="storeCode" jdbcType="INTEGER" property="storeCode" />
+		<id column="personsCode" jdbcType="INTEGER" property="personsCode" />
+		<id column="serviceTypeCode" jdbcType="INTEGER" property="serviceTypeCode" />
+		<id column="deleteRequest" jdbcType="VARCHAR" property="deleteRequest" />
 		
-		<result column="couponCode" jdbcType="VARCHAR" property="couponCode" />
-		<result column="ownerId" jdbcType="VARCHAR" property="ownerId" />
-		<result column="userId" jdbcType="VARCHAR" property="userId" />
 		<result column="commentCode" jdbcType="INTEGER" property="commentCode" />
-		<result column="couponStatusCode" jdbcType="INTEGER" property="couponStatusCode" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<result column="regDate" jdbcType="DATE" property="regDate" />
+		<result column="startDate" jdbcType="DATE" property="startDate" />
+		<result column="endDate" jdbcType="DATE" property="endDate" />
+		<result column="storeCode" jdbcType="INTEGER" property="storeCode" />
+		<result column="personsCode" jdbcType="INTEGER" property="personsCode" />
+		<result column="serviceTypeCode" jdbcType="INTEGER" property="serviceTypeCode" />
+		<result column="deleteRequest" jdbcType="VARCHAR" property="deleteRequest" />
 	</resultMap> 
 	
- 	<insert id="insertCoupon" parameterType="Coupon">
-		insert into Coupon 
-		values(#{couponCode},#{ownerId},#{userId},#{commentCode}, #{couponStatusCode})	
+ 	<insert id="insertEventComment" parameterType="EventComment">
+		insert into event_comment 
+		values(#{couponCode},#{title},#{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode}, #{deleteRequest})	
 	</insert> 
  
-	<update id="updateCoupon" parameterType="Coupon">
-		UPDATE Coupon SET
-		owner_id = #{ownerId},
-		user_id = #{userId},
-		comment_code = #{commentCode}
-		WHERE coupon_code = #{couponCode}
+	<update id="updateEventComment" parameterType="EventComment">
+		UPDATE event_comment SET
+		title = #{ownerId},
+		content = #{userId},
+		start_date = #{startDate},
+		end_date = #{endDate},
+		store_code = #{storeCode},
+		persons_code = #{personsCode},
+		service_type_code = #{serviceTypeCode},
+		delete_request = #{deleteRequest}
+		WHERE comment_code = #{commentCode}
 	</update>
  	
  	<!--  이게 스트링인지... VARCHAR인지..? -->
-	<delete id="deleteCoupon" parameterType="String">
-		DELETE FROM departments
-		WHERE coupon_code = #{couponCode}
+	<delete id="deleteEventComment" parameterType="INTEGER">
+		DELETE FROM event_comment
+		WHERE comment_code = #{commentCode}
 	</delete>
 	
-	<select id= "getCouponByUserId" parameterType="String"
+	<select id= "getEventCommentsByCategory" parameterType="String"
 						resultMap="CouponMap">
 		select * 
 		from Coupon 
