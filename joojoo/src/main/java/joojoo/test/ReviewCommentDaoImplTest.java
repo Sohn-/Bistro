@@ -1,12 +1,10 @@
 package joojoo.test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import joojoo.dao.EventCommentDao;
+import joojoo.dao.ReviewCommentDao;
 import joojoo.entity.Category;
-import joojoo.entity.EventComment;
+import joojoo.entity.ReviewComment;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,12 +17,12 @@ public class ReviewCommentDaoImplTest {
 static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class);
 	
 	@Autowired
-	@Qualifier("EventComment")
-	EventCommentDao dao;
+	@Qualifier("ReviewComment")
+	ReviewCommentDao dao;
 	
 	public ReviewCommentDaoImplTest(){
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
-		dao = ctx.getBean(EventCommentDao.class);
+		dao = ctx.getBean(ReviewCommentDao.class);
 		
 	}
 	
@@ -32,7 +30,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		
 		ReviewCommentDaoImplTest test = new ReviewCommentDaoImplTest();
 		try {
-			test.eventCommentTest();
+			test.reviewCommentTest();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,29 +38,21 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		
 	}
 	
-	public void eventCommentTest() throws ParseException{
-		/*String title = "자바로삽입";
-		String content = "자바로삽입";*/
-		
-/*		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code)
-		values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, 0, 0);*/
-		
-/*		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String start = "2015-02-09";
-		Date startDate = dateFormat.parse(start);
-		String end = "2015-02-09";
-		Date endDate = (Date) dateFormat.parse(end);
+	public void reviewCommentTest() throws ParseException{
+		String ownerId = "sohn";
+		String title = "자바로삽입";
+		String content = "자바로삽입";
+		int starPoint = 5;
 		int storeCode = 1;
-		int personsCode = 0;
-		int serviceTypeCode = 0;
 		
 
 
-		EventComment eventComment = new EventComment(title, content, startDate, endDate, storeCode, personsCode, serviceTypeCode);*/
+		ReviewComment reviewComment = new ReviewComment(ownerId, title, content, starPoint, storeCode);
 
 
 
 		//dao.insertEventComment(eventComment);
+		dao.insertReviewComment(reviewComment);
 		
 		//eventComment.setTitle("변경됨");
 		//eventComment.setCommentCode(5);
@@ -70,7 +60,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		
 		//dao.deleteEventComment(5);
 		
-		int regionCode = 0;
+/*		int regionCode = 0;
 		int typeCode = 0;
 		int personsCode = 0;
 		int serviceTypeCode = 0;
@@ -79,7 +69,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		//dao.getEventCommentsByCategory(category);
 		
 		
-		dao.getEventCommentsBySearchKeyword(category);
+		dao.getEventCommentsBySearchKeyword(category);*/
 
 	}
 }

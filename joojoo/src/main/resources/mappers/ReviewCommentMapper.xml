@@ -10,7 +10,7 @@
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />		
 		<id column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
 		<id column="title" jdbcType="VARCHAR" property="title" />		
-		<id column="content" jdbcType="CHAR" property="content" />		
+		<id column="content" jdbcType="VARCHAR" property="content" />		
 		<id column="regDate" jdbcType="DATE" property="regDate" />		
 		<id column="starPoint" jdbcType="INTEGER" property="starPoint" />			
 		<id column="storeCode" jdbcType="INTEGER" property="storeCode" />		
@@ -18,7 +18,7 @@
 		<result column="commentCode" jdbcType="INTEGER" property="commentCode" />		
 		<result column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
 		<result column="title" jdbcType="VARCHAR" property="title" />		
-		<result column="content" jdbcType="CHAR" property="content" />		
+		<result column="content" jdbcType="VARCHAR" property="content" />		
 		<result column="regDate" jdbcType="DATE" property="regDate" />		
 		<result column="starPoint" jdbcType="INTEGER" property="starPoint" />			
 		<result column="storeCode" jdbcType="INTEGER" property="storeCode" />	
@@ -26,112 +26,127 @@
 	</resultMap>
 	
 	
-	
-	<insert id="insertReviewComment" parameterType="ReviewComment">
-		insert into ReviewComment 
-		values(#{"ownerId"},#{title},#{content},#{starPoint},#{storeCode})	
+	 <insert id="insertReviewComment" parameterType="ReviewComment">
+		insert into review_comment(owner_id, title, content, star_point, store_code) 
+		values(#{ownerId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
 	</insert> 
 	
-	<!--  <select id="insertReviewComment" parameterType="ReviewComment">
-		select COMMENT_NO,
-		USER_ID,
-		REG_DATE,
-		COMMENT_CONTENT
-		FROM
-		TCOMMENT
-		where comment_no=#{commentNo}
-	</select> -->
-	
-	<!--
-	<select id="selectCommentByMemberId" parameterType="TComment"
-		resultType="TComment">
-		"SELECT COMMENT_NO,
-		USER_ID,
-		REG_DATE,
-		COMMENT_CONTENT
-		FROM
-		TCOMMENT
-		WHERE USER_ID = #{userId}
-		ORDER BY COMMENT_NO ASC
-	</select>
-	<select id="getMaxCommentNo" resultType="Integer">
-		SELECT MAX(COMMENT_NO)
-		FROM TCOMMENT
-	</select>
-	<select id="selectComment" parameterType="hashmap"
-		resultType="TComment">
-		select COMMENT_NO,
-		USER_ID,
-		REG_DATE,
-		COMMENT_CONTENT
-		from
-		TCOMMENT
-		WHERE USER_ID = #{userId}
-	</select>
--->
- 	<!-- <select id="getDepartmentByIdWithEmployees" parameterType="INTEGER" 
- 						resultMap="DepartmentMap">
- 		select * 
- 		from departments 
- 		join employees using (department_id)
-		where department_id=#{departmentId}
- 	</select>
- 	
- 	<select id="getDepartmentsByManagerId" parameterType="INTEGER" 
-						resultType="Map">
-		select department_id,department_name,nvl(manager_id,0),nvl(location_id,0) 
-		from departments 
-		where manager_id=#{managerId}
-	</select>
-	
-	<select id="getAllDepartments"	resultMap="DepartmentMap">
-		select department_id,department_name,nvl(manager_id,0),nvl(location_id,0) 
-		from departments					
-	</select>
-	
-	
-	<select id="getDepartmentsByLocationId" parameterType="INTEGER"
-						resultType="Map">
-		select * 
-		from departments 
-		where location_id=#{location_id}					
-	</select>
-	
-	<select id="getDepartmentCountByLocationId"  parameterType="INTEGER"
-	 					resultType="INTEGER">
-	 	select count(*) 
-	 	from departments 
-	 	where location_id=#{locationId}	
-	</select>
-	
-	<select id= "getDepartmentById" parameterType="INTEGER"
-						resultMap="DepartmentMap">
-		select * 
-		from departments 
-		where department_id=#{departmentId}					
-	</select>
-	<select id="getDepartmentCount" resultType="INTEGER">
-		select count(*) from departments
-	</select>
-	
- 	
- 
-	<update id="updateDepartment" parameterType="Department">
-		UPDATE departments SET
-		department_name = #{departmentName},
-		manager_id = #{managerId},
-		location_id = #{locationId}
-		WHERE department_id = #{departmentId}
+	<update id="updateReviewComment" parameterType="ReviewComment">
+		UPDATE review_comment SET
+		owner_id = #{ownerId}
+		title = #{title},
+		content = #{content},
+		star_point = #{starPoint},
+		store_code = #{storeCode}	
+		WHERE comment_code = #{commentCode}
 	</update>
  	
-	<delete id="deleteDepartment" parameterType="Integer">
-		DELETE FROM departments
-		WHERE department_id = #{departmentId}
+	<delete id="deleteReviewComment" parameterType="INTEGER">
+		DELETE FROM review_comment
+		WHERE comment_code = #{commentCode}
 	</delete>
+	
+		<!-- List<ReviewComment> getReviewCommentsByUserId(String userId);
+	List<ReviewComment> getReviewCommentsByStoreCode(String storeCode);
+	List<ReviewComment> getReviewCommentsBySearchKeyword(String keyword); -->
+	
+	<select id= "getReviewCommentsByUserId" parameterType="String"
+						resultMap="ReviewCommentMap">
+		select * 
+		from review_comment 
+		where user_id=#{userId}					
+	</select>
+	
+	<select id= "getReviewCommentsByStoreCode" parameterType="INTEGER"
+						resultMap="ReviewCommentMap">
+		select * 
+		from review_comment 
+		where store_code=#{storeCode}					
+	</select>
+	
+	<select id= "getReviewCommentsBySearchKeyword" parameterType="ReviewComment"
+						resultMap="ReviewCommentMap">
+		select * 
+		from review_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		
+		where title like '%${keyword}%'
+		or content like '%${keyword}%'
+		or store_name like '%${keyword}%'
+		or store_adress like '%${keyword}%'
+		or owner_name like '%${keyword}%'
+		or region_name like '%${keyword}%'
+		or type_name like '%${keyword}%'
+		or persons_level like '%${keyword}%'
+		or service_type_name like '%${keyword}%'
 
-	<delete id="deleteCommentByUserId" parameterType="TComment">
-		DELETE FROM
-		TCOMMENT
-		WHERE USER_ID = #{userId}
-	</delete> -->
+	</select> 
+	
+	
+	<!-- <insert id="insertEventComment" parameterType="EventComment">
+		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 
+		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode})	
+	</insert> 
+ 
+  	<update id="updateEventComment" parameterType="EventComment">
+		UPDATE event_comment SET
+		title = #{title},
+		content = #{content},
+		start_date = #{startDate},
+		end_date = #{endDate},
+		store_code = #{storeCode},
+		persons_code = #{personsCode},
+		service_type_code = #{serviceTypeCode}
+		WHERE comment_code = #{commentCode}
+	</update>
+ 	
+	<delete id="deleteEventComment" parameterType="INTEGER">
+		DELETE FROM event_comment
+		WHERE comment_code = #{commentCode}
+	</delete>
+	
+	 <select id= "getEventCommentsByCategory" parameterType="EventComment"
+						resultMap="EventCommentMap">
+		select * 
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		 		
+		where region_code = #{regionCode}
+		and type_code = #{typeCode}
+		and persons_code = #{personsCode}
+		and service_type_code = #{serviceTypeCode}			
+	</select>
+	
+	<select id= "getEventCommentsBySearchKeyword" parameterType="EventComment"
+						resultMap="EventCommentMap">
+		select * 
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		
+		where title like '%${keyword}%'
+		or content like '%${keyword}%'
+		or store_name like '%${keyword}%'
+		or store_adress like '%${keyword}%'
+		or owner_name like '%${keyword}%'
+		or region_name like '%${keyword}%'
+		or type_name like '%${keyword}%'
+		or persons_level like '%${keyword}%'
+		or service_type_name like '%${keyword}%'
+
+	</select> -->
 </mapper>
