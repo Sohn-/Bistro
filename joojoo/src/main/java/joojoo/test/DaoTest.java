@@ -44,14 +44,14 @@ public class DaoTest {
 	Users user = new Users();
 	
 	user.setUserMail("유저e-mail");
-	//owner.setOwnerId("eyesia");
+	user.setUserId("user");
 	user.setUserName("유저");
 	//owner.setOwnerPassword("tkrndbr1");
 	//owner.setOwnerPhone("0101");
 	
 	//user.setLicenseNumber("332211");
 
-		LOG.trace("수업 1 : Owner [dao]: "+dao.getUsersForIdFind(user)); //OK
+		LOG.trace("수업 1 : Owner [dao]: "+dao.getUsersForPassWordFind(user)); //OK
 
 		//dao.insertUser(user);		
 	
