@@ -2,8 +2,6 @@ package joojoo.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * 새 테이블 모델 클래스.
@@ -33,281 +31,92 @@ public class EventComment implements Serializable {
 
 	/** end_date. */
 	private Date endDate;
-
-	/** 새 테이블. */
-	private Stores stores;
-
-	/** 새 테이블. */
-	private Persons persons;
-
-	/** 새 테이블. */
-	private ServiceType serviceType;
-
-	/** delete_request. */
+	
+	private int storeCode;
+	
+	private int personsCode;
+	private int serviceTypeCode;
 	private String deleteRequest;
-
-	/** 새 테이블 목록. */
-	private Set<Coupon> couponSet;
-
-	/** 새 테이블 목록. */
-	private Set<WishList> wishListSet;
-
 	/**
 	 * 생성자.
 	 */
-	public EventComment() {
-		this.couponSet = new HashSet<Coupon>();
-		this.wishListSet = new HashSet<WishList>();
+	public EventComment() {}
+	public EventComment(String title, String content, Date startDate,
+			Date endDate, int storeCode, int personsCode, int serviceTypeCode) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.storeCode = storeCode;
+		this.personsCode = personsCode;
+		this.serviceTypeCode = serviceTypeCode;
 	}
+	
+	
 
-	/**
-	 * comment_code을 설정합니다..
-	 * 
-	 * @param commentCode
-	 *            comment_code
-	 */
+	public Integer getCommentCode() {
+		return commentCode;
+	}
 	public void setCommentCode(Integer commentCode) {
 		this.commentCode = commentCode;
 	}
-
-	/**
-	 * comment_code을 가져옵니다..
-	 * 
-	 * @return comment_code
-	 */
-	public Integer getCommentCode() {
-		return this.commentCode;
+	public String getTitle() {
+		return title;
 	}
-
-	/**
-	 * title을 설정합니다..
-	 * 
-	 * @param title
-	 *            title
-	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	/**
-	 * title을 가져옵니다..
-	 * 
-	 * @return title
-	 */
-	public String getTitle() {
-		return this.title;
+	public String getContent() {
+		return content;
 	}
-
-	/**
-	 * content을 설정합니다..
-	 * 
-	 * @param content
-	 *            content
-	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	/**
-	 * content을 가져옵니다..
-	 * 
-	 * @return content
-	 */
-	public String getContent() {
-		return this.content;
+	public Date getRegDate() {
+		return regDate;
 	}
-
-	/**
-	 * reg_date을 설정합니다..
-	 * 
-	 * @param regDate
-	 *            reg_date
-	 */
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-
-	/**
-	 * reg_date을 가져옵니다..
-	 * 
-	 * @return reg_date
-	 */
-	public Date getRegDate() {
-		return this.regDate;
+	public Date getStartDate() {
+		return startDate;
 	}
-
-	/**
-	 * start_date을 설정합니다..
-	 * 
-	 * @param startDate
-	 *            start_date
-	 */
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-
-	/**
-	 * start_date을 가져옵니다..
-	 * 
-	 * @return start_date
-	 */
-	public Date getStartDate() {
-		return this.startDate;
+	public Date getEndDate() {
+		return endDate;
 	}
-
-	/**
-	 * end_date을 설정합니다..
-	 * 
-	 * @param endDate
-	 *            end_date
-	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-
-	/**
-	 * end_date을 가져옵니다..
-	 * 
-	 * @return end_date
-	 */
-	public Date getEndDate() {
-		return this.endDate;
+	public int getStoreCode() {
+		return storeCode;
 	}
-
-	/**
-	 * 새 테이블을 설정합니다..
-	 * 
-	 * @param stores
-	 *            새 테이블
-	 */
-	public void setStores(Stores stores) {
-		this.stores = stores;
+	public void setStoreCode(int storeCode) {
+		this.storeCode = storeCode;
 	}
-
-	/**
-	 * 새 테이블을 가져옵니다..
-	 * 
-	 * @return 새 테이블
-	 */
-	public Stores getStores() {
-		return this.stores;
+	public int getPersonsCode() {
+		return personsCode;
 	}
-
-	/**
-	 * 새 테이블을 설정합니다..
-	 * 
-	 * @param persons
-	 *            새 테이블
-	 */
-	public void setPersons(Persons persons) {
-		this.persons = persons;
+	public void setPersonsCode(int personsCode) {
+		this.personsCode = personsCode;
 	}
-
-	/**
-	 * 새 테이블을 가져옵니다..
-	 * 
-	 * @return 새 테이블
-	 */
-	public Persons getPersons() {
-		return this.persons;
+	public int getServiceTypeCode() {
+		return serviceTypeCode;
 	}
-
-	/**
-	 * 새 테이블을 설정합니다..
-	 * 
-	 * @param serviceType
-	 *            새 테이블
-	 */
-	public void setServiceType(ServiceType serviceType) {
-		this.serviceType = serviceType;
+	public void setServiceTypeCode(int serviceTypeCode) {
+		this.serviceTypeCode = serviceTypeCode;
 	}
-
-	/**
-	 * 새 테이블을 가져옵니다..
-	 * 
-	 * @return 새 테이블
-	 */
-	public ServiceType getServiceType() {
-		return this.serviceType;
+	public String getDeleteRequest() {
+		return deleteRequest;
 	}
-
-	/**
-	 * delete_request을 설정합니다..
-	 * 
-	 * @param deleteRequest
-	 *            delete_request
-	 */
 	public void setDeleteRequest(String deleteRequest) {
 		this.deleteRequest = deleteRequest;
 	}
-
-	/**
-	 * delete_request을 가져옵니다..
-	 * 
-	 * @return delete_request
-	 */
-	public String getDeleteRequest() {
-		return this.deleteRequest;
-	}
-
-	/**
-	 * 새 테이블 목록을 설정합니다..
-	 * 
-	 * @param couponSet
-	 *            새 테이블 목록
-	 */
-	public void setCouponSet(Set<Coupon> couponSet) {
-		this.couponSet = couponSet;
-	}
-
-	/**
-	 * 새 테이블를 추가합니다..
-	 * 
-	 * @param coupon
-	 *            새 테이블
-	 */
-	public void addCoupon(Coupon coupon) {
-		this.couponSet.add(coupon);
-	}
-
-	/**
-	 * 새 테이블 목록을 가져옵니다..
-	 * 
-	 * @return 새 테이블 목록
-	 */
-	public Set<Coupon> getCouponSet() {
-		return this.couponSet;
-	}
-
-	/**
-	 * 새 테이블 목록을 설정합니다..
-	 * 
-	 * @param wishListSet
-	 *            새 테이블 목록
-	 */
-	public void setWishListSet(Set<WishList> wishListSet) {
-		this.wishListSet = wishListSet;
-	}
-
-	/**
-	 * 새 테이블를 추가합니다..
-	 * 
-	 * @param wishList
-	 *            새 테이블
-	 */
-	public void addWishList(WishList wishList) {
-		this.wishListSet.add(wishList);
-	}
-
-	/**
-	 * 새 테이블 목록을 가져옵니다..
-	 * 
-	 * @return 새 테이블 목록
-	 */
-	public Set<WishList> getWishListSet() {
-		return this.wishListSet;
-	}
-
+	
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -318,6 +127,8 @@ public class EventComment implements Serializable {
 		result = prime * result + ((commentCode == null) ? 0 : commentCode.hashCode());
 		return result;
 	}
+
+
 
 	/**
 	 * {@inheritDoc}

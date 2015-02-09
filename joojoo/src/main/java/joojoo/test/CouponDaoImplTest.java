@@ -34,7 +34,7 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		String couponCode = "1324";
 		String ownerId = "sohn";
 		String userId = "user";
-		int commentCode = 1;
+		int commentCode = 3;
 		int couponStatusCode = 1;
 		Coupon coupon = new Coupon(couponCode, ownerId, userId, commentCode, couponStatusCode);
 		

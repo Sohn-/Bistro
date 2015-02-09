@@ -1,9 +1,10 @@
 package joojoo.test;
 
-import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import joojoo.entity.Coupon;
+import joojoo.dao.EventCommentDao;
 import joojoo.entity.EventComment;
 
 import org.slf4j.Logger;
@@ -18,37 +19,44 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 	
 	@Autowired
 	@Qualifier("EventComment")
-	EventComment dao;
+	EventCommentDao dao;
 	
 	public EventCommentDaoImplTest(){
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
-		dao = ctx.getBean(EventComment.class);
+		dao = ctx.getBean(EventCommentDao.class);
 		
 	}
 	
 	public static void main(String[] args) {
 		
 		EventCommentDaoImplTest test = new EventCommentDaoImplTest();
-		test.eventCommentTest();
+		try {
+			test.eventCommentTest();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
-	public void eventCommentTest(){
-		String commentCode = "1324";
-		String title = "제목";
-		String content = "eventComment 내용";
+	public void eventCommentTest() throws ParseException{
+		String title = "자바로삽입";
+		String content = "자바로삽입";
+		
+/*		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code)
+		values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, 0, 0);*/
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String start = "2015-02-09";
-/*		Date startDate = dateFormat.parse(start);
-		Date endDate = new Date(2015, 2, 9);*/
+		Date startDate = dateFormat.parse(start);
+		String end = "2015-02-09";
+		Date endDate = (Date) dateFormat.parse(end);
 		int storeCode = 1;
-		int personsCode = 1;
-		int serviceTypeCode = 1;
-		String deleteRequest;
+		int personsCode = 0;
+		int serviceTypeCode = 0;
 		
-		EventComment eventComment = new EventComment(couponCode, ownerId, userId, commentCode, couponStatusCode);
+		EventComment eventComment = new EventComment(title, content, startDate, endDate, storeCode, personsCode, serviceTypeCode);
 		
-		dao.insertCoupon(coupon);
+		dao.insertEventComment(eventComment);
 	}
 }

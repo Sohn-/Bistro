@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="joojoo.mapper.EventCommentMapper">
-  	<resultMap type="EventComment" id="EventCommentMap">
+<!--   	<resultMap type="EventComment" id="EventCommentMap">
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />
 		<id column="title" jdbcType="VARCHAR" property="title" />
 		<id column="content" jdbcType="VARCHAR" property="content" />
@@ -25,14 +25,14 @@
 		<result column="personsCode" jdbcType="INTEGER" property="personsCode" />
 		<result column="serviceTypeCode" jdbcType="INTEGER" property="serviceTypeCode" />
 		<result column="deleteRequest" jdbcType="VARCHAR" property="deleteRequest" />
-	</resultMap> 
+	</resultMap>  -->
 	
  	<insert id="insertEventComment" parameterType="EventComment">
-		insert into event_comment 
-		values(#{couponCode},#{title},#{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode}, #{deleteRequest})	
+		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 
+		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode})	
 	</insert> 
  
-	<update id="updateEventComment" parameterType="EventComment">
+<!-- 	<update id="updateEventComment" parameterType="EventComment">
 		UPDATE event_comment SET
 		title = #{ownerId},
 		content = #{userId},
@@ -45,7 +45,7 @@
 		WHERE comment_code = #{commentCode}
 	</update>
  	
- 	<!--  이게 스트링인지... VARCHAR인지..? -->
+ 	 이게 스트링인지... VARCHAR인지..?
 	<delete id="deleteEventComment" parameterType="INTEGER">
 		DELETE FROM event_comment
 		WHERE comment_code = #{commentCode}
@@ -70,6 +70,6 @@
 		select * 
 		from coupon 
 		where coupon_status_code=#{couponStatusCode}					
-	</select>
+	</select> -->
 
 </mapper>

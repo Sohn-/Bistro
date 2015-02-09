@@ -1,4 +1,4 @@
-/*package joojoo.dao;
+package joojoo.dao;
 
 import java.util.List;
 
@@ -9,8 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository
 public class EventCommentDaoImpl implements EventCommentDao{
 	static final Logger logger = LoggerFactory.getLogger(EventCommentDaoImpl.class);
 	@Autowired
@@ -63,7 +64,7 @@ public class EventCommentDaoImpl implements EventCommentDao{
 	
 	
 	
-
+/*
 	@Override
 	public int insertCoupon(Coupon coupon) {
 		String statement = nameSpace + "insertCoupon";
@@ -114,7 +115,6 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		List<Coupon> result = sqlSession.selectList(statement, couponStatusCode);
 		
 		return result;
-	}
+	}*/
 
 }
-*/
