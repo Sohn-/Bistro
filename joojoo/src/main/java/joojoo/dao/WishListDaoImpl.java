@@ -14,7 +14,7 @@ public class WishListDaoImpl implements WishListDao{
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	private final String nameSpace = "joojoo.mappers.wishListMapper.";
+	private final String nameSpace = "joojoo.mappers.WishListMapper.";
 	
 	@Override
 	public int insertWishList(WishList wishList) {

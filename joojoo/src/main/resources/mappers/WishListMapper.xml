@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="joojoo.mappers.WishListMapper">
+
+
+	<insert id="insertWishList" parameterType="WishList">
+		insert into stores (wish_list_code, user_id,comment_code)
+		values(#{wishListCode}, #{userId}, #{commentCode})
+	</insert>
+	
+	
+  	<delete id = "deleteWishList" parameterType="Integer">
+  		delete from wish_list where wish_list_code = #{wishListCode}
+  	</delete>
+  	
+  
+  	
+	
+  
+</mapper>

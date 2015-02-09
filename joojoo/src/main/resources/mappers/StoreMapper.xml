@@ -3,7 +3,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="joojoo.mappers.storeMapper">
+<mapper namespace="joojoo.mappers.StoreMapper">
 
 
 	<insert id="insertStore" parameterType="Stores">
@@ -26,15 +26,16 @@
   	
   
   	
-  	<select id = "getStoresByOwnerId" resultType="List">
+  	<select id = "getStoresByOwnerId" resultType="Stores">
 	select *
-	from departments
-	where location_id=#{locationId}
+	from stores
+	where owner_id=#{ownerId}
 	</select>
 	
-	<select id = "getAllDepartments" resultType="Department">
+	<select id = "getStoreByStoreCode" resultType="Stores">
 	select *
-	from departments
+	from stores
+	where store_code=#{storeCode}
 	
 	</select>
 	
