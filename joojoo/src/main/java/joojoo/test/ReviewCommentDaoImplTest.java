@@ -44,7 +44,8 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		String content = "자바로삽입";
 		int starPoint = 5;
 		int storeCode = 1;
-		
+/*		insert into review_comment(owner_id, user_id, title, content, star_point, store_code) 
+		values(#{ownerId}, #{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	*/
 
 
 		ReviewComment reviewComment = new ReviewComment(ownerId, userId, title, content, starPoint, storeCode);

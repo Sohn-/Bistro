@@ -42,8 +42,6 @@ public class ReviewComment implements Serializable {
 	public ReviewComment() {
 	}
 	
-	
-
 	public ReviewComment(String ownerId, String userId, String title, String content,
 			Integer starPoint, Integer storeCode) {
 		super();
@@ -54,8 +52,7 @@ public class ReviewComment implements Serializable {
 		this.starPoint = starPoint;
 		this.storeCode = storeCode;
 	}
-
-
+	
 
 	public Integer getCommentCode() {
 		return commentCode;
@@ -72,8 +69,6 @@ public class ReviewComment implements Serializable {
 	public void setOwnerId(String ownerId) {
 		this.ownerId = ownerId;
 	}
-	
-	
 
 	public String getUserId() {
 		return userId;
@@ -82,8 +77,6 @@ public class ReviewComment implements Serializable {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
-
 
 	public String getTitle() {
 		return title;
