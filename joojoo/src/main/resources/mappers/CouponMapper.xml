@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="joojoo.mapper.CouponMapper">
+<!--  	<resultMap type="Coupon" id="CouponMap">
+		<id column="couponCode" jdbcType="VARCHAR" property="couponCode" />
+		<id column="departmentName" jdbcType="VARCHAR" property="departmentName" />
+		<id column="locationId" jdbcType="INTEGER" property="locationId" />
+		<id column="managerId" jdbcType="INTEGER" property="managerId" />
+		<result column="departmentId" jdbcType="INTEGER" property="departmentId" />
+		<result column="departmentName" jdbcType="VARCHAR" property="departmentName" />
+		<result column="managerId" jdbcType="INTEGER" property="managerId" />
+		<result column="locationId" jdbcType="INTEGER" property="locationId" />
+	</resultMap>  -->
+	
+
+	
+	<!-- <select id="getDepartmentCount" parameterType="integer"
+		resultType="TComment">
+		select COMMENT_NO,
+		USER_ID,
+		REG_DATE,
+		COMMENT_CONTENT
+		FROM
+		TCOMMENT
+		where comment_no=#{commentNo}
+	</select>
+	<select id="selectCommentByMemberId" parameterType="TComment"
+		resultType="TComment">
+		"SELECT COMMENT_NO,
+		USER_ID,
+		REG_DATE,
+		COMMENT_CONTENT
+		FROM
+		TCOMMENT
+		WHERE USER_ID = #{userId}
+		ORDER BY COMMENT_NO ASC
+	</select>
+	<select id="getMaxCommentNo" resultType="Integer">
+		SELECT MAX(COMMENT_NO)
+		FROM TCOMMENT
+	</select>
+	<select id="selectComment" parameterType="hashmap"
+		resultType="TComment">
+		select COMMENT_NO,
+		USER_ID,
+		REG_DATE,
+		COMMENT_CONTENT
+		from
+		TCOMMENT
+		WHERE USER_ID = #{userId}
+	</select>
+--<!-- >
+ 	<select id="getDepartmentByIdWithEmployees" parameterType="INTEGER" 
+ 						resultMap="DepartmentMap">
+ 		select * 
+ 		from departments 
+ 		join employees using (department_id)
+		where department_id=#{departmentId}
+ 	</select>
+ 	
+ 	<select id="getDepartmentsByManagerId" parameterType="INTEGER" 
+						resultType="Map">
+		select department_id,department_name,nvl(manager_id,0),nvl(location_id,0) 
+		from departments 
+		where manager_id=#{managerId}
+	</select>
+	
+	<select id="getAllDepartments"	resultMap="DepartmentMap">
+		select department_id,department_name,nvl(manager_id,0),nvl(location_id,0) 
+		from departments					
+	</select>
+	
+	
+	<select id="getDepartmentsByLocationId" parameterType="INTEGER"
+						resultType="Map">
+		select * 
+		from departments 
+		where location_id=#{location_id}					
+	</select>
+	
+	<select id="getDepartmentCountByLocationId"  parameterType="INTEGER"
+	 					resultType="INTEGER">
+	 	select count(*) 
+	 	from departments 
+	 	where location_id=#{locationId}	
+	</select>
+	
+	<select id= "getDepartmentById" parameterType="INTEGER"
+						resultMap="DepartmentMap">
+		select * 
+		from departments 
+		where department_id=#{departmentId}					
+	</select>
+	<select id="getDepartmentCount" resultType="INTEGER">
+		select count(*) from departments
+	</select> -->
+	
+	<!-- 		
+	
+	private String couponCode;
+
+	/** 새 테이블. */
+	private Owners owners;
+
+	/** 새 테이블. */
+	private Users users;
+
+	/** 새 테이블. */
+	private EventComment eventComment;
+
+	/** 새 테이블. */
+	private CouponStatus couponStatus; -->
+ 	<insert id="insertCoupon" parameterType="Coupon">
+		insert into Coupon 
+		values(#{couponCode},#{ownerId},#{userId},#{commentCode}, #{couponStatusCode})	
+	</insert> 
+ 
+	<update id="updateDepartment" parameterType="Department">
+		UPDATE departments SET
+		department_name = #{departmentName},
+		manager_id = #{managerId},
+		location_id = #{locationId}
+		WHERE department_id = #{departmentId}
+	</update>
+ 	
+	<delete id="deleteDepartment" parameterType="Integer">
+		DELETE FROM departments
+		WHERE department_id = #{departmentId}
+	</delete>
+<!--
+	<delete id="deleteCommentByUserId" parameterType="TComment">
+		DELETE FROM
+		TCOMMENT
+		WHERE USER_ID = #{userId}
+	</delete> -->
+</mapper>
