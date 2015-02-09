@@ -1,4 +1,4 @@
-package joojoo.dao;
+/*package joojoo.dao;
 
 import java.util.List;
 
@@ -64,7 +64,7 @@ public class EventCommentDaoImpl implements EventCommentDao{
 	
 	
 
-	/*@Override
+	@Override
 	public int insertCoupon(Coupon coupon) {
 		String statement = nameSpace + "insertCoupon";
 		int result = sqlSession.insert(statement, coupon);
@@ -114,6 +114,7 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		List<Coupon> result = sqlSession.selectList(statement, couponStatusCode);
 		
 		return result;
-	}*/
+	}
 
 }
+*/

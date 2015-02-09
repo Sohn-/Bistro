@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -30,7 +30,7 @@
 		WHERE coupon_code = #{couponCode}
 	</update>
  	
- 	<!--  이게 스트링인지... VARCHAR인지..? -->
+ 	 이게 스트링인지... VARCHAR인지..?
 	<delete id="deleteCoupon" parameterType="String">
 		DELETE FROM departments
 		WHERE coupon_code = #{couponCode}
@@ -57,4 +57,4 @@
 		where coupon_status_code=#{couponStatusCode}					
 	</select>
 
-</mapper>
+</mapper> -->
