@@ -22,12 +22,12 @@ public class DaoTest {
 	@Autowired
 
 	//@Qualifier("CouponDao")
-	OwnersDao dao;
+	UsersDao dao;
 
 	
 	public DaoTest(){
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
-		dao = ctx.getBean(OwnersDao.class);
+		dao = ctx.getBean(UsersDao.class);
 		
 	}
 	
@@ -41,16 +41,17 @@ public class DaoTest {
 	
 	public void daoTest(){
 
-	Owners owner = new Owners();
+	Users user = new Users();
 	
-	owner.setOwnerId("eyesia");
-	owner.setOwnerName("이재용");
+	user.setUserMail("유저e-mail");
+	//owner.setOwnerId("eyesia");
+	user.setUserName("유저");
 	//owner.setOwnerPassword("tkrndbr1");
 	//owner.setOwnerPhone("0101");
-	owner.setOwnrMail("ey11e@naver.com");
-	//owner.setLicenseNumber("332211");
+	
+	//user.setLicenseNumber("332211");
 
-		LOG.trace("수업 1 : Owner [dao]: "+dao.getOwnersForPassWordFind(owner)); //OK
+		LOG.trace("수업 1 : Owner [dao]: "+dao.getUsersForIdFind(user)); //OK
 
 		//dao.insertUser(user);		
 	
