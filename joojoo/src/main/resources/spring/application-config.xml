@@ -13,7 +13,6 @@
     <!-- Uncomment and add your base-package here:
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
-    <context:component-scan base-package="joojoo.dao"/>
     
     <context:property-placeholder location="classpath:/db.properties"/>
     
@@ -21,7 +20,7 @@
 	<context:exclude-filter type="aspectj" expression="joojoo..*DaoImpl"/><!-- 레퍼지터리되있는 빈 가져오는거 필터링 -->
 </context:component-scan>
 
-<bean id = "jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+<!-- <bean id = "jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 	<constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
 
 </bean>
@@ -29,7 +28,7 @@
 <bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
 	<constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
 
-</bean>
+</bean> -->
 
 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="dataSource"></property>
