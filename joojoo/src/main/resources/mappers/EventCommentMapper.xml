@@ -53,25 +53,42 @@
 	 <select id= "getEventCommentsByCategory" parameterType="EventComment"
 						resultMap="EventCommentMap">
 		select * 
-		from event_comment 
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		 		
 		where region_code = #{regionCode}
 		and type_code = #{typeCode}
 		and persons_code = #{personsCode}
 		and service_type_code = #{serviceTypeCode}			
 	</select>
 	
-	<select id= "getCouponByOwnerId" parameterType="String"
+	<select id= "getEventCommentsBySearchKeyword" parameterType="EventComment"
 						resultMap="EventCommentMap">
 		select * 
-		from event_comment 
-		where owner_id=#{ownerId}					
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		
+		where title like %#{keyword}%
+		<!-- and content like %#{keyword}%
+		and store_name like %#{keyword}%
+		and store_addr like %#{keyword}%
+		and owner_name like %#{keyword}%
+		and region_namelike %#{keyword}%
+		and type_name like %#{keyword}%
+		and persons_level like %#{keyword}%
+		and service_type_name like %#{keyword}% -->
+
 	</select>
 	
-	<select id= "getCouponByStatus" parameterType="INTEGER"
-						resultMap="EventCommentMap">
-		select * 
-		from event_comment 
-		where coupon_status_code=#{couponStatusCode}					
-	</select> 
 
 </mapper>

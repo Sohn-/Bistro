@@ -2,9 +2,8 @@ package joojoo.dao;
 
 import java.util.List;
 
-import joojoo.entity.Coupon;
+import joojoo.entity.Category;
 import joojoo.entity.EventComment;
-import joojoo.entity.ReviewComment;
 
 
 
@@ -15,7 +14,7 @@ public interface EventCommentDao {
 	int deleteEventComment(int commentCode);
 	
 	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
-	List<EventComment> getEventCommentsByCategory(EventComment eventComment);
+	List<EventComment> getEventCommentsByCategory(Category category);
 	List<EventComment> getEventCommentsBySearchKeyword(String keyword);
 
 }

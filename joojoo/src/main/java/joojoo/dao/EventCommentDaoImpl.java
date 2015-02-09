@@ -2,6 +2,7 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.Category;
 import joojoo.entity.EventComment;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -48,9 +49,9 @@ public class EventCommentDaoImpl implements EventCommentDao{
 	
 	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
 	@Override
-	public List<EventComment> getEventCommentsByCategory(EventComment eventComment) {
+	public List<EventComment> getEventCommentsByCategory(Category category) {
 		String statement = nameSpace + "getEventCommentsByCategory";
-		List<EventComment> result = sqlSession.selectList(statement, eventComment);
+		List<EventComment> result = sqlSession.selectList(statement, category);
 		
 		return result;
 	}
