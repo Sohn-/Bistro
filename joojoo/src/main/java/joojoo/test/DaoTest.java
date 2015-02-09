@@ -7,9 +7,9 @@ import joojoo.entity.Users;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.stereotype.Component;
 
 
 public class DaoTest {
@@ -17,10 +17,11 @@ public class DaoTest {
 	static final Logger LOG = LoggerFactory.getLogger(DaoTest.class);
 	
 	@Autowired
+	@Qualifier("CouponDao")
 	CouponDao dao;
 	
 	public DaoTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
 		dao = ctx.getBean(CouponDao.class);
 		
 	}

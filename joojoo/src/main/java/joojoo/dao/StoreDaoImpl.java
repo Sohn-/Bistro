@@ -1,4 +1,4 @@
-package joojoo.dao;
+/*package joojoo.dao;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class StoreDaoImpl implements StoreDao{
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	private final String nameSpace = "joojoo.mappers.storeMapper.";
+	private final String nameSpace = "joojoo.mappers.StoreMapper.";
 
 	@Override
 	public int insertStore(Stores store) {
@@ -52,3 +52,4 @@ public class StoreDaoImpl implements StoreDao{
 	
 
 }
+*/

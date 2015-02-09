@@ -1,4 +1,4 @@
-package joojoo.dao;
+/*package joojoo.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class WishListDaoImpl implements WishListDao{
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
-	private final String nameSpace = "joojoo.mappers.wishListMapper.";
+	private final String nameSpace = "joojoo.mappers.WishListMapper.";
 	
 	@Override
 	public int insertWishList(WishList wishList) {
@@ -32,3 +32,4 @@ public class WishListDaoImpl implements WishListDao{
 	
 
 }
+*/
