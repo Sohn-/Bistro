@@ -17,7 +17,8 @@
   	update users
   	set user_password = #{userPassword},
   		user_mail=#{userMail},
-  		user_phone=#{userPhone}	
+  		user_phone=#{userPhone},
+  		user_name=#{userName}	
   	where user_id=#{userId}  	
   	
   	</update>
