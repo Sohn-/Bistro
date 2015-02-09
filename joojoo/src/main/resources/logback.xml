@@ -7,6 +7,9 @@
     <pattern>[%d{yy-MM-dd HH:mm:ss}] [%5p] [%c{1}.%M-%3L] %m %n</pattern>
   </encoder>
 </appender>
+
+
+
 	<!-- 날짜별 로그 -->
 	<appender name="dailyout" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>logFile.log</file>
