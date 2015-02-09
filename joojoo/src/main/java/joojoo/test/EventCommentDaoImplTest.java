@@ -18,7 +18,7 @@ public class EventCommentDaoImplTest {
 static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class);
 	
 	@Autowired
-	@Qualifier("EventCommentDao")
+	@Qualifier("EventComment")
 	EventCommentDao dao;
 	
 	public EventCommentDaoImplTest(){
@@ -57,12 +57,9 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		
 
 		EventComment eventComment = new EventComment(title, content, startDate, endDate, storeCode, personsCode, serviceTypeCode);
-
+		
 
 		dao.insertEventComment(eventComment);
-		
-		/*eventComment.setTitle("변경됨");		
-		dao.updateEventComment(eventComment);*/
 
 	}
 }
