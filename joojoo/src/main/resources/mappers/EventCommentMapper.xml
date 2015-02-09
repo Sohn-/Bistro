@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="joojoo.mapper.EventCommentMapper">
-<!--   	<resultMap type="EventComment" id="EventCommentMap">
+  	<!-- <resultMap type="EventComment" id="EventCommentMap">
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />
 		<id column="title" jdbcType="VARCHAR" property="title" />
 		<id column="content" jdbcType="VARCHAR" property="content" />
@@ -32,44 +32,46 @@
 		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode})	
 	</insert> 
  
-<!-- 	<update id="updateEventComment" parameterType="EventComment">
+<!--  	<update id="updateEventComment" parameterType="EventComment">
 		UPDATE event_comment SET
-		title = #{ownerId},
-		content = #{userId},
+		title = #{title},
+		content = #{content},
 		start_date = #{startDate},
 		end_date = #{endDate},
 		store_code = #{storeCode},
 		persons_code = #{personsCode},
-		service_type_code = #{serviceTypeCode},
-		delete_request = #{deleteRequest}
+		service_type_code = #{serviceTypeCode}
 		WHERE comment_code = #{commentCode}
 	</update>
  	
- 	 이게 스트링인지... VARCHAR인지..?
 	<delete id="deleteEventComment" parameterType="INTEGER">
 		DELETE FROM event_comment
 		WHERE comment_code = #{commentCode}
-	</delete>
+	</delete> -->
 	
-	<select id= "getEventCommentsByCategory" parameterType="String"
-						resultMap="CouponMap">
+	<!--  int regionCode, int typeCode, int personsCode, int serviceTypeCode -->
+	<!-- <select id= "getEventCommentsByCategory" parameterType="EventComment"
+						resultMap="EventCommentMap">
 		select * 
-		from Coupon 
-		where user_id=#{userId}					
+		from event_comment 
+		where region_code = #{regionCode}
+		and type_code = #{typeCode}
+		and persons_code = #{personsCode}
+		and service_type_code = #{serviceTypeCode}			
 	</select>
 	
 	<select id= "getCouponByOwnerId" parameterType="String"
-						resultMap="CouponMap">
+						resultMap="EventCommentMap">
 		select * 
-		from coupon 
+		from event_comment 
 		where owner_id=#{ownerId}					
 	</select>
 	
 	<select id= "getCouponByStatus" parameterType="INTEGER"
-						resultMap="CouponMap">
+						resultMap="EventCommentMap">
 		select * 
-		from coupon 
+		from event_comment 
 		where coupon_status_code=#{couponStatusCode}					
-	</select> -->
-
+	</select> 
+ -->
 </mapper>
