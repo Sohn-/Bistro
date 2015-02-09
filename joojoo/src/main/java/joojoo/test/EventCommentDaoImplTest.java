@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import joojoo.dao.EventCommentDao;
+import joojoo.entity.Category;
 import joojoo.entity.EventComment;
 
 import org.slf4j.Logger;
@@ -40,13 +41,13 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 	}
 	
 	public void eventCommentTest() throws ParseException{
-		String title = "자바로삽입";
-		String content = "자바로삽입";
+		/*String title = "자바로삽입";
+		String content = "자바로삽입";*/
 		
 /*		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code)
 		values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, 0, 0);*/
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+/*		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String start = "2015-02-09";
 		Date startDate = dateFormat.parse(start);
 		String end = "2015-02-09";
@@ -56,15 +57,29 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		int serviceTypeCode = 0;
 		
 
-		EventComment eventComment = new EventComment(title, content, startDate, endDate, storeCode, personsCode, serviceTypeCode);
-		
+
+		EventComment eventComment = new EventComment(title, content, startDate, endDate, storeCode, personsCode, serviceTypeCode);*/
+
 
 
 		dao.insertEventComment(eventComment);
 		
-		eventComment.setTitle("변경됨");
-		eventComment.setCommentCode(5);
-		dao.updateEventComment(eventComment);
+		//eventComment.setTitle("변경됨");
+		//eventComment.setCommentCode(5);
+		//dao.updateEventComment(eventComment);
+		
+		//dao.deleteEventComment(5);
+		
+		int regionCode = 0;
+		int typeCode = 0;
+		int personsCode = 0;
+		int serviceTypeCode = 0;
+		String keyword="금액할인";
+		Category category = new Category(regionCode, typeCode, personsCode, serviceTypeCode, keyword);
+		//dao.getEventCommentsByCategory(category);
+		
+		
+		//dao.getEventCommentsBySearchKeyword(keyword);
 
 	}
 }

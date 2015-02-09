@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="joojoo.mapper.EventCommentMapper">
-  	<!-- <resultMap type="EventComment" id="EventCommentMap">
+  	 <resultMap type="EventComment" id="EventCommentMap">
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />
 		<id column="title" jdbcType="VARCHAR" property="title" />
 		<id column="content" jdbcType="VARCHAR" property="content" />
@@ -25,7 +25,7 @@
 		<result column="personsCode" jdbcType="INTEGER" property="personsCode" />
 		<result column="serviceTypeCode" jdbcType="INTEGER" property="serviceTypeCode" />
 		<result column="deleteRequest" jdbcType="VARCHAR" property="deleteRequest" />
-	</resultMap>  -->
+	</resultMap> 
 	
  	<insert id="insertEventComment" parameterType="EventComment">
 		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 
@@ -50,28 +50,45 @@
 	</delete>
 	
 	<!--  int regionCode, int typeCode, int personsCode, int serviceTypeCode -->
-	<!-- <select id= "getEventCommentsByCategory" parameterType="EventComment"
+	 <select id= "getEventCommentsByCategory" parameterType="EventComment"
 						resultMap="EventCommentMap">
 		select * 
-		from event_comment 
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		 		
 		where region_code = #{regionCode}
 		and type_code = #{typeCode}
 		and persons_code = #{personsCode}
 		and service_type_code = #{serviceTypeCode}			
 	</select>
 	
-	<select id= "getCouponByOwnerId" parameterType="String"
+	<select id= "getEventCommentsBySearchKeyword" parameterType="EventComment"
 						resultMap="EventCommentMap">
 		select * 
-		from event_comment 
-		where owner_id=#{ownerId}					
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		
+		where title like %#{keyword}%
+		<!-- and content like %#{keyword}%
+		and store_name like %#{keyword}%
+		and store_addr like %#{keyword}%
+		and owner_name like %#{keyword}%
+		and region_namelike %#{keyword}%
+		and type_name like %#{keyword}%
+		and persons_level like %#{keyword}%
+		and service_type_name like %#{keyword}% -->
+
 	</select>
 	
-	<select id= "getCouponByStatus" parameterType="INTEGER"
-						resultMap="EventCommentMap">
-		select * 
-		from event_comment 
-		where coupon_status_code=#{couponStatusCode}					
-	</select> 
- -->
+
 </mapper>

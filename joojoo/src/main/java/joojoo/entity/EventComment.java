@@ -154,5 +154,16 @@ public class EventComment implements Serializable {
 		}
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "EventComment [commentCode=" + commentCode + ", title=" + title
+				+ ", content=" + content + ", regDate=" + regDate
+				+ ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", storeCode=" + storeCode + ", personsCode=" + personsCode
+				+ ", serviceTypeCode=" + serviceTypeCode + ", deleteRequest="
+				+ deleteRequest + "]";
+	}
+	
+	
 
 }
