@@ -10,5 +10,7 @@ import org.springframework.stereotype.Service;
 public interface UserService {
 	int Userinsert(Users user);
 	
+	
+	
 
 }
