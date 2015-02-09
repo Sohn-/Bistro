@@ -55,8 +55,11 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		int personsCode = 0;
 		int serviceTypeCode = 0;
 		
+
 		EventComment eventComment = new EventComment(title, content, startDate, endDate, storeCode, personsCode, serviceTypeCode);
-		
+
+
 		dao.insertEventComment(eventComment);
+
 	}
 }

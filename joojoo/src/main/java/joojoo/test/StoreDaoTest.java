@@ -1,52 +1,51 @@
 package joojoo.test;
 
-import joojoo.dao.CouponDao;
-import joojoo.dao.UsersDao;
-import joojoo.entity.Coupon;
+import joojoo.dao.StoreDao;
+import joojoo.entity.Stores;
 import joojoo.entity.Users;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 
-public class DaoTest {
+
+public class StoreDaoTest {
 	
-	static final Logger LOG = LoggerFactory.getLogger(DaoTest.class);
+	static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	
 	@Autowired
-	//@Qualifier("CouponDao")
-	UsersDao dao;
+	StoreDao dao;
 	
-	public DaoTest(){
+	public StoreDaoTest(){
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
-		dao = ctx.getBean(UsersDao.class);
+		dao = ctx.getBean(StoreDao.class);
 		
 	}
 	
 	public static void main(String[] args) {
 		
-		DaoTest test = new DaoTest();
-		test.daoTest();
+		StoreDaoTest test = new StoreDaoTest();
+		test.insertTest();
 		
 	}
 	
 	
-	public void daoTest(){
-	 String userId ="eyesia";
-	 String userPassword="tkrndbr";
-	 String userName="이재용";
-	 String userMail="eyesia@naver.com";
-	 String userPhone= "01026464844";
-	 Integer chance=3;
-
-		Users user = new Users(userId, userPassword, userName, userMail, userPhone, chance);
+	public void insertTest(){
+	
+		Stores stores1 = new Stores();
+		stores1.setStoreName("첫번째가게");
+		stores1.setStoreAdress("서울시 용산구 124-1");
+		stores1.setStorePhone("02-111-0124");
+		stores1.setOwnerId("sohn");
+		stores1.setRegionCode(1);
+		stores1.setTypeCode(2);
+		
 		
 		//dao.insertUser(user);		
-		LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.insertUser(user)); //OK
+		LOG.trace("수업1"+dao.insertStore(stores1)); //OK
 		//LOG.trace("수업 2:"+dao.getDepartmentByIdNoMapping(120));
 		//LOG.trace("수업 3:"+dao.getDepartmentCountByLocationId(1700)); //OK
 		//LOG.trace("수업 4:"+dao.getDepartmentsByLocationId(1700));	//OK
