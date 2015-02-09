@@ -45,12 +45,12 @@ public class DaoTest {
 	
 	owner.setOwnerId("eyesia");
 	owner.setOwnerName("이재용");
-	owner.setOwnerPassword("tkrndbr1");
-	owner.setOwnerPhone("01026464844");
-	owner.setOwnrMail("eyesia@naver.com");
-	owner.setLicenseNumber("332211");
+	//owner.setOwnerPassword("tkrndbr1");
+	//owner.setOwnerPhone("0101");
+	owner.setOwnrMail("ey11e@naver.com");
+	//owner.setLicenseNumber("332211");
 
-		LOG.trace("수업 1 : Owner [dao]: "+dao.insertOwner(owner)); //OK
+		LOG.trace("수업 1 : Owner [dao]: "+dao.getOwnersForPassWordFind(owner)); //OK
 
 		//dao.insertUser(user);		
 	
