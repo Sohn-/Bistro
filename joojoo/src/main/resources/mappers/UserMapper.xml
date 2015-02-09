@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="joojoo.mappers.UserMapper">
+
+
+
+	<insert id="insertStore" parameterType="Users">
+		insert into users (user_id, user_password, user_name, user_mail, user_phone, chance)
+		values(#{userId}, #{userName}, #{userPassword}, #{userMail},#{userPhone},#{chance})
+	</insert>
+  
+  	<update id="updateUser" parameterType="Users">
+  	<!--  -->
+  	update users
+  	set user_password = #{userPassword},
+  		user_mail=#{userMail},
+  		user_phone=#{userPhone}	
+  	where user_id=#{userId}  	
+  	
+  	</update>
+  	
+  	<delete id="deleteUser" parameterType="String">
+  	delete from users
+  	where user_id=#{userId}
+  	</delete>
+  	
+  	<select id = "getUsersByUserId" resultType="Users">
+	select *
+	from users
+	where user_id=#{userId}
+	</select>
+  	
+  	<select id = "getUsersByUserMail" resultType="Users">
+	select *
+	from users
+	where user_mail=#{userMail}
+	
+	</select>
+	
+	<select id = "getUsersForIdFind" resultType="Users">
+	select *
+	from users
+	where user_mail=#{userMail} and user_name=#{userName} 
+
+	</select>
+	
+	
+	<select id = "getUsersForPassWordFind" resultType="Users">
+	select *
+	from users
+	where user_mail=#{userMail} and user_name=#{userName} and user_id=#{userId}
+	
+	</select>
+	
+  
+</mapper>
