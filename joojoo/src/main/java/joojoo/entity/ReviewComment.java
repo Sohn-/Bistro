@@ -33,13 +33,27 @@ public class ReviewComment implements Serializable {
 	private Integer starPoint;
 
 	/** 새 테이블. */
-	private Integer stores;
+	private Integer storeCode;
 
 	/**
 	 * 생성자.
 	 */
 	public ReviewComment() {
 	}
+	
+	
+
+	public ReviewComment(String ownerId, String title, String content,
+			Integer starPoint, Integer storeCode) {
+		super();
+		this.ownerId = ownerId;
+		this.title = title;
+		this.content = content;
+		this.starPoint = starPoint;
+		this.storeCode = storeCode;
+	}
+
+
 
 	public Integer getCommentCode() {
 		return commentCode;
@@ -89,12 +103,12 @@ public class ReviewComment implements Serializable {
 		this.starPoint = starPoint;
 	}
 
-	public Integer getStores() {
-		return stores;
+	public Integer getStoreCode() {
+		return storeCode;
 	}
 
-	public void setStores(Integer stores) {
-		this.stores = stores;
+	public void setStoreCode(Integer storeCode) {
+		this.storeCode = storeCode;
 	}
 
 	@Override

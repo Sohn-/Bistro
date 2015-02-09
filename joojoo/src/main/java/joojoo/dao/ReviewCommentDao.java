@@ -17,4 +17,5 @@ public interface ReviewCommentDao {
 	List<ReviewComment> getReviewCommentsByStoreCode(String storeCode);
 	List<ReviewComment> getReviewCommentsBySearchKeyword(String keyword);
 
+
 }
