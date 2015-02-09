@@ -20,9 +20,9 @@ public class Owners{
 
 	private String ownerMail;
 
-	private Integer ownerPhone;
+	private String ownerPhone;
 
-	private Integer licenseNumber;
+	private String licenseNumber;
 	
 	
 	
@@ -36,7 +36,7 @@ public class Owners{
 	
 
 	public Owners(String ownerId, String ownerPassword, String ownerName,
-			String ownrMail, Integer ownerPhone, Integer licenseNumber) {
+			String ownrMail, String ownerPhone, String licenseNumber) {
 		super();
 		this.ownerId = ownerId;
 		this.ownerPassword = ownerPassword;
@@ -80,19 +80,19 @@ public class Owners{
 		this.ownerMail = ownrMail;
 	}
 
-	public Integer getOwnerPhone() {
+	public String getOwnerPhone() {
 		return ownerPhone;
 	}
 
-	public void setOwnerPhone(Integer ownerPhone) {
+	public void setOwnerPhone(String ownerPhone) {
 		this.ownerPhone = ownerPhone;
 	}
 
-	public Integer getLicenseNumber() {
+	public String getLicenseNumber() {
 		return licenseNumber;
 	}
 
-	public void setLicenseNumber(Integer licenseNumber) {
+	public void setLicenseNumber(String licenseNumber) {
 		this.licenseNumber = licenseNumber;
 	}
 

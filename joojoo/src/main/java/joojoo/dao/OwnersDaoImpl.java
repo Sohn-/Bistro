@@ -48,7 +48,7 @@ public class OwnersDaoImpl implements OwnersDao {
 	}
 
 	@Override
-	public Owners getOwnersByLicenseNumber(int licenseNumber) {
+	public Owners getOwnersByLicenseNumber(String licenseNumber) {
 		String stmt = nameSpace + "getOwnersByLicenseNumber";
 		Owners result = sqlSession.selectOne(stmt,licenseNumber);
 		return result;

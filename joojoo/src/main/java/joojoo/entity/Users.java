@@ -24,7 +24,7 @@ public class Users {
 
 	private String userMail;
 
-	private Integer userPhone;
+	private String userPhone;
 
 	private Integer chance;
 
@@ -34,7 +34,7 @@ public class Users {
 	}
 
 	public Users(String userId, String userPassword, String userName,
-			String userMail, Integer userPhone, Integer chance) {
+			String userMail, String userPhone, Integer chance) {
 		super();
 		this.userId = userId;
 		this.userPassword = userPassword;
@@ -76,11 +76,11 @@ public class Users {
 		this.userMail = userMail;
 	}
 
-	public Integer getUserPhone() {
+	public String getUserPhone() {
 		return userPhone;
 	}
 
-	public void setUserPhone(Integer userPhone) {
+	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
 
