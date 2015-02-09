@@ -2,6 +2,7 @@ package joojoo.test;
 
 import joojoo.dao.CouponDao;
 import joojoo.entity.Coupon;
+import joojoo.entity.Users;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,12 +34,19 @@ public class DaoTest {
 	
 	
 	public void daoTest(){
-		String couponCode = "1324";
-		String ownerId = "owner_sohn";
-		String userId = "user_sohn";
-		int commentCode = 1;
-		int couponStatusCode = 1;
-		Coupon coupon = new Coupon(couponCode, ownerId, userId, commentCode, couponStatusCode);
+	 String userId ="eyesia";
+
+	String userPassword="tkrndbr";
+
+	 String userName="이재용";
+
+	 String userMail="eyesia@naver.com";
+
+	 Integer userPhone= 111;
+
+	 Integer chance=3;
+
+		Users user = new Users(userId, userPassword, userName, userMail, userPhone);
 		
 		dao.insertCoupon(coupon);
 		

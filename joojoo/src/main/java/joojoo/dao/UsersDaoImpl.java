@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import joojoo.entity.Owners;
 import joojoo.entity.Stores;
 import joojoo.entity.Users;
 
 
-
+@Repository
 public class UsersDaoImpl implements UsersDao{
 	@Autowired
 	SqlSessionTemplate sqlSession;
