@@ -18,7 +18,7 @@ public class Owners{
 
 	private String ownerName;
 
-	private String ownrMail;
+	private String ownerMail;
 
 	private Integer ownerPhone;
 
@@ -41,7 +41,7 @@ public class Owners{
 		this.ownerId = ownerId;
 		this.ownerPassword = ownerPassword;
 		this.ownerName = ownerName;
-		this.ownrMail = ownrMail;
+		this.ownerMail = ownrMail;
 		this.ownerPhone = ownerPhone;
 		this.licenseNumber = licenseNumber;
 	}
@@ -73,11 +73,11 @@ public class Owners{
 	}
 
 	public String getOwnrMail() {
-		return ownrMail;
+		return ownerMail;
 	}
 
 	public void setOwnrMail(String ownrMail) {
-		this.ownrMail = ownrMail;
+		this.ownerMail = ownrMail;
 	}
 
 	public Integer getOwnerPhone() {
@@ -102,7 +102,7 @@ public class Owners{
 	public String toString() {
 		return "Owners [ownerId=" + ownerId + ", ownerPassword="
 				+ ownerPassword + ", ownerName=" + ownerName + ", ownrMail="
-				+ ownrMail + ", ownerPhone=" + ownerPhone + ", licenseNumber="
+				+ ownerMail + ", ownerPhone=" + ownerPhone + ", licenseNumber="
 				+ licenseNumber + "]";
 	}
 	
