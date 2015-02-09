@@ -32,7 +32,7 @@
 		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode})	
 	</insert> 
  
-<!--  	<update id="updateEventComment" parameterType="EventComment">
+  	<update id="updateEventComment" parameterType="EventComment">
 		UPDATE event_comment SET
 		title = #{title},
 		content = #{content},
@@ -47,7 +47,7 @@
 	<delete id="deleteEventComment" parameterType="INTEGER">
 		DELETE FROM event_comment
 		WHERE comment_code = #{commentCode}
-	</delete> -->
+	</delete>
 	
 	<!--  int regionCode, int typeCode, int personsCode, int serviceTypeCode -->
 	<!-- <select id= "getEventCommentsByCategory" parameterType="EventComment"
