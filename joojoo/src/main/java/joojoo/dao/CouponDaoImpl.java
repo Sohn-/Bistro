@@ -1,4 +1,4 @@
-/*package joojoo.dao;
+package joojoo.dao;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -31,20 +30,20 @@ public class CouponDaoImpl implements CouponDao{
 	}
 
 	@Override
-	public int updateDepartment(Coupon coupon) {
+	public int updateCoupon(Coupon coupon) {
 		String statement = nameSpace + "updateCoupon";
 		int result = sqlSession.update(statement, coupon);
 		
-		logger.trace("updateDepartment종료...");
+		logger.trace("updateCoupon종료...");
 		return result;
 	}
 
 	@Override
-	public int deleteDepartment(String couponCode) {
+	public int deleteCoupon(String couponCode) {
 		String statement = nameSpace + "deleteCoupon";
 		int result = sqlSession.delete(statement, couponCode);
 		
-		logger.trace("updateDepartment종료...");
+		logger.trace("deleteCoupon종료...");
 		return result;
 	}
 
@@ -73,4 +72,4 @@ public class CouponDaoImpl implements CouponDao{
 	}
 
 }
-*/
+

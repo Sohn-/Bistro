@@ -1,5 +1,7 @@
 package joojoo.test;
 
+import java.util.List;
+
 import joojoo.dao.CouponDao;
 import joojoo.entity.Coupon;
 
@@ -14,7 +16,7 @@ public class CouponDaoImplTest {
 static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 	
 	@Autowired
-	@Qualifier("CouponDao")
+	@Qualifier("Coupon")
 	CouponDao dao;
 	
 	public CouponDaoImplTest(){
@@ -38,6 +40,23 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		int couponStatusCode = 1;
 		Coupon coupon = new Coupon(couponCode, ownerId, userId, commentCode, couponStatusCode);
 		
-		dao.insertCoupon(coupon);
+		//dao.insertCoupon(coupon);
+		
+		//coupon.setCouponStatusCode(3);
+		//dao.updateCoupon(coupon);
+		
+		//dao.deleteCoupon("1324");
+		
+		
+	/*	List<Coupon> getCouponsByUserId(String userId);
+		List<Coupon> getCouponsByOwnerId(String ownerId);
+		List<Coupon> getCouponsByStatus(int couponStatusCode);*/
+		
+		//dao.getCouponsByUserId("user");
+		
+		//dao.getCouponsByOwnerId("sohn");
+		
+		dao.getCouponsByStatus(couponStatusCode);
+		
 	}
 }

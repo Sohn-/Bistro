@@ -49,4 +49,13 @@ values(4,'포차');
 insert into store_type (type_code, type_name)
 values(5,'호프');
 
+insert into coupon_status
+values(0,'사용 안함');
+insert into coupon_status
+values(1,'사용 완료');
+insert into coupon_status
+values(2,'환불');
+insert into coupon_status
+values(3,'기간 만료');
+
 
