@@ -11,7 +11,7 @@
 		<id column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
 		<id column="title" jdbcType="VARCHAR" property="title" />		
 		<id column="content" jdbcType="CHAR" property="content" />		
-		<id column="regDate" jdbcType="Date" property="regDate" />		
+		<id column="regDate" jdbcType="DATE" property="regDate" />		
 		<id column="starPoint" jdbcType="INTEGER" property="starPoint" />			
 		<id column="storeCode" jdbcType="INTEGER" property="storeCode" />		
 		
@@ -19,7 +19,7 @@
 		<result column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
 		<result column="title" jdbcType="VARCHAR" property="title" />		
 		<result column="content" jdbcType="CHAR" property="content" />		
-		<result column="regDate" jdbcType="Date" property="regDate" />		
+		<result column="regDate" jdbcType="DATE" property="regDate" />		
 		<result column="starPoint" jdbcType="INTEGER" property="starPoint" />			
 		<result column="storeCode" jdbcType="INTEGER" property="storeCode" />	
 		

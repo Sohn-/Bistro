@@ -61,9 +61,11 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 
 		//dao.insertEventComment(eventComment);
 		
-		eventComment.setTitle("변경됨");
+		//eventComment.setTitle("변경됨");
 		eventComment.setCommentCode(5);
-		dao.updateEventComment(eventComment);
+		//dao.updateEventComment(eventComment);
+		
+		dao.deleteEventComment(5);
 
 	}
 }
