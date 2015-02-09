@@ -29,7 +29,6 @@ public class ContextTest {
 		//test.daoTest(ctx);
 		//test.serviceTest(ctx);
 		//test.myBatisTest(ctx);
-
 	}
 /*	public void daoTest(ApplicationContext ctx){
 		
