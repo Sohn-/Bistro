@@ -113,7 +113,6 @@ CREATE TABLE region
 CREATE TABLE review_comment
 (
 	comment_code number NOT NULL,
-	owner_id varchar2(50) NOT NULL,
 	title varchar2(600) NOT NULL,
 	content varchar2(2000) NOT NULL,
 	reg_date date DEFAULT SYSDATE NOT NULL,
