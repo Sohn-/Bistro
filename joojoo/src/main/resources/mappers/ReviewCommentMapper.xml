@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jdbc.mapper.ReviewCommentMapper">
+
+	<resultMap type="ReviewComment" id="ReviewCommentMap">
+		
+		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />		
+		<id column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
+		<id column="title" jdbcType="VARCHAR" property="title" />		
+		<id column="content" jdbcType="CHAR" property="content" />		
+		<id column="regDate" jdbcType="Date" property="regDate" />		
+		<id column="starPoint" jdbcType="INTEGER" property="starPoint" />			
+		<id column="storeCode" jdbcType="INTEGER" property="storeCode" />		
+		
+		<result column="commentCode" jdbcType="INTEGER" property="commentCode" />		
+		<result column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
+		<result column="title" jdbcType="VARCHAR" property="title" />		
+		<result column="content" jdbcType="CHAR" property="content" />		
+		<result column="regDate" jdbcType="Date" property="regDate" />		
+		<result column="starPoint" jdbcType="INTEGER" property="starPoint" />			
+		<result column="storeCode" jdbcType="INTEGER" property="storeCode" />	
+		
+	</resultMap>
+	
+	
+	
+	<insert id="insertReviewComment" parameterType="ReviewComment">
+		insert into ReviewComment 
+		values(#{"ownerId"},#{title},#{content},#{starPoint},#{storeCode})	
+	</insert> 
+	
+	<!--  <select id="insertReviewComment" parameterType="ReviewComment">
+		select COMMENT_NO,
+		USER_ID,
+		REG_DATE,
+		COMMENT_CONTENT
+		FROM
+		TCOMMENT
+		where comment_no=#{commentNo}
+	</select> -->
+	
+	<!--
+	<select id="selectCommentByMemberId" parameterType="TComment"
+		resultType="TComment">
+		"SELECT COMMENT_NO,
+		USER_ID,
+		REG_DATE,
+		COMMENT_CONTENT
+		FROM
+		TCOMMENT
+		WHERE USER_ID = #{userId}
+		ORDER BY COMMENT_NO ASC
+	</select>
+	<select id="getMaxCommentNo" resultType="Integer">
+		SELECT MAX(COMMENT_NO)
+		FROM TCOMMENT
+	</select>
+	<select id="selectComment" parameterType="hashmap"
+		resultType="TComment">
+		select COMMENT_NO,
+		USER_ID,
+		REG_DATE,
+		COMMENT_CONTENT
+		from
+		TCOMMENT
+		WHERE USER_ID = #{userId}
+	</select>
+-->
+ 	<!-- <select id="getDepartmentByIdWithEmployees" parameterType="INTEGER" 
+ 						resultMap="DepartmentMap">
+ 		select * 
+ 		from departments 
+ 		join employees using (department_id)
+		where department_id=#{departmentId}
+ 	</select>
+ 	
+ 	<select id="getDepartmentsByManagerId" parameterType="INTEGER" 
+						resultType="Map">
+		select department_id,department_name,nvl(manager_id,0),nvl(location_id,0) 
+		from departments 
+		where manager_id=#{managerId}
+	</select>
+	
+	<select id="getAllDepartments"	resultMap="DepartmentMap">
+		select department_id,department_name,nvl(manager_id,0),nvl(location_id,0) 
+		from departments					
+	</select>
+	
+	
+	<select id="getDepartmentsByLocationId" parameterType="INTEGER"
+						resultType="Map">
+		select * 
+		from departments 
+		where location_id=#{location_id}					
+	</select>
+	
+	<select id="getDepartmentCountByLocationId"  parameterType="INTEGER"
+	 					resultType="INTEGER">
+	 	select count(*) 
+	 	from departments 
+	 	where location_id=#{locationId}	
+	</select>
+	
+	<select id= "getDepartmentById" parameterType="INTEGER"
+						resultMap="DepartmentMap">
+		select * 
+		from departments 
+		where department_id=#{departmentId}					
+	</select>
+	<select id="getDepartmentCount" resultType="INTEGER">
+		select count(*) from departments
+	</select>
+	
+ 	
+ 
+	<update id="updateDepartment" parameterType="Department">
+		UPDATE departments SET
+		department_name = #{departmentName},
+		manager_id = #{managerId},
+		location_id = #{locationId}
+		WHERE department_id = #{departmentId}
+	</update>
+ 	
+	<delete id="deleteDepartment" parameterType="Integer">
+		DELETE FROM departments
+		WHERE department_id = #{departmentId}
+	</delete>
+
+	<delete id="deleteCommentByUserId" parameterType="TComment">
+		DELETE FROM
+		TCOMMENT
+		WHERE USER_ID = #{userId}
+	</delete> -->
+</mapper>

@@ -33,155 +33,90 @@ public class ReviewComment implements Serializable {
 	private Integer starPoint;
 
 	/** 새 테이블. */
-	private Stores stores;
+	private Integer storeCode;
 
 	/**
 	 * 생성자.
 	 */
 	public ReviewComment() {
 	}
+	
+	
 
-	/**
-	 * comment_code을 설정합니다..
-	 * 
-	 * @param commentCode
-	 *            comment_code
-	 */
+	public ReviewComment(String ownerId, String title, String content,
+			Integer starPoint, Integer storeCode) {
+		super();
+		this.ownerId = ownerId;
+		this.title = title;
+		this.content = content;
+		this.starPoint = starPoint;
+		this.storeCode = storeCode;
+	}
+
+
+
+	public Integer getCommentCode() {
+		return commentCode;
+	}
+
 	public void setCommentCode(Integer commentCode) {
 		this.commentCode = commentCode;
 	}
 
-	/**
-	 * comment_code을 가져옵니다..
-	 * 
-	 * @return comment_code
-	 */
-	public Integer getCommentCode() {
-		return this.commentCode;
+	public String getOwnerId() {
+		return ownerId;
 	}
 
-	/**
-	 * owner_id을 설정합니다..
-	 * 
-	 * @param ownerId
-	 *            owner_id
-	 */
 	public void setOwnerId(String ownerId) {
 		this.ownerId = ownerId;
 	}
 
-	/**
-	 * owner_id을 가져옵니다..
-	 * 
-	 * @return owner_id
-	 */
-	public String getOwnerId() {
-		return this.ownerId;
+	public String getTitle() {
+		return title;
 	}
 
-	/**
-	 * title을 설정합니다..
-	 * 
-	 * @param title
-	 *            title
-	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	/**
-	 * title을 가져옵니다..
-	 * 
-	 * @return title
-	 */
-	public String getTitle() {
-		return this.title;
+	public String getContent() {
+		return content;
 	}
 
-	/**
-	 * content을 설정합니다..
-	 * 
-	 * @param content
-	 *            content
-	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	/**
-	 * content을 가져옵니다..
-	 * 
-	 * @return content
-	 */
-	public String getContent() {
-		return this.content;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	/**
-	 * reg_date을 설정합니다..
-	 * 
-	 * @param regDate
-	 *            reg_date
-	 */
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 
-	/**
-	 * reg_date을 가져옵니다..
-	 * 
-	 * @return reg_date
-	 */
-	public Date getRegDate() {
-		return this.regDate;
+	public Integer getStarPoint() {
+		return starPoint;
 	}
 
-	/**
-	 * star_point을 설정합니다..
-	 * 
-	 * @param starPoint
-	 *            star_point
-	 */
 	public void setStarPoint(Integer starPoint) {
 		this.starPoint = starPoint;
 	}
 
-	/**
-	 * star_point을 가져옵니다..
-	 * 
-	 * @return star_point
-	 */
-	public Integer getStarPoint() {
-		return this.starPoint;
+	public Integer getStoreCode() {
+		return storeCode;
 	}
 
-	/**
-	 * 새 테이블을 설정합니다..
-	 * 
-	 * @param stores
-	 *            새 테이블
-	 */
-	public void setStores(Stores stores) {
-		this.stores = stores;
+	public void setStoreCode(Integer storeCode) {
+		this.storeCode = storeCode;
 	}
 
-	/**
-	 * 새 테이블을 가져옵니다..
-	 * 
-	 * @return 새 테이블
-	 */
-	public Stores getStores() {
-		return this.stores;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((commentCode == null) ? 0 : commentCode.hashCode());
+		result = prime * result
+				+ ((commentCode == null) ? 0 : commentCode.hashCode());
 		return result;
 	}
 

@@ -10,10 +10,16 @@
 	
  	<typeAliases> 
 		<typeAlias type="joojoo.entity.Coupon" alias="Coupon"></typeAlias>
+		<typeAlias type="joojoo.entity.ReviewComment" alias="ReviewComment"></typeAlias>
 	</typeAliases>
 	
+	
+	
 	<mappers>
-		<mapper resource="mappers/CouponMapper.xml" />		
+		<mapper resource="mappers/CouponMapper.xml" />	
+		<mapper resource="mappers/ReviewCommentMapper.xml" />		
 	</mappers>
+	
+	
 	
 </configuration>
