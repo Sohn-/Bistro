@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CouponDaoImpl implements CouponDao{
-	static final Logger logger = LoggerFactory.getLogger(CouponDaoImpl.class);
+public class EventCommentDaoImpl implements CouponDao{
+	static final Logger logger = LoggerFactory.getLogger(EventCommentDaoImpl.class);
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSessionTemplate sqlSession;
