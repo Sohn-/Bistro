@@ -27,15 +27,15 @@ values(5,'종로');
 
 
 insert into store_type (type_code, type_name)
-values(0,'횟집');
+values(0,'바');
 insert into store_type (type_code, type_name)
-values(1,'고깃집');
+values(1,'룸');
 insert into store_type (type_code, type_name)
-values(2,'포차');
+values(2,'고깃집');
 insert into store_type (type_code, type_name)
-values(3,'호프');
+values(3,'횟집');
 insert into store_type (type_code, type_name)
-values(4,'이자카야');
+values(4,'포차');
 insert into store_type (type_code, type_name)
-values(5,'종로');
+values(5,'호프');
 
