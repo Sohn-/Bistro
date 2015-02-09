@@ -16,8 +16,8 @@ import org.springframework.stereotype.Repository;
 public class EventCommentDaoImpl implements EventCommentDao{
 	static final Logger logger = LoggerFactory.getLogger(EventCommentDaoImpl.class);
 	@Autowired
-	@Qualifier("sqlSessionTemplate")
-	private SqlSessionTemplate sqlSession;
+	//@Qualifier("sqlSessionTemplate")
+	SqlSessionTemplate sqlSession;
 	private final String nameSpace = "joojoo.mapper.EventCommentMapper.";
 
 	
