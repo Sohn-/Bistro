@@ -17,16 +17,20 @@ public class Coupon implements Serializable {
 	private String couponCode;
 
 	/** 새 테이블. */
-	private Owners owners;
+	//private Owners owners;
+	private String ownerId;
 
 	/** 새 테이블. */
-	private Users users;
+	//private Users users;
+	private String userId;
 
 	/** 새 테이블. */
-	private EventComment eventComment;
+	//private EventComment eventComment;
+	private int commentCode;
 
 	/** 새 테이블. */
-	private CouponStatus couponStatus;
+	//private CouponStatus couponStatus;
+	private int couponStatusCode;
 
 	/**
 	 * 생성자.
@@ -34,99 +38,55 @@ public class Coupon implements Serializable {
 	public Coupon() {
 	}
 
-	/**
-	 * coupon_code을 설정합니다..
-	 * 
-	 * @param couponCode
-	 *            coupon_code
-	 */
+	public Coupon(String couponCode, String ownerId, String userId,
+			int commentCode, int couponStatusCode) {
+		super();
+		this.couponCode = couponCode;
+		this.ownerId = ownerId;
+		this.userId = userId;
+		this.commentCode = commentCode;
+		this.couponStatusCode = couponStatusCode;
+	}
+
+
+	public String getCouponCode() {
+		return couponCode;
+	}
+
 	public void setCouponCode(String couponCode) {
 		this.couponCode = couponCode;
 	}
 
-	/**
-	 * coupon_code을 가져옵니다..
-	 * 
-	 * @return coupon_code
-	 */
-	public String getCouponCode() {
-		return this.couponCode;
+	public String getOwnerId() {
+		return ownerId;
 	}
 
-	/**
-	 * 새 테이블을 설정합니다..
-	 * 
-	 * @param owners
-	 *            새 테이블
-	 */
-	public void setOwners(Owners owners) {
-		this.owners = owners;
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
 	}
 
-	/**
-	 * 새 테이블을 가져옵니다..
-	 * 
-	 * @return 새 테이블
-	 */
-	public Owners getOwners() {
-		return this.owners;
+	public String getUserId() {
+		return userId;
 	}
 
-	/**
-	 * 새 테이블을 설정합니다..
-	 * 
-	 * @param users
-	 *            새 테이블
-	 */
-	public void setUsers(Users users) {
-		this.users = users;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	/**
-	 * 새 테이블을 가져옵니다..
-	 * 
-	 * @return 새 테이블
-	 */
-	public Users getUsers() {
-		return this.users;
+	public int getCommentCode() {
+		return commentCode;
 	}
 
-	/**
-	 * 새 테이블을 설정합니다..
-	 * 
-	 * @param eventComment
-	 *            새 테이블
-	 */
-	public void setEventComment(EventComment eventComment) {
-		this.eventComment = eventComment;
+	public void setCommentCode(int commentCode) {
+		this.commentCode = commentCode;
 	}
 
-	/**
-	 * 새 테이블을 가져옵니다..
-	 * 
-	 * @return 새 테이블
-	 */
-	public EventComment getEventComment() {
-		return this.eventComment;
+	public int getCouponStatusCode() {
+		return couponStatusCode;
 	}
 
-	/**
-	 * 새 테이블을 설정합니다..
-	 * 
-	 * @param couponStatus
-	 *            새 테이블
-	 */
-	public void setCouponStatus(CouponStatus couponStatus) {
-		this.couponStatus = couponStatus;
-	}
-
-	/**
-	 * 새 테이블을 가져옵니다..
-	 * 
-	 * @return 새 테이블
-	 */
-	public CouponStatus getCouponStatus() {
-		return this.couponStatus;
+	public void setCouponStatusCode(int couponStatusCode) {
+		this.couponStatusCode = couponStatusCode;
 	}
 
 	/**
@@ -164,5 +124,14 @@ public class Coupon implements Serializable {
 		}
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Coupon [couponCode=" + couponCode + ", ownerId=" + ownerId
+				+ ", userId=" + userId + ", commentCode=" + commentCode
+				+ ", couponStatusCode=" + couponStatusCode + "]";
+	}
+	
+	
 
 }

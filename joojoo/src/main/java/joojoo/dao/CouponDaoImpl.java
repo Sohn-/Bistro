@@ -2,14 +2,25 @@ package joojoo.dao;
 
 import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import joojoo.entity.Coupon;
 
 public class CouponDaoImpl implements CouponDao{
+	@Autowired
+	@Qualifier("sqlSessionTemplate")
+	private SqlSessionTemplate sqlSession;
+	
+	private final String nameSpace = "joojoo.mapper.CouponMapper.";
 
 	@Override
 	public int insertCoupon(Coupon coupon) {
-		// TODO Auto-generated method stub
-		return 0;
+		String statement = nameSpace + "insertCoupon";
+		int result = sqlSession.insert(statement, coupon);
+		
+		return result;
 	}
 
 	@Override

@@ -13,40 +13,51 @@
     <!-- Uncomment and add your base-package here:
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
-<context:component-scan base-package="dao,entity,jdbc,service,test"></context:component-scan>
- <context:property-placeholder location="classpath:/oracle.properties"/> 
-	
-<!-- 	 <bean id = "jdbcTemplate" class= "org.springframework.jdbc.core.JdbcTemplate">
-		<constructor-arg name= "dataSource" ref="dataSource"></constructor-arg>
-	</bean>
-	<bean class= "org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-		<constructor-arg name= "dataSource" ref="dataSource"></constructor-arg>
-	</bean> -->
-	
-<!-- 	 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-		   <property name="jndiName" value="java:/comp/env/JNDI명" />
-		
-		  <property name="driverClassName" value = "${jdbc.driver}"></property>
-		<property name="url" value = "${jdbc.url}"></property>
-		<property name="username" value = "${jdbc.username}"></property>
-		<property name="password" value = "${jdbc.password}"></property>
-		<property name="maxTotal" value = "${jdbc.maxTotal}"></property>  
-	</bean>  -->
-	
-	 <jee:jndi-lookup id = "dataSource" jndi-name="${jndi.name}"></jee:jndi-lookup>
-	
-<!-- 	<bean id = "sqlSessionFactoryBean" class ="org.mybatis.spring.SqlSessionFactoryBean" >
-		<property name="dataSource" ref ="dataSource"></property>
-		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
-	</bean>
-	<bean id ="sqlSessionTemplate" class= "org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg name = "sqlSessionFactory" ref = "sqlSessionFactoryBean"></constructor-arg>
-	</bean>
-	<bean id ="transactionManager" class = "org.springframework.jdbc.datasource.DataSourceTransactionManager">
-	<property name="dataSource" ref ="dataSource"></property>
-	</bean> -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
-	
+    <context:component-scan base-package="joojoo.dao"/>
+    
+    <context:property-placeholder location="classpath:/db.properties"/>
+    
+    <context:component-scan base-package="joojoo.*">
+	<context:exclude-filter type="aspectj" expression="joojoo..*DaoImpl"/><!-- 레퍼지터리되있는 빈 가져오는거 필터링 -->
+</context:component-scan>
+
+<bean id = "jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+
+</bean>
+
+<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+	<constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+
+</bean>
+
+<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="configLocation" value="classpath:/mybatis_config.xml"></property>
+</bean>
+
+<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
+</bean>
+
+
+<!--   <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+ 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+		<property name="maxTotal" value="${jdbc.maxTotal}"></property>
+ 
+ 		<property name="jndi-name" value="${jndi.name}"></property>
+</bean>  --> 
+
+	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}"></jee:jndi-lookup>
+
+<bean id="transactionManager" 
+class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource" ref="dataSource"></property>
+</bean>
+
+<tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>
