@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ReviewCommentDaoImpl implements ReviewCommentDao {
 
-	static final Logger logger = LoggerFactory
-			.getLogger(ReviewCommentDaoImpl.class);
+	static final Logger logger = LoggerFactory.getLogger(ReviewCommentDaoImpl.class);
+	
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSessionTemplate sqlSession;
