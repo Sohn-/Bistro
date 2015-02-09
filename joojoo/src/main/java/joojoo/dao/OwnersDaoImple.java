@@ -1,20 +1,29 @@
 package joojoo.dao;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import joojoo.entity.Owners;
 
 
 public class OwnersDaoImple implements OwnersDao {
+	
+	@Autowired
+	SqlSessionTemplate sqlSession;
+	
+	private final String nameSpace = "joojoo.mappers.ownerMapper.";
+
 
 	@Override
 	public int insertOwner(Owners owner) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = nameSpace + "insertOwner";
+		return sqlSession.insert(stmt, owner);
 	}
 
 	@Override
 	public int updateOwner(Owners owner) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = nameSpace + "updateOwner";
+		return sqlSession.insert(stmt, owner);
 	}
 
 	@Override
