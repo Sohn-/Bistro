@@ -36,12 +36,12 @@ public class Owners{
 	
 
 	public Owners(String ownerId, String ownerPassword, String ownerName,
-			String ownrMail, String ownerPhone, String licenseNumber) {
+			String ownerMail, String ownerPhone, String licenseNumber) {
 		super();
 		this.ownerId = ownerId;
 		this.ownerPassword = ownerPassword;
 		this.ownerName = ownerName;
-		this.ownerMail = ownrMail;
+		this.ownerMail = ownerMail;
 		this.ownerPhone = ownerPhone;
 		this.licenseNumber = licenseNumber;
 		

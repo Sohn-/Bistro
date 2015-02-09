@@ -1,8 +1,10 @@
 package joojoo.test;
 
 import joojoo.dao.CouponDao;
+import joojoo.dao.OwnersDao;
 import joojoo.dao.UsersDao;
 import joojoo.entity.Coupon;
+import joojoo.entity.Owners;
 import joojoo.entity.Users;
 
 import org.slf4j.Logger;
@@ -19,11 +21,11 @@ public class DaoTest {
 	
 	@Autowired
 	//@Qualifier("CouponDao")
-	UsersDao dao;
+	OwnersDao dao;
 	
 	public DaoTest(){
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
-		dao = ctx.getBean(UsersDao.class);
+		dao = ctx.getBean(OwnersDao.class);
 		
 	}
 	
@@ -36,17 +38,16 @@ public class DaoTest {
 	
 	
 	public void daoTest(){
-	 String userId ="eyesia";
-	 String userPassword="tkrndbr";
-	 String userName="이재용";
-	 String userMail="eyesia@naver.com";
-	 String userPhone= "01026464844";
-	 Integer chance=3;
-
-		Users user = new Users(userId, userPassword, userName, userMail, userPhone, chance);
+	Owners owner = new Owners();
+	
+	owner.setOwnerId("eyesia");
+	owner.setOwnerName("이재용");
+	owner.setOwnerPassword("tkrndbr1");
+	owner.setOwnerPhone("01026464844");
+	owner.setOwnrMail("eyesia@naver.com");
+	owner.setLicenseNumber("332211");
 		
-		//dao.insertUser(user);		
-		LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.insertUser(user)); //OK
+		LOG.trace("수업 1 : Owner [dao]: "+dao.insertOwner(owner)); //OK
 		//LOG.trace("수업 2:"+dao.getDepartmentByIdNoMapping(120));
 		//LOG.trace("수업 3:"+dao.getDepartmentCountByLocationId(1700)); //OK
 		//LOG.trace("수업 4:"+dao.getDepartmentsByLocationId(1700));	//OK
