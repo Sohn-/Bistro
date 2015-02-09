@@ -1,14 +1,16 @@
-package joojoo.dao;
+/*package joojoo.dao;
+
+import joojoo.entity.Owners;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import joojoo.entity.Owners;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 
 public class OwnersDaoImple implements OwnersDao {
 	
 	@Autowired
+	@Qualifier("sqlSessionTemplate")
 	SqlSessionTemplate sqlSession;
 	
 	private final String nameSpace = "joojoo.mappers.ownerMapper.";
@@ -67,3 +69,4 @@ public class OwnersDaoImple implements OwnersDao {
 	
 
 }
+*/
