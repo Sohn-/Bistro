@@ -15,6 +15,6 @@ public interface EventCommentDao {
 	
 	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
 	List<EventComment> getEventCommentsByCategory(Category category);
-	List<EventComment> getEventCommentsBySearchKeyword(String keyword);
+	List<EventComment> getEventCommentsBySearchKeyword(Category category);
 
 }

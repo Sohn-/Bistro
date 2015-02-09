@@ -56,66 +56,11 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		return result;
 	}
 	@Override
-	public List<EventComment> getEventCommentsBySearchKeyword(String keyword) {
+	public List<EventComment> getEventCommentsBySearchKeyword(Category category) {
 		String statement = nameSpace + "getEventCommentsBySearchKeyword";
-		List<EventComment> result = sqlSession.selectList(statement, keyword);
+		List<EventComment> result = sqlSession.selectList(statement, category);
 		
 		return result;
 	}
-	
-	
-	
-/*
-	@Override
-	public int insertCoupon(Coupon coupon) {
-		String statement = nameSpace + "insertCoupon";
-		int result = sqlSession.insert(statement, coupon);
-		
-		logger.trace("insertCoupon종료...");
-		
-		return result;
-	}
-
-	@Override
-	public int updateDepartment(Coupon coupon) {
-		String statement = nameSpace + "updateCoupon";
-		int result = sqlSession.update(statement, coupon);
-		
-		logger.trace("updateDepartment종료...");
-		return result;
-	}
-
-	@Override
-	public int deleteDepartment(String couponCode) {
-		String statement = nameSpace + "deleteCoupon";
-		int result = sqlSession.delete(statement, couponCode);
-		
-		logger.trace("updateDepartment종료...");
-		return result;
-	}
-
-	@Override
-	public List<Coupon> getCouponsByUserId(String userId) {
-		String statement = nameSpace + "getCouponByUserId";
-		List<Coupon> result = sqlSession.selectList(statement, userId);
-		
-		return result;
-	}
-
-	@Override
-	public List<Coupon> getCouponsByOwnerId(String ownerId) {
-		String statement = nameSpace + "getCouponByOwnerId";
-		List<Coupon> result = sqlSession.selectList(statement, ownerId);
-		
-		return result;
-	}
-
-	@Override
-	public List<Coupon> getCouponsByStatus(int couponStatusCode) {
-		String statement = nameSpace + "getCouponByStatus";
-		List<Coupon> result = sqlSession.selectList(statement, couponStatusCode);
-		
-		return result;
-	}*/
 
 }

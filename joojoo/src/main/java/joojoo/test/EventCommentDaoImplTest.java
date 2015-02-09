@@ -74,12 +74,12 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		int typeCode = 0;
 		int personsCode = 0;
 		int serviceTypeCode = 0;
-		String keyword="금액할인";
+		String keyword="자바로삽입";
 		Category category = new Category(regionCode, typeCode, personsCode, serviceTypeCode, keyword);
 		//dao.getEventCommentsByCategory(category);
 		
 		
-		//dao.getEventCommentsBySearchKeyword(keyword);
+		dao.getEventCommentsBySearchKeyword(category);
 
 	}
 }

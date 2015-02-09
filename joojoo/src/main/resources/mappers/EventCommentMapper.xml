@@ -78,15 +78,15 @@
 		join service_type using(service_type_code)
 		join owners using(owner_id)	
 		
-		where title like %#{keyword}%
-		<!-- and content like %#{keyword}%
-		and store_name like %#{keyword}%
-		and store_addr like %#{keyword}%
-		and owner_name like %#{keyword}%
-		and region_namelike %#{keyword}%
-		and type_name like %#{keyword}%
-		and persons_level like %#{keyword}%
-		and service_type_name like %#{keyword}% -->
+		where title like '%${keyword}%'
+		or content like '%${keyword}%'
+		or store_name like '%${keyword}%'
+		or store_adress like '%${keyword}%'
+		or owner_name like '%${keyword}%'
+		or region_name like '%${keyword}%'
+		or type_name like '%${keyword}%'
+		or persons_level like '%${keyword}%'
+		or service_type_name like '%${keyword}%'
 
 	</select>
 	
