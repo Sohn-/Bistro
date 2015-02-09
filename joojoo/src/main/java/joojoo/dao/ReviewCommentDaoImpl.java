@@ -2,9 +2,6 @@ package joojoo.dao;
 
 import java.util.List;
 
-import joojoo.entity.Category;
-import joojoo.entity.Coupon;
-import joojoo.entity.EventComment;
 import joojoo.entity.ReviewComment;
 
 import org.mybatis.spring.SqlSessionTemplate;

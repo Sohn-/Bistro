@@ -5,7 +5,7 @@
 
 <mapper namespace="jdbc.mapper.ReviewCommentMapper">
 
-	<resultMap type="ReviewComment" id="ReviewCommentMap">
+  	<resultMap type="ReviewComment" id="ReviewCommentMap">
 		
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />		
 		<id column="ownerId" jdbcType="VARCHAR" property="ownerId" />		
@@ -23,17 +23,26 @@
 		<result column="starPoint" jdbcType="INTEGER" property="starPoint" />			
 		<result column="storeCode" jdbcType="INTEGER" property="storeCode" />	
 		
-	</resultMap>
+	</resultMap> 
 	
+<!-- 		comment_code number NOT NULL,
+	owner_id varchar2(20) NOT NULL,
+	title varchar2(200) NOT NULL,
+	content varchar2(500) NOT NULL,
+	reg_date date DEFAULT SYSDATE NOT NULL,
+	star_point number NOT NULL,
+	store_code number NOT NULL,
+	user_id varchar2(20) NOT NULL, -->
 	
 	 <insert id="insertReviewComment" parameterType="ReviewComment">
-		insert into review_comment(owner_id, title, content, star_point, store_code) 
-		values(#{ownerId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
+		insert into review_comment(owner_id, user_id, title, content, star_point, store_code) 
+		values(#{ownerId}, #{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
 	</insert> 
 	
-	<update id="updateReviewComment" parameterType="ReviewComment">
+<!-- 	<update id="updateReviewComment" parameterType="ReviewComment">
 		UPDATE review_comment SET
-		owner_id = #{ownerId}
+		owner_id = #{ownerId},
+		user_id = #{userId},
 		title = #{title},
 		content = #{content},
 		star_point = #{starPoint},
@@ -46,9 +55,9 @@
 		WHERE comment_code = #{commentCode}
 	</delete>
 	
-		<!-- List<ReviewComment> getReviewCommentsByUserId(String userId);
+		List<ReviewComment> getReviewCommentsByUserId(String userId);
 	List<ReviewComment> getReviewCommentsByStoreCode(String storeCode);
-	List<ReviewComment> getReviewCommentsBySearchKeyword(String keyword); -->
+	List<ReviewComment> getReviewCommentsBySearchKeyword(String keyword);
 	
 	<select id= "getReviewCommentsByUserId" parameterType="String"
 						resultMap="ReviewCommentMap">
@@ -86,7 +95,7 @@
 		or service_type_name like '%${keyword}%'
 
 	</select> 
-	
+	 -->
 	
 	<!-- <insert id="insertEventComment" parameterType="EventComment">
 		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 
