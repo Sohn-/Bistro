@@ -1,6 +1,7 @@
 package joojoo.test;
 
 import joojoo.dao.CouponDao;
+import joojoo.dao.UsersDao;
 import joojoo.entity.Coupon;
 import joojoo.entity.Users;
 
@@ -17,12 +18,12 @@ public class DaoTest {
 	static final Logger LOG = LoggerFactory.getLogger(DaoTest.class);
 	
 	@Autowired
-	@Qualifier("CouponDao")
-	CouponDao dao;
+	//@Qualifier("CouponDao")
+	UsersDao dao;
 	
 	public DaoTest(){
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
-		dao = ctx.getBean(CouponDao.class);
+		dao = ctx.getBean(UsersDao.class);
 		
 	}
 	
@@ -47,11 +48,10 @@ public class DaoTest {
 
 	 Integer chance=3;
 
-		Users user = new Users(userId, userPassword, userName, userMail, userPhone);
+		Users user = new Users(userId, userPassword, userName, userMail, userPhone, chance);
 		
-		dao.insertCoupon(coupon);
-		
-		//LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.getDepartmentCount()); //OK
+		dao.insertUser(user);		
+		LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.insertUser(user)); //OK
 		//LOG.trace("수업 2:"+dao.getDepartmentByIdNoMapping(120));
 		//LOG.trace("수업 3:"+dao.getDepartmentCountByLocationId(1700)); //OK
 		//LOG.trace("수업 4:"+dao.getDepartmentsByLocationId(1700));	//OK
