@@ -23,6 +23,8 @@ public class CouponDaoImpl implements CouponDao{
 		String statement = nameSpace + "insertCoupon";
 		int result = sqlSession.insert(statement, coupon);
 		
+		logger.trace("insertCoupon종료...");
+		
 		return result;
 	}
 
@@ -30,9 +32,7 @@ public class CouponDaoImpl implements CouponDao{
 	public int updateDepartment(Coupon coupon) {
 		String statement = nameSpace + "updateCoupon";
 		int result = sqlSession.update(statement, coupon);
-		/*if(true){
-			throw new ServiceFailException("무조건 실패한다");
-		}*/
+		
 		logger.trace("updateDepartment종료...");
 		return result;
 	}
@@ -41,6 +41,8 @@ public class CouponDaoImpl implements CouponDao{
 	public int deleteDepartment(String couponCode) {
 		String statement = nameSpace + "deleteCoupon";
 		int result = sqlSession.delete(statement, couponCode);
+		
+		logger.trace("updateDepartment종료...");
 		return result;
 	}
 
