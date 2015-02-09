@@ -44,7 +44,7 @@ public class DaoTest {
 
 	 String userMail="eyesia@naver.com";
 
-	 Integer userPhone= 111;
+	 String userPhone= "01026464844";
 
 	 Integer chance=3;
 
