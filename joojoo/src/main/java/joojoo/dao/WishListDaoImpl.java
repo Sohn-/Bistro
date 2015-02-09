@@ -8,7 +8,7 @@ import joojoo.entity.Users;
 import joojoo.entity.WishList;
 
 
-@Repository
+//@Repository
 public class WishListDaoImpl implements WishListDao{
 
 	@Autowired

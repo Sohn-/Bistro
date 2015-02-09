@@ -15,10 +15,10 @@
 	
 	
 	
-	<mappers>
+	<!-- <mappers>
 		<mapper resource="mappers/CouponMapper.xml" />	
 		<mapper resource="mappers/ReviewCommentMapper.xml" />		
-	</mappers>
+	</mappers> -->
 	
 	
 	
