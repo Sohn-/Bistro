@@ -32,11 +32,11 @@ public class DaoTest {
 	
 	
 	public void daoTest(){
-		private String couponCode = "1324";
-		private String ownerId = "owner_sohn";
-		private String userId = "user_sohn";
-		private int commentCode;
-		private int couponStatusCode;
+		String couponCode = "1324";
+		String ownerId = "owner_sohn";
+		String userId = "user_sohn";
+		int commentCode = 1;
+		int couponStatusCode = 1;
 		Coupon coupon = new Coupon(couponCode, ownerId, userId, commentCode, couponStatusCode);
 		
 		dao.insertCoupon(coupon);
