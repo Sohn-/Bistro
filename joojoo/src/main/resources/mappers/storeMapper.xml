@@ -7,31 +7,26 @@
 
 
 	<insert id="insertStore" parameterType="Stores">
-		insert into stores (store_code, store_name, store_adress, store_phone, phone)
-		values(#{id}, #{name}, #{pass}, #{email},#{phone})
+		insert into stores (store_code, store_name, store_adress, store_phone,
+		owner_id, region_code, type_code, star_point)
+		values(#{storeCode}, #{storeName}, #{storeAdress}, #{storePhone},
+		#{ownerId},#{regionCode},#{typeCode},#{starPoint})
 	</insert>
+	
+	<update id = "updateStore" parameterType = "Stores">
+  		update stores 
+  		set store_name = #{storeName}, store_adress = #{storeAdress}, store_phone = #{storePhone},
+  		owner_id = #{ownerId}, region_code = #{regionCode}, type_code = #{typeCode}, star_point = #{starPoint}
+  		where store_code = #{storeCode}
+    </update>
+  	
+  	<delete id = "deleteStore" parameterType="Integer">
+  		delete from stores where comment_no = #{commentNo}
+  	</delete>
+  	
   
-  	<select id="getDepartmentByIdNoMapping" parameterType="Integer" resultType="Map">
-  	select *
-  	from departments 
-  	where department_id=#{departmentId}
   	
-  	</select>
-  	
-  	<select id="getDepartmentById" parameterType="Integer" resultType="Department">
-  	select *
-  	from departments 
-  	where department_id=#{departmentId}
-  	
-  	</select>
-  	
-  	<select id = "getDepartmentCountByLocationId" resultType="Integer">
-	select count(*)
-	from departments
-	where location_id=#{locationId}
-	</select>
-  	
-  	<select id = "getDepartmentsByLocationId" resultType="Map">
+  	<select id = "getStoresByOwnerId" resultType="List">
 	select *
 	from departments
 	where location_id=#{locationId}

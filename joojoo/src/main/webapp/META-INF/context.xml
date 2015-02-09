@@ -27,11 +27,11 @@
 		url="jdbc:oracle:thin:@localhost:1521:XE"
 		username="joojoo" password="tiger" maxActive="20" maxIdle="10" maxWait="-1" />	
 
- 	<Resources>
+ 	<!-- <Resources>
 		<PreResources
 			base="c:\db\uploaded\"
 			className="org.apache.catalina.webresources.DirResourceSet"
 			webAppMount="/WEB-INF/upload">
 		</PreResources>
-	</Resources>
+	</Resources> -->
 </Context>	
