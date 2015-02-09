@@ -17,8 +17,6 @@ public class ReviewComment implements Serializable {
 	/** comment_code. */
 	private Integer commentCode;
 
-	/** owner_id. */
-	private String ownerId;
 	private String userId;
 
 	/** title. */
@@ -42,10 +40,9 @@ public class ReviewComment implements Serializable {
 	public ReviewComment() {
 	}
 	
-	public ReviewComment(String ownerId, String userId, String title, String content,
+	public ReviewComment(String userId, String title, String content,
 			Integer starPoint, Integer storeCode) {
 		super();
-		this.ownerId = ownerId;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
@@ -60,14 +57,6 @@ public class ReviewComment implements Serializable {
 
 	public void setCommentCode(Integer commentCode) {
 		this.commentCode = commentCode;
-	}
-
-	public String getOwnerId() {
-		return ownerId;
-	}
-
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
 	}
 
 	public String getUserId() {
@@ -152,15 +141,15 @@ public class ReviewComment implements Serializable {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "ReviewComment [commentCode=" + commentCode + ", ownerId="
-				+ ownerId + ", userId=" + userId + ", title=" + title
-				+ ", content=" + content + ", regDate=" + regDate
-				+ ", starPoint=" + starPoint + ", storeCode=" + storeCode + "]";
+		return "ReviewComment [commentCode=" + commentCode + ", userId="
+				+ userId + ", title=" + title + ", content=" + content
+				+ ", regDate=" + regDate + ", starPoint=" + starPoint
+				+ ", storeCode=" + storeCode + "]";
 	}
+
+	
 	
 	
 

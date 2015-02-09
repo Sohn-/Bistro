@@ -35,8 +35,8 @@
 	user_id varchar2(20) NOT NULL, -->
 	
 	 <insert id="insertReviewComment" parameterType="ReviewComment">
-		insert into review_comment(owner_id, user_id, title, content, star_point, store_code) 
-		values(#{ownerId}, #{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
+		insert into review_comment(user_id, title, content, star_point, store_code) 
+		values(#{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
 	</insert> 
 	
 <!-- 	<update id="updateReviewComment" parameterType="ReviewComment">

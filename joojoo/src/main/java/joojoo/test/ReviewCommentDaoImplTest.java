@@ -48,7 +48,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentDaoImplTest.class
 		values(#{ownerId}, #{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	*/
 
 
-		ReviewComment reviewComment = new ReviewComment(ownerId, userId, title, content, starPoint, storeCode);
+		ReviewComment reviewComment = new ReviewComment(userId, title, content, starPoint, storeCode);
 
 
 

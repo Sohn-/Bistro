@@ -113,8 +113,8 @@ CREATE TABLE region
 CREATE TABLE review_comment
 (
 	comment_code number NOT NULL,
-	title varchar2(200) NOT NULL,
-	content varchar2(500) NOT NULL,
+	title varchar2(600) NOT NULL,
+	content varchar2(2000) NOT NULL,
 	reg_date date DEFAULT SYSDATE NOT NULL,
 	star_point number NOT NULL,
 	store_code number NOT NULL,
@@ -183,13 +183,13 @@ ALTER TABLE coupon
 ;
 
 
-ALTER TABLE coupon
+ALTER TABLE wish_list
 	ADD FOREIGN KEY (comment_code)
 	REFERENCES event_comment (comment_code)
 ;
 
 
-ALTER TABLE wish_list
+ALTER TABLE coupon
 	ADD FOREIGN KEY (comment_code)
 	REFERENCES event_comment (comment_code)
 ;
@@ -243,23 +243,19 @@ ALTER TABLE stores
 ;
 
 
-ALTER TABLE wish_list
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-ALTER TABLE wish_list
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-<<<<<<< HEAD
 ALTER TABLE coupon
-=======
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE wish_list
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
 ALTER TABLE review_comment
->>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
