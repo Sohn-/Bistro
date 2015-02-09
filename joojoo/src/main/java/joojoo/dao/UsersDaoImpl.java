@@ -60,7 +60,7 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public Users getUsersForPassWordFind(Users user) {
-		String stmt = nameSpace + "getOwnersForPassWordFind";
+		String stmt = nameSpace + "getUsersForPassWordFind";
 		Users result = sqlSession.selectOne(stmt,user);
 		return result;
 	}
