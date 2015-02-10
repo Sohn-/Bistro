@@ -62,9 +62,9 @@
 		join owners using(owner_id)	
 		 		
 		where region_code = #{regionCode}
-		and type_code = #{typeCode}
-		and persons_code = #{personsCode}
-		and service_type_code = #{serviceTypeCode}			
+		or type_code = #{typeCode}
+		or persons_code = #{personsCode}
+		or service_type_code = #{serviceTypeCode}			
 	</select>
 	
 	<select id= "getEventCommentsBySearchKeyword" parameterType="EventComment"
