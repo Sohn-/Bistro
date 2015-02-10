@@ -60,14 +60,24 @@
 		join persons p using(persons_code)
 		join service_type using(service_type_code)
 		join owners using(owner_id)	
-		 		
-		where region_code = #{regionCode}
-		or type_code = #{typeCode}
-		or persons_code = #{personsCode}
-		or service_type_code = #{serviceTypeCode}			
+		 
+		<where>
+		<if test="regionCode != 0">
+    		region_code = #{regionCode}
+  		</if>
+  		<if test="typeCode != 0">
+  			and type_code = #{typeCode}
+  		</if>
+  		<if test="personsCode != 0">
+  			and persons_code = #{personsCode}
+  		</if>
+  		<if test="serviceTypeCode != 0">
+  			and service_type_code = #{serviceTypeCode}
+  		</if>
+  		</where>		
 	</select>
 	
-	<select id= "getEventCommentsByRegionCode" parameterType="Integer"
+	<!-- <select id= "getEventCommentsByRegionCode" parameterType="Integer"
 						resultMap="EventCommentMap">
 		select * 
 		from event_comment e
@@ -121,7 +131,7 @@
 		join owners using(owner_id)	
 		 		
 		where service_type_code = #{serviceTypeCode}			
-	</select>
+	</select> -->
 	
 	<select id= "getEventCommentsByKeyword" parameterType="EventComment"
 						resultMap="EventCommentMap">

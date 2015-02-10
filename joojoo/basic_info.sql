@@ -53,10 +53,10 @@ insert into users
 values('user', '1234', '유저', '유저e-mail', '유저폰010', 5);
 
 insert into stores(store_name, store_adress, store_phone, owner_id, region_code, type_code)
-values('가게이름','가게주소','가게번호','sohn',0, 0);
+values('가게이름','가게주소','가게번호','sohn',1, 2);
 
 insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code)
-values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, 0, 0);
+values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, 1, 1);
 
 insert into rview_comment(title, content, user_id, star_point, store_code)
 values('제목','내용', 'user', 5, 1);
