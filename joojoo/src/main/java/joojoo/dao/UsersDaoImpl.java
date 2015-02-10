@@ -65,12 +65,7 @@ public class UsersDaoImpl implements UsersDao{
 		return result;
 	}
 
-	@Override
-	public Users getUsersLogin(Users user) {//로그인 
-		String stmt = nameSpace + "getUsersLogin";
-		Users result = sqlSession.selectOne(stmt,user);
-		return result;
-	}
+
 
 	@Override
 	public int updateChance(int chance) {
