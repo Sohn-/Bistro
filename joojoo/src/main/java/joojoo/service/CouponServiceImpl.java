@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import sohn.mvc.dao.DepartmentDao;
-import sohn.mvc.entity.Department;
-import sohn.mvc.exception.ServiceFailException;
-@Service
+//@Service
 @Transactional(rollbackFor=java.lang.Exception.class)
 public class CouponServiceImpl implements CouponService{
 

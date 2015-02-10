@@ -62,5 +62,36 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		
 		return result;
 	}
+	
+	//실제 카테고리별 검색을 위한 메서드들
+	@Override
+	public List<EventComment> getEventCommentsByRegionCode(int regionCode) {
+		String statement = nameSpace + "getEventCommentsByRegionCode";
+		List<EventComment> result = sqlSession.selectList(statement, regionCode);
+		
+		return result;
+	}
+	@Override
+	public List<EventComment> getEventCommentsByTypeCode(int typeCode) {
+		String statement = nameSpace + "getEventCommentsByTypeCode";
+		List<EventComment> result = sqlSession.selectList(statement, typeCode);
+		
+		return result;
+	}
+	@Override
+	public List<EventComment> getEventCommentsByPersonsCode(int personsCode) {
+		String statement = nameSpace + "getEventCommentsByPersonsCode";
+		List<EventComment> result = sqlSession.selectList(statement, personsCode);
+		
+		return result;
+	}
+	@Override
+	public List<EventComment> getEventCommentsByServiceTypeCode(
+			int serviceTypeCode) {
+		String statement = nameSpace + "getEventCommentsByServiceTypeCode";
+		List<EventComment> result = sqlSession.selectList(statement, serviceTypeCode);
+		
+		return result;
+	}
 
 }

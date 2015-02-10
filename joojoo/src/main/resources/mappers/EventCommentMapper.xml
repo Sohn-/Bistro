@@ -67,6 +67,62 @@
 		or service_type_code = #{serviceTypeCode}			
 	</select>
 	
+	<select id= "getEventCommentsByRegionCode" parameterType="Integer"
+						resultMap="EventCommentMap">
+		select * 
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		 		
+		where region_code = #{regionCode}		
+	</select>
+	
+	<select id= "getEventCommentsByTypeCode" parameterType="Integer"
+						resultMap="EventCommentMap">
+		select * 
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		 		
+		where type_code = #{typeCode}		
+	</select>
+	
+	<select id= "getEventCommentsByPersonsCode" parameterType="Integer"
+						resultMap="EventCommentMap">
+		select * 
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		 		
+		where persons_code = #{personsCode}		
+	</select>
+	
+	<select id= "getEventCommentsByServiceTypeCode" parameterType="Integer"
+						resultMap="EventCommentMap">
+		select * 
+		from event_comment e
+		join stores s using(store_code)
+		join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	
+		 		
+		where service_type_code = #{serviceTypeCode}			
+	</select>
+	
 	<select id= "getEventCommentsBySearchKeyword" parameterType="EventComment"
 						resultMap="EventCommentMap">
 		select * 
