@@ -14,17 +14,62 @@ public class UserServiceImp implements UserService{
 	@Autowired
 	UsersDao dao;
 
-/*	@Override
-	public int insertUser(Users user) {//회원가입
+	@Override
+	public int addtUser(Users user) {
 		int result = dao.insertUser(user);
 		return result;
 	}
 
 	@Override
-	public int updateUser(Users user) {//회원정보수정
+	public int updateUserInfo(Users user) {
 		int result = dao.updateUser(user);
 		return result;
 	}
+
+
+	@Override
+	public Users idDuplicateCheck(String userId) {
+		Users result = dao.getUsersByUserId(userId);
+		return result;
+	}
+
+	@Override
+	public Users mailDuplicateCheck(String userMail) {
+		Users result = dao.getUsersByUserMail(userMail);
+		return result;
+	}
+
+	@Override
+	public Users findId(Users user) {
+		Users result = dao.getUsersForIdFind(user);
+		return result;
+	}
+
+	@Override
+	public Users findPassword(Users user) {
+		Users result = dao.getUsersForPassWordFind(user);
+		return result;
+	}
+
+	@Override
+	public Users UsersLogin(Users user) {
+		
+		Users result = dao.getUsersByUserId(user.getUserId());
+		if(result.getUserPassword()==user.getUserPassword()){
+			return result;
+		}else{
+			return null;
+		}
+	}
+
+	@Override
+	public int outUser(String userId) {
+		int result = dao.deleteUser(userId);
+		return result;
+	}
+
+/*	@Override
+
 
 	@Override
 	public int deleteUser(String userId) {//회원탈퇴
