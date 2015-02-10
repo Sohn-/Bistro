@@ -51,7 +51,7 @@ CREATE TABLE coupon
 (
 	coupon_code varchar2(100) NOT NULL,
 	owner_id varchar2(50) NOT NULL,
-	user_id varchar2(50) NOT NULL,
+	user_id varchar2(50),
 	comment_code number NOT NULL,
 	coupon_status_code number NOT NULL,
 	PRIMARY KEY (coupon_code)
@@ -113,6 +113,7 @@ CREATE TABLE region
 CREATE TABLE review_comment
 (
 	comment_code number NOT NULL,
+	owner_id varchar2(50) NOT NULL,
 	title varchar2(600) NOT NULL,
 	content varchar2(2000) NOT NULL,
 	reg_date date DEFAULT SYSDATE NOT NULL,
@@ -195,13 +196,13 @@ ALTER TABLE coupon
 ;
 
 
-ALTER TABLE stores
+ALTER TABLE coupon
 	ADD FOREIGN KEY (owner_id)
 	REFERENCES owners (owner_id)
 ;
 
 
-ALTER TABLE coupon
+ALTER TABLE stores
 	ADD FOREIGN KEY (owner_id)
 	REFERENCES owners (owner_id)
 ;
@@ -225,13 +226,13 @@ ALTER TABLE event_comment
 ;
 
 
-ALTER TABLE review_comment
+ALTER TABLE event_comment
 	ADD FOREIGN KEY (store_code)
 	REFERENCES stores (store_code)
 ;
 
 
-ALTER TABLE event_comment
+ALTER TABLE review_comment
 	ADD FOREIGN KEY (store_code)
 	REFERENCES stores (store_code)
 ;
@@ -249,13 +250,13 @@ ALTER TABLE coupon
 ;
 
 
-ALTER TABLE wish_list
+ALTER TABLE review_comment
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
 
 
-ALTER TABLE review_comment
+ALTER TABLE wish_list
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
