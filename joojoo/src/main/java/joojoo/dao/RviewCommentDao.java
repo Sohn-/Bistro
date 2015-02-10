@@ -21,6 +21,7 @@ public interface RviewCommentDao {
 	List<RviewComment> getRviewCommentsByUserName(String userName);
 	List<RviewComment> getRviewCommentsByContent(String content);
 	List<RviewComment> getRviewCommentsByTitle(String title);
+	List<RviewComment> getRviewCommentsByStoreName(String storeName);
 
 
 }

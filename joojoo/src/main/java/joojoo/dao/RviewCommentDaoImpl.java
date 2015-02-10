@@ -97,9 +97,17 @@ public class RviewCommentDaoImpl implements RviewCommentDao{
 	}
 
 	@Override
-	public List<EventComment> getAllRviewComments() {
+	public List<RviewComment> getAllRviewComments() {
 		String statement = nameSpace + "getAllRviewComments";
-		List<EventComment> result = sqlSession.selectList(statement);
+		List<RviewComment> result = sqlSession.selectList(statement);
+		
+		return result;
+	}
+
+	@Override
+	public List<RviewComment> getRviewCommentsByStoreName(String storeName) {
+		String statement = nameSpace + "getRviewCommentsByStoreName";
+		List<RviewComment> result = sqlSession.selectList(statement);
 		
 		return result;
 	}
