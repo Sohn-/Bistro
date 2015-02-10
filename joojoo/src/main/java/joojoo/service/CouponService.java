@@ -8,25 +8,19 @@ import joojoo.entity.Users;
 
 public interface CouponService {
 	
-	Integer getDeptCnt();
-
-	Coupon getDepartmentById(int i);
-
-	void updateDepartment(Department dept) throws ServiceFailException;
+	List<Coupon> getCouponsByUserId(String userId); //일반 내 쿠폰 조회, 쿠폰 상세 조회	
 	
-	Map<String, Object> getDepartmentByIdNoMapping(int i);
+	List<Coupon> getCouponsByOwnerId(String ownerId); //업주 내 쿠폰 조회, 쿠폰 상세 조회	
 	
-	Integer getDepartmentCountByLocationId(int i);
+	int insertCoupon(Coupon coupon);//쿠폰 발행 [업주 유저아이디 null]
 	
-	List<Department> getAllDepartments();
+	int buyCoupon(String userId, int comment_code); //쿠폰 구입[일반 유저아이디 넣음]
 	
-	List<Department> getDepartmentsByManagerId(int i);
+	int refundCoupon(String userId); //쿠폰 환불[일반 쿠폰상태 변경]
 	
-	List<Coupon> getCouponsByUserId(String userId); //내 쿠폰 조회, 쿠폰상세조회
-	int updateCouponStatus(int couponStatusCode); //쿠폰 상태 변경
-	int insertCoupon(Coupon coupon);//쿠폰 발행 유저아이디 null
-	int buyCoupon(Users user); //쿠폰 구입
+	int useCoupon(String ownerId);//쿠폰 사용[업주 쿠폰상태 변경]
 	
+	int timeoverCoupon(String userId); //쿠폰 기간 만료[마이페이지 출력 전에 업데이트]
 	
 	
 
