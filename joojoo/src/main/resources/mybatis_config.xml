@@ -12,7 +12,7 @@
 		<typeAlias type="joojoo.entity.Coupon" alias="Coupon"></typeAlias>
 		<typeAlias type="joojoo.entity.EventComment" alias="EventComment"></typeAlias>
 		<typeAlias type="joojoo.entity.Owners" alias="Owners"></typeAlias>
-		<typeAlias type="joojoo.entity.ReviewComment" alias="ReviewComment"></typeAlias>
+		<typeAlias type="joojoo.entity.RviewComment" alias="RviewComment"></typeAlias>
 		<typeAlias type="joojoo.entity.Stores" alias="Stores"></typeAlias>
 		<typeAlias type="joojoo.entity.Users" alias="Users"></typeAlias>
 		<typeAlias type="joojoo.entity.WishList" alias="WishList"></typeAlias>
@@ -26,7 +26,7 @@
 		<mapper resource="mappers/CouponMapper.xml" />
 		<mapper resource="mappers/EventCommentMapper.xml" />
  		<mapper resource="mappers/OwnersMapper.xml" />		
-		<mapper resource="mappers/ReviewCommentMapper.xml" /> 
+		<mapper resource="mappers/RviewCommentMapper.xml" /> 
 		<mapper resource="mappers/StoresMapper.xml" />
 		<mapper resource="mappers/UsersMapper.xml" />
 		<mapper resource="mappers/WishListMapper.xml" />
