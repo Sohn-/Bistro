@@ -22,7 +22,7 @@ public class RviewCommentServiceImpl implements RviewCommentService {
 
 	@Override
 	public List<RviewComment> SearchAll() {
-		return null;
+		return dao.getAllRviewComments();
 	}
 
 	@Override
