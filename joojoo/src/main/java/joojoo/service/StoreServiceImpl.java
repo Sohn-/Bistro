@@ -47,7 +47,11 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public List<Stores> showStoresByCategory(Category category) {
-		return null;
+		List<Stores> result = null;
+		result = dao.getStoresByCategory(category);
+		return result;
+		
+		
 	}
 
 	@Override

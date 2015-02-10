@@ -69,6 +69,13 @@ public class StoreDaoImpl implements StoreDao{
 		List<Stores> result = sqlSession.selectList(stmt,category);
 		return result;
 	}
+
+	@Override
+	public List<Stores> getStoresByCategory(Category category) {
+		String stmt = nameSpace + "getStoresByCategory";
+		List<Stores> result = sqlSession.selectList(stmt,category);
+		return result;
+	}
 	
 
 }
