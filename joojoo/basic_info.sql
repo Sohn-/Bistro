@@ -61,4 +61,7 @@ values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-
 insert into rview_comment(title, content, user_id, star_point, store_code)
 values('제목','내용', 'user', 5, 1);
 
+insert into Coupon values('joojoo','sohn','user',1,0);	
+	
+
 
