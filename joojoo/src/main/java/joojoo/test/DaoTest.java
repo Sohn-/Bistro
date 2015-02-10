@@ -43,15 +43,15 @@ public class DaoTest {
 
 	Users user = new Users();
 	
-	user.setUserMail("유저e-mail");
+	//user.setUserMail("유저e-mail");
 	user.setUserId("user");
 	//user.setUserName("유저");
 	user.setUserPassword("111111111");
-	user.setUserPhone("11111111");
+	//user.setUserPhone("11111111");
 	
 	//user.setLicenseNumber("332211");
 
-		LOG.trace("수업 1 : Owner [dao]: "+dao.updateUser(user)); //OK
+		LOG.trace("수업 1 : Owner [dao]: "+dao.getUsersLogin(user)); //OK
 
 		//dao.insertUser(user);		
 	
