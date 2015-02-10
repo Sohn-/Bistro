@@ -22,7 +22,6 @@ public class RviewCommentServiceImpl implements RviewCommentService {
 
 	@Override
 	public List<RviewComment> SearchAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

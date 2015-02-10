@@ -134,6 +134,11 @@
 		where title=#{title}					
 	</select>
 	
+	<select id= "getAllRviewComments" resultMap="RviewCommentMap">
+		select * 
+		from rview_comment
+	</select>
+	
 	<!-- <insert id="insertEventComment" parameterType="EventComment">
 		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 
 		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode})	

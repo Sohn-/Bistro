@@ -3,6 +3,7 @@ package joojoo.dao;
 import java.util.List;
 
 import joojoo.entity.Category;
+import joojoo.entity.EventComment;
 import joojoo.entity.RviewComment;
 
 
@@ -12,7 +13,7 @@ public interface RviewCommentDao {
 	int insertRviewComment(RviewComment rviewComment);
 	int updateRviewComment(RviewComment rviewComment);
 	int deleteRviewComment(int commentCode);
-	
+	List<EventComment> getAllRviewComments();
 	List<RviewComment> getRviewCommentsByUserId(String userId);
 	List<RviewComment> getRviewCommentsByStoreCode(int storeCode);
 	List<RviewComment> getRviewCommentsByKeyword(Category category);
