@@ -16,7 +16,7 @@ public interface CouponService {
 	
 	int buyCoupon(String userId, int comment_code); //쿠폰 구입[일반 유저아이디 넣음]
 	
-	int refundCoupon(String userId, String couponCode); //쿠폰 환불[일반 쿠폰상태 변경]
+	int refundCoupon( String couponCode); //쿠폰 환불[일반 쿠폰상태 변경]
 	
 	int checkCoupon(String couponCode);//쿠폰 사용[업주 쿠폰상태 변경]
 	

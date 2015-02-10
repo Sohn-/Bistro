@@ -52,7 +52,7 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		List<Coupon> getCouponsByOwnerId(String ownerId);
 		List<Coupon> getCouponsByStatus(int couponStatusCode);*/
 		
-		//dao.getCouponsByOwnerId("sohn");
+		dao.getCouponsByOwnerId("sohn");
 		
 		//dao.getCouponsByOwnerId("sohn");
 		

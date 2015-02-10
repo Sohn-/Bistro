@@ -7,7 +7,10 @@ import joojoo.dao.CouponDao;
 import joojoo.dao.EventCommentDao;
 import joojoo.entity.Coupon;
 import joojoo.entity.EventComment;
+import joojoo.test.StoreDaoTest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(rollbackFor = java.lang.Exception.class)
 public class CouponServiceImpl implements CouponService {
-
+	static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	@Autowired
 	CouponDao dao;
 
@@ -43,26 +46,25 @@ public class CouponServiceImpl implements CouponService {
 		Coupon coupon = null;
 		for (Coupon coupon2 : coupons) {
 			if (coupon2.getUserId() == null) {
+				
 				coupon2.setUserId(userId);
+				
 				coupon = coupon2;
 				break;
 			}
+			LOG.trace("수업:" + coupon2);
 		}
+
 		return dao.updateCoupon(coupon);
 	}
 
 	@Override
-	public int refundCoupon(String userId, String couponCode) {
-		List<Coupon> coupons = dao.getCouponsByUserId(userId);
-		Coupon coupon = null;
+	public int refundCoupon(String couponCode) {
 
-		for (Coupon coupon2 : coupons) {
-			if (coupon2.getCouponCode() == couponCode) {
-				coupon2.setCouponStatusCode(2);
-				coupon = coupon2;
-				break;
-			}
-		}
+		Coupon coupon = dao.getCouponsByCouponCode(couponCode);
+
+		coupon.setCouponStatusCode(2);
+
 		return dao.updateCoupon(coupon);
 	}
 

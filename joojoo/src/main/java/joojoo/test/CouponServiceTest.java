@@ -1,8 +1,6 @@
 package joojoo.test;
 
 
-import java.util.List;
-
 import joojoo.entity.Coupon;
 import joojoo.service.CouponService;
 
@@ -34,15 +32,29 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	
 	
 	public void getCouponTest(){
+			
 	
-		List<Coupon> coupon = service.getCouponsByUserId("shon");
+		Coupon coupon = new Coupon();
 		
-		LOG.trace("getCouponsByUserId : "+service.getCouponsByUserId("user"));
-		//"수업" +service.showStoresBySerchKeyword(c));
+		coupon.setCommentCode(1);
+		coupon.setCouponCode("coupon3");
+		coupon.setCouponStatusCode(0);
+		coupon.setOwnerId("sohn");
+		coupon.setUserId("user");
+		
+		/*성공*/
+		//LOG.warn("getCouponsByUserId : "+service.getCouponsByUserId("user"));
+		//LOG.warn("getCouponsByOwnerId : "+service.getCouponsByOwnerId("sohn"));
+		//LOG.warn("insertCoupon : "+service.insertCoupon(coupon));
+		//LOG.warn("checkCoupon : "+service.checkCoupon("coupon3"));
+		//LOG.warn("timeover : "+service.timeoverCoupon("user"));
+		//LOG.warn("refundCoupon : "+service.refundCoupon("joojoo")); //환불하고 유저 찬스 변경해야함 
+		
+		/*실패*/
 	
+		//LOG.warn("buyCoupon : "+service.buyCoupon("user",1));
+			
 		
-		
-	
 		
 	}
 }
