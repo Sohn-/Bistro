@@ -3,6 +3,7 @@ package joojoo.service;
 import java.util.List;
 
 import joojoo.dao.RviewCommentDao;
+import joojoo.dao.StoreDao;
 import joojoo.entity.Category;
 import joojoo.entity.RviewComment;
 import joojoo.entity.Stores;
@@ -17,6 +18,9 @@ public class RviewCommentServiceImpl implements RviewCommentService {
 
 	@Autowired
 	RviewCommentDao dao;
+	
+	@Autowired
+	StoreDao storeDao;
 
 	@Override
 	public List<RviewComment> SearchAll() {
@@ -50,7 +54,10 @@ public class RviewCommentServiceImpl implements RviewCommentService {
 
 	@Override
 	public int registRview(RviewComment rviewComment, Stores store) {
-		return dao.insertRviewComment(rviewComment);
+		int result=0;
+		result = dao.insertRviewComment(rviewComment);		
+		//result += storeDao.insertStore(store);
+		return result;
 	}
 
 	@Override
