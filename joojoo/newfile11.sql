@@ -2,7 +2,6 @@
 /* Drop Triggers */
 
 DROP TRIGGER TRI_event_comment_comment_code;
-DROP TRIGGER TRI_review_comment_comment_code;
 DROP TRIGGER TRI_rview_comment_comment_code;
 DROP TRIGGER TRI_stores_store_code;
 DROP TRIGGER TRI_wish_list_wish_list_code;
@@ -29,7 +28,6 @@ DROP TABLE users CASCADE CONSTRAINTS;
 /* Drop Sequences */
 
 DROP SEQUENCE SEQ_event_comment_comment_code;
-DROP SEQUENCE SEQ_review_comment_comment_code;
 DROP SEQUENCE SEQ_rview_comment_comment_code;
 DROP SEQUENCE SEQ_stores_store_code;
 DROP SEQUENCE SEQ_wish_list_wish_list_code;
@@ -40,7 +38,6 @@ DROP SEQUENCE SEQ_wish_list_wish_list_code;
 /* Create Sequences */
 
 CREATE SEQUENCE SEQ_event_comment_comment_code INCREMENT BY 1 START WITH 1;
-CREATE SEQUENCE SEQ_review_comment_comment_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_rview_comment_comment_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_stores_store_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_wish_list_wish_list_code INCREMENT BY 1 START WITH 1;
@@ -273,16 +270,6 @@ CREATE OR REPLACE TRIGGER TRI_event_comment_comment_code BEFORE INSERT ON event_
 FOR EACH ROW
 BEGIN
 	SELECT SEQ_event_comment_comment_code.nextval
-	INTO :new.comment_code
-	FROM dual;
-END;
-
-/
-
-CREATE OR REPLACE TRIGGER TRI_review_comment_comment_code BEFORE INSERT ON review_comment
-FOR EACH ROW
-BEGIN
-	SELECT SEQ_review_comment_comment_code.nextval
 	INTO :new.comment_code
 	FROM dual;
 END;
