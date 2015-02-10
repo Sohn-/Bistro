@@ -8,9 +8,8 @@ import joojoo.entity.EventComment;
 
 public interface EventCommentService {
 	
-	List<Coupon> getCouponsByUserId(String userId); //일반 내 쿠폰 조회, 쿠폰 상세 조회
-	List<EventComment> SeachByKeyword(String keyword);
-	List<EventComment> SeachByCategory(Category category);
+	List<EventComment> SeachByKeyword(String keyword); //키워드로 이벤트 검색
+	List<EventComment> SeachByCategory(Category category); //카테고리 이벤트 검색
 	List<EventComment> SeachMyEvent(String userId);
 	
 	

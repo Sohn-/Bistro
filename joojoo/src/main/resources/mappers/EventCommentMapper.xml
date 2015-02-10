@@ -146,5 +146,10 @@
 
 	</select>
 	
+	<select id= "getAllEventComments" resultMap="EventCommentMap">
+		select * 
+		from event_comment
+	</select>
+	
 
 </mapper>

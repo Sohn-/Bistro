@@ -93,5 +93,12 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		
 		return result;
 	}
+	@Override
+	public List<EventComment> getAllEventComments() {
+		String statement = nameSpace + "getAllEventComments";
+		List<EventComment> result = sqlSession.selectList(statement);
+		
+		return result;
+	}
 
 }
