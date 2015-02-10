@@ -6,6 +6,7 @@ import joojoo.dao.UsersDao;
 import joojoo.entity.Coupon;
 import joojoo.entity.Owners;
 import joojoo.entity.Users;
+import joojoo.service.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +23,12 @@ public class DaoTest {
 	@Autowired
 
 	//@Qualifier("CouponDao")
-	UsersDao dao;
+	UserService service;
 
 	
 	public DaoTest(){
 		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
-		dao = ctx.getBean(UsersDao.class);
+		service = ctx.getBean(UserService.class);
 		
 	}
 	
@@ -43,15 +44,15 @@ public class DaoTest {
 
 	Users user = new Users();
 	
-	//user.setUserMail("유저e-mail");
-	user.setUserId("user");
-	//user.setUserName("유저");
-	user.setUserPassword("111111111");
-	//user.setUserPhone("11111111");
+	user.setUserMail("안수지@네이버");
+	user.setUserId("annSuJi");
+	user.setUserName("안수지");
+	user.setUserPassword("0000");
+	user.setUserPhone("0000");
 	
 	//user.setLicenseNumber("332211");
 
-		LOG.trace("수업 1 : Owner [dao]: "+dao.getUsersLogin(user)); //OK
+		LOG.trace("수업 1 : Owner [dao]: "+service.addtUser(user)); //OK
 
 		//dao.insertUser(user);		
 	
