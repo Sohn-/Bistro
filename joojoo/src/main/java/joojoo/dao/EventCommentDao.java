@@ -13,7 +13,7 @@ public interface EventCommentDao {
 	int updateEventComment(EventComment eventComment);
 	int deleteEventComment(int commentCode);
 	
-	List<EventComment> getEventCommentsBySearchKeyword(Category category);
+	List<EventComment> getEventCommentsByKeyword(Category category);
 	
 	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
 	List<EventComment> getEventCommentsByCategory(Category category);

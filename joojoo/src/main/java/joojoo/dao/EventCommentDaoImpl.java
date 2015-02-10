@@ -56,8 +56,8 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		return result;
 	}
 	@Override
-	public List<EventComment> getEventCommentsBySearchKeyword(Category category) {
-		String statement = nameSpace + "getEventCommentsBySearchKeyword";
+	public List<EventComment> getEventCommentsByKeyword(Category category) {
+		String statement = nameSpace + "getEventCommentsByKeyword";
 		List<EventComment> result = sqlSession.selectList(statement, category);
 		
 		return result;

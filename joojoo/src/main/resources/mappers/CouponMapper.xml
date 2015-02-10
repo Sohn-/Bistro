@@ -31,7 +31,6 @@
 		WHERE coupon_code = #{couponCode}
 	</update>
  	
- 	 <!-- 이게 스트링인지... VARCHAR인지..? -->
 	<delete id="deleteCoupon" parameterType="String">
 		DELETE FROM Coupon
 		WHERE coupon_code = #{couponCode}
@@ -63,6 +62,13 @@
 		select * 
 		from coupon 
 		where coupon_status_code=#{couponStatusCode}					
+	</select>
+	
+	<select id= "getCouponsByCouponCode" parameterType="String"
+						resultType="Coupon">
+		select coupon_code, owner_id, user_id, comment_code, coupon_status_code 
+		from coupon 
+		where coupon_code = #{couponCode}					
 	</select>
 
 </mapper>
