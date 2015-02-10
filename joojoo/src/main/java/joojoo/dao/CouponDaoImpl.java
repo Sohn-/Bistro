@@ -62,6 +62,14 @@ public class CouponDaoImpl implements CouponDao{
 		
 		return result;
 	}
+	
+	@Override
+	public List<Coupon> getCouponsByCommentCode(int commentCode) {
+		String statement = nameSpace + "getCouponsByCommentCode";
+		List<Coupon> result = sqlSession.selectList(statement, commentCode);
+		
+		return result;
+	}
 
 	@Override
 	public List<Coupon> getCouponsByStatus(int couponStatusCode) {
@@ -70,6 +78,8 @@ public class CouponDaoImpl implements CouponDao{
 		
 		return result;
 	}
+
+	
 
 }
 

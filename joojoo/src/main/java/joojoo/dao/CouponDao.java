@@ -13,6 +13,7 @@ public interface CouponDao {
 	int deleteCoupon(String couponCode);
 	List<Coupon> getCouponsByUserId(String userId);
 	List<Coupon> getCouponsByOwnerId(String ownerId);
+	List<Coupon> getCouponsByCommentCode(int commentCode);
 	List<Coupon> getCouponsByStatus(int couponStatusCode);
 
 }
