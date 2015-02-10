@@ -13,7 +13,7 @@
 	</insert>
   
   	<update id="updateUser" parameterType="Users">
-  	<!--  -->
+  	
   	update users
   	set user_password = #{userPassword},
   		user_mail=#{userMail},
@@ -53,6 +53,13 @@
 	select *
 	from users
 	where user_mail=#{userMail} and user_name=#{userName} and user_id=#{userId}
+	
+	</select>
+	
+	<select id = "getUsersLogin" resultType="Users">
+	select *
+	from users
+	where user_id=#{userId} and user_password=#{userPassword}
 	
 	</select>
 	
