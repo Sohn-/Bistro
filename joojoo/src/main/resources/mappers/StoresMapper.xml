@@ -57,6 +57,20 @@
 	
 	</select>
 	
+	<select id="getStoresByCategory"  resultType="Stores">
+ 	 SELECT * FROM stores
+  <where> 
+    <if test="regionCode != 0">
+         region_code=#{regionCode}
+    </if> 
+    <if test="typeCode != 0">
+        and type_code=#{typeCode}
+    </if>
+  </where>
+</select>
+
+
+	
 	<select id= "getStoresBySearchKeyword" resultType="Stores">
 		select * 
 		from stores s 

@@ -44,14 +44,15 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		
 		Category c = new Category();
 		c.setRegionCode(1);
+		c.setTypeCode(2);
 		c.setKeyword("고");
 		
 		//LOG.trace("수업"+service.addStore(stores1));
 		//LOG.trace("수업" +service.updateStore(stores1));
 		//LOG.trace("수업" +service.deleteStore(23));
 		//LOG.trace("수업" +service.showOwnerStores("sohn"));
-		LOG.trace("수업" +service.showStoresBySerchKeyword(c));
-	
+		//LOG.trace("수업" +service.showStoresBySerchKeyword(c));
+		LOG.trace("수업"+service.showStoresByCategory(c));
 		
 		
 	
