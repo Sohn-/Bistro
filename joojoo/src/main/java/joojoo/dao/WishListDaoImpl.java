@@ -1,5 +1,6 @@
 package joojoo.dao;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import joojoo.entity.WishList;
@@ -23,20 +24,17 @@ public class WishListDaoImpl implements WishListDao{
 	
 	@Override
 	public int insertWishList(WishList wishList) {
-		
-		
-		String stmt = null;
+		int result = -1;
 		try {
-			stmt = nameSpace + "insertWishList";
-			LOG.trace("수업 성공?");
 			
+			String stmt = nameSpace + "insertWishList";
+			result = sqlSession.insert(stmt, wishList);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			LOG.trace("수업 실패");
+			LOG.trace("에러...");
 		}
-		
-		return sqlSession.insert(stmt, wishList);
+		return result;
 		
 	}
 

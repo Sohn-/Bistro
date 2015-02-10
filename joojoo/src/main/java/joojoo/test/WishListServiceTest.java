@@ -36,11 +36,12 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	public void insertTest24(){
 	
 		WishList w = new WishList();
-		w.setCommentCode(4);
+		w.setCommentCode(1);
 		w.setUserId("user");
 		
 		LOG.trace("수업"+service.addWishList(w));
-		//LOG.trace("수업"+service.deleteWishList(w));
+		//LOG.trace("수업"+service.deleteWishList(1));
+		LOG.trace("수업"+service.showAllWishList("user"));
 		
 		
 	

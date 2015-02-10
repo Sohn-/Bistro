@@ -14,6 +14,7 @@ public interface EventCommentDao {
 	int deleteEventComment(int commentCode);
 	
 	List<EventComment> getEventCommentsByOwnerId(String ownerId);
+	EventComment getEventCommentByCommentCode(int commentCode);
 	
 	List<EventComment> getAllEventComments();
 	List<EventComment> getEventCommentsByKeyword(Category category);
