@@ -79,6 +79,14 @@ public class CouponDaoImpl implements CouponDao{
 		return result;
 	}
 
+	@Override
+	public Coupon getCouponsByCouponCode(String couponCode) {
+		String statement = nameSpace + "getCouponsByCouponCode";
+		Coupon result = sqlSession.selectOne(statement, couponCode);
+		
+		return result;
+	}
+
 	
 
 }

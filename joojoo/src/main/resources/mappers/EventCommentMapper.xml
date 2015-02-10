@@ -123,7 +123,7 @@
 		where service_type_code = #{serviceTypeCode}			
 	</select>
 	
-	<select id= "getEventCommentsBySearchKeyword" parameterType="EventComment"
+	<select id= "getEventCommentsByKeyword" parameterType="EventComment"
 						resultMap="EventCommentMap">
 		select * 
 		from event_comment e
@@ -144,6 +144,11 @@
 		or persons_level like '%${keyword}%'
 		or service_type_name like '%${keyword}%'
 
+	</select>
+	
+	<select id= "getAllEventComments" resultMap="EventCommentMap">
+		select * 
+		from event_comment
 	</select>
 	
 

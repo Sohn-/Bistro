@@ -36,11 +36,11 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		String couponCode = "1324";
 		String ownerId = "sohn";
 		String userId = "user";
-		int commentCode = 3;
+		int commentCode = 1;
 		int couponStatusCode = 1;
 		Coupon coupon = new Coupon(couponCode, ownerId, userId, commentCode, couponStatusCode);
 		
-		//dao.insertCoupon(coupon);
+		dao.insertCoupon(coupon);
 		
 		//coupon.setCouponStatusCode(3);
 		//dao.updateCoupon(coupon);
@@ -56,7 +56,9 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		
 		//dao.getCouponsByOwnerId("sohn");
 		
-		dao.getCouponsByStatus(couponStatusCode);
+		//dao.getCouponsByStatus(couponStatusCode);
+		
+		//dao.getCouponsByCouponCode(couponCode);
 		
 	}
 }

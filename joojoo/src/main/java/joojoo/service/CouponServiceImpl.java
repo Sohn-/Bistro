@@ -1,55 +1,67 @@
 package joojoo.service;
 
 import java.util.List;
-import java.util.Map;
+
+import joojoo.dao.CouponDao;
+import joojoo.entity.Coupon;
+import joojoo.entity.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-//@Service
-@Transactional(rollbackFor=java.lang.Exception.class)
-public class CouponServiceImpl implements CouponService{
+
+@Service
+@Transactional(rollbackFor = java.lang.Exception.class)
+public class CouponServiceImpl implements CouponService {
 
 	@Autowired
-	DepartmentDao dao;
+	CouponDao dao;
 
 	@Override
-	public Integer getDeptCnt() {
-		return dao.getDepartmentCount();
+	public List<Coupon> getCouponsByUserId(String userId) {
+		return dao.getCouponsByUserId(userId);
 	}
 
 	@Override
-	public Department getDepartmentById(int i) {
-		return dao.getDepartmentById(i);
+	public List<Coupon> getCouponsByOwnerId(String ownerId) {
+		return dao.getCouponsByOwnerId(ownerId);
 	}
 
 	@Override
-	
-	public void updateDepartment(Department dept) throws ServiceFailException{
-		dao.updateDepartment(dept);
+	public int insertCoupon(Coupon coupon) {
+		return dao.insertCoupon(coupon);
 	}
 
 	@Override
-	public Map<String, Object> getDepartmentByIdNoMapping(int departmentId) {
-		return dao.getDepartmentByIdNoMapping(departmentId);
+	public int buyCoupon(String userId, int comment_code) {
+		List<Coupon> coupons = dao.getCouponsByCommentCode(comment_code);
 
+		for (Coupon coupon : coupons) {
+			if (coupon.getUserId() == null) {
+				coupon.setUserId(userId);
+			}
+			break;
+		}
+		return dao.updateCoupon();
 	}
 
 	@Override
-	public Integer getDepartmentCountByLocationId(int locationId) {
-		return dao.getDepartmentCountByLocationId(locationId);
+	public int refundCoupon(String userId) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
-	public List<Department> getAllDepartments() {
-		return dao.getAllDepartments();
+	public int useCoupon(String ownerId) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
-	public List<Department> getDepartmentsByManagerId(int i) {
-		return getDepartmentsByManagerId(i);
+	public int timeoverCoupon(String userId) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	
 
 }

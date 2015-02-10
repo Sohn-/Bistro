@@ -56,8 +56,8 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		return result;
 	}
 	@Override
-	public List<EventComment> getEventCommentsBySearchKeyword(Category category) {
-		String statement = nameSpace + "getEventCommentsBySearchKeyword";
+	public List<EventComment> getEventCommentsByKeyword(Category category) {
+		String statement = nameSpace + "getEventCommentsByKeyword";
 		List<EventComment> result = sqlSession.selectList(statement, category);
 		
 		return result;
@@ -90,6 +90,13 @@ public class EventCommentDaoImpl implements EventCommentDao{
 			int serviceTypeCode) {
 		String statement = nameSpace + "getEventCommentsByServiceTypeCode";
 		List<EventComment> result = sqlSession.selectList(statement, serviceTypeCode);
+		
+		return result;
+	}
+	@Override
+	public List<EventComment> getAllEventComments() {
+		String statement = nameSpace + "getAllEventComments";
+		List<EventComment> result = sqlSession.selectList(statement);
 		
 		return result;
 	}
