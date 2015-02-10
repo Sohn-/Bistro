@@ -40,7 +40,7 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		w.setUserId("user");
 		
 		LOG.trace("수업"+service.addWishList(w));
-	
+		//LOG.trace("수업"+service.deleteWishList(w));
 		
 		
 	

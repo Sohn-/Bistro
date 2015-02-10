@@ -3,6 +3,7 @@
 
 DROP TRIGGER TRI_event_comment_comment_code;
 DROP TRIGGER TRI_review_comment_comment_code;
+DROP TRIGGER TRI_rview_comment_comment_code;
 DROP TRIGGER TRI_stores_store_code;
 DROP TRIGGER TRI_wish_list_wish_list_code;
 
@@ -14,7 +15,7 @@ DROP TABLE coupon CASCADE CONSTRAINTS;
 DROP TABLE coupon_status CASCADE CONSTRAINTS;
 DROP TABLE wish_list CASCADE CONSTRAINTS;
 DROP TABLE event_comment CASCADE CONSTRAINTS;
-DROP TABLE review_comment CASCADE CONSTRAINTS;
+DROP TABLE rview_comment CASCADE CONSTRAINTS;
 DROP TABLE stores CASCADE CONSTRAINTS;
 DROP TABLE owners CASCADE CONSTRAINTS;
 DROP TABLE persons CASCADE CONSTRAINTS;
@@ -29,6 +30,7 @@ DROP TABLE users CASCADE CONSTRAINTS;
 
 DROP SEQUENCE SEQ_event_comment_comment_code;
 DROP SEQUENCE SEQ_review_comment_comment_code;
+DROP SEQUENCE SEQ_rview_comment_comment_code;
 DROP SEQUENCE SEQ_stores_store_code;
 DROP SEQUENCE SEQ_wish_list_wish_list_code;
 
@@ -39,6 +41,7 @@ DROP SEQUENCE SEQ_wish_list_wish_list_code;
 
 CREATE SEQUENCE SEQ_event_comment_comment_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_review_comment_comment_code INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_rview_comment_comment_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_stores_store_code INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_wish_list_wish_list_code INCREMENT BY 1 START WITH 1;
 
@@ -110,7 +113,7 @@ CREATE TABLE region
 );
 
 
-CREATE TABLE review_comment
+CREATE TABLE rview_comment
 (
 	comment_code number NOT NULL,
 	owner_id varchar2(50) NOT NULL,
@@ -171,7 +174,8 @@ CREATE TABLE wish_list
 	wish_list_code number NOT NULL,
 	user_id varchar2(50) NOT NULL,
 	comment_code number NOT NULL,
-	PRIMARY KEY (wish_list_code)
+	PRIMARY KEY (wish_list_code),
+	CONSTRAINT only_one_comment UNIQUE (user_id, comment_code)
 );
 
 
@@ -226,13 +230,13 @@ ALTER TABLE event_comment
 ;
 
 
-ALTER TABLE event_comment
+ALTER TABLE rview_comment
 	ADD FOREIGN KEY (store_code)
 	REFERENCES stores (store_code)
 ;
 
 
-ALTER TABLE review_comment
+ALTER TABLE event_comment
 	ADD FOREIGN KEY (store_code)
 	REFERENCES stores (store_code)
 ;
@@ -244,19 +248,19 @@ ALTER TABLE stores
 ;
 
 
+ALTER TABLE wish_list
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
 ALTER TABLE coupon
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
 
 
-ALTER TABLE review_comment
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-ALTER TABLE wish_list
+ALTER TABLE rview_comment
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -279,6 +283,16 @@ CREATE OR REPLACE TRIGGER TRI_review_comment_comment_code BEFORE INSERT ON revie
 FOR EACH ROW
 BEGIN
 	SELECT SEQ_review_comment_comment_code.nextval
+	INTO :new.comment_code
+	FROM dual;
+END;
+
+/
+
+CREATE OR REPLACE TRIGGER TRI_rview_comment_comment_code BEFORE INSERT ON rview_comment
+FOR EACH ROW
+BEGIN
+	SELECT SEQ_rview_comment_comment_code.nextval
 	INTO :new.comment_code
 	FROM dual;
 END;
