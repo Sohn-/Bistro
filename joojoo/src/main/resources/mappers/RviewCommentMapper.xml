@@ -3,9 +3,9 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="joojoo.mapper.ReviewCommentMapper">
+<mapper namespace="joojoo.mapper.RviewCommentMapper">
 
-  	<resultMap type="ReviewComment" id="ReviewCommentMap">
+  	<resultMap type="RviewComment" id="RviewCommentMap">
 		
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />		
 		<id column="userId" jdbcType="VARCHAR" property="userId" />		
@@ -34,13 +34,13 @@
 	store_code number NOT NULL,
 	user_id varchar2(20) NOT NULL, -->
 	
-	 <insert id="insertReviewComment" parameterType="ReviewComment">
-		insert into review_comment(comment_code, user_id, title, content, star_point, store_code) 
-		values(#{commentCode}, #{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
+	 <insert id="insertRviewComment" parameterType="RviewComment">
+		insert into rview_comment(user_id, title, content, star_point, store_code) 
+		values(#{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
 	</insert> 
 	
- 	<update id="updateReviewComment" parameterType="ReviewComment">
-		UPDATE review_comment SET
+ 	<update id="updateRviewComment" parameterType="RviewComment">
+		UPDATE rview_comment SET
 		user_id = #{userId},
 		title = #{title},
 		content = #{content},
@@ -49,34 +49,43 @@
 		WHERE comment_code = #{commentCode}
 	</update>
  	
-	<delete id="deleteReviewComment" parameterType="INTEGER">
-		DELETE FROM review_comment
+	<delete id="deleteRviewComment" parameterType="INTEGER">
+		DELETE FROM rview_comment
 		WHERE comment_code = #{commentCode}
 	</delete>
 	
-	<select id= "getReviewCommentsByUserId" parameterType="String"
-						resultMap="ReviewCommentMap">
+	<select id= "getRviewCommentsByUserId" parameterType="String"
+						resultMap="RviewCommentMap">
 		select * 
-		from review_comment 
+		from rview_comment 
+		join stores s using(store_code)
+		join region r using(region_code)
+		join users u using(user_id)
+		join store_type t using(type_code)
+		join owners using(owner_id)	
 		where user_id=#{userId}					
 	</select>
 	
-	<select id= "getReviewCommentsByStoreCode" parameterType="INTEGER"
-						resultMap="ReviewCommentMap">
+	<select id= "getRviewCommentsByStoreCode" parameterType="INTEGER"
+						resultMap="RviewCommentMap">
 		select * 
-		from review_comment 
+		from rview_comment 
+		join stores s using(store_code)
+		join region r using(region_code)
+		join users u using(user_id)
+		join store_type t using(type_code)
+		join owners using(owner_id)	
 		where store_code=#{storeCode}					
 	</select>
 	
-	<select id= "getReviewCommentsBySearchKeyword" parameterType="ReviewComment"
-						resultMap="ReviewCommentMap">
+	<select id= "getRviewCommentsByKeyword" parameterType="RviewComment"
+						resultMap="RviewCommentMap">
 		select * 
-		from review_comment e
+		from rview_comment e
 		join stores s using(store_code)
 		join region r using(region_code)
+		join users u using(user_id)
 		join store_type t using(type_code)
-		<!-- join persons p using(persons_code) -->
-		<!-- join service_type using(service_type_code) -->
 		join owners using(owner_id)	
 		
 		where title like '%${keyword}%'
@@ -86,10 +95,44 @@
 		or owner_name like '%${keyword}%'
 		or region_name like '%${keyword}%'
 		or type_name like '%${keyword}%'
-<!-- 		or persons_level like '%${keyword}%' -->
-		<!-- or service_type_name like '%${keyword}%' -->
 
 	</select> 
+	
+	<select id= "getRviewCommentsByUserName" parameterType="String"
+						resultMap="RviewCommentMap">
+		select * 
+		from rview_comment
+		join stores s using(store_code)
+		join region r using(region_code)
+		join users u using(user_id)
+		join store_type t using(type_code)
+		join owners using(owner_id)	 
+		where user_name=#{userName}					
+	</select>
+	
+	<select id= "getRviewCommentsByContent" parameterType="String"
+						resultMap="RviewCommentMap">
+		select * 
+		from rview_comment
+		join stores s using(store_code)
+		join region r using(region_code)
+		join users u using(user_id)
+		join store_type t using(type_code)
+		join owners using(owner_id)	 
+		where content=#{content}					
+	</select>
+	
+	<select id= "getRviewCommentsByTitle" parameterType="String"
+						resultMap="RviewCommentMap">
+		select * 
+		from rview_comment
+		join stores s using(store_code)
+		join region r using(region_code)
+		join users u using(user_id)
+		join store_type t using(type_code)
+		join owners using(owner_id)	 
+		where title=#{title}					
+	</select>
 	
 	<!-- <insert id="insertEventComment" parameterType="EventComment">
 		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 
