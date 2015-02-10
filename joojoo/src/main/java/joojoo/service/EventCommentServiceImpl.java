@@ -29,9 +29,24 @@ public class EventCommentServiceImpl implements EventCommentService {
 		return dao.getEventCommentsByKeyword(category);
 	}
 
+	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
 	@Override
 	public List<EventComment> SeachByCategory(Category category) {
-		return dao.getEventCommentsByCategory(category);
+		int regionCode = category.getRegionCode();
+		int typeCode = category.getTypeCode();
+		int personsCode = category.getPersonsCode();
+		int serviceTypeCode = category.getServiceTypeCode();
+		
+		List<EventComment> result = null; //select All eventComments
+		
+		if(regionCode != 0 || typeCode != 0 || personsCode != 0 || serviceTypeCode != 0){
+			for(EventComment e : result){
+				if(regionCode == e.get)
+			}
+		}
+		
+		
+		return result;
 	}
 
 	@Override
