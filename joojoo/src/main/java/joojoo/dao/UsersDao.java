@@ -18,6 +18,7 @@ public interface UsersDao {
 	
 	Users getUsersForIdFind(Users user); //아이디찾기용 (잊어버렸을때)
 	Users getUsersForPassWordFind(Users user); //비번찾기용
+	Users getUsersLogin(Users user);
 	
 
 }
