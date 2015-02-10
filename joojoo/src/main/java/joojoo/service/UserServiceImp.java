@@ -1,6 +1,7 @@
 package joojoo.service;
 
 import joojoo.dao.UsersDao;
+import joojoo.entity.Owners;
 import joojoo.entity.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class UserServiceImp implements UserService{
 	UsersDao dao;
 
 	@Override
-	public int addtUser(Users user) {
+	public int addUser(Users user) {
 		int result = dao.insertUser(user);
 		return result;
 	}
@@ -55,11 +56,12 @@ public class UserServiceImp implements UserService{
 	public Users UsersLogin(Users user) {
 		
 		Users result = dao.getUsersByUserId(user.getUserId());
-		if(result.getUserPassword()==user.getUserPassword()){
+		if(result.getUserPassword().equals(user.getUserPassword())){
 			return result;
-		}else{
-			return null;
-		}
+			}else{
+				
+				return null;
+			}
 	}
 
 	@Override

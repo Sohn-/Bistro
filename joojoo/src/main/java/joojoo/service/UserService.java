@@ -6,7 +6,7 @@ import joojoo.entity.Users;
 @Service
 public interface UserService {
 	
-	int addtUser(Users user);//회원가입
+	int addUser(Users user);//회원가입
 	int updateUserInfo(Users user);//회원정보수정
 	int outUser(String userId);//회원탈퇴
 	
