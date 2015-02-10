@@ -84,7 +84,7 @@ public class Stores  {
 		return "Stores [storeCode=" + storeCode + ", storeName=" + storeName
 				+ ", storeAdress=" + storeAdress + ", storePhone=" + storePhone
 				+ ", ownerId=" + ownerId + ", regionCode=" + regionCode
-				+ ", typeCode=" + typeCode + ", starPoint=" + starPoint + "]";
+				+ ", typeCode=" + typeCode + ", starPoint=" + starPoint + "]" +"\n";
 	}
 
 

@@ -2,6 +2,7 @@ package joojoo.service;
 
 import java.util.List;
 
+import joojoo.entity.Category;
 import joojoo.entity.Stores;
 
 public interface StoreService {
@@ -11,5 +12,6 @@ public interface StoreService {
 	boolean deleteStore(int storeCode);
 	
 	List<Stores> showOwnerStores(String ownerId);
-
+	List<Stores> showStoresByCategory(Category category);
+	List<Stores> showStoresBySerchKeyword(Category category);
 }

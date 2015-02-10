@@ -43,6 +43,34 @@
 	
 	</select>
 	
+	<select id = "getStoresByStoreType" resultType="Stores">
+	select *
+	from stores
+	where type_code=#{typeCode}
+	
+	</select>
+	
+	<select id = "getStoresByRegion" resultType="Stores">
+	select *
+	from stores
+	where region_code=#{regionCode}
+	
+	</select>
+	
+	<select id= "getStoresBySearchKeyword" resultType="Stores">
+		select * 
+		from stores s 
+		join store_type t on(s.type_code = t.type_code)
+		join region r on (r.region_code = s.region_code)
+		
+		where r.region_name like '%${keyword}%'
+		or t.type_name like '%${keyword}%'
+		or s.store_name like '%${keyword}%'
+		or s.store_phone like '%${keyword}%'
+		or s.store_adress like '%${keyword}%'
+		
+	</select>
+	
 	
   
 </mapper>

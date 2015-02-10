@@ -2,13 +2,12 @@ package joojoo.dao;
 
 import java.util.List;
 
-
+import joojoo.entity.Category;
+import joojoo.entity.Stores;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import joojoo.entity.Stores;
 
 @Repository
 public class StoreDaoImpl implements StoreDao{
@@ -47,6 +46,27 @@ public class StoreDaoImpl implements StoreDao{
 	public Stores getStoreByStoreCode(int storeCode) {
 		String stmt = nameSpace + "getStoreByStoreCode";
 		Stores result = sqlSession.selectOne(stmt,storeCode);
+		return result;
+	}
+
+	@Override
+	public List<Stores> getStoresByStoreType(int typeCode) {
+		String stmt = nameSpace + "getStoresByStoreType";
+		List<Stores> result = sqlSession.selectList(stmt,typeCode);
+		return result;
+	}
+
+	@Override
+	public List<Stores> getStoresByRegion(int regionCode) {
+		String stmt = nameSpace + "getStoresByRegion";
+		List<Stores> result = sqlSession.selectList(stmt,regionCode);
+		return result;
+	}
+
+	@Override
+	public List<Stores> getStoresBySearchKeyword(Category category) {
+		String stmt = nameSpace + "getStoresBySearchKeyword";
+		List<Stores> result = sqlSession.selectList(stmt,category);
 		return result;
 	}
 	
