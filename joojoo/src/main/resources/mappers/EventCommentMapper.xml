@@ -151,5 +151,19 @@
 		from event_comment
 	</select>
 	
+	 <select id= "getEventCommentsByOwnerId" parameterType="EventComment"
+						resultMap="EventCommentMap">
+		select * 
+		from event_comment e
+		join stores s using(store_code)
+		<!-- join region r using(region_code)
+		join store_type t using(type_code)
+		join persons p using(persons_code)
+		join service_type using(service_type_code)
+		join owners using(owner_id)	 -->
+		 		
+		where owner_id = #{ownerId}			
+	</select>
+	
 
 </mapper>
