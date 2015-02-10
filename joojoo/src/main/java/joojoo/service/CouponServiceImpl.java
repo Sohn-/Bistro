@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Service
 @Transactional(rollbackFor = java.lang.Exception.class)
 public class CouponServiceImpl implements CouponService {
@@ -42,7 +43,7 @@ public class CouponServiceImpl implements CouponService {
 			}
 			break;
 		}
-		return dao.updateCoupon(coupon);
+		return dao.updateCoupon();
 	}
 
 	@Override

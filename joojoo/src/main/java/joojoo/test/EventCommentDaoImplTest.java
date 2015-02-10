@@ -79,7 +79,12 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		//dao.getEventCommentsByCategory(category);
 		
 		
-		dao.getEventCommentsBySearchKeyword(category);
+		//dao.getEventCommentsBySearchKeyword(category);
+		
+		//dao.getEventCommentsByRegionCode(regionCode);
+		//dao.getEventCommentsByServiceTypeCode(serviceTypeCode);
+		//dao.getEventCommentsByPersonsCode(personsCode);
+		//dao.getEventCommentsByServiceTypeCode(serviceTypeCode);
 
 	}
 }

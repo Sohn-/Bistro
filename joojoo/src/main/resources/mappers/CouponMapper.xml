@@ -51,6 +51,13 @@
 		where owner_id=#{ownerId}					
 	</select>
 	
+	<select id= "getCouponsByCommentCode" parameterType="INTEGER"
+						resultMap="CouponMap">
+		select * 
+		from coupon 
+		where comment_code=#{commentCode}					
+	</select>
+	
 	<select id= "getCouponByStatus" parameterType="INTEGER"
 						resultMap="CouponMap">
 		select * 
