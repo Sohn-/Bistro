@@ -71,12 +71,12 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		//dao.deleteEventComment(5);
 		
 		int regionCode = 0;
-		int typeCode = 0;
+		int typeCode = 2;
 		int personsCode = 0;
-		int serviceTypeCode = 0;
+		int serviceTypeCode = 1;
 		String keyword="제목";
 		Category category = new Category(regionCode, typeCode, personsCode, serviceTypeCode, keyword);
-		//dao.getEventCommentsByCategory(category);
+		dao.getEventCommentsByCategory(category);
 		
 		
 		//dao.getEventCommentsByKeyword(category);
@@ -89,8 +89,8 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		//dao.getAllEventComments();
 		//dao.getEventCommentsByOwnerId("sohn");
 		
-		int commentCode = 1;
-		dao.getEventCommentByCommentCode(commentCode);
+		//int commentCode = 1;
+		//dao.getEventCommentByCommentCode(commentCode);
 
 	}
 }

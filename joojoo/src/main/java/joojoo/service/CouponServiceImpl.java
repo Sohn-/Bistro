@@ -1,22 +1,29 @@
 package joojoo.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import joojoo.dao.CouponDao;
+import joojoo.dao.EventCommentDao;
 import joojoo.entity.Coupon;
-import joojoo.entity.Users;
+import joojoo.entity.EventComment;
+import joojoo.test.StoreDaoTest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @Service
 @Transactional(rollbackFor = java.lang.Exception.class)
 public class CouponServiceImpl implements CouponService {
-
+	static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	@Autowired
 	CouponDao dao;
+
+	@Autowired
+	EventCommentDao eventDao;
 
 	@Override
 	public List<Coupon> getCouponsByUserId(String userId) {
@@ -36,32 +43,66 @@ public class CouponServiceImpl implements CouponService {
 	@Override
 	public int buyCoupon(String userId, int comment_code) {
 		List<Coupon> coupons = dao.getCouponsByCommentCode(comment_code);
-
-		for (Coupon coupon : coupons) {
-			if (coupon.getUserId() == null) {
-				coupon.setUserId(userId);
+		Coupon coupon = null;
+		for (Coupon coupon2 : coupons) {
+			if (coupon2.getUserId() == null) {
+				
+				coupon2.setUserId(userId);
+				
+				coupon = coupon2;
+				break;
 			}
-			break;
+			LOG.trace("수업:" + coupon2);
 		}
-		return dao.updateCoupon();
+
+		return dao.updateCoupon(coupon);
 	}
 
 	@Override
-	public int refundCoupon(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int refundCoupon(String couponCode) {
+
+		Coupon coupon = dao.getCouponsByCouponCode(couponCode);
+
+		coupon.setCouponStatusCode(2);
+
+		return dao.updateCoupon(coupon);
 	}
 
 	@Override
-	public int useCoupon(String ownerId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int checkCoupon(String couponCode) {
+		Coupon coupon = dao.getCouponsByCouponCode(couponCode);
+		if (coupon.getCouponCode() == couponCode) {
+			coupon.setCouponStatusCode(1);
+		}
+		return dao.updateCoupon(coupon);
 	}
 
 	@Override
 	public int timeoverCoupon(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
+		Calendar calendar = Calendar.getInstance();
+		java.util.Date date = calendar.getTime();
+
+		List<EventComment> eventComment = eventDao.getAllEventComments();
+		List<Coupon> coupon = null;
+		int result = 0;
+
+		for (EventComment eventComment2 : eventComment) {
+			if (eventComment2.getEndDate().after(date)) {
+				coupon = dao.getCouponsByCommentCode(eventComment2
+						.getCommentCode());
+				for (Coupon coupon2 : coupon) {
+					if (coupon2.getCouponStatusCode() == 0) {
+						coupon2.setCouponStatusCode(3);
+						dao.updateCoupon(coupon2);
+						result++;
+					}
+
+				}
+
+			}
+
+		}
+		return result;
+	}
 }
