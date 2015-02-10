@@ -1,5 +1,7 @@
 package joojoo.dao;
 
+import java.util.List;
+
 import joojoo.entity.WishList;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -42,6 +44,12 @@ public class WishListDaoImpl implements WishListDao{
 	public int deleteWishList(int wishListCode) {
 		String stmt = nameSpace + "deleteWishList";
 		return sqlSession.delete(stmt, wishListCode);
+	}
+
+	@Override
+	public List<WishList> getWishListsByUserId(String userId) {
+		String stmt = nameSpace + "getWishListsByUserId";
+		return sqlSession.selectList(stmt, userId);
 	}
 	
 	

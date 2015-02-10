@@ -16,6 +16,12 @@
   		delete from wish_list where wish_list_code = #{wishListCode}
   	</delete>
   	
+  	<select id = "getWishListsByUserId" resultType="WishList">
+	select *
+	from wish_list
+	where user_id=#{userId}
+	
+	</select>
   
   	
 	

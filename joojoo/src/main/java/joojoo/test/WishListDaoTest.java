@@ -38,14 +38,14 @@ public class WishListDaoTest {
 	public void insertTest(){
 	
 		WishList wishList1 = new WishList();
-		wishList1.setCommentCode(6);
+		wishList1.setCommentCode(4);
 		wishList1.setUserId("user");
 	
-		LOG.trace("드드드드");
 		
 		//dao.insertUser(user);		
-		//LOG.trace("수업1"+dao.insertWishList(wishList1));
-		LOG.trace("수업!"+dao.deleteWishList(1));
+		LOG.trace("수업1"+dao.insertWishList(wishList1));
+		//LOG.trace("수업!"+dao.deleteWishList(1));
+		LOG.trace("수업"+dao.getWishListsByUserId("user"));
 		
 		
 	}

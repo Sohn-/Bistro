@@ -1,0 +1,45 @@
+package joojoo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import joojoo.dao.StoreDao;
+import joojoo.dao.WishListDao;
+import joojoo.entity.WishList;
+//@Transactional(rollbackFor = jdbc.exception.ServiceFailException.class)
+@Service
+public class WishListServiceImpl implements WishListService {
+
+	@Autowired
+	WishListDao dao;
+	
+	@Override
+	public boolean addWishList(WishList wishList) {
+		if( dao.insertWishList(wishList) > 0 )
+			return true;
+		else return false;
+	}
+	
+	@Override
+	public boolean deleteWishList(int wishListCode) {
+		if( dao.deleteWishList(wishListCode) > 0 )
+			return true;
+		else return false;
+	}
+	
+
+
+	@Override
+	public List<WishList> showAllWishList(String userId) {
+		List<WishList> result = dao.getWishListsByUserId(userId);
+		return result;
+	}
+
+
+
+	
+	
+
+}
