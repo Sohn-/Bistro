@@ -87,7 +87,10 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		//dao.getEventCommentsByServiceTypeCode(serviceTypeCode);
 		
 		//dao.getAllEventComments();
-		dao.getEventCommentsByOwnerId("sohn");
+		//dao.getEventCommentsByOwnerId("sohn");
+		
+		int commentCode = 1;
+		dao.getEventCommentByCommentCode(commentCode);
 
 	}
 }
