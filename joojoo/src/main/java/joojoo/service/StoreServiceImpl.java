@@ -2,12 +2,12 @@ package joojoo.service;
 
 import java.util.List;
 
+import joojoo.dao.StoreDao;
+import joojoo.entity.Category;
+import joojoo.entity.Stores;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import joojoo.dao.StoreDao;
-import joojoo.entity.Stores;
 //@Transactional(rollbackFor = jdbc.exception.ServiceFailException.class)
 @Service
 public class StoreServiceImpl implements StoreService {
@@ -26,20 +26,35 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public boolean updateStore(Stores store) {
-		// TODO Auto-generated method stub
-		return false;
+		if( dao.updateStore(store) >0 )
+			return true;
+		else return false;
 	}
 
 	@Override
 	public boolean deleteStore(int storeCode) {
-		// TODO Auto-generated method stub
-		return false;
+		if( dao.deleteStore(storeCode)>0 )
+			return true;
+		else return false;
 	}
 
 	@Override
 	public List<Stores> showOwnerStores(String ownerId) {
-		// TODO Auto-generated method stub
+		List<Stores> result = null;
+		result = dao.getStoresByOwnerId(ownerId);
+		return result;
+	}
+
+	@Override
+	public List<Stores> showStoresByCategory(Category category) {
 		return null;
+	}
+
+	@Override
+	public List<Stores> showStoresBySerchKeyword(Category category) {
+		List<Stores> result = null;
+		result = dao.getStoresBySearchKeyword(category);
+		return result;
 	}
 	
 

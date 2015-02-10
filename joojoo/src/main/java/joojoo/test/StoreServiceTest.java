@@ -1,6 +1,7 @@
 package joojoo.test;
 
-import joojoo.dao.StoreDao;
+
+import joojoo.entity.Category;
 import joojoo.entity.Stores;
 import joojoo.service.StoreService;
 
@@ -25,24 +26,31 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	
 	public static void main(String[] args) {
 		
-		StoreDaoTest test = new StoreDaoTest();
-		test.insertTest();
+		StoreServiceTest test = new StoreServiceTest();
+		test.insertTest2();
 		
 	}
 	
 	
-	public void insertTest(){
+	public void insertTest2(){
 	
 		Stores stores1 = new Stores();
-		stores1.setStoreName("서비스테스트");
-		stores1.setStoreAdress("서울시 광진구");
-		stores1.setStorePhone("02-111-01214");
+		stores1.setStoreName("업뎃한 가게");
+		stores1.setStoreAdress("서울시 강남구");
+		stores1.setStorePhone("00000");
 		stores1.setOwnerId("sohn");
-		stores1.setRegionCode(1);
-		stores1.setTypeCode(2);
+		stores1.setRegionCode(4);
+		stores1.setStoreCode(23);
 		
-		LOG.trace("수업"+service.addStore(stores1));
+		Category c = new Category();
+		c.setRegionCode(1);
+		c.setKeyword("고");
 		
+		//LOG.trace("수업"+service.addStore(stores1));
+		//LOG.trace("수업" +service.updateStore(stores1));
+		//LOG.trace("수업" +service.deleteStore(23));
+		//LOG.trace("수업" +service.showOwnerStores("sohn"));
+		LOG.trace("수업" +service.showStoresBySerchKeyword(c));
 	
 		
 		
