@@ -12,7 +12,7 @@ public interface RviewCommentDao {
 	int insertRviewComment(RviewComment rviewComment);
 	int updateRviewComment(RviewComment rviewComment);
 	int deleteRviewComment(int commentCode);
-	
+	List<RviewComment> getAllRviewComments();
 	List<RviewComment> getRviewCommentsByUserId(String userId);
 	List<RviewComment> getRviewCommentsByStoreCode(int storeCode);
 	List<RviewComment> getRviewCommentsByKeyword(Category category);
@@ -21,6 +21,7 @@ public interface RviewCommentDao {
 	List<RviewComment> getRviewCommentsByUserName(String userName);
 	List<RviewComment> getRviewCommentsByContent(String content);
 	List<RviewComment> getRviewCommentsByTitle(String title);
+	List<RviewComment> getRviewCommentsByStoreName(String storeName);
 
 
 }

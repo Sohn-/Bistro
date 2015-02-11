@@ -100,5 +100,19 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		
 		return result;
 	}
+	@Override
+	public List<EventComment> getEventCommentsByOwnerId(String ownerId) {
+		String statement = nameSpace + "getEventCommentsByOwnerId";
+		List<EventComment> result = sqlSession.selectList(statement, ownerId);
+		
+		return result;
+	}
+	@Override
+	public EventComment getEventCommentByCommentCode(int commentCode) {
+		String statement = nameSpace + "getEventCommentByCommentCode";
+		EventComment result = sqlSession.selectOne(statement, commentCode);
+		
+		return result;
+	}
 
 }

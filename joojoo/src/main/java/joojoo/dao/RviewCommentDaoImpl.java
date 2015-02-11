@@ -3,6 +3,7 @@ package joojoo.dao;
 import java.util.List;
 
 import joojoo.entity.Category;
+import joojoo.entity.EventComment;
 import joojoo.entity.RviewComment;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -91,6 +92,22 @@ public class RviewCommentDaoImpl implements RviewCommentDao{
 	public List<RviewComment> getRviewCommentsByTitle(String title) {
 		String statement = nameSpace + "getRviewCommentsByTitle";
 		List<RviewComment> result = sqlSession.selectList(statement, title);
+		
+		return result;
+	}
+
+	@Override
+	public List<RviewComment> getAllRviewComments() {
+		String statement = nameSpace + "getAllRviewComments";
+		List<RviewComment> result = sqlSession.selectList(statement);
+		
+		return result;
+	}
+
+	@Override
+	public List<RviewComment> getRviewCommentsByStoreName(String storeName) {
+		String statement = nameSpace + "getRviewCommentsByStoreName";
+		List<RviewComment> result = sqlSession.selectList(statement);
 		
 		return result;
 	}

@@ -41,13 +41,13 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 	}
 	
 	public void eventCommentTest() throws ParseException{
-		/*String title = "자바로삽입";
-		String content = "자바로삽입";*/
+		String title = "자바로삽입";
+		String content = "자바로삽입";
 		
 /*		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code)
-		values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, 0, 0);*/
+		values('제목','내용',to_date(sysdate, 'yyyy-mm-dd HH:mm:ss'), to_date(sysdate, 'yyyy-mm-dd'), 1, 0, 0);*/
 		
-/*		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		/*SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String start = "2015-02-09";
 		Date startDate = dateFormat.parse(start);
 		String end = "2015-02-09";
@@ -71,22 +71,26 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		//dao.deleteEventComment(5);
 		
 		int regionCode = 0;
-		int typeCode = 0;
+		int typeCode = 2;
 		int personsCode = 0;
-		int serviceTypeCode = 0;
-		String keyword="자바로삽입";
+		int serviceTypeCode = 1;
+		String keyword="제목";
 		Category category = new Category(regionCode, typeCode, personsCode, serviceTypeCode, keyword);
-		//dao.getEventCommentsByCategory(category);
+		dao.getEventCommentsByCategory(category);
 		
 		
-		//dao.getEventCommentsBySearchKeyword(category);
+		//dao.getEventCommentsByKeyword(category);
 		
 		//dao.getEventCommentsByRegionCode(regionCode);
 		//dao.getEventCommentsByServiceTypeCode(serviceTypeCode);
 		//dao.getEventCommentsByPersonsCode(personsCode);
 		//dao.getEventCommentsByServiceTypeCode(serviceTypeCode);
 		
-		dao.getAllEventComments();
+		//dao.getAllEventComments();
+		//dao.getEventCommentsByOwnerId("sohn");
+		
+		//int commentCode = 1;
+		//dao.getEventCommentByCommentCode(commentCode);
 
 	}
 }

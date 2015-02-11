@@ -55,14 +55,18 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public Users UsersLogin(Users user) {
-		
+
 		Users result = dao.getUsersByUserId(user.getUserId());
-		if(result.getUserPassword().equals(user.getUserPassword())){
-			return result;
-			}else{
-				
-				return null;
+		
+		if (result != null) {
+			if (result.getUserPassword().equals(user.getUserPassword()) == false){
+				result = null;
 			}
+		}else{
+			result = null;
+		}
+		
+		return result;
 	}
 
 	

@@ -1,5 +1,6 @@
 package joojoo.dao;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import joojoo.entity.WishList;

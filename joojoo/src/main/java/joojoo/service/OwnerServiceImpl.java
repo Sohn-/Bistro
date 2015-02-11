@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import joojoo.dao.OwnersDao;
 import joojoo.entity.Owners;
+import joojoo.entity.Users;
 
 @Service
 public class OwnerServiceImpl implements OwnerService {
@@ -66,18 +67,16 @@ public class OwnerServiceImpl implements OwnerService {
 	@Override
 	public Owners OwnersLogin(Owners owner) {
 		Owners result = dao.getOwnersByOwnerId(owner.getOwnerId());
-		logger.trace("수업:"+result.getOwnerPassword());
-		logger.trace("수업:"+owner.getOwnerPassword());
-		if(result.getOwnerPassword().equals(owner.getOwnerPassword())){
-			logger.trace("수업:"+result.getOwnerPassword());
-			logger.trace("수업:"+owner.getOwnerPassword());
-			return result;
-			}else{
-				logger.trace("수업:실패");
-				
-				return null;
+		
+		if (result != null) {
+			if (result.getOwnerPassword().equals(owner.getOwnerPassword()) == false){
+				result = null;
 			}
-	
+		}else{
+			result = null;
+		}
+		
+		return result;
 		
 	}
 
