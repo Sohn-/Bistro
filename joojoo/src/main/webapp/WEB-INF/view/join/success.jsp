@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>메인</h1>
-<c:url value="<%=request.getContextPath() %>/join/join.jsp" var="url"></c:url>
-<a href="${url }"><button>회원가입하기</button> </a>
-
+<h1>  가입에 성공하였습니다. 감사합니다~</h1>
 </body>
 </html>

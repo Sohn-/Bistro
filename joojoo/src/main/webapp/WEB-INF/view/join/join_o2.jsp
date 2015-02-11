@@ -14,18 +14,18 @@
 
       
  
-	<h1>유저 회원가입 페이지</h1>
-	<c:url value="/join/success" var="action"></c:url>
+	<h1>업주 가게등록 페이지</h1>
+	<c:url value="/join/ownerSuccess" var="action"></c:url>
 	 
       
- <form:form  modelAttribute="joinUser" method="post" action="${action} ">
+ <form:form  modelAttribute="joinOwner" method="post" action="${action} ">
    
-      <label>아이디 </label> : <form:input path="userId"/><br>
-     <label>비밀번호 </label> : <form:input path="userPassword"/><br>
-     <label>이름</label> : <form:input path="userName"/><br>
-     <label>메일</label> : <form:input path="userMail"/><br>
-     <label>폰</label> : <form:input path="userPhone"/><br>
-     <form:input type="hidden" value="5" path="chance"/><br>
+      <label>아이디 </label> : <form:input path="ownerId"/><br>
+     <label>비밀번호 </label> : <form:input path="ownerPassword"/><br>
+     <label>이름</label> : <form:input path="ownerName"/><br>
+     <label>메일</label> : <form:input path="ownerMail"/><br>
+     <label>폰</label> : <form:input path="ownerPhone"/><br>
+     <label>사업자등록번호</label> : <form:input path="licenseNumber"/><br>
      
      <button type ="submit" name="proceed">다음</button>
       
