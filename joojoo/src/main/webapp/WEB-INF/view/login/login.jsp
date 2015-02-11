@@ -54,12 +54,12 @@ fieldset .help {
          <form:form modelAttribute="user" method="post" action="${action}">
             <fieldset>
               <div>
-                  <label for="id">아이디</label>
+                  <label>아이디</label>
                   <form:input path= "userId"/> 
                   <!--id = "userid"  title="아이디를 입력하세요." -->
                </div>
                <div>
-                  <label for="passwd">패스워드</label>
+                  <label>패스워드</label>
                    <form:input path= "userPassword" id = "userpasswd" title="비밀번호를 입력하세요."/> 
                </div>
 

@@ -8,6 +8,7 @@ import joojoo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,7 +28,11 @@ public class LoginController {
 	OwnerService ownerService;
 	
 	@RequestMapping(value="login/login")
-	public String showLogin(){
+	public String showLogin(Model model){
+		Users user = new Users();
+		model.addAttribute("user", user);
+		Owners owner = new Owners();
+		model.addAttribute("owner", owner);
 		return "login/login";
 	}
 	
@@ -36,6 +41,7 @@ public class LoginController {
 		Users loginUser;
 		String path = "redirect:/main";
 		
+		logger.error(""+user);
 		loginUser = userService.UsersLogin(user);
 		
 		if(loginUser != null){
