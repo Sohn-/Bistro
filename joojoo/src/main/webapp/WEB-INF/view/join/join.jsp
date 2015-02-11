@@ -9,10 +9,10 @@
 </head>
 <body>
 
-<c:url value="/join/join_u" var="url"></c:url>
+<c:url value="/join/user" var="url"></c:url>
 <a href="${url }"><button>일반회원 가입하기</button> </a>
 
-<c:url value="/join/join_o" var="url"></c:url>
+<c:url value="/join/owner" var="url"></c:url>
 <a href="${url }"><button>업주회원 가입하기</button> </a>
 
 </body>

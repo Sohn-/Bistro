@@ -49,49 +49,74 @@ public class Owners{
 
 
 
+	
+
+
 	public String getOwnerId() {
 		return ownerId;
 	}
+
+
 
 	public void setOwnerId(String ownerId) {
 		this.ownerId = ownerId;
 	}
 
+
+
 	public String getOwnerPassword() {
 		return ownerPassword;
 	}
+
+
 
 	public void setOwnerPassword(String ownerPassword) {
 		this.ownerPassword = ownerPassword;
 	}
 
+
+
 	public String getOwnerName() {
 		return ownerName;
 	}
+
+
 
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
 	}
 
-	public String getOwnrMail() {
+
+
+	public String getOwnerMail() {
 		return ownerMail;
 	}
 
-	public void setOwnrMail(String ownrMail) {
-		this.ownerMail = ownrMail;
+
+
+	public void setOwnerMail(String ownerMail) {
+		this.ownerMail = ownerMail;
 	}
+
+
 
 	public String getOwnerPhone() {
 		return ownerPhone;
 	}
 
+
+
 	public void setOwnerPhone(String ownerPhone) {
 		this.ownerPhone = ownerPhone;
 	}
 
+
+
 	public String getLicenseNumber() {
 		return licenseNumber;
 	}
+
+
 
 	public void setLicenseNumber(String licenseNumber) {
 		this.licenseNumber = licenseNumber;

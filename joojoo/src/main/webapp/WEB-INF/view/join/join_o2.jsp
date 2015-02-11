@@ -19,15 +19,15 @@
 	 
       
  <form:form  modelAttribute="joinStore" method="post" action="${action} ">
-   <%  %>
+   
       <label>가게이름 </label> : <form:input path="storeName"/><br>
      <label>가게주소</label> : <form:input path="storeAdress"/><br>
      <label>가게전화번호</label> : <form:input path="storePhone"/><br>
      <label>region_code</label> : <form:input path="regionCode"/><br>
      <label>type_code</label> : <form:input path="typeCode"/><br>
-   	 <form:input type="hidden" value="ownerId" path="ownerId"/><br>	
-     
-     <button type ="submit" name="proceed">다음</button>
+   	 <form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>	
+   	 
+     <button type ="submit" name="proceed">가입하기</button>
       
 
 </form:form>
