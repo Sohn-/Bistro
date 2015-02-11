@@ -14,7 +14,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <script src="/js/jquery.dropotron.min.js"></script>
 <script src="/js/skel.min.js"></script>
 <script src="/js/skel-layers.min.js"></script>
@@ -23,8 +23,8 @@
 <link rel="stylesheet"   href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
-<link rel="stylesheet" href="/resources/demos/style.css">
+<%-- <link href="<c:url value="/resource/css/style.css"/>" rel="stylesheet"> --%>
+<!-- <link rel="stylesheet" href="/css/style.css"> -->
 <style type="text/css">
 label {
    display: inline-block;
@@ -57,7 +57,7 @@ fieldset .help {
 </head>
 
 <body class="homepage" bgcolor=#333323>
-   <div id="header-wrapper" style="background-image: url()/images/main.jpg)">
+   <div id="header-wrapper" style="background-image: url(/images/main.jpg)">
 
       <div id="header" class="container">
 
@@ -130,8 +130,8 @@ fieldset .help {
 
 
                   <ul>
-                     <li><a class="icon fa-home" href="index.html"><span>아이디/비밀번호찾기</span></a></li>
-                     <li><a href="" class="icon fa-bar-chart-o"><span>회원가입</span></a>
+                     <li><a class="icon fa-home" href="/login/find"><span>아이디/비밀번호찾기</span></a></li>
+                     <li><a class="icon fa-bar-chart-o" href="/join/join" ><span>회원가입</span></a>
                   </ul>
 
                   <div class="row 80%">
