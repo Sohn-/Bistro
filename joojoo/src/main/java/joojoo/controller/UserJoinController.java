@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-
-
 @Controller
 @SessionAttributes("users")
 public class UserJoinController {
@@ -23,8 +21,8 @@ public class UserJoinController {
    @Autowired
    private UserService userService;
    
-   //얘네도 굳이 컨트롤러를 거쳐야 하나...?
-   /*@RequestMapping(value="/join", method=RequestMethod.GET)
+  
+   @RequestMapping(value="/join", method=RequestMethod.GET)
    public String showSelectJoinType(@RequestParam Model model){
       return "join/join";
    
@@ -37,11 +35,10 @@ public class UserJoinController {
    }
    
    
-   */
+   
    
    @RequestMapping(value="/join/join_u", method=RequestMethod.GET)
-   public String showUserJoinPage(@RequestParam Model model){
+   public String showUserJoinPage(){
       return "join/join_u";
-   
    }
 }
