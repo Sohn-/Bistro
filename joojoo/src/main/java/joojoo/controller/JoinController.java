@@ -81,7 +81,8 @@ public class JoinController {
    
    }
    @RequestMapping(value="/join/result/owner", method=RequestMethod.GET)
-   public String showRegistStorePageUpdate(){
+   public String showRegistStorePageUpdate(Model model){
+	   model.addAttribute("joinStore",new Stores());
 	   return "/join/join_o2";
    
    }
@@ -91,6 +92,7 @@ public class JoinController {
    public String showOwnerSuccessPage(@ModelAttribute("joinStore") Stores joinStore
 		   							,HttpSession session,
 		   								Model model,SessionStatus sessionStatus){
+	   
 	   Owners owner = new Owners();
 	   owner =(Owners)session.getAttribute("joinOwner");
 	   
@@ -99,6 +101,14 @@ public class JoinController {
 	   storeService.addStore(joinStore);
 	   sessionStatus.setComplete();
       return "join/success";
+   
+   }
+   
+   @RequestMapping(value="/join/idCheck", method=RequestMethod.GET)
+   public String showIdCheckPage(@ModelAttribute("joinId") String joinId, Model model){
+	
+	   return "join/idConfirm";
+	   
    
    }
    
