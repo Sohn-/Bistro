@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes({"userId","ownerId"})
+@SessionAttributes({"loginUser","loginOwner"})
 //@RequestMapping("/login")
 public class LoginController {
 	static final Logger logger = LoggerFactory
@@ -45,7 +45,7 @@ public class LoginController {
 		loginUser = userService.UsersLogin(user);
 		
 		if(loginUser != null){
-			model.addAttribute("userId", loginUser.getUserId());
+			model.addAttribute("loginUser", loginUser);
 		}
 		else{
 			path = "redirect:/login/loginfail";
@@ -62,7 +62,7 @@ public class LoginController {
 		loginOwner = ownerService.OwnersLogin(owner);
 		
 		if(loginOwner != null){
-			model.addAttribute("ownerId", loginOwner.getOwnerId());
+			model.addAttribute("loginOwner", loginOwner);
 		}
 		else{
 			path = "redirect:/login/loginfail";
