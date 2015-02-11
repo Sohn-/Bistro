@@ -1,4 +1,4 @@
-package joojoo.controller;
+/*package joojoo.controller;
 
 import joojoo.service.UserService;
 
@@ -42,3 +42,4 @@ public class UserJoinController {
       return "join/join_u";
    }
 }
+*/
