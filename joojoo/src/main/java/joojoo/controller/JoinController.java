@@ -50,6 +50,19 @@ public class JoinController {
    
    }
    
+   @RequestMapping(value="/join/result/user", method=RequestMethod.POST)
+   public String showUserSuccessPage(@ModelAttribute Users joinUser,Model model,SessionStatus sessionStatus){
+	   if(userService.addUser(joinUser)>0){
+		   LOG.trace("회원 가입 성공");
+	   }
+	   else{
+		   LOG.trace("회원 가입 실패..");
+	   }
+	   sessionStatus.setComplete();
+      return "join/success";
+   
+   }
+   
    @RequestMapping(value="/join/join_o", method=RequestMethod.GET)
    public String showOwnerJoinPage(Model model){
 	   //Users users = new Users();
@@ -60,19 +73,13 @@ public class JoinController {
    
    @RequestMapping(value="/join/join_o2", method=RequestMethod.POST)
    public String showRegistStorePage(@ModelAttribute Owners joinOwner,Model model){
-	   return "redirect:/join/userSuccess";
+	   return "redirect:/join/join_o2";
    
    }
    
-   @RequestMapping(value="/join/userSuccess", method=RequestMethod.POST)
-   public String showUserSuccessPage(@ModelAttribute Users joinUser,Model model,SessionStatus sessionStatus){
-	   userService.addUser(joinUser);
-	   sessionStatus.setComplete();
-      return "join/success";
+  
    
-   }
-   
-   @RequestMapping(value="/join/ownerSuccess", method=RequestMethod.POST)
+   @RequestMapping(value="/join/result/owner", method=RequestMethod.POST)
    public String showOwnerSuccessPage(@ModelAttribute Owners joinOwner, @ModelAttribute Stores joinStore,
 		   								Model model,SessionStatus sessionStatus){
 	   ownerService.addOwner(joinOwner);
