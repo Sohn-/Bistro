@@ -2,6 +2,7 @@ package joojoo.service;
 
 import joojoo.dao.UsersDao;
 import joojoo.entity.Owners;
+import joojoo.entity.Stores;
 import joojoo.entity.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,8 @@ public class UserServiceImp implements UserService{
 			}
 	}
 
+	
+	
 	@Override
 	public int outUser(String userId) {
 		int result = dao.deleteUser(userId);
