@@ -17,10 +17,10 @@
 	        <property name="suffix" value=".jsp"/>
 	</bean>
 	
-	<mvc:resources location="/resource/css/" mapping="/css/**"/>
-	<mvc:resources location="/resource/fonts/" mapping="/fonts/**"/>
-	<mvc:resources location="/resource/images/" mapping="/images/**"/>
-	<mvc:resources location="/resource/js/" mapping="/js/**"/>
+	<mvc:resources location="/resource/css/" mapping="resource/css/**"/>
+	<mvc:resources location="/resource/fonts/" mapping="resource/fonts/**"/>
+	<mvc:resources location="/resource/images/" mapping="resource/images/**"/>
+	<mvc:resources location="/resource/js/" mapping="resource/js/**"/>
 	
 
 </beans>

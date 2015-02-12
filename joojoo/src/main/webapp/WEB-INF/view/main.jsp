@@ -8,14 +8,14 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="../js/jquery.min.js"></script>
-		<script src="../js/jquery.dropotron.min.js"></script>
-		<script src="../js/skel.min.js"></script>
-		<script src="../js/skel-layers.min.js"></script>
-		<script src="../js/init.js"></script>
-		<link rel="stylesheet" href="../css/skel.css" />
-		<link rel="stylesheet" href="../css/style.css" />
-		<link rel="stylesheet" href="../css/style-desktop.css" />
+		<script src="resource/js/jquery.min.js"></script>
+		<script src="resource/js/jquery.dropotron.min.js"></script>
+		<script src="resource/js/skel.min.js"></script>
+		<script src="resource/js/skel-layers.min.js"></script>
+		<script src="resource/js/init.js"></script>
+		<link rel="stylesheet" href="resource/css/skel.css" />
+		<link rel="stylesheet" href="resource/css/style.css" />
+		<link rel="stylesheet" href="resource/css/style-desktop.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body class="homepage">
@@ -72,7 +72,7 @@
 
 							<!-- Feature -->
 								<section>
-									<a href="#" class="image featured"><img src="../images/pic01.jpg" alt="" /></a>
+									<a href="#" class="image featured"><img src="resource/images/main.jpg" alt="" /></a>
 									<header>
 										<h3>Okay, so what is this?</h3>
 									</header>
@@ -86,7 +86,7 @@
 
 							<!-- Feature -->
 								<section>
-									<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+									<a href="#" class="image featured"><img src="resource/images/pic02.jpg" alt="" /></a>
 									<header>
 										<h3>Nice! What is HTML5 UP?</h3>
 									</header>

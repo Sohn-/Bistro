@@ -1,5 +1,7 @@
 package joojoo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import joojoo.entity.Owners;
 import joojoo.entity.Users;
 import joojoo.service.OwnerService;
@@ -93,24 +95,62 @@ public class LoginController {
 		return "login/find";
 	}
 	
-	@RequestMapping(value="/login/idfind_user", method=RequestMethod.POST)
-	public String findUserId(@ModelAttribute("user") Users user,  Model model){
+	@RequestMapping(value="/login/findprocess", method=RequestMethod.POST)
+	public String findController(@ModelAttribute("user") Users user, @ModelAttribute("owner") Owners owner,
+									HttpServletRequest request,  Model model){
 		Users findUser;
-		String path = "redirect:/login/idsuccess";
+		Owners findOwner;
+		String path = null;
+		String command = request.getParameter("command");
 		
-		findUser = userService.findId(user);
-		
-		if(findUser != null){
-			model.addAttribute("findUserId", findUser.getUserId());
+		if (command.equals("findUserId")) {
+			findUser = userService.findId(user);
+
+			if (findUser != null) {
+				model.addAttribute("findUserId", findUser.getUserId());
+				 path = "redirect:/login/idsuccess";
+			} else {
+				path = "redirect:/login/idfail";
+			}
 		}
-		else{
-			path = "redirect:/login/idfail";
+		else if(command.equals("findUserPassword")){
+			findUser = userService.findPassword(user);
+			
+			if(findUser != null){
+				model.addAttribute("findUserPassword", findUser.getUserPassword());
+				 path = "redirect:/login/passwordsuccess";
+			}
+			else{
+				path = "redirect:/login/passwordfail";
+			}
+		}
+		else if(command.equals("findOwnerId")){
+			findOwner = ownerService.findId(owner);
+			
+			if(findOwner != null){
+				model.addAttribute("findOwnerId", findOwner.getOwnerId());
+				 path = "redirect:/login/idsuccess";
+			}
+			else{
+				path = "redirect:/login/idfail";
+			}
+		}
+		else if(command.equals("findOwnerPassword")){
+			findOwner = ownerService.findPassword(owner);
+			
+			if(findOwner != null){
+				model.addAttribute("findOwnerPassword", findOwner.getOwnerPassword());
+				 path = "redirect:/login/passwordsuccess";
+			}
+			else{
+				path = "redirect:/login/passwordfail";
+			}
 		}
 		
 		return path;	
 	}
 	
-	@RequestMapping(value="/login/passwordfind_user", method=RequestMethod.POST)
+/*	@RequestMapping(value="/login/passwordfind_user", method=RequestMethod.POST)
 	public String findUserPassword(@ModelAttribute("user") Users user,  Model model){
 		Users findUser;
 		String path = "redirect:/login/passwordsuccess";
@@ -159,7 +199,7 @@ public class LoginController {
 		}
 		
 		return path;	
-	}
+	}*/
 	
 	@RequestMapping(value="/login/idfail", method=RequestMethod.GET)
 	public String findIdFail(){
