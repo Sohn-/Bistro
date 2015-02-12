@@ -25,15 +25,16 @@
 		<td><c:out value="${rview.regDate}"></c:out></td>
 		<td><c:out value="${rview.storeCode}"></c:out></td>
 		<td><c:out value="${rview.starPoint}"></c:out></td>
-		<td>
-			
-		</td>
+		
 		</tr>
 	</c:forEach>
 
-
+		
 
 </table>
+
+<c:url value="/review/write" var="url"></c:url>
+<a href="${url }"><button>후기 작성하기</button> </a>
 
 </body>
 </html>

@@ -26,7 +26,7 @@
 		${joinId2 }는 사용가능한 아이디입니다.<br>
 		<input type="button" value="사용" id="use"><br>
 	</c:if>
-	<c:url value="/join/idCheck" var="idchk"></c:url>
+	<c:url value="/join/idCheck2" var="idchk"></c:url>
 	다른 ID로 시도하려면 새로 중복 체크를 하세요.
 	<form action="${idchk}">
 		<label for="joinId2">아이디</label>

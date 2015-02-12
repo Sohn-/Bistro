@@ -2,16 +2,14 @@ package joojoo.controller;
 
 import javax.servlet.http.HttpSession;
 
-
-
 import joojoo.entity.Owners;
+import joojoo.entity.Region;
 import joojoo.entity.Stores;
 import joojoo.entity.Users;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
 import joojoo.service.UserService;
 
-import org.junit.runner.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.method.annotation.SessionAttributesHandler;
 
 
 @Controller
@@ -41,8 +38,7 @@ public class JoinController {
    
    @Autowired
    private StoreService storeService;
-  
-  
+   
    @RequestMapping(value="/join", method=RequestMethod.GET)
    public String showSelectJoinType(){
       return "join/join";
@@ -126,6 +122,12 @@ public class JoinController {
 	   LOG.trace("수업"+owner);
 	   storeService.addStore(joinStore);
 	   sessionStatus.setComplete();
+	   model.addAttribute("joinStore");
+	  /* Stores s = new Stores();
+	   s = (Stores)session.getAttribute("joinStore");
+	   */
+	 
+	   
       return "join/success";
    
    }
