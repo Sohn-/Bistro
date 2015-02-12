@@ -1,10 +1,6 @@
 package joojoo.test;
 
-import java.util.List;
-
-import joojoo.entity.Category;
-import joojoo.entity.EventComment;
-import joojoo.entity.Stores;
+import joojoo.entity.All;
 import joojoo.exception.ServiceFailException;
 import joojoo.service.EventCommentService;
 
@@ -48,7 +44,7 @@ static final Logger logger = LoggerFactory.getLogger(EventCommentServiceTest.cla
 		int commentCode = 1;
 		logger.trace(""+service.SearchOneEvent(commentCode));
 		
-		EventComment eventComment = service.SearchOneEvent(commentCode);
+		All eventComment = service.SearchOneEvent(commentCode);
 		logger.trace("수업:"+eventComment);
 		
 		service.requestDeleteEvent(eventComment);
