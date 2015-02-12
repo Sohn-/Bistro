@@ -50,6 +50,9 @@ fieldset .help {
    width: 100%;
    height: 700px;
 }
+#header{
+	background-image: url(images/main.jpg);
+}
 </style>
 
 <script>
@@ -132,7 +135,7 @@ fieldset .help {
 
 <body class="homepage" bgcolor=#333323>
 
-   <div id="header-wrapper" style="background-image: url(images/main.jpg)">
+   <div id="header-wrapper">
       <div id="header" class="container">
          <!-- Logo -->
          <h1 id="logo"><a href="index.html">JooJooclub</a></h1>
@@ -152,7 +155,7 @@ fieldset .help {
    </div>
 
    <!-- Features -->
-   <div id="features-wrapper" bgcolor=#333323>
+   <div id="features-wrapper">
       <section id="features" class="container"> 
       <nav id="nav">
       <ul>
