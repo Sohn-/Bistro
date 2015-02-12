@@ -29,7 +29,7 @@ public class LoginController {
 	@Autowired
 	OwnerService ownerService;
 	
-	@RequestMapping(value="login/login")
+	@RequestMapping(value="/login")
 	public String showLogin(Model model){
 		Users user = new Users();
 		model.addAttribute("user", user);
@@ -42,15 +42,14 @@ public class LoginController {
 	public String loginCheckUser(@ModelAttribute("user") Users user, Model model){
 		Users loginUser;
 		String path = "redirect:/main";
-		
-		logger.error(""+user);
+
 		loginUser = userService.UsersLogin(user);
 		
 		if(loginUser != null){
 			model.addAttribute("loginUser", loginUser);
 		}
 		else{
-			path = "redirect:/login/loginfail";
+			path = "redirect:/login/login_fail";
 		}
 		
 		return path;	

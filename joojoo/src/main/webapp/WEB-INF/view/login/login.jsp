@@ -11,17 +11,17 @@
 <!-- 버튼부트스트랩 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"  href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/style-desktop.css">
+<link rel="stylesheet"  href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jquery.dropotron.min.js"></script>
-<script src="../js/skel.min.js"></script>
-<script src="../js/skel-layers.min.js"></script>
-<script src="../js/init.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.dropotron.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
+<script src="js/init.js"></script>
 
 
 <link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -58,7 +58,7 @@ fieldset .help {
    });
 </script>
 </head>
-
+<c:url value="<%=request.getContextPath() %>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
    <div id="header-wrapper" style= "background-image: url(images/main.jpg)">
 
@@ -66,15 +66,15 @@ fieldset .help {
 
          <!-- Logo -->
          <h1 id="logo">
-            <a href="index.html">JooJooclub</a>
+            <a href="main">JooJooclub</a>
          </h1>
          <p>Welcom To JooJooClub</p>
          <div align="right">
             <nav id="nav">
             <ul>
-               <li><a class="icon fa-home" href="../main"><span>Home</span></a></li>
-               <li><a class="icon fa-bar-chart-o" href="login/login"><span>Login</span></a>
-               <li><a class="icon fa-cog" href="join/join"><span>Join</span></a></li>
+               <li><a class="icon fa-home" href="main"><span>Home</span></a></li>
+               <li><a class="icon fa-bar-chart-o" href="login"><span>Login</span></a>
+               <li><a class="icon fa-cog" href="join"><span>Join</span></a></li>
                <li><a class="icon fa-retweet" href="info/member"><span>MyPage</span></a></li>
                <li><a class="icon fa-sitemap" href="info/cart"><span>Cart</span></a></li>
             </ul>
@@ -103,8 +103,8 @@ fieldset .help {
                   
                       
                   <ul>
-                     <li><a class="icon fa-home" href="index.html"><span>아이디/비밀번호찾기</span></a></li>
-                     <li><a href="" class="icon fa-bar-chart-o"><span>회원가입</span></a>
+                     <li><a class="icon fa-home" href="login/find"><span>아이디/비밀번호찾기</span></a></li>
+                     <li><a class="icon fa-bar-chart-o" href="join"><span>회원가입</span></a>
                   </ul>
                   
                   
@@ -133,8 +133,8 @@ fieldset .help {
 
 
                   <ul>
-                     <li><a class="icon fa-home" href="/login/find"><span>아이디/비밀번호찾기</span></a></li>
-                     <li><a class="icon fa-bar-chart-o" href="/join/join" ><span>회원가입</span></a>
+                     <li><a class="icon fa-home" href="login/find"><span>아이디/비밀번호찾기</span></a></li>
+                     <li><a class="icon fa-bar-chart-o" href="join/join" ><span>회원가입</span></a>
                   </ul>
 
                   <div class="row 80%">

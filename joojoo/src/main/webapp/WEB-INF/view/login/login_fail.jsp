@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-로그인실패
+로그인실패페이지
 </body>
 </html>
