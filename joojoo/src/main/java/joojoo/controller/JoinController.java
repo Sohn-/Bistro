@@ -117,5 +117,15 @@ public class JoinController {
    
    }
    
-
+   @RequestMapping(value="/join/mailCheck", method=RequestMethod.GET)
+   public String showMailCheckPage(@RequestParam String joinMail, Model model){
+	   Users result = new Users();
+	   result = userService.mailDuplicateCheck(joinMail);
+	   model.addAttribute("result",result);
+	   model.addAttribute("joinMail",joinMail);
+	   return "join/mailConfirm";
+	   
+   
+   }
+   
 }
