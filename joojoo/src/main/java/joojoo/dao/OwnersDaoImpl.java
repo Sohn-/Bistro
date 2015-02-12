@@ -4,6 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import joojoo.entity.All;
 import joojoo.entity.Owners;
 import joojoo.entity.Stores;
 
@@ -35,37 +36,37 @@ public class OwnersDaoImpl implements OwnersDao {
 	}
 
 	@Override
-	public Owners getOwnersByOwnerId(String ownerId) {
+	public All getOwnersByOwnerId(String ownerId) {
 		String stmt = nameSpace + "getOwnersByOwnerId";
-		Owners result = sqlSession.selectOne(stmt,ownerId);
+		All result = sqlSession.selectOne(stmt,ownerId);
 		return result;
 	}
 
 	@Override
-	public Owners getOwnersByOwnerMail(String ownerMail) {
+	public All getOwnersByOwnerMail(String ownerMail) {
 		String stmt = nameSpace + "getOwnersByOwnerMail";
-		Owners result = sqlSession.selectOne(stmt,ownerMail);
+		All result = sqlSession.selectOne(stmt,ownerMail);
 		return result;
 	}
 
 	@Override
-	public Owners getOwnersByLicenseNumber(String licenseNumber) {
+	public All getOwnersByLicenseNumber(String licenseNumber) {
 		String stmt = nameSpace + "getOwnersByLicenseNumber";
-		Owners result = sqlSession.selectOne(stmt,licenseNumber);
+		All result = sqlSession.selectOne(stmt,licenseNumber);
 		return result;
 	}
 
 	@Override
-	public Owners getOwnersForIdFind(Owners owner) {
+	public All getOwnersForIdFind(Owners owner) {
 		String stmt = nameSpace + "getOwnersForIdFind";
-		Owners result = sqlSession.selectOne(stmt,owner);
+		All result = sqlSession.selectOne(stmt,owner);
 		return result;
 	}
 
 	@Override
-	public Owners getOwnersForPassWordFind(Owners owner) {
+	public All getOwnersForPassWordFind(Owners owner) {
 		String stmt = nameSpace + "getOwnersForPassWordFind";
-		Owners result = sqlSession.selectOne(stmt,owner);
+		All result = sqlSession.selectOne(stmt,owner);
 		return result;
 	}
 
