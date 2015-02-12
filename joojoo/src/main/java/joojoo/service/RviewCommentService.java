@@ -2,18 +2,19 @@ package joojoo.service;
 
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.RviewComment;
 import joojoo.entity.Stores;
 
 public interface RviewCommentService {
 	
-	List<RviewComment> SearchAll();
-	List<RviewComment> SearchByUserId(String userId);
-	List<RviewComment> SearchByTitle(String title);
-	List<RviewComment> SearchByContetnt(String content);
-	List<RviewComment> SearchByStoerName(String storeName);
-	List<RviewComment> SearchByKeyword(Category category); 
+	List<All> SearchAll();
+	List<All> SearchByUserId(String userId);
+	List<All> SearchByTitle(String title);
+	List<All> SearchByContetnt(String content);
+	List<All> SearchByStoerName(String storeName);
+	List<All> SearchByKeyword(Category category); 
 	
 	int registRview(RviewComment rviewComment, Stores store); 
 	int modifyRview(RviewComment rviewComment); 

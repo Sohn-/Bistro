@@ -178,8 +178,6 @@ fieldset .help {
          
 
 
-      
-         
          
       </div>
    </div>
@@ -287,64 +285,59 @@ fieldset .help {
                <td style="border: 1px gray solid;">이벤트</td>
             </tr>
          </table>
+         
+         
 
-         <div id="accordion">
+<%-- 
+      <c:forEach items="${depts}" var="dept">
+			<tr>
+				<td><c:out value="${dept.departmentId}" /></td>
+				<td><c:out value="${dept.departmentName}" /></td>
+				<td><c:out value="${dept.managerId}" /></td>
+				<td><c:out value="${dept.locationId} " /></td>				
+				<td>
+					<c:url value="/dept?departmentId=${dept.departmentId}" var="url" /> 
+					<a href="${url}"><button>상세</button></a> 
+					<c:url value="/dept/edit?departmentId=${dept.departmentId}" var="url" /> 
+					<a href="${url}"><button>편집</button></a>
+				</td>			
+			</tr>
+		</c:forEach>
+          --%>
+<!-- 
+	private int storeCode;
+	private String storeName;
+	private String storeAdress;
+	private String storePhone;
+	private String ownerId;
+	private int regionCode;
+	private int typeCode;
+	private int starPoint; -->
+	
+         <div id="accordion">         
+         
+          <c:forEach items="${stores}" var="store">
             <div>
                <table width="90%" align="center" cellpadding="5" cellspacing="0"   border="1" align="center"   style="border-collapse: collapse; border: 1px gray solid;">
                   <tr align="center">
-                     <td style="border: 1px gray solid;">명수비어1</td>
-                     <td style="border: 1px gray solid;">홍대</td>
-                     <td style="border: 1px gray solid;">업종</td>
-                     <td style="border: 1px gray solid;">인원   <td>
-                     <td style="border: 1px gray solid;">이벤트</td>
-                  </tr>
-               </table>
-            </div>
-            
-            <div><p>명수비어 1은 맛있다고 소문남</p></div>
-
-            <div>
-               <table width="90%" align="center" cellpadding="5" cellspacing="0"   border="1" align="center" style="border-collapse: collapse; border: 1px gray solid;">
-                  <tr align="center">
-                     <td style="border: 1px gray solid;">명수비어2</td>
-                     <td style="border: 1px gray solid;">지역</td>
-                     <td style="border: 1px gray solid;">업종</td>
-                     <td style="border: 1px gray solid;">인원<td>
-                     <td style="border: 1px gray solid;">이벤트</td>
+                     <td style="border: 1px gray solid;"><c:out value="${store.storeName}" /></td>
+                     <td style="border: 1px gray solid;"><c:out value="${store.regionCode}" /></td>
+                     <td style="border: 1px gray solid;"><c:out value="${store.typeCode}" /></td>    
                   </tr>
                </table>
             </div>            
-            
-            <div><p>명수비어 1은 맛있다고 소문남</p></div>
-            
             <div>
-               <table width="90%" align="center" cellpadding="5" cellspacing="0"   border="1" align="center" style="border-collapse: collapse; border: 1px gray solid;">
-                  <tr align="center">
-                     <td style="border: 1px gray solid;">명수비어3</td>
-                     <td style="border: 1px gray solid;">지역</td>
-                     <td style="border: 1px gray solid;">업종</td>
-                     <td style="border: 1px gray solid;">인원   <td>
-                     <td style="border: 1px gray solid;">이벤트</td>
-                  </tr>
-               </table>
-            </div>
-            
-            <div> <p>명수비어 1은 맛있다고 소문남</p></div>
-            
-            <div>
-               <table width="90%" align="center" cellpadding="5" cellspacing="0" border="1" align="center" style="border-collapse: collapse; border: 1px gray solid;">
-                  <tr align="center">
-                     <td style="border: 1px gray solid;">명수비어4</td>
-                     <td style="border: 1px gray solid;">지역</td>
-                     <td style="border: 1px gray solid;">업종</td>
-                     <td style="border: 1px gray solid;">인원<td>
-                     <td style="border: 1px gray solid;">이벤트</td>
-                  </tr>
-               </table>               
-            </div>
-            
-            <div><p>명수비어 1은 맛있다고 소문남</p></div>
-         </div>
+            <p><c:out value="${store.storeAdress}"/> </p>
+            </div>    
+            </c:forEach>    
+                     
+         </div>      
+         
+         
+         
+         
+         
+         
       </div>
       </div>
 </body>

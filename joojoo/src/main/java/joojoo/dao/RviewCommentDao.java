@@ -2,6 +2,7 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.RviewComment;
 
@@ -12,16 +13,16 @@ public interface RviewCommentDao {
 	int insertRviewComment(RviewComment rviewComment);
 	int updateRviewComment(RviewComment rviewComment);
 	int deleteRviewComment(int commentCode);
-	List<RviewComment> getAllRviewComments();
-	List<RviewComment> getRviewCommentsByUserId(String userId);
-	List<RviewComment> getRviewCommentsByStoreCode(int storeCode);
-	List<RviewComment> getRviewCommentsByKeyword(Category category);
+	List<All> getAllRviewComments();
+	List<All> getRviewCommentsByUserId(String userId);
+	List<All> getRviewCommentsByStoreCode(int storeCode);
+	List<All> getRviewCommentsByKeyword(Category category);
 	
 	//리뷰커멘트 이름,아이디, 제목, 내용으로 검색하기 기능
-	List<RviewComment> getRviewCommentsByUserName(String userName);
-	List<RviewComment> getRviewCommentsByContent(String content);
-	List<RviewComment> getRviewCommentsByTitle(String title);
-	List<RviewComment> getRviewCommentsByStoreName(String storeName);
+	List<All> getRviewCommentsByUserName(String userName);
+	List<All> getRviewCommentsByContent(String content);
+	List<All> getRviewCommentsByTitle(String title);
+	List<All> getRviewCommentsByStoreName(String storeName);
 
 
 }

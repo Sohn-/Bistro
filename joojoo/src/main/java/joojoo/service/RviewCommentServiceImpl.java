@@ -4,6 +4,7 @@ import java.util.List;
 
 import joojoo.dao.RviewCommentDao;
 import joojoo.dao.StoreDao;
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.RviewComment;
 import joojoo.entity.Stores;
@@ -23,32 +24,32 @@ public class RviewCommentServiceImpl implements RviewCommentService {
 	StoreDao storeDao;
 
 	@Override
-	public List<RviewComment> SearchAll() {
+	public List<All> SearchAll() {
 		return dao.getAllRviewComments();
 	}
 
 	@Override
-	public List<RviewComment> SearchByUserId(String userId) {
+	public List<All> SearchByUserId(String userId) {
 		return dao.getRviewCommentsByUserId(userId);
 	}
 
 	@Override
-	public List<RviewComment> SearchByTitle(String title) {
+	public List<All> SearchByTitle(String title) {
 		return dao.getRviewCommentsByTitle(title);
 	}
 
 	@Override
-	public List<RviewComment> SearchByContetnt(String content) {
+	public List<All> SearchByContetnt(String content) {
 		return dao.getRviewCommentsByContent(content);
 	}
 
 	@Override
-	public List<RviewComment> SearchByStoerName(String storeName) {
+	public List<All> SearchByStoerName(String storeName) {
 		return dao.getRviewCommentsByStoreName(storeName);
 	}
 
 	@Override
-	public List<RviewComment> SearchByKeyword(Category category) {
+	public List<All> SearchByKeyword(Category category) {
 		return dao.getRviewCommentsByKeyword(category);
 	}
 
