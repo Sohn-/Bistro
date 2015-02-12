@@ -2,7 +2,9 @@ package joojoo.entity;
 
 
 public class WishList{
-	
+	private int wishListCode;
+	private String userId;
+	private int commentCode;
 	
 	public WishList(){}
 	public WishList(int wishListCode, String userId, int commentCode) {
@@ -11,11 +13,6 @@ public class WishList{
 		this.userId = userId;
 		this.commentCode = commentCode;
 	}
-	
-	private int wishListCode;
-	private String userId;
-	private int commentCode;
-	
 	
 	public int getWishListCode() {
 		return wishListCode;

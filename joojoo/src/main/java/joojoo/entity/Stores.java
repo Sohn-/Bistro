@@ -2,6 +2,15 @@ package joojoo.entity;
 
 
 public class Stores  {
+	
+	private int storeCode;
+	private String storeName;
+	private String storeAdress;
+	private String storePhone;
+	private String ownerId;
+	private int regionCode;
+	private int typeCode;
+	private int starPoint;
 
 	
 	public Stores(){}	
@@ -19,16 +28,6 @@ public class Stores  {
 		this.typeCode = typeCode;
 		this.starPoint = starPoint;
 	}
-
-	private int storeCode;
-	private String storeName;
-	private String storeAdress;
-	private String storePhone;
-	private String ownerId;
-	private int regionCode;
-	private int typeCode;
-	private int starPoint;
-	
 
 	public int getStoreCode() {
 		return storeCode;
@@ -78,6 +77,7 @@ public class Stores  {
 	public void setStarPoint(int starPoint) {
 		this.starPoint = starPoint;
 	}
+	
 
 	@Override
 	public String toString() {

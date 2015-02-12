@@ -2,6 +2,8 @@ package joojoo.entity;
 
 
 public class StoreType {
+	private int typeCode;
+	private String typeName;
 
 	public StoreType(){}
 	public StoreType(int typeCode, String typeName) {
@@ -9,8 +11,6 @@ public class StoreType {
 		this.typeCode = typeCode;
 		this.typeName = typeName;
 	}
-	private int typeCode;
-	private String typeName;
 	public int getTypeCode() {
 		return typeCode;
 	}

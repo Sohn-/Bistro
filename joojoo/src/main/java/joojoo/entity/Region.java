@@ -3,7 +3,8 @@ package joojoo.entity;
 
 
 public class Region  {
-	
+	private int regionCode;
+	private String regionName;
 	
 	public Region(){}
 	public Region(int regionCode, String regionName) {
@@ -11,8 +12,7 @@ public class Region  {
 		this.regionCode = regionCode;
 		this.regionName = regionName;
 	}
-	private int regionCode;
-	private String regionName;
+	
 	public int getRegionCode() {
 		return regionCode;
 	}
