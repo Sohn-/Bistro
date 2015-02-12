@@ -70,9 +70,9 @@ public class FindController {
 
 			if (findUser != null) {
 				model.addAttribute("findUserId", findUser.getUserId());
-				 path = "redirect:/login/idsuccess";
+				 path = "redirect:/id_success";
 			} else {
-				path = "redirect:/login/idfail";
+				path = "redirect:/id_fail";
 			}
 		}
 		else if(command.equals("findUserPassword")){
@@ -80,10 +80,10 @@ public class FindController {
 			
 			if(findUser != null){
 				model.addAttribute("findUserPassword", findUser.getUserPassword());
-				 path = "redirect:/login/passwordsuccess";
+				 path = "redirect:/password_success";
 			}
 			else{
-				path = "redirect:/login/passwordfail";
+				path = "redirect:/password_fail";
 			}
 		}
 		else if(command.equals("findOwnerId")){
@@ -91,10 +91,10 @@ public class FindController {
 			
 			if(findOwner != null){
 				model.addAttribute("findOwnerId", findOwner.getOwnerId());
-				 path = "redirect:/login/idsuccess";
+				 path = "redirect:/id_success";
 			}
 			else{
-				path = "redirect:/login/idfail";
+				path = "redirect:/id_fail";
 			}
 		}
 		else if(command.equals("findOwnerPassword")){
@@ -102,10 +102,10 @@ public class FindController {
 			
 			if(findOwner != null){
 				model.addAttribute("findOwnerPassword", findOwner.getOwnerPassword());
-				 path = "redirect:/login/passwordsuccess";
+				 path = "redirect:/password_success";
 			}
 			else{
-				path = "redirect:/login/passwordfail";
+				path = "redirect:/password_fail";
 			}
 		}
 		else{
@@ -116,79 +116,27 @@ public class FindController {
 	}
 	
 	
-	
-/*	@RequestMapping(value="/login/passwordfind_user", method=RequestMethod.POST)
-	public String findUserPassword(@ModelAttribute("user") Users user,  Model model){
-		Users findUser;
-		String path = "redirect:/login/passwordsuccess";
-		
-		findUser = userService.findPassword(user);
-		
-		if(findUser != null){
-			model.addAttribute("findUserPassword", findUser.getUserPassword());
-		}
-		else{
-			path = "redirect:/login/passwordfail";
-		}
-		
-		return path;	
-	}
-	
-	@RequestMapping(value="/login/idfind_owner", method=RequestMethod.POST)
-	public String findOwnerId(@ModelAttribute("owner") Owners owner,  Model model){
-		Owners findOwner;
-		String path = "redirect:/login/idsuccess";
-		
-		findOwner = ownerService.findId(owner);
-		
-		if(findOwner != null){
-			model.addAttribute("findOwnerId", findOwner.getOwnerId());
-		}
-		else{
-			path = "redirect:/login/idfail";
-		}
-		
-		return path;	
-	}
-	
-	@RequestMapping(value="/login/passwordfind_owner", method=RequestMethod.POST)
-	public String findOwnerPassword(@ModelAttribute("owner") Owners owner,  Model model){
-		Owners findOwner;
-		String path = "redirect:/login/idsuccess";
-		
-		findOwner = ownerService.findPassword(owner);
-		
-		if(findOwner != null){
-			model.addAttribute("findOwnerPassword", findOwner.getOwnerPassword());
-		}
-		else{
-			path = "redirect:/login/passwordfail";
-		}
-		
-		return path;	
-	}*/
-	
-	@RequestMapping(value="/idfail", method=RequestMethod.GET)
+	@RequestMapping(value="/id_fail", method=RequestMethod.GET)
 	public String findIdFail(){
 		
-		return "login/idfail";
+		return "login/id_fail";
 	}
 	
-	@RequestMapping(value="/passwordfail", method=RequestMethod.GET)
+	@RequestMapping(value="/password_fail", method=RequestMethod.GET)
 	public String findPasswordloginFail(){
 		
-		return "login/passwordfail";
+		return "login/password_fail";
 	}
 	
-	@RequestMapping(value="/idsuccess", method=RequestMethod.GET)
-	public String findIdSuccess(){
-		
-		return "login/idsuccess";
+	@RequestMapping(value="/id_success", method=RequestMethod.GET)
+	public String findIdSuccess(Model model){
+
+		return "login/id_success";
 	}
 	
-	@RequestMapping(value="/passwordsuccess", method=RequestMethod.GET)
+	@RequestMapping(value="/password_success", method=RequestMethod.GET)
 	public String findPasswordSuccess(){
 		
-		return "login/passwordsuccess";
+		return "login/password_success";
 	}
 }
