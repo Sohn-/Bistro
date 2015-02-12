@@ -47,7 +47,7 @@ public class SearchController {
 		model.addAttribute("search_events", events);
 		List<Stores> stores = storeService.showStoresBySerchKeyword(category);
 		model.addAttribute("search_stores", stores);
-		return "redirect:/main";
+		return "redirect:/search/search";
 	}
 	
 	@RequestMapping(value="/main/category", method=RequestMethod.POST)
@@ -57,6 +57,6 @@ public class SearchController {
 		model.addAttribute("search_events", events);
 		List<Stores> stores = storeService.showStoresByCategory(category);
 		model.addAttribute("search_stores", stores);
-		return "redirect:/main";
+		return "redirect:/search/search";
 	}
 }
