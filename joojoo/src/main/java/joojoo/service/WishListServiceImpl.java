@@ -3,6 +3,7 @@ package joojoo.service;
 import java.util.List;
 
 import joojoo.dao.WishListDao;
+import joojoo.entity.All;
 import joojoo.entity.WishList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class WishListServiceImpl implements WishListService {
 
 
 	@Override
-	public List<WishList> showAllWishList(String userId) {
-		List<WishList> result = dao.getWishListsByUserId(userId);
+	public List<All> showAllWishList(String userId) {
+		List<All> result = dao.getWishListsByUserId(userId);
 		return result;
 	}
 

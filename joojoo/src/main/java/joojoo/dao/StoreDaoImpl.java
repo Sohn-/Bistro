@@ -2,6 +2,7 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.Stores;
 
@@ -36,51 +37,51 @@ public class StoreDaoImpl implements StoreDao{
 	}
 
 	@Override
-	public List<Stores> getStoresByOwnerId(String ownerId) {
+	public List<All> getStoresByOwnerId(String ownerId) {
 		String stmt = nameSpace + "getStoresByOwnerId";
-		List<Stores> result = sqlSession.selectList(stmt,ownerId);
+		List<All> result = sqlSession.selectList(stmt,ownerId);
 		return result;
 	}
 
 	@Override
-	public Stores getStoreByStoreCode(int storeCode) {
+	public All getStoreByStoreCode(int storeCode) {
 		String stmt = nameSpace + "getStoreByStoreCode";
-		Stores result = sqlSession.selectOne(stmt,storeCode);
+		All result = sqlSession.selectOne(stmt,storeCode);
 		return result;
 	}
 
 	@Override
-	public List<Stores> getStoresByStoreType(int typeCode) {
+	public List<All> getStoresByStoreType(int typeCode) {
 		String stmt = nameSpace + "getStoresByStoreType";
-		List<Stores> result = sqlSession.selectList(stmt,typeCode);
+		List<All> result = sqlSession.selectList(stmt,typeCode);
 		return result;
 	}
 
 	@Override
-	public List<Stores> getStoresByRegion(int regionCode) {
+	public List<All> getStoresByRegion(int regionCode) {
 		String stmt = nameSpace + "getStoresByRegion";
-		List<Stores> result = sqlSession.selectList(stmt,regionCode);
+		List<All> result = sqlSession.selectList(stmt,regionCode);
 		return result;
 	}
 
 	@Override
-	public List<Stores> getStoresBySearchKeyword(Category category) {
+	public List<All> getStoresBySearchKeyword(Category category) {
 		String stmt = nameSpace + "getStoresBySearchKeyword";
-		List<Stores> result = sqlSession.selectList(stmt,category);
+		List<All> result = sqlSession.selectList(stmt,category);
 		return result;
 	}
 
 	@Override
-	public List<Stores> getStoresByCategory(Category category) {
+	public List<All> getStoresByCategory(Category category) {
 		String stmt = nameSpace + "getStoresByCategory";
-		List<Stores> result = sqlSession.selectList(stmt,category);
+		List<All> result = sqlSession.selectList(stmt,category);
 		return result;
 	}
 
 	@Override
-	public List<Stores> getAllStore() {
+	public List<All> getAllStore() {
 		String stmt = nameSpace + "getAllStore";
-		List<Stores> result = sqlSession.selectList(stmt);
+		List<All> result = sqlSession.selectList(stmt);
 		return result;
 	}
 	
