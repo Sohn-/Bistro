@@ -69,7 +69,7 @@ public class RviewCommentDaoImplTest {
 		String typeName = "고깃집"; 
 		String personsLevel = "4명이하"; 
 		String serviceTypeName = "서비스 메뉴 제공"; 
-		String keyword="변경됨"; 
+		String keyword="내"; 
 		Category category = new Category(regionName, typeName, personsLevel, serviceTypeName, keyword);
 		 
 

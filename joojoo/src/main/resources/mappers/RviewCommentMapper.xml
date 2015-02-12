@@ -107,7 +107,7 @@
 		join users u using(user_id)
 		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where user_name=#{userName}					
+		where user_name like '%${userName}%'					
 	</select>
 	
 	<select id= "getRviewCommentsByContent" parameterType="String"
@@ -119,7 +119,7 @@
 		join users u using(user_id)
 		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where content=#{content}					
+		where content like '%${content}%'					
 	</select>
 	
 	<select id= "getRviewCommentsByTitle" parameterType="String"
@@ -131,7 +131,7 @@
 		join users u using(user_id)
 		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where title=#{title}					
+		where title like '%${title}%'					
 	</select>
 	
 	<select id= "getAllRviewComments" resultMap="RviewCommentMap">
@@ -147,6 +147,6 @@
 		join users u using(user_id)
 		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where store_name=#{store_name}	
+		where store_name like '%${store_name}%'	
 	</select>
 </mapper>
