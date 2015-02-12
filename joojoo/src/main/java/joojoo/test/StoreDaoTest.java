@@ -41,8 +41,8 @@ public class StoreDaoTest {
 		stores1.setStoreAdress("서울시 노원구");
 		stores1.setStorePhone("021");
 		stores1.setOwnerId("sohn");
-		stores1.setRegionCode(4);
-		stores1.setTypeCode(2);
+		stores1.setRegionName("홍대");
+		stores1.setTypeName("바");
 		
 		Category c = new Category();
 		//c.setKeyword("서울");

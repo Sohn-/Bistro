@@ -55,7 +55,7 @@ values('user', '1234', '유저', '유저e-mail', '유저폰010', 5);
 insert into stores(store_name, store_adress, store_phone, owner_id, region_name, type_name)
 values('가게이름','가게주소','가게번호','sohn','강남', '고깃집');
 
-insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code)
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
 values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, '4명이하', '서비스 메뉴 제공');
 
 insert into rview_comment(title, content, user_id, star_point, store_code)
