@@ -57,7 +57,7 @@
 		where comment_code=#{commentCode}					
 	</select>
 	
-	<select id= "getCouponByStatus" parameterType="INTEGER"
+	<select id= "getCouponByStatus" parameterType="String"
 						resultType="All">
 		select * 
 		from coupon 

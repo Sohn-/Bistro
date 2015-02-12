@@ -16,6 +16,6 @@ public interface CouponDao {
 	List<All> getCouponsByUserId(String userId);
 	List<All> getCouponsByOwnerId(String ownerId);
 	List<All> getCouponsByCommentCode(int commentCode);
-	List<All> getCouponsByStatus(int couponStatusCode);
+	List<All> getCouponsByStatus(String couponStatus);
 
 }
