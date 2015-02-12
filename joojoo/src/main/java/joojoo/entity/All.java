@@ -394,7 +394,6 @@ public class All {
 				+ ", personsCode=" + personsCode + ", serviceTypeCode="
 				+ serviceTypeCode + ", keyword=" + keyword + ", couponCode="
 				+ couponCode + ", ownerId=" + ownerId + ", userId=" + userId
-<<<<<<< HEAD
 				+"\n"+ ", commentCode=" + commentCode + ", couponStatusCode="
 				+ couponStatusCode + ", couponStatus=" + couponStatus
 				+ ", title=" + title + ", content=" + content + ", regDate="
@@ -410,23 +409,6 @@ public class All {
 				+ storePhone + ", typeName=" + typeName + ", userPassword="
 				+ userPassword + ", userName=" + userName + ", userMail="
 				+"\n"+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
-=======
-				+ ", commentCode=" + commentCode + ", couponStatusCode="
-				+ couponStatusCode + ", couponStatus=" + couponStatus
-				+ ", title=" + title + ", content=" + content + ", regDate="
-				+ regDate + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", storeCode=" + storeCode + ", deleteRequest="
-				+ deleteRequest + ", ownerPassword=" + ownerPassword
-				+ ", ownerName=" + ownerName + ", ownerMail=" + ownerMail
-				+ ", ownerPhone=" + ownerPhone + ", licenseNumber="
-				+ licenseNumber + ", personsLevel=" + personsLevel
-				+ ", regionName=" + regionName + ", starPoint=" + starPoint
-				+ ", serviceTypeName=" + serviceTypeName + ", storeName="
-				+ storeName + ", storeAdress=" + storeAdress + ", storePhone="
-				+ storePhone + ", typeName=" + typeName + ", userPassword="
-				+ userPassword + ", userName=" + userName + ", userMail="
-				+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
->>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 				+ ", wishListCode=" + wishListCode + "]";
 	}
 	
