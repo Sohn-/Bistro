@@ -36,11 +36,12 @@ public class SearchController {
 		model.addAttribute("category", category);
 		
 		List<EventComment> events = eventService.SeachAllEvent();
-		model.addAttribute("events",events);
-		List<Stores> stores = storeService.
+		model.addAttribute("events", events);
+		List<Stores> stores = storeService.showAllStore();
+		model.addAttribute("stores", stores);
 		return "main";
 	}
-	@RequestMapping(value="/main", method=RequestMethod.GET)
+	@RequestMapping(value="/main2", method=RequestMethod.GET)
 	public String showSearchResult(@ModelAttribute("category") Category category, Model model){
 		return null;
 	}
