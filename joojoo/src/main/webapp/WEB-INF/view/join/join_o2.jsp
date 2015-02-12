@@ -25,9 +25,9 @@
    	<h1>가게를 등록 해 주세요!</h1>
    	<h3>가게 이름</h3><form:input path="storeName"  placeholder="상호명" required="true"/>
     <h3>가게 전화</h3><form:input path="storePhone"  placeholder="전화번호" required="true"/>
-    <h3>region_code</h3><form:input path="regionCode" required="true"/>
+    <h3>region_code</h3><form:input path="regionName" required="true"/>
     <h3>가게 주소</h3><form:input path="storeAdress"  placeholder="상세주소" required="true"/>
-    <h3>업종 선택</h3><form:input path="typeCode" required="true"/>
+    <h3>업종 선택</h3><form:input path="typeName" required="true"/>
     <form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>
     
        <h3>비밀번호 확인</h3>

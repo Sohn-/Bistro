@@ -10,8 +10,8 @@
 </head>
 <body>
 <h1>  가입에 성공하였습니다. 감사합니다~</h1>
-<c:out value="${joinStore.regionCode}"></c:out>
-<c:out value="${regionName}"></c:out>
+<c:out value="${joinStore.regionName}"></c:out>
+
 
 </body>
 </html>
