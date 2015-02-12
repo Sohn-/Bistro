@@ -66,7 +66,7 @@ public class LoginController {
 			model.addAttribute("loginOwner", loginOwner);
 		}
 		else{
-			path = "redirect:/login/loginfail";
+			path = "redirect:/login/login_fail";
 		}
 		
 		return path;	
@@ -84,7 +84,7 @@ public class LoginController {
 		return "login/login_fail";
 	}
 	
-	@RequestMapping(value="/login/find")
+	@RequestMapping(value="/find")
 	public String showFind(Model model){
 		Users user = new Users();
 		model.addAttribute("user", user);
@@ -148,6 +148,8 @@ public class LoginController {
 		
 		return path;	
 	}
+	
+	
 	
 /*	@RequestMapping(value="/login/passwordfind_user", method=RequestMethod.POST)
 	public String findUserPassword(@ModelAttribute("user") Users user,  Model model){

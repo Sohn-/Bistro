@@ -103,7 +103,7 @@ fieldset .help {
                   
                       
                   <ul>
-                     <li><a class="icon fa-home" href="login/find"><span>아이디/비밀번호찾기</span></a></li>
+                     <li><a class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
                      <li><a class="icon fa-bar-chart-o" href="join"><span>회원가입</span></a>
                   </ul>
                   
@@ -133,7 +133,7 @@ fieldset .help {
 
 
                   <ul>
-                     <li><a class="icon fa-home" href="login/find"><span>아이디/비밀번호찾기</span></a></li>
+                     <li><a class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
                      <li><a class="icon fa-bar-chart-o" href="join/join" ><span>회원가입</span></a>
                   </ul>
 
