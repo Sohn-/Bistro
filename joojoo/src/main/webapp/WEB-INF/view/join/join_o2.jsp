@@ -16,7 +16,7 @@
 </script>
 
 
-
+<img src="<%=request.getContextPath()%>/css/Penguins.jpg">
 </head>
 <body>
 
