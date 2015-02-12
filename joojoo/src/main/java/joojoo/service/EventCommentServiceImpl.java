@@ -55,12 +55,12 @@ public class EventCommentServiceImpl implements EventCommentService {
 	}
 
 	@Override
-	public int modifyEvent(EventComment eventComment) {
+	public int modifyEvent(All eventComment) {
 		return dao.updateEventComment(eventComment);
 	}
 
 	@Override
-	public int requestDeleteEvent(EventComment eventComment) {
+	public int requestDeleteEvent(All eventComment) {
 		eventComment.setDeleteRequest("삭제요청되었습니다.");
 		return dao.updateEventComment(eventComment);
 	}

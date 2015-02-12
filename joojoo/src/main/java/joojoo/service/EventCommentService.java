@@ -14,8 +14,8 @@ public interface EventCommentService {
 	List<All> SeachAllEvent(); //모든 이벤트 검색
 	List<All> SeachMyEvent(String ownerId); //업주회원 내 이벤트 조회
 	int registEvent(EventComment eventComment, Stores store); //업주회원 마이페이지 이벤트 등록
-	int modifyEvent(EventComment eventComment); //업주회원 마이페이지 이벤트 수정
-	int requestDeleteEvent(EventComment eventComment); //업주회원 마이페이지 삭제 요청
+	int modifyEvent(All eventComment); //업주회원 마이페이지 이벤트 수정
+	int requestDeleteEvent(All eventComment); //업주회원 마이페이지 삭제 요청
 	All SearchOneEvent(int commentCode); //이벤트 하나 상세 조회	
 	
 

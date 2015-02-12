@@ -11,7 +11,7 @@ import joojoo.entity.EventComment;
 public interface EventCommentDao {
 	
 	int insertEventComment(EventComment eventComment);
-	int updateEventComment(EventComment eventComment);
+	int updateEventComment(All eventComment);
 	int deleteEventComment(int commentCode);
 	
 	List<All> getEventCommentsByOwnerId(String ownerId);
