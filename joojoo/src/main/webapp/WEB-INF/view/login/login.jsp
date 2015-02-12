@@ -14,11 +14,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery.dropotron.min.js"></script>
-<script src="/js/skel.min.js"></script>
-<script src="/js/skel-layers.min.js"></script>
-<script src="/js/init.js"></script>
+<script src="resource/js/jquery.min.js"></script>
+<script src="resource/js/jquery.dropotron.min.js"></script>
+<script src="resource/js/skel.min.js"></script>
+<script src="resource/js/skel-layers.min.js"></script>
+<script src="resource/js/init.js"></script>
 
 <link rel="stylesheet"   href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -57,7 +57,7 @@ fieldset .help {
 </head>
 
 <body class="homepage" bgcolor=#333323>
-   <div id="header-wrapper" style= "background-image: url(/images/main.jpg)">
+   <div id="header-wrapper" style= "background-image: resource/images/main.jpg">
 
       <div id="header" class="container">
 
