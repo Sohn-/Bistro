@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import joojoo.entity.All;
 import joojoo.entity.Owners;
 import joojoo.entity.Stores;
 import joojoo.entity.Users;
@@ -37,31 +38,31 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public Users getUsersByUserId(String userId) {//아이디중복체크
+	public All getUsersByUserId(String userId) {//아이디중복체크
 		String stmt = nameSpace + "getUsersByUserId";
-		Users result = sqlSession.selectOne(stmt,userId);
+		All result = sqlSession.selectOne(stmt,userId);
 		return result;
 		
 	}
 
 	@Override
-	public Users getUsersByUserMail(String userMail) {//메일중복체크
+	public All getUsersByUserMail(String userMail) {//메일중복체크
 		String stmt = nameSpace + "getUsersByUserMail";
-		Users result = sqlSession.selectOne(stmt,userMail);
+		All result = sqlSession.selectOne(stmt,userMail);
 		return result;
 	}
 
 	@Override
-	public Users getUsersForIdFind(Users user) {//아이디찾기 (메일, 이름) 
+	public All getUsersForIdFind(Users user) {//아이디찾기 (메일, 이름) 
 		String stmt = nameSpace + "getUsersForIdFind";
-		Users result = sqlSession.selectOne(stmt,user);
+		All result = sqlSession.selectOne(stmt,user);
 		return result;
 	}
 
 	@Override
-	public Users getUsersForPassWordFind(Users user) {//비밀번호찾기(메일,이름,아이디)
+	public All getUsersForPassWordFind(Users user) {//비밀번호찾기(메일,이름,아이디)
 		String stmt = nameSpace + "getUsersForPassWordFind";
-		Users result = sqlSession.selectOne(stmt,user);
+		All result = sqlSession.selectOne(stmt,user);
 		return result;
 	}
 

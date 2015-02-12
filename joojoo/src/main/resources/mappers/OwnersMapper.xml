@@ -24,20 +24,20 @@
   	where owner_id=#{ownerId}
   	</delete>
   	
-  	<select id = "getOwnersByOwnerId" resultType="Owners">
+  	<select id = "getOwnersByOwnerId" resultType="All">
 	select *
 	from owners
 	where owner_id=#{ownerId}
 	</select>
   	
-  	<select id = "getOwnersByOwnerMail" resultType="Owners">
+  	<select id = "getOwnersByOwnerMail" resultType="All">
 	select *
 	from owners
 	where owner_mail=#{ownerMail}
 	
 	</select>
 	
-	<select id = "getOwnersByLicenseNumber" resultType="Owners">
+	<select id = "getOwnersByLicenseNumber" resultType="All">
 	select *
 	from owners
 	where license_number=#{licenseNumber} 
@@ -45,14 +45,14 @@
 	</select>
 	
 	
-	<select id = "getOwnersForIdFind" resultType="Owners">
+	<select id = "getOwnersForIdFind" resultType="All">
 	select *
 	from owners
 	where owner_mail=#{ownerMail} and owner_name=#{ownerName} and license_number=#{licenseNumber}
 	
 	</select>
 	
-	<select id = "getOwnersForPassWordFind" resultType="Owners">
+	<select id = "getOwnersForPassWordFind" resultType="All">
 	select *
 	from owners
 	where owner_mail=#{ownerMail} and owner_name=#{ownerName} and owner_id=#{ownerId}
