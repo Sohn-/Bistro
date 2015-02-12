@@ -2,8 +2,8 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.Category;
-import joojoo.entity.EventComment;
 import joojoo.entity.RviewComment;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -49,65 +49,65 @@ public class RviewCommentDaoImpl implements RviewCommentDao{
 	}
 
 	@Override
-	public List<RviewComment> getRviewCommentsByUserId(String userId) {
+	public List<All> getRviewCommentsByUserId(String userId) {
 		String statement = nameSpace + "getRviewCommentsByUserId";
-		List<RviewComment> result = sqlSession.selectList(statement, userId);
+		List<All> result = sqlSession.selectList(statement, userId);
 		
 		return result;
 	}
 
 	@Override
-	public List<RviewComment> getRviewCommentsByStoreCode(int storeCode) {
+	public List<All> getRviewCommentsByStoreCode(int storeCode) {
 		String statement = nameSpace + "getRviewCommentsByStoreCode";
-		List<RviewComment> result = sqlSession.selectList(statement, storeCode);
+		List<All> result = sqlSession.selectList(statement, storeCode);
 		
 		return result;
 	}
 
 	@Override
-	public List<RviewComment> getRviewCommentsByKeyword(Category category) {
+	public List<All> getRviewCommentsByKeyword(Category category) {
 		String statement = nameSpace + "getRviewCommentsByKeyword";
-		List<RviewComment> result = sqlSession.selectList(statement, category);
+		List<All> result = sqlSession.selectList(statement, category);
 		
 		return result;
 	}
 
 	@Override
-	public List<RviewComment> getRviewCommentsByUserName(String userName) {
+	public List<All> getRviewCommentsByUserName(String userName) {
 		String statement = nameSpace + "getRviewCommentsByUserName";
-		List<RviewComment> result = sqlSession.selectList(statement, userName);
+		List<All> result = sqlSession.selectList(statement, userName);
 		
 		return result;
 	}
 
 	@Override
-	public List<RviewComment> getRviewCommentsByContent(String content) {
+	public List<All> getRviewCommentsByContent(String content) {
 		String statement = nameSpace + "getRviewCommentsByContent";
-		List<RviewComment> result = sqlSession.selectList(statement, content);
+		List<All> result = sqlSession.selectList(statement, content);
 		
 		return result;
 	}
 
 	@Override
-	public List<RviewComment> getRviewCommentsByTitle(String title) {
+	public List<All> getRviewCommentsByTitle(String title) {
 		String statement = nameSpace + "getRviewCommentsByTitle";
-		List<RviewComment> result = sqlSession.selectList(statement, title);
+		List<All> result = sqlSession.selectList(statement, title);
 		
 		return result;
 	}
 
 	@Override
-	public List<RviewComment> getAllRviewComments() {
+	public List<All> getAllRviewComments() {
 		String statement = nameSpace + "getAllRviewComments";
-		List<RviewComment> result = sqlSession.selectList(statement);
+		List<All> result = sqlSession.selectList(statement);
 		
 		return result;
 	}
 
 	@Override
-	public List<RviewComment> getRviewCommentsByStoreName(String storeName) {
+	public List<All> getRviewCommentsByStoreName(String storeName) {
 		String statement = nameSpace + "getRviewCommentsByStoreName";
-		List<RviewComment> result = sqlSession.selectList(statement);
+		List<All> result = sqlSession.selectList(statement);
 		
 		return result;
 	}

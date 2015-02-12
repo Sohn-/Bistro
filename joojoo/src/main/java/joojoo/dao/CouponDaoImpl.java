@@ -2,6 +2,7 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.Coupon;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -30,7 +31,7 @@ public class CouponDaoImpl implements CouponDao{
 	}
 
 	@Override
-	public int updateCoupon(Coupon coupon) {
+	public int updateCoupon(All coupon) {
 		String statement = nameSpace + "updateCoupon";
 		int result = sqlSession.update(statement, coupon);
 		
@@ -48,41 +49,41 @@ public class CouponDaoImpl implements CouponDao{
 	}
 
 	@Override
-	public List<Coupon> getCouponsByUserId(String userId) {
+	public List<All> getCouponsByUserId(String userId) {
 		String statement = nameSpace + "getCouponByUserId";
-		List<Coupon> result = sqlSession.selectList(statement, userId);
+		List<All> result = sqlSession.selectList(statement, userId);
 		
 		return result;
 	}
 
 	@Override
-	public List<Coupon> getCouponsByOwnerId(String ownerId) {
+	public List<All> getCouponsByOwnerId(String ownerId) {
 		String statement = nameSpace + "getCouponByOwnerId";
-		List<Coupon> result = sqlSession.selectList(statement, ownerId);
+		List<All> result = sqlSession.selectList(statement, ownerId);
 		
 		return result;
 	}
 	
 	@Override
-	public List<Coupon> getCouponsByCommentCode(int commentCode) {
+	public List<All> getCouponsByCommentCode(int commentCode) {
 		String statement = nameSpace + "getCouponsByCommentCode";
-		List<Coupon> result = sqlSession.selectList(statement, commentCode);
+		List<All> result = sqlSession.selectList(statement, commentCode);
 		
 		return result;
 	}
 
 	@Override
-	public List<Coupon> getCouponsByStatus(int couponStatusCode) {
+	public List<All> getCouponsByStatus(int couponStatusCode) {
 		String statement = nameSpace + "getCouponByStatus";
-		List<Coupon> result = sqlSession.selectList(statement, couponStatusCode);
+		List<All> result = sqlSession.selectList(statement, couponStatusCode);
 		
 		return result;
 	}
 
 	@Override
-	public Coupon getCouponsByCouponCode(String couponCode) {
+	public All getCouponsByCouponCode(String couponCode) {
 		String statement = nameSpace + "getCouponsByCouponCode";
-		Coupon result = sqlSession.selectOne(statement, couponCode);
+		All result = sqlSession.selectOne(statement, couponCode);
 		
 		return result;
 	}

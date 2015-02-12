@@ -22,7 +22,7 @@
 		values(#{couponCode},#{ownerId},#{userId},#{commentCode}, #{couponStatusCode})	
 	</insert> 
  
- 	<update id="updateCoupon" parameterType="Coupon">
+ 	<update id="updateCoupon" parameterType="All">
 		UPDATE Coupon SET
 		owner_id = #{ownerId},
 		user_id = #{userId},
@@ -37,35 +37,35 @@
 	</delete>
 	
 	<select id= "getCouponByUserId" parameterType="String"
-						resultMap="CouponMap">
+						resultType="All">
 		select * 
 		from Coupon 
 		where user_id=#{userId}					
 	</select>
 	
 	<select id= "getCouponByOwnerId" parameterType="String"
-						resultMap="CouponMap">
+						resultType="All">
 		select * 
 		from coupon 
 		where owner_id=#{ownerId}					
 	</select>
 	
 	<select id= "getCouponsByCommentCode" parameterType="INTEGER"
-						resultMap="CouponMap">
+						resultType="All">
 		select * 
 		from coupon 
 		where comment_code=#{commentCode}					
 	</select>
 	
 	<select id= "getCouponByStatus" parameterType="INTEGER"
-						resultMap="CouponMap">
+						resultType="All">
 		select * 
 		from coupon 
 		where coupon_status_code=#{couponStatusCode}					
 	</select>
 	
 	<select id= "getCouponsByCouponCode" parameterType="String"
-						resultType="Coupon">
+						resultType="All">
 		select coupon_code, owner_id, user_id, comment_code, coupon_status_code 
 		from coupon 
 		where coupon_code = #{couponCode}					

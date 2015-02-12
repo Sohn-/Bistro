@@ -25,7 +25,7 @@ public class EventCommentServiceImpl implements EventCommentService {
 	StoreDao storeDao;
 
 	@Override
-	public List<EventComment> SeachByKeyword(Category category) {
+	public List<All> SeachByKeyword(Category category) {
 		return dao.getEventCommentsByKeyword(category);
 	}
 
@@ -36,12 +36,12 @@ public class EventCommentServiceImpl implements EventCommentService {
 	}
 
 	@Override
-	public List<EventComment> SeachMyEvent(String ownerId) {
+	public List<All> SeachMyEvent(String ownerId) {
 		return dao.getEventCommentsByOwnerId(ownerId);
 	}
 	
 	@Override
-	public List<EventComment> SeachAllEvent() {	
+	public List<All> SeachAllEvent() {	
 		return dao.getAllEventComments();
 	}
 
@@ -66,7 +66,7 @@ public class EventCommentServiceImpl implements EventCommentService {
 	}
 
 	@Override
-	public EventComment SearchOneEvent(int commentCode) {
+	public All SearchOneEvent(int commentCode) {
 		return dao.getEventCommentByCommentCode(commentCode);
 	}
 
