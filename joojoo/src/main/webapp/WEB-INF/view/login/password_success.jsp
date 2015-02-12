@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+비밀번호 찾기 성공
 </body>
 </html>

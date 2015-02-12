@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -154,6 +155,32 @@ fieldset .help {
             </ul>
             </nav>
          </div>
+         
+         
+         
+         
+         
+          <!--  고친부분 -->
+         <div>      
+         <c:url value="/main" var="action"></c:url>
+               	 <form:form modelAttribute="category" method="post" action="${action}">
+                  <div class="row 90%">                    
+                        <form:input path="category" name="category" placeholder="keyWord" type="text" />     
+                  </div>    
+                  
+                  <div class="row 80%">
+                     <div class="12u">                        
+                        <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
+                     </div>
+                  </div>
+              	</form:form>
+         </div>
+         
+
+
+      
+         
+         
       </div>
    </div>
 
