@@ -65,61 +65,61 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		return result;
 	}
 	@Override
-	public List<EventComment> getEventCommentsByKeyword(Category category) {
+	public List<All> getEventCommentsByKeyword(Category category) {
 		String statement = nameSpace + "getEventCommentsByKeyword";
-		List<EventComment> result = sqlSession.selectList(statement, category);
+		List<All> result = sqlSession.selectList(statement, category);
 		
 		return result;
 	}
 	
 	//실제 카테고리별 검색을 위한 메서드들
 	@Override
-	public List<EventComment> getEventCommentsByRegionCode(int regionCode) {
+	public List<All> getEventCommentsByRegionCode(int regionCode) {
 		String statement = nameSpace + "getEventCommentsByRegionCode";
-		List<EventComment> result = sqlSession.selectList(statement, regionCode);
+		List<All> result = sqlSession.selectList(statement, regionCode);
 		
 		return result;
 	}
 	@Override
-	public List<EventComment> getEventCommentsByTypeCode(int typeCode) {
+	public List<All> getEventCommentsByTypeCode(int typeCode) {
 		String statement = nameSpace + "getEventCommentsByTypeCode";
-		List<EventComment> result = sqlSession.selectList(statement, typeCode);
+		List<All> result = sqlSession.selectList(statement, typeCode);
 		
 		return result;
 	}
 	@Override
-	public List<EventComment> getEventCommentsByPersonsCode(int personsCode) {
+	public List<All> getEventCommentsByPersonsCode(int personsCode) {
 		String statement = nameSpace + "getEventCommentsByPersonsCode";
-		List<EventComment> result = sqlSession.selectList(statement, personsCode);
+		List<All> result = sqlSession.selectList(statement, personsCode);
 		
 		return result;
 	}
 	@Override
-	public List<EventComment> getEventCommentsByServiceTypeCode(
+	public List<All> getEventCommentsByServiceTypeCode(
 			int serviceTypeCode) {
 		String statement = nameSpace + "getEventCommentsByServiceTypeCode";
-		List<EventComment> result = sqlSession.selectList(statement, serviceTypeCode);
+		List<All> result = sqlSession.selectList(statement, serviceTypeCode);
 		
 		return result;
 	}
 	@Override
-	public List<EventComment> getAllEventComments() {
+	public List<All> getAllEventComments() {
 		String statement = nameSpace + "getAllEventComments";
-		List<EventComment> result = sqlSession.selectList(statement);
+		List<All> result = sqlSession.selectList(statement);
 		
 		return result;
 	}
 	@Override
-	public List<EventComment> getEventCommentsByOwnerId(String ownerId) {
+	public List<All> getEventCommentsByOwnerId(String ownerId) {
 		String statement = nameSpace + "getEventCommentsByOwnerId";
-		List<EventComment> result = sqlSession.selectList(statement, ownerId);
+		List<All> result = sqlSession.selectList(statement, ownerId);
 		
 		return result;
 	}
 	@Override
-	public EventComment getEventCommentByCommentCode(int commentCode) {
+	public All getEventCommentByCommentCode(int commentCode) {
 		String statement = nameSpace + "getEventCommentByCommentCode";
-		EventComment result = sqlSession.selectOne(statement, commentCode);
+		All result = sqlSession.selectOne(statement, commentCode);
 		
 		return result;
 	}
