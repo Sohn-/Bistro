@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class RviewCommentController {
@@ -27,6 +27,12 @@ public class RviewCommentController {
 		List<RviewComment> rviews = rviewCommentService.SearchAll();
 		model.addAttribute("rviews",rviews);
 		return "review/list";
+	}
+	
+	@RequestMapping(value="/review/write", method=RequestMethod.GET)
+	public String writeRviewComment(){
+		
+		return "review/write";
 	}
 	
 	/*@RequestMapping(value="/review", method=RequestMethod.GET)
