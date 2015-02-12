@@ -50,7 +50,7 @@ public class SearchController {
 		return "redirect:/main";
 	}
 	
-	@RequestMapping(value="/main/keyword", method=RequestMethod.POST)
+	@RequestMapping(value="/main/category", method=RequestMethod.POST)
 	public String searchCategoryResult(@ModelAttribute("category") Category category, Model model){
 		
 		List<EventComment> events = eventService.SeachByCategory(category);	
