@@ -166,21 +166,23 @@ $(function() {
          <div id="footer" class="container" align="left">
             <div class="row">
 
-               <form method="post" action="#">
+              <c:url value="/findprocess" var="action"></c:url>
+               	 <form:form modelAttribute="owner" method="post" action="${action}">                  
                   <div class="row 90%">
-                     <div>
-                        <input   name="email" placeholder="이름"  type="text" />
-                        <input name="name" placeholder="사업자등록번호"  type="text"/> 
-                        <input   name="email" placeholder="e-mail"  type="text" />
+                     <div>              
+                       
+                        <form:input path="ownerName" name="ownerName" 	placeholder="이름"  			type="text" />
+                        <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/> 
+                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />                     
                      </div>
-                  </div>                  
+                  </div>   
                   
                   <div class="row 80%">
                      <div class="12u">
                         <a href="#" class="form-button-submit button icon fa-envelope">Search</a>
                      </div>
                   </div>
-               </form>
+               </form:form>
             </div>
          </div>
       </div>
@@ -192,11 +194,11 @@ $(function() {
               <c:url value="/findprocess" var="action"></c:url>
                	 <form:form modelAttribute="owner" method="post" action="${action}">                  
                   <div class="row 90%">
-                     <div>
-                     <input name="id" placeholder="id "  type="text"/> 
-                        <input   name="email" placeholder="이름"  type="text" />
-                        <input name="name" placeholder="사업자등록번호"  type="text"/> 
-                        <input   name="email" placeholder="e-mail"  type="text" />                     
+                     <div>              
+                        <form:input path="ownerId" name="ownerId" 	placeholder="id "  			type="text"/> 
+                        <form:input path="ownerName" name="ownerName" 	placeholder="이름"  			type="text" />
+                        <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/> 
+                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />                     
                      </div>
                   </div>   
                   
