@@ -32,7 +32,7 @@
 		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode})	
 	</insert> 
  
-  	<update id="updateEventComment" parameterType="EventComment">
+  	<update id="updateEventComment" parameterType="All">
 		UPDATE event_comment SET
 		title = #{title},
 		content = #{content},

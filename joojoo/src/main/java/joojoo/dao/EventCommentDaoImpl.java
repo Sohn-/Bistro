@@ -32,7 +32,7 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		return result;
 	}
 	@Override
-	public int updateEventComment(EventComment eventComment) {
+	public int updateEventComment(All eventComment) {
 		String statement = nameSpace + "updateEventComment";
 		int result = sqlSession.update(statement, eventComment);
 		
