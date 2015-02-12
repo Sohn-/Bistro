@@ -7,8 +7,8 @@
 
 
 	<insert id="insertStore" parameterType="Stores">
-		insert into stores (store_name, store_adress, store_phone , owner_id, region_code,type_code)
-		values(#{storeName}, #{storeAdress}, #{storePhone}, #{ownerId},#{regionCode},#{typeCode})
+		insert into stores (store_name, store_adress, store_phone , owner_id, region_name,type_name)
+		values(#{storeName}, #{storeAdress}, #{storePhone}, #{ownerId},#{regionName},#{typeName})
 	</insert>
   
   	<update id="updateStore" parameterType="Stores">
@@ -18,8 +18,8 @@
   		store_adress=#{storeAdress},
   		store_phone=#{storePhone},
   		owner_id = #{ownerId},
-  		region_code = #{regionCode},
-  		type_code = #{typeCode},
+  		region_name = #{regionName},
+  		type_name = #{typeName},
   		star_point = #{starPoint}
   	where store_code=#{storeCode}  	
   	
@@ -80,8 +80,7 @@
 	<select id= "getStoresBySearchKeyword" resultType="All">
 		select * 
 		from stores s 
-		join store_type t on(s.type_code = t.type_code)
-		join region r on (r.region_code = s.region_code)
+		
 		
 		where r.region_name like '%${keyword}%'
 		or t.type_name like '%${keyword}%'
