@@ -1,13 +1,12 @@
 package joojoo.service;
 
+import joojoo.dao.OwnersDao;
+import joojoo.entity.Owners;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import joojoo.dao.OwnersDao;
-import joojoo.entity.Owners;
-import joojoo.entity.Users;
 
 @Service
 public class OwnerServiceImpl implements OwnerService {

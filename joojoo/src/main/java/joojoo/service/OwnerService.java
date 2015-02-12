@@ -1,9 +1,6 @@
 package joojoo.service;
 
-import org.springframework.stereotype.Service;
-
 import joojoo.entity.Owners;
-import joojoo.entity.Users;
 
 public interface OwnerService {
 

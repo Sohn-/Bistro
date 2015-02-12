@@ -14,4 +14,5 @@ public interface StoreService {
 	List<Stores> showOwnerStores(String ownerId);
 	List<Stores> showStoresByCategory(Category category);
 	List<Stores> showStoresBySerchKeyword(Category category);
+	List<Stores> showAllStore();
 }

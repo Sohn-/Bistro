@@ -1,6 +1,7 @@
 package joojoo.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import joojoo.entity.Owners;
 import joojoo.entity.Users;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes({"findUserId","findUserPassword","findOwnerId","findOwnerPassword"})
 public class FindController {
 	static final Logger logger = LoggerFactory
 			.getLogger(FindController.class);
@@ -70,7 +72,7 @@ public class FindController {
 
 			if (findUser != null) {
 				model.addAttribute("findUserId", findUser.getUserId());
-				 path = "redirect:/id_success";
+				 path = "forward:/id_success";
 			} else {
 				path = "redirect:/id_fail";
 			}
@@ -80,7 +82,7 @@ public class FindController {
 			
 			if(findUser != null){
 				model.addAttribute("findUserPassword", findUser.getUserPassword());
-				 path = "redirect:/password_success";
+				 path = "forward:/password_success";
 			}
 			else{
 				path = "redirect:/password_fail";
@@ -91,7 +93,7 @@ public class FindController {
 			
 			if(findOwner != null){
 				model.addAttribute("findOwnerId", findOwner.getOwnerId());
-				 path = "redirect:/id_success";
+				 path = "forward:/id_success";
 			}
 			else{
 				path = "redirect:/id_fail";
@@ -102,7 +104,7 @@ public class FindController {
 			
 			if(findOwner != null){
 				model.addAttribute("findOwnerPassword", findOwner.getOwnerPassword());
-				 path = "redirect:/password_success";
+				 path = "forward:/password_success";
 			}
 			else{
 				path = "redirect:/password_fail";
@@ -128,13 +130,13 @@ public class FindController {
 		return "login/password_fail";
 	}
 	
-	@RequestMapping(value="/id_success", method=RequestMethod.GET)
+	@RequestMapping(value="/id_success", method=RequestMethod.POST)
 	public String findIdSuccess(Model model){
 
 		return "login/id_success";
 	}
 	
-	@RequestMapping(value="/password_success", method=RequestMethod.GET)
+	@RequestMapping(value="/password_success", method=RequestMethod.POST)
 	public String findPasswordSuccess(){
 		
 		return "login/password_success";

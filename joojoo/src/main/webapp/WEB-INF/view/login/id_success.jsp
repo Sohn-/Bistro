@@ -7,6 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-아이디 찾기 성공
+<%
+	Object userIdObj = session.getAttribute("findUserId");
+	Object ownerIdObj = session.getAttribute("findOwnerId");
+	String userId = null;
+	String ownerId = null;
+	
+	if(userIdObj != null){
+		userId = (String)userIdObj;
+	}
+	else if(ownerIdObj != null){
+		ownerId = (String)ownerIdObj;
+	}
+	if(userId != null){
+		out.println("당신의 아이디는 \'"+userId+"\'입니다.");
+	}
+	else if(ownerId != null){
+		out.println("당신의 아이디는 \'"+ownerId+"\'입니다.");
+	}
+%>
 </body>
 </html>

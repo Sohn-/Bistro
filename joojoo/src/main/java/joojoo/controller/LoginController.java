@@ -73,12 +73,6 @@ public class LoginController {
 		return path;	
 	}
 	
-	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public String showMain(){
-		
-		return "main";
-	}
-	
 	@RequestMapping(value="/login_fail", method=RequestMethod.GET)
 	public String loginFail(){
 		

@@ -21,4 +21,6 @@ public interface StoreDao {
 	List<Stores> getStoresByRegion(int regionode);
 	List<Stores> getStoresByCategory(Category category);
 	List<Stores> getStoresBySearchKeyword(Category category);
+	List<Stores> getAllStore();
+	
 }

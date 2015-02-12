@@ -2,7 +2,6 @@ package joojoo.service;
 
 import java.util.List;
 
-import joojoo.dao.CouponDao;
 import joojoo.dao.EventCommentDao;
 import joojoo.dao.StoreDao;
 import joojoo.entity.Category;
@@ -38,6 +37,11 @@ public class EventCommentServiceImpl implements EventCommentService {
 	@Override
 	public List<EventComment> SeachMyEvent(String ownerId) {
 		return dao.getEventCommentsByOwnerId(ownerId);
+	}
+	
+	@Override
+	public List<EventComment> SeachAllEvent() {	
+		return dao.getAllEventComments();
 	}
 
 	@Override

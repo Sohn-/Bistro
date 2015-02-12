@@ -50,6 +50,12 @@
 	
 	</select>
 	
+	<select id = "getAllStore" resultType="Stores">
+	select *
+	from stores
+	
+	</select>
+	
 	<select id = "getStoresByRegion" resultType="Stores">
 	select *
 	from stores

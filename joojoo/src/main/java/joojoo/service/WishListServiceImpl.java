@@ -2,12 +2,11 @@ package joojoo.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import joojoo.dao.StoreDao;
 import joojoo.dao.WishListDao;
 import joojoo.entity.WishList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 //@Transactional(rollbackFor = jdbc.exception.ServiceFailException.class)
 @Service
 public class WishListServiceImpl implements WishListService {

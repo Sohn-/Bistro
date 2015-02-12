@@ -1,10 +1,8 @@
 package joojoo.service;
 
 import java.util.List;
-import java.util.Map;
 
 import joojoo.entity.Coupon;
-import joojoo.entity.Users;
 
 public interface CouponService {
 	

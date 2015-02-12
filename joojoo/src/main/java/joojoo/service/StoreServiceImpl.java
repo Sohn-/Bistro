@@ -53,6 +53,11 @@ public class StoreServiceImpl implements StoreService {
 		
 		
 	}
+	
+	@Override
+	public List<Stores> showAllStore() {
+		return dao.getAllStore();	
+	}
 
 	@Override
 	public List<Stores> showStoresBySerchKeyword(Category category) {
