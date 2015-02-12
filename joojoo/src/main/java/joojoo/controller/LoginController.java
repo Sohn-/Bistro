@@ -97,18 +97,19 @@ public class LoginController {
 	
 	@RequestMapping(value="/findform", method=RequestMethod.GET)
 	public String findForm(@RequestParam("who") String who, Model model){
-		String path = "redirect:/find_u";
+		String path = "login/find_u";
 		if (who.equals("user")) {
 			Users user = new Users();
 			model.addAttribute("user", user);
 		} else if (who.equals("owner")) {
 			Owners owner = new Owners();
 			model.addAttribute("owner", owner);
-			path = "redirect:/find_o";
+			path = "login/find_o";
 		}
 
 		return path;
 	}
+	
 	
 	@RequestMapping(value="/login/findprocess", method=RequestMethod.POST)
 	public String findController(@ModelAttribute("user") Users user, @ModelAttribute("owner") Owners owner,
