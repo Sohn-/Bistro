@@ -16,5 +16,11 @@
 	        <property name="prefix" value="/WEB-INF/view/"/>
 	        <property name="suffix" value=".jsp"/>
 	</bean>
+	
+	<mvc:resources location="/resource/css/" mapping="/css/**"/>
+	<mvc:resources location="/resource/fonts/" mapping="/fonts/**"/>
+	<mvc:resources location="/resource/images/" mapping="/images/**"/>
+	<mvc:resources location="/resource/js/" mapping="/js/**"/>
+	
 
 </beans>
