@@ -37,7 +37,7 @@ public class SearchController {
 		
 		List<All> events = eventService.SeachAllEvent();
 		model.addAttribute("events", events);
-		List<Stores> stores = storeService.showAllStore();
+		List<All> stores = storeService.showAllStore();
 		model.addAttribute("stores", stores);
 		return "main";
 	}
@@ -46,7 +46,7 @@ public class SearchController {
 		
 		List<All> events = eventService.SeachByKeyword(category);	
 		model.addAttribute("search_events", events);
-		List<Stores> stores = storeService.showStoresBySerchKeyword(category);
+		List<All> stores = storeService.showStoresBySerchKeyword(category);
 		model.addAttribute("search_stores", stores);
 		return "search/search";
 	}
@@ -56,7 +56,7 @@ public class SearchController {
 		
 		List<All> events = eventService.SeachByCategory(category);	
 		model.addAttribute("search_events", events);
-		List<Stores> stores = storeService.showStoresByCategory(category);
+		List<All> stores = storeService.showStoresByCategory(category);
 		model.addAttribute("search_stores", stores);
 		return "search/search";
 	}
