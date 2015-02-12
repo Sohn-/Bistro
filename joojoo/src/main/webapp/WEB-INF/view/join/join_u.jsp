@@ -19,7 +19,7 @@
 				$("#joinId").focus();		
 			}else{
 				<c:url value="/join/idCheck" var="idchk"></c:url>
-				var url = "${idchk}?id="+$("#joinId").val();
+				var url = "${idchk}?joinId="+$("#joinId").val();
 				window.open(url, "_blank", "width=450, height=200, toolbar=no, menubar=no, resizable=no")
 			}
 		});
@@ -77,7 +77,8 @@
       <label>아이디 </label> : <form:input path="userId" id="joinId" />
       <input type="button" value="중복확인" id="dupCheck"/><br>
      <label>비밀번호 </label> : <form:input path="userPassword" id="pass" /><br>
-     <label>비밀번호 확인</label> : <form:input path="userPassword" id="pass2" /><br>
+     <label for="pass2">비밀번호 확인</label>
+		<input type="password" id="pass2" name="pass2" /><br>
  
      <label>이름</label> : <form:input path="userName" /><br>
      <label>메일</label> : <form:input path="userMail" /><br>

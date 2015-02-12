@@ -3,6 +3,7 @@ package joojoo.controller;
 import javax.servlet.http.HttpSession;
 
 
+
 import joojoo.entity.Owners;
 import joojoo.entity.Stores;
 import joojoo.entity.Users;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.method.annotation.SessionAttributesHandler;
@@ -105,8 +107,11 @@ public class JoinController {
    }
    
    @RequestMapping(value="/join/idCheck", method=RequestMethod.GET)
-   public String showIdCheckPage(@ModelAttribute("joinId") String joinId, Model model){
-	
+   public String showIdCheckPage(@RequestParam String joinId, Model model){
+	   Users result = new Users();
+	   result = userService.idDuplicateCheck(joinId);
+	   model.addAttribute("result",result);
+	   model.addAttribute("joinId",joinId);
 	   return "join/idConfirm";
 	   
    
