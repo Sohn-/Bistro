@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +9,7 @@
 <meta name="keywords" content="" />
 
 
-<link rel="stylesheet"   href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="css/style.css">
@@ -134,7 +135,7 @@ fieldset .help {
 </head>
 
 <body class="homepage" bgcolor=#333323>
-
+	<c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
    <div id="header-wrapper">
       <div id="header" class="container">
          <!-- Logo -->
@@ -143,11 +144,11 @@ fieldset .help {
          <div align="right">
             <nav id="nav">
             <ul>
-               <li><a class="icon fa-home" href="index.html"><span>Home</span></a></li>
-               <li><a href="" class="icon fa-bar-chart-o"><span>Login</span></a>
-               <li><a class="icon fa-cog" href="left-sidebar.html"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="right-sidebar.html"><span>MyPage</span></a></li>
-               <li><a class="icon fa-sitemap" href="no-sidebar.html"><span>Cart</span></a></li>
+               <li><a class="icon fa-home" href="main"><span>Home</span></a></li>
+               <li><a class="icon fa-bar-chart-o" href="login/login"><span>Login</span></a>
+               <li><a class="icon fa-cog" href="join/join"><span>Join</span></a></li>
+               <li><a class="icon fa-retweet" href="info/member"><span>MyPage</span></a></li>
+               <li><a class="icon fa-sitemap" href="info/cart"><span>Cart</span></a></li>
             </ul>
             </nav>
          </div>
