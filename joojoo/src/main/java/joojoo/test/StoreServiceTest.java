@@ -39,12 +39,13 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		stores1.setStoreAdress("서울시 강남구");
 		stores1.setStorePhone("00000");
 		stores1.setOwnerId("sohn");
-		stores1.setRegionCode(4);
-		stores1.setStoreCode(23);
+		stores1.setRegionName("강남");
+		stores1.setTypeName("바");
 		
 		Category c = new Category();
-		c.setRegionCode(1);
-		c.setTypeCode(2);
+		c.setRegionName("강남");
+		c.setTypeName("고깃집");
+		
 		c.setKeyword("고");
 		
 		//LOG.trace("수업"+service.addStore(stores1));
