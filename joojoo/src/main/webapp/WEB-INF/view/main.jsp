@@ -139,20 +139,14 @@ fieldset .help {
    <div id="header-wrapper">
       <div id="header" class="container">
          <!-- Logo -->
-         <h1 id="logo"><a href="index.html">JooJooclub</a></h1>
+         <h1 id="logo"><a href="main">JooJooclub</a></h1>
          <p>Welcom To JooJooClub</p>
          <div align="right">
             <nav id="nav">
             <ul>
 
-               <li><a class="icon fa-home" href="index.html"><span>Home</span></a></li>
-               <li><a href="" class="icon fa-bar-chart-o"><span>Login</span></a>
-               <li><a class="icon fa-cog" href="join"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="right-sidebar.html"><span>MyPage</span></a></li>
-               <li><a class="icon fa-sitemap" href="no-sidebar.html"><span>Cart</span></a></li>
-
                <li><a class="icon fa-home" href="main"><span>Home</span></a></li>
-               <li><a class="icon fa-bar-chart-o" href="login/login"><span>Login</span></a>
+               <li><a class="icon fa-bar-chart-o" href="login"><span>Login</span></a>
                <li><a class="icon fa-cog" href="join"><span>Join</span></a></li>
                <li><a class="icon fa-retweet" href="info/member"><span>MyPage</span></a></li>
                <li><a class="icon fa-sitemap" href="info/cart"><span>Cart</span></a></li>
