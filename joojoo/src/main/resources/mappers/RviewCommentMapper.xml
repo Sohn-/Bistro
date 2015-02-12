@@ -59,9 +59,9 @@
 		select * 
 		from rview_comment 
 		join stores s using(store_code)
-		join region r using(region_code)
+		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_code)
+		join store_type t using(type_name)
 		join owners using(owner_id)	
 		where user_id=#{userId}					
 	</select>
@@ -71,9 +71,9 @@
 		select * 
 		from rview_comment 
 		join stores s using(store_code)
-		join region r using(region_code)
+		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_code)
+		join store_type t using(type_name)
 		join owners using(owner_id)	
 		where store_code=#{storeCode}					
 	</select>
@@ -83,9 +83,9 @@
 		select * 
 		from rview_comment e
 		join stores s using(store_code)
-		join region r using(region_code)
+		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_code)
+		join store_type t using(type_name)
 		join owners using(owner_id)	
 		
 		where title like '%${keyword}%'
@@ -103,11 +103,11 @@
 		select * 
 		from rview_comment
 		join stores s using(store_code)
-		join region r using(region_code)
+		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_code)
+		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where user_name=#{userName}					
+		where user_name like '%${userName}%'					
 	</select>
 	
 	<select id= "getRviewCommentsByContent" parameterType="String"
@@ -115,11 +115,11 @@
 		select * 
 		from rview_comment
 		join stores s using(store_code)
-		join region r using(region_code)
+		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_code)
+		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where content=#{content}					
+		where content like '%${content}%'					
 	</select>
 	
 	<select id= "getRviewCommentsByTitle" parameterType="String"
@@ -127,11 +127,11 @@
 		select * 
 		from rview_comment
 		join stores s using(store_code)
-		join region r using(region_code)
+		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_code)
+		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where title=#{title}					
+		where title like '%${title}%'					
 	</select>
 	
 	<select id= "getAllRviewComments" resultMap="RviewCommentMap">
@@ -143,72 +143,10 @@
 		select * 
 		from rview_comment
 		join stores s using(store_code)
-		join region r using(region_code)
+		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_code)
+		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where store_name=#{store_name}	
+		where store_name like '%${store_name}%'	
 	</select>
-	
-	<!-- <insert id="insertEventComment" parameterType="EventComment">
-		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 
-		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode})	
-	</insert> 
- 
-  	<update id="updateEventComment" parameterType="EventComment">
-		UPDATE event_comment SET
-		title = #{title},
-		content = #{content},
-		start_date = #{startDate},
-		end_date = #{endDate},
-		store_code = #{storeCode},
-		persons_code = #{personsCode},
-		service_type_code = #{serviceTypeCode}
-		WHERE comment_code = #{commentCode}
-	</update>
- 	
-	<delete id="deleteEventComment" parameterType="INTEGER">
-		DELETE FROM event_comment
-		WHERE comment_code = #{commentCode}
-	</delete>
-	
-	 <select id= "getEventCommentsByCategory" parameterType="EventComment"
-						resultMap="EventCommentMap">
-		select * 
-		from event_comment e
-		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
-		join owners using(owner_id)	
-		 		
-		where region_code = #{regionCode}
-		and type_code = #{typeCode}
-		and persons_code = #{personsCode}
-		and service_type_code = #{serviceTypeCode}			
-	</select>
-	
-	<select id= "getEventCommentsBySearchKeyword" parameterType="EventComment"
-						resultMap="EventCommentMap">
-		select * 
-		from event_comment e
-		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
-		join owners using(owner_id)	
-		
-		where title like '%${keyword}%'
-		or content like '%${keyword}%'
-		or store_name like '%${keyword}%'
-		or store_adress like '%${keyword}%'
-		or owner_name like '%${keyword}%'
-		or region_name like '%${keyword}%'
-		or type_name like '%${keyword}%'
-		or persons_level like '%${keyword}%'
-		or service_type_name like '%${keyword}%'
-
-	</select> -->
 </mapper>

@@ -1,64 +1,56 @@
 package joojoo.entity;
 
 public class Category {
-	int regionCode;
-	int typeCode;
-	int personsCode;
-	int serviceTypeCode;
+	String regionName;
+	String typeName;
+	String personsLevel;
+	String serviceTypeName;
 	String keyword;
 	
 	public Category(){}
-	
-	public Category(int regionCode, int typeCode, int personsCode,
-			int serviceTypeCode, String keyword) {
+
+	public Category(String regionName, String typeName, String personsLevel,
+			String serviceTypeName, String keyword) {
 		super();
-		this.regionCode = regionCode;
-		this.typeCode = typeCode;
-		this.personsCode = personsCode;
-		this.serviceTypeCode = serviceTypeCode;
-		this.keyword = keyword;
-	}
-	
-	public Category(int regionCode, int typeCode, int personsCode,
-			int serviceTypeCode) {
-		super();
-		this.regionCode = regionCode;
-		this.typeCode = typeCode;
-		this.personsCode = personsCode;
-		this.serviceTypeCode = serviceTypeCode;
-	}
-	
-	public Category(String keyword) {
-		super();
+		this.regionName = regionName;
+		this.typeName = typeName;
+		this.personsLevel = personsLevel;
+		this.serviceTypeName = serviceTypeName;
 		this.keyword = keyword;
 	}
 
-	public int getRegionCode() {
-		return regionCode;
+	public String getRegionName() {
+		return regionName;
 	}
-	public void setRegionCode(int regionCode) {
-		this.regionCode = regionCode;
+
+	public void setRegionName(String regionName) {
+		this.regionName = regionName;
 	}
-	public int getTypeCode() {
-		return typeCode;
+
+	public String getTypeName() {
+		return typeName;
 	}
-	public void setTypeCode(int typeCode) {
-		this.typeCode = typeCode;
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
-	public int getPersonsCode() {
-		return personsCode;
+
+	public String getPersonsLevel() {
+		return personsLevel;
 	}
-	public void setPersonsCode(int personsCode) {
-		this.personsCode = personsCode;
+
+	public void setPersonsLevel(String personsLevel) {
+		this.personsLevel = personsLevel;
 	}
-	public int getServiceTypeCode() {
-		return serviceTypeCode;
+
+	public String getServiceTypeName() {
+		return serviceTypeName;
 	}
-	public void setServiceTypeCode(int serviceTypeCode) {
-		this.serviceTypeCode = serviceTypeCode;
+
+	public void setServiceTypeName(String serviceTypeName) {
+		this.serviceTypeName = serviceTypeName;
 	}
-	
-	
+
 	public String getKeyword() {
 		return keyword;
 	}
@@ -69,12 +61,12 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [regionCode=" + regionCode + ", typeCode=" + typeCode
-				+ ", personsCode=" + personsCode + ", serviceTypeCode="
-				+ serviceTypeCode + ", keyword=" + keyword + "]";
+		return "Category [regionName=" + regionName + ", typeName=" + typeName
+				+ ", personsLevel=" + personsLevel + ", serviceTypeName="
+				+ serviceTypeName + ", keyword=" + keyword + "]";
 	}
 
-
+	
 	
 	
 	

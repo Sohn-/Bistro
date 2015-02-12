@@ -3,6 +3,7 @@ package joojoo.test;
 import java.text.ParseException;
 
 import joojoo.dao.RviewCommentDao;
+import joojoo.entity.Category;
 import joojoo.entity.RviewComment;
 
 import org.slf4j.Logger;
@@ -63,14 +64,16 @@ public class RviewCommentDaoImplTest {
 		// dao.getRviewCommentsByUserId(userId);
 		// dao.getRviewCommentsByStoreCode(storeCode);
 
-		/*
-		 * int regionCode = 0; int typeCode = 0; int personsCode = 0; int
-		 * serviceTypeCode = 0; String keyword="변경됨"; Category category = new
-		 * Category(regionCode, typeCode, personsCode, serviceTypeCode,
-		 * keyword);
-		 */
+		
+		String regionName = "강남"; 
+		String typeName = "고깃집"; 
+		String personsLevel = "4명이하"; 
+		String serviceTypeName = "서비스 메뉴 제공"; 
+		String keyword="내"; 
+		Category category = new Category(regionName, typeName, personsLevel, serviceTypeName, keyword);
+		 
 
-		// dao.getRviewCommentsByKeyword(category);
+		 dao.getRviewCommentsByKeyword(category);
 		// dao.getRviewCommentsByUserName(userName);
 		// dao.getRviewCommentsByContent(content);
 		// dao.getRviewCommentsByTitle(title);

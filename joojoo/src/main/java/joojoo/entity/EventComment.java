@@ -34,27 +34,28 @@ public class EventComment implements Serializable {
 	
 	private int storeCode;
 	
-	private int personsCode;
-	private int serviceTypeCode;
+	private String personsLevel;
+	private String serviceTypeName;
 	private String deleteRequest;
 	/**
 	 * 생성자.
 	 */
 	public EventComment() {}
-	public EventComment(String title, String content, Date startDate,
-			Date endDate, int storeCode, int personsCode, int serviceTypeCode) {
+	public EventComment(Integer commentCode, String title, String content,
+			Date regDate, Date startDate, Date endDate, int storeCode,
+			String personsLevel, String serviceTypeName, String deleteRequest) {
 		super();
+		this.commentCode = commentCode;
 		this.title = title;
 		this.content = content;
+		this.regDate = regDate;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.storeCode = storeCode;
-		this.personsCode = personsCode;
-		this.serviceTypeCode = serviceTypeCode;
+		this.personsLevel = personsLevel;
+		this.serviceTypeName = serviceTypeName;
+		this.deleteRequest = deleteRequest;
 	}
-	
-	
-
 	public Integer getCommentCode() {
 		return commentCode;
 	}
@@ -97,17 +98,17 @@ public class EventComment implements Serializable {
 	public void setStoreCode(int storeCode) {
 		this.storeCode = storeCode;
 	}
-	public int getPersonsCode() {
-		return personsCode;
+	public String getPersonsLevel() {
+		return personsLevel;
 	}
-	public void setPersonsCode(int personsCode) {
-		this.personsCode = personsCode;
+	public void setPersonsLevel(String personsLevel) {
+		this.personsLevel = personsLevel;
 	}
-	public int getServiceTypeCode() {
-		return serviceTypeCode;
+	public String getServiceTypeName() {
+		return serviceTypeName;
 	}
-	public void setServiceTypeCode(int serviceTypeCode) {
-		this.serviceTypeCode = serviceTypeCode;
+	public void setServiceTypeName(String serviceTypeName) {
+		this.serviceTypeName = serviceTypeName;
 	}
 	public String getDeleteRequest() {
 		return deleteRequest;
@@ -115,52 +116,13 @@ public class EventComment implements Serializable {
 	public void setDeleteRequest(String deleteRequest) {
 		this.deleteRequest = deleteRequest;
 	}
-	
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((commentCode == null) ? 0 : commentCode.hashCode());
-		return result;
-	}
-
-
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		EventComment other = (EventComment) obj;
-		if (commentCode == null) {
-			if (other.commentCode != null) {
-				return false;
-			}
-		} else if (!commentCode.equals(other.commentCode)) {
-			return false;
-		}
-		return true;
-	}
 	@Override
 	public String toString() {
 		return "EventComment [commentCode=" + commentCode + ", title=" + title
 				+ ", content=" + content + ", regDate=" + regDate
 				+ ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", storeCode=" + storeCode + ", personsCode=" + personsCode
-				+ ", serviceTypeCode=" + serviceTypeCode + ", deleteRequest="
+				+ ", storeCode=" + storeCode + ", personsLevel=" + personsLevel
+				+ ", serviceTypeName=" + serviceTypeName + ", deleteRequest="
 				+ deleteRequest + "]";
 	}
 	

@@ -30,7 +30,7 @@ public class Coupon implements Serializable {
 
 	/** 새 테이블. */
 	//private CouponStatus couponStatus;
-	private int couponStatusCode;
+	private String couponStatus;
 
 	/**
 	 * 생성자.
@@ -38,14 +38,15 @@ public class Coupon implements Serializable {
 	public Coupon() {
 	}
 
+	
 	public Coupon(String couponCode, String ownerId, String userId,
-			int commentCode, int couponStatusCode) {
+			int commentCode, String couponStatus) {
 		super();
 		this.couponCode = couponCode;
 		this.ownerId = ownerId;
 		this.userId = userId;
 		this.commentCode = commentCode;
-		this.couponStatusCode = couponStatusCode;
+		this.couponStatus = couponStatus;
 	}
 
 
@@ -81,56 +82,22 @@ public class Coupon implements Serializable {
 		this.commentCode = commentCode;
 	}
 
-	public int getCouponStatusCode() {
-		return couponStatusCode;
+	public String getCouponStatus() {
+		return couponStatus;
 	}
 
-	public void setCouponStatusCode(int couponStatusCode) {
-		this.couponStatusCode = couponStatusCode;
+	public void setCouponStatus(String couponStatus) {
+		this.couponStatus = couponStatus;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((couponCode == null) ? 0 : couponCode.hashCode());
-		return result;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Coupon other = (Coupon) obj;
-		if (couponCode == null) {
-			if (other.couponCode != null) {
-				return false;
-			}
-		} else if (!couponCode.equals(other.couponCode)) {
-			return false;
-		}
-		return true;
-	}
 
 	@Override
 	public String toString() {
 		return "Coupon [couponCode=" + couponCode + ", ownerId=" + ownerId
 				+ ", userId=" + userId + ", commentCode=" + commentCode
-				+ ", couponStatusCode=" + couponStatusCode + "]";
+				+ ", couponStatus=" + couponStatus + "]";
 	}
+
 	
 	
 
