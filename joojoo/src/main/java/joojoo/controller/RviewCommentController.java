@@ -2,7 +2,7 @@ package joojoo.controller;
 
 import java.util.List;
 
-import joojoo.entity.RviewComment;
+import joojoo.entity.All;
 import joojoo.service.RviewCommentService;
 
 import org.slf4j.Logger;
@@ -24,7 +24,7 @@ public class RviewCommentController {
 	
 	@RequestMapping(value="/review", method=RequestMethod.GET)
 	public String showRviewCommentList(Model model){
-		List<RviewComment> rviews = rviewCommentService.SearchAll();
+		List<All> rviews = rviewCommentService.SearchAll();
 		model.addAttribute("rviews",rviews);
 		return "review/list";
 	}

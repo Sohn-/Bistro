@@ -35,7 +35,7 @@ public class SearchController {
 		Category category = new Category();
 		model.addAttribute("category", category);
 		
-		List<EventComment> events = eventService.SeachAllEvent();
+		List<All> events = eventService.SeachAllEvent();
 		model.addAttribute("events", events);
 		List<Stores> stores = storeService.showAllStore();
 		model.addAttribute("stores", stores);
@@ -44,7 +44,7 @@ public class SearchController {
 	@RequestMapping(value="/main/keyword", method=RequestMethod.POST)
 	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){
 		
-		List<EventComment> events = eventService.SeachByKeyword(category);	
+		List<All> events = eventService.SeachByKeyword(category);	
 		model.addAttribute("search_events", events);
 		List<Stores> stores = storeService.showStoresBySerchKeyword(category);
 		model.addAttribute("search_stores", stores);
