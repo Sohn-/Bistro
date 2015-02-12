@@ -387,6 +387,30 @@ public class All {
 	public void setWishListCode(int wishListCode) {
 		this.wishListCode = wishListCode;
 	}
+
+	@Override
+	public String toString() {
+		return "All [regionCode=" + regionCode + ", typeCode=" + typeCode
+				+ ", personsCode=" + personsCode + ", serviceTypeCode="
+				+ serviceTypeCode + ", keyword=" + keyword + ", couponCode="
+				+ couponCode + ", ownerId=" + ownerId + ", userId=" + userId
+				+"\n"+ ", commentCode=" + commentCode + ", couponStatusCode="
+				+ couponStatusCode + ", couponStatus=" + couponStatus
+				+ ", title=" + title + ", content=" + content + ", regDate="
+				+ regDate + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", storeCode=" + storeCode + ", deleteRequest="
+				+"\n"+ deleteRequest + ", ownerPassword=" + ownerPassword
+				+ ", ownerName=" + ownerName + ", ownerMail=" + ownerMail
+				+ ", ownerPhone=" + ownerPhone + ", licenseNumber="
+				+ licenseNumber + ", personsLevel=" + personsLevel
+				+ ", regionName=" + regionName + ", starPoint=" + starPoint
+				+"\n"+ ", serviceTypeName=" + serviceTypeName + ", storeName="
+				+ storeName + ", storeAdress=" + storeAdress + ", storePhone="
+				+ storePhone + ", typeName=" + typeName + ", userPassword="
+				+ userPassword + ", userName=" + userName + ", userMail="
+				+"\n"+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
+				+ ", wishListCode=" + wishListCode + "]";
+	}
 	
 	
 
