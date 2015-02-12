@@ -3,6 +3,7 @@ package joojoo.service;
 import java.util.List;
 
 import joojoo.dao.StoreDao;
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.Stores;
 
@@ -39,15 +40,15 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public List<Stores> showOwnerStores(String ownerId) {
-		List<Stores> result = null;
+	public List<All> showOwnerStores(String ownerId) {
+		List<All> result = null;
 		result = dao.getStoresByOwnerId(ownerId);
 		return result;
 	}
 
 	@Override
-	public List<Stores> showStoresByCategory(Category category) {
-		List<Stores> result = null;
+	public List<All> showStoresByCategory(Category category) {
+		List<All> result = null;
 		result = dao.getStoresByCategory(category);
 		return result;
 		
@@ -55,13 +56,13 @@ public class StoreServiceImpl implements StoreService {
 	}
 	
 	@Override
-	public List<Stores> showAllStore() {
+	public List<All> showAllStore() {
 		return dao.getAllStore();	
 	}
 
 	@Override
-	public List<Stores> showStoresBySerchKeyword(Category category) {
-		List<Stores> result = null;
+	public List<All> showStoresBySerchKeyword(Category category) {
+		List<All> result = null;
 		result = dao.getStoresBySearchKeyword(category);
 		return result;
 	}

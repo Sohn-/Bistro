@@ -134,7 +134,7 @@
 	</select> -->
 	
 	<select id= "getEventCommentsByKeyword" parameterType="EventComment"
-						resultMap="EventCommentMap">
+						resultType="All">
 		select * 
 		from event_comment e
 		join stores s using(store_code)
@@ -156,13 +156,13 @@
 
 	</select>
 	
-	<select id= "getAllEventComments" resultMap="EventCommentMap">
+	<select id= "getAllEventComments" resultType="All">
 		select * 
 		from event_comment
 	</select>
 	
 	<select id= "getEventCommentsByOwnerId" parameterType="EventComment"
-						resultMap="EventCommentMap">
+						resultType="All">
 		select * 
 		from event_comment e
 		join stores s using(store_code)
@@ -177,7 +177,7 @@
 	
 	
 	 <select id= "getEventCommentByCommentCode" parameterType="Integer"
-						resultMap="EventCommentMap">
+						resultType="All">
 		select * 
 		from event_comment e
 		join stores s using(store_code)

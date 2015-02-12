@@ -1,7 +1,6 @@
 package joojoo.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
+import joojoo.entity.All;
 import joojoo.entity.Owners;
 import joojoo.entity.Users;
 import joojoo.service.OwnerService;
@@ -10,13 +9,11 @@ import joojoo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -41,7 +38,7 @@ public class LoginController {
 	
 	@RequestMapping(value="login/check_user", method=RequestMethod.POST)
 	public String loginCheckUser(@ModelAttribute("user") Users user, Model model){
-		Users loginUser;
+		All loginUser;
 		String path = "redirect:/main";
 
 		loginUser = userService.UsersLogin(user);
@@ -58,7 +55,7 @@ public class LoginController {
 	
 	@RequestMapping(value="login/check_owner", method=RequestMethod.POST)
 	public String loginCheckOwner(@ModelAttribute("owner") Owners owner, Model model){
-		Owners loginOwner;
+		All loginOwner;
 		String path = "redirect:/main";
 		
 		loginOwner = ownerService.OwnersLogin(owner);

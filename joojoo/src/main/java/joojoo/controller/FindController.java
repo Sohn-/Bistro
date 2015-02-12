@@ -1,8 +1,8 @@
 package joojoo.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import joojoo.entity.All;
 import joojoo.entity.Owners;
 import joojoo.entity.Users;
 import joojoo.service.OwnerService;
@@ -11,7 +11,6 @@ import joojoo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -59,8 +58,8 @@ public class FindController {
 	@RequestMapping(value="/findprocess", method=RequestMethod.POST)
 	public String findController(@ModelAttribute("user") Users user, @ModelAttribute("owner") Owners owner,
 									HttpServletRequest request,  Model model){
-		Users findUser;
-		Owners findOwner;
+		All findUser;
+		All findOwner;
 		String path = null;
 		String command = request.getParameter("command");
 		if(command == null){

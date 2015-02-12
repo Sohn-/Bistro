@@ -30,40 +30,40 @@
   	where store_code=#{storeCode}
   	</delete>
   	
-  	<select id = "getStoresByOwnerId" resultType="Stores">
+  	<select id = "getStoresByOwnerId" resultType="All">
 	select *
 	from stores
 	where owner_id=#{ownerId}
 	</select>
   	
-  	<select id = "getStoreByStoreCode" resultType="Stores">
+  	<select id = "getStoreByStoreCode" resultType="All">
 	select *
 	from stores
 	where store_code=#{storeCode}
 	
 	</select>
 	
-	<select id = "getStoresByStoreType" resultType="Stores">
+	<select id = "getStoresByStoreType" resultType="All">
 	select *
 	from stores
 	where type_code=#{typeCode}
 	
 	</select>
 	
-	<select id = "getAllStore" resultType="Stores">
+	<select id = "getAllStore" resultType="All">
 	select *
 	from stores
 	
 	</select>
 	
-	<select id = "getStoresByRegion" resultType="Stores">
+	<select id = "getStoresByRegion" resultType="All">
 	select *
 	from stores
 	where region_code=#{regionCode}
 	
 	</select>
 	
-	<select id="getStoresByCategory"  resultType="Stores">
+	<select id="getStoresByCategory"  resultType="All">
  	 SELECT * FROM stores
   <where> 
     <if test="regionCode != 0">
@@ -77,7 +77,7 @@
 
 
 	
-	<select id= "getStoresBySearchKeyword" resultType="Stores">
+	<select id= "getStoresBySearchKeyword" resultType="All">
 		select * 
 		from stores s 
 		join store_type t on(s.type_code = t.type_code)
