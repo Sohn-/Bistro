@@ -28,20 +28,20 @@
   	where user_id=#{userId}
   	</delete>
   	
-  	<select id = "getUsersByUserId" resultType="Users">
+  	<select id = "getUsersByUserId" resultType="All">
 	select *
 	from users
 	where user_id=#{userId}
 	</select>
   	
-  	<select id = "getUsersByUserMail" resultType="Users">
+  	<select id = "getUsersByUserMail" resultType="All">
 	select *
 	from users
 	where user_mail=#{userMail}
 	
 	</select>
 	
-	<select id = "getUsersForIdFind" resultType="Users">
+	<select id = "getUsersForIdFind" resultType="All">
 	select *
 	from users
 	where user_mail=#{userMail} and user_name=#{userName} 
@@ -49,14 +49,14 @@
 	</select>
 	
 	
-	<select id = "getUsersForPassWordFind" resultType="Users">
+	<select id = "getUsersForPassWordFind" resultType="All">
 	select *
 	from users
 	where user_mail=#{userMail} and user_name=#{userName} and user_id=#{userId}
 	
 	</select>
 	
-	<select id = "getUsersLogin" resultType="Users">
+	<select id = "getUsersLogin" resultType="All">
 	select *
 	from users
 	where user_id=#{userId} and user_password=#{userPassword}

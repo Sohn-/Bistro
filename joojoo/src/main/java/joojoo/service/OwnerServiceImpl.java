@@ -1,6 +1,7 @@
 package joojoo.service;
 
 import joojoo.dao.OwnersDao;
+import joojoo.entity.All;
 import joojoo.entity.Owners;
 
 import org.slf4j.Logger;
@@ -34,38 +35,38 @@ public class OwnerServiceImpl implements OwnerService {
 	}
 
 	@Override
-	public Owners idDuplicateCheck(String ownerId) {
-		Owners result=dao.getOwnersByOwnerId(ownerId);
+	public All idDuplicateCheck(String ownerId) {
+		All result=dao.getOwnersByOwnerId(ownerId);
 		return result;
 	}
 
 	@Override
-	public Owners licensenumberDuplicateCheck(String licenseNumber) {
-		Owners result=dao.getOwnersByLicenseNumber(licenseNumber);
+	public All licensenumberDuplicateCheck(String licenseNumber) {
+		All result=dao.getOwnersByLicenseNumber(licenseNumber);
 		return result;
 	}
 
 	@Override
-	public Owners mailDuplicateCheck(String owenrMail) {
-		Owners result=dao.getOwnersByOwnerMail(owenrMail);
+	public All mailDuplicateCheck(String owenrMail) {
+		All result=dao.getOwnersByOwnerMail(owenrMail);
 		return result;
 	}
 
 	@Override
-	public Owners findId(Owners owner) {
-		Owners result=dao.getOwnersForIdFind(owner);
+	public All findId(Owners owner) {
+		All result=dao.getOwnersForIdFind(owner);
 		return result;
 	}
 
 	@Override
-	public Owners findPassword(Owners owner) {
-		Owners result=dao.getOwnersForPassWordFind(owner);
+	public All findPassword(Owners owner) {
+		All result=dao.getOwnersForPassWordFind(owner);
 		return result;
 	}
 
 	@Override
-	public Owners OwnersLogin(Owners owner) {
-		Owners result = dao.getOwnersByOwnerId(owner.getOwnerId());
+	public All OwnersLogin(Owners owner) {
+		All result = dao.getOwnersByOwnerId(owner.getOwnerId());
 		
 		if (result != null) {
 			if (result.getOwnerPassword().equals(owner.getOwnerPassword()) == false){

@@ -1,6 +1,7 @@
 package joojoo.service;
 
 import joojoo.dao.UsersDao;
+import joojoo.entity.All;
 import joojoo.entity.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,33 +29,33 @@ public class UserServiceImp implements UserService{
 
 
 	@Override
-	public Users idDuplicateCheck(String userId) {
-		Users result = dao.getUsersByUserId(userId);
+	public All idDuplicateCheck(String userId) {
+		All result = dao.getUsersByUserId(userId);
 		return result;
 	}
 
 	@Override
-	public Users mailDuplicateCheck(String userMail) {
-		Users result = dao.getUsersByUserMail(userMail);
+	public All mailDuplicateCheck(String userMail) {
+		All result = dao.getUsersByUserMail(userMail);
 		return result;
 	}
 
 	@Override
-	public Users findId(Users user) {
-		Users result = dao.getUsersForIdFind(user);
+	public All findId(Users user) {
+		All result = dao.getUsersForIdFind(user);
 		return result;
 	}
 
 	@Override
-	public Users findPassword(Users user) {
-		Users result = dao.getUsersForPassWordFind(user);
+	public All findPassword(Users user) {
+		All result = dao.getUsersForPassWordFind(user);
 		return result;
 	}
 
 	@Override
-	public Users UsersLogin(Users user) {
+	public All UsersLogin(Users user) {
 
-		Users result = dao.getUsersByUserId(user.getUserId());
+		All result = dao.getUsersByUserId(user.getUserId());
 		
 		if (result != null) {
 			if (result.getUserPassword().equals(user.getUserPassword()) == false){
