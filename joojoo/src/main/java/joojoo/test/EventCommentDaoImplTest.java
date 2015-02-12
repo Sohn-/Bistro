@@ -70,12 +70,12 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		
 		//dao.deleteEventComment(5);
 		
-		int regionCode = 0;
-		int typeCode = 2;
-		int personsCode = 0;
-		int serviceTypeCode = 1;
+		String regionName = "none";
+		String typeName = "고깃집";
+		String personsLevel = "4명이하";
+		String serviceTypeName = "서비스 메뉴 제공";
 		String keyword="제목";
-		Category category = new Category(regionCode, typeCode, personsCode, serviceTypeCode, keyword);
+		Category category = new Category(regionName, typeName, personsLevel, serviceTypeName, keyword);
 		dao.getEventCommentsByCategory(category);
 		
 		

@@ -51,7 +51,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentServiceTest.class
 		store.setOwnerId("sohn");
 		store.setStoreName("가게이름");
 		store.setStoreAdress("가게주소");
-		store.setRegionCode(1);
+		store.setRegionName("강남");
 		store.setStarPoint(1);
 		
 		

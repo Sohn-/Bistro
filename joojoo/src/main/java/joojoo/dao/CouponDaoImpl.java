@@ -73,9 +73,9 @@ public class CouponDaoImpl implements CouponDao{
 	}
 
 	@Override
-	public List<All> getCouponsByStatus(int couponStatusCode) {
+	public List<All> getCouponsByStatus(String couponStatus) {
 		String statement = nameSpace + "getCouponByStatus";
-		List<All> result = sqlSession.selectList(statement, couponStatusCode);
+		List<All> result = sqlSession.selectList(statement, couponStatus);
 		
 		return result;
 	}

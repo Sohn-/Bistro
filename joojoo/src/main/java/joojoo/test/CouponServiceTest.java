@@ -38,7 +38,7 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		
 		coupon.setCommentCode(1);
 		coupon.setCouponCode("coupon3");
-		coupon.setCouponStatusCode(0);
+		coupon.setCouponStatus("미사용");
 		coupon.setOwnerId("sohn");
 		coupon.setUserId("user");
 		
