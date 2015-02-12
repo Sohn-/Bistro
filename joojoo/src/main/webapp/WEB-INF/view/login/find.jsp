@@ -1,22 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
-
 <link type="text/css" rel="stylesheet" href="/css/design.css" media="all" />
 <script type="text/javascript" src="/js/design.js"></script>
-
 
 <title>LoginPage</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 
-
-<link rel="stylesheet"
-   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
@@ -143,11 +138,8 @@ fieldset .help {
 <body class="homepage" bgcolor=#f7efff>
 
    <div id="header-wrapper">
-      <div id="header" class="container"  style= "background-image: url(images/main.jpg)">
-         <!-- Logo -->
-         <h1 id="logo">
-            <a href="index.html">JooJooclub</a>
-         </h1>
+      <div id="header" class="container"  style= "background-image: url(images/main.jpg)">        
+         <h1 id="logo"><a href="index.html">JooJooclub</a></h1>
          <p>Welcom To JooJooClub</p>
          <div align="right">
             <nav id="nav">
@@ -164,19 +156,16 @@ fieldset .help {
    </div>
 
    <div id="footer-wrapper" style="position:static; padding-left: 100px; padding-right: 100px">
-      <div class="row">    
-      
+      <div class="row">          
       	 <a href="findform?who=owner">          
          <button id="upju" value="" type="button"  >업주찾기</button>
-         </a>
-        
-        <a href="findform?who=user">          
+         </a>        
+         <a href="findform?who=user">          
          <button id="upju" value="" type="button"  >일반찾기</button>
          </a>
       </div>
    </div>
-
-   <!-- Footer -->
+   
    <div id="footer-wrapper">
       <div id="footer" class="container">
          <div align="center">
@@ -186,8 +175,7 @@ fieldset .help {
             <a href="">고객센터</a>
          </div>
       </div>
-   </div>
-   
+   </div>  
 
 </body>
 </html>
