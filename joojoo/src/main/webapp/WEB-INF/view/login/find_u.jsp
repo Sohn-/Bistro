@@ -171,8 +171,9 @@ $(function() {
                   <div class="row 90%">
                      <div>              
                        
-                        <form:input path="userName" name="userName" 	placeholder="이름"  			type="text" />
-                      	<form:input path="userMail" name="userMail" 	placeholder="e-mail"  		type="text" />                     
+                        <form:input path="userName" name="userName" placeholder="이름" type="text" />
+                      	<form:input path="userMail" name="userMail" placeholder="e-mail" type="text" />
+                      	<input type="hidden" name="command" value="findUserId"></input>                      
                      </div>
                   </div>   
                   
@@ -194,9 +195,10 @@ $(function() {
                	 <form:form modelAttribute="user" method="post" action="${action}">                  
                   <div class="row 90%">
                      <div>              
-                        <form:input path="userId" name="userId" 	placeholder="id "  			type="text"/> 
-                        <form:input path="userName" name="userName" 	placeholder="이름"  			type="text" />          
-                        <form:input path="userMail" name="userMail" 	placeholder="e-mail"  		type="text" />                     
+                        <form:input path="userId" name="userId" placeholder="id " type="text"/> 
+                        <form:input path="userName" name="userName" placeholder="이름" type="text" />          
+                        <form:input path="userMail" name="userMail" placeholder="e-mail" type="text" />
+                        <input type="hidden" name="command" value="findUserPassword"></input>                     
                      </div>
                   </div>   
                   

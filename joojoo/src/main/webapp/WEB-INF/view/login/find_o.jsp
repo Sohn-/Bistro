@@ -173,7 +173,8 @@ $(function() {
                        
                         <form:input path="ownerName" name="ownerName" 	placeholder="이름"  			type="text" />
                         <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/> 
-                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />                     
+                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />
+                        <input type="hidden" name="command" value="findOwnerId"></input>                     
                      </div>
                   </div>   
                   
@@ -198,7 +199,8 @@ $(function() {
                         <form:input path="ownerId" name="ownerId" 	placeholder="id "  			type="text"/> 
                         <form:input path="ownerName" name="ownerName" 	placeholder="이름"  			type="text" />
                         <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/> 
-                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />                     
+                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />
+                        <input type="hidden" name="command" value="findOwnerPassword"></input>                       
                      </div>
                   </div>   
                   

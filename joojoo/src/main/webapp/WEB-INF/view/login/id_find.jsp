@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+아이디 찾기 성공
 </body>
 </html>
