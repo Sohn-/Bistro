@@ -11,16 +11,11 @@ DROP TRIGGER TRI_wish_list_wish_list_code;
 /* Drop Tables */
 
 DROP TABLE coupon CASCADE CONSTRAINTS;
-DROP TABLE coupon_status CASCADE CONSTRAINTS;
 DROP TABLE wish_list CASCADE CONSTRAINTS;
 DROP TABLE event_comment CASCADE CONSTRAINTS;
 DROP TABLE rview_comment CASCADE CONSTRAINTS;
 DROP TABLE stores CASCADE CONSTRAINTS;
 DROP TABLE owners CASCADE CONSTRAINTS;
-DROP TABLE persons CASCADE CONSTRAINTS;
-DROP TABLE region CASCADE CONSTRAINTS;
-DROP TABLE service_type CASCADE CONSTRAINTS;
-DROP TABLE store_type CASCADE CONSTRAINTS;
 DROP TABLE users CASCADE CONSTRAINTS;
 
 
@@ -53,16 +48,8 @@ CREATE TABLE coupon
 	owner_id varchar2(50) NOT NULL,
 	user_id varchar2(50),
 	comment_code number NOT NULL,
-	coupon_status_code number NOT NULL,
+	coupon_status varchar2(50) DEFAULT '미사용' NOT NULL,
 	PRIMARY KEY (coupon_code)
-);
-
-
-CREATE TABLE coupon_status
-(
-	coupon_status_code number NOT NULL,
-	coupon_status varchar2(50) NOT NULL,
-	PRIMARY KEY (coupon_status_code)
 );
 
 
@@ -75,9 +62,9 @@ CREATE TABLE event_comment
 	start_date date NOT NULL,
 	end_date date NOT NULL,
 	store_code number NOT NULL,
-	persons_code number NOT NULL,
-	service_type_code number NOT NULL,
 	delete_request varchar2(50),
+	service_type_name varchar2(50) NOT NULL,
+	persons_level varchar2(50) NOT NULL,
 	PRIMARY KEY (comment_code)
 );
 
@@ -94,22 +81,6 @@ CREATE TABLE owners
 );
 
 
-CREATE TABLE persons
-(
-	persons_code number NOT NULL,
-	persons_level varchar2(200),
-	PRIMARY KEY (persons_code)
-);
-
-
-CREATE TABLE region
-(
-	region_name varchar2(50),
-	region_code number NOT NULL,
-	PRIMARY KEY (region_code)
-);
-
-
 CREATE TABLE rview_comment
 (
 	comment_code number NOT NULL,
@@ -123,14 +94,6 @@ CREATE TABLE rview_comment
 );
 
 
-CREATE TABLE service_type
-(
-	service_type_code number NOT NULL,
-	service_type_name varchar2(200),
-	PRIMARY KEY (service_type_code)
-);
-
-
 CREATE TABLE stores
 (
 	store_code number NOT NULL,
@@ -138,18 +101,10 @@ CREATE TABLE stores
 	store_adress varchar2(1000) NOT NULL,
 	store_phone varchar2(50) NOT NULL,
 	owner_id varchar2(50) NOT NULL,
-	region_code number NOT NULL,
-	type_code number NOT NULL,
 	star_point number,
+	region_name varchar2(50) NOT NULL,
+	type_name varchar2(50) NOT NULL,
 	PRIMARY KEY (store_code)
-);
-
-
-CREATE TABLE store_type
-(
-	type_name varchar2(50),
-	type_code number NOT NULL,
-	PRIMARY KEY (type_code)
 );
 
 
@@ -179,8 +134,8 @@ CREATE TABLE wish_list
 /* Create Foreign Keys */
 
 ALTER TABLE coupon
-	ADD FOREIGN KEY (coupon_status_code)
-	REFERENCES coupon_status (coupon_status_code)
+	ADD FOREIGN KEY (comment_code)
+	REFERENCES event_comment (comment_code)
 ;
 
 
@@ -190,12 +145,6 @@ ALTER TABLE wish_list
 ;
 
 
-ALTER TABLE coupon
-	ADD FOREIGN KEY (comment_code)
-	REFERENCES event_comment (comment_code)
-;
-
-
 ALTER TABLE stores
 	ADD FOREIGN KEY (owner_id)
 	REFERENCES owners (owner_id)
@@ -208,21 +157,9 @@ ALTER TABLE coupon
 ;
 
 
-ALTER TABLE event_comment
-	ADD FOREIGN KEY (persons_code)
-	REFERENCES persons (persons_code)
-;
-
-
-ALTER TABLE stores
-	ADD FOREIGN KEY (region_code)
-	REFERENCES region (region_code)
-;
-
-
-ALTER TABLE event_comment
-	ADD FOREIGN KEY (service_type_code)
-	REFERENCES service_type (service_type_code)
+ALTER TABLE rview_comment
+	ADD FOREIGN KEY (store_code)
+	REFERENCES stores (store_code)
 ;
 
 
@@ -233,24 +170,12 @@ ALTER TABLE event_comment
 
 
 ALTER TABLE rview_comment
-	ADD FOREIGN KEY (store_code)
-	REFERENCES stores (store_code)
-;
-
-
-ALTER TABLE stores
-	ADD FOREIGN KEY (type_code)
-	REFERENCES store_type (type_code)
-;
-
-
-ALTER TABLE wish_list
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
 
 
-ALTER TABLE rview_comment
+ALTER TABLE wish_list
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;

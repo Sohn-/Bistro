@@ -1,8 +1,7 @@
 package joojoo.controller;
 
-import java.util.List;
-
-import joojoo.entity.RviewComment;
+import joojoo.entity.All;
+import joojoo.service.CouponService;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
 import joojoo.service.UserService;
@@ -28,10 +27,20 @@ public class MyPageController {
 	    @Autowired
 	    private StoreService storeService;
 	    
+	    @Autowired
+	    private CouponService couponService;
+	    
 	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
-		public String showRviewCommentList(Model model){
-			
+		public String showInfoPage(Model model){
+	    	
 			return "info/member";
+		}
+	    
+	    @RequestMapping(value="/info/member/user", method=RequestMethod.GET)
+		public String showUserInfoPage(Model model){
+	    	All couponInfo = couponService.getCouponsByUserId(userId);
+			model.addAttribute("couponInfo",couponInfo);
+			return "info/member_user";
 		}
 	
 	
