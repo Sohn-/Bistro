@@ -156,13 +156,15 @@ fieldset .help {
    </div>
 
    <div id="footer-wrapper" style="position:static; padding-left: 100px; padding-right: 100px">
-      <div class="row">          
-      	 <a href="findform?who=owner">          
-         <button id="upju" value="" type="button"  >업주찾기</button>
-         </a>        
-         <a href="findform?who=user">          
-         <button id="upju" value="" type="button"  >일반찾기</button>
+      <div class="row">  
+       	<a href="findform?who=user">          
+         <button id="user" value="" type="button"  >일반찾기</button>
          </a>
+              
+      	 <a href="findform?who=owner">          
+         <button id="owner" value="" type="button"  >업주찾기</button>
+         </a>        
+        
       </div>
    </div>
    
