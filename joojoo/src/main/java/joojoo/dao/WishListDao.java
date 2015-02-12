@@ -1,8 +1,8 @@
 package joojoo.dao;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.WishList;
 
 
@@ -12,7 +12,7 @@ public interface WishListDao {
 	int insertWishList(WishList wishList);
 	int deleteWishList(int wishListCode);
 	
-	List<WishList> getWishListsByUserId(String userId);
+	List<All> getWishListsByUserId(String userId);
 	
 	
 

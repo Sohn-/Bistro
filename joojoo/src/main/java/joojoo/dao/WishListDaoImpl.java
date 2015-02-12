@@ -1,8 +1,8 @@
 package joojoo.dao;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.WishList;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -45,7 +45,7 @@ public class WishListDaoImpl implements WishListDao{
 	}
 
 	@Override
-	public List<WishList> getWishListsByUserId(String userId) {
+	public List<All> getWishListsByUserId(String userId) {
 		String stmt = nameSpace + "getWishListsByUserId";
 		return sqlSession.selectList(stmt, userId);
 	}

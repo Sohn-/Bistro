@@ -2,8 +2,8 @@ package joojoo.controller;
 
 import javax.servlet.http.HttpSession;
 
+import joojoo.entity.All;
 import joojoo.entity.Owners;
-import joojoo.entity.Region;
 import joojoo.entity.Stores;
 import joojoo.entity.Users;
 import joojoo.service.OwnerService;
@@ -69,7 +69,7 @@ public class JoinController {
 
    @RequestMapping(value="/join/idCheck", method=RequestMethod.GET)
    public String showIdCheckPage(@RequestParam String joinId, Model model){
-	   Users result = new Users();
+	   All result = new All();
 	   result = userService.idDuplicateCheck(joinId);
 	   model.addAttribute("result",result);
 	   model.addAttribute("joinId",joinId);
@@ -80,7 +80,7 @@ public class JoinController {
    
    @RequestMapping(value="/join/mailCheck", method=RequestMethod.GET)
    public String showMailCheckPage(@RequestParam String joinMail, Model model){
-	   Users result = new Users();
+	   All result = new All();
 	   result = userService.mailDuplicateCheck(joinMail);
 	   model.addAttribute("result",result);
 	   model.addAttribute("joinMail",joinMail);
@@ -134,7 +134,7 @@ public class JoinController {
    
    @RequestMapping(value="/join/idCheck2", method=RequestMethod.GET)
    public String showIdCheckPage2(@RequestParam String joinId2, Model model){
-	   Owners result = new Owners();
+	   All result = new All();
 	   result = ownerService.idDuplicateCheck(joinId2);
 	   model.addAttribute("result",result);
 	   model.addAttribute("joinId2",joinId2);
@@ -143,7 +143,7 @@ public class JoinController {
    
    @RequestMapping(value="/join/mailCheck2", method=RequestMethod.GET)
    public String showMailCheckPage2(@RequestParam String joinMail2, Model model){
-	   Owners result = new Owners();
+	   All result = new All();
 	   result = ownerService.mailDuplicateCheck(joinMail2);
 	   model.addAttribute("result",result);
 	   model.addAttribute("joinMail2",joinMail2);
@@ -154,7 +154,7 @@ public class JoinController {
    
    @RequestMapping(value="/join/licenseCheck", method=RequestMethod.GET)
    public String showLicenseCheckPage(@RequestParam String joinLicense, Model model){
-	   Owners result = new Owners();
+	   All result = new All();
 	   result = ownerService.licensenumberDuplicateCheck(joinLicense);
 	   model.addAttribute("result",result);
 	   model.addAttribute("joinLicense",joinLicense);
