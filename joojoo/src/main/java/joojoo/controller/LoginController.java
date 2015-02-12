@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -92,6 +93,21 @@ public class LoginController {
 		model.addAttribute("owner", owner);
 		
 		return "login/find";
+	}
+	
+	@RequestMapping(value="/findform", method=RequestMethod.GET)
+	public String findForm(@RequestParam("who") String who, Model model){
+		String path = "redirect:/find_u";
+		if (who.equals("user")) {
+			Users user = new Users();
+			model.addAttribute("user", user);
+		} else if (who.equals("owner")) {
+			Owners owner = new Owners();
+			model.addAttribute("owner", owner);
+			path = "redirect:/find_o";
+		}
+
+		return path;
 	}
 	
 	@RequestMapping(value="/login/findprocess", method=RequestMethod.POST)
