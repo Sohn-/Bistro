@@ -70,6 +70,30 @@ public class JoinController {
    
    }
    
+
+   @RequestMapping(value="/join/idCheck", method=RequestMethod.GET)
+   public String showIdCheckPage(@RequestParam String joinId, Model model){
+	   Users result = new Users();
+	   result = userService.idDuplicateCheck(joinId);
+	   model.addAttribute("result",result);
+	   model.addAttribute("joinId",joinId);
+	   return "join/idConfirm";
+	   
+   
+   }
+   
+   @RequestMapping(value="/join/mailCheck", method=RequestMethod.GET)
+   public String showMailCheckPage(@RequestParam String joinMail, Model model){
+	   Users result = new Users();
+	   result = userService.mailDuplicateCheck(joinMail);
+	   model.addAttribute("result",result);
+	   model.addAttribute("joinMail",joinMail);
+	   return "join/mailConfirm";
+	   
+   
+   }
+   ///////////////////// 여기서부터는 owner ///////////////////////
+   
    @RequestMapping(value="/join/owner", method=RequestMethod.GET)
    public String showOwnerJoinPage(Model model){
 	   model.addAttribute("joinOwner", new Owners());
@@ -106,16 +130,36 @@ public class JoinController {
    
    }
    
-   @RequestMapping(value="/join/idCheck", method=RequestMethod.GET)
-   public String showIdCheckPage(@RequestParam String joinId, Model model){
-	   Users result = new Users();
-	   result = userService.idDuplicateCheck(joinId);
+   @RequestMapping(value="/join/idCheck2", method=RequestMethod.GET)
+   public String showIdCheckPage2(@RequestParam String joinId2, Model model){
+	   Owners result = new Owners();
+	   result = ownerService.idDuplicateCheck(joinId2);
 	   model.addAttribute("result",result);
-	   model.addAttribute("joinId",joinId);
-	   return "join/idConfirm";
+	   model.addAttribute("joinId2",joinId2);
+	   return "join/idConfirm2";
+   }
+   
+   @RequestMapping(value="/join/mailCheck2", method=RequestMethod.GET)
+   public String showMailCheckPage2(@RequestParam String joinMail2, Model model){
+	   Owners result = new Owners();
+	   result = ownerService.mailDuplicateCheck(joinMail2);
+	   model.addAttribute("result",result);
+	   model.addAttribute("joinMail2",joinMail2);
+	   return "join/mailConfirm2";
 	   
    
    }
    
-
+   @RequestMapping(value="/join/licenseCheck", method=RequestMethod.GET)
+   public String showLicenseCheckPage(@RequestParam String joinLicense, Model model){
+	   Owners result = new Owners();
+	   result = ownerService.licensenumberDuplicateCheck(joinLicense);
+	   model.addAttribute("result",result);
+	   model.addAttribute("joinLicense",joinLicense);
+	   return "join/licenseConfirm";
+	   
+   
+   }
+   
+   
 }
