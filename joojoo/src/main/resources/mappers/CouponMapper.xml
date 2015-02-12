@@ -8,18 +8,18 @@
 		<id column="ownerId" jdbcType="VARCHAR" property="ownerId" />
 		<id column="userId" jdbcType="VARCHAR" property="userId" />
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />
-		<id column="couponStatusCode" jdbcType="INTEGER" property="couponStatusCode" />
+		<id column="couponStatus" jdbcType="VARCHAR" property="couponStatus" />
 		
 		<result column="couponCode" jdbcType="VARCHAR" property="couponCode" />
 		<result column="ownerId" jdbcType="VARCHAR" property="ownerId" />
 		<result column="userId" jdbcType="VARCHAR" property="userId" />
 		<result column="commentCode" jdbcType="INTEGER" property="commentCode" />
-		<result column="couponStatusCode" jdbcType="INTEGER" property="couponStatusCode" />
+		<result column="couponStatus" jdbcType="VARCHAR" property="couponStatus" />
 	</resultMap>  
 	
  	<insert id="insertCoupon" parameterType="Coupon">
 		insert into Coupon 
-		values(#{couponCode},#{ownerId},#{userId},#{commentCode}, #{couponStatusCode})	
+		values(#{couponCode},#{ownerId},#{userId},#{commentCode}, #{couponStatus})	
 	</insert> 
  
  	<update id="updateCoupon" parameterType="All">
@@ -27,7 +27,7 @@
 		owner_id = #{ownerId},
 		user_id = #{userId},
 		comment_code = #{commentCode},
-		coupon_status_code = #{couponStatusCode}
+		coupon_status = #{couponStatus}
 		WHERE coupon_code = #{couponCode}
 	</update>
  	
@@ -61,12 +61,12 @@
 						resultType="All">
 		select * 
 		from coupon 
-		where coupon_status_code=#{couponStatusCode}					
+		where coupon_status=#{couponStatus}					
 	</select>
 	
 	<select id= "getCouponsByCouponCode" parameterType="String"
 						resultType="All">
-		select coupon_code, owner_id, user_id, comment_code, coupon_status_code 
+		select coupon_code, owner_id, user_id, comment_code, coupon_status 
 		from coupon 
 		where coupon_code = #{couponCode}					
 	</select>

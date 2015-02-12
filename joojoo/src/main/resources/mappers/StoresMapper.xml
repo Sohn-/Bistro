@@ -46,7 +46,7 @@
 	<select id = "getStoresByStoreType" resultType="All">
 	select *
 	from stores
-	where type_code=#{typeCode}
+	where type_name=#{typeName}
 	
 	</select>
 	
@@ -59,18 +59,18 @@
 	<select id = "getStoresByRegion" resultType="All">
 	select *
 	from stores
-	where region_code=#{regionCode}
+	where region_name=#{regionName}
 	
 	</select>
 	
 	<select id="getStoresByCategory"  resultType="All">
  	 SELECT * FROM stores
   <where> 
-    <if test="regionCode != 0">
-         region_code=#{regionCode}
+    <if test='regionName != "none"'>
+         region_name=#{regionName}
     </if> 
-    <if test="typeCode != 0">
-        and type_code=#{typeCode}
+    <if test='typeName != "none"'>
+        and type_name=#{typeName}
     </if>
   </where>
 </select>
@@ -82,11 +82,11 @@
 		from stores s 
 		
 		
-		where r.region_name like '%${keyword}%'
-		or t.type_name like '%${keyword}%'
-		or s.store_name like '%${keyword}%'
-		or s.store_phone like '%${keyword}%'
-		or s.store_adress like '%${keyword}%'
+		where region_name like '%${keyword}%'
+		or type_name like '%${keyword}%'
+		or store_name like '%${keyword}%'
+		or store_phone like '%${keyword}%'
+		or store_adress like '%${keyword}%'
 		
 	</select>
 	

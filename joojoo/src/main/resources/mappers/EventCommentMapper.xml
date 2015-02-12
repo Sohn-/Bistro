@@ -11,8 +11,8 @@
 		<id column="startDate" jdbcType="DATE" property="startDate" />
 		<id column="endDate" jdbcType="DATE" property="endDate" />
 		<id column="storeCode" jdbcType="INTEGER" property="storeCode" />
-		<id column="personsCode" jdbcType="INTEGER" property="personsCode" />
-		<id column="serviceTypeCode" jdbcType="INTEGER" property="serviceTypeCode" />
+		<id column="personsLevel" jdbcType="VARCHAR" property="personsName" />
+		<id column="serviceTypeName" jdbcType="VARCHAR" property="serviceTypeName" />
 		<id column="deleteRequest" jdbcType="VARCHAR" property="deleteRequest" />
 		
 		<result column="commentCode" jdbcType="INTEGER" property="commentCode" />
@@ -22,14 +22,14 @@
 		<result column="startDate" jdbcType="DATE" property="startDate" />
 		<result column="endDate" jdbcType="DATE" property="endDate" />
 		<result column="storeCode" jdbcType="INTEGER" property="storeCode" />
-		<result column="personsCode" jdbcType="INTEGER" property="personsCode" />
-		<result column="serviceTypeCode" jdbcType="INTEGER" property="serviceTypeCode" />
+		<result column="personsLevel" jdbcType="VARCHAR" property="personsLevel" />
+		<result column="serviceTypeName" jdbcType="VARCHAR" property="serviceTypeName" />
 		<result column="deleteRequest" jdbcType="VARCHAR" property="deleteRequest" />
 	</resultMap> 
 	
  	<insert id="insertEventComment" parameterType="EventComment">
-		insert into event_comment(title, content, start_date, end_date, store_code, persons_code, service_type_code) 
-		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsCode}, #{serviceTypeCode})	
+		insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name) 
+		values(#{title}, #{content},#{startDate}, #{endDate}, #{storeCode}, #{personsLevel}, #{serviceTypeName})	
 	</insert> 
  
   	<update id="updateEventComment" parameterType="All">
@@ -39,8 +39,8 @@
 		start_date = #{startDate},
 		end_date = #{endDate},
 		store_code = #{storeCode},
-		persons_code = #{personsCode},
-		service_type_code = #{serviceTypeCode}
+		persons_level = #{personsLevel},
+		service_type_name = #{serviceTypeName}
 		WHERE comment_code = #{commentCode}
 	</update>
  	
@@ -54,25 +54,21 @@
 						resultType="All">
 		select * 
 		from event_comment e
-		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
+		join stores s using(store_code)	
 		join owners using(owner_id)	
 		 
 		<where>
-		<if test="regionCode != 0">
-    		region_code = #{regionCode}
+		<if test='regionName != "none" '>
+    		region_name = #{regionName}
   		</if>
-  		<if test="typeCode != 0">
-  			and type_code = #{typeCode}
+  		<if test='typeName != "none" '>
+  			and type_name = #{typeName}
   		</if>
-  		<if test="personsCode != 0">
-  			and persons_code = #{personsCode}
+  		<if test='personsLevel != "none" '>
+  			and persons_level = #{personsLevel}
   		</if>
-  		<if test="serviceTypeCode != 0">
-  			and service_type_code = #{serviceTypeCode}
+  		<if test='serviceTypeName != "none"'>
+  			and service_type_name = #{serviceTypeName}
   		</if>
   		</where>		
 	</select>
@@ -138,10 +134,6 @@
 		select * 
 		from event_comment e
 		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
 		join owners using(owner_id)	
 		
 		where title like '%${keyword}%'
@@ -181,10 +173,6 @@
 		select * 
 		from event_comment e
 		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
 		join owners using(owner_id)
 		 		
 		where comment_code = #{commentCode}			
