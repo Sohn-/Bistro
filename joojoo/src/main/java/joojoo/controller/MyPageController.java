@@ -1,5 +1,7 @@
 package joojoo.controller;
 
+import java.util.List;
+
 import joojoo.entity.All;
 import joojoo.service.CouponService;
 import joojoo.service.OwnerService;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MyPageController {
 	static final Logger LOG = LoggerFactory
@@ -37,8 +40,8 @@ public class MyPageController {
 		}
 	    
 	    @RequestMapping(value="/info/member/user", method=RequestMethod.GET)
-		public String showUserInfoPage(Model model){
-	    	All couponInfo = couponService.getCouponsByUserId(userId);
+		public String showUserInfoPage(Model model,@RequestParam("userId") String userId){
+	    	List<All> couponInfo = couponService.getCouponsByUserId(userId);
 			model.addAttribute("couponInfo",couponInfo);
 			return "info/member_user";
 		}
