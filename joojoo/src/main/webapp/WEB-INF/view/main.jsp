@@ -276,9 +276,10 @@ fieldset .help {
       <h3 class="docs" align="center">검색결과</h3>
 
       <div id="accordion-resizer" class="ui-widget-content">
-
+		
          <table width="80%" align="center" cellpadding="5" cellspacing="0"   border="1" bgcolor="gray" align="center" style="border-collapse: collapse; border: 1px gray solid;">
             <tr align="center">
+            	<td style="border: 1px gray solid;"></td>
                <td style="border: 1px gray solid;">상호명</td>
                <td style="border: 1px gray solid;">지역</td>
                <td style="border: 1px gray solid;">업종</td>
