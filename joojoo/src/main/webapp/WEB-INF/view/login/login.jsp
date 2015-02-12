@@ -57,7 +57,7 @@ fieldset .help {
 </head>
 
 <body class="homepage" bgcolor=#333323>
-   <div id="header-wrapper" style="background-image: url(/images/main.jpg)">
+   <div id="header-wrapper" style= "background-image: url(/images/main.jpg)">
 
       <div id="header" class="container">
 
