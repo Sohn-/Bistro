@@ -2,6 +2,7 @@ package joojoo.controller;
 
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.EventComment;
 import joojoo.entity.Stores;
@@ -53,7 +54,7 @@ public class SearchController {
 	@RequestMapping(value="/main/category", method=RequestMethod.POST)
 	public String searchCategoryResult(@ModelAttribute("category") Category category, Model model){
 		
-		List<EventComment> events = eventService.SeachByCategory(category);	
+		List<All> events = eventService.SeachByCategory(category);	
 		model.addAttribute("search_events", events);
 		List<Stores> stores = storeService.showStoresByCategory(category);
 		model.addAttribute("search_stores", stores);

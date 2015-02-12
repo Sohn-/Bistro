@@ -51,7 +51,7 @@
 	
 	<!--  int regionCode, int typeCode, int personsCode, int serviceTypeCode -->
 	 <select id= "getEventCommentsByCategory" parameterType="EventComment"
-						resultMap="EventCommentMap">
+						resultType="All">
 		select * 
 		from event_comment e
 		join stores s using(store_code)

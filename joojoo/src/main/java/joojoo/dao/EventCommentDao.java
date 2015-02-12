@@ -2,6 +2,7 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.EventComment;
 
@@ -20,7 +21,8 @@ public interface EventCommentDao {
 	List<EventComment> getEventCommentsByKeyword(Category category);
 	
 	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
-	List<EventComment> getEventCommentsByCategory(Category category);
+	//List<EventComment> getEventCommentsByCategory(Category category);
+	List<All> getEventCommentsByCategory(Category category);
 	
 	List<EventComment> getEventCommentsByRegionCode(int regionCode);
 	List<EventComment> getEventCommentsByTypeCode(int typeCode);

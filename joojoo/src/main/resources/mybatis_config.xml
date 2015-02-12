@@ -16,6 +16,7 @@
 		<typeAlias type="joojoo.entity.Stores" alias="Stores"></typeAlias>
 		<typeAlias type="joojoo.entity.Users" alias="Users"></typeAlias>
 		<typeAlias type="joojoo.entity.WishList" alias="WishList"></typeAlias>
+		<typeAlias type="joojoo.entity.All" alias="All"></typeAlias>
 	</typeAliases>
 	
 	

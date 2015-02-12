@@ -2,6 +2,7 @@ package joojoo.dao;
 
 import java.util.List;
 
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.EventComment;
 
@@ -48,10 +49,18 @@ public class EventCommentDaoImpl implements EventCommentDao{
 	}
 	
 	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
-	@Override
-	public List<EventComment> getEventCommentsByCategory(Category category) {
+	/*@Override
+	public List<EventComment> getEventCommentsByCategory(Category category) { //테스트
 		String statement = nameSpace + "getEventCommentsByCategory";
 		List<EventComment> result = sqlSession.selectList(statement, category);
+		
+		return result;
+	}*/
+	
+	@Override
+	public List<All> getEventCommentsByCategory(Category category) { //테스트
+		String statement = nameSpace + "getEventCommentsByCategory";
+		List<All> result = sqlSession.selectList(statement, category);
 		
 		return result;
 	}

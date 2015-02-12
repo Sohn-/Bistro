@@ -4,6 +4,7 @@ import java.util.List;
 
 import joojoo.dao.EventCommentDao;
 import joojoo.dao.StoreDao;
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.EventComment;
 import joojoo.entity.Stores;
@@ -30,7 +31,7 @@ public class EventCommentServiceImpl implements EventCommentService {
 
 	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
 	@Override
-	public List<EventComment> SeachByCategory(Category category) {	
+	public List<All> SeachByCategory(Category category) {	
 		return dao.getEventCommentsByCategory(category);
 	}
 
