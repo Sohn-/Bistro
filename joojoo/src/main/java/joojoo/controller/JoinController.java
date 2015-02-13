@@ -1,5 +1,8 @@
 package joojoo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
@@ -105,10 +108,25 @@ public class JoinController {
    @RequestMapping(value="/join/result/owner", method=RequestMethod.GET)
    public String showRegistStorePageUpdate(Model model){
 	   model.addAttribute("joinStore",new Stores());
+	   
+	   List<String> regionNames = new ArrayList<String>();
+	   regionNames.add("홍대");
+	   regionNames.add("신촌");
+	   regionNames.add("강남");
+	   model.addAttribute("regionNames",regionNames);
+	   
+	   List<String> typeNames = new ArrayList<String>();
+	   typeNames.add("바");
+	   typeNames.add("고깃집");
+	   typeNames.add("룸");
+	   model.addAttribute("typeNames",typeNames);
+	   
+	   
 	   return "/join/join_o2";
    
    }
-  
+   
+ 
    
    @RequestMapping(value="/join/result/owner", method=RequestMethod.POST)
    public String showOwnerSuccessPage(@ModelAttribute("joinStore") Stores joinStore

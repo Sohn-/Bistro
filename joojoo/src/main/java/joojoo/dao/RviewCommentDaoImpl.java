@@ -114,4 +114,12 @@ public class RviewCommentDaoImpl implements RviewCommentDao{
 		
 		return result;
 	}
+
+	@Override
+	public All getRviewCommentBycommentCode(int commentCode) {
+		String statement = nameSpace + "getRviewCommentBycommentCode";
+		All result = sqlSession.selectOne(statement);
+		
+		return result;
+	}
 }

@@ -15,7 +15,7 @@ public interface RviewCommentService {
 	List<All> SearchByContetnt(String content);
 	List<All> SearchByStoerName(String storeName);
 	List<All> SearchByKeyword(Category category); 
-	
+	All SearchByCommentCode(int commentCode);
 	int registRview(RviewComment rviewComment, Stores store); 
 	int modifyRview(RviewComment rviewComment); 
 	int deleteRview(String userId, int commentCode);
