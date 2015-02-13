@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <title>CSS Tutorial | Layout - Responsive</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/joinlayout.css" />
+    <link rel="stylesheet" href="../css/joinlayout.css" />
  
   </head>
   <body>

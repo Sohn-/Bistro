@@ -290,10 +290,11 @@ fieldset .help {
          </div>
          
 
-
          
       </div>
    </div>
+   		<!-- 	헤더구분띠 -->
+      <img  src="images/bar.png" style="width: 100%">
 
    <!-- Features -->
    <div id="features-wrapper">
@@ -342,7 +343,7 @@ fieldset .help {
          </li>
       </ul>
       </nav>
-      </section> 
+
       <br>
       
       <div class="row" >    
@@ -437,5 +438,6 @@ fieldset .help {
         </div>          
       </div>
       </div>
+       </section> 
 </body>
 </html>
