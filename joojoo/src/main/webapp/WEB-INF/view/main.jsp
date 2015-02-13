@@ -325,9 +325,7 @@ fieldset .help {
                      <td style="border: 1px gray solid;"><c:out value="${store.storeName}" /></td>
                      <td style="border: 1px gray solid;"><c:out value="${store.regionName}" /></td>
                      <td style="border: 1px gray solid;"><c:out value="${store.typeName}" /></td>   
-                     <% List<All> stores = (List<All>)request.getAttribute("stores"); 
-                     	System.out.println(stores);
-                     %> 
+                     
                   </tr>
                </table>
             </div>            
