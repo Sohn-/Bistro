@@ -20,11 +20,11 @@
 			if($("#joinId").val()==""){
 				alert("아이디를 입력해주세요.");
 				$("#joinId").focus();		
-			}
+			}else{
 				<c:url value="/join/idCheck" var="idchk"></c:url>
 				var url = "${idchk}?joinId="+$("#joinId").val();
 				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
-			
+			}
 		});
 		
 		$("#mailDupCheck").click(function(){
