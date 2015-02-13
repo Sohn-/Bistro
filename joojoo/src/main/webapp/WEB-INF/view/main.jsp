@@ -242,9 +242,10 @@ fieldset .help {
 		return true;
 	}
    
-   $('#myModal').on('show.bs.modal', function () {
-	   document.
-	 })
+    $('#myModal').on('show.bs.modal', function () {
+	   document.document.querySelector("#drophere")
+		.innerHTML+=xhr.responseText+"<br>";
+	 }) 
 </script>
 </head>
 
@@ -359,16 +360,14 @@ fieldset .help {
       
     	
     <c:forEach items="${stores}" var="store">
-    <div class="scroll-content-item ui-widget-header">
+    <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
     <button data-toggle="modal" data-target="#myModal">
         <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" />
           </button>
           </div>
           
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
- 
-    </c:forEach>
-     <div class="modal-dialog">
+	 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -385,6 +384,9 @@ fieldset .help {
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+ 
+    </c:forEach>
+    
    
     
  
