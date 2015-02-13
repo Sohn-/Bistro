@@ -356,25 +356,26 @@ fieldset .help {
     <c:forEach items="${stores}" var="store">
     	
           <div class="scroll-content-item ui-widget-header"><button data-toggle="modal" data-target="#myModal"><img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></button></div>
-
-    </c:forEach>
-   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title"><c:out value="${store.storeName}" /></h4>
       </div>
       <div class="modal-body">
-        ...
+        <c:out value="${store.storeAdress }"/>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-warning btn-sm">구매하기</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+    </c:forEach>
+ 
     
   </div>
   <div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
