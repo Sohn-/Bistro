@@ -334,13 +334,7 @@ fieldset .help {
             </div>    
             </c:forEach>    
                      
-         </div>      
-         
-         
-         
-         
-         
-         
+         </div>          
       </div>
       </div>
 </body>
