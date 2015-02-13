@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes({"loginUser","loginOwner"})
+//@SessionAttributes({"loginUser","loginOwner"})
 //@RequestMapping("/login")
 public class SearchController {
 	static final Logger logger = LoggerFactory
@@ -43,11 +43,14 @@ public class SearchController {
 	}
 	@RequestMapping(value="/main/keyword", method=RequestMethod.POST)
 	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){
+		logger.trace("-----------------키워드-----------"+category.getKeyword());
+		model.addAttribute("category");
 		
-		List<All> events = eventService.SeachByKeyword(category);	
-		model.addAttribute("search_events", events);
-		List<All> stores = storeService.showStoresBySerchKeyword(category);
-		model.addAttribute("search_stores", stores);
+		List<All> search_events = eventService.SeachByKeyword(category);		
+		model.addAttribute("search_events", search_events);
+		
+		List<All> search_stores = storeService.showStoresBySerchKeyword(category);
+		model.addAttribute("search_stores", search_stores);
 		return "search/search";
 	}
 	

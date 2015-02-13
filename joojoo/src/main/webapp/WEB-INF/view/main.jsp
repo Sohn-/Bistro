@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
 
 <!-- 버튼부트스트랩 -->
@@ -24,11 +24,11 @@
 
 <script   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.dropotron.min.js"></script>
-<script src="js/skel.min.js"></script>
-<script src="js/skel-layers.min.js"></script>
-<script src="js/init.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.dropotron.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/skel-layers.min.js"></script>
+<script src="/js/init.js"></script>
 
 <link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -148,11 +148,11 @@ fieldset .help {
             <nav id="nav">
             <ul>
 
-               <li><a class="icon fa-home" href="main"><span>Home</span></a></li>
-               <li><a class="icon fa-bar-chart-o" href="login"><span>Login</span></a>
-               <li><a class="icon fa-cog" href="join"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="info/member"><span>MyPage</span></a></li>
-               <li><a class="icon fa-sitemap" href="info/cart"><span>Cart</span></a></li>
+               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/main"><span>Home</span></a></li>
+               <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+               <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
+               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info/member"><span>MyPage</span></a></li>
+               <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li>
 
             </ul>
             </nav>
@@ -164,18 +164,18 @@ fieldset .help {
          
           <!--  고친부분 -->
          <div>      
-         <c:url value="/main/keyword" var="action"></c:url>
-               	 <form:form modelAttribute="category" method="post" action="${action}">
-                  <div class="row 90%">                    
-                        <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" />     
-                  </div>    
+         	<c:url value="/main/keyword" var="action"></c:url>
+            <form:form modelAttribute="category" method="post" action="${action}">
+              <div class="row 90%">                    
+                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" />     
+              </div>    
                   
-                  <div class="row 80%">
-                     <div class="12u">                        
-                        <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-                     </div>
+              <div class="row 80%">
+                  <div class="12u">                        
+                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
                   </div>
-              	</form:form>
+              </div>
+            </form:form>
          </div>
          
 
