@@ -15,6 +15,14 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-desktop.css">
 
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
@@ -22,6 +30,30 @@
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
+
+
+ <script>
+ $(function() {
+	    $( "#dialog" ).dialog({
+	      autoOpen: false,
+	      show: {
+	        effect: "blind",
+	        duration: 1000
+	      },
+	      hide: {
+	        effect: "explode",
+	        duration: 1000
+	      }
+	    });
+	 
+	    $( "#opener" ).click(function() {
+	      $( "#dialog" ).dialog( "open" );
+	    });
+	  });
+  </script>
+
+
+
 
 
 <link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -111,10 +143,13 @@ fieldset .help {
                   <div class="row 80%">
                      <div class="12u">
                         <%-- <a href="${action }" class="form-button-submit button icon fa-envelope">Login</a> --%>
-                        <button type="submit" class="form-button-submit button icon fa-envelope">Login</button>
+                        <button   class="form-button-submit button icon fa-envelope">Login</button>
                      </div>
                   </div>
               	</form:form>
+             
+              	
+              	
             </div>
          </div>
       </div>
@@ -141,13 +176,25 @@ fieldset .help {
 
                      <div class="12u">
                         <%-- <a href="${action }" class="form-button-submit button icon fa-envelope">Login</a> --%>
-                        <button type="submit" class="form-button-submit button icon fa-envelope">Login</button>
+                        <button id="opener" type="submit" class="form-button-submit button icon fa-envelope">Login</button>
                      </div>
                   </div>
                </form:form>
+               
+                  
+				<div id="dialog" title="Basic dialog">
+				  <p>로그인 실패하였습니다.</p>
+				</div>
+ 
+
             </div>
          </div>
       </div>
    </div>
+   
+   
+
+   
+   
 </body>
 </html>
