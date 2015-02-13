@@ -47,7 +47,10 @@ public class RviewCommentDaoImpl implements RviewCommentDao{
 		logger.trace("deleteRviewComment종료...");
 		return result;
 	}
-
+	
+	
+	
+	
 	@Override
 	public List<All> getRviewCommentsByUserId(String userId) {
 		String statement = nameSpace + "getRviewCommentsByUserId";

@@ -394,21 +394,21 @@ public class All {
 				+ ", personsCode=" + personsCode + ", serviceTypeCode="
 				+ serviceTypeCode + ", keyword=" + keyword + ", couponCode="
 				+ couponCode + ", ownerId=" + ownerId + ", userId=" + userId
-				+ ", commentCode=" + commentCode + ", couponStatusCode="
+				+"\n"+ ", commentCode=" + commentCode + ", couponStatusCode="
 				+ couponStatusCode + ", couponStatus=" + couponStatus
 				+ ", title=" + title + ", content=" + content + ", regDate="
 				+ regDate + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", storeCode=" + storeCode + ", deleteRequest="
-				+ deleteRequest + ", ownerPassword=" + ownerPassword
+				+"\n"+ deleteRequest + ", ownerPassword=" + ownerPassword
 				+ ", ownerName=" + ownerName + ", ownerMail=" + ownerMail
 				+ ", ownerPhone=" + ownerPhone + ", licenseNumber="
 				+ licenseNumber + ", personsLevel=" + personsLevel
 				+ ", regionName=" + regionName + ", starPoint=" + starPoint
-				+ ", serviceTypeName=" + serviceTypeName + ", storeName="
+				+"\n"+ ", serviceTypeName=" + serviceTypeName + ", storeName="
 				+ storeName + ", storeAdress=" + storeAdress + ", storePhone="
 				+ storePhone + ", typeName=" + typeName + ", userPassword="
 				+ userPassword + ", userName=" + userName + ", userMail="
-				+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
+				+"\n"+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
 				+ ", wishListCode=" + wishListCode + "]";
 	}
 	
