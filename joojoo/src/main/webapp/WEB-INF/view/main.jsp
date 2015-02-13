@@ -59,8 +59,8 @@ fieldset .help {
 }
 
   .scroll-pane { overflow: auto; width: 99%; float:left; }
-  .scroll-content { width: 2440px; float: left; }
-  .scroll-content-item { width: 100px; height: 100px; float: left; margin: 10px; font-size: 3em; line-height: 96px; text-align: center; }
+  .scroll-content { width: 6600px; float: left; }
+  .scroll-content-item { width: 300px; height: 300px; float: left; margin: 10px; font-size: 3em; line-height: 96px; text-align: center; }
   .scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
   .scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
   .scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
@@ -243,35 +243,7 @@ fieldset .help {
          
          
          
-<div class="scroll-pane ui-widget ui-widget-header ui-corner-all">
-  <div class="scroll-content">
-    <div class="scroll-content-item ui-widget-header">1</div>
-    <div class="scroll-content-item ui-widget-header">2</div>
-    <div class="scroll-content-item ui-widget-header">3</div>
-    <div class="scroll-content-item ui-widget-header">4</div>
-    <div class="scroll-content-item ui-widget-header">5</div>
-    <div class="scroll-content-item ui-widget-header">6</div>
-    <div class="scroll-content-item ui-widget-header">7</div>
-    <div class="scroll-content-item ui-widget-header">8</div>
-    <div class="scroll-content-item ui-widget-header">9</div>
-    <div class="scroll-content-item ui-widget-header">10</div>
-    <div class="scroll-content-item ui-widget-header">11</div>
-    <div class="scroll-content-item ui-widget-header">12</div>
-    <div class="scroll-content-item ui-widget-header">13</div>
-    <div class="scroll-content-item ui-widget-header">14</div>
-    <div class="scroll-content-item ui-widget-header">15</div>
-    <div class="scroll-content-item ui-widget-header">16</div>
-    <div class="scroll-content-item ui-widget-header">17</div>
-    <div class="scroll-content-item ui-widget-header">18</div>
-    <div class="scroll-content-item ui-widget-header">19</div>
-    <div class="scroll-content-item ui-widget-header">20</div>
-  </div>
-  <div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
-    <div class="scroll-bar"></div>
-  </div>
-</div>
- 
-         
+
          
           <!--  고친부분 -->
          <div>      
@@ -345,55 +317,39 @@ fieldset .help {
       </section> 
       <br>
       
-      <div class="row" >
-        
-      
-        
-        
-        
-         <div class="4u">
-            <!-- Feature -->
-            <section> 
-               <a href="#" class="image featured"> 
-                  <img src="images/pic01.jpg" alt="" />
-               </a> 
-               
-                  <h3>JooJooClub1</h3>
-               
-               <p>JooJooClub1 is best club</p>
-            </section>
-         </div>
-         
-         <div class="4u">
-            <!-- Feature -->
-            <section> 
-               <a href="#" class="image featured"> 
-                  <img src="images/pic02.jpg" alt="" />
-               </a>                
-                  <h3>JooJooClub1</h3>
-               <p>JooJooClub1 is best club</p>
-            </section>
-         </div>
-         
-         <div class="4u">
-            <!-- Feature -->
-            <section> 
-               <a href="#" class="image featured"> 
-                  <img src="images/pic03.jpg" alt="" />
-               </a>                
-                  <h3>JooJooClub1</h3>
-               <p>JooJooClub1 is best club</p>
-            </section>
-         </div>         
-      </div>
+      <div class="row" >    
+      <div class="scroll-pane ui-widget ui-widget-header ui-corner-all" style="background-color: gray">
+  			<div class="scroll-content" style="background-color: gray" >
+   
+      <div>       
+ <%--    <c:forEach items="${stores}" var="store">
+    	<c:forEach begin="0" end="${imageCount }" step="1"  varStatus="status">
+            <div class="scroll-content-item ui-widget-header"><img src="images/${store.licenseNumber }_${status.current }.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></div>         
+         </c:forEach>    
+    </c:forEach>   --%>  
+    
+    <c:forEach items="${stores}" var="store">
+    	
+            <div class="scroll-content-item ui-widget-header"><img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></div>         
+             
+    </c:forEach>
+    
+  </div>
+  <div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
+    <div class="scroll-bar"></div>
+  </div>
+</div>
+ 
+   </div>      
+       
       
       <br>
       
       <h3 class="docs" align="center">검색결과</h3>
 
-      <div id="accordion-resizer" class="ui-widget-content">
+      <div id="accordion-resizer" class="ui-widget-content" class="container" align="center" style="background-color: gray">
 		
-         <table width="80%" align="center" cellpadding="5" cellspacing="0"   border="1" bgcolor="gray" align="center" style="border-collapse: collapse; border: 1px gray solid;">
+         <table width="80%" align="center" cellpadding="5" cellspacing="0"   border="1" bgcolor="gray" align="center" style="border-collapse: collapse; border: 1px gray solid; background-color: orange;">
             <tr align="center">
             	<td style="border: 1px gray solid;"></td>
                <td style="border: 1px gray solid;">상호명</td>
@@ -406,37 +362,11 @@ fieldset .help {
          
          
 
-<%-- 
-      <c:forEach items="${depts}" var="dept">
-			<tr>
-				<td><c:out value="${dept.departmentId}" /></td>
-				<td><c:out value="${dept.departmentName}" /></td>
-				<td><c:out value="${dept.managerId}" /></td>
-				<td><c:out value="${dept.locationId} " /></td>				
-				<td>
-					<c:url value="/dept?departmentId=${dept.departmentId}" var="url" /> 
-					<a href="${url}"><button>상세</button></a> 
-					<c:url value="/dept/edit?departmentId=${dept.departmentId}" var="url" /> 
-					<a href="${url}"><button>편집</button></a>
-				</td>			
-			</tr>
-		</c:forEach>
-          --%>
-<!-- 
-	private int storeCode;
-	private String storeName;
-	private String storeAdress;
-	private String storePhone;
-	private String ownerId;
-	private int regionCode;
-	private int typeCode;
-	private int starPoint; -->
-	
-         <div id="accordion">         
+        <div id="accordion" class="container" align="center" style="background-color: gray" >         
          
           <c:forEach items="${stores}" var="store">
-            <div>
-               <table width="90%" align="center" cellpadding="5" cellspacing="0"   border="1" align="center"   style="border-collapse: collapse; border: 1px gray solid;">
+            <div style="background-color: gray">
+               <table width="90%" align="center" cellpadding="5" cellspacing="0"   border="1" align="center"   style="border-collapse: collapse; border: 1px gray solid; background-color: pink;">
                   <tr align="center">
                      <td style="border: 1px gray solid;"><c:out value="${store.storeName}" /></td>
                      <td style="border: 1px gray solid;"><c:out value="${store.regionName}" /></td>
@@ -445,12 +375,12 @@ fieldset .help {
                   </tr>
                </table>
             </div>            
-            <div>
+            <div  style="background-color: gray">
             <p><c:out value="${store.storeAdress}"/> </p>
             </div>    
             </c:forEach>    
                      
-         </div>          
+        </div>          
       </div>
       </div>
 </body>
