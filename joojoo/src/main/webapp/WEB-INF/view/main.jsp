@@ -217,6 +217,30 @@ fieldset .help {
 	    //init scrollbar size
 	    setTimeout( sizeScrollbar, 10 );//safari wants a timeout
 	  });
+   
+   function Open_event(f){ 
+		if (document.form1.userPassword.value == "" || document.form1.userId.value == "") 
+		{ 
+			$("#dialog").dialog({
+				autoOpen : false,
+				show : {
+					effect : "blind",
+					duration : 1000
+				},
+				hide : {
+					effect : "explode",
+					duration : 1000
+				}
+			});
+
+			$("#opener1").click(function() {
+				$("#dialog").dialog("open");
+			});
+		document.form1.userId.focus(); 
+		return false; 
+		} 
+		return true;
+	}
 </script>
 </head>
 
@@ -330,9 +354,26 @@ fieldset .help {
     
     <c:forEach items="${stores}" var="store">
     	
-            <div class="scroll-content-item ui-widget-header"><img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></div>         
-             
+          <div class="scroll-content-item ui-widget-header"><button data-toggle="modal" data-target="#myModal"><img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></button></div>
+
     </c:forEach>
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
     
   </div>
   <div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
