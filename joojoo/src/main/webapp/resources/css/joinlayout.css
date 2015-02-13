@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+@import url(https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css);
+
+
+.join input[type=button] {
+    /* Size and position */
+    width: 100%;
+    padding: 8px 5px;
+    
+    /* Styles */
+    background: linear-gradient(#DBA901,#FACC2E );    
+    border-radius: 5px;
+
+    box-shadow: 
+    	inset 0 1px rgba(255,255,255,0.4), 
+    	0 2px 1px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+
+    /* Font styles */
+    color: black;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Nanum Barun Gothic';
+}
+
+.join input[type=button]:hover {
+    box-shadow: 
+        inset 0 1px rgba(255,255,255,0.2), 
+        inset 0 20px 30px rgba(99,64,86,0.5);
+}
+
+/* Fallback */
+.no-boxshadow .join input[type=button]:hover {
+    background: #594642;
+}
+      #jb-container {
+        background-color:  #2E2E2E;
+        width: auto;
+        margin: 0px auto;
+        padding: 20px;
+    
+      }
+      #jb-header {
+      font-family: 'Nanum Barun Gothic';
+      color: #E0E0E0;
+      background-color:#353535;
+        width: auto;
+       padding: 20px;
+        
+         margin-bottom: 10px; 
+      
+      }
+      #jb-content {
+      font-family: 'Nanum Barun Gothic';
+      color: #E0E0E0;
+      background-color:#353535;
+       width: 400px;
+       margin: 60px auto 30px;
+        padding: 20px;
+
+      }
+      #jb-sidebar {
+            max-width:auto;
+        
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+
+      }
+      #jb-footer {
+        clear: both;
+        padding: 20px;
+  
+      }
+      @media screen and (max-width:500px) {
+        #jb-container {
+          width: auto;
+        }
+        #jb-content {
+          float: none;
+          width: auto;
+        }
+        #jb-sidebar {
+          float: none;
+          width: auto;
+        }
+      }
+ 

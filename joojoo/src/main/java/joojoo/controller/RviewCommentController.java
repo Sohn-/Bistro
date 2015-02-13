@@ -3,6 +3,7 @@ package joojoo.controller;
 import java.util.List;
 
 
+
 import joojoo.entity.All;
 import joojoo.entity.RviewComment;
 import joojoo.service.RviewCommentService;
@@ -39,6 +40,13 @@ public class RviewCommentController {
 	public String writeRviewComment(){
 		
 		return "review/write";
+	}
+	
+	@RequestMapping(value="/review/written", method=RequestMethod.GET)
+	public String writeComplete(Model model,@RequestParam RviewComment writtenComment){
+		
+		//rviewCommentService.registRview(writtenComment, store)
+		return "review/list";
 	}
 	
 	@RequestMapping(value = "/review", method=RequestMethod.GET,params={"commentCode"})

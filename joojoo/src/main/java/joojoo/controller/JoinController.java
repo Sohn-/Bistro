@@ -27,7 +27,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 
 @Controller
-@SessionAttributes({"joinUser","joinOwner","joinStore"})
+@SessionAttributes({"joinUser","joinOwner","joinStore","loginUser","loginOwner"})
 
 public class JoinController {
 	static final Logger LOG = LoggerFactory
@@ -57,13 +57,16 @@ public class JoinController {
    }
    
    @RequestMapping(value="/join/result/user", method=RequestMethod.POST)
-   public String showUserSuccessPage(@ModelAttribute Users joinUser,Model model,SessionStatus sessionStatus){
+   public String showUserSuccessPage(@ModelAttribute Users joinUser,Model model,
+		   							SessionStatus sessionStatus,HttpSession session){
 	   if(userService.addUser(joinUser)>0){
 		   LOG.trace("수업 : 회원 가입 성공");
 	   }
 	   else{
 		   LOG.trace("수업 : 회원 가입 실패..");
 	   }
+	   
+	   session.setAttribute("loginUser", joinUser);
 	   sessionStatus.setComplete();
       return "join/success";
    
@@ -140,12 +143,13 @@ public class JoinController {
 	   LOG.trace("수업"+owner);
 	   storeService.addStore(joinStore);
 	   sessionStatus.setComplete();
+	   session.setAttribute("loginOwner", owner);
 	   model.addAttribute("joinStore");
 	  /* Stores s = new Stores();
 	   s = (Stores)session.getAttribute("joinStore");
 	   */
 	 
-	   
+	  
       return "join/success";
    
    }

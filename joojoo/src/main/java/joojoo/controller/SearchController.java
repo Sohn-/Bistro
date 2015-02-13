@@ -30,7 +30,7 @@ public class SearchController {
 	@Autowired
 	StoreService storeService;
 	
-	@RequestMapping(value="/main", method=RequestMethod.GET)
+	@RequestMapping(value="/main")
 	public String showMain(Model model){
 		Category category = new Category();
 		model.addAttribute("category", category);
@@ -43,37 +43,26 @@ public class SearchController {
 	}
 	@RequestMapping(value="/main/keyword")
 	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){
-		//category.setKeyword(null);
+
 		model.addAttribute("category");
-		List<All> search_events = eventService.SeachByKeyword(category);		
+		List<All> search_events = eventService.SeachByKeyword(category);
 		model.addAttribute("search_events", search_events);
-		
-		List<All> search_stores = storeService.showStoresBySerchKeyword(category);
+
+		List<All> search_stores = storeService.showStoresByKeyword(category);
 		model.addAttribute("search_stores", search_stores);
-		
+
 		return "search/search";
 	}
-	
-	/*@RequestMapping(value="/search", method=RequestMethod.GET)
-	public String searchResultView(@ModelAttribute("category") Category category, Model model){
-		model.addAttribute("category");
-		
-		List<All> search_events = eventService.SeachByKeyword(category);		
-		model.addAttribute("search_events", search_events);
-		
-		List<All> search_stores = storeService.showStoresBySerchKeyword(category);
-		model.addAttribute("search_stores", search_stores);
-		
-		return "search/search";
-	}*/
 	
 	@RequestMapping(value="/main/category")
 	public String searchCategoryResult(@ModelAttribute("category") Category category, Model model){
 		
-		List<All> events = eventService.SeachByCategory(category);	
-		model.addAttribute("search_events", events);
-		List<All> stores = storeService.showStoresByCategory(category);
-		model.addAttribute("search_stores", stores);
+		model.addAttribute("category");
+		List<All> search_events = eventService.SeachByCategory(category);		
+		model.addAttribute("search_events", search_events);
+		
+		List<All> search_stores = storeService.showStoresByCategory(category);
+		model.addAttribute("search_stores", search_stores);
 		return "search/search";
 	}
 }

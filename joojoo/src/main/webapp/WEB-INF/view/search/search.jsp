@@ -17,7 +17,7 @@
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style-desktop.css">
 
 
 <!-- 버튼부트스트랩 -->
@@ -143,7 +143,7 @@ fieldset .help {
    <div id="header-wrapper">
       <div id="header" class="container">
          <!-- Logo -->
-         <h1 id="logo"><a href="main">JooJooclub</a></h1>
+         <h1 id="logo"><a href="<%=request.getContextPath() %>/main">JooJooclub</a></h1>
          <p>Welcom To JooJooClub</p>
          <div align="right">
             <nav id="nav">
@@ -240,7 +240,7 @@ fieldset .help {
             <!-- Feature -->
             <section> 
                <a href="#" class="image featured"> 
-                  <img src="images/pic01.jpg" alt="" />
+                  <img src="../images/" alt="" />
                </a> 
                
                   <h3>JooJooClub1</h3>

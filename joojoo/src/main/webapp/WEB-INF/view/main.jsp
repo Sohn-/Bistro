@@ -250,7 +250,7 @@ fieldset .help {
          	<c:url value="/main/keyword" var="action"></c:url>
             <form:form modelAttribute="category" method="post" action="${action}">
               <div class="row 90%">                    
-                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" />     
+                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text"/>     
               </div>    
                   
               <div class="row 80%">

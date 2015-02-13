@@ -64,6 +64,12 @@ values('가게이름3','가게주소3','가게번호3','sohn','강남', '고깃�
 insert into stores(store_name, store_adress, store_phone, owner_id, region_name, type_name)
 values('가게이름4','가게주소4','가게번호4','sohn','강남', '고깃집');
 
+insert into stores(store_name, store_adress, store_phone, owner_id, region_name, type_name)
+values('가게이름5','가게주소4','가게번호4','sohn','홍대', '고깃집');
+
+insert into stores(store_name, store_adress, store_phone, owner_id, region_name, type_name)
+values('가게이름5','가게주소4','가게번호4','sohn','홍대', '횟집');
+
 insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
 values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, '4명이하', '서비스 메뉴 제공');
 
