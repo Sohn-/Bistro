@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Insert title here</title>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	
 	$(document).ready(function(){

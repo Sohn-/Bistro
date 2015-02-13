@@ -10,23 +10,33 @@
 <body>
 <h1>마이페이지 입니다.</h1>
 
-
+	${loginUser.userId }님 반갑습니다.
+	${loginOwner.ownerId }님 반갑습니다.
 	<c:if test="${!empty loginUser }">
-		유저 정보 보기
-		<%-- <a href = "<%=request.getContextPath()%>/FrontServlet?cmd=AllTComment">게시판으로 이동가능</a><br><br> --%>
+		${loginUser.userId }님 반갑습니다.
+			<c:url value="/info/userInfo" var="url"></c:url>
+			<a href="${url }"><input type="button" value="정보수정 및 탈퇴"> </a>
+			
+			<c:url value="/info/userInfo/coupon" var="url"></c:url>
+			<a href="${url }"><input type="button" value="쿠폰 보기"> </a>
+		
 	</c:if>
 	
 	<c:if test="${!empty loginOwner}">
+		
+		${loginOwner.ownerId }님 반갑습니다.
 		업주 정보 보기...
 		<%-- <a href = "<%=request.getContextPath()%>/FrontServlet?cmd=AllTComment">게시판으로 이동가능</a><br><br> --%>
 	</c:if>
 	
-	<c:if test="${empty loginUser } && ${empty loginOwner }"  >
+	<c:if test="${empty loginUser }">
+			<c:if test="${empty loginOwner }">
 		로그인 해 주세요!
 		<%-- <a href = "<%=request.getContextPath()%>/FrontServlet?cmd=AllTComment">게시판으로 이동가능</a><br><br> --%>
+	
+	</c:if>
 	</c:if>
 	
- //if empty 그거 써서...userId 가 empty가 아니면 인클루드... 유저면 member_u
-            업주면 member_o
+
 </body>
 </html>

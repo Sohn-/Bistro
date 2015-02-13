@@ -15,8 +15,7 @@
 <body>
 
 
-
-				<%@include file="joinform.jsp"%>
+<%@include file="joinform.jsp"%>
 
 
 

@@ -2,7 +2,10 @@ package joojoo.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import joojoo.entity.All;
+import joojoo.entity.Users;
 import joojoo.service.CouponService;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
@@ -15,8 +18,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
+@SessionAttributes({"loginUser","loginOwner"})
 public class MyPageController {
 	static final Logger LOG = LoggerFactory
 			.getLogger(JoinController.class);
@@ -34,16 +38,23 @@ public class MyPageController {
 	    private CouponService couponService;
 	    
 	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
-		public String showInfoPage(Model model){
+		public String showInfoPage(Model model,HttpSession session){
 	    	
 			return "info/member";
 		}
 	    
-	    @RequestMapping(value="/info/member/user", method=RequestMethod.GET)
-		public String showUserInfoPage(Model model,@RequestParam("userId") String userId){
-	    	List<All> couponInfo = couponService.getCouponsByUserId(userId);
+	    @RequestMapping(value="/info/userInfo", method=RequestMethod.GET)
+		public String showUserInfo(Model model){
+	    	
+			return "info/updateUserInfo";
+		}
+	    
+	    @RequestMapping(value="/info/userInfo/coupon", method=RequestMethod.GET)
+		public String showUserCouponPage(HttpSession session,Model model){
+	    	All loginUser = (All)(session.getAttribute("loginUser"));
+	    	List<All> couponInfo = couponService.getCouponsByUserId(loginUser.getUserId());
 			model.addAttribute("couponInfo",couponInfo);
-			return "info/member_user";
+			return "info/userCouponInfo";
 		}
 	
 	

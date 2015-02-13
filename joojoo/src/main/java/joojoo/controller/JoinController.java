@@ -43,9 +43,11 @@ public class JoinController {
    private StoreService storeService;
    
    @RequestMapping(value="/join", method=RequestMethod.GET)
-   public String showSelectJoinType(){
-      return "join/join";
-   
+   public String showSelectJoinType(HttpSession session){
+	  if(session.getAttribute("loginUser") == null && session.getAttribute("loginOwner")==null ){
+		  return "join/join";
+	  }
+	  else return "main";//일단 메인으로 가도록..
    }
    
    @RequestMapping(value="/join/user", method=RequestMethod.GET)
@@ -67,7 +69,7 @@ public class JoinController {
 	   }
 	   
 	   session.setAttribute("loginUser", joinUser);
-	   sessionStatus.setComplete();
+	   //sessionStatus.setComplete();
       return "join/success";
    
    }
@@ -142,7 +144,7 @@ public class JoinController {
 	   ownerService.addOwner(owner);
 	   LOG.trace("수업"+owner);
 	   storeService.addStore(joinStore);
-	   sessionStatus.setComplete();
+	   //sessionStatus.setComplete();
 	   session.setAttribute("loginOwner", owner);
 	   model.addAttribute("joinStore");
 	  /* Stores s = new Stores();

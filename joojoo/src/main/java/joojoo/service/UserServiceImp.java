@@ -76,6 +76,12 @@ public class UserServiceImp implements UserService{
 		return result;
 	}
 
+	@Override
+	public All getUserInfo(String userId) {
+		All result = dao.getUsersByUserId(userId);
+		return result;
+	}
+
 /*	@Override
 
 
