@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="joojoo.entity.RviewComment" %>
+<%@ page import="joojoo.entity.All" %>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
@@ -50,9 +55,9 @@
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
      <tr height="1" bgcolor="#82B5DF"><td colspan="4"></td></tr>
      <tr align="center">
-      <td>&nbsp;</td>
-      <td colspan="2"><input type=button value="등록">
-       <input type=button value="취소">
+      <td>&nbsp;</td><td colspan="2">
+      <c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
+			<a href="${url }"><button>등록</button></a>
       <td>&nbsp;</td>
      </tr>
     </table>
