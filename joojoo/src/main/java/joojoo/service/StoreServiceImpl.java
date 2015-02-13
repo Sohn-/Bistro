@@ -61,7 +61,7 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public List<All> showStoresBySerchKeyword(Category category) {
+	public List<All> showStoresByKeyword(Category category) {
 		List<All> result = null;
 		result = dao.getStoresBySearchKeyword(category);
 		return result;

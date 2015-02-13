@@ -66,17 +66,17 @@ fieldset .help {
 
          <!-- Logo -->
          <h1 id="logo">
-            <a href="main">JooJooclub</a>
+            <a href="<%=request.getContextPath() %>/main">JooJooclub</a>
          </h1>
          <p>Welcom To JooJooClub</p>
          <div align="right">
             <nav id="nav">
             <ul>
-               <li><a class="icon fa-home" href="main"><span>Home</span></a></li>
-               <li><a class="icon fa-bar-chart-o" href="login"><span>Login</span></a>
-               <li><a class="icon fa-cog" href="join"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="info/member"><span>MyPage</span></a></li>
-               <li><a class="icon fa-sitemap" href="info/cart"><span>Cart</span></a></li>
+               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/main"><span>Home</span></a></li>
+               <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+               <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
+               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info/member"><span>MyPage</span></a></li>
+               <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li>
             </ul>
             </nav>
          </div>
