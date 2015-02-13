@@ -12,6 +12,8 @@
 <h1>  가입에 성공하였습니다. 감사합니다~</h1>
 <c:out value="${joinStore.regionName}"></c:out>
 
+<c:url value="/info/member" var="url"></c:url>
+<a href="${url }"><input type="button" value="마이페이지가기"> </a>
 
 </body>
 </html>

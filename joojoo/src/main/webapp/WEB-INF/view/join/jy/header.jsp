@@ -12,7 +12,7 @@
 <script src="js/skel-layers.min.js"></script> -->
 <!-- <script src="js/init.js"></script> -->
 <%-- <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>css/style1.css"/> --%>
-<link href="../css/style1.css" rel="stylesheet" type="text/css">  --%>
+<link href="../css/style1.css" rel="stylesheet" type="text/css"> 
 </head>
 
 <body class="homepage">
