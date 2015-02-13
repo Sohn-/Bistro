@@ -110,6 +110,8 @@
 		where user_name like '%${userName}%'					
 	</select>
 	
+	
+	
 	<select id= "getRviewCommentsByContent" parameterType="String"
 						resultMap="RviewCommentMap">
 		select * 
@@ -137,6 +139,12 @@
 	<select id= "getAllRviewComments" resultMap="RviewCommentMap">
 		select * 
 		from rview_comment
+	</select>
+	
+	<select id= "getRviewCommentBycommentCode" resultMap="RviewCommentMap">
+		select * 
+		from rview_comment
+		where comment_code = #{commentCode}
 	</select>
 	
 	<select id= "getRviewCommentsByStoreName" parameterType="String" resultMap="RviewCommentMap">

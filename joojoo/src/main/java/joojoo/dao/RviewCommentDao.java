@@ -17,7 +17,7 @@ public interface RviewCommentDao {
 	List<All> getRviewCommentsByUserId(String userId);
 	List<All> getRviewCommentsByStoreCode(int storeCode);
 	List<All> getRviewCommentsByKeyword(Category category);
-	
+	All getRviewCommentBycommentCode(int commentCode);
 	//리뷰커멘트 이름,아이디, 제목, 내용으로 검색하기 기능
 	List<All> getRviewCommentsByUserName(String userName);
 	List<All> getRviewCommentsByContent(String content);

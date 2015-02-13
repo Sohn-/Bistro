@@ -32,38 +32,27 @@ public class RviewComment implements Serializable {
 	private Integer starPoint;
 
 	/** 새 테이블. */
-	private Integer storeCode;
+	private String storeName;
 
 	/**
 	 * 생성자.
 	 */
 	public RviewComment() {
 	}
-	
-	
-	public RviewComment(String userId, String title, String content,
-			Integer starPoint, Integer storeCode) {
-		super();
-		this.userId = userId;
-		this.title = title;
-		this.content = content;
-		this.starPoint = starPoint;
-		this.storeCode = storeCode;
-	}
-	
-	
 
 	public RviewComment(Integer commentCode, String userId, String title,
-			String content, Integer starPoint, Integer storeCode) {
+			String content, Date regDate, Integer starPoint, String storeName) {
 		super();
 		this.commentCode = commentCode;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
+		this.regDate = regDate;
 		this.starPoint = starPoint;
-		this.storeCode = storeCode;
+		this.storeName = storeName;
 	}
-
+	
+	
 
 	public Integer getCommentCode() {
 		return commentCode;
@@ -113,56 +102,21 @@ public class RviewComment implements Serializable {
 		this.starPoint = starPoint;
 	}
 
-	public Integer getStoreCode() {
-		return storeCode;
+	public String getStoreName() {
+		return storeName;
 	}
 
-	public void setStoreCode(Integer storeCode) {
-		this.storeCode = storeCode;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((commentCode == null) ? 0 : commentCode.hashCode());
-		return result;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		RviewComment other = (RviewComment) obj;
-		if (commentCode == null) {
-			if (other.commentCode != null) {
-				return false;
-			}
-		} else if (!commentCode.equals(other.commentCode)) {
-			return false;
-		}
-		return true;
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
 	}
 
 	@Override
 	public String toString() {
-		return "ReviewComment [commentCode=" + commentCode + ", userId="
+		return "RviewComment [commentCode=" + commentCode + ", userId="
 				+ userId + ", title=" + title + ", content=" + content
 				+ ", regDate=" + regDate + ", starPoint=" + starPoint
-				+ ", storeCode=" + storeCode + "]";
+				+ ", storeName=" + storeName + "]";
 	}
-
 	
 	
 	
