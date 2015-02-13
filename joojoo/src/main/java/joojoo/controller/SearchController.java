@@ -41,9 +41,21 @@ public class SearchController {
 		model.addAttribute("stores", stores);
 		return "main";
 	}
-	@RequestMapping(value="/main/keyword", method=RequestMethod.POST)
+	@RequestMapping(value="/main/keyword")
 	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){
-		logger.trace("-----------------키워드-----------"+category.getKeyword());
+		//category.setKeyword(null);
+		model.addAttribute("category");
+		List<All> search_events = eventService.SeachByKeyword(category);		
+		model.addAttribute("search_events", search_events);
+		
+		List<All> search_stores = storeService.showStoresBySerchKeyword(category);
+		model.addAttribute("search_stores", search_stores);
+		
+		return "search/search";
+	}
+	
+	/*@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String searchResultView(@ModelAttribute("category") Category category, Model model){
 		model.addAttribute("category");
 		
 		List<All> search_events = eventService.SeachByKeyword(category);		
@@ -51,10 +63,11 @@ public class SearchController {
 		
 		List<All> search_stores = storeService.showStoresBySerchKeyword(category);
 		model.addAttribute("search_stores", search_stores);
+		
 		return "search/search";
-	}
+	}*/
 	
-	@RequestMapping(value="/main/category", method=RequestMethod.POST)
+	@RequestMapping(value="/main/category")
 	public String searchCategoryResult(@ModelAttribute("category") Category category, Model model){
 		
 		List<All> events = eventService.SeachByCategory(category);	

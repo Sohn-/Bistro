@@ -15,22 +15,22 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/style-1000px.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style-1000px.css">
+<link rel="stylesheet" href="../css/style.css">
 
 
 <!-- 버튼부트스트랩 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"   href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<script   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.dropotron.min.js"></script>
-<script src="js/skel.min.js"></script>
-<script src="js/skel-layers.min.js"></script>
-<script src="js/init.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.dropotron.min.js"></script>
+<script src="../js/skel.min.js"></script>
+<script src="../js/skel-layers.min.js"></script>
+<script src="../js/init.js"></script>
 
 <link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -140,7 +140,6 @@ fieldset .help {
 </head>
 
 <body class="homepage" bgcolor=#333323>
-	<c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
    <div id="header-wrapper">
       <div id="header" class="container">
          <!-- Logo -->
@@ -167,7 +166,7 @@ fieldset .help {
           <!--  고친부분 -->
          <div>      
          	<c:url value="/main/keyword" var="action"></c:url>
-            <form:form modelAttribute="category" method="post" action="${action}">
+            <form:form modelAttribute="category" method="get" action="${action}">
               <div class="row 90%">                    
                   <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" />     
               </div>    
@@ -241,7 +240,7 @@ fieldset .help {
             <!-- Feature -->
             <section> 
                <a href="#" class="image featured"> 
-                  <img src="../images/.jpg" alt="" />
+                  <img src="images/pic01.jpg" alt="" />
                </a> 
                
                   <h3>JooJooClub1</h3>
@@ -254,7 +253,7 @@ fieldset .help {
             <!-- Feature -->
             <section> 
                <a href="#" class="image featured"> 
-                  <img src="../images/pic02.jpg" alt="" />
+                  <img src="images/pic02.jpg" alt="" />
                </a>                
                   <h3>JooJooClub1</h3>
                <p>JooJooClub1 is best club</p>
@@ -265,7 +264,7 @@ fieldset .help {
             <!-- Feature -->
             <section> 
                <a href="#" class="image featured"> 
-                  <img src="../images/pic03.jpg" alt="" />
+                  <img src="images/pic03.jpg" alt="" />
                </a>                
                   <h3>JooJooClub1</h3>
                <p>JooJooClub1 is best club</p>
