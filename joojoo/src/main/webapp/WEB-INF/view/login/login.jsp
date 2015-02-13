@@ -32,57 +32,55 @@
 
 
  <script>
-/*   document.querySelector("#opener").addEventListener("click", 
-			window.onload=function(){
-		document.querySelector("#send")
-		.addEventListener("click", function(){
- $(function my_modal(f) {
-	try{
-		 var id = $("#ownerid").val();
-		 var password = $("#ownerpasswd").val(); 
-	 if(id == "" || password == ""){
-			 alert("아이디와 패스워드를 입력하세요");
-			return false;
-			}
-	 else {
-		 return true;
-	 }
-	}catch(error){
-		alert(error);
-		return false;
-	}
-		});
- 		); 
-	
-	 $(function my_modal2() {
-	try{
-		 var id = $("#userid").val();
-		 var password = $("#userpasswd").val(); 
-	 if(id == "" || password == ""){
-			 alert("아이디와 패스워드를 입력하세요");
-			return false;
-			}
-	 else {
-		 return true;
-	 }
-	}catch(error){
-		alert(error);
-		return false;
-	}
-		});
-		})
-	} 
-	*/
-	function Check(f){ 
-		alert("왜안되니");
-		if (document.form1.userPassword.value == "") 
+	function Check_user(f){ 
+		if (document.form1.userPassword.value == "" || document.form1.userId.value == "") 
 		{ 
-		alert("비밀번호를 입력하세요"); 
-		document.form1.userPassword.focus(); 
+			$("#dialog").dialog({
+				autoOpen : false,
+				show : {
+					effect : "blind",
+					duration : 1000
+				},
+				hide : {
+					effect : "explode",
+					duration : 1000
+				}
+			});
+
+			$("#opener1").click(function() {
+				$("#dialog").dialog("open");
+			});
+		document.form1.userId.focus(); 
 		return false; 
 		} 
 		return true;
 	}
+	
+	function Check_owner(f){ 
+		if (document.form2.ownerPassword.value == "" || document.form2.ownerId.value == "") 
+		{ 
+			$("#dialog").dialog({
+				autoOpen : false,
+				show : {
+					effect : "blind",
+					duration : 1000
+				},
+				hide : {
+					effect : "explode",
+					duration : 1000
+				}
+			});
+
+			$("#opener2").click(function() {
+				$("#dialog").dialog("open");
+			});
+		document.form1.ownerId.focus(); 
+		return false; 
+		} 
+		return true;
+	}
+		
+	
 	
 	 $(function() {
 	      $("#tabs").tabs();
@@ -122,19 +120,7 @@ fieldset .help {
 }
 </style>
 <%-- <script>
-   $(function() {
-      $("#tabs").tabs();
-   });
 
-   $(function() {
-      var tooltips = $("[title]").tooltip({
-         position : {
-            my : "left top",
-            at : "right+5 top-5"
-         }
-      });
-   });
-   
    window.onload=function(){
 		var xhr = new XMLHttpRequest();
 		
@@ -191,7 +177,7 @@ fieldset .help {
          <div id="footer" class="container" align="left">
             <div class="row">
 				<c:url value="/login/check_user" var="action"></c:url>
-               	<form:form  id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check(this);">
+               	<form:form  id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
                   <div class="row 90%">
                      <div>
                         <form:input path="userId" id="userId" name="userId" placeholder="ID 입력 " type="text" /> 
@@ -209,7 +195,7 @@ fieldset .help {
                   
                   <div class="row 80%">
                      <div class="12u">
-                     <input id="opener2" name="opener2" type="submit"/>
+                     <input id="opener1" name="opener2" type="submit"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
@@ -227,7 +213,7 @@ fieldset .help {
             <div class="row">
 
                <c:url value="/login/check_owner" var="action"></c:url>
-               	<form:form modelAttribute="owner" method="post" action="${action}" oncsubmit="return my_modal(this);">
+               	<form:form modelAttribute="owner" id="form2" name="form2" method="post" action="${action}" onsubmit="return Check_owner(this);">
                   <div class="row 90%">
                      <div>
                          <form:input path= "ownerId" id = "ownerId" name="ownerId" title="아이디를 입력하세요."/>
@@ -247,16 +233,16 @@ fieldset .help {
                         <!-- <button type="submit" onclick="loadXMLDoc()" class="form-button-submit button icon fa-envelope">Login</button> -->
                         <!-- <button type="submit" onclick="loadXMLDoc()" class="form-button-submit button icon fa-envelope">Login</button> -->
                         <!-- <button id="opener" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
-                        <input type="submit" id="opener" name="opener"/>
+                        <input type="submit" id="opener2" name="opener2"/>
 
                      </div>
                   </div>
                </form:form>
                
                   
-		<!-- 		<div id="dialog" title="Basic dialog">
-				  <p>로그인 실패하였습니다.</p>
-				</div> -->
+				<div id="dialog" title="경고">
+				  <p>아이디와 비밀번호를 입력하세요.</p>
+				</div>
  
 
             </div>
