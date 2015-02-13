@@ -287,10 +287,11 @@ fieldset .help {
          </div>
          
 
-
          
       </div>
    </div>
+   		<!-- 	헤더구분띠 -->
+      <img  src="images/bar.png" style="width: 100%">
 
    <!-- Features -->
    <div id="features-wrapper">
