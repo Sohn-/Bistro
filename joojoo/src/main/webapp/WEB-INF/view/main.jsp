@@ -339,7 +339,7 @@ fieldset .help {
          </li>
       </ul>
       </nav>
-      </section> 
+
       <br>
       
       <div class="row" >    
@@ -426,5 +426,6 @@ fieldset .help {
         </div>          
       </div>
       </div>
+       </section> 
 </body>
 </html>
