@@ -191,7 +191,7 @@ fieldset .help {
          <div id="footer" class="container" align="left">
             <div class="row">
 				<c:url value="/login/check_user" var="action"></c:url>
-               	<form:form  id="form1" name="form1" modelAttribute="user" method="post" action="${action}" oncsubmit="return Check(this);">
+               	<form:form  id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check(this);">
                   <div class="row 90%">
                      <div>
                         <form:input path="userId" id="userId" name="userId" placeholder="ID 입력 " type="text" /> 
