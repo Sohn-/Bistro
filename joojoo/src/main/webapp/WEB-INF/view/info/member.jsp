@@ -147,6 +147,30 @@ fieldset .help {
   .scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
   .scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }
   
+  
+label {
+    display: inline-block; width: 5em;
+  }
+  fieldset div {
+    margin-bottom: 2em;
+  }
+  fieldset .help {
+    display: inline-block;
+  }
+  .ui-tooltip {
+    width: 210px;
+  }
+  </style>
+  <script>
+  $(function() {
+    var tooltips = $( "[title]" ).tooltip({
+      position: {
+        my: "left top",
+        at: "right+5 top-5"
+      }
+    });
+    
+  });  
 </style>
 
 <script>
@@ -350,12 +374,59 @@ fieldset .help {
 
    <div id="tabs">
       <ul>
-         <li><a href="#tab1">일반회원</a></li>
-         <li><a href="#tab2">업주회원 </a></li>
+         <li><a href="#tab1">정보수정 및 탈퇴</a></li>
+         <li><a href="#tab2">나의 장바구니</a></li>
+         <li><a href="#tab3">나의 쿠폰</a></li>
 
       </ul>
       <div id="tab1">
          <div id="footer" class="container" align="left">
+         
+            
+<form>
+  <fieldset>
+    
+    <div>
+      <label for="userId">아이디</label>
+      <input id="userId" name="userId" title="Please provide your ID.">
+    </div>
+    
+    <div>
+      <label for="password">비밀번호 변경</label>
+      <input id="password" name="password" title="Please provide your password">
+    </div>
+    
+    <div>
+      <label for="password">비밀번호 변경 확인</label>
+      <input id="password" name="password" title="Please provide your password">
+    </div>
+    
+    <div>
+      <label for="userName">이름</label>
+      <input id="userName" name="userName" title="Please provide your userName">
+    </div>
+    
+    <div>
+      <label for="userEmail">이메일</label>
+      <input id="userEmail" name="userEmail" title="Please provide your userEmail">
+    </div>
+    
+    <div>
+      <label for="userPhone">이메일</label>
+      <input id="userPhone" name="userPhone" title="Please provide your userPhone">
+    </div>
+    
+    
+    
+    
+  </fieldset>
+</form>
+ 
+          </div>
+      </div>
+       <div id="tab2">
+         <div id="footer" class="container" align="left">
+         hello
             <%-- <div class="row">
 				<c:url value="/login/check_user" var="action"></c:url>
                	<form:form  id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
@@ -382,45 +453,41 @@ fieldset .help {
                   </div>
               	</form:form>         
             </div>
- --%>
+ 			--%>
           </div>
       </div>
-      <div id="tab2">
-        <%--  <div id="footer" class="container" align="left">
-            <div class="row">
-
-               <c:url value="/login/check_owner" var="action"></c:url>
-               	<form:form id="form2" name="form2" modelAttribute="owner" method="post" action="${action}" onsubmit="return Check_owner(this);">
+      
+       <div id="tab3">
+         <div id="footer" class="container" align="left">
+         hello
+            <%-- <div class="row">
+				<c:url value="/login/check_user" var="action"></c:url>
+               	<form:form  id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
                   <div class="row 90%">
                      <div>
-                         <form:input path= "ownerId" id = "ownerId" name="ownerId" placeholder="ID 입력 " type="text"  />
-                         <form:input path= "ownerPassword" id="ownerPassword" name="ownerPassword" placeholder="PASSWD 입력  " type="password" /> 
+                        <form:input path="userId" id="userId" name="userId" placeholder="ID 입력 " type="text" /> 
+                        <form:input path="userPassword" id="userPassword" name="userPassword" placeholder="PASSWD 입력  " type="password" />
                      </div>
-                  </div>
- 				<ul>
+                  </div>                 
+                      
+                  <ul>
                      <li><a id="idlabel" class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
                      <li><a class="icon fa-bar-chart-o" href="join"><span>회원가입</span></a>
                      <div id="drophere"></div>
                   </ul>
-
+                                   
                   <div class="row 80%">
                      <div class="12u">
-                     <input id="opener2" name="opener2" type="submit"/>
+                     <input id="opener1" name="opener1" type="submit"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
                      </div>
                   </div>
-               </form:form>
-               
-                  
-				<div id="dialog" title="경고">
-				  <p>아이디와 비밀번호를 입력하세요.</p>
-				</div>
- 
-
+              	</form:form>         
             </div>
-         </div> --%>
+ 			--%>
+          </div>
       </div>
 
 </body>
