@@ -241,6 +241,10 @@ fieldset .help {
 		} 
 		return true;
 	}
+   
+   $('#myModal').on('show.bs.modal', function () {
+	   document.
+	 })
 </script>
 </head>
 
@@ -351,12 +355,19 @@ fieldset .help {
             <div class="scroll-content-item ui-widget-header"><img src="images/${store.licenseNumber }_${status.current }.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></div>         
          </c:forEach>    
     </c:forEach>   --%>  
-    
-    <c:forEach items="${stores}" var="store">
+      
     	
-          <div class="scroll-content-item ui-widget-header"><button data-toggle="modal" data-target="#myModal"><img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></button></div>
-		  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+    <c:forEach items="${stores}" var="store">
+    <div class="scroll-content-item ui-widget-header">
+    <button data-toggle="modal" data-target="#myModal">
+        <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" />
+          </button>
+          </div>
+          
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+ 
+    </c:forEach>
+     <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -373,7 +384,8 @@ fieldset .help {
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-    </c:forEach>
+   
+    
  
     
   </div>
