@@ -23,10 +23,10 @@
          <p>  <a href="joinimpl.jsp"><input type="button" name="button" value="업주회원가입"></a></p> -->
          
          	<c:url value="/join/user" var="url"></c:url>
-			<a href="${url }"><button>일반회원 가입하기</button> </a>
+			<a href="${url }"><input type="button" value="일반회원 가입하기"> </a>
 
 			<c:url value="/join/owner" var="url"></c:url>
-			<a href="${url }"><button>업주회원 가입하기</button> </a>
+			<a href="${url }"><input type="button" value="업주회원 가입하기"> </a>
       </div>
 
       <div id="jb-footer">
