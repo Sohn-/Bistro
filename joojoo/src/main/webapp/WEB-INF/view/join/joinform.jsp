@@ -7,19 +7,7 @@
 <html>
 <head>
 <title>Insert title here</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.dropotron.min.js"></script>
-<script src="js/skel.min.js"></script>
-<script src="js/skel-layers.min.js"></script>
-<script src="js/init.js"></script>
-<link rel="stylesheet" href="../css/style1.css" />
-<%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/joinfont.css"/> --%>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="../css/joinform.css" />
-<link rel="stylesheet" href="../css/joinlayout.css" />
+
 <script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -88,42 +76,7 @@
 	    }, false);
 	});
 </script>
-<style type="text/css">
-  #jb-contain {
-        background-color: #2E2E2E;
-        width: auto;
-        margin: 0px auto;
-       /*  padding: 20px; */
-  
-        font-family: 'Nanum Barun Gothic';
-      }
-      
-       #jb-joincontent {
-      font-family: 'Nanum Barun Gothic';
-      color: #E0E0E0;
-      background-color:#353535;
-       width: 400px;
-       margin: 0px auto 0px;
-        padding: 0px;
 
-      }
-      #jb-joinlogo {
-      font-family: 'Nanum Barun Gothic';
-      color: #E0E0E0;
-      background-color:#848484;
-       width: 400px;
-       height:60pxpx;
-       margin: 0px auto 0px;
-        padding: 0px;
-
-      }
-         @media screen and (max-width:500px) {
-        #jb-contain {
-          width: auto;
-        }
-         }
-
-</style>
 
 
 </head>
@@ -142,14 +95,7 @@
       
 
 </form:form> --%>
-<div id="jb-contain">
-<div id="jb-joinlogo">
-<!-- <img src="css/images/logo1.png" align="left"><br><br>
-<h1 align="center">회원가입</h1> -->
-</div>
-<div id="jb-joincontent">
-<img src="css/images/logo1.png" align="left"><br><br>
-<h2 align="left">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 회원가입</h2>
+
 <c:url value="/join/result/user" var="action"></c:url> 
 <form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4"> 
 

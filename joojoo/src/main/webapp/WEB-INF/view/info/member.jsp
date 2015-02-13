@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +11,21 @@
 <h1>마이페이지 입니다.</h1>
 
 
+	<c:if test="${!empty loginUser }">
+		유저 정보 보기
+		<%-- <a href = "<%=request.getContextPath()%>/FrontServlet?cmd=AllTComment">게시판으로 이동가능</a><br><br> --%>
+	</c:if>
+	
+	<c:if test="${!empty loginOwner}">
+		업주 정보 보기...
+		<%-- <a href = "<%=request.getContextPath()%>/FrontServlet?cmd=AllTComment">게시판으로 이동가능</a><br><br> --%>
+	</c:if>
+	
+	<c:if test="${empty loginUser } && ${empty loginOwner }"  >
+		로그인 해 주세요!
+		<%-- <a href = "<%=request.getContextPath()%>/FrontServlet?cmd=AllTComment">게시판으로 이동가능</a><br><br> --%>
+	</c:if>
+	
  //if empty 그거 써서...userId 가 empty가 아니면 인클루드... 유저면 member_u
             업주면 member_o
 </body>

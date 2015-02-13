@@ -97,7 +97,7 @@
 </script>
 </head>
 <body>
-<%@include file="header.jsp"%>
+
 <c:url value="/join/join_o2" var="action"></c:url>     
  <form:form  modelAttribute="joinOwner" method="post" action="${action} " id="form" class="form-4"> 
 
