@@ -185,5 +185,17 @@ public class JoinController {
    
    }
    
+   @RequestMapping(value="/test", method=RequestMethod.GET)
+   public String showRegistStorePag2e(){
+	   return "join/test";
+   
+   }
+   
+   @RequestMapping(value="/test/test", method=RequestMethod.GET)
+   public String showRegistStorePag24e(){
+	   return "join/test2";
+   
+   }
+   
    
 }

@@ -21,13 +21,8 @@
 <body>
 
 <%@include file="header.jsp"%>
-<div id="features-wrapper" style="background-color:black";>
-       <section id="features" class="container"> 
- 			<div id="joinform" class="joinform"> 
-				<%@include file="joinlayout.jsp"%>
- 			</div>
-      </section>
-</div>
+<c:url value="/test/test" var="url"></c:url>
+			<a href="${url }"><input type="button" value="n"> </a>
 <%@include file="footer.jsp"%>
 
 </body>

@@ -1,32 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
-<title>Strongly Typed by HTML5 UP</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<script src="js/jquery.min.js"></script>
+
+<!-- <meta name="description" content="" />
+<meta name="keywords" content="" /> -->
+<!-- <script src="js/jquery.min.js"></script>
 <script src="js/jquery.dropotron.min.js"></script>
 <script src="js/skel.min.js"></script>
-<script src="js/skel-layers.min.js"></script>
-<script src="js/init.js"></script>
-<link rel="stylesheet" href="css/style1.css"/>
+<script src="js/skel-layers.min.js"></script> -->
+<!-- <script src="js/init.js"></script> -->
+<%-- <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>css/style1.css"/> --%>
+<link href="../css/style1.css" rel="stylesheet" type="text/css">  --%>
 </head>
-<body>
+
 <body class="homepage">
-   <div id="header-wrapper" style="background-image: url('images/back100.jpg')">
+   <div id="header-wrapper" style="background-image: url('../images/back100.jpg')">
       
       
          <div id="header" class="container"  >
 
             <!-- Logo -->
-            <h1 id="logo">
-               <a href="index.html" style="color:#FFBB00; font-family:'Jeju Gothic', serif;">Joo Joo club</a>
-            </h1>
            
-            <p>Welcom To JooJooClub</p>
+         
             <div align="right">
                <nav id="nav">
                <ul>
@@ -41,6 +38,6 @@
          </div>
       </div>
    </div>
-   <img  src="images/bar.png" style="width: 100%">
+   <img  src="../images/bar.png" style="width: 100%">
 </body>
 </html>
