@@ -482,7 +482,7 @@
 			-webkit-appearance: none;
 			position: relative;
 			display: inline-block;
-			background: #ed786a;
+			background: #e2c84b;
 			color: #fff !important;
 			text-transform: uppercase;
 			border-radius: 4px;
@@ -512,7 +512,7 @@
 			input[type="reset"]:hover,
 			.button:hover
 			{
-				background: #fd887a;
+				background:#e2c84b ;
 			}
 			
 			input[type="button"]:active,
@@ -520,7 +520,7 @@
 			input[type="reset"]:active,
 			.button:active
 			{
-				background: #ed786a;
+				background: #e2c84b;
 			}
 		
 			input[type="button"].alt,
