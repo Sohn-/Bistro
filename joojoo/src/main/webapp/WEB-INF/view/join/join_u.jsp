@@ -6,10 +6,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/joinfont.css"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.dropotron.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
+<script src="js/init.js"></script>
+<link rel="stylesheet" href="css/style1.css" />
+<%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/joinfont.css"/> --%>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	
@@ -20,11 +27,11 @@
 			if($("#joinId").val()==""){
 				alert("아이디를 입력해주세요.");
 				$("#joinId").focus();		
-			}
+			}else{
 				<c:url value="/join/idCheck" var="idchk"></c:url>
 				var url = "${idchk}?joinId="+$("#joinId").val();
 				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
-			
+			}
 		});
 		
 		$("#mailDupCheck").click(function(){
@@ -84,21 +91,16 @@
 
 </head>
 <body>
-
-<%-- <form:form  modelAttribute="joinUser" method="post" action="${action} ">
-   
-      <label>아이디 </label> : <form:input path="userId"/><br>
-     <label>비밀번호 </label> : <form:input path="userPassword"/><br>
-     <label>이름</label> : <form:input path="userName"/><br>
-     <label>메일</label> : <form:input path="userMail"/><br>
-     <label>폰</label> : <form:input path="userPhone"/><br>
-     <form:input type="hidden" value="5" path="chance"/><br>
-     
-     <button type ="submit" name="proceed">다음</button>
-      
-
-</form:form> --%>
-<c:url value="/join/result/user" var="action"></c:url>     
+ <%@include file="../hf/header.jsp"%>
+   <!-- Features -->
+   <div id="features-wrapper" style="background-color:black;">
+       <section id="features" class="container"> 
+  			<div id="joinform" class="joinform">
+				<%@include file="joinform.jsp"%>
+			</div>
+      </section>
+   </div>
+<%-- <c:url value="/join/result/user" var="action"></c:url>     
  <form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4"> 
 
     <h1 align="center">회 원 가 입</h1>
@@ -127,6 +129,7 @@
        <input type="submit" value="가입하기" />
          
 </form:form>
-
+ --%>
+ <%@include file="../hf/footer.jsp"%>
 </body>
 </html>
