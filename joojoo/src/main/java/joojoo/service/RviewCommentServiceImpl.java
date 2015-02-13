@@ -71,4 +71,9 @@ public class RviewCommentServiceImpl implements RviewCommentService {
 		return dao.deleteRviewComment(commentCode);
 	}
 
+	@Override
+	public All SearchByCommentCode(int commentCode) {
+		return dao.getRviewCommentBycommentCode(commentCode);
+	}
+
 }

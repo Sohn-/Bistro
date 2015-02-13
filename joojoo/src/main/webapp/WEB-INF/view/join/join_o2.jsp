@@ -16,25 +16,22 @@
 </script>
 
 
-<img src="<%=request.getContextPath()%>/css/Penguins.jpg">
 </head>
 <body>
 
 	<c:url value="/join/result/owner" var="action"></c:url>
- <form:form  modelAttribute="joinStore" method="post" action="${action} ">
+ <form:form  modelAttribute="joinStore" method="post" action="${action} "  id="form" class="form-4">
    	<h1>가게를 등록 해 주세요!</h1>
    	<h3>가게 이름</h3><form:input path="storeName"  placeholder="상호명" required="true"/>
     <h3>가게 전화</h3><form:input path="storePhone"  placeholder="전화번호" required="true"/>
-    <h3>region_code</h3><form:input path="regionName" required="true"/>
+    <h3>위치 선택</h3><form:select path="regionName"  items="${regionNames }" required="true"/>
+    
+   
+    
     <h3>가게 주소</h3><form:input path="storeAdress"  placeholder="상세주소" required="true"/>
-    <h3>업종 선택</h3><form:input path="typeName" required="true"/>
+    <h3>위치 선택</h3><form:select path="typeName"  items="${typeNames }" required="true"/>
     <form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>
     
-       <h3>비밀번호 확인</h3>
-		<input type="password" id="pass2" name="pass2" required="true" /><br>
-    
-    
- 
    
      <input type="submit" value="등록완료" />
       
@@ -44,3 +41,6 @@
 
 </body>
 </html>
+
+
+

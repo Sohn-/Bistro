@@ -46,9 +46,9 @@ public class RviewCommentDaoImplTest {
 		String title = "후기제목";
 		String content = "후기내용";
 		int starPoint = 5;
-		int storeCode = 1;
+		String storeName="스토어네임2";
 
-		RviewComment rviewComment = new RviewComment(userId, title, content, starPoint, storeCode);
+		//RviewComment rviewComment = new RviewComment(userId, title, content, starPoint, storeName);
 
 		//성공
 		//LOG.trace("" + dao.insertRviewComment(rviewComment));
