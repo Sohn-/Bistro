@@ -47,7 +47,7 @@ public class LoginController {
 			model.addAttribute("loginUser", loginUser);
 		}
 		else{
-			path = "redirect:/login_fail";
+			path = "redirect:/login";
 		}
 		
 		return path;	
@@ -64,7 +64,8 @@ public class LoginController {
 			model.addAttribute("loginOwner", loginOwner);
 		}
 		else{
-			path = "redirect:/login_fail";
+			//path = "redirect:/login_fail";
+			path = "redirect:/login";
 		}
 		
 		return path;	

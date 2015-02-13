@@ -56,6 +56,31 @@ fieldset .help {
          }
       });
    });
+  /*  
+   function loadXMLDoc()
+   {
+   var xmlhttp;
+   if (window.XMLHttpRequest)
+     {// code for IE7+, Firefox, Chrome, Opera, Safari
+     xmlhttp=new XMLHttpRequest();
+     }
+   else
+     {// code for IE6, IE5
+     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+     }
+   xmlhttp.onreadystatechange=function()
+     {
+     if (xmlhttp.readyState==4 && xmlhttp.status==200)
+       {
+    	 if(document.getElementById("idlabel").innerHTML=""){
+    	 	xmlhttp.responseText = "아이디와 비밀번호를 입력하세요";
+         	document.getElementById("here").innerHTML=xmlhttp.responseText;
+    	 }
+       }
+     }
+   xmlhttp.open("GET","../ajax_info.txt",true);
+   xmlhttp.send();
+   } */
 </script>
 </head>
 <c:url value="<%=request.getContextPath() %>" var="path"></c:url>
@@ -103,8 +128,9 @@ fieldset .help {
                   
                       
                   <ul>
-                     <li><a class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
+                     <li><a id="idlabel" class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
                      <li><a class="icon fa-bar-chart-o" href="join"><span>회원가입</span></a>
+                    <!--  <div id="here"></div> -->
                   </ul>
                   
                   
@@ -112,6 +138,7 @@ fieldset .help {
                      <div class="12u">
                         <%-- <a href="${action }" class="form-button-submit button icon fa-envelope">Login</a> --%>
                         <button type="submit" class="form-button-submit button icon fa-envelope">Login</button>
+                       <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
                      </div>
                   </div>
               	</form:form>
@@ -140,8 +167,8 @@ fieldset .help {
                   <div class="row 80%">
 
                      <div class="12u">
-                        <%-- <a href="${action }" class="form-button-submit button icon fa-envelope">Login</a> --%>
-                        <button type="submit" class="form-button-submit button icon fa-envelope">Login</button>
+                        <!-- <button type="submit" onclick="loadXMLDoc()" class="form-button-submit button icon fa-envelope">Login</button> -->
+                        <button type="submit" onclick="loadXMLDoc()" class="form-button-submit button icon fa-envelope">Login</button>
                      </div>
                   </div>
                </form:form>
