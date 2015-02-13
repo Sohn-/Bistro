@@ -54,9 +54,9 @@ fieldset .help {
    width: 100%;
    height: 700px;
 }
-#header{
+/* #header{
 	background-image: url(images/main.jpg);
-}
+} */
 
   .scroll-pane { overflow: auto; width: 99%; float:left; }
   .scroll-content { width: 6600px; float: left; }
@@ -246,7 +246,7 @@ fieldset .help {
 
 <body class="homepage" bgcolor=#333323>
 	<c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
-   <div id="header-wrapper">
+   <div id="header-wrapper" style="background-image: url(images/main.jpg)">
       <div id="header" class="container">
          <!-- Logo -->
          <h1 id="logo"><a href="main">JooJooclub</a></h1>
