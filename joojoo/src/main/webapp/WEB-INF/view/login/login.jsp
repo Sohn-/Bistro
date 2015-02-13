@@ -55,6 +55,7 @@
 		} 
 		return true;
 	}
+
 	
 	function Check_owner(f){ 
 		if (document.form2.ownerPassword.value == "" || document.form2.ownerId.value == "") 
@@ -74,7 +75,7 @@
 			$("#opener2").click(function() {
 				$("#dialog").dialog("open");
 			});
-		document.form1.ownerId.focus(); 
+		document.form2.ownerId.focus(); 
 		return false; 
 		} 
 		return true;
@@ -183,28 +184,23 @@ fieldset .help {
                         <form:input path="userId" id="userId" name="userId" placeholder="ID 입력 " type="text" /> 
                         <form:input path="userPassword" id="userPassword" name="userPassword" placeholder="PASSWD 입력  " type="password" />
                      </div>
-                  </div>
-                  
+                  </div>                 
                       
                   <ul>
                      <li><a id="idlabel" class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
                      <li><a class="icon fa-bar-chart-o" href="join"><span>회원가입</span></a>
                      <div id="drophere"></div>
                   </ul>
-                  
-                  
+                                   
                   <div class="row 80%">
                      <div class="12u">
-                     <input id="opener1" name="opener2" type="submit"/>
+                     <input id="opener1" name="opener1" type="submit"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
                      </div>
                   </div>
-              	</form:form>
-             
-              	
-              	
+              	</form:form>         
             </div>
          </div>
       </div>
@@ -213,27 +209,24 @@ fieldset .help {
             <div class="row">
 
                <c:url value="/login/check_owner" var="action"></c:url>
-               	<form:form modelAttribute="owner" id="form2" name="form2" method="post" action="${action}" onsubmit="return Check_owner(this);">
+               	<form:form id="form2" name="form2" modelAttribute="owner" method="post" action="${action}" onsubmit="return Check_owner(this);">
                   <div class="row 90%">
                      <div>
-                         <form:input path= "ownerId" id = "ownerId" name="ownerId" title="아이디를 입력하세요."/>
-                         <form:input path= "ownerPassword" id="ownerPassword" name="ownerPassword" type = "password" title="비밀번호를 입력하세요."/> 
+                         <form:input path= "ownerId" id = "ownerId" name="ownerId" placeholder="ID 입력 " type="text"  />
+                         <form:input path= "ownerPassword" id="ownerPassword" name="ownerPassword" placeholder="PASSWD 입력  " type="password" /> 
                      </div>
                   </div>
-
-
-                  <ul>
-                     <li><a class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
-                     <li><a class="icon fa-bar-chart-o" href="join/join" ><span>회원가입</span></a>
+ 				<ul>
+                     <li><a id="idlabel" class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
+                     <li><a class="icon fa-bar-chart-o" href="join"><span>회원가입</span></a>
+                     <div id="drophere"></div>
                   </ul>
 
                   <div class="row 80%">
-
                      <div class="12u">
-                        <!-- <button type="submit" onclick="loadXMLDoc()" class="form-button-submit button icon fa-envelope">Login</button> -->
-                        <!-- <button type="submit" onclick="loadXMLDoc()" class="form-button-submit button icon fa-envelope">Login</button> -->
-                        <!-- <button id="opener" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
-                        <input type="submit" id="opener2" name="opener2"/>
+                     <input id="opener2" name="opener2" type="submit"/>
+                        <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
+                       <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
                      </div>
                   </div>
