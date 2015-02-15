@@ -846,12 +846,13 @@ fieldset .help {
       
     	
     
-    <c:forEach items="${search_stores}" var="store">
+    <c:forEach items="${search_events}" var="search_event">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
     <button data-toggle="modal" data-target="#myModal">
-        <img src="../images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_store.storeName}가게이름자리" />
+        <img src="../images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_event.storeName}" />
           </button>
           </div>
+          
           
           
           
@@ -860,10 +861,10 @@ fieldset .help {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title"><c:out value="${search_store.storeName}가게이름자리" /></h4>
+        <h4 class="modal-title"><c:out value="${search_event.storeName}" /></h4>
       </div>
       <div class="modal-body" id="here">
-        <c:out value="${search_store.storeAdress }주소자리"/>
+        <c:out value="${search_event.storeAdress }"/>
 
       </div>
       <div class="modal-footer">
