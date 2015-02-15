@@ -845,6 +845,7 @@ fieldset .help {
     </c:forEach>   --%>  
       
     	
+    
     <c:forEach items="${search_stores}" var="store">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
     <button data-toggle="modal" data-target="#myModal">
