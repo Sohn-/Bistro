@@ -264,6 +264,10 @@ fieldset .help {
 	   document.document.querySelector("#here")
 		.innerHTML="${store.storeName}";
 	 }) 
+	 
+	 $("#perchase").click(function() {
+				
+			});
 </script>
 </head>
 
@@ -294,16 +298,11 @@ fieldset .help {
          
               <div>      
          	<c:url value="/main/keyword" var="action"></c:url>
-            
-            
             <form:form modelAttribute="category" method="post" action="${action}" >
-              
-                    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
+                <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
                    
-                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-       		
-       		
-       		 </form:form> 
+                <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
+       		</form:form> 
        
          </div>
               
@@ -429,7 +428,11 @@ fieldset .help {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-       <a href="<%=request.getContextPath()%>/event_detail "><button id="perchase" type="button" class="btn btn-warning btn-sm">이벤트상세보기</button></a>
+        <c:url value="/event_detail" var="action"></c:url>
+        <form action="${action}">
+       <%-- <a href="<%=request.getContextPath()%>/event_detail "> --%><input type="button" id="perchase" type="button" class="btn btn-warning btn-sm">이벤트상세보기<!-- </a> -->
+     	<input type="hidden" name="eventCommentCode">
+       </form>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

@@ -18,12 +18,18 @@ public class EventDetailController {
 	@Autowired
 	EventCommentService eventService;
 	
-	@RequestMapping(value="/event_detail")
+	/*@RequestMapping(value="/event_detail")
 	public String showDetail(@RequestParam("eventCommentCode") int eventCommentCode, Model model){
 		All eventDetail = eventService.SearchOneEvent(eventCommentCode);
 		model.addAttribute("eventDetail");
 		
 		return "event_detail";
+	}*/
+	
+	//임시컨트롤
+	@RequestMapping(value="/event_detail")
+	public String showDetail(Model model){
+		return "event/event_detail";
 	}
 
 }
