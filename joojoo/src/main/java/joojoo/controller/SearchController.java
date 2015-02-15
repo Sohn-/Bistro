@@ -115,6 +115,8 @@ public class SearchController {
 
 		List<All> search_stores = storeService.showStoresByKeyword(category);
 		model.addAttribute("search_stores", search_stores);
+		
+		logger.error(""+search_events);
 
 		return "search/search";
 	}
