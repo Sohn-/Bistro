@@ -50,12 +50,7 @@ public class MyPageUserController {
 	    	else return "info/member_owner";
 		}
 
-	    @RequestMapping(value="/info/userInfo", method=RequestMethod.GET)
-		public String showUserInfo(Model model){
-	    	
-			return "info/updateUserInfo";
-		}
-	    
+	   
 	    @RequestMapping(value="/info/userInfo/coupon", method=RequestMethod.GET)
 		public String showUserCouponPage(HttpSession session,Model model){
 	    	All loginUser = (All)(session.getAttribute("loginUser"));
@@ -66,12 +61,6 @@ public class MyPageUserController {
 			return "info/userCouponInfo";
 		}
 	    
-	    ////카트
-	    @RequestMapping(value="/info/cart", method=RequestMethod.GET)
-		public String showWishListPage(Model model,HttpSession session){
-	    	
-			return "info/cart";
-		}
 	
 	
 }
