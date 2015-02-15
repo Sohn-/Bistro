@@ -641,9 +641,8 @@ fieldset .help {
 	
 
 		<ul>
-			<li><a href="#tab1">정보수정 및 탈퇴</a></li>
-			<li><a href="#tab2">나의 장바구니</a></li>
-			<li><a href="#tab3">나의 쿠폰</a></li>
+			<li><a href="#tab1">마이 페이지</a></li>
+			
 
 		</ul>
 		
@@ -651,190 +650,14 @@ fieldset .help {
 		<div id="tab1">
 			<div id="footer" class="container" align="left">
 
-				회원정보 수정 및 탈퇴 <br>
-				<form>
-					<fieldset>
-
-						<div style="font-style: normal; color: red;">
-							<input id="userId" name="userId" title="Please provide your ID."
-								value="${loginUser.userId}" align="middle"/> * <br> <input
-								id="password" name="password"
-								title="Please provide your password" value=" 비밀번호 변경"><br>
-							<input id="password2" name="password2"
-								title="Please provide your password2" value=" 비밀번호 변경 확인"><br>
-							<input id="userName" name="userName"
-								title="Please provide your userName" value="${loginUser.userPassword}">
-							*<br> <input id="userEmail" name="userEmail"
-								title="Please provide your userEmail" value=" 이메일"><br>
-							<input id="userPhone" name="userPhone"
-								title="Please provide your userPhone" value=" 휴대전화 번호"><br>
-							*는 수정할 수 없는 정보입니다.
-						</div>
-
-
-						<a href="update_u.jsp"><input type="button" name="button"
-							value="수정하기"></a> <a href="exit.jsp"><input type="button"
-							name="button" value="회원탈퇴"></a>
-
-					</fieldset>
-				</form>
+	<h2 align="center">로그인 해주세요</h2> <br>
+			
 
 			</div>
 		</div>
 		
-		
-		<div id="tab2">
-
-
-			<table style="width: 100%">
-				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>체크</th>					
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>		
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
-			</table>
-
-			<br>
-
-			<table id="t01">
-				<tr>
-					<th>선택한쿠폰 개수</th>
-					<th>나의 별</th>
-					<th>구매 결과 잔여 별</th>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>4</td>
-					<td>1</td>
-				</tr>
-				
-			</table>
-			
-			
-			<a href="update_u.jsp"><input type="button" name="button" value="장바구니에서 삭제">  </a>
-			<a href="update_u.jsp"><input type="button" name="button" value="즉시구매"> </a>
-			<a href="update_u.jsp"><input type="button" name="button" value="쿠폰 검색하러 가기"></a>
-			
-			
-			
-		</div>
-
-		<div id="tab3">
-			<div id="footer" class="container" align="left">
-				미사용 쿠폰
-				<table style="width: 100%">
-				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰확인</th>					
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>		
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
-			</table>
-				사용쿠폰
-				<table style="width: 100%">
-				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>후기 작성 및 확인</th>					
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="후기작성 및 확인"></a> </td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td><a href="update_u.jsp"><input type="button" name="button"value="후기작성 및 확인"></a></td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="후기작성 및 확인"></a></td>		
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
-			</table>
-				환불 쿠폰
-				<table style="width: 100%">
-				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>환불정보</th>					
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="환불정보확인"></a></td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td><a href="update_u.jsp"><input type="button" name="button"value="환불정보확인"></a></td>		
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="환불정보확인"></a></td>		
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
-			</table>
-				기간만료 사용불가 쿠폰
-				<table style="width: 100%">
-				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>만료정보</th>					
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td>기간만료 쿠폰입니다.</td>
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td>기간만료 쿠폰입니다.</td>		
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td>기간만료 쿠폰입니다.</td>
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
-			</table>
-			</div>
-		</div>
+	
+	
 		</div>
 </body>
 </html>

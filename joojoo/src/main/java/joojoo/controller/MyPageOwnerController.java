@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
-@SessionAttributes({"loginUser","loginOwner"})
-public class MyPageController {
+public class MyPageOwnerController {
 	static final Logger LOG = LoggerFactory
 			.getLogger(JoinController.class);
 	
@@ -37,20 +36,11 @@ public class MyPageController {
 	    @Autowired
 	    private CouponService couponService;
 	    
-	    @RequestMapping(value="/info/member/user", method=RequestMethod.GET)
-		public String showUserInfoPage(Model model,HttpSession session){
-	    	
-			return "info/member_user";
-		}
+
 	    @RequestMapping(value="/info/member/owner", method=RequestMethod.GET)
 		public String showOwnerInfoPage(Model model,HttpSession session){
 	    	
 			return "info/member_owner";
-		}
-	    @RequestMapping(value="/info/userInfo", method=RequestMethod.GET)
-		public String showUserInfo(Model model){
-	    	
-			return "info/updateUserInfo";
 		}
 	    
 	    @RequestMapping(value="/info/userInfo/coupon", method=RequestMethod.GET)
@@ -63,12 +53,5 @@ public class MyPageController {
 			return "info/userCouponInfo";
 		}
 	    
-	    ////카트
-	    @RequestMapping(value="/info/cart", method=RequestMethod.GET)
-		public String showWishListPage(Model model,HttpSession session){
-	    	
-			return "info/cart";
-		}
-	
 	
 }
