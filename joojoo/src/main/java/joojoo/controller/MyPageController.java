@@ -37,16 +37,20 @@ public class MyPageController {
 	    @Autowired
 	    private CouponService couponService;
 	    
-	    @RequestMapping(value="/info/member/user", method=RequestMethod.GET)
-		public String showUserInfoPage(Model model,HttpSession session){
+	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
+		public String showInfoPage(Model model,HttpSession session){
 	    	
+	    	if(session.getAttribute("loginUser") ==null && session.getAttribute("loginOwner") ==null){
+	    		return "info/member_null";
+	    	}
+	    	else if(session.getAttribute("loginUser") !=null){
+	    			
 			return "info/member_user";
+	    	}
+	    	else return "info/member_owner";
 		}
-	    @RequestMapping(value="/info/member/owner", method=RequestMethod.GET)
-		public String showOwnerInfoPage(Model model,HttpSession session){
-	    	
-			return "info/member_owner";
-		}
+	    
+	  
 	    @RequestMapping(value="/info/userInfo", method=RequestMethod.GET)
 		public String showUserInfo(Model model){
 	    	
