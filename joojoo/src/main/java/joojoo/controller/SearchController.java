@@ -2,10 +2,10 @@ package joojoo.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import joojoo.entity.All;
 import joojoo.entity.Category;
-import joojoo.entity.EventComment;
-import joojoo.entity.Stores;
 import joojoo.service.EventCommentService;
 import joojoo.service.StoreService;
 
@@ -18,9 +18,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-//@SessionAttributes({"loginUser","loginOwner"})
+@SessionAttributes("category")
 //@RequestMapping("/login")
 public class SearchController {
 	static final Logger logger = LoggerFactory
@@ -30,7 +31,52 @@ public class SearchController {
 	@Autowired
 	StoreService storeService;
 	
-	@RequestMapping(value="/main")
+/*	@RequestMapping(value="/main_search", method=RequestMethod.POST)
+	public String showMain(Model model){
+		Category category = new Category();
+		model.addAttribute("category", category);
+		
+		List<All> events = eventService.SeachByKeyword(category);
+		model.addAttribute("events", events);
+		List<All> stores = storeService.showStoresByKeyword(category);
+		model.addAttribute("stores", stores);
+		return "main";
+	}
+
+	
+	@RequestMapping(value = "/main", method = RequestMethod.POST)
+	public String showResult(Model model, HttpSession session) {
+		String path = "redirect:/";
+		Category category = null;
+
+		if (session.getAttribute("category") != null) {
+			category = (Category) session.getAttribute("category");
+			model.addAttribute("category", category);
+
+			if (category.getKeyword() != null) {
+				List<All> events = eventService.SeachByKeyword(category);
+				model.addAttribute("events", events);
+				List<All> stores = storeService.showStoresByKeyword(category);
+				model.addAttribute("stores", stores);
+			} else if (category.getPersonsLevel() != "none"
+					|| category.getRegionName() != "none"
+					|| category.getServiceTypeName() != "none"
+					|| category.getTypeName() != "none") {
+				List<All> events = eventService.SeachByCategory(category);
+				model.addAttribute("events", events);
+				List<All> stores = storeService.showStoresByCategory(category);
+				model.addAttribute("stores", stores);
+			}
+		} else if (category == null) { //검색한적이 없으면 모두 출력
+			List<All> events = eventService.SeachAllEvent();
+			model.addAttribute("events", events);
+			List<All> stores = storeService.showAllStore();
+			model.addAttribute("stores", stores);
+		}
+		return path;
+	}*/
+	
+	@RequestMapping(value="/")
 	public String showMain(Model model){
 		Category category = new Category();
 		model.addAttribute("category", category);
@@ -41,9 +87,12 @@ public class SearchController {
 		model.addAttribute("stores", stores);
 		return "main";
 	}
+
+
 	@RequestMapping(value="/main/keyword")
 	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){
-
+		logger.error("keyword도착");
+		logger.error(category.toString());
 		model.addAttribute("category");
 		List<All> search_events = eventService.SeachByKeyword(category);
 		model.addAttribute("search_events", search_events);
