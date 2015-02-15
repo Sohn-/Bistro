@@ -37,12 +37,12 @@ public class MyPageController {
 	    @Autowired
 	    private CouponService couponService;
 	    
-	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
+	    @RequestMapping(value="/info/member/user", method=RequestMethod.GET)
 		public String showUserInfoPage(Model model,HttpSession session){
 	    	
 			return "info/member_user";
 		}
-	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
+	    @RequestMapping(value="/info/member/owner", method=RequestMethod.GET)
 		public String showOwnerInfoPage(Model model,HttpSession session){
 	    	
 			return "info/member_owner";
