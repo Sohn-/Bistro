@@ -28,20 +28,21 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		CouponServiceTest test = new CouponServiceTest();
 		test.getCouponTest();
 		
+		
 	}
 	
 	
 	public void getCouponTest(){
 			
-	
+	/*
 		Coupon coupon = new Coupon();
 		
 		coupon.setCommentCode(1);
 		coupon.setCouponCode("coupon3");
 		coupon.setCouponStatus("미사용");
 		coupon.setOwnerId("sohn");
-		coupon.setUserId("user");
-		
+		coupon.setUserId("user");*/
+		LOG.trace("수업"+service.getCouponsByUserId("1234"));
 		/*성공*/
 		//LOG.warn("getCouponsByUserId : "+service.getCouponsByUserId("user"));
 		//LOG.warn("getCouponsByOwnerId : "+service.getCouponsByOwnerId("sohn"));

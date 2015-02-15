@@ -53,7 +53,9 @@ public class MyPageController {
 		public String showUserCouponPage(HttpSession session,Model model){
 	    	All loginUser = (All)(session.getAttribute("loginUser"));
 	    	List<All> couponInfo = couponService.getCouponsByUserId(loginUser.getUserId());
-			model.addAttribute("couponInfo",couponInfo);
+			LOG.trace("수업:"+couponInfo);
+	    	
+	    	model.addAttribute("couponInfo",couponInfo);
 			return "info/userCouponInfo";
 		}
 	

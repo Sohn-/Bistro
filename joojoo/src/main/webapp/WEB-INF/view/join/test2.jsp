@@ -18,10 +18,10 @@
 </head>
 <body>
 
-<%@include file="header.jsp"%>
+<%@include file="jy/header.jsp"%>
 <c:url value="/test/test" var="url"></c:url>
 			<a href="${url }"><input type="button" value="nnnnnn"> </a>
-<%@include file="footer.jsp"%>
+<%@include file="jy/footer.jsp"%>
 
 </body>
 </html>

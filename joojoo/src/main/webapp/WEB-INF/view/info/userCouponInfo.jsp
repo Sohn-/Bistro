@@ -10,7 +10,7 @@
 <body>
 
 <h1>유저 쿠폰 정보</h1>
-${couponInfo.couponCode }<br>
+<%-- ${couponInfo.couponCode }<br> --%>
 ${couponInfo.commentCode }<br>
 ${couponInfo.couponStatus }<br>
 </body>
