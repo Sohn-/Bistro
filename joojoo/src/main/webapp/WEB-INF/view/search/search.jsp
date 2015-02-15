@@ -414,7 +414,7 @@ fieldset .help {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-       <a href="<%=request.getContextPath()%>/event_detail "><button id="perchase" type="button" class="btn btn-warning btn-sm">구매하기</button></a>
+       <a href="<%=request.getContextPath()%>/event_detail "><button id="perchase" type="button" class="btn btn-warning btn-sm">이벤트상세보기</button></a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
