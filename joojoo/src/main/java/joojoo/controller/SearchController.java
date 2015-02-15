@@ -77,7 +77,10 @@ public class SearchController {
 	}*/
 	
 	@RequestMapping(value="/")
-	public String showMain(Model model){
+	public String showMain(Model model, SessionStatus sessionStatus){
+		if(sessionStatus.isComplete() == true){ //세션 차있으면
+			sessionStatus.setComplete();
+		}
 		Category category = new Category();
 		model.addAttribute("category", category);
 		
@@ -89,10 +92,23 @@ public class SearchController {
 	}
 
 
-	@RequestMapping(value="/main/keyword")
-	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){
-		logger.error("keyword도착");
+	@RequestMapping(value="/main/keyword",  method=RequestMethod.POST)
+	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){ //하나로 합치고싶은데 category를 모델에 등록할때가 문제임...
+	/*	logger.error("keyword도착");
 		logger.error(category.toString());
+		model.addAttribute("category");
+		List<All> search_events = eventService.SeachByKeyword(category);
+		model.addAttribute("search_events", search_events);
+
+		List<All> search_stores = storeService.showStoresByKeyword(category);
+		model.addAttribute("search_stores", search_stores);*/
+
+		return "redirect:/search";
+	}
+	
+	@RequestMapping(value="/search",  method=RequestMethod.GET)
+	public String showKeywordResult(@ModelAttribute("category") Category category, Model model){ 
+	
 		model.addAttribute("category");
 		List<All> search_events = eventService.SeachByKeyword(category);
 		model.addAttribute("search_events", search_events);
@@ -103,7 +119,8 @@ public class SearchController {
 		return "search/search";
 	}
 	
-	@RequestMapping(value="/main/category")
+	
+	@RequestMapping(value="/main/category",  method=RequestMethod.POST)
 	public String searchCategoryResult(@ModelAttribute("category") Category category, Model model){
 		
 		model.addAttribute("category");

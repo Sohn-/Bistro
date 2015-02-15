@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
-@SessionAttributes({"loginUser","loginOwner"})
-public class MyPageController {
+public class MyPageOwnerController {
 	static final Logger LOG = LoggerFactory
 			.getLogger(JoinController.class);
 	
@@ -37,24 +36,11 @@ public class MyPageController {
 	    @Autowired
 	    private CouponService couponService;
 	    
-	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
-		public String showInfoPage(Model model,HttpSession session){
+
+	    @RequestMapping(value="/info/member/owner", method=RequestMethod.GET)
+		public String showOwnerInfoPage(Model model,HttpSession session){
 	    	
-	    	if(session.getAttribute("loginUser") ==null && session.getAttribute("loginOwner") ==null){
-	    		return "info/member_null";
-	    	}
-	    	else if(session.getAttribute("loginUser") !=null){
-	    			
-			return "info/member_user";
-	    	}
-	    	else return "info/member_owner";
-		}
-	    
-	  
-	    @RequestMapping(value="/info/userInfo", method=RequestMethod.GET)
-		public String showUserInfo(Model model){
-	    	
-			return "info/updateUserInfo";
+			return "info/member_owner";
 		}
 	    
 	    @RequestMapping(value="/info/userInfo/coupon", method=RequestMethod.GET)
@@ -67,12 +53,5 @@ public class MyPageController {
 			return "info/userCouponInfo";
 		}
 	    
-	    ////카트
-	    @RequestMapping(value="/info/cart", method=RequestMethod.GET)
-		public String showWishListPage(Model model,HttpSession session){
-	    	
-			return "info/cart";
-		}
-	
 	
 }
