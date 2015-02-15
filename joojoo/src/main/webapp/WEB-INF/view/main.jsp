@@ -446,8 +446,6 @@ fieldset .help {
 </div>
  
    </div>      
-       
-      
       <br>
       <h3 class="docs" align="center">검색결과</h3>
 
