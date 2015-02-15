@@ -53,6 +53,28 @@
 		document.form1.userId.focus(); 
 		return false; 
 		} 
+	<%-- 	else{
+			var xhr = new XMLHttpRequest();
+			
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					 document.querySelector("#drophere")
+					.innerHTML=""; 
+					document.querySelector("#drophere")
+					.innerHTML=xhr.responseText;
+				}
+			}
+			var url = "<%=request.getContextPath()%>/check_user";
+			xhr.open("post", url, true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			/* var msg = "흠흠흠...";
+			
+			xhr.send("msg="+msg); */
+			xhr.send();
+			
+			return true;
+			
+		} --%>
 		return true;
 	}
 
@@ -95,6 +117,29 @@
 	         }
 	      });
 	   });
+	   
+	   window.onload=function (){
+			var xhr = new XMLHttpRequest();
+			
+			document.querySelector("#opener1")
+			.addEventListener("click", function(){
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4 && xhr.status==200){
+						 document.querySelector("#drophere")
+						.innerHTML=""; 
+						document.querySelector("#drophere")
+						.innerHTML=xhr.responseText;
+					}
+				}
+				var url = "<%=request.getContextPath()%>/login_fail";
+				xhr.open("post", url, true);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				/* var msg = "흠흠흠...";
+				
+				xhr.send("msg="+msg); */
+				xhr.send();
+			}, false);
+		}
 	</script>
 
 
@@ -189,12 +234,12 @@ fieldset .help {
                   <ul>
                      <li><a id="idlabel" class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
                      <li><a class="icon fa-bar-chart-o" href="join"><span>회원가입</span></a>
-                     <div id="drophere"></div>
+                     <div id="drophere"></div><input type="button" value="ajax" id="send">
                   </ul>
                                    
                   <div class="row 80%">
                      <div class="12u">
-                     <input id="opener1" name="opener1" type="submit"/>
+                     <input id="opener1" name="opener1" type="submit" value="Login"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
@@ -224,7 +269,7 @@ fieldset .help {
 
                   <div class="row 80%">
                      <div class="12u">
-                     <input id="opener2" name="opener2" type="submit"/>
+                     <input id="opener2" name="opener2" type="submit" value="Login"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
@@ -233,7 +278,7 @@ fieldset .help {
                </form:form>
                
                   
-				<div id="dialog" title="경고">
+				<div id="dialog">
 				  <p>아이디와 비밀번호를 입력하세요.</p>
 				</div>
  

@@ -36,15 +36,38 @@ public class MyPageOwnerController {
 	    @Autowired
 	    private CouponService couponService;
 	    
-
-	    @RequestMapping(value="/info/member/owner", method=RequestMethod.GET)
-		public String showOwnerInfoPage(Model model,HttpSession session){
+	    @RequestMapping(value="/info", method=RequestMethod.POST)
+		public String showInfoControl(Model model,HttpSession session){
+	    	String path = null;
 	    	
-			return "info/member_owner";
+	    	Object loginOwner = session.getAttribute("loginOwner");
+	    	Object loginUser = session.getAttribute("loginUser");
+	    	
+	    	if(loginOwner != null){
+	    		path = "redirect:/info/owner";
+	    	}
+	    	else if(loginUser != null){
+	    		path ="redirect:/info/user";
+	    	}
+	    	
+	    	else{	//로그인이 안된경우는 JSP에서 처리..
+	    		
+	    	}
+			return path;
+			
 		}
 	    
-	    @RequestMapping(value="/info/userInfo/coupon", method=RequestMethod.GET)
-		public String showUserCouponPage(HttpSession session,Model model){
+
+	    @RequestMapping(value="/info/owner")
+		public String showOwnerInfoPage(Model model,HttpSession session){
+	    	
+			return "info/owner";
+		}
+	    
+	    
+	    
+	    @RequestMapping(value="/info/owner/coupon", method=RequestMethod.GET)
+		public String showOwnerCouponPage(HttpSession session,Model model){
 	    	All loginUser = (All)(session.getAttribute("loginUser"));
 	    	List<All> couponInfo = couponService.getCouponsByUserId(loginUser.getUserId());
 			LOG.trace("수업:"+couponInfo);

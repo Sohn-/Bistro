@@ -94,19 +94,10 @@ public class SearchController {
 
 	@RequestMapping(value="/main/keyword",  method=RequestMethod.POST)
 	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){ //하나로 합치고싶은데 category를 모델에 등록할때가 문제임...
-	/*	logger.error("keyword도착");
-		logger.error(category.toString());
-		model.addAttribute("category");
-		List<All> search_events = eventService.SeachByKeyword(category);
-		model.addAttribute("search_events", search_events);
-
-		List<All> search_stores = storeService.showStoresByKeyword(category);
-		model.addAttribute("search_stores", search_stores);*/
-
-		return "redirect:/search";
+		return "redirect:/keyword";
 	}
 	
-	@RequestMapping(value="/search",  method=RequestMethod.GET)
+	@RequestMapping(value="/keyword",  method=RequestMethod.GET)
 	public String showKeywordResult(@ModelAttribute("category") Category category, Model model){ 
 	
 		model.addAttribute("category");
@@ -115,13 +106,18 @@ public class SearchController {
 
 		List<All> search_stores = storeService.showStoresByKeyword(category);
 		model.addAttribute("search_stores", search_stores);
+		
+		logger.error(""+search_events);
 
 		return "search/search";
 	}
-	
-	
 	@RequestMapping(value="/main/category",  method=RequestMethod.POST)
-	public String searchCategoryResult(@ModelAttribute("category") Category category, Model model){
+	public String searchCategoryResult(@ModelAttribute("category") Category category, Model model){ 
+		return "redirect:/category";
+	}
+	
+	@RequestMapping(value="/category",  method=RequestMethod.GET)
+	public String showCategoryResult(@ModelAttribute("category") Category category, Model model){
 		
 		model.addAttribute("category");
 		List<All> search_events = eventService.SeachByCategory(category);		

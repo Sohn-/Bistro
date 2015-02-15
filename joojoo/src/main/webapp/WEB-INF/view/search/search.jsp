@@ -266,7 +266,7 @@ fieldset .help {
    <div id="header-wrapper">
       <div id="header" class="container">
          <!-- Logo -->
-         <h1 id="logo"><a href=<%=request.getContextPath() %>/>JooJooclub</a></h1>
+         <h1 id="logo"><a href="<%=request.getContextPath() %>">JooJooclub</a></h1>
          <p>Welcom To JooJooClub</p>
          <div align="right">
             <nav id="nav">
@@ -275,7 +275,7 @@ fieldset .help {
                <li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
                <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
                <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info/member"><span>MyPage</span></a></li>
+               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
                <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li>
 				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
             </ul>
@@ -396,7 +396,7 @@ fieldset .help {
     <c:forEach items="${search_events}" var="search_event">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
     <button data-toggle="modal" data-target="#myModal">
-        <img src="../images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_event.storeName}" />
+        <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_event.storeName}" />
           </button>
           </div>
           

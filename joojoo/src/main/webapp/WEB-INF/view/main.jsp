@@ -10,6 +10,7 @@
 <html>
 <head>
 
+
 <title>mainPage</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
@@ -22,7 +23,6 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/style-1000px.css">
 <link rel="stylesheet" href="/css/style-desktop.css">
-
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -46,6 +46,12 @@
 
 
 <style type="text/css">
+
+form { 
+width: 10cm; 
+} 
+
+
 label {
    display: inline-block;
    width: 5em;
@@ -258,6 +264,10 @@ fieldset .help {
 	   document.document.querySelector("#here")
 		.innerHTML="${store.storeName}";
 	 }) 
+	 
+	 $("#perchase").click(function() {
+				
+			});
 </script>
 </head>
 
@@ -285,6 +295,20 @@ fieldset .help {
          
          
          
+         
+              <div>      
+         	<c:url value="/main/keyword" var="action"></c:url>
+            <form:form modelAttribute="category" method="post" action="${action}" >
+                <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
+                   
+                <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
+       		</form:form> 
+       
+         </div>
+              
+         
+         
+         
 <%--          <div>      
          	<c:url value="/main/keyword" var="action"></c:url>
             <form:form modelAttribute="category" method="post" action="${action}">
@@ -300,23 +324,19 @@ fieldset .help {
             </form:form>
          </div> --%>
          
-         <div>      
-         	<c:url value="/main/keyword" var="action"></c:url>
-            <form:form modelAttribute="category" method="post" action="${action}">
-              <div class="row 90%">                    
-                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text"/>     
-              </div>    
-                  
-              <div class="row 80%">
-                  <div class="12u">                        
-                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-                  </div>
-              </div>
-            </form:form>
+     
+         
+            
+             
          </div>
+         
+         
+         
+  
+         
+         
        </div>
-   </div>
-   
+ 
    
    		<!-- 	헤더구분띠 -->
       <img  src="images/bar.png" style="width: 100%">
@@ -326,7 +346,7 @@ fieldset .help {
       <section id="features" class="container"> 
       <nav id="nav">
       <ul>
-         <li><a href=""><span>Region</span></a>
+         <li ><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Region</span></button></a>
             <ul>
                <li><a href="#">강남</a></li>
                <li><a href="#">홍대</a></li>
@@ -336,7 +356,7 @@ fieldset .help {
             </ul>
          </li>
 
-         <li><a href=""><span>Type</span></a>
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Type</span></button></a>
             <ul>
                <li><a href="#">호프</a></li>
                <li><a href="#">고기집</a></li>
@@ -346,7 +366,7 @@ fieldset .help {
             </ul>
          </li>
 
-         <li><a href=""><span>Number</span></a>
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Number</span></button></a>
             <ul>
                <li><a href="#">4인이하</a></li>
                <li><a href="#">5~10인 </a></li>
@@ -354,8 +374,8 @@ fieldset .help {
                <li><a href="#">20인이상</a>
             </ul>
          </li>
-
-         <li><a href=""><span>Service</span></a>
+         
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Service</span></button></a>
             <ul>
                <li><a href="#">서비스추가</a></li>
                <li><a href="#">할인</a></li>
@@ -382,28 +402,37 @@ fieldset .help {
          </c:forEach>    
     </c:forEach>   --%>  
       
-    	
-    <c:forEach items="${stores}" var="store">
+
+    <c:forEach items="${events}" var="event">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
     <button data-toggle="modal" data-target="#myModal">
-        <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" />
+
+        <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${event.storeName}" />
+
           </button>
           </div>
+          
           
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
 	 <div class="modal-dialog">
     <div class="modal-content">
+      
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title"><c:out value="${store.storeName}" /></h4>
+        <h4 class="modal-title"><c:out value="${event.storeName}" /></h4>
       </div>
+      
       <div class="modal-body" id="here">
-        <c:out value="${store.storeAdress }"/>
+        <c:out value="${event.storeAdress }"/>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-       <a href="<%=request.getContextPath()%>/event_detail "><button id="perchase" type="button" class="btn btn-warning btn-sm">구매하기</button></a>
+        <c:url value="/event_detail" var="action"></c:url>
+        <form action="${action}">
+       <%-- <a href="<%=request.getContextPath()%>/event_detail "> --%><input type="button" id="perchase" type="button" class="btn btn-warning btn-sm">이벤트상세보기<!-- </a> -->
+     	<input type="hidden" name="eventCommentCode">
+       </form>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -411,7 +440,7 @@ fieldset .help {
  
     </c:forEach>
     
-   
+  
     
  
     
@@ -422,10 +451,7 @@ fieldset .help {
 </div>
  
    </div>      
-       
-      
       <br>
-      
       <h3 class="docs" align="center">검색결과</h3>
 
       <div id="accordion-resizer" class="ui-widget-content" class="container" align="center" style="background-color: gray">
