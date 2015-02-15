@@ -447,7 +447,6 @@ fieldset .help {
        
       
       <br>
-      
       <h3 class="docs" align="center">검색결과</h3>
 
       <div id="accordion-resizer" class="ui-widget-content" class="container" align="center" style="background-color: gray">
