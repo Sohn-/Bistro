@@ -326,7 +326,7 @@ fieldset .help {
       <section id="features" class="container"> 
       <nav id="nav">
       <ul>
-         <li><a href=""><span>Region</span></a>
+         <li ><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Region</span></button></a>
             <ul>
                <li><a href="#">강남</a></li>
                <li><a href="#">홍대</a></li>
@@ -336,7 +336,7 @@ fieldset .help {
             </ul>
          </li>
 
-         <li><a href=""><span>Type</span></a>
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Type</span></button></a>
             <ul>
                <li><a href="#">호프</a></li>
                <li><a href="#">고기집</a></li>
@@ -346,7 +346,7 @@ fieldset .help {
             </ul>
          </li>
 
-         <li><a href=""><span>Number</span></a>
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Number</span></button></a>
             <ul>
                <li><a href="#">4인이하</a></li>
                <li><a href="#">5~10인 </a></li>
@@ -355,7 +355,7 @@ fieldset .help {
             </ul>
          </li>
 
-         <li><a href=""><span>Service</span></a>
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Service</span></button></a>
             <ul>
                <li><a href="#">서비스추가</a></li>
                <li><a href="#">할인</a></li>
