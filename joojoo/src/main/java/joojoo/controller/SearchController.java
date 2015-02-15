@@ -111,7 +111,6 @@ public class SearchController {
 
 		return "search/search";
 	}
-	
 	@RequestMapping(value="/main/category",  method=RequestMethod.POST)
 	public String searchCategoryResult(@ModelAttribute("category") Category category, Model model){ 
 		return "redirect:/category";
