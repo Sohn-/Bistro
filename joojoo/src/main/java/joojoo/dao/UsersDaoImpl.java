@@ -28,13 +28,13 @@ public class UsersDaoImpl implements UsersDao{
 	@Override
 	public int updateUser(Users user) {//회원정보수정
 		String stmt = nameSpace + "updateUser";
-		return sqlSession.insert(stmt, user);
+		return sqlSession.update(stmt, user);
 	}
 
 	@Override
 	public int deleteUser(String userId) {//회원탈퇴
 		String stmt = nameSpace + "deleteUser";
-		return sqlSession.insert(stmt, userId);
+		return sqlSession.delete(stmt, userId);
 	}
 
 	@Override

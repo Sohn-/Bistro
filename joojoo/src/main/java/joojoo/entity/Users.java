@@ -1,9 +1,5 @@
 package joojoo.entity;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * 새 테이블 모델 클래스.
  * 
@@ -13,8 +9,6 @@ import java.util.Set;
 
 public class Users {
 	
-	
-	private static final long serialVersionUID = 1L;
 
 	private String userId;
 
@@ -27,74 +21,106 @@ public class Users {
 	private String userPhone;
 
 	private Integer chance;
-
-	public Users() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Users(String userId, String userPassword, String userName,
-			String userMail, String userPhone, Integer chance) {
-		super();
-		this.userId = userId;
-		this.userPassword = userPassword;
-		this.userName = userName;
-		this.userMail = userMail;
-		this.userPhone = userPhone;
-		this.chance = chance;
-	}
+	
+	
+	
+	
 
 	public String getUserId() {
 		return userId;
 	}
 
+
+
+
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+
+
+
 
 	public String getUserPassword() {
 		return userPassword;
 	}
 
+
+
+
+
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+
+
+
+
 
 	public String getUserName() {
 		return userName;
 	}
 
+
+
+
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+
+
+
 
 	public String getUserMail() {
 		return userMail;
 	}
 
+
+
+
+
 	public void setUserMail(String userMail) {
 		this.userMail = userMail;
 	}
+
+
+
+
 
 	public String getUserPhone() {
 		return userPhone;
 	}
 
+
+
+
+
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
+
+
+
+
 
 	public Integer getChance() {
 		return chance;
 	}
 
+
+
+
+
 	public void setChance(Integer chance) {
 		this.chance = chance;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
+
+
 
 	@Override
 	public String toString() {
@@ -105,253 +131,8 @@ public class Users {
 	
 	
 	
-	
-	
-}
-/*public class Users implements Serializable {
-
-	*//** serialVersionUID. *//*
-	private static final long serialVersionUID = 1L;
-
-	*//** user_id. *//*
-	private String userId;
-
-	*//** user_password. *//*
-	private String userPassword;
-
-	*//** user_name. *//*
-	private String userName;
-
-	*//** user_mail. *//*
-	private String userMail;
-
-	*//** user_phone. *//*
-	private Integer userPhone;
-
-	*//** chance. *//*
-	private Integer chance;
-
-	*//** 새 테이블 목록. *//*
-	private Set<Coupon> couponSet;
-
-	*//** 새 테이블 목록. *//*
-	private Set<WishList> wishListSet;
-
-	*//**
-	 * 생성자.
-	 *//*
-	public Users() {
-		this.couponSet = new HashSet<Coupon>();
-		this.wishListSet = new HashSet<WishList>();
-	}
-
-	*//**
-	 * user_id을 설정합니다..
-	 * 
-	 * @param userId
-	 *            user_id
-	 *//*
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	*//**
-	 * user_id을 가져옵니다..
-	 * 
-	 * @return user_id
-	 *//*
-	public String getUserId() {
-		return this.userId;
-	}
-
-	*//**
-	 * user_password을 설정합니다..
-	 * 
-	 * @param userPassword
-	 *            user_password
-	 *//*
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
-
-	*//**
-	 * user_password을 가져옵니다..
-	 * 
-	 * @return user_password
-	 *//*
-	public String getUserPassword() {
-		return this.userPassword;
-	}
-
-	*//**
-	 * user_name을 설정합니다..
-	 * 
-	 * @param userName
-	 *            user_name
-	 *//*
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	*//**
-	 * user_name을 가져옵니다..
-	 * 
-	 * @return user_name
-	 *//*
-	public String getUserName() {
-		return this.userName;
-	}
-
-	*//**
-	 * user_mail을 설정합니다..
-	 * 
-	 * @param userMail
-	 *            user_mail
-	 *//*
-	public void setUserMail(String userMail) {
-		this.userMail = userMail;
-	}
-
-	*//**
-	 * user_mail을 가져옵니다..
-	 * 
-	 * @return user_mail
-	 *//*
-	public String getUserMail() {
-		return this.userMail;
-	}
-
-	*//**
-	 * user_phone을 설정합니다..
-	 * 
-	 * @param userPhone
-	 *            user_phone
-	 *//*
-	public void setUserPhone(Integer userPhone) {
-		this.userPhone = userPhone;
-	}
-
-	*//**
-	 * user_phone을 가져옵니다..
-	 * 
-	 * @return user_phone
-	 *//*
-	public Integer getUserPhone() {
-		return this.userPhone;
-	}
-
-	*//**
-	 * chance을 설정합니다..
-	 * 
-	 * @param chance
-	 *            chance
-	 *//*
-	public void setChance(Integer chance) {
-		this.chance = chance;
-	}
-
-	*//**
-	 * chance을 가져옵니다..
-	 * 
-	 * @return chance
-	 *//*
-	public Integer getChance() {
-		return this.chance;
-	}
-
-	*//**
-	 * 새 테이블 목록을 설정합니다..
-	 * 
-	 * @param couponSet
-	 *            새 테이블 목록
-	 *//*
-	public void setCouponSet(Set<Coupon> couponSet) {
-		this.couponSet = couponSet;
-	}
-
-	*//**
-	 * 새 테이블를 추가합니다..
-	 * 
-	 * @param coupon
-	 *            새 테이블
-	 *//*
-	public void addCoupon(Coupon coupon) {
-		this.couponSet.add(coupon);
-	}
-
-	*//**
-	 * 새 테이블 목록을 가져옵니다..
-	 * 
-	 * @return 새 테이블 목록
-	 *//*
-	public Set<Coupon> getCouponSet() {
-		return this.couponSet;
-	}
-
-	*//**
-	 * 새 테이블 목록을 설정합니다..
-	 * 
-	 * @param wishListSet
-	 *            새 테이블 목록
-	 *//*
-	public void setWishListSet(Set<WishList> wishListSet) {
-		this.wishListSet = wishListSet;
-	}
-
-	*//**
-	 * 새 테이블를 추가합니다..
-	 * 
-	 * @param wishList
-	 *            새 테이블
-	 *//*
-	public void addWishList(WishList wishList) {
-		this.wishListSet.add(wishList);
-	}
-
-	*//**
-	 * 새 테이블 목록을 가져옵니다..
-	 * 
-	 * @return 새 테이블 목록
-	 *//*
-	public Set<WishList> getWishListSet() {
-		return this.wishListSet;
-	}
-
-	*//**
-	 * {@inheritDoc}
-	 *//*
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		return result;
-	}
-
-	*//**
-	 * {@inheritDoc}
-	 *//*
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Users other = (Users) obj;
-		if (userId == null) {
-			if (other.userId != null) {
-				return false;
-			}
-		} else if (!userId.equals(other.userId)) {
-			return false;
-		}
-		return true;
-	}
 
 }
-*/
+
+
+

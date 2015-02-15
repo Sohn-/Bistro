@@ -1,4 +1,4 @@
-<%@page import="joojoo.entity.All"%>
+<%@page import="joojoo.entity.Users"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -30,7 +30,7 @@
 	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
@@ -46,12 +46,37 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
-<script>
+<script type="text/javascript">
+
 $(document).ready(function(){
+	
     $(":checked").wrap("<span style='background-color:red'>");
+    
+ 
 });
 
-	function Check_user(f) {
+	function mysubmit(sub){
+	if(sub==1){
+		if($("#password").val()==""){
+			alert("비밀번호를 입력해주세요.");
+			$("#password").focus();		
+		}
+		
+		if($("#password2").val()==""){
+			alert("비밀번호 확인을 입력해주세요.");
+			$("#password2").focus();		
+		}
+	 document.updateForm.action="../info/member/update";
+	 document.updateForm.submit();
+	 }
+	if(sub==2){
+	 document.updateForm.action="../info/member/delete";
+	 document.updateForm.submit();
+	}
+	
+	}
+
+	/* function Check_user(f) {
 		if (document.form1.userPassword.value == ""
 				|| document.form1.userId.value == "") {
 			$("#dialog").dialog({
@@ -97,7 +122,7 @@ $(document).ready(function(){
 			return false;
 		}
 		return true;
-	}
+	} */
 
 	$(function() {
 		$("#tabs").tabs();
@@ -111,6 +136,8 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	
 </script>
 
 
@@ -401,7 +428,7 @@ fieldset .help {
 		setTimeout(sizeScrollbar, 10);//safari wants a timeout
 	});
 
-	function Open_event(f) {
+	/* function Open_event(f) {
 		if (document.form1.userPassword.value == ""
 				|| document.form1.userId.value == "") {
 			$("#dialog").dialog({
@@ -423,7 +450,7 @@ fieldset .help {
 			return false;
 		}
 		return true;
-	}
+	} */
 
 	$(function() {
 		$("#tabs").tabs();
@@ -582,7 +609,7 @@ fieldset .help {
 		setTimeout(sizeScrollbar, 10);//safari wants a timeout
 	});
 
-	function Open_event(f) {
+/* 	function Open_event(f) {
 		if (document.form1.userPassword.value == ""
 				|| document.form1.userId.value == "") {
 			$("#dialog").dialog({
@@ -604,7 +631,7 @@ fieldset .help {
 			return false;
 		}
 		return true;
-	}
+	} */
 </script>
 </head>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
@@ -652,33 +679,42 @@ fieldset .help {
 			<div id="footer" class="container" align="left">
 
 				회원정보 수정 및 탈퇴 <br>
-				<form>
+				<form:form  modelAttribute="updateUser" method="post" action="${action} " name="updateForm" id="updateForm" > 
 					<fieldset>
 
 						<div style="font-style: normal; color: red;">
-							<input id="userId" name="userId" title="Please provide your ID."
-								value="${loginUser.userId}" align="middle"/> * <br> <input
-								id="password" name="password"
-								title="Please provide your password" value=" 비밀번호 변경"><br>
-							<input id="password2" name="password2"
-								title="Please provide your password2" value=" 비밀번호 변경 확인"><br>
-							<input id="userName" name="userName"
-								title="Please provide your userName" value="${loginUser.userPassword}">
-							*<br> <input id="userEmail" name="userEmail"
-								title="Please provide your userEmail" value=" 이메일"><br>
-							<input id="userPhone" name="userPhone"
-								title="Please provide your userPhone" value=" 휴대전화 번호"><br>
+							<input  disabled="true" id="userId" name="userId" title="Please provide your ID."
+								value="${loginUser.userId}" align="middle"/> * <br> 
+							<form:input type="hidden" value="${loginUser.userId}" path="userId" required="true"/><br>
+							
+								
+								<input  path="userPassword" id="password" name="password"
+								title="변경할 비밀번호를 입력해주세요" value="${loginUser.userPassword}" required="true"/><br>
+								
+							<input  id="password2" name="password2" title="변경할 비밀번호를 한번 더 입력해주세요"><br>
+							<input path="userName" disabled="true" id="userName" name="userName"
+								title="Please provide your userName" value="${loginUser.userName}">
+							<form:input type="hidden" value="${loginUser.userName}" path="userName" required="true"/><br>	
+								
+								
+								
+							*<br>
+							<input  path="userMail" id="userMail" name="userMail"
+								title="Please provide your mail" value="${loginUser.userMail}"><br>
+							<input  path="userPhone" id="userPhone" name="userPhone"
+								title="Please provide your userPhone" value="${loginUser.userPhone}"><br>
 							*는 수정할 수 없는 정보입니다.
+							
+							 <form:input type="hidden" value="${loginUser.chance}" path="chance" required="true"/><br>
 						</div>
 
-
-						<a href="update_u.jsp"><input type="button" name="button"
-							value="수정하기"></a> <a href="exit.jsp"><input type="button"
-							name="button" value="회원탈퇴"></a>
+							
+						
+						<input type="button" onclick="mysubmit(1)" value="수정하기"/>
+						<input type="button" onclick="mysubmit(2)" value="탈퇴하기"/>
 
 					</fieldset>
-				</form>
-
+				</form:form>
 			</div>
 		</div>
 		
