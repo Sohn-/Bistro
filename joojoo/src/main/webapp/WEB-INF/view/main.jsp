@@ -404,12 +404,13 @@ fieldset .help {
          </c:forEach>    
     </c:forEach>   --%>  
       
-    	
-    
+
     <c:forEach items="${events}" var="event">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
     <button data-toggle="modal" data-target="#myModal">
-        <img src="../images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${event.storeName}" />
+
+        <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${event.storeName}" />
+
           </button>
           </div>
           
