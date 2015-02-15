@@ -24,7 +24,6 @@
 <link rel="stylesheet" href="/css/style-1000px.css">
 <link rel="stylesheet" href="/css/style-desktop.css">
 
-
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
