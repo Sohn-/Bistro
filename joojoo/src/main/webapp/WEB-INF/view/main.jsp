@@ -1,21 +1,31 @@
 <%@page import="joojoo.entity.All"%>
 <%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
-<title>LoginPage</title>
+
+<title>mainPage</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style-1000px.css">
+<link rel="stylesheet" href="/css/style-desktop.css">
+
+
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<link rel="stylesheet" href="css/style.css">
 
 
 <!-- 버튼부트스트랩 -->
@@ -303,11 +313,10 @@ fieldset .help {
               </div>
             </form:form>
          </div>
-         
-
-         
-      </div>
+       </div>
    </div>
+   
+   
    		<!-- 	헤더구분띠 -->
       <img  src="images/bar.png" style="width: 100%">
 
