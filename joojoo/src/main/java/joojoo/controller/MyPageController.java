@@ -38,11 +38,15 @@ public class MyPageController {
 	    private CouponService couponService;
 	    
 	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
-		public String showInfoPage(Model model,HttpSession session){
+		public String showUserInfoPage(Model model,HttpSession session){
 	    	
-			return "info/member";
+			return "info/member_user";
 		}
-	    
+	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
+		public String showOwnerInfoPage(Model model,HttpSession session){
+	    	
+			return "info/member_owner";
+		}
 	    @RequestMapping(value="/info/userInfo", method=RequestMethod.GET)
 		public String showUserInfo(Model model){
 	    	
