@@ -41,15 +41,15 @@ public class LoginController {
 	@RequestMapping(value="login/check_user", method=RequestMethod.POST)
 	public String loginCheckUser(@ModelAttribute("user") Users user, Model model){
 		All loginUser;
-		String path = "redirect:/main";
-
+		String path = "redirect:/login_success";
+		logger.error("user = "+user);
 		loginUser = userService.UsersLogin(user);
 		
 		if(loginUser != null){
 			model.addAttribute("loginUser", loginUser);
 		}
 		else{
-			//path = "redirect:/login_fail";
+			path = "redirect:/login_fail";
 		}
 		
 		return path;	
@@ -58,7 +58,7 @@ public class LoginController {
 	@RequestMapping(value="login/check_owner", method=RequestMethod.POST)
 	public String loginCheckOwner(@ModelAttribute("owner") Owners owner, Model model){
 		All loginOwner;
-		String path = "redirect:/main";
+		String path = "redirect:/";
 		
 		loginOwner = ownerService.OwnersLogin(owner);
 		
@@ -66,29 +66,32 @@ public class LoginController {
 			model.addAttribute("loginOwner", loginOwner);
 		}
 		else{
-			//path = "redirect:/login_fail";
+			path = "redirect:/login_fail";
 		}
 		
 		return path;	
 	}
 	
-	@RequestMapping(value="/login_fail", method=RequestMethod.GET)
+/*	@RequestMapping(value="/login_fail", method=RequestMethod.GET)
 	public String loginFail(){
 		
 		return "login/login_fail";
+	}*/
+	@RequestMapping(value="/login_success", method=RequestMethod.GET)
+	public String go(){
+		return "redirect:/";
 	}
 	
-	
-	@RequestMapping(value="/ajax", method=RequestMethod.GET)
+	@RequestMapping(value="/login_fail", method=RequestMethod.GET)
 	public String ajaxPageCall(){
-		return "/ajax";
+		return "/login";
 	}
 	
-	@RequestMapping(value="/ajax", method=RequestMethod.POST, 
+	@RequestMapping(value="/login_fail", method=RequestMethod.POST, 
 			produces="text/plain;charset=utf-8")
-	public @ResponseBody String ajaxReceive(@RequestParam String msg){
+	public @ResponseBody String ajaxReceive(/*@RequestParam String msg*/){
 		logger.trace("흠 이게 되나");
-		return "AJAX로 작동합니다 msg : "+msg;
+		return "아이디와 비밀번호가 정확하지 않습니다.";
 	}
 	
 }
