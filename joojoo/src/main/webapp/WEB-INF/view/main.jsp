@@ -47,6 +47,12 @@
 
 
 <style type="text/css">
+
+form { 
+width: 10cm; 
+} 
+
+
 label {
    display: inline-block;
    width: 5em;
@@ -286,6 +292,25 @@ fieldset .help {
          
          
          
+         
+              <div>      
+         	<c:url value="/main/keyword" var="action"></c:url>
+            
+            
+            <form:form modelAttribute="category" method="post" action="${action}" >
+              
+                    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
+                   
+                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
+       		
+       		
+       		 </form:form> 
+       
+         </div>
+              
+         
+         
+         
 <%--          <div>      
          	<c:url value="/main/keyword" var="action"></c:url>
             <form:form modelAttribute="category" method="post" action="${action}">
@@ -301,23 +326,19 @@ fieldset .help {
             </form:form>
          </div> --%>
          
-         <div>      
-         	<c:url value="/main/keyword" var="action"></c:url>
-            <form:form modelAttribute="category" method="post" action="${action}">
-              <div class="row 90%">                    
-                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text"/>     
-              </div>    
-                  
-              <div class="row 80%">
-                  <div class="12u">                        
-                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-                  </div>
-              </div>
-            </form:form>
+     
+         
+            
+             
          </div>
+         
+         
+         
+  
+         
+         
        </div>
-   </div>
-   
+ 
    
    		<!-- 	헤더구분띠 -->
       <img  src="images/bar.png" style="width: 100%">
