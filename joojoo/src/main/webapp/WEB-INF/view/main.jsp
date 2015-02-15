@@ -242,9 +242,10 @@ fieldset .help {
 		return true;
 	}
    
-    $('#myModal').on('show.bs.modal', function () {
-	   document.document.querySelector("#drophere")
-		.innerHTML+=xhr.responseText+"<br>";
+    $('#myModal').on('shown.bs.modal', function () {
+    	alert("땡땡");
+	   document.document.querySelector("#here")
+		.innerHTML="${store.storeName}";
 	 }) 
 </script>
 </head>
@@ -272,9 +273,21 @@ fieldset .help {
          
          
          
-
+<%--          <div>      
+         	<c:url value="/main/keyword" var="action"></c:url>
+            <form:form modelAttribute="category" method="post" action="${action}">
+              <div class="row 90%">                    
+                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text"/>     
+              </div>    
+                  
+              <div class="row 80%">
+                  <div class="12u">                        
+                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
+                  </div>
+              </div>
+            </form:form>
+         </div> --%>
          
-          <!--  고친부분 -->
          <div>      
          	<c:url value="/main/keyword" var="action"></c:url>
             <form:form modelAttribute="category" method="post" action="${action}">
@@ -373,7 +386,7 @@ fieldset .help {
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title"><c:out value="${store.storeName}" /></h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="here">
         <c:out value="${store.storeAdress }"/>
 
       </div>
