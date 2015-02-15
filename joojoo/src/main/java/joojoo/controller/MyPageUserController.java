@@ -51,15 +51,7 @@ public class MyPageUserController {
 		}
 
 	   
-	    @RequestMapping(value="/info/userInfo/coupon", method=RequestMethod.GET)
-		public String showUserCouponPage(HttpSession session,Model model){
-	    	All loginUser = (All)(session.getAttribute("loginUser"));
-	    	List<All> couponInfo = couponService.getCouponsByUserId(loginUser.getUserId());
-			LOG.trace("수업:"+couponInfo);
-	    	
-	    	model.addAttribute("couponInfo",couponInfo);
-			return "info/userCouponInfo";
-		}
+	  
 	    
 	
 	
