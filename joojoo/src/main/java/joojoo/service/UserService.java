@@ -1,10 +1,9 @@
 package joojoo.service;
 
-import org.springframework.stereotype.Service;
 
 import joojoo.entity.All;
 import joojoo.entity.Users;
-@Service
+
 public interface UserService {
 	
 	int addUser(Users user);//회원가입

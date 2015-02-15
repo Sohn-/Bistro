@@ -21,7 +21,7 @@ public class StoreDaoTest {
 	StoreDao dao;
 	
 	public StoreDaoTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
 		dao = ctx.getBean(StoreDao.class);
 		
 	}
