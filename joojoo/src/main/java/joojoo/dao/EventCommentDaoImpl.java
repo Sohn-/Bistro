@@ -68,6 +68,7 @@ public class EventCommentDaoImpl implements EventCommentDao{
 	public List<All> getEventCommentsByKeyword(Category category) {
 		String statement = nameSpace + "getEventCommentsByKeyword";
 		List<All> result = sqlSession.selectList(statement, category);
+		logger.error("getEventCommentsByKeyword임............"+result);
 		
 		return result;
 	}
@@ -106,7 +107,7 @@ public class EventCommentDaoImpl implements EventCommentDao{
 	public List<All> getAllEventComments() {
 		String statement = nameSpace + "getAllEventComments";
 		List<All> result = sqlSession.selectList(statement);
-		
+		logger.error("getAllEventComments임............"+result);
 		return result;
 	}
 	@Override
