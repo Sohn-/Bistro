@@ -19,9 +19,9 @@
 
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style-desktop.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style-desktop.css">
 
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -34,11 +34,11 @@
 
 <script   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jquery.dropotron.min.js"></script>
-<script src="../js/skel.min.js"></script>
-<script src="../js/skel-layers.min.js"></script>
-<script src="../js/init.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.dropotron.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
+<script src="js/init.js"></script>
 
 <link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -66,7 +66,7 @@ fieldset .help {
    height: 700px;
 }
 #header{
-	background-image: url(../images/main.jpg);
+	background-image: url(images/main.jpg);
 }
 
   .scroll-pane { overflow: auto; width: 99%; float:left; }
@@ -266,13 +266,13 @@ fieldset .help {
    <div id="header-wrapper">
       <div id="header" class="container">
          <!-- Logo -->
-         <h1 id="logo"><a href="main">JooJooclub</a></h1>
+         <h1 id="logo"><a href=<%=request.getContextPath() %>/>JooJooclub</a></h1>
          <p>Welcom To JooJooClub</p>
          <div align="right">
             <nav id="nav">
             <ul>
 
-               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/main"><span>Home</span></a></li>
+               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
                <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
                <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
                <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info/member"><span>MyPage</span></a></li>
@@ -318,7 +318,7 @@ fieldset .help {
    
    
    		<!-- 	헤더구분띠 -->
-      <img  src="../images/bar.png" style="width: 100%">
+      <img  src="images/bar.png" style="width: 100%">
 
    <!-- Features -->
    <div id="features-wrapper">
