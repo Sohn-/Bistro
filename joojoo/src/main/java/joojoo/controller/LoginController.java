@@ -41,8 +41,9 @@ public class LoginController {
 	@RequestMapping(value="login/check_user", method=RequestMethod.POST)
 	public String loginCheckUser(@ModelAttribute("user") Users user, Model model){
 		All loginUser;
-		String path = "redirect:/login_success";
+		String path = "redirect:/";
 		logger.error("user = "+user);
+
 		loginUser = userService.UsersLogin(user);
 		
 		if(loginUser != null){
@@ -58,6 +59,7 @@ public class LoginController {
 	@RequestMapping(value="login/check_owner", method=RequestMethod.POST)
 	public String loginCheckOwner(@ModelAttribute("owner") Owners owner, Model model){
 		All loginOwner;
+
 		String path = "redirect:/";
 		
 		loginOwner = ownerService.OwnersLogin(owner);

@@ -10,6 +10,7 @@
 <html>
 <head>
 
+
 <title>mainPage</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
@@ -46,6 +47,12 @@
 
 
 <style type="text/css">
+
+form { 
+width: 10cm; 
+} 
+
+
 label {
    display: inline-block;
    width: 5em;
@@ -285,6 +292,25 @@ fieldset .help {
          
          
          
+         
+              <div>      
+         	<c:url value="/main/keyword" var="action"></c:url>
+            
+            
+            <form:form modelAttribute="category" method="post" action="${action}" >
+              
+                    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
+                   
+                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
+       		
+       		
+       		 </form:form> 
+       
+         </div>
+              
+         
+         
+         
 <%--          <div>      
          	<c:url value="/main/keyword" var="action"></c:url>
             <form:form modelAttribute="category" method="post" action="${action}">
@@ -300,23 +326,19 @@ fieldset .help {
             </form:form>
          </div> --%>
          
-         <div>      
-         	<c:url value="/main/keyword" var="action"></c:url>
-            <form:form modelAttribute="category" method="post" action="${action}">
-              <div class="row 90%">                    
-                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text"/>     
-              </div>    
-                  
-              <div class="row 80%">
-                  <div class="12u">                        
-                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-                  </div>
-              </div>
-            </form:form>
+     
+         
+            
+             
          </div>
+         
+         
+         
+  
+         
+         
        </div>
-   </div>
-   
+ 
    
    		<!-- 	헤더구분띠 -->
       <img  src="images/bar.png" style="width: 100%">
@@ -326,7 +348,7 @@ fieldset .help {
       <section id="features" class="container"> 
       <nav id="nav">
       <ul>
-         <li><a href=""><span>Region</span></a>
+         <li ><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Region</span></button></a>
             <ul>
                <li><a href="#">강남</a></li>
                <li><a href="#">홍대</a></li>
@@ -336,7 +358,7 @@ fieldset .help {
             </ul>
          </li>
 
-         <li><a href=""><span>Type</span></a>
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Type</span></button></a>
             <ul>
                <li><a href="#">호프</a></li>
                <li><a href="#">고기집</a></li>
@@ -346,7 +368,7 @@ fieldset .help {
             </ul>
          </li>
 
-         <li><a href=""><span>Number</span></a>
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Number</span></button></a>
             <ul>
                <li><a href="#">4인이하</a></li>
                <li><a href="#">5~10인 </a></li>
@@ -354,8 +376,8 @@ fieldset .help {
                <li><a href="#">20인이상</a>
             </ul>
          </li>
-
-         <li><a href=""><span>Service</span></a>
+         
+         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Service</span></button></a>
             <ul>
                <li><a href="#">서비스추가</a></li>
                <li><a href="#">할인</a></li>

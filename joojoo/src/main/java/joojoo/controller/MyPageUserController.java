@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes({"loginUser","loginOwner"})
-public class MyPageController {
+public class MyPageUserController {
 	static final Logger LOG = LoggerFactory
 			.getLogger(JoinController.class);
 	
@@ -37,33 +37,22 @@ public class MyPageController {
 	    @Autowired
 	    private CouponService couponService;
 	    
-	    @RequestMapping(value="/info/member/user", method=RequestMethod.GET)
-		public String showUserInfoPage(Model model,HttpSession session){
+	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
+		public String showInfoPage(Model model,HttpSession session){
 	    	
+	    	if(session.getAttribute("loginUser") ==null && session.getAttribute("loginOwner") ==null){
+	    		return "info/member_null";
+	    	}
+	    	else if(session.getAttribute("loginUser") !=null){
+	    			
 			return "info/member_user";
+	    	}
+	    	else return "info/member_owner";
 		}
-	    @RequestMapping(value="/info/userInfo", method=RequestMethod.GET)
-		public String showUserInfo(Model model){
-	    	
-			return "info/updateUserInfo";
-		}
+
+	   
+	  
 	    
-	    @RequestMapping(value="/info/userInfo/coupon", method=RequestMethod.GET)
-		public String showUserCouponPage(HttpSession session,Model model){
-	    	All loginUser = (All)(session.getAttribute("loginUser"));
-	    	List<All> couponInfo = couponService.getCouponsByUserId(loginUser.getUserId());
-			LOG.trace("수업:"+couponInfo);
-	    	
-	    	model.addAttribute("couponInfo",couponInfo);
-			return "info/userCouponInfo";
-		}
-	    
-	    ////카트
-	    @RequestMapping(value="/info/cart", method=RequestMethod.GET)
-		public String showWishListPage(Model model,HttpSession session){
-	    	
-			return "info/cart";
-		}
 	
 	
 }
