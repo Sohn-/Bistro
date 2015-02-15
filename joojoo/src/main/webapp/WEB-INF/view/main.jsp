@@ -405,27 +405,29 @@ fieldset .help {
     </c:forEach>   --%>  
       
     	
-    <c:forEach items="${stores}" var="store">
+    
+    <c:forEach items="${search_events}" var="search_event">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
     <button data-toggle="modal" data-target="#myModal">
-        <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" />
+        <img src="../images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_event.storeName}" />
           </button>
           </div>
+          
           
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
 	 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title"><c:out value="${store.storeName}" /></h4>
+        <h4 class="modal-title"><c:out value="${search_event.storeName}" /></h4>
       </div>
       <div class="modal-body" id="here">
-        <c:out value="${store.storeAdress }"/>
+        <c:out value="${search_event.storeAdress }"/>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-       <a href="<%=request.getContextPath()%>/event_detail "><button id="perchase" type="button" class="btn btn-warning btn-sm">구매하기</button></a>
+       <a href="<%=request.getContextPath()%>/event_detail "><button id="perchase" type="button" class="btn btn-warning btn-sm">이벤트상세보기</button></a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -433,7 +435,7 @@ fieldset .help {
  
     </c:forEach>
     
-   
+  
     
  
     
