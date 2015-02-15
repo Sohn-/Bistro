@@ -58,6 +58,13 @@ public class MyPageController {
 	    	model.addAttribute("couponInfo",couponInfo);
 			return "info/userCouponInfo";
 		}
+	    
+	    ////카트
+	    @RequestMapping(value="/info/cart", method=RequestMethod.GET)
+		public String showWishListPage(Model model,HttpSession session){
+	    	
+			return "info/cart";
+		}
 	
 	
 }

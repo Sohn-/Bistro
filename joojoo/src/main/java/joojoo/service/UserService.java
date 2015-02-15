@@ -1,6 +1,5 @@
 package joojoo.service;
 
-import org.springframework.stereotype.Service;
 
 import joojoo.entity.All;
 import joojoo.entity.Users;
