@@ -396,7 +396,7 @@ fieldset .help {
     <c:forEach items="${search_events}" var="search_event">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
     <button data-toggle="modal" data-target="#myModal">
-        <img src="../images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_event.storeName}" />
+        <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_event.storeName}" />
           </button>
           </div>
           
