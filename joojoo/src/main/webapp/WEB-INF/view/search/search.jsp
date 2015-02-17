@@ -229,15 +229,13 @@ fieldset .help {
 	    setTimeout( sizeScrollbar, 10 );//safari wants a timeout
 	  });
    
-   function Open_modal(title, content, storeName){
-		 
- 		alert(title);
- 		
- 		 document.querySelector("#modal_title")
+   function Open_modal(commentCode, title, content, storeName){
+
+		 document.querySelector("#modal_title"+commentCode)
 		.innerHTML=storeName+"("+title+")";
-	   document.querySelector("#here")
+	   document.querySelector("#here"+commentCode)
 		.innerHTML=content;
-  }
+ }
 </script>
 </head>
 
@@ -365,47 +363,42 @@ fieldset .help {
   			<div class="scroll-content" style="background-color: gray" >
    
       <div>       
- <%--    <c:forEach items="${stores}" var="store">
-    	<c:forEach begin="0" end="${imageCount }" step="1"  varStatus="status">
-            <div class="scroll-content-item ui-widget-header"><img src="images/${store.licenseNumber }_${status.current }.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></div>         
-         </c:forEach>    
-    </c:forEach>   --%>  
       
-    	
     
  <c:forEach items="${search_events}" var="search_event" varStatus="status">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
-    <button id="search_event${status.current.commentCode }" data-toggle="modal" data-target="#myModal" 
-    		onclick="Open_modal('${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
+    <c:set var="commentCode" value="${status.current.commentCode }"/>
+    <button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }" 
+    		onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
         <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_event.storeName}" />
+        <!-- ${status.current.licenseNumber }로 이미지 변경해야 할 것 -->
      </button>
      </div> 
     </c:forEach>
     
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+    <c:forEach items="${search_events}" var="search_event" varStatus="status">
+    <c:url value="/eventProcess?eventCommentCode=${status.current.commentCode }" var="action"></c:url> 
+    <div class="modal fade" id="myModal${status.current.commentCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
 	 <div class="modal-dialog">
     <div class="modal-content">
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" id="modal_title"></h4>
+        <h4 class="modal-title" id="modal_title${status.current.commentCode }"></h4>
       </div>
       
-      <div class="modal-body" id="here">
+      <div class="modal-body" id="here${status.current.commentCode }">
         <%-- <c:out value="${event.storeAdress }"/> --%>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-        <c:url value="/event_detail" var="action"></c:url>
-        <form action="${action}">
-       <%-- <a href="<%=request.getContextPath()%>/event_detail "> --%><input id="perchase" type="submit" class="btn btn-warning btn-sm" value="이벤트상세보기"><!-- </a> -->
-     	<input type="hidden" name="eventCommentCode" value="${status.current.commentCode }">
-     	</form>
+       <a href="${action }"><button class="btn btn-warning btn-sm" >이벤트상세보기</button></a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+    </c:forEach>
     
    
     

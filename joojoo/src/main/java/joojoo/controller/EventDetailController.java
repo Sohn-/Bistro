@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -18,17 +19,19 @@ public class EventDetailController {
 	@Autowired
 	EventCommentService eventService;
 	
-	@RequestMapping(value="/event_detail")
-	public String showDetail(@RequestParam("eventCommentCode") String eventStr, Model model){
-		int eventCommentCode = Integer.parseInt(eventStr);
+	@RequestMapping(value="/eventProcess", method=RequestMethod.GET)
+	public String showDetail(@RequestParam("eventCommentCode") int eventCommentCode, Model model){
 		
-		logger.error("eventCommentCode = "+eventCommentCode);
 		All eventDetail = eventService.SearchOneEvent(eventCommentCode);
-		logger.error(""+eventDetail);
 		model.addAttribute("eventDetail");
 		
-		return "event_detail";
+		return "event/event_detail";
 	}
+	
+/*	@RequestMapping(value="/event_detail", method=RequestMethod.GET)
+	public String showDetailPage(){		
+		return "event_detail";
+	}*/
 	
 /*	//임시컨트롤
 	@RequestMapping(value="/event_detail")
