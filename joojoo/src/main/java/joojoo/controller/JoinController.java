@@ -52,13 +52,6 @@ public class JoinController {
 	  else return "redirect:/";//일단 메인으로 가도록..
    }
    
-   @RequestMapping(value="/join/user", method=RequestMethod.GET)
-   public String showUserJoinPage(Model model){
-	   //Users users = new Users();
-	   model.addAttribute("joinUser", new Users());
-	   return "join/join_u";
-   
-   }
    
    @RequestMapping(value="/join/result/user", method=RequestMethod.POST)
    public String showUserSuccessPage(@ModelAttribute Users joinUser,Model model,
@@ -100,20 +93,15 @@ public class JoinController {
    }
    ///////////////////// 여기서부터는 owner ///////////////////////
    
-   @RequestMapping(value="/join/owner", method=RequestMethod.GET)
-   public String showOwnerJoinPage(Model model){
-	   model.addAttribute("joinOwner", new Owners());
-	   return "join/join_o";
-   
-   }
-   
-   @RequestMapping(value="/join/join_o2", method=RequestMethod.POST)
+  
+  /* @RequestMapping(value="/join/join_o2", method=RequestMethod.POST)
    public String showRegistStorePage(@ModelAttribute("joinOwner") Owners joinOwner,Model model){
 	   return "redirect:/join/result/owner";
    
    }
    @RequestMapping(value="/join/result/owner", method=RequestMethod.GET)
    public String showRegistStorePageUpdate(Model model){
+	  
 	   model.addAttribute("joinStore",new Stores());
 	   
 	   List<String> regionNames = new ArrayList<String>();
@@ -129,12 +117,12 @@ public class JoinController {
 	   model.addAttribute("typeNames",typeNames);
 	   
 	   
-	   return "/join/join_o2";
+	   return "join/join_o2";
    
    }
-   
+   */
  
-   
+  
    @RequestMapping(value="/join/result/owner", method=RequestMethod.POST)
    public String showOwnerSuccessPage(@ModelAttribute("joinStore") Stores joinStore
 		   							,HttpSession session,
@@ -155,6 +143,16 @@ public class JoinController {
 	 
 	  
       return "join/success";
+   
+   }
+   
+   @RequestMapping(value="/test", method=RequestMethod.GET)
+   public String showRegistStorePage3(){
+	   
+	
+	
+	   
+	   return "join/test3";
    
    }
    
@@ -189,17 +187,6 @@ public class JoinController {
    
    }
    
-   @RequestMapping(value="/test", method=RequestMethod.GET)
-   public String showRegistStorePag2e(){
-	   return "join/test";
-   
-   }
-   
-   @RequestMapping(value="/test/test", method=RequestMethod.GET)
-   public String showRegistStorePag24e(){
-	   return "join/test2";
-   
-   }
-   
+ 
    
 }

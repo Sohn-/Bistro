@@ -1,3 +1,47 @@
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="joojoo.entity.Stores" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/joinfont.css"/>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+
+</script>
+
+
+</head>
+<body>
+
+	<c:url value="/join/result/owner" var="action"></c:url>
+ <form:form  modelAttribute="joinStore" method="post" action="${action} "  id="form" class="form-4">
+   	<h1>가게를 등록 해 주세요!</h1>
+   	<h3>가게 이름</h3><form:input path="storeName"  placeholder="상호명" required="true"/>
+    <h3>가게 전화</h3><form:input path="storePhone"  placeholder="전화번호" required="true"/>
+    <h3>위치 선택</h3><form:select path="regionName"  items="${regionNames }" required="true"/>
+    
+   
+    
+    <h3>가게 주소</h3><form:input path="storeAdress"  placeholder="상세주소" required="true"/>
+    <h3>위치 선택</h3><form:select path="typeName"  items="${typeNames }" required="true"/>
+    <form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>
+    
+   
+     <input type="submit" value="등록완료" />
+      
+
+</form:form>
+
+
+</body>
+</html> --%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -377,87 +421,7 @@ fieldset .help {
    <img  src="images/bar.png" style="width: 100%">
  <div id="features-wrapper">
       <section id="features" class="container"> 
-   <div id="tabs">
-      <ul>
-         <li><a href="#tab1">일반회원 가입하기</a></li>
-         <li><a href="#tab2">업주회원 가입하기</a></li>
-
-      </ul>
-      <div id="tab1">
-         <div id="footer" class="container" align="left">
-            <div class="row">
-            <c:url value="/join/result/user" var="action"></c:url> 
-<form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4" > 
-
-    <h1 align="center">일 반 회 원 가 입</h1>
-    
-    
-       <h3>아이디</h3><form:input path="userId" id="joinId" placeholder="Id" required="true"/>
-        
-        <input type="button" value="중복확인" id="idDupCheck"/><br>
-       <input type="hidden" name="checked" id="checked"/><br>
-       <h3>비밀번호 </h3><form:input path="userPassword" id="pass" type="password" required="true" /><br>
    
-   
-        <h3>비밀번호 확인</h3>
-      <input type="password" id="pass2" name="pass2" required="true" /><br>
-   
-        <h3>이름</h3> <form:input path="userName" required="true" /><br>
-       
-    
-        <h3>메일</h3><form:input path="userMail" id="joinMail" type="email" required="true"/><br>
-        <input type="button" value="중복확인" id="mailDupCheck"/><br>
-         <input type="hidden" name="checked2" id="checked2"/><br>
-        <h3>휴대전화</h3><form:input path="userPhone" required="true"/><br>
-   
-        <form:input type="hidden" value="5" path="chance" required="true"/><br>
-   
-       <input type="submit" value="가입하기" />
-         
-</form:form>
-            </div>
-         </div>
-      </div>
-      <div id="tab2">
-          <div id="footer" class="container" align="left">
-            <div class="row2">
-
-              <c:url value="/join/join_o2" var="action"></c:url> 
-          <form:form  modelAttribute="joinOwner" method="post" action="${action} " id="form" class="form-4"> 
-
-   <%--     <h1 align="center">업 주 회 원 가 입</h1>
-         <h3>아이디</h3><form:input path="ownerId" id="joinId2" placeholder="Id" required="true"/>
-        
-        <input type="button" value="중복확인" id="idDupCheck"/><br>
-       <input type="hidden" name="checked" id="checked"/><br>
-       <h3>비밀번호 </h3><form:input path="ownerPassword" id="pass" type="password" required="true" /><br>
-   
-   
-        <h3>비밀번호 확인</h3>
-      <input type="password" id="pass2" name="pass2" required="true" /><br>
-   
-        <h3>이름</h3> <form:input path="ownerName" required="true" /><br>
-       
-    
-        <h3>메일</h3><form:input path="ownerMail" id="joinMail2" type="email" required="true"/><br>
-        <input type="button" value="중복확인" id="mailDupCheck"/><br>
-         <input type="hidden" name="checked2" id="checked2"/><br>
-        <h3>휴대전화</h3><form:input path="ownerPhone" required="true"/><br>
-         <h3>사업자등록번호</h3><form:input path="licenseNumber" id="joinLicense" required="true"/><br>
-      <input type="button" value="중복확인" id="licenseDupCheck"/><br>
-         <input type="hidden" name="checked3" id="checked3"/><br> --%>
-   
-       <input type="submit" id="next" value="다음" />
-                  </div>
-                </form:form> 
-               
-                  
-            
-
-            </div>
-         </div>
-      </div>
-   </div>
    </section>
    </div>
    
@@ -466,3 +430,5 @@ fieldset .help {
    
 </body>
 </html>
+
+
