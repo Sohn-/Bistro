@@ -34,6 +34,7 @@
 
 
  <script>
+
  
  
 	
@@ -89,6 +90,8 @@
 	        document.querySelector("#error").innerHTML = password1.validationMessage;
 	    };
 	     */
+
+
 	    
 	    password1.addEventListener('change', checkPasswordValidity, false);
 	    password2.addEventListener('change', checkPasswordValidity, false);
@@ -340,12 +343,12 @@ fieldset .help {
       </div>
       <div id="tab2">
           <div id="footer" class="container" align="left">
-            <div class="row">
+            <div class="row2">
 
-              <c:url value="/join/join_o2" var="action"></c:url>     
+              <c:url value="/join/join_o2" var="action"></c:url> 
  			<form:form  modelAttribute="joinOwner" method="post" action="${action} " id="form" class="form-4"> 
 
-    	<h1 align="center">업 주 회 원 가 입</h1>
+   <%--  	<h1 align="center">업 주 회 원 가 입</h1>
       	<h3>아이디</h3><form:input path="ownerId" id="joinId2" placeholder="Id" required="true"/>
         
         <input type="button" value="중복확인" id="idDupCheck"/><br>
@@ -365,9 +368,9 @@ fieldset .help {
         <h3>휴대전화</h3><form:input path="ownerPhone" required="true"/><br>
    		<h3>사업자등록번호</h3><form:input path="licenseNumber" id="joinLicense" required="true"/><br>
 		<input type="button" value="중복확인" id="licenseDupCheck"/><br>
-   		<input type="hidden" name="checked3" id="checked3"/><br>
+   		<input type="hidden" name="checked3" id="checked3"/><br> --%>
    
-       <input type="submit" value="가입하기" />
+       <input type="submit" id="next" value="다음" />
                   </div>
                 </form:form> 
                
