@@ -212,7 +212,9 @@ fieldset .help {
          </div>
       </div>
    </div>
-
+   <img  src="images/bar.png" style="width: 100%">
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
    <div id="tabs">
       <ul>
          <li><a href="#tab1">일반회원</a></li>
@@ -287,7 +289,8 @@ fieldset .help {
          </div>
       </div>
    </div>
-   
+   </section>
+   </div>
    
 
    
