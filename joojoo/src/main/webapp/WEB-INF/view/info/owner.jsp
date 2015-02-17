@@ -15,10 +15,10 @@
 <meta name="keywords" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/style-desktop.css">
-<link rel="stylesheet"	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -35,43 +35,7 @@
 	$(document).ready(function() {
 		$(":checked").wrap("<span style='background-color:red'>");
 	});
-	function Check_user(f) {
-		if (document.form1.userPassword.value == ""	|| document.form1.userId.value == "") 
-		{
-			$("#dialog").dialog({autoOpen : false,show : {effect : "blind",duration : 1000}, hide : {effect : "explode",	duration : 1000	}});
-			$("#opener1").click(function() 
-			{
-				$("#dialog").dialog("open");});
-				document.form1.userId.focus();
-				return false;
-		}
-		return true;
-	}
 
-	function Check_owner(f) {
-		if (document.form2.ownerPassword.value == ""|| document.form2.ownerId.value == "") 
-		{
-			$("#dialog").dialog({autoOpen : false,	show : {effect : "blind",duration : 1000},hide : {	effect : "explode",	duration : 1000}});
-			$("#opener2").click(function() 
-			{
-				$("#dialog").dialog("open");
-			});
-			document.form2.ownerId.focus();
-			return false;
-		}
-		return true;
-	}
-
-	$(function() {$("#tabs").tabs();});
-
-	$(function() {
-		var tooltips = $("[title]").tooltip({
-			position : {
-				my : "left top",
-				at : "right+5 top-5"
-			}
-		});
-	});
 </script>
 
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -108,100 +72,23 @@ fieldset .help {
 	width: 200px;
 }
 
-#accordion-resizer {
-	padding: 5px;
-	width: 100%;
-	height: 700px;
-}
 
 #header {
 	background-image: url(images/main.jpg);
-}
-
-.scroll-pane {
-	overflow: auto;
-	width: 99%;
-	float: left;
-}
-
-.scroll-content {
-	width: 6600px;
-	float: left;
-}
-
-.scroll-content-item {
-	width: 300px;
-	height: 300px;
-	float: left;
-	margin: 10px;
-	font-size: 3em;
-	line-height: 96px;
-	text-align: center;
-}
-
-.scroll-bar-wrap {
-	clear: left;
-	padding: 0 4px 0 2px;
-	margin: 0 -1px -1px -1px;
-}
-
-.scroll-bar-wrap .ui-slider {
-	background: none;
-	border: 0;
-	height: 2em;
-	margin: 0 auto;
-}
-
-.scroll-bar-wrap .ui-handle-helper-parent {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;
-}
-
-.scroll-bar-wrap .ui-slider-handle {
-	top: .2em;
-	height: 1.5em;
-}
-
-.scroll-bar-wrap .ui-slider-handle .ui-icon {
-	margin: -8px auto 0;
-	position: relative;
-	top: 50%;
-}
-
-label {
-	display: inline-block;
-	width: 5em;
 }
 
 fieldset div {
 	margin-bottom: 2em;
 }
 
-fieldset .help {
-	display: inline-block;
-}
-
-.ui-tooltip {
-	width: 210px;
-}
 </style>
 <script>
 	$(function() {
-		var tooltips = $("[title]").tooltip({
-			position : {
-				my : "left top",
-				at : "right+5 top-5"
-			}
-		});
-
-	});
-	</style>
-
-	<script>
-	$(function() {
-		$("#tabs").tabs();
+		$("#tabs").tabs(
+				/* {
+			active : 2
+			} */
+				);
 	});
 
 	$(function() {
@@ -212,355 +99,27 @@ fieldset .help {
 			}
 		});
 	});
-
-	$(function() {
-		$("#accordion").accordion({
-			event : "click hoverintent"
-		});
-	});
-
-	$.event.special.hoverintent = {
-		setup : function() {
-			$(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-		},
-		teardown : function() {
-			$(this).unbind("mouseover",
-					jQuery.event.special.hoverintent.handler);
-		},
-		handler : function(event) {
-			var currentX, currentY, timeout, args = arguments, target = $(event.target), previousX = event.pageX, previousY = event.pageY;
-
-			function track(event) {
-				currentX = event.pageX;
-				currentY = event.pageY;
-			}
-			;
-
-			function clear() {
-				target.unbind("mousemove", track).unbind("mouseout", clear);
-				clearTimeout(timeout);
-			}
-
-			function handler() {
-				var prop, orig = event;
-
-				if ((Math.abs(previousX - currentX) + Math.abs(previousY
-						- currentY)) < 7) {
-					clear();
-
-					event = $.Event("hoverintent");
-					for (prop in orig) {
-						if (!(prop in event)) {
-							event[prop] = orig[prop];
-						}
-					}
-					// Prevent accessing the original event since the new event
-					// is fired asynchronously and the old event is no longer
-					// usable (#6028)
-					delete event.originalEvent;
-
-					target.trigger(event);
-				} else {
-					previousX = currentX;
-					previousY = currentY;
-					timeout = setTimeout(handler, 100);
+	
+	window.onload=function(){
+		var xhr = new XMLHttpRequest();
+		
+		document.querySelector("#btn_update_store")
+		.addEventListener("click", function(){
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					document.querySelector("#store_table")
+					.innerHTML=xhr.responseText+"<br>";
 				}
 			}
-
-			timeout = setTimeout(handler, 100);
-			target.bind({
-				mousemove : track,
-				mouseout : clear
-			});
-		}
-	};
-
-	$(function() {
-		//scrollpane parts
-		var scrollPane = $(".scroll-pane"), scrollContent = $(".scroll-content");
-
-		//build slider
-		var scrollbar = $(".scroll-bar")
-				.slider(
-						{
-							slide : function(event, ui) {
-								if (scrollContent.width() > scrollPane.width()) {
-									scrollContent
-											.css(
-													"margin-left",
-													Math
-															.round(ui.value
-																	/ 100
-																	* (scrollPane
-																			.width() - scrollContent
-																			.width()))
-															+ "px");
-								} else {
-									scrollContent.css("margin-left", 0);
-								}
-							}
-						});
-
-		//append icon to handle
-		var handleHelper = scrollbar.find(".ui-slider-handle").mousedown(
-				function() {
-					scrollbar.width(handleHelper.width());
-				}).mouseup(function() {
-			scrollbar.width("100%");
-		}).append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")
-				.wrap("<div class='ui-handle-helper-parent'></div>").parent();
-
-		//change overflow to hidden now that slider handles the scrolling
-		scrollPane.css("overflow", "hidden");
-
-		//size scrollbar and handle proportionally to scroll distance
-		function sizeScrollbar() {
-			var remainder = scrollContent.width() - scrollPane.width();
-			var proportion = remainder / scrollContent.width();
-			var handleSize = scrollPane.width()
-					- (proportion * scrollPane.width());
-			scrollbar.find(".ui-slider-handle").css({
-				width : handleSize,
-				"margin-left" : -handleSize / 2
-			});
-			handleHelper.width("").width(scrollbar.width() - handleSize);
-		}
-
-		//reset slider value based on scroll content position
-		function resetValue() {
-			var remainder = scrollPane.width() - scrollContent.width();
-			var leftVal = scrollContent.css("margin-left") === "auto" ? 0
-					: parseInt(scrollContent.css("margin-left"));
-			var percentage = Math.round(leftVal / remainder * 100);
-			scrollbar.slider("value", percentage);
-		}
-
-		//if the slider is 100% and window gets larger, reveal content
-		function reflowContent() {
-			var showing = scrollContent.width()
-					+ parseInt(scrollContent.css("margin-left"), 10);
-			var gap = scrollPane.width() - showing;
-			if (gap > 0) {
-				scrollContent.css("margin-left", parseInt(scrollContent
-						.css("margin-left"), 10)
-						+ gap);
-			}
-		}
-
-		//change handle position on window resize
-		$(window).resize(function() {
-			resetValue();
-			sizeScrollbar();
-			reflowContent();
-		});
-		//init scrollbar size
-		setTimeout(sizeScrollbar, 10);//safari wants a timeout
-	});
-
-	function Open_event(f) {
-		if (document.form1.userPassword.value == ""
-				|| document.form1.userId.value == "") {
-			$("#dialog").dialog({
-				autoOpen : false,
-				show : {
-					effect : "blind",
-					duration : 1000
-				},
-				hide : {
-					effect : "explode",
-					duration : 1000
-				}
-			});
-
-			$("#opener1").click(function() {
-				$("#dialog").dialog("open");
-			});
-			document.form1.userId.focus();
-			return false;
-		}
-		return true;
+			var url = "<%=request.getContextPath()%>/info/owner/update_store";
+			xhr.open("post", url, true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			/* var msg = document.querySelector("#comment").value; */
+			
+			xhr.send();
+		}, false);
 	}
 
-	$(function() {
-		$("#tabs").tabs();
-	});
-
-	$(function() {
-		var tooltips = $("[title]").tooltip({
-			position : {
-				my : "left top",
-				at : "right+5 top-5"
-			}
-		});
-	});
-
-	$(function() {
-		$("#accordion").accordion({
-			event : "click hoverintent"
-		});
-	});
-
-	$.event.special.hoverintent = {
-		setup : function() {
-			$(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-		},
-		teardown : function() {
-			$(this).unbind("mouseover",
-					jQuery.event.special.hoverintent.handler);
-		},
-		handler : function(event) {
-			var currentX, currentY, timeout, args = arguments, target = $(event.target), previousX = event.pageX, previousY = event.pageY;
-
-			function track(event) {
-				currentX = event.pageX;
-				currentY = event.pageY;
-			}
-			;
-
-			function clear() {
-				target.unbind("mousemove", track).unbind("mouseout", clear);
-				clearTimeout(timeout);
-			}
-
-			function handler() {
-				var prop, orig = event;
-
-				if ((Math.abs(previousX - currentX) + Math.abs(previousY
-						- currentY)) < 7) {
-					clear();
-
-					event = $.Event("hoverintent");
-					for (prop in orig) {
-						if (!(prop in event)) {
-							event[prop] = orig[prop];
-						}
-					}
-					// Prevent accessing the original event since the new event
-					// is fired asynchronously and the old event is no longer
-					// usable (#6028)
-					delete event.originalEvent;
-
-					target.trigger(event);
-				} else {
-					previousX = currentX;
-					previousY = currentY;
-					timeout = setTimeout(handler, 100);
-				}
-			}
-
-			timeout = setTimeout(handler, 100);
-			target.bind({
-				mousemove : track,
-				mouseout : clear
-			});
-		}
-	};
-
-	$(function() {
-		//scrollpane parts
-		var scrollPane = $(".scroll-pane"), scrollContent = $(".scroll-content");
-
-		//build slider
-		var scrollbar = $(".scroll-bar")
-				.slider(
-						{
-							slide : function(event, ui) {
-								if (scrollContent.width() > scrollPane.width()) {
-									scrollContent
-											.css(
-													"margin-left",
-													Math
-															.round(ui.value
-																	/ 100
-																	* (scrollPane
-																			.width() - scrollContent
-																			.width()))
-															+ "px");
-								} else {
-									scrollContent.css("margin-left", 0);
-								}
-							}
-						});
-
-		//append icon to handle
-		var handleHelper = scrollbar.find(".ui-slider-handle").mousedown(
-				function() {
-					scrollbar.width(handleHelper.width());
-				}).mouseup(function() {
-			scrollbar.width("100%");
-		}).append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")
-				.wrap("<div class='ui-handle-helper-parent'></div>").parent();
-
-		//change overflow to hidden now that slider handles the scrolling
-		scrollPane.css("overflow", "hidden");
-
-		//size scrollbar and handle proportionally to scroll distance
-		function sizeScrollbar() {
-			var remainder = scrollContent.width() - scrollPane.width();
-			var proportion = remainder / scrollContent.width();
-			var handleSize = scrollPane.width()
-					- (proportion * scrollPane.width());
-			scrollbar.find(".ui-slider-handle").css({
-				width : handleSize,
-				"margin-left" : -handleSize / 2
-			});
-			handleHelper.width("").width(scrollbar.width() - handleSize);
-		}
-
-		//reset slider value based on scroll content position
-		function resetValue() {
-			var remainder = scrollPane.width() - scrollContent.width();
-			var leftVal = scrollContent.css("margin-left") === "auto" ? 0
-					: parseInt(scrollContent.css("margin-left"));
-			var percentage = Math.round(leftVal / remainder * 100);
-			scrollbar.slider("value", percentage);
-		}
-
-		//if the slider is 100% and window gets larger, reveal content
-		function reflowContent() {
-			var showing = scrollContent.width()
-					+ parseInt(scrollContent.css("margin-left"), 10);
-			var gap = scrollPane.width() - showing;
-			if (gap > 0) {
-				scrollContent.css("margin-left", parseInt(scrollContent
-						.css("margin-left"), 10)
-						+ gap);
-			}
-		}
-
-		//change handle position on window resize
-		$(window).resize(function() {
-			resetValue();
-			sizeScrollbar();
-			reflowContent();
-		});
-		//init scrollbar size
-		setTimeout(sizeScrollbar, 10);//safari wants a timeout
-	});
-
-	function Open_event(f) {
-		if (document.form1.userPassword.value == ""
-				|| document.form1.userId.value == "") {
-			$("#dialog").dialog({
-				autoOpen : false,
-				show : {
-					effect : "blind",
-					duration : 1000
-				},
-				hide : {
-					effect : "explode",
-					duration : 1000
-				}
-			});
-
-			$("#opener1").click(function() {
-				$("#dialog").dialog("open");
-			});
-			document.form1.userId.focus();
-			return false;
-		}
-		return true;
-	}
 </script>
 </head>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
@@ -571,20 +130,20 @@ fieldset .help {
 
 			<!-- Logo -->
 			<h1 id="logo">
-				<a href="<%=request.getContextPath()%>/main">JooJooclub</a>
+				<a href="<%=request.getContextPath()%>/">JooJooclub</a>
 			</h1>
 			<p>Welcom To JooJooClub</p>
 			<div align="right">
 				<nav id="nav">
 				<ul>
 					<li><a class="icon fa-home"
-						href="<%=request.getContextPath()%>/main"><span>Home</span></a></li>
+						href="<%=request.getContextPath()%>/"><span>Home</span></a></li>
 					<li><a class="icon fa-bar-chart-o"
 						href="<%=request.getContextPath()%>/login"><span>Login</span></a>
 					<li><a class="icon fa-cog"
 						href="<%=request.getContextPath()%>/join"><span>Join</span></a></li>
 					<li><a class="icon fa-retweet"
-						href="<%=request.getContextPath()%>/info/member"><span>MyPage</span></a></li>
+						href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
 					<li><a class="icon fa-sitemap"
 						href="<%=request.getContextPath()%>/info/cart"><span>Cart</span></a></li>
 				</ul>
@@ -606,7 +165,7 @@ fieldset .help {
 				<table>
 					<tr>
 						<td>나의상점목록
-							<table style="width: 100%">
+							<table id="store_table" style="width: 100%">
 								<tr>
 									<th>상호명</th>
 									<th>수정</th>
@@ -614,15 +173,13 @@ fieldset .help {
 								</tr>
 								<tr>
 									<td>주주비어</td>
-									<td><a href="update_u.jsp"><input type="button"
-											name="button" value="수정"></a>
-									<td><a href="update_u.jsp"><input type="button"
-											name="button" value="삭제"></a></td>
+									<td><a href="<%=request.getContextPath()%>/info/owner/update_store"><input type="button" value="수정"></a></td>
+									<td><a href="<%=request.getContextPath()%>/info/owner/delete_store"><input type="button" value="삭제"></a></td>
 								</tr>
 								<tr>
 									<td>주주비어</td>
 									<td><a href="update_u.jsp"><input type="button"
-											name="button" value="수정"></a>
+											id="btn_update_store" value="수정"></a>
 									<td><a href="update_u.jsp"><input type="button"
 											name="button" value="삭제"></a></td>
 								</tr>
@@ -690,8 +247,6 @@ fieldset .help {
 										*는 수정할 수 없는 정보입니다.
 									</div>
 
-	${loginUser.userId }님 반갑습니다.
-	${loginOwner.ownerId }님 반갑습니다.
 	<c:if test="${!empty loginUser }">
 		${loginUser.userId }님 반갑습니다.
 			<c:url value="/info/userInfo" var="url"></c:url>
@@ -719,9 +274,8 @@ fieldset .help {
 	
 
 
-								<a href="update_u.jsp"><input type="button" name="button"
-									value="수정하기"></a> <a href="exit.jsp"><input
-									type="button" name="button" value="회원탈퇴"></a>
+	<a href="update_u.jsp"><input type="button" name="button" value="수정하기"></a> 
+	<a href="exit.jsp"><input type="button" name="button" value="회원탈퇴"></a>
 
 							</fieldset>
 						</form>
@@ -758,7 +312,7 @@ fieldset .help {
 					</table>
 
 					
-					<a href="update_u.jsp"><input type="button" name="button"	value="새로운 이벤트 등록"> </a> 
+					<a href="update_u.jsp"><input type="button" name="button" value="새로운 이벤트 등록"> </a> 
 					
 					
 				

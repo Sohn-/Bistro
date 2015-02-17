@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes({"loginUser","loginOwner"})
@@ -94,6 +95,12 @@ public class LoginController {
 	public @ResponseBody String ajaxReceive(/*@RequestParam String msg*/){
 		logger.trace("흠 이게 되나");
 		return "아이디와 비밀번호가 정확하지 않습니다.";
+	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.POST)
+	public String logout(SessionStatus status){
+		status.setComplete();
+		return "/";
 	}
 	
 }
