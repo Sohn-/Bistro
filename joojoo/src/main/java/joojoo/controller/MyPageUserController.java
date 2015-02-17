@@ -16,8 +16,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes({"loginUser","loginOwner"})
@@ -44,12 +46,26 @@ public class MyPageUserController {
 	    		return "info/member_null";
 	    	}
 	    	else if(session.getAttribute("loginUser") !=null){
-	    			
+	    	model.addAttribute("updateUser", new Users());		
 			return "info/member_user";
 	    	}
 	    	else return "info/member_owner";
 		}
-
+	    
+	    
+	    @RequestMapping(value="/info/member/update", method=RequestMethod.POST)
+		public String updateUserInfo(@ModelAttribute("updateUser") Users updateUser,Model model){
+	    	
+	    	LOG.trace("수업 "+updateUser);
+	    	userService.updateUserInfo(updateUser);
+	    	
+	    	model.addAttribute("updateUser", updateUser);	
+	    	return "info/updateUserInfo";
+		}
+	    
+	  
+	    
+	  
 	   
 	  
 	    
