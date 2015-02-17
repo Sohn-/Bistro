@@ -32,6 +32,74 @@
 
 
  <script>
+ 
+ 
+	
+	$(document).ready(function(){
+		
+		
+		$("#idDupCheck").click(function(){
+			if($("#joinId").val()==""){
+				alert("아이디를 입력해주세요.");
+				$("#joinId").focus();		
+			}else{
+				<c:url value="/join/idCheck" var="idchk"></c:url>
+				var url = "${idchk}?joinId="+$("#joinId").val();
+				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+			}
+		});
+		
+		$("#mailDupCheck").click(function(){
+			if($("#joinMail").val()==""){
+				alert("이메일을 입력해 주세요.");
+				$("#joinMail").focus();		
+			}else{
+				<c:url value="/join/mailCheck" var="mailchk"></c:url>
+				var url = "${mailchk}?joinMail="+$("#joinMail").val();
+				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+			}
+		});
+		
+	    var password1 = document.getElementById('pass');
+	    var password2 = document.getElementById('pass2');
+
+	    var checkPasswordValidity = function() {
+	        if (password1.value != password2.value) {
+	            password1.setCustomValidity('비밀번호와 확인 비밀번호가 일치하지 않습니다.');
+	        } else {
+	            password1.setCustomValidity('');
+	        }        
+	    };
+
+/* 	    var updateErrorMessage = function() {
+	        document.querySelector("#error").innerHTML = password1.validationMessage;
+	    };
+	     */
+	    
+	    password1.addEventListener('change', checkPasswordValidity, false);
+	    password2.addEventListener('change', checkPasswordValidity, false);
+
+	    
+	    var form = document.getElementById('form');
+	    form.addEventListener('submit', function() {
+	    	if($("#checked").val()==""){
+				alert("아이디 중복체크 해주세요.");
+				event.preventDefault();
+			}
+	    	if($("#checked2").val()==""){
+				alert("이메일 중복체크 해주세요.");
+				event.preventDefault();
+			}
+	        checkPasswordValidity();
+	        if (!this.checkValidity()) {
+	            event.preventDefault();
+	           // updateErrorMessage();
+	            password1.focus();
+	        }else{
+	        	 password1.setCustomValidity('');
+	        }
+	    }, false);
+	});
 	function Check_user(f){ 
 		if (document.form1.userPassword.value == "" || document.form1.userId.value == "") 
 		{ 
