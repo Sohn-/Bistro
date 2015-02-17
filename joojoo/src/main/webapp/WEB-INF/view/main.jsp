@@ -176,11 +176,13 @@ fieldset .help {
 		<nav id="nav">
 			<ul>				
 				<c:if test="${empty loginUser }">
-				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+				
 				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
 			    <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>			   
 			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
 				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
+				
 				</c:if>			
 				<c:if test="${!empty loginUser }">
 				<li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span>
@@ -196,7 +198,7 @@ fieldset .help {
     <!-- 키워드 검색 부분 -->
     <div>      
 	    <c:url value="/main/keyword" var="action"></c:url>
-	    <form:form modelAttribute="category" method="post" action="${action}" >
+	    <form:form modelAttribute="category" method="get" action="${action}" >
 	    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
 	    <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
 	    </form:form> 
@@ -212,65 +214,78 @@ fieldset .help {
    	<!-- 바디 시작 -->   
 	<div id="features-wrapper">
 		<!-- 바디 카테고리 시작 -->     
- 		<section id="features" class="container">       
-		<nav id="nav">
+		
+ 		<section id="features" class="container">  
+ 		<c:url var="action" value="/category"></c:url>
+         		<form:form action="${action}" modelAttribute="category">     
+		<nav id="nav">      	
       	<ul>
       	 <!-- 지역 카테고리 -->
          <li ><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Region</span></button></a>
-            <ul>
-            <li><a href="#">가로수길</a></li><li><a href="#">강남</a></li>
-            <li><a href="#">건대</a></li><li><a href="#">대학로</a></li>
-            <li><a href="#">동대문</a></li><li><a href="#">명동</a></li>
-            <li><a href="#">신촌</a></li><li><a href="#">여의도</a></li>
-            <li><a href="#">이태원</a></li><li><a href="#">잠실</a></li>    
-            <li><a href="#">청담</a></li><li><a href="#">홍대</a></li>  
+            <ul>            
+            <li><form:input path="regionName" value="강남"/>강남</li>
+            <li><form:input path="regionName" value="건대"/>건대</li>            
+            <li><form:input path="regionName" value="신림"/>신림</li>
+            <li><form:input path="regionName" value="신촌"/>신촌</li>          
+            <li><form:input path="regionName" value="이태원"/>이태원</li>            
+            <li><form:input path="regionName" value="종로"/>종로</li>  
             </ul>
-         </li>
-         
+         </li>        
+
+
 		<!-- 업종 카테고리 -->
          <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Type</span></button></a>
             <ul>
-               <li><a href="#">고기집</a></li>
-               <li><a href="#">민속주점</a></li>
-               <li><a href="#">바</a></li>
-               <li><a href="#">양식</a></li>
-               <li><a href="#">일식</a></li>
-               <li><a href="#">중식</a></li>
-               <li><a href="#">치킨</a></li>
-               <li><a href="#">포장마차</a>
-               <li><a href="#">퓨전술집</a></li>
-               <li><a href="#">한식</a></li>
-               <li><a href="#">호프</a></li>
+            <li><form:button path="typeName" value="바"/>바</li>
+            <li><form:button path="typeName" value="룸"/>룸</li>
+            <li><form:button path="typeName" value="고기집"/>고기집</li>            
+            <li><form:button path="typeName" value="횟집"/>횟집</li>
+            <li><form:button path="typeName" value="포차"/>포차</li>
+            <li><form:input path="typeName" value="호프"/>호프</li>  
+            <%--  <li><form:input path="typeName" value="4명이하"/>양식</li>
+            <li><form:input path="typeName" value="4명이하"/>일식</li>
+            <li><form:input path="typeName" value="4명이하"/>중식</li>
+            <li><form:input path="typeName" value="4명이하"/>치킨</li>
+            <li><form:input path="typeName" value="4명이하"/>퓨전술집</li>
+            <li><form:input path="typeName" value="4명이하"/>한식</li>
+            --%>
             </ul>
          </li>
+
+
 
 		<!-- 인원 카테고리 -->
          <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Number</span></button></a>
             <ul>
-               <li><a href="#">4인이하</a></li>
-               <li><a href="#">5~10인 </a></li>
-               <li><a href="#">10~20인</a></li>
-               <li><a href="#">20인이상</a>
+               <li><form:button path="personsLevel" value="4명이하"/>4명이하</li>
+               <li><form:button path="personsLevel" value="5~10명"/>5~10명</li>
+               <li><form:button path="personsLevel" value="10명이상"/>10명이상</li>
             </ul>
          </li>
          
          <!-- 서비스 카테고리 -->
          <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Service</span></button></a>
             <ul>
-               <li><a href="#">서비스추가</a></li>
-               <li><a href="#">이벤트할인</a></li>
+               <li><form:button path="serviceTypeName" value="금액 할인"/>금액 할인</li>
+               <li><form:button path="serviceTypeName" value="서비스 메뉴 제공"/>서비스 메뉴 제공</li>
             </ul>
          </li>
 
 		<!-- 카테고리 검색 버튼 -->
          <!-- <li><input type="submit" value="Search"/></li> -->
          <li>
-            <button type="button" class="btn btn-warning btn-sm">Search</button>
-         </li>         
+         		
+         		<input type ="submit" class="btn btn-warning btn-sm"  value="Search"/>           
+       			
+        </li>
+        	
+                 
       </ul>      
+     
       </nav>
-      </section><!-- 바디 카테고리 끝 -->     
-        
+     </form:form> 
+      <!-- 바디 카테고리 끝 -->     
+         
       <br>   
       
 	<div class="row" > 
@@ -371,7 +386,8 @@ fieldset .help {
 	        </c:forEach>  <!-- 상점 select 결과 가져오는 부분 끝 -->                        
 		</div><!-- 바디 상점 결과 아코디언 끝 -->     
       	</div>
-      	</div>      	
+      	</div>   
+      	</section>   	
      	</div><!-- 바디 끝 -->
 </body>
 </html>
