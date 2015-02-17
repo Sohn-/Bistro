@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-desktop.css">
 
-
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
