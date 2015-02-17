@@ -59,13 +59,13 @@ public class MyPageOwnerController {
 			return path;
 			
 		}
-	    @RequestMapping(value="/info/owner/update_store", method=RequestMethod.POST)
+	    @RequestMapping(value="/info/owner/update_store", method=RequestMethod.GET)
 		public String updateOwnerStore(){
 	    	
 			return "info/owner";
 		}
 	    
-	    @RequestMapping(value="/info/owner/update_store", method=RequestMethod.POST, 
+	    @RequestMapping(value="/info/owner/update_store", method=RequestMethod.GET, 
 				produces="text/plain;charset=utf-8")
 		public @ResponseBody List<All> ajaxReceive(@ModelAttribute Stores store, HttpSession session,Model model){
 	    	All loginOwner = (All)(session.getAttribute("loginOwner"));
