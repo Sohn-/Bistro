@@ -97,10 +97,10 @@ public class LoginController {
 		return "아이디와 비밀번호가 정확하지 않습니다.";
 	}
 	
-	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	@RequestMapping(value="/logout", method=RequestMethod.POST)
 	public String logout(SessionStatus status){
 		status.setComplete();
-		return "/";
+		return "redirect:/";
 	}
 	
 }
