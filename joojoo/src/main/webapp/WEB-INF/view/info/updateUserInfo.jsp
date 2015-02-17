@@ -14,7 +14,6 @@
 <!--  //if empty 그거 써서...userId 가 empty가 아니면 인클루드... 유저면 member_u
             업주면 member_o -->
 
-
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />

@@ -17,10 +17,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/style-desktop.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -63,7 +63,6 @@ $(document).ready(function(){
 		}
 		return true;
 	}
-
 	function Check_owner(f) {
 		if (document.form2.ownerPassword.value == ""
 				|| document.form2.ownerId.value == "") {
@@ -108,7 +107,6 @@ $(document).ready(function(){
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 <style type="text/css">
-  <style type="text/css">
     html, body {
       width: 100%;
       height: 100%;
@@ -269,9 +267,7 @@ fieldset .help {
 		});
 
 	});
-	</style>
 
-	<script>
 	$(function() {
 		$("#tabs").tabs();
 	});

@@ -16,17 +16,13 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 
-
-
-
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/style-1000px.css">
-<link rel="stylesheet" href="/css/style-desktop.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style-desktop.css">
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
 
 <!-- 버튼부트스트랩 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -235,39 +231,14 @@ fieldset .help {
 	    setTimeout( sizeScrollbar, 10 );//safari wants a timeout
 	  });
    
-   function Open_event(f){ 
-		if (document.form1.userPassword.value == "" || document.form1.userId.value == "") 
-		{ 
-			$("#dialog").dialog({
-				autoOpen : false,
-				show : {
-					effect : "blind",
-					duration : 1000
-				},
-				hide : {
-					effect : "explode",
-					duration : 1000
-				}
-			});
+  
+   function Open_modal(commentCode, title, content, storeName){
 
-			$("#opener1").click(function() {
-				$("#dialog").dialog("open");
-			});
-		document.form1.userId.focus(); 
-		return false; 
-		} 
-		return true;
-	}
-   
-    $('#myModal').on('shown.bs.modal', function () {
-    	alert("땡땡");
-	   document.document.querySelector("#here")
-		.innerHTML="${store.storeName}";
-	 }) 
-	 
-	 $("#perchase").click(function() {
-				
-			});
+  		 document.querySelector("#modal_title"+commentCode)
+ 		.innerHTML=storeName+"("+title+")";
+	   document.querySelector("#here"+commentCode)
+		.innerHTML=content;
+   }
 </script>
 </head>
 
@@ -388,7 +359,7 @@ fieldset .help {
          </li>
       </ul>
       </nav>
-      </section> 
+  
       <br>
       
       <div class="row" >    
@@ -402,44 +373,41 @@ fieldset .help {
          </c:forEach>    
     </c:forEach>   --%>  
       
-
-    <c:forEach items="${events}" var="event">
+	
+    <c:forEach items="${events}" var="event" varStatus="status">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
-    <button data-toggle="modal" data-target="#myModal">
-
+    <c:set var="commentCode" value="${status.current.commentCode }"/>
+    <button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }" 
+    		onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
         <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${event.storeName}" />
-
-          </button>
-          </div>
-          
-          
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+        <!-- ${status.current.licenseNumber }로 이미지 변경해야 할 것 -->
+     </button>
+     </div> 
+    </c:forEach>
+    
+    <c:forEach items="${events}" var="event" varStatus="status">
+    <c:url value="/eventProcess?eventCommentCode=${status.current.commentCode }" var="action"></c:url> 
+    <div class="modal fade" id="myModal${status.current.commentCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
 	 <div class="modal-dialog">
     <div class="modal-content">
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title"><c:out value="${event.storeName}" /></h4>
+        <h4 class="modal-title" id="modal_title${status.current.commentCode }"></h4>
       </div>
       
-      <div class="modal-body" id="here">
-        <c:out value="${event.storeAdress }"/>
+      <div class="modal-body" id="here${status.current.commentCode }">
+        <%-- <c:out value="${event.storeAdress }"/> --%>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-        <c:url value="/event_detail" var="action"></c:url>
-        <form action="${action}">
-       <%-- <a href="<%=request.getContextPath()%>/event_detail "> --%><input type="button" id="perchase" type="button" class="btn btn-warning btn-sm">이벤트상세보기<!-- </a> -->
-     	<input type="hidden" name="eventCommentCode">
-       </form>
+       <a href="${action }"><button class="btn btn-warning btn-sm" >이벤트상세보기</button></a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
- 
     </c:forEach>
-    
   
     
  
@@ -490,5 +458,7 @@ fieldset .help {
         </div>          
       </div>
       </div>
+      </section>
+     </div>
 </body>
 </html>
