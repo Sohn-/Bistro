@@ -3,12 +3,14 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
+
 <title>event_detail</title>
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -643,18 +645,15 @@ fieldset .help {
 			
 			<div align="right">
 				<nav id="nav">
-				<ul>
-					<li><a class="icon fa-home"
-						href="<%=request.getContextPath()%>/main"><span>Home</span></a></li>
-					<li><a class="icon fa-bar-chart-o"
-						href="<%=request.getContextPath()%>/login"><span>Login</span></a>
-					<li><a class="icon fa-cog"
-						href="<%=request.getContextPath()%>/join"><span>Join</span></a></li>
-					<li><a class="icon fa-retweet"
-						href="<%=request.getContextPath()%>/info/member"><span>MyPage</span></a></li>
-					<li><a class="icon fa-sitemap"
-						href="<%=request.getContextPath()%>/info/cart"><span>Cart</span></a></li>
-				</ul>
+				 <ul>
+
+               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
+               <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+               <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
+               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
+               <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li>
+				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
+            </ul>
 				</nav>
 			</div>
 		</div>
@@ -663,7 +662,9 @@ fieldset .help {
 	<div align="center" class="container" >
 	<br><br>
 	<div  style="background-color: rgb(255, 195, 185);" >
-		<h2>이벤트 글 제목<c:out value="${eventDetail.title}"/></h2>
+		<h2>이벤트 글 제목    ${eventDetail.title}</h2>
+	
+
 	</div>	
 		
 				
@@ -721,12 +722,60 @@ fieldset .help {
 		
 		<br>
 		<div align="right">
-		<button type="button" class="btn btn-warning btn-lg">장바구니담기</button>
-		<button type="button" class="btn btn-warning btn-lg">구매하기</button>
+		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal1">장바구니담기</button>
+		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">구매하기</button>
+	
 		</div>
 		<br>
 		
+		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	 
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		        <h4 class="modal-title">장바구니담기 성공</h4>
+		      </div>
+		      <div class="modal-body">
+		        장바구니에 담기 성공하였습니다. <br>
+		        이벤트 페이지로 돌아가려면 [OK] 버튼을,<br>
+		        장바구니를 확인 하려면 [장바구니확인] 버튼을 누르세요.
+		      </div>
+		      <c:url value="/info/cart" var="action"></c:url>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+		        <a href="${action }"><button type="button" class="btn btn-primary">장바구니 확인</button></a>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+			<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	 
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		        <h4 class="modal-title">구매 성공</h4>
+		      </div>
+		      <div class="modal-body">
+		        구매 성공하였습니다. <br>
+		        이벤트 페이지로 돌아가려면 [OK] 버튼을,<br>
+		        마이페이지 쿠폰관리에서 쿠폰을 확인 하려면 [쿠폰확인] 버튼을 누르세요.
+		      </div>
+		      <c:url value="/info/owner" var="action"></c:url>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+		        <a href="${action }"><button type="button" class="btn btn-primary">쿠폰확인</button></a>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+			
+				
 		<div>		
+		
+	
+		<div>
 		이벤트 상세내용이 포함됩니다 호호호<br>
 		이벤트 상세내용이 포함됩니다 호호호<br>
 		이벤트 상세내용이 포함됩니다 호호호<br>

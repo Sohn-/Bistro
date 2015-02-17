@@ -30,15 +30,15 @@ public class EventDetailController {
 		return "event/event_detail";
 	}
 	
-	@RequestMapping(value="/event_Detail", method=RequestMethod.GET)
-	public String ajaxPageCall(){
-		return "/login";
+/*	@RequestMapping(value="/coupon_buy", method=RequestMethod.GET)
+	public String couponBuy(){
+		return "event/event_Detail"; //파라매터 줘야되나?
 	}
 	
 	@RequestMapping(value="/logi", method=RequestMethod.POST, 
 			produces="text/plain;charset=utf-8")
-	public @ResponseBody String ajaxReceive(/*@RequestParam String msg*/){
+	public @ResponseBody String ajaxReceive(@RequestParam String msg){
 		logger.trace("흠 이게 되나");
 		return "아이디와 비밀번호가 정확하지 않습니다.";
-	}
+	}*/
 }

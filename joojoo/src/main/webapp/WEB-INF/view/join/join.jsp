@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<!--   <link rel="stylesheet" href="css/joinform.css" /> -->
+
 
 
 
@@ -32,6 +34,89 @@
 
 
  <script>
+
+ 
+ 
+	
+	$(document).ready(function(){
+		
+		
+		$("#idDupCheck").click(function(){
+			if($("#joinId").val()==""){
+				alert("아이디를 입력해주세요.");
+				$("#joinId").focus();		
+			}else{
+				<c:url value="/join/idCheck" var="idchk"></c:url>
+				var url = "${idchk}?joinId="+$("#joinId").val();
+				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+			}
+		});
+		
+		$("#mailDupCheck").click(function(){
+			if($("#joinMail").val()==""){
+				alert("이메일을 입력해 주세요.");
+				$("#joinMail").focus();		
+			}else{
+				<c:url value="/join/mailCheck" var="mailchk"></c:url>
+				var url = "${mailchk}?joinMail="+$("#joinMail").val();
+				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+			}
+		});
+		
+	    var password1 = document.getElementById('pass');
+	    var password2 = document.getElementById('pass2');
+
+	    var checkPasswordValidity = function() {
+	        if (password1.value != password2.value) {
+	            password1.setCustomValidity('비밀번호와 확인 비밀번호가 일치하지 않습니다.');
+	        } else {
+	            password1.setCustomValidity('');
+	        }        
+	    };
+	    
+	    
+		$("#licenseDupCheck").click(function(){
+			if($("#joinLicense").val()==""){
+				alert("사업자등록번호를 입력해 주세요.");
+				$("#joinLicense").focus();		
+			}else{
+				<c:url value="/join/licenseCheck" var="licensechk"></c:url>
+				var url = "${licensechk}?joinLicense="+$("#joinLicense").val();
+				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+			}
+		});
+
+/* 	    var updateErrorMessage = function() {
+	        document.querySelector("#error").innerHTML = password1.validationMessage;
+	    };
+	     */
+
+
+	    
+	    password1.addEventListener('change', checkPasswordValidity, false);
+	    password2.addEventListener('change', checkPasswordValidity, false);
+
+	    
+	    var form = document.getElementById('form');
+	    form.addEventListener('submit', function() {
+	    	if($("#checked").val()==""){
+				alert("아이디 중복체크 해주세요.");
+				event.preventDefault();
+			}
+	    	if($("#checked2").val()==""){
+				alert("이메일 중복체크 해주세요.");
+				event.preventDefault();
+			}
+	        checkPasswordValidity();
+	        if (!this.checkValidity()) {
+	            event.preventDefault();
+	           // updateErrorMessage();
+	            password1.focus();
+	        }else{
+	        	 password1.setCustomValidity('');
+	        }
+	    }, false);
+	});
 	function Check_user(f){ 
 		if (document.form1.userPassword.value == "" || document.form1.userId.value == "") 
 		{ 
@@ -225,9 +310,9 @@ fieldset .help {
          <div id="footer" class="container" align="left">
             <div class="row">
 				<c:url value="/join/result/user" var="action"></c:url> 
-<form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4"> 
+<form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4" > 
 
-    <h1 align="center">회 원 가 입</h1>
+    <h1 align="center">일 반 회 원 가 입</h1>
     
     
     	<h3>아이디</h3><form:input path="userId" id="joinId" placeholder="Id" required="true"/>
@@ -257,32 +342,37 @@ fieldset .help {
          </div>
       </div>
       <div id="tab2">
-       <%--   <div id="footer" class="container" align="left">
-            <div class="row">
+          <div id="footer" class="container" align="left">
+            <div class="row2">
 
-               <c:url value="/login/check_owner" var="action"></c:url>
-               	<form:form id="form2" name="form2" modelAttribute="owner" method="post" action="${action}" onsubmit="return Check_owner(this);">
-                  <div class="row 90%">
-                     <div>
-                         <form:input path= "ownerId" id = "ownerId" name="ownerId" placeholder="ID 입력 " type="text"  />
-                         <form:input path= "ownerPassword" id="ownerPassword" name="ownerPassword" placeholder="PASSWD 입력  " type="password" /> 
-                     </div>
+              <c:url value="/join/join_o2" var="action"></c:url> 
+ 			<form:form  modelAttribute="joinOwner" method="post" action="${action} " id="form" class="form-4"> 
+
+   <%--  	<h1 align="center">업 주 회 원 가 입</h1>
+      	<h3>아이디</h3><form:input path="ownerId" id="joinId2" placeholder="Id" required="true"/>
+        
+        <input type="button" value="중복확인" id="idDupCheck"/><br>
+    	<input type="hidden" name="checked" id="checked"/><br>
+    	<h3>비밀번호 </h3><form:input path="ownerPassword" id="pass" type="password" required="true" /><br>
+   
+   
+        <h3>비밀번호 확인</h3>
+		<input type="password" id="pass2" name="pass2" required="true" /><br>
+   
+        <h3>이름</h3> <form:input path="ownerName" required="true" /><br>
+       
+    
+        <h3>메일</h3><form:input path="ownerMail" id="joinMail2" type="email" required="true"/><br>
+        <input type="button" value="중복확인" id="mailDupCheck"/><br>
+   		<input type="hidden" name="checked2" id="checked2"/><br>
+        <h3>휴대전화</h3><form:input path="ownerPhone" required="true"/><br>
+   		<h3>사업자등록번호</h3><form:input path="licenseNumber" id="joinLicense" required="true"/><br>
+		<input type="button" value="중복확인" id="licenseDupCheck"/><br>
+   		<input type="hidden" name="checked3" id="checked3"/><br> --%>
+   
+       <input type="submit" id="next" value="다음" />
                   </div>
- 				<ul>
-                     <li><a id="idlabel" class="icon fa-home" href="find"><span>아이디/비밀번호찾기</span></a></li>
-                     <li><a class="icon fa-bar-chart-o" href="join"><span>회원가입</span></a>
-                     <div id="drophere"></div>
-                  </ul>
-
-                  <div class="row 80%">
-                     <div class="12u">
-                     <input id="opener2" name="opener2" type="submit" value="Login"/>
-                        <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
-                       <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
-
-                     </div> --%>
-                  </div>
-              <%--  </form:form> --%>
+                </form:form> 
                
                   
 				

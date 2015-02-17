@@ -3,14 +3,12 @@ package joojoo.entity;
 import java.util.Date;
 
 public class All {
-	
 	////////////////////////////Category
 	int regionCode;
 	int typeCode;
 	int personsCode;
 	int serviceTypeCode;
 	String keyword;
-
 	/////////////////////////////coupon
 	private String couponCode;
 	private String ownerId;

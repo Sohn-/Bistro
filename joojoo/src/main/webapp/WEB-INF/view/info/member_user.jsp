@@ -675,7 +675,7 @@ fieldset .help {
 		
 		<ul>
 			<li><a href="#tab1">정보수정 및 탈퇴</a></li>
-			<li><a href="#tab2">나의 장바구니</a></li>
+			<li id ="tab2"><a href="#tab2">나의 장바구니</a></li>
 			<li><a href="#tab3">나의 쿠폰</a></li>
 
 		</ul>

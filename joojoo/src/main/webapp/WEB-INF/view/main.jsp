@@ -10,8 +10,9 @@
 <html>
 <head>
 
-
 <title>mainPage</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -20,146 +21,39 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-1000px.css">
 <link rel="stylesheet" href="css/style-desktop.css">
+<link rel="stylesheet"   href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
-<!-- 버튼부트스트랩 -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"   href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-<script   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.dropotron.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
-
-<link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
-
-<style type="text/css">
-
-form { 
-width: 10cm; 
-} 
-
-
-label {
-   display: inline-block;
-   width: 5em;
-}
-
-fieldset .help {
-   margin-top: 2em;
-   display: inline-block;
-}
-
-.ui-tooltip {
-   width: 200px;
-}
-
-#accordion-resizer {
-   padding: 5px;
-   width: 100%;
-   height: 700px;
-}
-#header{
-	background-image: url(images/main.jpg);
-}
-
-  .scroll-pane { overflow: auto; width: 99%; float:left; }
-  .scroll-content { width: 6600px; float: left; }
-  .scroll-content-item { width: 300px; height: 300px; float: left; margin: 10px; font-size: 3em; line-height: 96px; text-align: center; }
-  .scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
-  .scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
-  .scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
-  .scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
-  .scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }
-  
-</style>
-
 <script>
-   $(function() {
+   	$(function() {
       $("#tabs").tabs();
-   });
+   	});
 
-   $(function() {
+   	$(function() {
       var tooltips = $("[title]").tooltip({
          position : {
             my : "left top",
             at : "right+5 top-5"
          }
       });
-   });
+   	});
 
-   $(function() {
-      $("#accordion").accordion({
-         event : "click hoverintent"
-      });
-   });
-
-   $.event.special.hoverintent = {
-      setup : function() {
-         $(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-      },
-      teardown : function() {
-         $(this).unbind("mouseover",
-               jQuery.event.special.hoverintent.handler);
-      },
-      handler : function(event) {
-         var currentX, currentY, timeout, args = arguments, target = $(event.target), previousX = event.pageX, previousY = event.pageY;
-
-         function track(event) {
-            currentX = event.pageX;
-            currentY = event.pageY;
-         }
-         ;
-
-         function clear() {
-            target.unbind("mousemove", track).unbind("mouseout", clear);
-            clearTimeout(timeout);
-         }
-
-         function handler() {
-            var prop, orig = event;
-
-            if ((Math.abs(previousX - currentX) + Math.abs(previousY
-                  - currentY)) < 7) {
-               clear();
-
-               event = $.Event("hoverintent");
-               for (prop in orig) {
-                  if (!(prop in event)) {
-                     event[prop] = orig[prop];
-                  }
-               }
-               // Prevent accessing the original event since the new event
-               // is fired asynchronously and the old event is no longer
-               // usable (#6028)
-               delete event.originalEvent;
-
-               target.trigger(event);
-            } else {
-               previousX = currentX;
-               previousY = currentY;
-               timeout = setTimeout(handler, 100);
-            }
-         }
-
-         timeout = setTimeout(handler, 100);
-         target.bind({
-            mousemove : track,
-            mouseout : clear
-         });
-      }
-   };
+   	$(function() {	    
+	    $("#accordion").accordion();
+	});
    
-   
-   $(function() {
+   	$(function() {
 	    //scrollpane parts
 	    var scrollPane = $( ".scroll-pane" ),
 	      scrollContent = $( ".scroll-content" );
@@ -196,8 +90,8 @@ fieldset .help {
 	      var remainder = scrollContent.width() - scrollPane.width();
 	      var proportion = remainder / scrollContent.width();
 	      var handleSize = scrollPane.width() - ( proportion * scrollPane.width() );
-	      scrollbar.find( ".ui-slider-handle" ).css({
-	        width: handleSize,
+	      scrollbar.find( ".ui-slider-handle" ).css({	    	  
+	    	width: handleSize,
 	        "margin-left": -handleSize / 2
 	      });
 	      handleHelper.width( "" ).width( scrollbar.width() - handleSize );
@@ -229,114 +123,128 @@ fieldset .help {
 	    });
 	    //init scrollbar size
 	    setTimeout( sizeScrollbar, 10 );//safari wants a timeout
-	  });
-   
+	  });   
   
    function Open_modal(commentCode, title, content, storeName){
-
-  		 document.querySelector("#modal_title"+commentCode)
- 		.innerHTML=storeName+"("+title+")";
-	   document.querySelector("#here"+commentCode)
-		.innerHTML=content;
+  		 document.querySelector("#modal_title"+commentCode).innerHTML=storeName+"("+title+")";
+	   document.querySelector("#here"+commentCode).innerHTML=content;
    }
 </script>
+<style type="text/css">
+form { 
+width: 10cm; 
+} 
+label {
+   display: inline-block;
+   width: 5em;
+}
+fieldset .help {
+   margin-top: 2em;
+   display: inline-block;
+}
+.ui-tooltip {
+   width: 200px;
+}
+#accordion-resizer {
+   padding: 5px;
+   width: 100%; 
+}
+#header{
+	background-image: url(images/main.jpg);
+}
+  	.scroll-pane { overflow: auto; width: 100%; float:left;}
+  	.scroll-content { width: 6600px; float: left; }
+  	.scroll-content-item { width: 300px; height: 300px; float: left; margin: 10px; font-size: 2em; line-height: 96px; text-align: center; }
+ 	.scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
+  	.scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
+  	.scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
+  	.scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
+  	.scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }  
+</style>
+
 </head>
 
 <body class="homepage" bgcolor=#333323>
 	<c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
-   <div id="header-wrapper">
-      <div id="header" class="container">
-         <!-- Logo -->
-         <h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
-         <p>Welcom To JooJooClub</p>
-         <div align="right">
-            <nav id="nav">
-            <ul>
-            
-           
-               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
-               <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
-               <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info/member"><span>MyPage</span></a></li>
-              <%--  <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li> --%>
+	<div id="header-wrapper">                        
+	<div id="header" class="container"> 
+	<h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
+	<p>Welcom To JooJooClub</p>
+	
+	<!-- 헤더 메뉴 -->
+	<div align="right">
+		<nav id="nav">
+			<ul>				
+				<c:if test="${empty loginUser }">
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
+			    <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
 				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
-            </ul>
-            </nav>
-         </div>
-         
-         
-         
-         
-              <div>      
-         	<c:url value="/main/keyword" var="action"></c:url>
-            <form:form modelAttribute="category" method="post" action="${action}" >
-                <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
-                   
-                <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-       		</form:form> 
-       
-         </div>
-              
-         
-         
-         
-<%--          <div>      
-         	<c:url value="/main/keyword" var="action"></c:url>
-            <form:form modelAttribute="category" method="post" action="${action}">
-              <div class="row 90%">                    
-                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text"/>     
-              </div>    
-                  
-              <div class="row 80%">
-                  <div class="12u">                        
-                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-                  </div>
-              </div>
-            </form:form>
-         </div> --%>
-         
-     
-         
-            
-             
-         </div>
-         
-         
-         
-  
-         
-         
-       </div>
+				</c:if>			
+				<c:if test="${!empty loginUser }">
+				<li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span>
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/logout"><span>Logout</span></a>				
+				</c:if>
+		    </ul>
+	    </nav>
+    </div><!-- 헤더 메뉴 끝 -->   
+    
+    <!-- 키워드 검색 부분 -->
+    <div>      
+	    <c:url value="/main/keyword" var="action"></c:url>
+	    <form:form modelAttribute="category" method="post" action="${action}" >
+	    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
+	    <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
+	    </form:form> 
+    </div><!-- 키워드 검색 부분 끝 -->             
+	</div><!-- 헤더 끝 -->       
+	</div><!-- 헤더 래퍼 끝 -->
  
    
-   		<!-- 	헤더구분띠 -->
-      <img  src="images/bar.png" style="width: 100%">
+   	<!-- 헤더 바디 구분 띠 -->
+    <img  src="images/bar.png" style="width: 100%">
 
-   <!-- Features -->
-   <div id="features-wrapper">
-      <section id="features" class="container"> 
-      <nav id="nav">
-      <ul>
+   	
+   	<!-- 바디 시작 -->   
+	<div id="features-wrapper">
+		<!-- 바디 카테고리 시작 -->     
+ 		<section id="features" class="container">       
+		<nav id="nav">
+      	<ul>
+      	 <!-- 지역 카테고리 -->
          <li ><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Region</span></button></a>
             <ul>
-               <li><a href="#">강남</a></li>
-               <li><a href="#">홍대</a></li>
-               <li><a href="#">이태원</a></li>
-               <li><a href="#">건대</a></li>
-               <li><a href="#">신촌</a></li>
+            <li><a href="#">가로수길</a></li><li><a href="#">강남</a></li>
+            <li><a href="#">건대</a></li><li><a href="#">대학로</a></li>
+            <li><a href="#">동대문</a></li><li><a href="#">명동</a></li>
+            <li><a href="#">신촌</a></li><li><a href="#">여의도</a></li>
+            <li><a href="#">이태원</a></li><li><a href="#">잠실</a></li>    
+            <li><a href="#">청담</a></li><li><a href="#">홍대</a></li>  
             </ul>
          </li>
-
+         
+		<!-- 업종 카테고리 -->
          <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Type</span></button></a>
             <ul>
-               <li><a href="#">호프</a></li>
                <li><a href="#">고기집</a></li>
-               <li><a href="#">룸주점</a></li>
-               <li><a href="#">포장마차</a>
+               <li><a href="#">민속주점</a></li>
+               <li><a href="#">바</a></li>
+               <li><a href="#">양식</a></li>
                <li><a href="#">일식</a></li>
+               <li><a href="#">중식</a></li>
+               <li><a href="#">치킨</a></li>
+               <li><a href="#">포장마차</a>
+               <li><a href="#">퓨전술집</a></li>
+               <li><a href="#">한식</a></li>
+               <li><a href="#">호프</a></li>
             </ul>
          </li>
 
+		<!-- 인원 카테고리 -->
          <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Number</span></button></a>
             <ul>
                <li><a href="#">4인이하</a></li>
@@ -346,119 +254,124 @@ fieldset .help {
             </ul>
          </li>
          
+         <!-- 서비스 카테고리 -->
          <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Service</span></button></a>
             <ul>
                <li><a href="#">서비스추가</a></li>
-               <li><a href="#">할인</a></li>
+               <li><a href="#">이벤트할인</a></li>
             </ul>
          </li>
 
+		<!-- 카테고리 검색 버튼 -->
          <!-- <li><input type="submit" value="Search"/></li> -->
          <li>
             <button type="button" class="btn btn-warning btn-sm">Search</button>
-         </li>
-      </ul>
+         </li>         
+      </ul>      
       </nav>
-  
-      <br>
+      </section><!-- 바디 카테고리 끝 -->     
+        
+      <br>   
       
-      <div class="row" >    
-      <div class="scroll-pane ui-widget ui-widget-header ui-corner-all" style="background-color: gray">
-  			<div class="scroll-content" style="background-color: gray" >
-   
-      <div>       
- <%--    <c:forEach items="${stores}" var="store">
-    	<c:forEach begin="0" end="${imageCount }" step="1"  varStatus="status">
-            <div class="scroll-content-item ui-widget-header"><img src="images/${store.licenseNumber }_${status.current }.jpg" alt="" width="300px"/><br> <c:out value="${store.storeName}" /></div>         
-         </c:forEach>    
-    </c:forEach>   --%>  
-      
+	<div class="row" > 
+	<!-- 바디 이벤트 스크롤 시작 -->   
+	<div class="scroll-pane ui-widget ui-widget-header ui-corner-all" style="background-color: gray">
+		<!-- 이벤트 창 -->
+		<div class="scroll-content" style="background-color: gray" ><!-- 이벤트 스크롤 부분 배경색 지정 가능 -->		   
+		    <!-- 이벤트 사진 및 상점이름 시작-->
+		    <c:forEach items="${events}" var="event" varStatus="status">
+			    <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
+			    <c:set var="commentCode" value="${status.current.commentCode }"/>
+			    <!-- 이벤트 상세 페이지로 가기 위한 버튼 -->
+			    <button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
+				    <!-- 이벤트 이미지와 이벤트 상점이름 -->
+				    <img src="images/pic01.jpg" alt="" width="300px"/><br> 
+				    <c:out value="${event.storeName}" />
+			    	<!-- ${status.current.licenseNumber }로 이미지 변경해야 할 것 -->
+			    </button>
+			    </div> 
+		    </c:forEach>
+		    <!-- 이벤트 사진 및 상점이름 끝-->  		    
+		    
+		    <!-- 이벤트 클릭 시 모달 시작 -->  
+		    <c:forEach items="${events}" var="event" varStatus="status">
+		    <c:url value="/eventProcess?eventCommentCode=${status.current.commentCode }" var="action"></c:url> 
+			    <div class="modal fade" id="myModal${status.current.commentCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+					<div class="modal-dialog">
+					    <div class="modal-content">
+						    <!-- 모달 헤더 -->
+						    <div class="modal-header">
+							    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							    <h4 class="modal-title" id="modal_title${status.current.commentCode }"></h4>
+						    </div>
+						    <!-- 모달 바디 -->
+						    <div class="modal-body" id="here${status.current.commentCode }">
+						    	<%-- <c:out value="${event.storeAdress }"/> --%>
+							</div>
+							<!-- 모달 푸터 -->
+						    <div class="modal-footer">
+						    	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+						    <a href="${action }"><button class="btn btn-warning btn-sm" >이벤트상세보기</button></a>
+						    </div>
+					    </div><!-- /.modal-content -->
+				  	</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+		    </c:forEach>  <!-- 이벤트 클릭 시 모달 끝 -->   
+		        
+		  	</div>
+		  	<div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
+		    <div class="scroll-bar"></div>		  	
+		</div><!-- 이벤트 창 끝 --> 
+   	</div><!-- 바디 이벤트 스크롤 끝 -->    
+   	
+   	<!-- 바디 상점 검색 부분 시작 -->   	
+   	<div align="center">
+   		<br><h2 class="docs">검색결과</h2>
+	</div>
 	
-    <c:forEach items="${events}" var="event" varStatus="status">
-    <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
-    <c:set var="commentCode" value="${status.current.commentCode }"/>
-    <button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }" 
-    		onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
-        <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${event.storeName}" />
-        <!-- ${status.current.licenseNumber }로 이미지 변경해야 할 것 -->
-     </button>
-     </div> 
-    </c:forEach>
+	<!-- 바디 상점 검색 시작 -->
+	<div id="accordion-resizer" class="container" align="center" style="background-color: gray">    
     
-    <c:forEach items="${events}" var="event" varStatus="status">
-    <c:url value="/eventProcess?eventCommentCode=${status.current.commentCode }" var="action"></c:url> 
-    <div class="modal fade" id="myModal${status.current.commentCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
-	 <div class="modal-dialog">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" id="modal_title${status.current.commentCode }"></h4>
-      </div>
-      
-      <div class="modal-body" id="here${status.current.commentCode }">
-        <%-- <c:out value="${event.storeAdress }"/> --%>
+    	<!-- 카테고리 구분 테이블 -->
+	    <table width="80%" align="center" cellpadding="5" cellspacing="0"   border="1"  align="center" style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
+		    <tr align="center">			   
+			    <td style="border: 1px gray solid;"><h4>상호명</h4></td>
+			    <td style="border: 1px gray solid;"><h4>지역</h4></td>
+			    <td style="border: 1px gray solid;"><h4>업종</h4></td>
+			    <td style="border: 1px gray solid;"><h4>인원</h4><td>
+			    <td style="border: 1px gray solid;"><h4>이벤트</h4></td>
+		    </tr>
+	    </table> <!-- 카테고리 구분 테이블 끝 --> 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-       <a href="${action }"><button class="btn btn-warning btn-sm" >이벤트상세보기</button></a>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-    </c:forEach>
-  
-    
- 
-    
-  </div>
-  <div class="scroll-bar-wrap ui-widget-content ui-corner-bottom">
-    <div class="scroll-bar"></div>
-  </div>
-</div>
- 
-   </div>      
-      <br>
-      <h3 class="docs" align="center">검색결과</h3>
-
-      <div id="accordion-resizer" class="ui-widget-content" class="container" align="center" style="background-color: gray">
-		
-         <table width="80%" align="center" cellpadding="5" cellspacing="0"   border="1" bgcolor="gray" align="center" style="border-collapse: collapse; border: 1px gray solid; background-color: orange;">
-            <tr align="center">
-            	<td style="border: 1px gray solid;"></td>
-               <td style="border: 1px gray solid;">상호명</td>
-               <td style="border: 1px gray solid;">지역</td>
-               <td style="border: 1px gray solid;">업종</td>
-               <td style="border: 1px gray solid;">인원<td>
-               <td style="border: 1px gray solid;">이벤트</td>
-            </tr>
-         </table>
-         
-         
-
-        <div id="accordion" class="container" align="center" style="background-color: gray" >         
-         
-          <c:forEach items="${stores}" var="store">
-            <div style="background-color: gray">
-               <table width="90%" align="center" cellpadding="5" cellspacing="0"   border="1" align="center"   style="border-collapse: collapse; border: 1px gray solid; background-color: pink;">
-                  <tr align="center">
-                     <td style="border: 1px gray solid;"><c:out value="${store.storeName}" /></td>
-                     <td style="border: 1px gray solid;"><c:out value="${store.regionName}" /></td>
-                     <td style="border: 1px gray solid;"><c:out value="${store.typeName}" /></td>   
-                     
-                  </tr>
-               </table>
-            </div>            
-            <div  style="background-color: gray">
-            <p><c:out value="${store.storeAdress}"/> </p>
-            </div>    
-            </c:forEach>    
-                     
-        </div>          
-      </div>
-      </div>
-      </section>
-     </div>
+		<!-- 바디 상점 결과 아코디언 시작 -->
+        <div id="accordion" class="container">         
+	        <!-- 상점 select 결과 가져오는 부분 시작 -->
+	        <c:forEach items="${stores}" var="store">
+	        
+		        <!-- 아코디언 카테고리 헤더 -->
+		        <div >
+			        <table width="90%" >
+				        <tr align="center">
+					        <td ><c:out value="${store.storeName}" /></td>
+					        <td ><c:out value="${store.regionName}" /></td>
+					        <td ><c:out value="${store.typeName}" /></td>   
+				        </tr>
+			        </table>
+		        </div>
+		        	        
+		        <!-- 아코디언 상세내용 바디 -->            
+		        <div >		        	
+		        	<p align="left">상점 이름: <c:out value="${store.storeName}"/> </p>
+		        	<p align="left">상점 주소:<c:out value="${store.storeAdress}"/> </p>
+		        	<p align="left">상점 위치:<c:out value="${store.regionName}"/> </p>
+		        	<p align="left">상점 업종:<c:out value="${store.typeName}"/> </p>
+		        	<p align="left">상점 전화번호:<c:out value="${store.storePhone}"/> </p>
+		        </div>    
+		        
+	        </c:forEach>  <!-- 상점 select 결과 가져오는 부분 끝 -->                        
+		</div><!-- 바디 상점 결과 아코디언 끝 -->     
+      	</div>
+      	</div>      	
+     	</div><!-- 바디 끝 -->
 </body>
 </html>

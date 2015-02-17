@@ -7,8 +7,8 @@ public class Category {
 	String serviceTypeName;
 	String keyword;
 	
+	
 	public Category(){}
-
 	public Category(String regionName, String typeName, String personsLevel,
 			String serviceTypeName, String keyword) {
 		super();
