@@ -86,6 +86,7 @@ public class SearchController {
 		
 		List<All> events = eventService.SeachAllEvent();
 		model.addAttribute("events", events);
+		logger.error("events"+events);
 		List<All> stores = storeService.showAllStore();
 		model.addAttribute("stores", stores);
 		return "main";

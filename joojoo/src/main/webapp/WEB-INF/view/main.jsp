@@ -20,9 +20,9 @@
 
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/style-1000px.css">
-<link rel="stylesheet" href="/css/style-desktop.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style-desktop.css">
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -235,39 +235,16 @@ fieldset .help {
 	    setTimeout( sizeScrollbar, 10 );//safari wants a timeout
 	  });
    
-   function Open_event(f){ 
-		if (document.form1.userPassword.value == "" || document.form1.userId.value == "") 
-		{ 
-			$("#dialog").dialog({
-				autoOpen : false,
-				show : {
-					effect : "blind",
-					duration : 1000
-				},
-				hide : {
-					effect : "explode",
-					duration : 1000
-				}
-			});
-
-			$("#opener1").click(function() {
-				$("#dialog").dialog("open");
-			});
-		document.form1.userId.focus(); 
-		return false; 
-		} 
-		return true;
-	}
-   
-    $('#myModal').on('shown.bs.modal', function () {
-    	alert("땡땡");
-	   document.document.querySelector("#here")
-		.innerHTML="${store.storeName}";
-	 }) 
-	 
-	 $("#perchase").click(function() {
-				
-			});
+  
+   function Open_modal(title, content, storeName){
+  		 
+  		alert(title);
+  		
+  		 document.querySelector("#modal_title")
+ 		.innerHTML=storeName+"("+title+")";
+	   document.querySelector("#here")
+		.innerHTML=content;
+   }
 </script>
 </head>
 
@@ -402,41 +379,38 @@ fieldset .help {
          </c:forEach>    
     </c:forEach>   --%>  
       
-
-    <c:forEach items="${events}" var="event">
+	
+    <c:forEach items="${events}" var="event" varStatus="status">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
-    <button data-toggle="modal" data-target="#myModal">
-
+    <button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal" 
+    		onclick="Open_modal('${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
         <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${event.storeName}" />
-
-          </button>
-          </div>
-          
-          
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+     </button>
+     </div> 
+    </c:forEach>
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
 	 <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title"><c:out value="${event.storeName}" /></h4>
+        <h4 class="modal-title" id="modal_title"></h4>
       </div>
       <div class="modal-body" id="here">
-        <c:out value="${event.storeAdress }"/>
+        <%-- <c:out value="${event.storeAdress }"/> --%>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
         <c:url value="/event_detail" var="action"></c:url>
         <form action="${action}">
-       <%-- <a href="<%=request.getContextPath()%>/event_detail "> --%><input type="button" id="perchase" type="button" class="btn btn-warning btn-sm">이벤트상세보기<!-- </a> -->
-     	<input type="hidden" name="eventCommentCode">
-       </form>
+       <%-- <a href="<%=request.getContextPath()%>/event_detail "> --%><input id="perchase" type="submit" class="btn btn-warning btn-sm" value="이벤트상세보기"><!-- </a> -->
+     	<input type="hidden" name="eventCommentCode" value="${event.commentCode }">
+     	</form>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
- 
-    </c:forEach>
     
   
     

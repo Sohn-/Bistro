@@ -152,7 +152,7 @@
 		select * 
 		from event_comment
 		join stores s using(store_code)
-		join owners using(owner_id)	
+		left join owners using(owner_id)	
 	</select>
 	
 	<select id= "getEventCommentsByOwnerId" parameterType="EventComment"

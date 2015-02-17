@@ -18,9 +18,10 @@ public class EventDetailController {
 	@Autowired
 	EventCommentService eventService;
 	
-	/*@RequestMapping(value="/event_detail")
+/*	@RequestMapping(value="/event_detail")
 	public String showDetail(@RequestParam("eventCommentCode") int eventCommentCode, Model model){
 		All eventDetail = eventService.SearchOneEvent(eventCommentCode);
+		logger.error(""+eventDetail);
 		model.addAttribute("eventDetail");
 		
 		return "event_detail";
