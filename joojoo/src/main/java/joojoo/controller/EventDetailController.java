@@ -18,19 +18,22 @@ public class EventDetailController {
 	@Autowired
 	EventCommentService eventService;
 	
-/*	@RequestMapping(value="/event_detail")
-	public String showDetail(@RequestParam("eventCommentCode") int eventCommentCode, Model model){
+	@RequestMapping(value="/event_detail")
+	public String showDetail(@RequestParam("eventCommentCode") String eventStr, Model model){
+		int eventCommentCode = Integer.parseInt(eventStr);
+		
+		logger.error("eventCommentCode = "+eventCommentCode);
 		All eventDetail = eventService.SearchOneEvent(eventCommentCode);
 		logger.error(""+eventDetail);
 		model.addAttribute("eventDetail");
 		
 		return "event_detail";
-	}*/
+	}
 	
-	//임시컨트롤
+/*	//임시컨트롤
 	@RequestMapping(value="/event_detail")
 	public String showDetail(Model model){
 		return "event/event_detail";
-	}
+	}*/
 
 }

@@ -237,9 +237,6 @@ fieldset .help {
    
   
    function Open_modal(title, content, storeName){
-  		 
-  		alert(title);
-  		
   		 document.querySelector("#modal_title")
  		.innerHTML=storeName+"("+title+")";
 	   document.querySelector("#here")
@@ -407,7 +404,7 @@ fieldset .help {
         <c:url value="/event_detail" var="action"></c:url>
         <form action="${action}">
        <%-- <a href="<%=request.getContextPath()%>/event_detail "> --%><input id="perchase" type="submit" class="btn btn-warning btn-sm" value="이벤트상세보기"><!-- </a> -->
-     	<input type="hidden" name="eventCommentCode" value="${event.commentCode }">
+     	<input type="hidden" name="eventCommentCode" value=${status.current.commentCode }>
      	</form>
       </div>
     </div><!-- /.modal-content -->

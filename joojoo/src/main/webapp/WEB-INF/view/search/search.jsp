@@ -229,35 +229,15 @@ fieldset .help {
 	    setTimeout( sizeScrollbar, 10 );//safari wants a timeout
 	  });
    
-   function Open_event(f){ 
-		if (document.form1.userPassword.value == "" || document.form1.userId.value == "") 
-		{ 
-			$("#dialog").dialog({
-				autoOpen : false,
-				show : {
-					effect : "blind",
-					duration : 1000
-				},
-				hide : {
-					effect : "explode",
-					duration : 1000
-				}
-			});
-
-			$("#opener1").click(function() {
-				$("#dialog").dialog("open");
-			});
-		document.form1.userId.focus(); 
-		return false; 
-		} 
-		return true;
-	}
-   
-    $('#myModal').on('shown.bs.modal', function () {
-    	alert("땡땡");
-	   document.document.querySelector("#here")
-		.innerHTML="${store.storeName}";
-	 }) 
+   function Open_modal(title, content, storeName){
+		 
+ 		alert(title);
+ 		
+ 		 document.querySelector("#modal_title")
+		.innerHTML=storeName+"("+title+")";
+	   document.querySelector("#here")
+		.innerHTML=content;
+  }
 </script>
 </head>
 
@@ -393,34 +373,39 @@ fieldset .help {
       
     	
     
-    <c:forEach items="${search_events}" var="search_event">
+ <c:forEach items="${search_events}" var="search_event" varStatus="status">
     <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
-    <button data-toggle="modal" data-target="#myModal">
+    <button id="search_event${status.current.commentCode }" data-toggle="modal" data-target="#myModal" 
+    		onclick="Open_modal('${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
         <img src="images/pic01.jpg" alt="" width="300px"/><br> <c:out value="${search_event.storeName}" />
-          </button>
-          </div>
-          
-          
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+     </button>
+     </div> 
+    </c:forEach>
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
 	 <div class="modal-dialog">
     <div class="modal-content">
+      
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title"><c:out value="${search_event.storeName}" /></h4>
+        <h4 class="modal-title" id="modal_title"></h4>
       </div>
+      
       <div class="modal-body" id="here">
-        <c:out value="${search_event.storeAdress }"/>
+        <%-- <c:out value="${event.storeAdress }"/> --%>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-       <a href="<%=request.getContextPath()%>/event_detail "><button id="perchase" type="button" class="btn btn-warning btn-sm">이벤트상세보기</button></a>
+        <c:url value="/event_detail" var="action"></c:url>
+        <form action="${action}">
+       <%-- <a href="<%=request.getContextPath()%>/event_detail "> --%><input id="perchase" type="submit" class="btn btn-warning btn-sm" value="이벤트상세보기"><!-- </a> -->
+     	<input type="hidden" name="eventCommentCode" value="${status.current.commentCode }">
+     	</form>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
- 
-    </c:forEach>
     
    
     
