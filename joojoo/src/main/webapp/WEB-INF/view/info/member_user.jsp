@@ -1,4 +1,3 @@
-<%@page import="joojoo.entity.Users"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -52,6 +51,13 @@ $(document).ready(function(){
 	
     $(":checked").wrap("<span style='background-color:red'>");
     
+    
+    if($label == 2){
+    	
+    	document.getElementById("tab2").focus();
+    }
+    
+
  
 });
 
@@ -268,9 +274,7 @@ fieldset .help {
 		});
 
 	});
-	</style>
-
-	<script>
+	
 	$(function() {
 		$("#tabs").tabs();
 	});
@@ -304,8 +308,7 @@ fieldset .help {
 			function track(event) {
 				currentX = event.pageX;
 				currentY = event.pageY;
-			}
-			;
+			};
 
 			function clear() {
 				target.unbind("mousemove", track).unbind("mouseout", clear);
@@ -666,7 +669,7 @@ fieldset .help {
 
 	<div id="tabs">
 	
-
+		
 		<ul>
 			<li><a href="#tab1">정보수정 및 탈퇴</a></li>
 			<li><a href="#tab2">나의 장바구니</a></li>
@@ -683,33 +686,27 @@ fieldset .help {
 					<fieldset>
 
 						<div style="font-style: normal; color: red;">
-							<input  disabled="true" id="userId" name="userId" title="Please provide your ID."
-								value="${loginUser.userId}" align="middle"/> * <br> 
+							<form:input disabled="true" path="userId" id="userId" type="text" required="true" value="${loginUser.userId }"/>
 							<form:input type="hidden" value="${loginUser.userId}" path="userId" required="true"/><br>
 							
+							<form:input path="userPassword" id="pass" name="pass2" type="password" required="true" value="${loginUser.userPassword }"/>
 								
-								<input  path="userPassword" id="password" name="password"
-								title="변경할 비밀번호를 입력해주세요" value="${loginUser.userPassword}" required="true"/><br>
-								
-							<input  id="password2" name="password2" title="변경할 비밀번호를 한번 더 입력해주세요"><br>
-							<input path="userName" disabled="true" id="userName" name="userName"
-								title="Please provide your userName" value="${loginUser.userName}">
+							<input type="password" id="pass2" name="pass2" required/><br>
+							
+							<form:input disabled="true" path="userName" id="userName" type="text" required="true" value="${loginUser.userName }"/>
 							<form:input type="hidden" value="${loginUser.userName}" path="userName" required="true"/><br>	
 								
 								
-								
 							*<br>
-							<input  path="userMail" id="userMail" name="userMail"
-								title="Please provide your mail" value="${loginUser.userMail}"><br>
-							<input  path="userPhone" id="userPhone" name="userPhone"
-								title="Please provide your userPhone" value="${loginUser.userPhone}"><br>
+							<form:input path="userMail" id="userMail" type="email" required="true" value="${loginUser.userMail }"/>
+							<form:input path="userPhone" id="userPhone" type="text" required="true" value="${loginUser.userPhone }"/>
 							*는 수정할 수 없는 정보입니다.
 							
 							 <form:input type="hidden" value="${loginUser.chance}" path="chance" required="true"/><br>
 						</div>
 
 							
-						
+		유				
 						<input type="button" onclick="mysubmit(1)" value="수정하기"/>
 						<input type="button" onclick="mysubmit(2)" value="탈퇴하기"/>
 

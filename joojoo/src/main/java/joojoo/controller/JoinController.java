@@ -43,11 +43,13 @@ public class JoinController {
    private StoreService storeService;
    
    @RequestMapping(value="/join", method=RequestMethod.GET)
-   public String showSelectJoinType(HttpSession session){
+   public String showSelectJoinType(HttpSession session,Model model){
 	  if(session.getAttribute("loginUser") == null && session.getAttribute("loginOwner")==null ){
+		  model.addAttribute("joinUser", new Users());
+		  model.addAttribute("joinOwner", new Owners());
 		  return "join/join";
 	  }
-	  else return "main";//일단 메인으로 가도록..
+	  else return "redirect:/";//일단 메인으로 가도록..
    }
    
    @RequestMapping(value="/join/user", method=RequestMethod.GET)

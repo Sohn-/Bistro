@@ -19,7 +19,7 @@ public class UserDaoTest {
 	UsersDao dao;
 	
 	public UserDaoTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
 		dao = ctx.getBean(UsersDao.class);
 		
 	}
@@ -44,12 +44,12 @@ public class UserDaoTest {
 		
 		//LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.insertUser(user1)); //OK
 		//LOG.trace(user1.toString());
-		//LOG.trace("수업 1 :  "+dao.updateUser(user1)); //OK
+		LOG.trace("수업 1 :  "+dao.updateUser(user1)); //OK
 		//LOG.trace("수업 1:" +dao.getUsersByUserId("ansoog1"));
 		//LOG.trace("수업 1:" +dao.getUsersByUserMail("asdf24243324"));
-		LOG.trace("수업 1:" +dao.getUsersForIdFind(user1));
+		//LOG.trace("수업 1:" +dao.getUsersForIdFind(user1));
 		//LOG.trace("수업1:"+dao.getUsersForPassWordFind(user1));
-		
+		//LOG.trace("수업"+dao.updateUser(user1));
 		
 	}
 	
