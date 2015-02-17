@@ -67,18 +67,18 @@ public class MyPageOwnerController {
 	    
 	    @RequestMapping(value="/info/owner/update_store", method=RequestMethod.GET, 
 				produces="text/plain;charset=utf-8")
-		public @ResponseBody List<All> ajaxReceive(@ModelAttribute Stores store, HttpSession session,Model model){
+		public @ResponseBody Stores ajaxReceive(@ModelAttribute Stores store, HttpSession session,Model model){
 	    	All loginOwner = (All)(session.getAttribute("loginOwner"));
 	    	boolean isUpdated = storeService.updateStore(store);
-	    	List<All> stores = storeService.showAllStore(); //전제 다 출력하지말고 바꾼부분만 바꿔서 출력해볼까..
-	    	if(isUpdated == true){
+	    	//List<All> stores = storeService.showAllStore(); //전제 다 출력하지말고 바꾼부분만 바꿔서 출력해볼까..
+	    	/*if(isUpdated == true){
 	    		model.addAttribute("stores",stores);
-	    	}
-	    	
-			return stores;
+	    	}*/
+	    	model.addAttribute("updatedStore", store);
+			return store;
 		}
 	    
-	    @RequestMapping(value="/info/owner/coupon", method=RequestMethod.GET)
+	    @RequestMapping(value="/info/owner/coupon", method=RequestMethod.POST)
 		public String showOwnerCouponPage(HttpSession session,Model model){
 	    	All loginOwner = (All)(session.getAttribute("loginOwner"));
 	    	List<All> allCoupon = couponService.getCouponsByUserId(loginOwner.getOwnerId());

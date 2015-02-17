@@ -100,7 +100,7 @@ fieldset div {
 		});
 	});
 	
-	window.onload=function(){
+ 	window.onload=function(){
 		var xhr = new XMLHttpRequest();
 		
 		document.querySelector("#btn_update_store")
@@ -109,16 +109,51 @@ fieldset div {
 				if(xhr.readyState==4 && xhr.status==200){
 					document.querySelector("#store_table")
 					.innerHTML=xhr.responseText+"<br>";
+					xhr.re
 				}
 			}
 			var url = "<%=request.getContextPath()%>/info/owner/update_store";
-			xhr.open("post", url, true);
+			xhr.open("get", url, true);
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			/* var msg = document.querySelector("#comment").value; */
 			
 			xhr.send();
 		}, false);
-	}
+	} 
+	
+	$("#btn_update_store").bind("click", function(){
+		$.ajax({
+			url : "<%=request.getContextPath()%>/info/owner/update_store",
+			type : "get",
+			data : 	[{"storeCode" : $("storeCode").val()},
+					{"storeName" : $("storeCode").val()},
+					{"storeAdress" : $("#storeAdress").val()},
+					{"storephone" : $("#storephone").val()},
+					{"regionName" : $("#regionName").val()},
+					{"ownerId" : $("#ownerId").val()},
+					{"typeName" : $("#typeName").val()}],
+			success : function(data){
+				$("#ajax").remove();
+				alert(data);
+				if(!data==null){
+					alert("data가 null입니다.");
+					return false;
+				}
+				var html='';
+				html += '<input id="storeName" name="storeName" title="Please provide your storeName" value="상점이름" align="middle"> * <br>'; 
+				html += '<input id="storeAddres" name="storeAddres" title="Please provide your storeAddres" value=" 상점주소"><br>'; 
+				html += '<input id="storeExtraAddress"	name="storeExtraAddress" title="Please provide your storeExtraAddress"	value=" 상점나머지주소"><br>'; 
+				html += '<input id="storeRegionName" name="storeRegionName" title="Please provide your storeRegionName"	value="지역"><br>'; 
+				html += '<input id="storephone" name="storephone"	title="Please provide your storephone" value=" 상점전화번호"><br>';
+				html += '<input id="ownerName" name="ownerName"	title="Please provide your ownerName" value="대표자"> *<br>';
+				html += '<input id="storeType" name="storeType"	title="Please provide your storeType" value=" 업종"><br>';
+				html += '*는 수정할 수 없는 정보입니다.';
+				
+				$("#ajax").after(html);
+				
+			}
+		});
+	});
 
 </script>
 </head>
@@ -196,7 +231,7 @@ fieldset div {
 							<form>
 								<fieldset>
 
-									<div style="font-style: normal; color: red;">
+									<div id="ajax" style="font-style: normal; color: red;">
 										<input id="storeName" name="storeName" title="Please provide your storeName" value="상점이름" align="middle"> * <br> 
 										<input id="storeAddres" name="storeAddres" title="Please provide your storeAddres" value=" 상점주소"><br> 
 										<input id="storeExtraAddress"	name="storeExtraAddress" title="Please provide your storeExtraAddress"	value=" 상점나머지주소"><br> 

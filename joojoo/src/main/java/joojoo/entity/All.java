@@ -3,7 +3,6 @@ package joojoo.entity;
 import java.util.Date;
 
 public class All {
-	
 	////////////////////////////Category
 	int regionCode;
 	int typeCode;
