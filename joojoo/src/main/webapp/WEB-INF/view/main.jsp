@@ -10,8 +10,9 @@
 <html>
 <head>
 
-
 <title>mainPage</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -20,68 +21,20 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-1000px.css">
 <link rel="stylesheet" href="css/style-desktop.css">
+<link rel="stylesheet"   href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
-<!-- 버튼부트스트랩 -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"   href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-<script   src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.dropotron.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
-
-<link rel="stylesheet"   href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
-
-<style type="text/css">
-
-form { 
-width: 10cm; 
-} 
-
-
-label {
-   display: inline-block;
-   width: 5em;
-}
-
-fieldset .help {
-   margin-top: 2em;
-   display: inline-block;
-}
-
-.ui-tooltip {
-   width: 200px;
-}
-
-#accordion-resizer {
-   padding: 5px;
-   width: 100%;
-   height: 700px;
-}
-#header{
-	background-image: url(images/main.jpg);
-}
-
-  .scroll-pane { overflow: auto; width: 99%; float:left; }
-  .scroll-content { width: 6600px; float: left; }
-  .scroll-content-item { width: 300px; height: 300px; float: left; margin: 10px; font-size: 3em; line-height: 96px; text-align: center; }
-  .scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
-  .scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
-  .scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
-  .scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
-  .scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }
-  
-</style>
-
 <script>
    $(function() {
       $("#tabs").tabs();
@@ -239,43 +192,82 @@ fieldset .help {
 	   document.querySelector("#here"+commentCode)
 		.innerHTML=content;
    }
+   
+
+   
 </script>
+<style type="text/css">
+form { 
+width: 10cm; 
+} 
+label {
+   display: inline-block;
+   width: 5em;
+}
+fieldset .help {
+   margin-top: 2em;
+   display: inline-block;
+}
+.ui-tooltip {
+   width: 200px;
+}
+#accordion-resizer {
+   padding: 5px;
+   width: 100%;
+   height: 700px;
+}
+#header{
+	background-image: url(images/main.jpg);
+}
+
+  .scroll-pane { overflow: auto; width: 99%; float:left; }
+  .scroll-content { width: 6600px; float: left; }
+  .scroll-content-item { width: 300px; height: 300px; float: left; margin: 10px; font-size: 3em; line-height: 96px; text-align: center; }
+  .scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
+  .scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
+  .scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
+  .scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
+  .scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }  
+</style>
 </head>
 
 <body class="homepage" bgcolor=#333323>
 	<c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
-   <div id="header-wrapper">
-      <div id="header" class="container">
-         <!-- Logo -->
-         <h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
-         <p>Welcom To JooJooClub</p>
-         <div align="right">
-            <nav id="nav">
-            <ul>
-            
-           
-               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
-               <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
-               <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
-              <%--  <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li> --%>
+	<div id="header-wrapper">
+	<div id="header" class="container"> 
+	<h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
+	<p>Welcom To JooJooClub</p>
+	
+	<!-- 헤더 메뉴 -->
+	<div align="right">
+		<nav id="nav">
+			<ul>				
+				<c:if test="${empty loginUser }">
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
+			    <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
 				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
-            </ul>
-            </nav>
-         </div>
-         
-         
-         
-         
-              <div>      
-         	<c:url value="/main/keyword" var="action"></c:url>
-            <form:form modelAttribute="category" method="post" action="${action}" >
-                <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
-                   
-                <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-       		</form:form> 
-       
-         </div>
+				</c:if>			
+				<c:if test="${!empty loginUser }">
+				<li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span>
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/logout"><span>Logout</span></a>				
+				</c:if>
+		    </ul>
+	    </nav>
+    </div>   
+    
+    <!-- 키워드 검색 부분 -->
+    <div>      
+	    <c:url value="/main/keyword" var="action"></c:url>
+	    <form:form modelAttribute="category" method="post" action="${action}" >
+	    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
+	    <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
+	    </form:form> 
+    </div>
               
          
          
