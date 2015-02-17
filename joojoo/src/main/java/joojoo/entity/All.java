@@ -9,7 +9,6 @@ public class All {
 	int personsCode;
 	int serviceTypeCode;
 	String keyword;
-
 	/////////////////////////////coupon
 	private String couponCode;
 	private String ownerId;
