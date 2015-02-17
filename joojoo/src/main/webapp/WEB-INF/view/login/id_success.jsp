@@ -13,6 +13,7 @@
 	String userId = null;
 	String ownerId = null;
 	
+	
 	if(userIdObj != null){
 		userId = (String)userIdObj;
 	}
