@@ -284,7 +284,7 @@ fieldset .help {
      
       </nav>
      </form:form> 
-      </section><!-- 바디 카테고리 끝 -->     
+      <!-- 바디 카테고리 끝 -->     
          
       <br>   
       
@@ -386,7 +386,8 @@ fieldset .help {
 	        </c:forEach>  <!-- 상점 select 결과 가져오는 부분 끝 -->                        
 		</div><!-- 바디 상점 결과 아코디언 끝 -->     
       	</div>
-      	</div>      	
+      	</div>   
+      	</section>   	
      	</div><!-- 바디 끝 -->
 </body>
 </html>
