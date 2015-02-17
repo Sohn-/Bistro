@@ -257,7 +257,7 @@ fieldset .help {
                <li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
                <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
                <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info/member"><span>MyPage</span></a></li>
+               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
               <%--  <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li> --%>
 				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
             </ul>
@@ -359,7 +359,7 @@ fieldset .help {
          </li>
       </ul>
       </nav>
-      </section> 
+  
       <br>
       
       <div class="row" >    
@@ -458,5 +458,7 @@ fieldset .help {
         </div>          
       </div>
       </div>
+      </section>
+     </div>
 </body>
 </html>
