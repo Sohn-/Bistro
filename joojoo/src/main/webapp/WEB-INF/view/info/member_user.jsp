@@ -1,4 +1,5 @@
 <%@page import="java.util.List"%>
+<%@page import="joojoo.entity.All"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -45,14 +46,16 @@
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 <script type="text/javascript">
-
+<%
+	int label = (int)request.getAttribute("label");
+%>
 $(document).ready(function(){
 	
     $(":checked").wrap("<span style='background-color:red'>");
     
     
-    if($label == 2){
-    	
+    if($("#label").val()==2){
+    	alert("2");
     	document.getElementById("tab2").focus();
     }
     
@@ -64,7 +67,8 @@ $(document).ready(function(){
 	if(sub==1){
 		if($("#password").val()==""){
 			alert("비밀번호를 입력해주세요.");
-			$("#password").focus();		
+			$("#password").focus();	
+			
 		}
 		
 		if($("#password2").val()==""){
@@ -705,7 +709,7 @@ fieldset .help {
 						</div>
 
 							
-		유				
+					
 						<input type="button" onclick="mysubmit(1)" value="수정하기"/>
 						<input type="button" onclick="mysubmit(2)" value="탈퇴하기"/>
 
@@ -721,25 +725,25 @@ fieldset .help {
 			<table style="width: 100%">
 				<tr>
 					<th>상호명</th>
-					<th>요약</th>
+					<th>글제목</th>
 					<th>체크</th>					
 				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>		
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
+				<c:forEach items="${wishList }" var="wishList">
+	
+					<tr>
+					<td><c:out value="${wishList.storeName}"></c:out></td>
+					<td><c:out value="${wishList.title}"></c:out></td>
+					<%-- <td>
+						<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
+					<a href="${url }">${rview.title }</a></td> --%>
+					<td><input type="checkbox" name="vehicle" value="Car" ></td>	
+					
+			
+					</tr>
+		
+				</c:forEach>
+				
+				
 			</table>
 
 			<br>
@@ -760,6 +764,7 @@ fieldset .help {
 			
 			
 			<a href="update_u.jsp"><input type="button" name="button" value="장바구니에서 삭제">  </a>
+			<input type="hidden" id="label" value="2"/>
 			<a href="update_u.jsp"><input type="button" name="button" value="즉시구매"> </a>
 			<a href="update_u.jsp"><input type="button" name="button" value="쿠폰 검색하러 가기"></a>
 			

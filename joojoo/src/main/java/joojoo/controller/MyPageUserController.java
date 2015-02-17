@@ -1,9 +1,12 @@
 package joojoo.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import joojoo.entity.All;
 import joojoo.entity.Users;
-import joojoo.entity.WishList;
+
 import joojoo.service.CouponService;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
@@ -19,7 +22,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.util.WebUtils;
 @Controller
 @SessionAttributes({"loginUser","loginOwner"})
 public class MyPageUserController {
@@ -52,11 +54,16 @@ public class MyPageUserController {
 	    	model.addAttribute("updateUser", new Users());
 	    	
 	    	LOG.trace("수업 로그인 유저 세션정보"+session.getAttribute("loginUser").toString());
-	    	model.addAttribute("label",2);
-	    	WishList w = new WishList();
-	    	//wishListService.showAllWishList(userId);
-	    	model.addAttribute("wishList",new WishList());
 	    	
+	    	//tab
+	    	model.addAttribute("label",2);
+	    	
+	    	
+	    	//<---------wishList--------->
+	    	String loginUserId = ((All)session.getAttribute("loginUser")).getUserId();
+	    	List<All> wishLists = wishListService.showAllWishList(loginUserId);
+	    	model.addAttribute("wishList",wishLists);
+	    	LOG.trace("수업"+wishLists);
 	    	
 			return "info/member_user";
 	    	}

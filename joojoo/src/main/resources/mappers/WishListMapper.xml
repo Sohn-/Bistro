@@ -17,9 +17,11 @@
   	</delete>
   	
   	<select id = "getWishListsByUserId" resultType="All">
-	select *
-	from wish_list
-	where user_id=#{userId}
+		select * 
+		from wish_list w
+		join event_comment e using(comment_code)	
+		join stores s using(store_code)
+		where w.user_id=#{userId}	
 	
 	</select>
   
