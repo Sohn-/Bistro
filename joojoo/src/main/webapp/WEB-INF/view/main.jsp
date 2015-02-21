@@ -352,7 +352,7 @@ fieldset .help {
 	<div id="accordion-resizer" class="container" align="center" style="background-color: gray">    
     
     	<!-- 카테고리 구분 테이블 -->
-	    <table width="80%" align="center" cellpadding="5" cellspacing="0"   border="1"  align="center" style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
+	    <table width="83%" align="center" cellpadding="5" cellspacing="0"   border="1"  align="center" style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
 		    <tr align="center">			   
 			    <td style="border: 1px gray solid;"><h4>상호명</h4></td>
 			    <td style="border: 1px gray solid;"><h4>지역</h4></td>
@@ -369,7 +369,7 @@ fieldset .help {
 	        
 		        <!-- 아코디언 카테고리 헤더 -->
 		        <div >
-			        <table width="90%" >
+			        <table width="88%" >
 				        <tr align="center">
 					        <td ><c:out value="${store.storeName}" /></td>
 					        <td ><c:out value="${store.regionName}" /></td>
