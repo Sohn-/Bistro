@@ -198,7 +198,7 @@ fieldset .help {
     <!-- 키워드 검색 부분 -->
     <div>      
 	    <c:url value="/main/keyword" var="action"></c:url>
-	    <form:form modelAttribute="category" method="get" action="${action}" >
+	    <form:form modelAttribute="category" method="post" action="${action}" >
 	    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20" />       
 	    <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
 	    </form:form> 
