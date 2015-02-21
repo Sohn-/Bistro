@@ -231,8 +231,9 @@ fieldset .help {
 			    <td style="border: 1px gray solid;"><h4>글번호</h4></td>
 			    <td style="border: 1px gray solid;"><h4>작성자</h4></td>
 			    <td style="border: 1px gray solid;"><h4>글제목</h4></td>
-			    <td style="border: 1px gray solid;"><h4></h4><td>
-			    <td style="border: 1px gray solid;"><h4>이벤트</h4></td>
+			    <td style="border: 1px gray solid;"><h4>작성시간</h4><td>
+			    <td style="border: 1px gray solid;"><h4>가게이름</h4></td>
+			    <td style="border: 1px gray solid;"><h4>평균별점</h4></td>
 		    </tr>
 	    </table> <!-- 카테고리 구분 테이블 끝 -->  		
 		 <div id="accordion" class="container">         
@@ -303,11 +304,12 @@ fieldset .help {
     <!--    </table> -->
        </div>
        </div>
+       <br>
        <p>
 
          
            <c:url value="/review/write" var="url"></c:url>
-		   <a href="${url }"><button>글 쓰기</button> </a>
+		   <a href="${url }"> <input type="button" value="글쓰기" align="left" /></a>
        </p>
        </section>
        </div>

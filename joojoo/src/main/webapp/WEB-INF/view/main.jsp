@@ -111,7 +111,7 @@
 	        var showing = scrollContent.width() + parseInt( scrollContent.css( "margin-left" ), 10 );
 	        var gap = scrollPane.width() - showing;
 	        if ( gap > 0 ) {
-	          scrollContent.css( "margin-left", parseInt( scrollContent.css( "margin-left" ), 10 ) + gap );
+	          scrollContent.css( "margin-left", parseInt( scrollContent.css( "margin-left" ), 10 ));
 	        }
 	    }
 	 
@@ -152,14 +152,14 @@ fieldset .help {
 #header{
 	background-image: url(images/main.jpg);
 }
-  	.scroll-pane { overflow: auto; width: 100%; float:left;}
+   	.scroll-pane { overflow: auto; width: 100%; float:left;}
   	.scroll-content { width: 6600px; float: left; }
-  	.scroll-content-item { width: 300px; height: 300px; float: left; margin: 10px; font-size: 2em; line-height: 96px; text-align: center; }
- 	.scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
+  	.scroll-content-item { width: 300px; height: 300px; float: left; margin: 0; font-size: 2em; line-height: 96px; text-align: center; }
+ 	.scroll-bar-wrap { clear: left; padding: 0 0 0 0; margin: 0 -1px -1px -1px; }
   	.scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
   	.scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
   	.scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
-  	.scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }  
+  	.scroll-bar-wrap .ui-slider-handle .ui-icon { margin: 0 auto 0; position: relative; top: 50%; }  
 </style>
 
 </head>
@@ -294,9 +294,9 @@ fieldset .help {
       
 	<div class="row" > 
 	<!-- 바디 이벤트 스크롤 시작 -->   
-	<div class="scroll-pane ui-widget ui-widget-header ui-corner-all" style="background-color: gray">
+	<div class="scroll-pane ui-widget ui-widget-header ui-corner-all" style="background-color: black">
 		<!-- 이벤트 창 -->
-		<div class="scroll-content" style="background-color: gray" ><!-- 이벤트 스크롤 부분 배경색 지정 가능 -->		   
+		<div class="scroll-content" style="background-color: black" ><!-- 이벤트 스크롤 부분 배경색 지정 가능 -->		   
 		    <!-- 이벤트 사진 및 상점이름 시작-->
 		    <c:forEach items="${events}" var="event" varStatus="status">
 			    <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
