@@ -40,7 +40,7 @@
    
    $(document).ready(function(){
 	   
-	   $("#idDupCheck").click(function(){
+	   $("#idDupCheck2").click(function(){
 			if($("#joinId2").val()==""){
 				alert("아이디를 입력해주세요.");
 				$("#joinId2").focus();		
@@ -51,7 +51,7 @@
 			
 		});
 		
-		$("#mailDupCheck").click(function(){
+		$("#mailDupCheck2").click(function(){
 			if($("#joinMail2").val()==""){
 				alert("이메일을 입력해 주세요.");
 				$("#joinMail2").focus();		
@@ -387,7 +387,7 @@ fieldset .help {
          <div id="footer" class="container" align="left">
             <div class="row">
             <c:url value="/join/result/user" var="action"></c:url> 
-<form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4" > 
+			<form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4" > 
 
     <h1 align="center">일 반 회 원 가 입</h1>
     
@@ -428,7 +428,7 @@ fieldset .help {
    <%--     <h1 align="center">업 주 회 원 가 입</h1>
          <h3>아이디</h3><form:input path="ownerId" id="joinId2" placeholder="Id" required="true"/>
         
-        <input type="button" value="중복확인" id="idDupCheck"/><br>
+        <input type="button" value="중복확인" id="idDupCheck2"/><br>
        <input type="hidden" name="checked" id="checked"/><br>
        <h3>비밀번호 </h3><form:input path="ownerPassword" id="pass" type="password" required="true" /><br>
    

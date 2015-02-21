@@ -55,8 +55,6 @@ public class MyPageUserController {
 	    	
 	    	LOG.trace("수업 로그인 유저 세션정보"+session.getAttribute("loginUser").toString());
 	    	
-	    	//tab
-	    	model.addAttribute("label",2);
 	    	
 	    	
 	    	//<---------wishList--------->
@@ -65,9 +63,9 @@ public class MyPageUserController {
 	    	model.addAttribute("wishList",wishLists);
 	    	LOG.trace("수업"+wishLists);
 	    	
-			return "info/member_user";
+			return "info/user";
 	    	}
-	    	else return "info/member_owner";
+	    	else return "info/owner";
 		}
 	    
 	    

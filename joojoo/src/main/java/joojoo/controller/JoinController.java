@@ -65,9 +65,18 @@ public class JoinController {
 	   
 	   session.setAttribute("loginUser", joinUser);
 	   //sessionStatus.setComplete();
+      return "redirect:/join/success";
+   
+   }
+   
+   @RequestMapping(value="/join/success", method=RequestMethod.GET)
+   public String showUserSuccessPage2(){
+	  
       return "join/success";
    
    }
+   
+   
    
 
    @RequestMapping(value="/join/idCheck", method=RequestMethod.GET)
@@ -94,7 +103,7 @@ public class JoinController {
    ///////////////////// 여기서부터는 owner ///////////////////////
    
   
-  /* @RequestMapping(value="/join/join_o2", method=RequestMethod.POST)
+   @RequestMapping(value="/join/join_o2", method=RequestMethod.POST)
    public String showRegistStorePage(@ModelAttribute("joinOwner") Owners joinOwner,Model model){
 	   return "redirect:/join/result/owner";
    
@@ -120,7 +129,7 @@ public class JoinController {
 	   return "join/join_o2";
    
    }
-   */
+   
  
   
    @RequestMapping(value="/join/result/owner", method=RequestMethod.POST)
@@ -148,6 +157,16 @@ public class JoinController {
    
    @RequestMapping(value="/test", method=RequestMethod.GET)
    public String showRegistStorePage3(){
+	   
+	
+	
+	   
+	   return "redirect:/test2";
+   
+   }
+   
+   @RequestMapping(value="/test2", method=RequestMethod.GET)
+   public String showRegistStorePage32(){
 	   
 	
 	

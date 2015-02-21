@@ -87,7 +87,7 @@ fieldset .help {
 
 
 #header {
-	background-image: url(images/main.jpg);
+	background-image: url(../images/main.jpg);
 }
 
 label {
@@ -111,7 +111,7 @@ fieldset .help {
 </head>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-	<div id="header-wrapper" style="background-image: url(images/main.jpg)">
+	<div id="header-wrapper" style="background-image: url(../images/main.jpg)">
 		<div id="header" class="container">
 			<h1 id="logo"><a href="<%=request.getContextPath()%>/main">JooJooclub</a></h1>
 			<p>Welcom To JooJooClub</p>
