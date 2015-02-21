@@ -224,7 +224,7 @@ fieldset .help {
 	    </td>
 	    </tr>	    
 	    </table>	    	   
-	    </form:form> 	  
+	    </form:form>
     </div><!-- 키워드 검색 부분 끝 -->             
 	</div><!-- 헤더 끝 -->       
 	</div><!-- 헤더 래퍼 끝 -->

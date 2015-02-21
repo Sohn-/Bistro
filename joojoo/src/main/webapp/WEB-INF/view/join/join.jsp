@@ -93,7 +93,7 @@
 	    password2.addEventListener('change', checkPasswordValidity, false);
 
 	    
-	    var form = document.getElementById('form');
+	    var form = document.getElementById('form2');
 	    form.addEventListener('submit', function() {
 	    	if($("#checked").val()==""){
 				alert("아이디 중복체크 해주세요.");
@@ -326,6 +326,9 @@ fieldset .help {
 .ui-tooltip {
    width: 200px;
 }
+#header{
+	background-image: url(images/main.jpg);
+}
 </style>
 <%-- <script>
 
@@ -350,30 +353,36 @@ fieldset .help {
    }
 </script> --%>
 </head>
-<c:url value="<%=request.getContextPath() %>" var="path"></c:url>
-<body class="homepage" bgcolor=#333323>
-   <div id="header-wrapper" style= "background-image: url(images/main.jpg)">
-
-      <div id="header" class="container">
-
-         <!-- Logo -->
-         <h1 id="logo">
-            <a href="<%=request.getContextPath() %>/main">JooJooclub</a>
-         </h1>
-         <p>Welcom To JooJooClub</p>
-         <div align="right">
-            <nav id="nav">
-            <ul>
-               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/main"><span>Home</span></a></li>
-               <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
-               <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
-               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info/member"><span>MyPage</span></a></li>
-               <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li>
-            </ul>
-            </nav>
-         </div>
-      </div>
-   </div>
+<c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
+	<div id="header-wrapper">                        
+	<div id="header" class="container"> 
+	<h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
+	<p>Welcom To JooJooClub</p>
+	
+	<!-- 헤더 메뉴 -->
+	<div align="right">
+		<nav id="nav">
+			<ul>				
+				<c:if test="${empty loginUser }">
+				
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+			    <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
+				
+				</c:if>			
+				<c:if test="${!empty loginUser }">
+				<li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span>
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/logout"><span>Logout</span></a>				
+				</c:if>
+		    </ul>
+	    </nav>
+    </div><!-- 헤더 메뉴 끝 --> 
+    </div>
    <img  src="images/bar.png" style="width: 100%">
  <div id="features-wrapper">
       <section id="features" class="container"> 
@@ -423,9 +432,9 @@ fieldset .help {
             <div class="row2">
 
               <c:url value="/join/join_o2" var="action"></c:url> 
-          <form:form  modelAttribute="joinOwner" method="post" action="${action} " id="form" class="form-4"> 
+          <form:form  modelAttribute="joinOwner" method="post" action="${action} " id="form2" class="form-4"> 
 
-   <%--     <h1 align="center">업 주 회 원 가 입</h1>
+     <h1 align="center">업 주 회 원 가 입</h1>
          <h3>아이디</h3><form:input path="ownerId" id="joinId2" placeholder="Id" required="true"/>
         
         <input type="button" value="중복확인" id="idDupCheck2"/><br>
@@ -440,12 +449,12 @@ fieldset .help {
        
     
         <h3>메일</h3><form:input path="ownerMail" id="joinMail2" type="email" required="true"/><br>
-        <input type="button" value="중복확인" id="mailDupCheck"/><br>
+        <input type="button" value="중복확인" id="mailDupCheck2"/><br>
          <input type="hidden" name="checked2" id="checked2"/><br>
         <h3>휴대전화</h3><form:input path="ownerPhone" required="true"/><br>
          <h3>사업자등록번호</h3><form:input path="licenseNumber" id="joinLicense" required="true"/><br>
       <input type="button" value="중복확인" id="licenseDupCheck"/><br>
-         <input type="hidden" name="checked3" id="checked3"/><br> --%>
+         <input type="hidden" name="checked3" id="checked3"/><br> 
    
        <input type="submit" id="next" value="다음" />
                   </div>
