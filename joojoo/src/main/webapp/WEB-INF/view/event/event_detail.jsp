@@ -662,7 +662,7 @@ fieldset .help {
 	<div align="center" class="container" >
 	<br><br>
 	<div  style="background-color: rgb(255, 195, 185);" >
-		<h2>이벤트 글 제목    ${eventDetail.title}</h2>
+		<h2>${eventDetail.title}</h2>
 	
 
 	</div>	
@@ -723,7 +723,9 @@ fieldset .help {
 		<br>
 		<div align="right">
 		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal1">장바구니담기</button>
-		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">구매하기</button>
+		<a href="<%=request.getContextPath() %>/buy_coupon?eventCommentCode=${eventDetail.commentCode}" onclick="return checkBuy();">
+			<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">구매하기</button>
+		</a>
 	
 		</div>
 		<br>
@@ -762,7 +764,7 @@ fieldset .help {
 		        이벤트 페이지로 돌아가려면 [OK] 버튼을,<br>
 		        마이페이지 쿠폰관리에서 쿠폰을 확인 하려면 [쿠폰확인] 버튼을 누르세요.
 		      </div>
-		      <c:url value="/info/owner" var="action"></c:url>
+		      <c:url value="/info#tab4" var="action"></c:url>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
 		        <a href="${action }"><button type="button" class="btn btn-primary">쿠폰확인</button></a>

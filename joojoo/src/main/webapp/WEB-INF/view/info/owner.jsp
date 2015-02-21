@@ -123,15 +123,17 @@ fieldset div {
 	
 	$("#btn_update_store").bind("click", function(){
 		$.ajax({
-			url : "<%=request.getContextPath()%>/info/owner/update_store",
+			
+			url : "/info/owner/update_store",
 			type : "get",
 			data : 	[{"storeCode" : $("storeCode").val()},
-					{"storeName" : $("storeCode").val()},
+					{"storeName" : $("storeName").val()},
 					{"storeAdress" : $("#storeAdress").val()},
 					{"storephone" : $("#storephone").val()},
 					{"regionName" : $("#regionName").val()},
 					{"ownerId" : $("#ownerId").val()},
 					{"typeName" : $("#typeName").val()}],
+			dataType: "json",
 			success : function(data){
 				$("#ajax").remove();
 				alert(data);
@@ -214,7 +216,7 @@ fieldset div {
 								<tr>
 									<td>주주비어</td>
 									<td><a href="update_u.jsp"><input type="button"
-											id="btn_update_store" value="수정"></a>
+											id="btn_update_store" value="수정" onclick="ajaxStore();"></a>
 									<td><a href="update_u.jsp"><input type="button"
 											name="button" value="삭제"></a></td>
 								</tr>
@@ -364,25 +366,16 @@ fieldset div {
 								<th>요약</th>
 								<th>쿠폰확인</th>
 							</tr>
+						<c:forEach items="${allCoupon}" var="coupon">
+							<c:if test="${coupon.couponStatus eq '미사용'}">
 							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
+								<td>${coupon.storeName }</td>
+								<td>${coupon.content }</td>
 								<td><a href="update_u.jsp"><input type="button"
 										name="button" value="쿠폰상세정보"></a></td>
 							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="쿠폰상세정보"></a></td>
-							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="쿠폰상세정보"></a></td>
-								<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->
-							</tr>
+							</c:if>
+						</c:forEach>
 						</table>
 						사용쿠폰
 						<table style="width: 100%">
@@ -391,76 +384,40 @@ fieldset div {
 								<th>요약</th>
 								<th>후기 작성 및 확인</th>
 							</tr>
+							<c:forEach items="${allCoupon}" var="coupon">
+							<c:if test="${coupon.couponStatus eq '사용'}">
 							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
+								<td>${coupon.storeName }</td>
+								<td>${coupon.content }</td>
 								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="후기작성 및 확인"></a></td>
+										name="button" value="후기작성"></a></td>
 							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="후기작성 및 확인"></a></td>
-							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="후기작성 및 확인"></a></td>
-								<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->
-							</tr>
+							</c:if>
+							</c:forEach>
 						</table>
 						환불 쿠폰
 						<table style="width: 100%">
+							<c:forEach items="${allCoupon}" var="coupon">
+							<c:if test="${coupon.couponStatus eq '환불'}">
 							<tr>
-								<th>상호명</th>
-								<th>요약</th>
-								<th>환불정보</th>
-							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
+								<td>${coupon.storeName }</td>
+								<td>${coupon.content }</td>
 								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="환불정보확인"></a></td>
+										name="button" value="쿠폰상세정보"></a></td>
 							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="환불정보확인"></a></td>
-							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="환불정보확인"></a></td>
-								<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->
-							</tr>
+							</c:if>
+							</c:forEach>
 						</table>
 						기간만료 사용불가 쿠폰
 						<table style="width: 100%">
+							<c:forEach items="${allCoupon}" var="coupon">
+							<c:if test="${coupon.couponStatus eq '기간만료'}">
 							<tr>
-								<th>상호명</th>
-								<th>요약</th>
-								<th>만료정보</th>
+								<td>${coupon.storeName }</td>
+								<td>${coupon.content }</td>
 							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td>기간만료 쿠폰입니다.</td>
-							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td>기간만료 쿠폰입니다.</td>
-							</tr>
-							<tr>
-								<td>주주비어</td>
-								<td>서비스팍팍</td>
-								<td>기간만료 쿠폰입니다.</td>
-								<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->
-							</tr>
+							</c:if>
+							</c:forEach>
 						</table>
 					</div>
 				</div>

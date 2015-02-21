@@ -24,8 +24,8 @@ public class EventDetailController {
 	public String showDetail(@RequestParam("eventCommentCode") int eventCommentCode, Model model){
 		
 		All eventDetail = eventService.SearchOneEvent(eventCommentCode);
-		model.addAttribute("eventDetail");
-		logger.error(""+eventDetail);
+		model.addAttribute("eventDetail", eventDetail);
+		logger.error("eventDetail 확인---------------------"+eventDetail);
 		
 		return "event/event_detail";
 	}

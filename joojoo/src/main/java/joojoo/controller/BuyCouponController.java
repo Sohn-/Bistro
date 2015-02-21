@@ -61,7 +61,7 @@ public class BuyCouponController {
 			for(All coupon : coupons){
 				if(coupon.getCommentCode() == eventCommentCode){
 					isBuy=true;
-					model.addAttribute("isBuy", isBuy);	//이미 구매한 구폰이면 check를 트루로
+					model.addAttribute("isBuy", isBuy);	//이미 구매한 쿠폰이면 check를 트루로
 				}
 			}
 			path = "event/event_detail";

@@ -45,9 +45,12 @@
 	
 	<select id= "getCouponByOwnerId" parameterType="String"
 						resultType="All">
-		select * 
-		from coupon 
-		where owner_id=#{ownerId}					
+		
+		select *
+		from coupon
+		join event_comment using(comment_code)
+		join stores using(store_code)
+		where coupon.owner_id=#{ownerId}					
 	</select>
 	
 	<select id= "getCouponsByCommentCode" parameterType="INTEGER"
