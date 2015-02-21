@@ -15,12 +15,55 @@
         p {width: 600px; text-align: right;}
         table thead tr th {background-color: gray;}
     </style>
-    <script type="text/javascript">
-    </script>
+ 
+     <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"  href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.dropotron.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
+<script src="js/init.js"></script>
 
     </head>
-    <body>
+    <c:url value="<%=request.getContextPath() %>" var="path"></c:url>
+<body class="homepage" bgcolor=#333323>
+   <div id="header-wrapper" style= "background-image: url(images/main.jpg)">
+
+      <div id="header" class="container">
+
+         <!-- Logo -->
+         <h1 id="logo">
+            <a href="<%=request.getContextPath() %>/main">JooJooclub</a>
+         </h1>
+         <p>Welcom To JooJooClub</p>
+         <div align="right">
+            <nav id="nav">
+            <ul>
+               <li><a class="icon fa-home" href="<%=request.getContextPath() %>/main"><span>Home</span></a></li>
+               <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+               <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>
+               <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info/member"><span>MyPage</span></a></li>
+               <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/info/cart"><span>Cart</span></a></li>
+            </ul>
+            </nav>
+         </div>
+      </div>
+   </div>
+   <img  src="images/bar.png" style="width: 100%"></img>
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
+   
        <!-- 검색 폼 영역 -->
 
        <form name="searchForm" action="" method="get">
@@ -75,6 +118,10 @@
            <c:url value="/review/write" var="url"></c:url>
 		   <a href="${url }"><button>글 쓰기</button> </a>
        </p>
+       </section>
+       </div>
+       
+       
     </body>
 
     </html>
