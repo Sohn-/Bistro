@@ -20,10 +20,8 @@
 </head>
 <body>
 
-<%@include file="jy/header.jsp"%>
 <c:url value="/test/test" var="url"></c:url>
 			<a href="${url }"><input type="button" value="n"> </a>
-<%@include file="jy/footer.jsp"%>
 
 </body>
 </html>
