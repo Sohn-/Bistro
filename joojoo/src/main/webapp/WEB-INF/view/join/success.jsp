@@ -11,10 +11,13 @@
 <!-- 버튼부트스트랩 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"  href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/style-desktop.css">
+<!-- <link rel="stylesheet"  href="../../css/style-1000px.css">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/style-desktop.css"> -->
 
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/style-1000px.css"/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/style-desktop.css"/>"/>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -195,7 +198,7 @@ fieldset .help {
 </head>
 <c:url value="<%=request.getContextPath() %>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-   <div id="header-wrapper" style= "background-image: url(../images/main.jpg)">
+   <div id="header-wrapper" style= "background-image: url(/images/main.jpg)">
 
       <div id="header" class="container">
 
@@ -217,7 +220,7 @@ fieldset .help {
          </div>
       </div>
    </div>
-   <img  src="../images/bar.png" style="width: 100%">
+   <img  src="/images/bar.png" style="width: 100%">
    
    <c:url value="/info/member" var="url"></c:url>
 <a href="${url }"><input type="button" value="마이페이지가기"> </a>

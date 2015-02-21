@@ -65,11 +65,11 @@ public class JoinController {
 	   
 	   session.setAttribute("loginUser", joinUser);
 	   //sessionStatus.setComplete();
-      return "redirect:/join/success";
+      return "redirect:/join/user/success";
    
    }
    
-   @RequestMapping(value="/join/success", method=RequestMethod.GET)
+   @RequestMapping(value="/join/user/success", method=RequestMethod.GET)
    public String showUserSuccessPage2(){
 	  
       return "join/success";
@@ -130,28 +130,7 @@ public class JoinController {
    
    }
    
-   /*@RequestMapping(value="/join/result", method=RequestMethod.GET)
-   public String showRegistStorePage(Model model){
-	  
-	   model.addAttribute("joinStore",new Stores());
-	   
-	   List<String> regionNames = new ArrayList<String>();
-	   regionNames.add("홍대");
-	   regionNames.add("신촌");
-	   regionNames.add("강남");
-	   model.addAttribute("regionNames",regionNames);
-	   
-	   List<String> typeNames = new ArrayList<String>();
-	   typeNames.add("바");
-	   typeNames.add("고깃집");
-	   typeNames.add("룸");
-	   model.addAttribute("typeNames",typeNames);
-	   
-	   
-	   return "join/join_o2";
-   
-   }
-   */
+  
  
   
    @RequestMapping(value="/join/result/owner", method=RequestMethod.POST)
@@ -165,13 +144,16 @@ public class JoinController {
 	   ownerService.addOwner(owner);
 	   LOG.trace("수업"+owner);
 	   storeService.addStore(joinStore);
-	   //sessionStatus.setComplete();
+	  
 	   session.setAttribute("loginOwner", owner);
-	   model.addAttribute("joinStore");
-	  /* Stores s = new Stores();
-	   s = (Stores)session.getAttribute("joinStore");
-	   */
-	 
+	  
+	  
+      return "redirect:/join/owner/success";
+   
+   }
+   
+   @RequestMapping(value="/join/owner/success", method=RequestMethod.GET)
+   public String showUserSuccessPage21(){
 	  
       return "join/success";
    
