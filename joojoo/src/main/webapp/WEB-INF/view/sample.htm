@@ -1,0 +1,29 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<TITLE>AJAX</TITLE>
+<!-- Ajax간이 라이브러리 jslb_ajax.js -->
+<script languege = "JavaScript"
+        src      = "../../lib/jslb_ajax.js"
+        charset  = "utf-8"></script>
+
+<script language = "JavaScript">
+<!--
+
+  //콜백 함수 ( 수신시에 실행됩니다 )
+  function on_loaded1(oj)
+  {
+    //응답을 취득하여, eval로 JavaScript화
+    eval("var res = "+oj.responseText)
+
+    //응답된 JSON의 test1 프로퍼티를 표시
+    alert(res.test1) 
+  }
+
+//-->
+</script>
+
+<form>
+  <input type    = "button"
+         value   = "test.data를 읽어 들여, JSON의 프로퍼티를 표시합니다"
+         onclick = "sendRequest(on_loaded1,'','GET','./test.dat',true,true)">
+</form>
+
