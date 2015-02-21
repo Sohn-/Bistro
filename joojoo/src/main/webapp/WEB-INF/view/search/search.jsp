@@ -274,21 +274,21 @@ fieldset .help {
               </div>
             </form:form>
          </div> --%>
-         
-         <div>      
-         	<c:url value="/main/keyword" var="action"></c:url>
-            <form:form modelAttribute="category" method="post" action="${action}">
-              <div class="row 90%">                    
-                  <form:input path="keyword" name="keyword" placeholder="keyWord" type="text"/>     
-              </div>    
-                  
-              <div class="row 80%">
-                  <div class="12u">                        
-                     <button type="submit" class="form-button-submit button icon fa-envelope">Search</button>
-                  </div>
-              </div>
-            </form:form>
-         </div>
+        <div align="center"   >    
+	    <c:url value="/main/keyword" var="action"></c:url>	   
+	    <form:form modelAttribute="category" method="post" action="${action}" >
+	    <table align="center">	   
+	    <tr> 
+	    <td width="500px">
+	    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="30"  /> 
+	    </td>
+	    <td>
+	    <button type="submit" class="form-button-submit button " style="height: 45px">Search</button>
+	    </td>
+	    </tr>	    
+	    </table>	    	   
+	    </form:form> 	  
+    </div><!-- 키워드 검색 부분 끝 -->             
        </div>
    </div>
    
@@ -303,37 +303,37 @@ fieldset .help {
       <ul>
          <li><a href=""><span>Region</span></a>
             <ul>
-               <li><a href="#">강남</a></li>
-               <li><a href="#">홍대</a></li>
-               <li><a href="#">이태원</a></li>
-               <li><a href="#">건대</a></li>
-               <li><a href="#">신촌</a></li>
+               	<li>&nbsp; &nbsp;홍대 &nbsp; &nbsp; &nbsp; <input type="radio" name="regionName" value="홍대"></li>
+               	<li>&nbsp; &nbsp;강남 &nbsp; &nbsp; &nbsp;&nbsp;<input type="radio" name="regionName" value="강남"></li>
+               	<li>&nbsp; &nbsp;이태원 &nbsp;&nbsp;<input type="radio" name="regionName" value="이태원"></li>
+               	<li>&nbsp; &nbsp;건대 &nbsp; &nbsp; &nbsp;  <input type="radio" name="regionName" value="건대"></li>
+               	<li>&nbsp; &nbsp;신촌 &nbsp; &nbsp; &nbsp; <input type="radio" name="regionName" value="신촌"></li>
             </ul>
          </li>
 
          <li><a href=""><span>Type</span></a>
             <ul>
-               <li><a href="#">호프</a></li>
-               <li><a href="#">고기집</a></li>
-               <li><a href="#">룸주점</a></li>
-               <li><a href="#">포장마차</a>
-               <li><a href="#">일식</a></li>
+               	<li>&nbsp; &nbsp;호프집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="호프집"></li>
+               	<li>&nbsp; &nbsp;고기집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="고기집"></li>
+               	<li>&nbsp; &nbsp;룸주점 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="룸주점"></li>
+               	<li>&nbsp; &nbsp;포장마차 &nbsp; &nbsp; <input type="radio" name="typeName" value="포장마차"></li>
+               	<li>&nbsp; &nbsp;일식 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="일식"></li>
             </ul>
          </li>
 
          <li><a href=""><span>Number</span></a>
             <ul>
-               <li><a href="#">4인이하</a></li>
-               <li><a href="#">5~10인 </a></li>
-               <li><a href="#">10~20인</a></li>
-               <li><a href="#">20인이상</a>
+             	<li>&nbsp; &nbsp;4인이하&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   <input type="radio" name="number" value="4인이하"></li>
+               	<li>&nbsp; &nbsp;5~10인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input type="radio" name="number" value="5~10인"></li>
+               	<li>&nbsp; &nbsp;10~20인 &nbsp; &nbsp; <input type="radio" name="number" value="10~20인"></li>
+               	<li>&nbsp; &nbsp;20인이상 &nbsp; &nbsp; <input type="radio" name="number" value="20인이상"></li>
             </ul>
          </li>
 
          <li><a href=""><span>Service</span></a>
             <ul>
-               <li><a href="#">서비스추가</a></li>
-               <li><a href="#">할인</a></li>
+               <li>&nbsp; &nbsp;서비스추가 &nbsp; <input type="radio" name="serviceType" value="포장마차"></li>
+               	<li>&nbsp; &nbsp;할인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="serviceType" value="일식"></li>
             </ul>
          </li>
 

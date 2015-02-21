@@ -1,14 +1,14 @@
 <%@page import="java.util.List"%>
 <%@page import="joojoo.entity.All"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>MyPage</title>
+
 
 <!--  //if empty 그거 써서...userId 가 empty가 아니면 인클루드... 유저면 member_u
             업주면 member_o -->
@@ -16,37 +16,49 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<!-- 버튼부트스트랩 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/style-1000px.css">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/style-desktop.css">
-<link rel="stylesheet"	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.dropotron.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
 
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
 <script type="text/javascript">
-<%	int label = (int)request.getAttribute("label");%>
-$(document).ready(function(){	
-    $(":checked").wrap("<span style='background-color:red'>");    
+
+$(document).ready(function(){
+	
+    $(":checked").wrap("<span style='background-color:red'>");
+    
     
     if($("#label").val()==2){
     	alert("2");
     	document.getElementById("tab2").focus();
-    } 
+    }
+    
+
+ 
 });
 
 	function mysubmit(sub){
@@ -55,7 +67,8 @@ $(document).ready(function(){
 			alert("비밀번호를 입력해주세요.");
 			$("#password").focus();	
 			
-		}		
+		}
+		
 		if($("#password2").val()==""){
 			alert("비밀번호 확인을 입력해주세요.");
 			$("#password2").focus();		
@@ -70,6 +83,54 @@ $(document).ready(function(){
 	
 	}
 
+	/* function Check_user(f) {
+		if (document.form1.userPassword.value == ""
+				|| document.form1.userId.value == "") {
+			$("#dialog").dialog({
+				autoOpen : false,
+				show : {
+					effect : "blind",
+					duration : 1000
+				},
+				hide : {
+					effect : "explode",
+					duration : 1000
+				}
+			});
+
+			$("#opener1").click(function() {
+				$("#dialog").dialog("open");
+			});
+			document.form1.userId.focus();
+			return false;
+		}
+		return true;
+	}
+
+	function Check_owner(f) {
+		if (document.form2.ownerPassword.value == ""
+				|| document.form2.ownerId.value == "") {
+			$("#dialog").dialog({
+				autoOpen : false,
+				show : {
+					effect : "blind",
+					duration : 1000
+				},
+				hide : {
+					effect : "explode",
+					duration : 1000
+				}
+			});
+
+			$("#opener2").click(function() {
+				$("#dialog").dialog("open");
+			});
+			document.form2.ownerId.focus();
+			return false;
+		}
+		return true;
+	} */
+
 	$(function() {
 		$("#tabs").tabs();
 	});
@@ -81,8 +142,19 @@ $(document).ready(function(){
 				at : "right+5 top-5"
 			}
 		});
-	});	
+	});
+	
+	
 </script>
+
+
+
+
+
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
 <style type="text/css">
 table, th, td {

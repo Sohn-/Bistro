@@ -1,3 +1,47 @@
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="joojoo.entity.Stores" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/joinfont.css"/>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+
+</script>
+
+
+</head>
+<body>
+
+	<c:url value="/join/result/owner" var="action"></c:url>
+ <form:form  modelAttribute="joinStore" method="post" action="${action} "  id="form" class="form-4">
+   	<h1>가게를 등록 해 주세요!</h1>
+   	<h3>가게 이름</h3><form:input path="storeName"  placeholder="상호명" required="true"/>
+    <h3>가게 전화</h3><form:input path="storePhone"  placeholder="전화번호" required="true"/>
+    <h3>위치 선택</h3><form:select path="regionName"  items="${regionNames }" required="true"/>
+    
+   
+    
+    <h3>가게 주소</h3><form:input path="storeAdress"  placeholder="상세주소" required="true"/>
+    <h3>위치 선택</h3><form:select path="typeName"  items="${typeNames }" required="true"/>
+    <form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>
+    
+   
+     <input type="submit" value="등록완료" />
+      
+
+</form:form>
+
+
+</body>
+</html> --%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -11,13 +55,10 @@
 <!-- 버튼부트스트랩 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<!-- <link rel="stylesheet"  href="../../css/style-1000px.css">
-<link rel="stylesheet" href="../../css/style.css">
-<link rel="stylesheet" href="../../css/style-desktop.css"> -->
+<link rel="stylesheet"  href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
 
-<link type="text/css" rel="stylesheet" href="<c:url value="/css/style-1000px.css"/>"/>
-<link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"/>"/>
-<link type="text/css" rel="stylesheet" href="<c:url value="/css/style-desktop.css"/>"/>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -198,7 +239,7 @@ fieldset .help {
 </head>
 <c:url value="<%=request.getContextPath() %>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-   <div id="header-wrapper" style= "background-image: url(/images/main.jpg)">
+   <div id="header-wrapper" style= "background-image: url(images/main.jpg)">
 
       <div id="header" class="container">
 
@@ -220,12 +261,7 @@ fieldset .help {
          </div>
       </div>
    </div>
-   <img  src="/images/bar.png" style="width: 100%">
-   
-   <c:url value="/info/member" var="url"></c:url>
-<a href="${url }"><input type="button" value="마이페이지가기"> </a>
-
-
+   <img  src="images/bar.png" style="width: 100%">
  <div id="features-wrapper">
       <section id="features" class="container"> 
    

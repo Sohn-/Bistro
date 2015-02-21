@@ -52,13 +52,6 @@ public class JoinController {
 	  else return "redirect:/";//일단 메인으로 가도록..
    }
    
-   @RequestMapping(value="/join/user", method=RequestMethod.GET)
-   public String showUserJoinPage(Model model){
-	   //Users users = new Users();
-	   model.addAttribute("joinUser", new Users());
-	   return "join/join_u";
-   
-   }
    
    @RequestMapping(value="/join/result/user", method=RequestMethod.POST)
    public String showUserSuccessPage(@ModelAttribute Users joinUser,Model model,
@@ -72,9 +65,18 @@ public class JoinController {
 	   
 	   session.setAttribute("loginUser", joinUser);
 	   //sessionStatus.setComplete();
+      return "redirect:/join/user/success";
+   
+   }
+   
+   @RequestMapping(value="/join/user/success", method=RequestMethod.GET)
+   public String showUserSuccessPage2(){
+	  
       return "join/success";
    
    }
+   
+   
    
 
    @RequestMapping(value="/join/idCheck", method=RequestMethod.GET)
@@ -100,20 +102,15 @@ public class JoinController {
    }
    ///////////////////// 여기서부터는 owner ///////////////////////
    
-   @RequestMapping(value="/join/owner", method=RequestMethod.GET)
-   public String showOwnerJoinPage(Model model){
-	   model.addAttribute("joinOwner", new Owners());
-	   return "join/join_o";
-   
-   }
-   
+  
    @RequestMapping(value="/join/join_o2", method=RequestMethod.POST)
    public String showRegistStorePage(@ModelAttribute("joinOwner") Owners joinOwner,Model model){
-	   return "redirect:/join/result/owner";
+	   return "redirect:/join/store";
    
    }
-   @RequestMapping(value="/join/result/owner", method=RequestMethod.GET)
+   @RequestMapping(value="/join/store", method=RequestMethod.GET)
    public String showRegistStorePageUpdate(Model model){
+	  
 	   model.addAttribute("joinStore",new Stores());
 	   
 	   List<String> regionNames = new ArrayList<String>();
@@ -129,12 +126,13 @@ public class JoinController {
 	   model.addAttribute("typeNames",typeNames);
 	   
 	   
-	   return "/join/join_o2";
+	   return "join/join_o2";
    
    }
    
+  
  
-   
+  
    @RequestMapping(value="/join/result/owner", method=RequestMethod.POST)
    public String showOwnerSuccessPage(@ModelAttribute("joinStore") Stores joinStore
 		   							,HttpSession session,
@@ -146,15 +144,38 @@ public class JoinController {
 	   ownerService.addOwner(owner);
 	   LOG.trace("수업"+owner);
 	   storeService.addStore(joinStore);
-	   //sessionStatus.setComplete();
+	  
 	   session.setAttribute("loginOwner", owner);
-	   model.addAttribute("joinStore");
-	  /* Stores s = new Stores();
-	   s = (Stores)session.getAttribute("joinStore");
-	   */
-	 
+	  
+	  
+      return "redirect:/join/owner/success";
+   
+   }
+   
+   @RequestMapping(value="/join/owner/success", method=RequestMethod.GET)
+   public String showUserSuccessPage21(){
 	  
       return "join/success";
+   
+   }
+   
+   @RequestMapping(value="/test", method=RequestMethod.GET)
+   public String showRegistStorePage3(){
+	   
+	
+	
+	   
+	   return "redirect:/test2";
+   
+   }
+   
+   @RequestMapping(value="/test2", method=RequestMethod.GET)
+   public String showRegistStorePage32(){
+	   
+	
+	
+	   
+	   return "join/test3";
    
    }
    
@@ -189,17 +210,6 @@ public class JoinController {
    
    }
    
-   @RequestMapping(value="/test", method=RequestMethod.GET)
-   public String showRegistStorePag2e(){
-	   return "join/test";
-   
-   }
-   
-   @RequestMapping(value="/test/test", method=RequestMethod.GET)
-   public String showRegistStorePag24e(){
-	   return "join/test2";
-   
-   }
-   
+ 
    
 }

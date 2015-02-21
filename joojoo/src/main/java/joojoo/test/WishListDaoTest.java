@@ -22,7 +22,7 @@ public class WishListDaoTest {
 	WishListDao dao;
 	
 	public WishListDaoTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
 		dao = ctx.getBean(WishListDao.class);
 		
 	}
@@ -38,7 +38,7 @@ public class WishListDaoTest {
 	public void insertTest(){
 	
 		WishList wishList1 = new WishList();
-		wishList1.setCommentCode(4);
+		wishList1.setCommentCode(1);
 		wishList1.setUserId("user");
 	
 		

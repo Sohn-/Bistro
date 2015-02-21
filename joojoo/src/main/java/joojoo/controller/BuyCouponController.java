@@ -17,7 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller
+//@Controller
 public class BuyCouponController {
 	static final Logger logger = LoggerFactory
 			.getLogger(BuyCouponController.class);
@@ -44,7 +44,8 @@ public class BuyCouponController {
 		
 		return path;
 	}
-	
+
+
 	@RequestMapping(value="/buy_check")
 	public String checkBuy(@RequestParam("eventCommentCode") int eventCommentCode, Model model, HttpSession session){ //구매한건지 안한건지
 		String path = "event_detail";

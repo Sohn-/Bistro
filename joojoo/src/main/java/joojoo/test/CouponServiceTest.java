@@ -18,7 +18,7 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	CouponService service;
 	
 	public CouponServiceTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
 		service = ctx.getBean(CouponService.class);
 		
 	}
