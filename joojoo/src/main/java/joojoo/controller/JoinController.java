@@ -105,10 +105,10 @@ public class JoinController {
   
    @RequestMapping(value="/join/join_o2", method=RequestMethod.POST)
    public String showRegistStorePage(@ModelAttribute("joinOwner") Owners joinOwner,Model model){
-	   return "redirect:/join/result/owner";
+	   return "redirect:/join/store";
    
    }
-   @RequestMapping(value="/join/result/owner", method=RequestMethod.GET)
+   @RequestMapping(value="/join/store", method=RequestMethod.GET)
    public String showRegistStorePageUpdate(Model model){
 	  
 	   model.addAttribute("joinStore",new Stores());
@@ -130,6 +130,28 @@ public class JoinController {
    
    }
    
+   /*@RequestMapping(value="/join/result", method=RequestMethod.GET)
+   public String showRegistStorePage(Model model){
+	  
+	   model.addAttribute("joinStore",new Stores());
+	   
+	   List<String> regionNames = new ArrayList<String>();
+	   regionNames.add("홍대");
+	   regionNames.add("신촌");
+	   regionNames.add("강남");
+	   model.addAttribute("regionNames",regionNames);
+	   
+	   List<String> typeNames = new ArrayList<String>();
+	   typeNames.add("바");
+	   typeNames.add("고깃집");
+	   typeNames.add("룸");
+	   model.addAttribute("typeNames",typeNames);
+	   
+	   
+	   return "join/join_o2";
+   
+   }
+   */
  
   
    @RequestMapping(value="/join/result/owner", method=RequestMethod.POST)
