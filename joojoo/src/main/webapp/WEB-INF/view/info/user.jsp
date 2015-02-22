@@ -662,6 +662,10 @@ fieldset .help {
 			</div>
 		</div>
 	</div>
+	
+	   <img  src="images/bar.png" style="width: 100%">
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
 
 	<div id="tabs">
 	
@@ -768,7 +772,7 @@ fieldset .help {
 		<div id="tab3">
 			<div id="footer" class="container" align="left">
 				미사용 쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
@@ -792,7 +796,7 @@ fieldset .help {
 				</tr>
 			</table>
 				사용쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
@@ -816,7 +820,7 @@ fieldset .help {
 				</tr>
 			</table>
 				환불 쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
@@ -840,7 +844,7 @@ fieldset .help {
 				</tr>
 			</table>
 				기간만료 사용불가 쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
@@ -865,6 +869,8 @@ fieldset .help {
 			</table>
 			</div>
 		</div>
+		</div>
+		</section>
 		</div>
 </body>
 </html>

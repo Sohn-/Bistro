@@ -305,12 +305,12 @@ fieldset .help {
        </div>
        </div>
        <br>
-       <p>
+<%--        <p>
 
          
            <c:url value="/review/write" var="url"></c:url>
 		   <a href="${url }"> <input type="button" value="글쓰기" align="left" /></a>
-       </p>
+       </p> --%>
        </section>
        </div>
        </div>
