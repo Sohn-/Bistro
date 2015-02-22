@@ -43,6 +43,15 @@
 		where user_id=#{userId}					
 	</select>
 	
+	<select id= "getCouponsByStatusAndUserId" parameterType="String"
+						resultType="All">
+		select * 
+		from Coupon 
+		join event_comment using(comment_code)
+		join stores using(store_code)
+		where user_id=#{userId}	and coupon_status=#{couponStatus}					
+	</select>
+	
 	<select id= "getCouponByOwnerId" parameterType="String"
 						resultType="All">
 		
@@ -64,7 +73,7 @@
 						resultType="All">
 		select * 
 		from coupon 
-		where coupon_status=#{couponStatus}					
+		where coupon_status=#{couponStatus}				
 	</select>
 	
 	<select id= "getCouponsByCouponCode" parameterType="String"
