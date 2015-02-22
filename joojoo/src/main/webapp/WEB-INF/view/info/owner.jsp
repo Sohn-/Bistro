@@ -188,7 +188,9 @@ fieldset div {
 			</div>
 		</div>
 	</div>
-
+   <img  src="images/bar.png" style="width: 100%">
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
 	<div id="tabs">
 		<ul>
 			<li><a href="#tab1">상점등록</a></li>
@@ -422,5 +424,8 @@ fieldset div {
 					</div>
 				</div>
 			</div>
+			</section>
+			</div>
+			
 </body>
 </html>
