@@ -105,4 +105,9 @@ public class CouponServiceImpl implements CouponService {
 		}
 		return result;
 	}
+
+	@Override
+	public List<All> getCouponsByUserIdAndStatus(Coupon coupon) {
+		return dao.getCouponsByStatusAndUserId(coupon);
+	}
 }

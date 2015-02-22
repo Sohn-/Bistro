@@ -21,6 +21,6 @@ public interface CouponService {
 	
 	int timeoverCoupon(String userId); //쿠폰 기간 만료[마이페이지 출력 전에 업데이트]
 	
-	
+	List<All> getCouponsByUserIdAndStatus(Coupon coupon);
 
 }

@@ -20,7 +20,7 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 	CouponDao dao;
 	
 	public CouponDaoImplTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
 		dao = ctx.getBean(CouponDao.class);
 		
 	}
@@ -52,13 +52,20 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		List<Coupon> getCouponsByOwnerId(String ownerId);
 		List<Coupon> getCouponsByStatus(int couponStatusCode);*/
 		
-		dao.getCouponsByOwnerId("sohn");
+		/*dao.getCouponsByOwnerId("sohn");
 		
 		//dao.getCouponsByOwnerId("sohn");
 		
-		dao.getCouponsByStatus(couponStatus);
+		dao.getCouponsByStatus(couponStatus);*/
 		
 		//dao.getCouponsByCouponCode(couponCode);
+		Coupon c = new Coupon();
+		c.setUserId("user");
+		c.setCouponStatus("미사용");
+		
+		LOG.trace("수업"+dao.getCouponsByStatusAndUserId(c));
+		
+		
 		
 	}
 }

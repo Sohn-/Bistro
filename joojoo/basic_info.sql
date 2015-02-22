@@ -85,5 +85,5 @@ values('제목','내용', 'user', 5, 1);
 
 insert into Coupon values('joojoo','sohn','user',1,'미사용');	
 	
-
-
+insert into Coupon values('joojoo','sohn','user',21,'미사용');	
+insert into wish_list(user_id, comment_code)values ('user',21)

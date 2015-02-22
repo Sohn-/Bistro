@@ -50,9 +50,7 @@
 $(document).ready(function(){
 	
     $(":checked").wrap("<span style='background-color:red'>");
-    
  
-
  
 });
 
@@ -139,15 +137,54 @@ $(document).ready(function(){
 		});
 	});
 	
-	$(function() {
-		$("#wishList_delete").click(function() {
-		$(".tr_check:checked").each(function(idx, row) {
-		var record = $(row).parents("tr");
-		console.log(record[0].innerText);
-		});
-		});
-		});
+	function wishListSubmit(sub){
+		if(sub==1){
+			
+			var arr 
+			= $('input[name=del_wishListCode]:checked').serializeArray().map(function(item)
+					{ return item.value });
+			var form = null;
+			if(arr != ""){
+				 form = document.getElementById("wishListForm");
+				 form.del_wishListCodes.value = arr;
 		
+				alert(form.del_wishListCodes.value);
+				form.action="../info/user/wishList/delete";
+				form.submit();
+			}	
+			else{
+				alert("삭제할 항목을 선택해 주세요!");
+			}
+			 
+		
+		 }
+		if(sub==2){
+		 document.updateForm.action="../info/member/delete";
+		 document.updateForm.submit();
+		}
+		}
+	
+	
+	function selectChkBox(frm) {
+		
+		var sum = 0;
+		var count = frm.wishListCheckBox.length;
+		var currentChance = frm.currentChance.value;
+		var afterChance = frm.afterChance.value;
+		  for(var i=0; i < count; i++ ){
+		       if( frm.wishListCheckBox[i].checked == true ){
+		    	
+			    sum += 1; 
+			   
+		       }
+		       
+		   }
+		  
+		  frm.wishListCount.value = sum;  
+		  frm.afterChance.value= currentChance-sum; 
+		 
+		}
+
 	
 	
 </script>
@@ -198,7 +235,7 @@ fieldset .help {
 }
 
 #header {
-	background-image: url(images/main.jpg);
+	background-image: url(../images/main.jpg);
 }
 
 .scroll-pane {
@@ -664,7 +701,7 @@ fieldset .help {
 					<li><a class="icon fa-cog"
 						href="<%=request.getContextPath()%>/join"><span>Join</span></a></li>
 					<li><a class="icon fa-retweet"
-						href="<%=request.getContextPath()%>/info/member"><span>MyPage</span></a></li>
+						href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
 					<li><a class="icon fa-sitemap"
 						href="<%=request.getContextPath()%>/info/cart"><span>Cart</span></a></li>
 				</ul>
@@ -673,7 +710,7 @@ fieldset .help {
 		</div>
 	</div>
 	
-	   <img  src="images/bar.png" style="width: 100%">
+	   <img  src="../images/bar.png" style="width: 100%">
  <div id="features-wrapper">
       <section id="features" class="container"> 
 
@@ -728,6 +765,8 @@ fieldset .help {
 		
 		<div id="tab2">
 
+			<form:form method="post" modelAttribute="del_wishListCodes" action="${action} " name="wishListForm" id="wishListForm" > 
+			<input type="hidden" name="del_wishListCodes"/>
 			<table style="width: 100%">
 				<tr>
 					<th>상호명</th>
@@ -740,10 +779,12 @@ fieldset .help {
 					<tr>
 					<td><c:out value="${wishList.storeName}"></c:out></td>
 					<td><c:out value="${wishList.title}"></c:out></td>
+					<%-- <td id="hd" hidden><c:out value="${wishList.wishListCode}"/></td> --%>
+					
 					<%-- <td>
 						<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
 					<a href="${url }">${rview.title }</a></td> --%>
-					<td><input type="checkbox" class="tr_check"/></td>	
+					<td><input type="checkbox"  onClick="selectChkBox(this.form);" name="wishListCheckBox" value="${wishList.wishListCode}"/></td>
 					
 			
 					</tr>
@@ -752,6 +793,7 @@ fieldset .help {
 				
 				
 			</table>
+			
 
 			<br>
 
@@ -762,19 +804,20 @@ fieldset .help {
 					<th>구매 결과 잔여 별</th>
 				</tr>
 				<tr>
-					<td>3</td>
-					<td>4</td>
-					<td>1</td>
+				<%-- <td><c:out value="${wishList.storeName}"></c:out></td> --%>
+					<td><input type="text" value="0" name="wishListCount" size="20" readonly /></td>
+
+					<td><input type="text" value="${loginUser.chance }" name="currentChance" size="20" readonly /></td>
+					<td><input type="text" value="${loginUser.chance }" name="afterChance" size="20" readonly /></td>
 				</tr>
 				
 			</table>
 			
+			<input type="button" onclick="wishListSubmit(1)" value="장바구니에서 삭제"/>
 			
-			<<input type="button" id="wishList_delete" name="button" value="장바구니에서 삭제">  </a>
-	
 			<a href="update_u.jsp"><input type="button" name="button" value="즉시구매"> </a>
 			<a href="update_u.jsp"><input type="button" name="button" value="쿠폰 검색하러 가기"></a>
-			
+			</form:form>
 			
 			
 		</div>
@@ -788,22 +831,16 @@ fieldset .help {
 					<th>요약</th>
 					<th>쿠폰확인</th>					
 				</tr>
+				
+				<c:forEach items="${nonUsedCoupons }" var="nonUsedCoupon">
 				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
+					<td><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
+					<td><c:out value="${nonUsedCoupon.title}"></c:out></td>
 					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>		
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
+				</c:forEach>
+				
+				
 			</table>
 				사용쿠폰
 				<table style="width: 90%">
@@ -812,22 +849,16 @@ fieldset .help {
 					<th>요약</th>
 					<th>후기 작성 및 확인</th>					
 				</tr>
+				
+				<c:forEach items="${usedCoupons }" var="usedCoupon">
 				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="후기작성 및 확인"></a> </td>				
+					<td><c:out value="${usedCoupon.storeName}"></c:out></td>
+					<td><c:out value="${usedCoupon.title}"></c:out></td>
+					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td><a href="update_u.jsp"><input type="button" name="button"value="후기작성 및 확인"></a></td>				
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="후기작성 및 확인"></a></td>		
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
+				</c:forEach>
+				
+				
 			</table>
 				환불 쿠폰
 				<table style="width: 90%">
@@ -836,22 +867,14 @@ fieldset .help {
 					<th>요약</th>
 					<th>환불정보</th>					
 				</tr>
+				
+				<c:forEach items="${refundCoupons }" var="refundCoupon">
 				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="환불정보확인"></a></td>				
+					<td><c:out value="${refundCoupon.storeName}"></c:out></td>
+					<td><c:out value="${refundCoupon.title}"></c:out></td>
+					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td><a href="update_u.jsp"><input type="button" name="button"value="환불정보확인"></a></td>		
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td><a href="update_u.jsp"><input type="button" name="button"value="환불정보확인"></a></td>		
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
+				</c:forEach>
 			</table>
 				기간만료 사용불가 쿠폰
 				<table style="width: 90%">
@@ -860,22 +883,13 @@ fieldset .help {
 					<th>요약</th>
 					<th>만료정보</th>					
 				</tr>
+				<c:forEach items="${timeOverCoupons }" var="timeOverCoupon">
 				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td>기간만료 쿠폰입니다.</td>
+					<td><c:out value="${timeOverCoupon.storeName}"></c:out></td>
+					<td><c:out value="${timeOverCoupon.title}"></c:out></td>
+					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>		
-					<td>기간만료 쿠폰입니다.</td>		
-				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>	
-					<td>기간만료 쿠폰입니다.</td>
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->						
-				</tr>
+				</c:forEach>
 			</table>
 			</div>
 		</div>
