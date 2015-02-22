@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
 import joojoo.entity.Stores;
+import joojoo.entity.Users;
 import joojoo.service.CouponService;
 import joojoo.service.EventCommentService;
 import joojoo.service.OwnerService;
@@ -43,7 +44,7 @@ public class MyPageOwnerController {
 	    
 	    @Autowired
 	    private EventCommentService eventService;
-	    
+
 	    @RequestMapping(value="/info", method=RequestMethod.GET)
 		public String showInfoControl(Model model,HttpSession session){
 	    	String path = null;
@@ -79,10 +80,13 @@ public class MyPageOwnerController {
 	    		
 		    	path = "info/owner";
 	    	}
+
+
 	    	else if(loginUserObj != null){
 	    		All loginUser = (All)loginUserObj;
 	    		String userId = loginUser.getUserId();
 	    		path ="info/user";
+
 	    	}
 	    	
 	    	else{	//로그인이 안된경우는 JSP에서 처리..

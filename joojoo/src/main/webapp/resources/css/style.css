@@ -881,7 +881,7 @@
     /* Size and position */
     
     width: 300px;
-    /* margin: 0px auto 30px; */
+    margin: 0px auto 30px; 
     padding: 10px;
     position: center;
 

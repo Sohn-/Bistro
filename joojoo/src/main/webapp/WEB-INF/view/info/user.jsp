@@ -51,12 +51,7 @@ $(document).ready(function(){
 	
     $(":checked").wrap("<span style='background-color:red'>");
     
-    
-    if($("#label").val()==2){
-    	alert("2");
-    	document.getElementById("tab2").focus();
-    }
-    
+ 
 
  
 });
@@ -640,7 +635,7 @@ fieldset .help {
 </head>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-	<div id="header-wrapper" style="background-image: url(images/main.jpg)">
+	<div id="header-wrapper" style="background-image: url(../images/main.jpg)">
 
 		<div id="header" class="container">
 
@@ -667,13 +662,17 @@ fieldset .help {
 			</div>
 		</div>
 	</div>
+	
+	   <img  src="images/bar.png" style="width: 100%">
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
 
 	<div id="tabs">
 	
 		
 		<ul>
 			<li><a href="#tab1">정보수정 및 탈퇴</a></li>
-			<li id ="tab2"><a href="#tab2">나의 장바구니</a></li>
+			<li><a href="#tab2">장바구니</a></li>
 			<li><a href="#tab3">나의 쿠폰</a></li>
 
 		</ul>
@@ -683,7 +682,7 @@ fieldset .help {
 			<div id="footer" class="container" align="left">
 
 				회원정보 수정 및 탈퇴 <br>
-				<form:form  modelAttribute="updateUser" method="post" action="${action} " name="updateForm" id="updateForm" > 
+				<%-- <form:form  modelAttribute="updateUser" method="post" action="${action} " name="updateForm" id="updateForm" > 
 					<fieldset>
 
 						<div style="font-style: normal; color: red;">
@@ -712,19 +711,19 @@ fieldset .help {
 						<input type="button" onclick="mysubmit(2)" value="탈퇴하기"/>
 
 					</fieldset>
-				</form:form>
+				</form:form> --%>
 			</div>
 		</div>
 		
 		
 		<div id="tab2">
 
-
 			<table style="width: 100%">
 				<tr>
 					<th>상호명</th>
 					<th>글제목</th>
-					<th>체크</th>					
+					<th>선택</th>
+									
 				</tr>
 				<c:forEach items="${wishList }" var="wishList">
 	
@@ -734,7 +733,7 @@ fieldset .help {
 					<%-- <td>
 						<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
 					<a href="${url }">${rview.title }</a></td> --%>
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>	
+					<td><input type="checkbox"></td>	
 					
 			
 					</tr>
@@ -773,7 +772,7 @@ fieldset .help {
 		<div id="tab3">
 			<div id="footer" class="container" align="left">
 				미사용 쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
@@ -797,7 +796,7 @@ fieldset .help {
 				</tr>
 			</table>
 				사용쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
@@ -821,7 +820,7 @@ fieldset .help {
 				</tr>
 			</table>
 				환불 쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
@@ -845,7 +844,7 @@ fieldset .help {
 				</tr>
 			</table>
 				기간만료 사용불가 쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
@@ -870,6 +869,8 @@ fieldset .help {
 			</table>
 			</div>
 		</div>
+		</div>
+		</section>
 		</div>
 </body>
 </html>

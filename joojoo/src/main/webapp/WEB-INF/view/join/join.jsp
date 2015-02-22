@@ -394,7 +394,7 @@ fieldset .help {
       </ul>
       <div id="tab1">
          <div id="footer" class="container" align="left">
-            <div class="row">
+            <div class="row2">
             <c:url value="/join/result/user" var="action"></c:url> 
 			<form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4" > 
 

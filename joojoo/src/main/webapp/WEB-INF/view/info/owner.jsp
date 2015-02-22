@@ -156,7 +156,8 @@ fieldset div {
 			}
 		});
 	}); --%>
-	function checkPassword(){
+	
+	$(document).ready(function(){
 		
 		var password1 = document.getElementById('pass');
 	    var password2 = document.getElementById('pass2');
@@ -212,7 +213,9 @@ fieldset div {
 			</div>
 		</div>
 	</div>
-
+   <img  src="images/bar.png" style="width: 100%">
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
 	<div id="tabs">
 		<ul>
 			<li><a href="#tab1">상점등록</a></li>
@@ -288,9 +291,9 @@ fieldset div {
 						<div style="font-style: normal; color: red;">
 							<form:input path="ownerId" name="userId" 
 								title="Please provide your ID."	align="middle"></form:input>*<br> 
-							<form:input path="ownerPassword" name="password"
+							<form:input path="ownerPassword" id="pass"
 								title="Please provide your password"></form:input><br>
-							<input type="password" name="password2" value="${updateOwner.password }"
+							<input type="password" id="pass2" value="${updateOwner.password }"
 								title="Please provide your password2"><br>
 							<!-- <h3>비밀번호 </h3><form:input path="userPassword" id="pass" type="password" required="true" /><br>
         <h3>비밀번호 확인</h3>
@@ -305,7 +308,7 @@ fieldset div {
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
-					<a href="update_u.jsp"><input type="submit" name="updateOwner" value="수정하기" onclick="checkPassword();"></input></a> 
+					<button type="submit" name="updateOwner" value="수정하기"></button>
 					<a href="exit.jsp"><input type="button" name="button" value="회원탈퇴"></a>
 				</form:form>
 			</div>
@@ -338,7 +341,7 @@ fieldset div {
 			</table>				
 			<a href="update_u.jsp"><input type="button" name="button" value="새로운 이벤트 등록"> </a> 
 		</div>
-
+		
 		<div id="tab4">
 			<div id="footer" class="container" align="left">
 				미사용 쿠폰
@@ -404,5 +407,11 @@ fieldset div {
 			</div>
 		</div>
 	</div>
+
+					
+	<a href="update_u.jsp"><input type="button" name="button" value="새로운 이벤트 등록"> </a> 
+					
+					
+	
 </body>
 </html>
