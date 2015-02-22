@@ -31,6 +31,11 @@
 
 
  <script>
+ window.onload=function(){
+	 if(<%=request.getParameter("needLogin")%> == true){
+		 alert("로그인이 필요합니다.");
+	 }
+ }
 	function Check_user(f){ 
 		if (document.form1.userPassword.value == "" || document.form1.userId.value == "") 
 		{ 
@@ -298,6 +303,7 @@ fieldset .help {
       </div>
    </div>
    </section>
+   </div>
    </div>
    
 

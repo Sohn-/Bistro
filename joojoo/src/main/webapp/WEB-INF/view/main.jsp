@@ -111,7 +111,7 @@
 	        var showing = scrollContent.width() + parseInt( scrollContent.css( "margin-left" ), 10 );
 	        var gap = scrollPane.width() - showing;
 	        if ( gap > 0 ) {
-	          scrollContent.css( "margin-left", parseInt( scrollContent.css( "margin-left" ), 10 ) + gap );
+	          scrollContent.css( "margin-left", parseInt( scrollContent.css( "margin-left" ), 10 ));
 	        }
 	    }
 	 
@@ -152,14 +152,14 @@ fieldset .help {
 #header{
 	background-image: url(images/main.jpg);
 }
-  	.scroll-pane { overflow: auto; width: 100%; float:left;}
+   	.scroll-pane { overflow: auto; width: 100%; float:left;}
   	.scroll-content { width: 6600px; float: left; }
-  	.scroll-content-item { width: 300px; height: 300px; float: left; margin: 10px; font-size: 2em; line-height: 96px; text-align: center; }
- 	.scroll-bar-wrap { clear: left; padding: 0 4px 0 2px; margin: 0 -1px -1px -1px; }
+  	.scroll-content-item { width: 300px; height: 300px; float: left; margin: 0; font-size: 2em; line-height: 96px; text-align: center; }
+ 	.scroll-bar-wrap { clear: left; padding: 0 0 0 0; margin: 0 -1px -1px -1px; }
   	.scroll-bar-wrap .ui-slider { background: none; border:0; height: 2em; margin: 0 auto;  }
   	.scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
   	.scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
-  	.scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }  
+  	.scroll-bar-wrap .ui-slider-handle .ui-icon { margin: 0 auto 0; position: relative; top: 50%; }  
 </style>
 
 </head>
@@ -170,20 +170,11 @@ fieldset .help {
 	<div id="header" class="container"> 
 	<h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
 	<p>Welcom To JooJooClub</p>
-	
-	<!-- 헤더 메뉴 -->
+		<!-- 헤더 메뉴 -->
 	<div align="right">
 		<nav id="nav">
 			<ul>				
-				<c:if test="${empty loginUser }">
-				
-				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
-				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
-			    <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>			   
-			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
-				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
-				
-				</c:if>			
+					
 				<c:if test="${!empty loginUser }">
 				<li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span>
 				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>			   
@@ -191,17 +182,49 @@ fieldset .help {
 				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
 				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/logout"><span>Logout</span></a>				
 				</c:if>
+				<c:if test="${!empty loginOwner }">
+				<li><span>${loginOwner.ownerId}님</span>
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/logout"><span>Logout</span></a>				
+				</c:if>
+				<c:if test="${empty loginOwner} && ${!empty loginUser }">
+				
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+			    <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
+				</c:if>		
+				
+				<c:if test="${empty loginUser}">				
+				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
+				<li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+			    <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>			   
+			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
+				</c:if>	
 		    </ul>
 	    </nav>
     </div><!-- 헤더 메뉴 끝 -->   
     
+   
     <!-- 키워드 검색 부분 -->
-    <div>      
-	    <c:url value="/main/keyword" var="action"></c:url>
+    <div align="center"   >    
+	    <c:url value="/main/keyword" var="action"></c:url>	   
 	    <form:form modelAttribute="category" method="post" action="${action}" >
-	    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="20"/><br>       
-	    <button type="submit" class="form-button-submit button icon fa-envelope" style="position: center">Search</button>
-	    </form:form> 
+	    <table>	   
+	    <tr> 
+	    <td width="800px">
+	    <form:input path="keyword" name="keyword" placeholder="keyWord" type="text" maxlength="30"  /> 
+	    </td>
+	    <td>
+	    <button type="submit" class="form-button-submit button " style="height: 45px">Search</button>
+	    </td>
+	    </tr>	    
+	    </table>	    	   
+	    </form:form>
     </div><!-- 키워드 검색 부분 끝 -->             
 	</div><!-- 헤더 끝 -->       
 	</div><!-- 헤더 래퍼 끝 -->
@@ -213,86 +236,67 @@ fieldset .help {
    	
    	<!-- 바디 시작 -->   
 	<div id="features-wrapper">
-		<!-- 바디 카테고리 시작 -->     
-		
+		<!-- 바디 카테고리 시작 -->     		
  		<section id="features" class="container">  
  		<c:url var="action" value="/category"></c:url>
-         		<form:form action="${action}" modelAttribute="category">     
+        <form:form action="${action}" modelAttribute="category">     
 		<nav id="nav">      	
       	<ul>
-      	 <!-- 지역 카테고리 -->
-         <li ><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Region</span></button></a>
-            <ul>            
-            <li><form:input path="regionName" value="강남"/>강남</li>
-            <li><form:input path="regionName" value="건대"/>건대</li>            
-            <li><form:input path="regionName" value="신림"/>신림</li>
-            <li><form:input path="regionName" value="신촌"/>신촌</li>          
-            <li><form:input path="regionName" value="이태원"/>이태원</li>            
-            <li><form:input path="regionName" value="종로"/>종로</li>  
-            </ul>
-         </li>        
-
-
-		<!-- 업종 카테고리 -->
-         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Type</span></button></a>
+         <li><a href=""><span>Region</span></a>
             <ul>
-            <li><form:button path="typeName" value="바"/>바</li>
-            <li><form:button path="typeName" value="룸"/>룸</li>
-            <li><form:button path="typeName" value="고기집"/>고기집</li>            
-            <li><form:button path="typeName" value="횟집"/>횟집</li>
-            <li><form:button path="typeName" value="포차"/>포차</li>
-            <li><form:input path="typeName" value="호프"/>호프</li>  
-            <%--  <li><form:input path="typeName" value="4명이하"/>양식</li>
-            <li><form:input path="typeName" value="4명이하"/>일식</li>
-            <li><form:input path="typeName" value="4명이하"/>중식</li>
-            <li><form:input path="typeName" value="4명이하"/>치킨</li>
-            <li><form:input path="typeName" value="4명이하"/>퓨전술집</li>
-            <li><form:input path="typeName" value="4명이하"/>한식</li>
-            --%>
+               	<li>&nbsp; &nbsp;홍대 &nbsp; &nbsp; &nbsp; <input type="radio" name="regionName" value="홍대"></li>
+               	<li>&nbsp; &nbsp;강남 &nbsp; &nbsp; &nbsp;&nbsp;<input type="radio" name="regionName" value="강남"></li>
+               	<li>&nbsp; &nbsp;이태원 &nbsp;&nbsp;<input type="radio" name="regionName" value="이태원"></li>
+               	<li>&nbsp; &nbsp;건대 &nbsp; &nbsp; &nbsp;  <input type="radio" name="regionName" value="건대"></li>
+               	<li>&nbsp; &nbsp;신촌 &nbsp; &nbsp; &nbsp; <input type="radio" name="regionName" value="신촌"></li>
             </ul>
          </li>
 
-
-
-		<!-- 인원 카테고리 -->
-         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Number</span></button></a>
+         <li><a href=""><span>Type</span></a>
             <ul>
-               <li><form:button path="personsLevel" value="4명이하"/>4명이하</li>
-               <li><form:button path="personsLevel" value="5~10명"/>5~10명</li>
-               <li><form:button path="personsLevel" value="10명이상"/>10명이상</li>
-            </ul>
-         </li>
-         
-         <!-- 서비스 카테고리 -->
-         <li><a href=""><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span>Service</span></button></a>
-            <ul>
-               <li><form:button path="serviceTypeName" value="금액 할인"/>금액 할인</li>
-               <li><form:button path="serviceTypeName" value="서비스 메뉴 제공"/>서비스 메뉴 제공</li>
+               	<li>&nbsp; &nbsp;호프집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="호프집"></li>
+               	<li>&nbsp; &nbsp;고기집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="고기집"></li>
+               	<li>&nbsp; &nbsp;룸주점 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="룸주점"></li>
+               	<li>&nbsp; &nbsp;포장마차 &nbsp; &nbsp; <input type="radio" name="typeName" value="포장마차"></li>
+               	<li>&nbsp; &nbsp;일식 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="일식"></li>
             </ul>
          </li>
 
-		<!-- 카테고리 검색 버튼 -->
+         <li><a href=""><span>Number</span></a>
+            <ul>
+             	<li>&nbsp; &nbsp;4인이하&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   <input type="radio" name="number" value="4인이하"></li>
+               	<li>&nbsp; &nbsp;5~10인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input type="radio" name="number" value="5~10인"></li>
+               	<li>&nbsp; &nbsp;10~20인 &nbsp; &nbsp; <input type="radio" name="number" value="10~20인"></li>
+               	<li>&nbsp; &nbsp;20인이상 &nbsp; &nbsp; <input type="radio" name="number" value="20인이상"></li>
+            </ul>
+         </li>
+
+         <li><a href=""><span>Service</span></a>
+            <ul>
+               <li>&nbsp; &nbsp;서비스추가 &nbsp; <input type="radio" name="serviceType" value="포장마차"></li>
+               	<li>&nbsp; &nbsp;할인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="serviceType" value="일식"></li>
+            </ul>
+         </li>
+
          <!-- <li><input type="submit" value="Search"/></li> -->
          <li>
-         		
-         		<input type ="submit" class="btn btn-warning btn-sm"  value="Search"/>           
-       			
-        </li>
-        	
-                 
-      </ul>      
+            <button type="button" class="btn btn-warning btn-sm">Search</button>
+         </li>
+      </ul>   
      
       </nav>
      </form:form> 
       <!-- 바디 카테고리 끝 -->     
+        <br>
+        <br>
          
       <br>   
       
 	<div class="row" > 
 	<!-- 바디 이벤트 스크롤 시작 -->   
-	<div class="scroll-pane ui-widget ui-widget-header ui-corner-all" style="background-color: gray">
+	<div class="scroll-pane ui-widget ui-widget-header ui-corner-all" style="background-color: black">
 		<!-- 이벤트 창 -->
-		<div class="scroll-content" style="background-color: gray" ><!-- 이벤트 스크롤 부분 배경색 지정 가능 -->		   
+		<div class="scroll-content" style="background-color: black" ><!-- 이벤트 스크롤 부분 배경색 지정 가능 -->		   
 		    <!-- 이벤트 사진 및 상점이름 시작-->
 		    <c:forEach items="${events}" var="event" varStatus="status">
 			    <div class="scroll-content-item ui-widget-header" id="scroll" name="scroll">
@@ -348,7 +352,7 @@ fieldset .help {
 	<div id="accordion-resizer" class="container" align="center" style="background-color: gray">    
     
     	<!-- 카테고리 구분 테이블 -->
-	    <table width="80%" align="center" cellpadding="5" cellspacing="0"   border="1"  align="center" style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
+	    <table width="83%" align="center" cellpadding="5" cellspacing="0"   border="1"  align="center" style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
 		    <tr align="center">			   
 			    <td style="border: 1px gray solid;"><h4>상호명</h4></td>
 			    <td style="border: 1px gray solid;"><h4>지역</h4></td>
@@ -365,7 +369,7 @@ fieldset .help {
 	        
 		        <!-- 아코디언 카테고리 헤더 -->
 		        <div >
-			        <table width="90%" >
+			        <table width="88%" >
 				        <tr align="center">
 					        <td ><c:out value="${store.storeName}" /></td>
 					        <td ><c:out value="${store.regionName}" /></td>

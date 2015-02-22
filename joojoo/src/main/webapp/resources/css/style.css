@@ -1009,3 +1009,7 @@
 .no-placeholder .form-4 label {
     display: block;
 }
+#reviewlist{
+		position: center;
+		margin: 10px auto 30px;
+}

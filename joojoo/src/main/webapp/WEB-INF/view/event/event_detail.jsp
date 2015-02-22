@@ -33,18 +33,6 @@
 <script src="js/init.js"></script>
 
 <script>
-	$(function() {
-		$("#tabs").tabs();
-	});
-
-	$(function() {
-		var tooltips = $("[title]").tooltip({
-			position : {
-				my : "left top",
-				at : "right+5 top-5"
-			}
-		});
-	});
 </script>
 
 
@@ -155,82 +143,6 @@ fieldset .help {
 	display: inline-block;
 }
 </style>
-<script>
-	$(function() {
-		//scrollpane parts
-		var scrollPane = $(".scroll-pane"), scrollContent = $(".scroll-content");
-
-		//build slider
-		var scrollbar = $(".scroll-bar").slider({slide : function(event, ui) {
-			if (scrollContent.width() > scrollPane.width())
-			{
-				scrollContent.css(	"margin-left",	Math.round(ui.value/ 100* (scrollPane.width() - scrollContent.width()))+ "px");
-			}else{
-				scrollContent.css("margin-left", 0);}}	
-		});
-
-		//append icon to handle
-		var handleHelper = scrollbar.find(".ui-slider-handle").mousedown(
-				function() {
-					scrollbar.width(handleHelper.width());
-				}).mouseup(function() {
-			scrollbar.width("100%");
-		}).append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")
-				.wrap("<div class='ui-handle-helper-parent'></div>").parent();
-
-		//change overflow to hidden now that slider handles the scrolling
-		scrollPane.css("overflow", "hidden");
-
-		//size scrollbar and handle proportionally to scroll distance
-		function sizeScrollbar() {
-			var remainder = scrollContent.width() - scrollPane.width();
-			var proportion = remainder / scrollContent.width();
-			var handleSize = scrollPane.width()	- (proportion * scrollPane.width()); 
-			scrollbar.find(".ui-slider-handle").css({width : handleSize,"margin-left" : -handleSize / 2	});
-			handleHelper.width("").width(scrollbar.width() - handleSize);
-		}
-
-		//reset slider value based on scroll content position
-		function resetValue() {
-			var remainder = scrollPane.width() - scrollContent.width();
-			var leftVal = scrollContent.css("margin-left") === "auto" ? 0: parseInt(scrollContent.css("margin-left"));
-			var percentage = Math.round(leftVal / remainder * 100);
-			scrollbar.slider("value", percentage);
-		}
-
-		//if the slider is 100% and window gets larger, reveal content
-		function reflowContent() {
-			var showing = scrollContent.width()+ parseInt(scrollContent.css("margin-left"), 10);
-			var gap = scrollPane.width() - showing;
-			if (gap > 0) {	scrollContent.css("margin-left", parseInt(scrollContent.css("margin-left"), 10)+ gap);
-			}
-		}
-
-		//change handle position on window resize
-		$(window).resize(function() {
-			resetValue();
-			sizeScrollbar();
-			reflowContent();
-		});
-		//init scrollbar size
-		setTimeout(sizeScrollbar, 10);//safari wants a timeout
-	});
-
-	function Open_event(f) {
-		if (document.form1.userPassword.value == ""	|| document.form1.userId.value == "") {
-			$("#dialog").dialog({
-				autoOpen : false,show : {effect : "blind",duration : 1000},	hide : {effect : "explode",	duration : 1000}
-			});
-
-			$("#opener1").click(function() {
-				$("#dialog").dialog("open");
-			});
-			document.form1.userId.focus();
-			return false;
-		}
-		return true;
-	}
-</script>
 </head>
 
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
@@ -299,8 +211,12 @@ fieldset .help {
 		<br>
 		
 		<div align="right">
-			<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal1">장바구니담기</button>
+		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal1">장바구니담기</button>
+		
+		<c:url value="/buy_check?eventCommentCode=${eventDetail.commentCode}" var="action"></c:url> 
+		<a href="${action }">
 			<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">구매하기</button>
+		</a>
 		</div>
 		
 		<br>
@@ -326,32 +242,32 @@ fieldset .help {
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 		
-		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"	aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h4 class="modal-title">구매 성공</h4>
-					</div>
-					<div class="modal-body">
-						구매 성공하였습니다. <br> 이벤트 페이지로 돌아가려면 [OK] 버튼을,<br> 마이페이지
-						쿠폰관리에서 쿠폰을 확인 하려면 [쿠폰확인] 버튼을 누르세요.
-					</div>
-					<c:url value="/info/owner" var="action"></c:url>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-						<a href="${action }"><button type="button"
-								class="btn btn-primary">쿠폰확인</button></a>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		        <h4 class="modal-title">구매 성공</h4>
+		      </div>
+		      <div class="modal-body">
+		        구매 성공하였습니다. <br>
+		        이벤트 페이지로 돌아가려면 [OK] 버튼을,<br>
+		        마이페이지 쿠폰관리에서 쿠폰을 확인 하려면 [쿠폰확인] 버튼을 누르세요.
+		      </div>
+		      <c:url value="/info#tab4" var="action"></c:url>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+		        <a href="${action }"><button type="button" class="btn btn-primary">쿠폰확인</button></a>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 		
-			<div>
+		<div>
 			내용자리
-				${eventDetail.content}
+			${eventDetail.content}
 
-			</div>
-		</div>		
+		</div>
+	</div>		
 </body>
 </html>
