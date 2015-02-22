@@ -172,7 +172,7 @@ fieldset div {
 	    	}
 	    	else if(updateSuccess == false){
 	    		alert("회원정보 업데이트에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
-	    	}
+	    	} 
 			
 			$("#mailDupCheck").click(function(){
 				if($("#joinMail").val()==""){
@@ -199,11 +199,9 @@ fieldset div {
 		    password1.addEventListener('change', checkPasswordValidity, false);
 		    password2.addEventListener('change', checkPasswordValidity, false);
 	 
-		    /* alert($("#mailChecked").val()); */
-		    var form = document.getElementById('form');
-		    form.addEventListener('submit', function() {
-		    	alert("여기 왜 안들어가지?");
-		    	if($("#mailChecked").val()==""){
+		    var form2 = document.getElementById('form2');
+		    form2.addEventListener('submit', function() {
+		    	if($("#checked2").val()==""){
 					alert("이메일 중복체크 해주세요.");
 					event.preventDefault();
 				}
@@ -216,8 +214,31 @@ fieldset div {
 		        	 password1.setCustomValidity('');
 		        } 
 		    }, false);
+		    
+		   /*  var form3 = document.getElementById('form3');
+		    form3.addEventListener('submit', function() {
+		    	alert("check");
+		    	/* if($("#checked2").val()==""){
+					alert("이메일 중복체크 해주세요.");
+					event.preventDefault();
+				}
+		         checkPasswordValidity();
+		        if (!this.checkValidity()) {
+		            event.preventDefault();
+		           // updateErrorMessage();
+		            password1.focus();
+		        }else{
+		        	 password1.setCustomValidity('');
+		        }  
+		        
+		    }, false); */
 		});
-	
+		
+	/* 	function Open_modal(commentCode, title, content, storeName) {
+			document.querySelector("#modal_title" + commentCode).innerHTML = storeName
+					+ "(" + title + ")";
+			document.querySelector("#here" + commentCode).innerHTML = content;
+		} */
 
 </script>
 </head>
@@ -343,7 +364,7 @@ fieldset div {
 							<form:input path="ownerMail" id="joinMail" type="email"
 								title="Please provide your userEmail" required="true"></form:input>
 							<input type="button" value="중복확인" id="mailDupCheck"/><br>
-							<input type="hidden" name="mailChecked" id="mailChecked"/><br>
+							<input type="hidden" name="checked2" id="checked2"/><br>
 							전화번호	
 							<form:input path="ownerPhone" name="ownerPhone"
 								title="Please provide your userPhone" required="true"></form:input><br>
@@ -352,7 +373,7 @@ fieldset div {
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
-					<input type="submit" id="submit2" name="submit2" value="수정하기"></input>
+					<input type="submit" value="수정하기"></input>
 					<a href="exit.jsp"><input type="button" name="button" value="회원탈퇴"></a>
 				</form:form>
 			</div>
@@ -366,25 +387,63 @@ fieldset div {
 					<td>요약</td>
 					<td>글관리</td>
 				</tr>
+			<c:forEach items="${allEvent}" var="event" varStatus="status">
 				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>
-					<td><input type="checkbox" name="vehicle" value="Car"/></td>
-						</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>
-					<td><input type="checkbox" name="vehicle" value="Car"/></td>
+					<td>${event.title }</td>
+					<td>${event.content }</td>
+					<td><button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }"
+						<%-- onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');" --%>>
+					수정하기</button> </td>
 				</tr>
-				<tr>
-					<td>주주비어</td>
-					<td>서비스팍팍</td>
-					<td><input type="checkbox" name="vehicle" value="Car"/></td>
-					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->
-				</tr>
+			</c:forEach>
 			</table>				
-			<a href="update_u.jsp"><input type="button" name="button" value="새로운 이벤트 등록"> </a> 
+			<input type="button" name="button" value="새로운 이벤트 등록">
 		</div>
+		
+		<c:forEach items="${allEvent}" var="event" varStatus="status">
+			<c:url	value="/eventProcess?eventCommentCode=${status.current.commentCode }" var="action"></c:url>
+		<div class="modal fade" id="myModal${status.current.commentCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
+			<div class="modal-dialog"><div class="modal-content">
+				<!-- 모달 헤더 -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title"	id="modal_title${status.current.commentCode }"></h4>
+				</div>
+				<!-- 모달 바디 -->
+				<div class="modal-body" id="here${status.current.commentCode }">
+				<c:url value="/info/update_event" var="action"></c:url>
+				<form:form modelAttribute="updateEvent" method="post" action="${action}" id="form3" name="form3">
+					<fieldset>	
+						<div style="font-style: normal; color: red;">
+							<form:input path="commentCode" type="hidden" value="${status.current.commentCode }"></form:input>
+							제목
+							<form:input path="title" type="text"  maxLength="50" title="제목을 입력하세요." align="middle" required="true"></form:input><br>
+							내용
+							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
+							*이벤트 시작 시간
+							<form:input path="startDate" type="datetime" title="Please provide your userName" readonly="true"></form:input><br>
+							*이벤트 종료 시간
+							<form:input path="endDate" type="datetime" title="Please provide your userEmail" readonly="true"></form:input>
+							<form:input path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
+							서비스 종류	
+							<form:select path="serviceTypeName" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
+							인원	
+							<form:select path="personsLevel" items="${personsLevels }" title="인원을 선택하세요." required="true"></form:select><br>
+							*는 수정할 수 없는 정보입니다.
+						</div>
+					</fieldset>
+					<input type="submit" class="btn btn-warning btn-sm" value="수정하기"/>
+				</form:form>
+				</div>
+					<!-- 모달 푸터 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
+					</div>
+					
+				</div>	<!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		</c:forEach>
 		
 		<div id="tab4">
 			<div id="footer" class="container" align="left">
