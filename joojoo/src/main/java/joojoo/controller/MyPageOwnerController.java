@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import joojoo.entity.All;
 import joojoo.entity.Stores;
 import joojoo.service.CouponService;
+import joojoo.service.EventCommentService;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
 import joojoo.service.UserService;
@@ -40,6 +41,9 @@ public class MyPageOwnerController {
 	    @Autowired
 	    private CouponService couponService;
 	    
+	    @Autowired
+	    private EventCommentService eventService;
+	    
 	    @RequestMapping(value="/info", method=RequestMethod.GET)
 		public String showInfoControl(Model model,HttpSession session){
 	    	String path = null;
@@ -49,16 +53,35 @@ public class MyPageOwnerController {
 	    	
 	    	if(loginOwnerObj != null){
 	    		All loginOwner = (All)loginOwnerObj;
+	    		String ownerId = loginOwner.getOwnerId();
 	    		
+	    		///업주정보수정을 위한 코드
+	    		All updateOwner = ownerService.getOwnersByOwnerId(ownerId);
+	    		model.addAttribute("updateOwner", updateOwner);
+	    		///업주정보수정을 위한 코드 끝
+	    		
+	    		///이벤트글조회를 위한 코드
+	    		List<All> allEvent = eventService.SeachMyEvent(ownerId);
+		    	LOG.error("여기는 showOwnerEventPage");
+				LOG.trace("수업:"+allEvent);
+		    	
+		    	model.addAttribute("allEvent",allEvent);
+	    		path = "info/owner";
+	    		///이벤트글조회를 위한 코드 끝
+	    		
+	    		///쿠폰조회를 위한 코드
 	    		List<All> allCoupon = couponService.getCouponsByOwnerId(loginOwner.getOwnerId());
 		    	LOG.error("여기는 showOwnerCouponPage");
 				LOG.trace("수업:"+allCoupon);
 		    	
 		    	model.addAttribute("allCoupon",allCoupon);
-	    		path = "info/owner";
+	    		///쿠폰조회를 위한 코드 끝
+	    		
+		    	path = "info/owner";
 	    	}
 	    	else if(loginUserObj != null){
 	    		All loginUser = (All)loginUserObj;
+	    		String userId = loginUser.getUserId();
 	    		path ="info/user";
 	    	}
 	    	

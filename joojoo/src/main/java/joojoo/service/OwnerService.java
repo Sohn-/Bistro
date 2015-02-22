@@ -16,4 +16,6 @@ public interface OwnerService {
 	All findId(Owners owner); //아이디찾기용 (잊어버렸을때)
 	All findPassword(Owners owner); //비번찾기용
 	All OwnersLogin(Owners owner);//로그인
+	
+	All getOwnersByOwnerId(String ownerId);//로그인
 }

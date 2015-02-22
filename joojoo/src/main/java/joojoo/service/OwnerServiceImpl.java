@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(rollbackFor = java.lang.Exception.class)
 public class OwnerServiceImpl implements OwnerService {
 	static final Logger logger = LoggerFactory
 				.getLogger(OwnerServiceImpl.class);
@@ -78,6 +80,12 @@ public class OwnerServiceImpl implements OwnerService {
 		
 		return result;
 		
+	}
+
+	@Override
+	public All getOwnersByOwnerId(String ownerId) {
+		All result = dao.getOwnersByOwnerId(ownerId);
+		return result;
 	}
 
 

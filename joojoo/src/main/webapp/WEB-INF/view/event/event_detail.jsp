@@ -213,10 +213,10 @@ fieldset .help {
 		<div align="right">
 		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal1">장바구니담기</button>
 		
-		<c:url value="/buy_check?eventCommentCode=${eventDetail.commentCode}" var="action"></c:url> 
-		<a href="${action }">
+		<%-- <c:url value="/buy_check?eventCommentCode=${eventDetail.commentCode}" var="action"></c:url> 
+		<a href="${action }"> --%>
 			<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">구매하기</button>
-		</a>
+		<!-- </a> -->
 		</div>
 		
 		<br>

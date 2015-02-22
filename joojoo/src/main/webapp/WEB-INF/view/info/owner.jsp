@@ -1,6 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@page import="joojoo.entity.All"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -100,7 +100,7 @@ fieldset div {
 		});
 	});
 	
- 	window.onload=function(){
+<%--  	window.onload=function(){
 		var xhr = new XMLHttpRequest();
 		
 		document.querySelector("#btn_update_store")
@@ -155,7 +155,31 @@ fieldset div {
 				
 			}
 		});
-	});
+	}); --%>
+	function checkPassword(){
+		
+		var password1 = document.getElementById('pass');
+	    var password2 = document.getElementById('pass2');
+
+	    var checkPasswordValidity = function() {
+	        if (password1.value != password2.value) {
+	            password1.setCustomValidity('비밀번호와 확인 비밀번호가 일치하지 않습니다.');
+	        } else {
+	            password1.setCustomValidity('');
+	        }        
+	    };
+	    
+		checkPasswordValidity();
+	    if (!this.checkValidity()) {
+	        event.preventDefault();
+	       // updateErrorMessage();
+	        password1.focus();
+	    }else{
+	    	 password1.setCustomValidity('');
+	    }
+	}, false);
+	}
+	
 
 </script>
 </head>
@@ -255,172 +279,130 @@ fieldset div {
 				</div>
 		</div>
 
-				<div id="tab2">
-					<div id="footer" class="container" align="left">
-
-						정보 수정 및 탈퇴<br>
-						<form>
-							<fieldset>
-
-								
-								
-								
-								
-								<div style="font-style: normal; color: red;">
-							<input id="userId" name="userId" title="Please provide your ID."
-								value="${user.userId}" align="middle"> * <br> <input
-								id="password" name="password"
-								title="Please provide your password" value=" 비밀번호 변경"><br>
-							<input id="password2" name="password2"
-								title="Please provide your password2" value=" 비밀번호 변경 확인"><br>
-							<input id="userName" name="userName"
-								title="Please provide your userName" value="${user.userName}">
-							*<br> <input id="userEmail" name="userEmail"
-								title="Please provide your userEmail" value=" 이메일"><br>
-							<input id="userPhone" name="userPhone"
-								title="Please provide your userPhone" value=" 휴대전화 번호"><br>
-						
-								<input id="storeType" name="storeType"	title="Please provide your storeType" value=" 사업자 등록번호"><br>
-										*는 수정할 수 없는 정보입니다.
-									</div>
-
-	<c:if test="${!empty loginUser }">
-		${loginUser.userId }님 반갑습니다.
-			<c:url value="/info/userInfo" var="url"></c:url>
-			<a href="${url }"><input type="button" value="정보수정 및 탈퇴"> </a>
-			
-			<c:url value="/info/userInfo/coupon" var="url"></c:url>
-			<a href="${url }"><input type="button" value="쿠폰 보기"> </a>
-		
-	</c:if>
-	
-	<c:if test="${!empty loginOwner}">
-		
-		${loginOwner.ownerId }님 반갑습니다.
-		업주 정보 보기...
-		<%-- <a href = "<%=request.getContextPath()%>/FrontServlet?cmd=AllTComment">게시판으로 이동가능</a><br><br> --%>
-	</c:if>
-	
-	<c:if test="${empty loginUser }">
-			<c:if test="${empty loginOwner }">
-		로그인 해 주세요!
-		<%-- <a href = "<%=request.getContextPath()%>/FrontServlet?cmd=AllTComment">게시판으로 이동가능</a><br><br> --%>
-	
-	</c:if>
-	</c:if>
-	
-
-
-	<a href="update_u.jsp"><input type="button" name="button" value="수정하기"></a> 
-	<a href="exit.jsp"><input type="button" name="button" value="회원탈퇴"></a>
-
-							</fieldset>
-						</form>
-
-					</div>
-				</div>
-
-
-				<div id="tab3">
-
-
-					<table style="width: 100%">
-						<tr>
-							<td>글제목</td>
-							<td>요약</td>
-							<td>글관리</td>
-						</tr>
-						<tr>
-							<td>주주비어</td>
-							<td>서비스팍팍</td>
-							<td><input type="checkbox" name="vehicle" value="Car"/></td>
-						</tr>
-						<tr>
-							<td>주주비어</td>
-							<td>서비스팍팍</td>
-							<td><input type="checkbox" name="vehicle" value="Car"/></td>
-						</tr>
-						<tr>
-							<td>주주비어</td>
-							<td>서비스팍팍</td>
-							<td><input type="checkbox" name="vehicle" value="Car"/></td>
-							<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->
-						</tr>
-					</table>
-
-					
-					<a href="update_u.jsp"><input type="button" name="button" value="새로운 이벤트 등록"> </a> 
-					
-					
-				
-
-
-				</div>
-
-				<div id="tab4">
-					<div id="footer" class="container" align="left">
-						미사용 쿠폰
-						<table style="width: 100%">
-							<tr>
-								<th>상호명</th>
-								<th>요약</th>
-								<th>쿠폰확인</th>
-							</tr>
-						<c:forEach items="${allCoupon}" var="coupon">
-							<c:if test="${coupon.couponStatus eq '미사용'}">
-							<tr>
-								<td>${coupon.storeName }</td>
-								<td>${coupon.content }</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="쿠폰상세정보"></a></td>
-							</tr>
-							</c:if>
-						</c:forEach>
-						</table>
-						사용쿠폰
-						<table style="width: 100%">
-							<tr>
-								<th>상호명</th>
-								<th>요약</th>
-								<th>후기 작성 및 확인</th>
-							</tr>
-							<c:forEach items="${allCoupon}" var="coupon">
-							<c:if test="${coupon.couponStatus eq '사용'}">
-							<tr>
-								<td>${coupon.storeName }</td>
-								<td>${coupon.content }</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="후기작성"></a></td>
-							</tr>
-							</c:if>
-							</c:forEach>
-						</table>
-						환불 쿠폰
-						<table style="width: 100%">
-							<c:forEach items="${allCoupon}" var="coupon">
-							<c:if test="${coupon.couponStatus eq '환불'}">
-							<tr>
-								<td>${coupon.storeName }</td>
-								<td>${coupon.content }</td>
-								<td><a href="update_u.jsp"><input type="button"
-										name="button" value="쿠폰상세정보"></a></td>
-							</tr>
-							</c:if>
-							</c:forEach>
-						</table>
-						기간만료 사용불가 쿠폰
-						<table style="width: 100%">
-							<c:forEach items="${allCoupon}" var="coupon">
-							<c:if test="${coupon.couponStatus eq '기간만료'}">
-							<tr>
-								<td>${coupon.storeName }</td>
-								<td>${coupon.content }</td>
-							</tr>
-							</c:if>
-							</c:forEach>
-						</table>
-					</div>
-				</div>
+		<div id="tab2">
+			<div id="footer" class="container" align="left">
+				정보 수정 및 탈퇴<br>
+				<c:url value="/info/update_owner" var="action"></c:url>
+				<form:form modelAttribute="updateOwner" method="post" action="${action}">
+					<fieldset>	
+						<div style="font-style: normal; color: red;">
+							<form:input path="ownerId" name="userId" 
+								title="Please provide your ID."	align="middle"></form:input>*<br> 
+							<form:input path="ownerPassword" name="password"
+								title="Please provide your password"></form:input><br>
+							<input type="password" name="password2" value="${updateOwner.password }"
+								title="Please provide your password2"><br>
+							<!-- <h3>비밀번호 </h3><form:input path="userPassword" id="pass" type="password" required="true" /><br>
+        <h3>비밀번호 확인</h3>
+		<input type="password" id="pass2" name="pass2" required="true" /><br> -->
+							<form:input path="ownerName" name="ownerName"
+								title="Please provide your userName" value="${updateOwner.ownerName}"></form:input>*<br> 
+							<form:input path="ownerMail" name="ownerMail"
+								title="Please provide your userEmail" value=" 이메일"></form:input><br>
+							<form:input path="ownerPhone" name="ownerPhone"
+								title="Please provide your userPhone" value=" 휴대전화 번호"></form:input><br>
+							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" value=" 사업자 등록번호"></form:input><br>
+							*는 수정할 수 없는 정보입니다.
+						</div>
+					</fieldset>
+					<a href="update_u.jsp"><input type="submit" name="updateOwner" value="수정하기" onclick="checkPassword();"></input></a> 
+					<a href="exit.jsp"><input type="button" name="button" value="회원탈퇴"></a>
+				</form:form>
 			</div>
+		</div>
+
+
+		<div id="tab3">
+			<table style="width: 100%">
+				<tr>
+					<td>글제목</td>
+					<td>요약</td>
+					<td>글관리</td>
+				</tr>
+				<tr>
+					<td>주주비어</td>
+					<td>서비스팍팍</td>
+					<td><input type="checkbox" name="vehicle" value="Car"/></td>
+						</tr>
+				<tr>
+					<td>주주비어</td>
+					<td>서비스팍팍</td>
+					<td><input type="checkbox" name="vehicle" value="Car"/></td>
+				</tr>
+				<tr>
+					<td>주주비어</td>
+					<td>서비스팍팍</td>
+					<td><input type="checkbox" name="vehicle" value="Car"/></td>
+					<!-- <td><input type="checkbox" name="vehicle" value="Car" checked="checked"></td> -->
+				</tr>
+			</table>				
+			<a href="update_u.jsp"><input type="button" name="button" value="새로운 이벤트 등록"> </a> 
+		</div>
+
+		<div id="tab4">
+			<div id="footer" class="container" align="left">
+				미사용 쿠폰
+				<table style="width: 100%">
+					<tr>
+						<th>상호명</th>
+						<th>요약</th>
+						<th>쿠폰확인</th>
+					</tr>
+				<c:forEach items="${allCoupon}" var="coupon">
+					<c:if test="${coupon.couponStatus eq '미사용'}">
+					<tr>
+						<td>${coupon.storeName }</td>
+						<td>${coupon.content }</td>
+						<td><a href="update_u.jsp"><input type="button"
+								name="button" value="쿠폰상세정보"></a></td>
+					</tr>
+					</c:if>
+				</c:forEach>
+				</table>
+				사용쿠폰
+				<table style="width: 100%">
+					<tr>
+						<th>상호명</th>
+						<th>요약</th>
+						<th>후기 작성 및 확인</th>
+					</tr>
+					<c:forEach items="${allCoupon}" var="coupon">
+					<c:if test="${coupon.couponStatus eq '사용'}">
+					<tr>
+						<td>${coupon.storeName }</td>
+						<td>${coupon.content }</td>
+						<td><a href="update_u.jsp"><input type="button"
+								name="button" value="후기작성"></a></td>
+					</tr>
+					</c:if>
+					</c:forEach>
+				</table>
+				환불 쿠폰
+				<table style="width: 100%">
+					<c:forEach items="${allCoupon}" var="coupon">
+					<c:if test="${coupon.couponStatus eq '환불'}">
+					<tr>
+						<td>${coupon.storeName }</td>
+						<td>${coupon.content }</td>
+						<td><a href="update_u.jsp"><input type="button"
+								name="button" value="쿠폰상세정보"></a></td>
+					</tr>
+					</c:if>
+					</c:forEach>
+				</table>
+				기간만료 사용불가 쿠폰
+				<table style="width: 100%">
+				<c:forEach items="${allCoupon}" var="coupon">
+					<c:if test="${coupon.couponStatus eq '기간만료'}">
+					<tr>
+						<td>${coupon.storeName }</td>
+						<td>${coupon.content }</td>
+					</tr>
+					</c:if>
+				</c:forEach>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

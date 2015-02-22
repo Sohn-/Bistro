@@ -8,8 +8,10 @@ import joojoo.entity.WishList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 //@Transactional(rollbackFor = jdbc.exception.ServiceFailException.class)
 @Service
+@Transactional(rollbackFor = java.lang.Exception.class)
 public class WishListServiceImpl implements WishListService {
 
 	@Autowired
