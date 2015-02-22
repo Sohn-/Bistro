@@ -731,5 +731,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7daf', end
 		</section>
 	</div>
 	<!-- 바디 끝 -->
+	<!-- Footer -->
+	<div>
+		<div id="footer" class="container">
+			<div align="center">
+			<br><br>
+				<a href="<%=request.getContextPath()%>/footer/servicePolicy">이용약관</a> &nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/privacyPolicy">개인정보보호방침</a> &nbsp;	&nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/youthPolicy">청소년보호정책</a> &nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/helpCenter">고객센터</a>
+				<br><br>
+				<div style="font-size: 12px;">
+				사업자등록번호:130-50-61004 
+				(주)주주총회 대표이사: 정주주 
+				주소: 이클립시 디비구 자바동 123-45 <br>
+				주주총회앱의 모든 콘텐츠는 저작권법의 보호를 받으므로, 무단 전재, 복사, 배포 등을 금합니다. <br>
+				Copyright (c) JooJooClub All Rights Reserved.</div>
+				<br>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>
