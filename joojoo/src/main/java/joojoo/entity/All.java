@@ -3,6 +3,8 @@ package joojoo.entity;
 import java.util.Date;
 
 public class All {
+	
+	String checkPassword; //업데이트를 위한 체크 패스워드 (pass2)
 	////////////////////////////Category
 	int regionCode;
 	int typeCode;
@@ -385,30 +387,43 @@ public class All {
 	public void setWishListCode(int wishListCode) {
 		this.wishListCode = wishListCode;
 	}
+	
+	
+
+	public String getCheckPassword() {
+		return checkPassword;
+	}
+
+	public void setCheckPassword(String checkPassword) {
+		this.checkPassword = checkPassword;
+	}
 
 	@Override
 	public String toString() {
-		return "All [regionCode=" + regionCode + ", typeCode=" + typeCode
-				+ ", personsCode=" + personsCode + ", serviceTypeCode="
-				+ serviceTypeCode + ", keyword=" + keyword + ", couponCode="
-				+ couponCode + ", ownerId=" + ownerId + ", userId=" + userId
-				+"\n"+ ", commentCode=" + commentCode + ", couponStatusCode="
+		return "All [checkPassword=" + checkPassword + ", regionCode="
+				+ regionCode + ", typeCode=" + typeCode + ", personsCode="
+				+ personsCode + ", serviceTypeCode=" + serviceTypeCode
+				+ ", keyword=" + keyword + ", couponCode=" + couponCode
+				+ ", ownerId=" + ownerId + ", userId=" + userId
+				+ ", commentCode=" + commentCode + ", couponStatusCode="
 				+ couponStatusCode + ", couponStatus=" + couponStatus
 				+ ", title=" + title + ", content=" + content + ", regDate="
 				+ regDate + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", storeCode=" + storeCode + ", deleteRequest="
-				+"\n"+ deleteRequest + ", ownerPassword=" + ownerPassword
+				+ deleteRequest + ", ownerPassword=" + ownerPassword
 				+ ", ownerName=" + ownerName + ", ownerMail=" + ownerMail
 				+ ", ownerPhone=" + ownerPhone + ", licenseNumber="
 				+ licenseNumber + ", personsLevel=" + personsLevel
 				+ ", regionName=" + regionName + ", starPoint=" + starPoint
-				+"\n"+ ", serviceTypeName=" + serviceTypeName + ", storeName="
+				+ ", serviceTypeName=" + serviceTypeName + ", storeName="
 				+ storeName + ", storeAdress=" + storeAdress + ", storePhone="
 				+ storePhone + ", typeName=" + typeName + ", userPassword="
 				+ userPassword + ", userName=" + userName + ", userMail="
-				+"\n"+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
+				+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
 				+ ", wishListCode=" + wishListCode + "]";
 	}
+
+	
 	
 	
 

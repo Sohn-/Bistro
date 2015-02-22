@@ -157,9 +157,32 @@ fieldset div {
 		});
 	}); --%>
 	
-	$(document).ready(function(){
+$(document).ready(function(){
 		
-		var password1 = document.getElementById('pass');
+		
+		$("#idDupCheck").click(function(){
+			if($("#joinId").val()==""){
+				alert("아이디를 입력해주세요.");
+				$("#joinId").focus();		
+			}else{
+				<c:url value="/join/idCheck" var="idchk"></c:url>
+				var url = "${idchk}?joinId="+$("#joinId").val();
+				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+			}
+		});
+		
+		$("#mailDupCheck").click(function(){
+			if($("#joinMail").val()==""){
+				alert("이메일을 입력해 주세요.");
+				$("#joinMail").focus();		
+			}else{
+				<c:url value="/join/mailCheck" var="mailchk"></c:url>
+				var url = "${mailchk}?joinMail="+$("#joinMail").val();
+				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+			}
+		});
+		
+	    var password1 = document.getElementById('pass');
 	    var password2 = document.getElementById('pass2');
 
 	    var checkPasswordValidity = function() {
@@ -169,17 +192,33 @@ fieldset div {
 	            password1.setCustomValidity('');
 	        }        
 	    };
+
+/* 	    var updateErrorMessage = function() {
+	        document.querySelector("#error").innerHTML = password1.validationMessage;
+	    };
+	     */
 	    
-		checkPasswordValidity();
-	    if (!this.checkValidity()) {
-	        event.preventDefault();
-	       // updateErrorMessage();
-	        password1.focus();
-	    }else{
-	    	 password1.setCustomValidity('');
-	    }
-	}, false);
-	}
+	    password1.addEventListener('change', checkPasswordValidity, false);
+	    password2.addEventListener('change', checkPasswordValidity, false);
+ 
+	    
+	    var form = document.getElementById('form');
+	    form.addEventListener('submit', function() {
+	    	if($("#checked2").val()==""){
+				alert("이메일 중복체크 해주세요.");
+				event.preventDefault();
+			}
+	        checkPasswordValidity();
+	        if (!this.checkValidity()) {
+	            event.preventDefault();
+	           // updateErrorMessage();
+	            password1.focus();
+	        }else{
+	        	 password1.setCustomValidity('');
+	        }
+	    }, false);
+	});
+
 	
 
 </script>
@@ -289,26 +328,32 @@ fieldset div {
 				<form:form modelAttribute="updateOwner" method="post" action="${action}">
 					<fieldset>	
 						<div style="font-style: normal; color: red;">
+							*아이디
 							<form:input path="ownerId" name="userId" 
-								title="Please provide your ID."	align="middle"></form:input>*<br> 
-							<form:input path="ownerPassword" id="pass"
+								title="Please provide your ID."	align="middle" disabled="true"></form:input><br>
+							비밀번호 
+							<form:input path="ownerPassword" id="pass" type="password"
 								title="Please provide your password"></form:input><br>
-							<input type="password" id="pass2" value="${updateOwner.password }"
-								title="Please provide your password2"><br>
-							<!-- <h3>비밀번호 </h3><form:input path="userPassword" id="pass" type="password" required="true" /><br>
-        <h3>비밀번호 확인</h3>
-		<input type="password" id="pass2" name="pass2" required="true" /><br> -->
+							<%-- <form:input path="checkPassword" id="pass2" value="${updateOwner.ownerPassword }"
+								title="Please provide your password2"></form:input><br> --%>
+							비밀번호확인
+							<input type="password" id="pass2" name="pass2"  value="${updateOwner.ownerPassword }" required="true" /><br>
+							*이름
 							<form:input path="ownerName" name="ownerName"
-								title="Please provide your userName" value="${updateOwner.ownerName}"></form:input>*<br> 
-							<form:input path="ownerMail" name="ownerMail"
-								title="Please provide your userEmail" value=" 이메일"></form:input><br>
+								title="Please provide your userName" disabled="true"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
+							이메일
+							<form:input path="ownerMail" id="joinMail"
+								title="Please provide your userEmail" required="true"></form:input>
+							<input type="button" value="중복확인" id="mailDupCheck"/><br>
+							전화번호	
 							<form:input path="ownerPhone" name="ownerPhone"
-								title="Please provide your userPhone" value=" 휴대전화 번호"></form:input><br>
-							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" value=" 사업자 등록번호"></form:input><br>
+								title="Please provide your userPhone"></form:input><br>
+							*사업자등록번호
+							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" disabled="true"></form:input><br>
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
-					<button type="submit" name="updateOwner" value="수정하기"></button>
+					<input type="submit" id="submit" name="updateOwner" value="수정하기"></input>
 					<a href="exit.jsp"><input type="button" name="button" value="회원탈퇴"></a>
 				</form:form>
 			</div>
