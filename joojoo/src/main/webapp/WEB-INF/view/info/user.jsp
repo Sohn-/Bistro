@@ -139,6 +139,16 @@ $(document).ready(function(){
 		});
 	});
 	
+	$(function() {
+		$("#wishList_delete").click(function() {
+		$(".tr_check:checked").each(function(idx, row) {
+		var record = $(row).parents("tr");
+		console.log(record[0].innerText);
+		});
+		});
+		});
+		
+	
 	
 </script>
 
@@ -733,7 +743,7 @@ fieldset .help {
 					<%-- <td>
 						<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
 					<a href="${url }">${rview.title }</a></td> --%>
-					<td><input type="checkbox"></td>	
+					<td><input type="checkbox" class="tr_check"/></td>	
 					
 			
 					</tr>
@@ -760,8 +770,8 @@ fieldset .help {
 			</table>
 			
 			
-			<a href="update_u.jsp"><input type="button" name="button" value="장바구니에서 삭제">  </a>
-			<input type="hidden" id="label" value="2"/>
+			<<input type="button" id="wishList_delete" name="button" value="장바구니에서 삭제">  </a>
+	
 			<a href="update_u.jsp"><input type="button" name="button" value="즉시구매"> </a>
 			<a href="update_u.jsp"><input type="button" name="button" value="쿠폰 검색하러 가기"></a>
 			
