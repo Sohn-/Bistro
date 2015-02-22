@@ -513,11 +513,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7daf', end
 				</div>
 				</c:forEach>
 				
-				<%-- 
-				<div class="item">
-					<img src="images/pic01.jpg" align="bottom">
-					<div class="carousel-caption">제목자리${eventDetail.title}</div>
-				</div> --%>
+	
 				<!-- 이벤트 클릭 시 모달 시작 -->
 					<c:forEach items="${events}" var="event" varStatus="status">
 						<c:url
