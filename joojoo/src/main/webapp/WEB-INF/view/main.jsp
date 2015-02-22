@@ -42,14 +42,11 @@
 		});
 	});
 
-	/* $(function() {
-		$("#accordion").accordion();
-	});
-	 */
 	
 	$(document).ready(
 			function() {
 				$('div#accordion').accordion({
+					event : "click hoverintent",
 					collapsible: true,
 					
 				});
@@ -394,15 +391,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7daf', end
 		<!-- 헤더 끝 -->
 	</div>
 	<!-- 헤더 래퍼 끝 -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<!-- 헤더 바디 구분 띠 -->
 	<img src="images/bar.png" style="width: 100%">
 	<!-- 바디 시작 -->
 	<div id="features-wrapper">
 		<!-- 바디 카테고리 시작 -->
-		<section id="features" class="container"> <c:url
-			var="action" value="/category"></c:url> <form:form action="${action}"
-			modelAttribute="category">
+		<section id="features" class="container"> 
+		<c:url	var="action" value="/category"></c:url> 
+		<form:form action="${action}" modelAttribute="category">
 			<nav id="nav">
 			<ul>
 				<li><a href=""><span>Region</span></a>
@@ -562,7 +568,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7daf', end
 				<span	class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
-		</div>
+</div>
+		
+		
+		
+		
+		
 <div>
 		
 		
@@ -720,5 +731,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7daf', end
 		</section>
 	</div>
 	<!-- 바디 끝 -->
+	
+	
+	
+	
+	
+	<!-- Footer -->
+	<div>
+		<div id="footer" class="container">
+			<div align="center">
+			<br><br>
+				<a href="<%=request.getContextPath()%>/footer/servicePolicy">이용약관</a> &nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/privacyPolicy">개인정보보호방침</a> &nbsp;	&nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/youthPolicy">청소년보호정책</a> &nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/helpCenter">고객센터</a>
+				<br><br>
+				<div style="font-size: 12px;">
+				사업자등록번호:130-50-61004 
+				(주)주주총회 대표이사: 정주주 
+				주소: 이클립시 디비구 자바동 123-45 <br>
+				주주총회앱의 모든 콘텐츠는 저작권법의 보호를 받으므로, 무단 전재, 복사, 배포 등을 금합니다. <br>
+				Copyright (c) JooJooClub All Rights Reserved.</div>
+				<br>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>
