@@ -51,12 +51,7 @@ $(document).ready(function(){
 	
     $(":checked").wrap("<span style='background-color:red'>");
     
-    
-    if($("#label").val()==2){
-    	alert("2");
-    	document.getElementById("tab2").focus();
-    }
-    
+ 
 
  
 });
@@ -640,7 +635,7 @@ fieldset .help {
 </head>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-	<div id="header-wrapper" style="background-image: url(images/main.jpg)">
+	<div id="header-wrapper" style="background-image: url(../images/main.jpg)">
 
 		<div id="header" class="container">
 
@@ -673,7 +668,7 @@ fieldset .help {
 		
 		<ul>
 			<li><a href="#tab1">정보수정 및 탈퇴</a></li>
-			<li id ="tab2"><a href="#tab2">나의 장바구니</a></li>
+			<li><a href="#tab2">장바구니</a></li>
 			<li><a href="#tab3">나의 쿠폰</a></li>
 
 		</ul>
@@ -719,12 +714,12 @@ fieldset .help {
 		
 		<div id="tab2">
 
-
 			<table style="width: 100%">
 				<tr>
 					<th>상호명</th>
 					<th>글제목</th>
-					<th>체크</th>					
+					<th>선택</th>
+									
 				</tr>
 				<c:forEach items="${wishList }" var="wishList">
 	
@@ -734,7 +729,7 @@ fieldset .help {
 					<%-- <td>
 						<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
 					<a href="${url }">${rview.title }</a></td> --%>
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>	
+					<td><input type="checkbox"></td>	
 					
 			
 					</tr>

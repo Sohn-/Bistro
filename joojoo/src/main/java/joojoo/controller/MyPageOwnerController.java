@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
 import joojoo.entity.Stores;
+import joojoo.entity.Users;
 import joojoo.service.CouponService;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
@@ -38,6 +39,8 @@ public class MyPageOwnerController {
 	    @Autowired
 	    private CouponService couponService;
 	    
+	 
+	    
 	    @RequestMapping(value="/info", method=RequestMethod.GET)
 		public String showInfoControl(Model model,HttpSession session){
 	    	String path = null;
@@ -49,7 +52,9 @@ public class MyPageOwnerController {
 	    		path = "info/owner";
 	    	}
 	    	else if(loginUser != null){
-	    		path ="info/user";
+	    		
+		    	
+	    		path ="redirect:/info/user";
 	    	}
 	    	
 	    	else{	//로그인이 안된경우는 JSP에서 처리..

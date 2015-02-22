@@ -647,12 +647,17 @@ fieldset .help {
 		
 		<div id="tab2">
 
+		
+
+
+
+
 
 			<table style="width: 100%">
 				<tr>
 					<th>상호명</th>
 					<th>글제목</th>
-					<th>체크</th>					
+									
 				</tr>
 				<c:forEach items="${wishList }" var="wishList">
 	
@@ -662,7 +667,7 @@ fieldset .help {
 					<%-- <td>
 						<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
 					<a href="${url }">${rview.title }</a></td> --%>
-					<td><input type="checkbox" name="vehicle" value="Car" ></td>	
+					<td><input type="checkbox"></td>	
 					
 			
 					</tr>

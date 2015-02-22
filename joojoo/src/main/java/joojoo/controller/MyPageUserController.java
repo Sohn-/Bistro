@@ -43,14 +43,10 @@ public class MyPageUserController {
 	    @Autowired
 	    private WishListService wishListService;
 	    
-	    @RequestMapping(value="/info/member", method=RequestMethod.GET)
+	    @RequestMapping(value="/info/user", method=RequestMethod.GET)
 		public String showInfoPage(Model model,HttpSession session){
 	    	
 	    	
-	    	if(session.getAttribute("loginUser") ==null && session.getAttribute("loginOwner") ==null){
-	    		return "info/member_null";
-	    	}
-	    	else if(session.getAttribute("loginUser") !=null){
 	    	model.addAttribute("updateUser", new Users());
 	    	
 	    	LOG.trace("수업 로그인 유저 세션정보"+session.getAttribute("loginUser").toString());
@@ -64,8 +60,7 @@ public class MyPageUserController {
 	    	LOG.trace("수업"+wishLists);
 	    	
 			return "info/user";
-	    	}
-	    	else return "info/owner";
+	    	
 		}
 	    
 	    
@@ -87,7 +82,7 @@ public class MyPageUserController {
 	    	
 	    	
 	    	
-	    	return "redirect:/info/member#tab2";
+	    	return "redirect:/info/user";
 		}
 	    
 	  
