@@ -34,6 +34,14 @@
 
 
  <script>
+ 
+	$(document).ready(function() {
+		window.$("#use").click(function(){
+				opener.$("#joinId").val("${joinId}");
+				opener.$("#checked").val("checked");
+				self.close();
+			});
+		});
 
  
  
