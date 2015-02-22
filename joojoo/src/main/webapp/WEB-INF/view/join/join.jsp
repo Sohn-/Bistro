@@ -402,8 +402,33 @@ fieldset .help {
     
     
        <h3>아이디</h3><form:input path="userId" id="joinId" placeholder="Id" required="true"/>
+       
+        <!-- 모달들어가는 부분  -->
+        <input type="button" value="중복확인" id="idDupCheck" data-target="#layerpop" data-toggle="modal"/><br>
+      <!--   <button class="btn btn-default" data-target="#layerpop" data-toggle="modal">모달출력버튼</button><br/> -->
+			<div class="modal fade" id="layerpop" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <!-- header -->
+			      <div class="modal-header">
+			        <!-- 닫기(x) 버튼 -->
+			        <button type="button" class="close" data-dismiss="modal">×</button>
+			        <!-- header title -->
+			        <h4 class="modal-title">Header</h4>
+			      </div>
+			      <!-- body -->
+			      <div class="modal-body">
+			            Body 
+			      </div>
+			      <!-- Footer -->
+			      <div class="modal-footer">
+			        Footer
+			        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
         
-        <input type="button" value="중복확인" id="idDupCheck"/><br>
        <input type="hidden" name="checked" id="checked"/><br>
        <h3>비밀번호 </h3><form:input path="userPassword" id="pass" type="password" required="true" /><br>
    
