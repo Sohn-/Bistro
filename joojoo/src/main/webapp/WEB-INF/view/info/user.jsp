@@ -678,7 +678,7 @@ fieldset .help {
 			<div id="footer" class="container" align="left">
 
 				회원정보 수정 및 탈퇴 <br>
-				<form:form  modelAttribute="updateUser" method="post" action="${action} " name="updateForm" id="updateForm" > 
+				<%-- <form:form  modelAttribute="updateUser" method="post" action="${action} " name="updateForm" id="updateForm" > 
 					<fieldset>
 
 						<div style="font-style: normal; color: red;">
@@ -707,7 +707,7 @@ fieldset .help {
 						<input type="button" onclick="mysubmit(2)" value="탈퇴하기"/>
 
 					</fieldset>
-				</form:form>
+				</form:form> --%>
 			</div>
 		</div>
 		
