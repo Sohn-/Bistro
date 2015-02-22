@@ -149,7 +149,7 @@ fieldset .help {
 <body class="homepage" bgcolor=#333323>
 	<div id="header-wrapper" style="background-image: url(images/main.jpg)">
 		<div id="header" class="container">
-			<h1 id="logo"><a href="<%=request.getContextPath()%>/main">JooJooclub</a></h1>
+			<h1 id="logo"><a href="<%=request.getContextPath()%>/">JooJooclub</a></h1>
 			<p>Welcom To JooJooClub</p>
 			<div align="right">
 				<nav id="nav">
@@ -169,7 +169,7 @@ fieldset .help {
 	<div align="center" class="container">
 		<br><br>
 		<div style="background-color: rgb(255, 195, 185);">
-			<h2>제목자리${eventDetail.title}</h2>
+			<h2>${eventDetail.title}</h2>
 		</div>
 		<div id="carousel-example-generic" class="carousel slide"	data-ride="carousel">
 			
@@ -184,17 +184,17 @@ fieldset .help {
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
 					<img src="images/pic01.jpg" align="bottom">
-					<div class="carousel-caption">제목자리${eventDetail.title}</div>
+					<div class="carousel-caption">${eventDetail.title}</div>
 				</div>
 				<div class="item">
 					<img src="images/pic01.jpg" align="bottom">
-					<div class="carousel-caption">제목자리${eventDetail.title}</div>
+					<div class="carousel-caption">${eventDetail.title}</div>
 				</div>
 				<div class="item">
 					<img src="images/pic01.jpg" align="bottom">
-					<div class="carousel-caption">제목자리${eventDetail.title}</div>
+					<div class="carousel-caption">${eventDetail.title}</div>
 				</div>
-				제목자리${eventDetail.title}
+				${eventDetail.title}
 			</div>
 
 			<!-- Controls -->

@@ -42,14 +42,11 @@
 		});
 	});
 
-	/* $(function() {
-		$("#accordion").accordion();
-	});
-	 */
 	
 	$(document).ready(
 			function() {
 				$('div#accordion').accordion({
+					event : "click hoverintent",
 					collapsible: true,
 					
 				});
@@ -394,15 +391,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7daf', end
 		<!-- 헤더 끝 -->
 	</div>
 	<!-- 헤더 래퍼 끝 -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<!-- 헤더 바디 구분 띠 -->
 	<img src="images/bar.png" style="width: 100%">
 	<!-- 바디 시작 -->
 	<div id="features-wrapper">
 		<!-- 바디 카테고리 시작 -->
-		<section id="features" class="container"> <c:url
-			var="action" value="/category"></c:url> <form:form action="${action}"
-			modelAttribute="category">
+		<section id="features" class="container"> 
+		<c:url	var="action" value="/category"></c:url> 
+		<form:form action="${action}" modelAttribute="category">
 			<nav id="nav">
 			<ul>
 				<li><a href=""><span>Region</span></a>
@@ -562,7 +568,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7daf', end
 				<span	class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
-		</div>
+</div>
+		
+		
+		
+		
+		
 <div>
 		
 		
