@@ -34,6 +34,14 @@
 
 
  <script>
+ 
+	$(document).ready(function() {
+		window.$("#use").click(function(){
+				opener.$("#joinId").val("${joinId}");
+				opener.$("#checked").val("checked");
+				self.close();
+			});
+		});
 
  
  
@@ -402,8 +410,47 @@ fieldset .help {
     
     
        <h3>아이디</h3><form:input path="userId" id="joinId" placeholder="Id" required="true"/>
+       
+        <!-- 모달들어가는 부분  -->
+        <input type="button" value="중복확인" id="idDupCheck" data-target="#layerpop" data-toggle="modal"/><br>
+      <!--   <button class="btn btn-default" data-target="#layerpop" data-toggle="modal">모달출력버튼</button><br/> -->
+			<div class="modal fade" id="layerpop" >
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <!-- header -->
+			      <div class="modal-header">
+			        <!-- 닫기(x) 버튼 -->
+			        <button type="button" class="close" data-dismiss="modal">×</button>
+			        <!-- header title -->
+			        <h4 class="modal-title">Header</h4>
+			      </div>
+			      <!-- body -->
+			      <div class="modal-body">
+			            	<h2>아이디 중복 확인</h2>
+								<c:if test="${!empty (result) }">
+									${joinId}는 이미 사용중인 아이디입니다.<br>
+								</c:if>
+								<c:if test="${empty(result) }">
+									${joinId }는 사용가능한 아이디입니다.<br>
+									<input type="button" value="사용" id="use"><br>
+								</c:if>
+								<c:url value="/join/idCheck" var="idchk"></c:url>
+								다른 ID로 시도하려면 새로 중복 체크를 하세요.
+								<form action="${idchk}">
+									<label for="joinId">아이디</label>
+									<input type="text" id="joinId" name="joinId">
+									<input type="submit" value="전송"/>
+								</form>
+			      </div>
+			      <!-- Footer -->
+			      <div class="modal-footer">
+			        Footer
+			        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
         
-        <input type="button" value="중복확인" id="idDupCheck"/><br>
        <input type="hidden" name="checked" id="checked"/><br>
        <h3>비밀번호 </h3><form:input path="userPassword" id="pass" type="password" required="true" /><br>
    
