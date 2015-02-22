@@ -1,39 +1,26 @@
 <%@page import="joojoo.entity.All"%>
 <%@page import="java.util.List"%>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
-
 <title>mainPage</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-1000px.css">
 <link rel="stylesheet" href="css/style-desktop.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
+<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.dropotron.min.js"></script>
 <script src="js/skel.min.js"></script>
@@ -55,9 +42,19 @@
 		});
 	});
 
-	$(function() {
+	/* $(function() {
 		$("#accordion").accordion();
 	});
+	 */
+	
+	$(document).ready(
+			function() {
+				$('div#accordion').accordion({
+					collapsible: true,
+					
+				});
+			}
+		);
 
 	$(function() {
 		//scrollpane parts
@@ -240,7 +237,6 @@ fieldset .help {
 			<div align="right">
 				<nav id="nav">
 				<ul>
-
 					<c:if test="${!empty loginUser }">
 						<li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span></li>
 					</c:if>
@@ -258,8 +254,6 @@ fieldset .help {
 						<li><a class="icon fa-bar-chart-o"
 							href="<%=request.getContextPath()%>/logout"><span>Logout</span></a>
 					</c:if>
-
-
 					<c:if test="${empty loginOwner && empty loginUser }">
 						<li><a class="icon fa-home"
 							href="<%=request.getContextPath()%>/"><span>Home</span></a></li>
@@ -276,7 +270,6 @@ fieldset .help {
 				</nav>
 			</div>
 			<!-- 헤더 메뉴 끝 -->
-
 
 			<!-- 키워드 검색 부분 -->
 			<div align="center">
@@ -301,11 +294,8 @@ fieldset .help {
 	</div>
 	<!-- 헤더 래퍼 끝 -->
 
-
 	<!-- 헤더 바디 구분 띠 -->
 	<img src="images/bar.png" style="width: 100%">
-
-
 	<!-- 바디 시작 -->
 	<div id="features-wrapper">
 		<!-- 바디 카테고리 시작 -->
@@ -327,7 +317,6 @@ fieldset .help {
 						<li>&nbsp; &nbsp;신촌 &nbsp; &nbsp; &nbsp; <input type="radio"
 							name="regionName" value="신촌"></li>
 					</ul></li>
-
 				<li><a href=""><span>Type</span></a>
 					<ul>
 						<li>&nbsp; &nbsp;호프집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input
