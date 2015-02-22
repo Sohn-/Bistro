@@ -330,26 +330,26 @@ $(document).ready(function(){
 						<div style="font-style: normal; color: red;">
 							*아이디
 							<form:input path="ownerId" name="userId" 
-								title="Please provide your ID."	align="middle" disabled="true"></form:input><br>
+								title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
 							비밀번호 
 							<form:input path="ownerPassword" id="pass" type="password"
-								title="Please provide your password"></form:input><br>
+								title="Please provide your password" required="true"></form:input><br>
 							<%-- <form:input path="checkPassword" id="pass2" value="${updateOwner.ownerPassword }"
 								title="Please provide your password2"></form:input><br> --%>
 							비밀번호확인
 							<input type="password" id="pass2" name="pass2"  value="${updateOwner.ownerPassword }" required="true" /><br>
 							*이름
 							<form:input path="ownerName" name="ownerName"
-								title="Please provide your userName" disabled="true"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
+								title="Please provide your userName" readonly="true"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
 							이메일
 							<form:input path="ownerMail" id="joinMail"
 								title="Please provide your userEmail" required="true"></form:input>
 							<input type="button" value="중복확인" id="mailDupCheck"/><br>
 							전화번호	
 							<form:input path="ownerPhone" name="ownerPhone"
-								title="Please provide your userPhone"></form:input><br>
+								title="Please provide your userPhone" required="true"></form:input><br>
 							*사업자등록번호
-							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" disabled="true"></form:input><br>
+							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" readonly="true"></form:input><br>
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
@@ -454,7 +454,7 @@ $(document).ready(function(){
 	</div>
 
 					
-	<a href="update_u.jsp"><input type="button" name="button" value="새로운 이벤트 등록"> </a> 
+	<!-- <a href="update_u.jsp"><input type="button" name="button" value="새로운 이벤트 등록"> </a>  -->
 					
 					
 	

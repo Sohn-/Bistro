@@ -2,20 +2,16 @@ package joojoo.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
-import joojoo.entity.Stores;
-import joojoo.entity.Users;
+import joojoo.entity.Owners;
 import joojoo.service.CouponService;
 import joojoo.service.EventCommentService;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
 import joojoo.service.UserService;
 
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +20,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MyPageOwnerController {
-	static final Logger LOG = LoggerFactory
-			.getLogger(JoinController.class);
+	static final Logger logger = LoggerFactory
+			.getLogger(MyPageOwnerController.class);
 	
 		@Autowired
 	    private UserService userService;
@@ -63,8 +58,8 @@ public class MyPageOwnerController {
 	    		
 	    		///이벤트글조회를 위한 코드
 	    		List<All> allEvent = eventService.SeachMyEvent(ownerId);
-		    	LOG.error("여기는 showOwnerEventPage");
-				LOG.trace("수업:"+allEvent);
+	    		logger.error("여기는 showOwnerEventPage");
+	    		logger.trace("수업:"+allEvent);
 		    	
 		    	model.addAttribute("allEvent",allEvent);
 	    		path = "info/owner";
@@ -72,8 +67,8 @@ public class MyPageOwnerController {
 	    		
 	    		///쿠폰조회를 위한 코드
 	    		List<All> allCoupon = couponService.getCouponsByOwnerId(loginOwner.getOwnerId());
-		    	LOG.error("여기는 showOwnerCouponPage");
-				LOG.trace("수업:"+allCoupon);
+	    		logger.error("여기는 showOwnerCouponPage");
+	    		logger.trace("수업:"+allCoupon);
 		    	
 		    	model.addAttribute("allCoupon",allCoupon);
 	    		///쿠폰조회를 위한 코드 끝
@@ -149,12 +144,29 @@ public class MyPageOwnerController {
 		public String showOwnerCouponPage(HttpSession session, Model model){
 	    	All loginOwner = (All)(session.getAttribute("loginOwner"));
 	    	List<All> allCoupon = couponService.getCouponsByUserId(loginOwner.getOwnerId());
-	    	LOG.error("여기는 showOwnerCouponPage");
-			LOG.trace("수업:"+allCoupon);
+	    	logger.error("여기는 showOwnerCouponPage");
+	    	logger.trace("수업:"+allCoupon);
 	    	
 	    	model.addAttribute("allCoupon",allCoupon);
 			return "info/owner";
 		}
+	    
+	    @RequestMapping(value="/info/update_owner", method=RequestMethod.POST)
+		public String updateOwner(@ModelAttribute Owners updateOwner, Model model){
+	    	logger.error("updateOwner 정보.."+updateOwner);
+	    	int result = ownerService.updateOwnerInfo(updateOwner);
+	    	if(result >0){
+	    		model.addAttribute("updateSuccess", true);
+	    	}
+	    	else{
+	    		model.addAttribute("updateSuccess", false);
+	    	}
+	    	logger.error("업데이트 오너 종료");
+	    	//마이페이지에서 updateSuccess가 true면 처음 들어갈때 if로 확인하여 alert 띄우기..
+			return "redirect:/info#tab2";
+		}
+	    
+	   
 	    
 		
 		
