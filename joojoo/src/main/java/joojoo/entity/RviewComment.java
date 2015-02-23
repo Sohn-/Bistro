@@ -1,7 +1,8 @@
 package joojoo.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+
 
 
 /**
@@ -33,7 +34,7 @@ public class RviewComment implements Serializable {
 	private Integer starPoint;
 
 	/** 새 테이블. */
-	private String storeName;
+	private Integer storeCode;
 
 	/**
 	 * 생성자.
@@ -42,7 +43,7 @@ public class RviewComment implements Serializable {
 	}
 
 	public RviewComment(Integer commentCode, String userId, String title,
-			String content, Date regDate, Integer starPoint, String storeName) {
+			String content, Date regDate, Integer starPoint, Integer storeCode) {
 		super();
 		this.commentCode = commentCode;
 		this.userId = userId;
@@ -50,11 +51,11 @@ public class RviewComment implements Serializable {
 		this.content = content;
 		this.regDate = regDate;
 		this.starPoint = starPoint;
-		this.storeName = storeName;
+		this.storeCode = storeCode;
 	}
-	
-	
 
+	
+	
 	public Integer getCommentCode() {
 		return commentCode;
 	}
@@ -103,12 +104,12 @@ public class RviewComment implements Serializable {
 		this.starPoint = starPoint;
 	}
 
-	public String getStoreName() {
-		return storeName;
+	public Integer getStoreCode() {
+		return storeCode;
 	}
 
-	public void setStoreName(String storeName) {
-		this.storeName = storeName;
+	public void setStoreCode(Integer storeCode) {
+		this.storeCode = storeCode;
 	}
 
 	@Override
@@ -116,10 +117,11 @@ public class RviewComment implements Serializable {
 		return "RviewComment [commentCode=" + commentCode + ", userId="
 				+ userId + ", title=" + title + ", content=" + content
 				+ ", regDate=" + regDate + ", starPoint=" + starPoint
-				+ ", storeName=" + storeName + "]";
+				+ ", storeCode=" + storeCode + "]";
 	}
 	
 	
+
 	
 
 }

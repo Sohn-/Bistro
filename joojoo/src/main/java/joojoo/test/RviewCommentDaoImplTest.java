@@ -1,6 +1,7 @@
 package joojoo.test;
 
 import java.text.ParseException;
+import java.util.Date;
 
 import joojoo.dao.RviewCommentDao;
 import joojoo.entity.Category;
@@ -9,7 +10,6 @@ import joojoo.entity.RviewComment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -49,11 +49,18 @@ public class RviewCommentDaoImplTest {
 		String storeName="스토어네임2";
 
 		RviewComment rviewComment = new RviewComment();
+		rviewComment.setContent("맛있어요");
 		
+		Date d = new Date();
+		rviewComment.setRegDate(d);
+		rviewComment.setStarPoint(2);
+		rviewComment.setStoreCode(1);
+		rviewComment.setTitle("후기씁니당");
+		rviewComment.setUserId("user");
 
 		//성공
 		//LOG.trace("" + dao.insertRviewComment(rviewComment));
-		//LOG.trace("" + dao.getAllRviewComments());
+		LOG.error("" + dao.getAllRviewComments());
 		
 		
 		 //rviewComment.setTitle("변경됨"); rviewComment.setCommentCode(2);
@@ -77,7 +84,7 @@ public class RviewCommentDaoImplTest {
 		//dao.getRviewCommentsByKeyword(category);
 		 //dao.getRviewCommentsByUserName(userName);
 		 //dao.getRviewCommentsByContent(content);
-		 dao.getRviewCommentsByTitle("제목");
+		// dao.getRviewCommentsByTitle("제목");
 		int num = 2;
 		 //LOG.trace("수업"+dao.getRviewCommentByCommentCode(num));
 

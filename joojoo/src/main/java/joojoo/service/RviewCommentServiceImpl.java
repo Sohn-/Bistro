@@ -54,7 +54,7 @@ public class RviewCommentServiceImpl implements RviewCommentService {
 	}
 
 	@Override
-	public int registRview(RviewComment rviewComment, Stores store) {
+	public int registRview(RviewComment rviewComment) {
 		int result=0;
 		result = dao.insertRviewComment(rviewComment);		
 		//result += storeDao.insertStore(store);
