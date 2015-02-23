@@ -502,7 +502,10 @@ fieldset .help {
 								onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
 								
 					<img src="images/pic01.jpg" align="bottom" >
-					<div class="carousel-caption"><c:out value="${event.storeName}" /></div>
+					<div class="carousel-caption">
+					<c:out value="${event.storeName}" />
+						[<c:out value="${event.title}" />]
+					</div>
 				</button>
 				</div>
 					</c:if>
@@ -516,7 +519,7 @@ fieldset .help {
 								onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
 								
 					<img src="images/pic01.jpg" align="bottom">
-					<div class="carousel-caption"><c:out value="${event.storeName}" /></div>
+					<div class="carousel-caption"><c:out value="${event.storeName}" />	[<c:out value="${event.title}" />]</div>
 					</button>
 				</div>
 				</c:forEach>

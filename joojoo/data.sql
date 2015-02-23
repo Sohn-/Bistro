@@ -75,3 +75,48 @@ insert into Coupon values('joojoo','sohn','user',1,'미사용');
 	
 
 
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('나는야꿀돼지','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('찬영이꿀돼지','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('송희꿀돼지','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('미숫가루꿀돼지','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('씨유꿀돼지','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('한자꿀돼지','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('미숫가루꿀돼지1','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('씨유꿀돼지2','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('한자꿀돼지3','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('미숫가루꿀돼지4','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('씨유꿀돼지5','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('한자꿀돼지6','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
+values('한자꿀돼지9','신선한 계절과일 무료제공',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 10, '4명이하', '서비스 메뉴 제공');
+
+
