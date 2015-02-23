@@ -451,8 +451,10 @@ fieldset div {
 							<form:input path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
 							서비스 종류	
 							<form:select path="serviceTypeName" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
-							인원	
+							인원
+							${status.current.personsLevel }	
 							<form:select path="personsLevel" items="${personsLevels }" title="인원을 선택하세요." required="true"></form:select><br>
+							${personsLevels }
 							<%-- 서비스 종류	
 							<input type="select" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"><br>
 							인원	
