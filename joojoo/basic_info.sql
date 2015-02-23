@@ -71,19 +71,19 @@ insert into stores(store_name, store_adress, store_phone, owner_id, region_name,
 values('가게이름5','가게주소4','가게번호4','sohn','홍대', '횟집');
 
 insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
-values('제목','내용',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, '4명이하', '서비스 메뉴 제공');
+values('제목','내용',to_date(sysdate, 'yyyy-mm-dd HH24:MI:SS'), to_date(sysdate, 'yyyy-mm-dd HH24:MI:SS'), 1, '4명이하', '서비스 메뉴 제공');
 
 insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
-values('제목2','내용2',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, '4명이하', '서비스 메뉴 제공');
+values('제목2','내용2',to_date(sysdate, 'yyyy-mm-dd HH24:MI:SS'), to_date(sysdate, 'yyyy-mm-dd HH24:MI:SS'), 1, '4명이하', '서비스 메뉴 제공');
 
 
 insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
-values('제목3','내용3',to_date(sysdate, 'yyyy-mm-dd'), to_date(sysdate, 'yyyy-mm-dd'), 1, '4명이하', '서비스 메뉴 제공');
+values('제목3','내용3',to_date(sysdate, 'yyyy-mm-dd HH24:MI:SS'), to_date(sysdate, 'yyyy-mm-dd HH24:MI:SS'), 1, '4명이하', '서비스 메뉴 제공');
 
 insert into rview_comment(title, content, user_id, star_point, store_code)
 values('제목','내용', 'user', 5, 1);
 
 insert into Coupon values('joojoo','sohn','user',1,'미사용');	
 	
-insert into Coupon values('joojoo','sohn','user',21,'미사용');	
-insert into wish_list(user_id, comment_code)values ('user',21)
+insert into Coupon values('joojoo','sohn','user',2,'미사용');	
+insert into wish_list(user_id, comment_code) values ('user',2);

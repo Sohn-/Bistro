@@ -2,6 +2,8 @@ package joojoo.entity;
 
 import java.util.Date;
 
+
+
 public class All {
 	
 	String checkPassword; //업데이트를 위한 체크 패스워드 (pass2)
@@ -422,6 +424,8 @@ public class All {
 				+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
 				+ ", wishListCode=" + wishListCode + "]";
 	}
+
+	
 
 	
 	
