@@ -4,12 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
-import joojoo.entity.EventComment;
 import joojoo.entity.Owners;
 import joojoo.service.CouponService;
 import joojoo.service.EventCommentService;
@@ -65,45 +66,32 @@ public class MyPageOwnerController {
 	    		List<All> allEvent = eventService.SeachMyEvent(ownerId);
 	    		int count=1;
 	    		for(All event: allEvent){
-	    			SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분 ss초");
-	    			String startDateString = sdf.format(event.getStartDate());
-	    			String endDateString = sdf.format(event.getEndDate());
-	    			Date startDate = new Date();
-	    			Date endDate = new Date();
-	    			try {
-						startDate = sdf.parse(startDateString);
-						endDate = sdf.parse(endDateString);
-						event.setStartDate(startDate);
-						event.setEndDate(endDate);
-					} catch (ParseException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-	    			logger.error("시작날짜스트링-------"+startDateString);
-	    			logger.error("시작날짜-------startDate:"+startDate);
-	    			logger.error("시작날짜-------"+event.getStartDate());
-	    			//날짜를 보기 좋게 변경
-	    			/*SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분 ss초");
-					String startDateString = sdf.format(event.getStartDate());
-					String endDateString = sdf.format(event.getEndDate());
-					logger.error("시작날짜스트링-------"+startDateString);*/
-					model.addAttribute("startDateString"+count, startDateString);
-					model.addAttribute("endDateString"+count, endDateString);
 	    			model.addAttribute("event"+count, event);
 	    			count++;
 	    		}
+	    		model.addAttribute("allEvent",allEvent);	
+	    		
+	    		/*Map<String, String> serviceTypeNames = new HashMap<String, String>();
+	    		serviceTypeNames.put("discount","금액 할인");
+	    		serviceTypeNames.put("serviceMenu","서비스 메뉴 제공");
+	    		model.addAttribute("serviceTypeNames",serviceTypeNames);
+	    		
+	    		Map<String, String> personsLevels = new HashMap<String, String>();
+	    		personsLevels.put("four","4명이하");
+	    		personsLevels.put("ten","5~10명");
+	    		personsLevels.put("over","10명이상");
+	    		model.addAttribute("personsLevels",personsLevels);*/
+
 	    		List<String> serviceTypeNames = new ArrayList<String>();
 	    		serviceTypeNames.add("금액 할인");
 	    		serviceTypeNames.add("서비스 메뉴 제공");
+	    		model.addAttribute("serviceTypeNames",serviceTypeNames);
 	    		
 	    		List<String> personsLevels = new ArrayList<String>();
 	    		personsLevels.add("4명이하");
 	    		personsLevels.add("5~10명");
 	    		personsLevels.add("10명이상");
-
-	    		model.addAttribute("allEvent",allEvent);
-	    		model.addAttribute("serviceTypeNames",serviceTypeNames);
-	    		model.addAttribute("personsLevels",personsLevels);		    	
+	    		model.addAttribute("personsLevels",personsLevels);   	
 	    		///이벤트글조회를 위한 코드 끝
 	    		
 	    		///쿠폰조회를 위한 코드
@@ -138,10 +126,10 @@ public class MyPageOwnerController {
 	    	logger.error("updateOwner 정보.."+updateOwner);
 	    	int result = ownerService.updateOwnerInfo(updateOwner);
 	    	if(result >0){
-	    		model.addAttribute("updateSuccess", true);
+	    		model.addAttribute("updateOwner", true);
 	    	}
 	    	else{
-	    		model.addAttribute("updateSuccess", false);
+	    		model.addAttribute("updateOwner", false);
 	    	}
 	    	logger.error("업데이트 오너 종료");
 	    	//마이페이지에서 updateSuccess가 true면 처음 들어갈때 if로 확인하여 alert 띄우기..
@@ -149,18 +137,31 @@ public class MyPageOwnerController {
 		}
 	    
 	    @RequestMapping(value="/info/update_event", method=RequestMethod.POST)
-		public String updateOwner(@ModelAttribute EventComment updateEvent, Model model){
-	    	/*logger.error("updateOwner 정보.."+updateOwner);
-	    	int result = ownerService.updateOwnerInfo(updateOwner);
+		public String updateOwner(@ModelAttribute("event1") All updateEvent, Model model){
+	    	logger.error("updateEvent 정보.."+updateEvent);
+	    	
+	    	SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분 ss초");
+			Date startDate = new Date();
+			Date endDate = new Date();
+			try {
+				startDate = sdf.parse(updateEvent.getStartDateStr());
+				endDate = sdf.parse(updateEvent.getEndDateStr());
+				updateEvent.setStartDate(startDate);
+				updateEvent.setEndDate(endDate);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	int result = eventService.modifyEvent(updateEvent);
 	    	if(result >0){
-	    		model.addAttribute("updateSuccess", true);
+	    		model.addAttribute("updateEvent", true);
 	    	}
 	    	else{
-	    		model.addAttribute("updateSuccess", false);
+	    		model.addAttribute("updateEvent", false);
 	    	}
-	    	logger.error("업데이트 오너 종료");
+	    	logger.error("업데이트 이벤트 종료");
 	    	//마이페이지에서 updateSuccess가 true면 처음 들어갈때 if로 확인하여 alert 띄우기..
-*/			return "redirect:/info#tab3";
+			return "redirect:/info#tab3";
 		}
 	    
 	    @RequestMapping(value="/info/owner/coupon", method=RequestMethod.POST)

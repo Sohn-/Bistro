@@ -31,6 +31,9 @@ public class All {
 	private Date regDate;
 	private Date startDate;
 	private Date endDate;
+	private String regDateStr;
+	private String startDateStr;
+	private String endDateStr;
 	private int storeCode;
 	//private int personsCode;
 	//private int serviceTypeCode;
@@ -220,6 +223,32 @@ public class All {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+	
+	
+
+	public String getRegDateStr() {
+		return regDateStr;
+	}
+
+	public void setRegDateStr(String regDateStr) {
+		this.regDateStr = regDateStr;
+	}
+
+	public String getStartDateStr() {
+		return startDateStr;
+	}
+
+	public void setStartDateStr(String startDateStr) {
+		this.startDateStr = startDateStr;
+	}
+
+	public String getEndDateStr() {
+		return endDateStr;
+	}
+
+	public void setEndDateStr(String endDateStr) {
+		this.endDateStr = endDateStr;
 	}
 
 	public int getStoreCode() {
@@ -411,12 +440,14 @@ public class All {
 				+ couponStatusCode + ", couponStatus=" + couponStatus
 				+ ", title=" + title + ", content=" + content + ", regDate="
 				+ regDate + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", storeCode=" + storeCode + ", deleteRequest="
-				+ deleteRequest + ", ownerPassword=" + ownerPassword
-				+ ", ownerName=" + ownerName + ", ownerMail=" + ownerMail
-				+ ", ownerPhone=" + ownerPhone + ", licenseNumber="
-				+ licenseNumber + ", personsLevel=" + personsLevel
-				+ ", regionName=" + regionName + ", starPoint=" + starPoint
+				+ ", regDateStr=" + regDateStr + ", startDateStr="
+				+ startDateStr + ", endDateStr=" + endDateStr + ", storeCode="
+				+ storeCode + ", deleteRequest=" + deleteRequest
+				+ ", ownerPassword=" + ownerPassword + ", ownerName="
+				+ ownerName + ", ownerMail=" + ownerMail + ", ownerPhone="
+				+ ownerPhone + ", licenseNumber=" + licenseNumber
+				+ ", personsLevel=" + personsLevel + ", regionName="
+				+ regionName + ", starPoint=" + starPoint
 				+ ", serviceTypeName=" + serviceTypeName + ", storeName="
 				+ storeName + ", storeAdress=" + storeAdress + ", storePhone="
 				+ storePhone + ", typeName=" + typeName + ", userPassword="
@@ -424,6 +455,8 @@ public class All {
 				+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
 				+ ", wishListCode=" + wishListCode + "]";
 	}
+
+	
 
 	
 
