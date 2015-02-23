@@ -830,6 +830,7 @@ fieldset .help {
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
+					<th>쿠폰코드</th>
 					<th>쿠폰확인</th>					
 				</tr>
 				
@@ -837,6 +838,7 @@ fieldset .help {
 				<tr>
 					<td><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
 					<td><c:out value="${nonUsedCoupon.title}"></c:out></td>
+					<td><c:out value="${nonUsedCoupon.couponCode }"></c:out></td>
 					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
 				</c:forEach>
@@ -848,6 +850,7 @@ fieldset .help {
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
+					<th>쿠폰코드</th>
 					<th>후기 작성 및 확인</th>					
 				</tr>
 				
@@ -855,7 +858,8 @@ fieldset .help {
 				<tr>
 					<td><c:out value="${usedCoupon.storeName}"></c:out></td>
 					<td><c:out value="${usedCoupon.title}"></c:out></td>
-					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
+					<td><c:out value="${usedCoupon.couponCode }"></c:out></td>
+					<td><a href="../review/write"><input type="button" name="button"value="후기작성하기"></a> </td>				
 				</tr>
 				</c:forEach>
 				
@@ -866,6 +870,7 @@ fieldset .help {
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
+					<th>쿠폰코드</th>
 					<th>환불정보</th>					
 				</tr>
 				
@@ -873,6 +878,7 @@ fieldset .help {
 				<tr>
 					<td><c:out value="${refundCoupon.storeName}"></c:out></td>
 					<td><c:out value="${refundCoupon.title}"></c:out></td>
+					<td><c:out value="${refundCoupon.couponCode }"></c:out></td>
 					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
 				</c:forEach>
@@ -882,12 +888,14 @@ fieldset .help {
 				<tr>
 					<th>상호명</th>
 					<th>요약</th>
+					<th>쿠폰코드</th>
 					<th>만료정보</th>					
 				</tr>
 				<c:forEach items="${timeOverCoupons }" var="timeOverCoupon">
 				<tr>
 					<td><c:out value="${timeOverCoupon.storeName}"></c:out></td>
 					<td><c:out value="${timeOverCoupon.title}"></c:out></td>
+					<td><c:out value="${timeOverCoupon.couponCode }"></c:out></td>
 					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
 				</c:forEach>

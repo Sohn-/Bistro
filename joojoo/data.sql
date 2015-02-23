@@ -73,7 +73,7 @@ values('제목','내용', 'user', 5, 1);
 
 insert into Coupon values('joojoo','sohn','user',1,'미사용');	
 	
-
+insert into Coupon values('joojoo2','sohn','user',21,'사용');	
 
 
 insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
