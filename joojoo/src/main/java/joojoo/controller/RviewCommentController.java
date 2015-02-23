@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RviewCommentController {
 	
 	static final Logger LOG = LoggerFactory
-			.getLogger(JoinController.class);
+			.getLogger(RviewCommentController.class);
 	@Autowired
 	RviewCommentService rviewCommentService;
 	
@@ -30,8 +30,9 @@ public class RviewCommentController {
 	public String showRviewCommentList(Model model){
 		//글 넘겨주기
 		List<All> rviews = rviewCommentService.SearchAll();
-		model.addAttribute("rviews",rviews);
 		
+		model.addAttribute("rviews",rviews);
+		LOG.error(""+rviews);
 		
 		return "review/list";
 	}

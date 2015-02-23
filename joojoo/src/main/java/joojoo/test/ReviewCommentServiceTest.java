@@ -23,7 +23,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentServiceTest.class
 	Category category;
 	
 	public ReviewCommentServiceTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
 		service = ctx.getBean(RviewCommentService.class);
 		
 	}
@@ -56,7 +56,7 @@ static final Logger LOG = LoggerFactory.getLogger(ReviewCommentServiceTest.class
 		
 		
 		/*성공*/
-		//LOG.warn("getCouponsByUserId : "+service.SearchAll());
+		LOG.warn("getCouponsByUserId : "+service.SearchAll());
 		//LOG.warn("getCouponsByUserId : "+service.SearchByUserId("user"));
 		//LOG.warn("getCouponsByUserId : "+service.SearchByTitle("제목"));
 		//LOG.warn("getCouponsByUserId : "+service.SearchByContetnt("후기내용"));

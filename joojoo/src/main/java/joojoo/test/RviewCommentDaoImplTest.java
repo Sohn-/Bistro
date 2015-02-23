@@ -59,8 +59,8 @@ public class RviewCommentDaoImplTest {
 		rviewComment.setUserId("user");
 
 		//성공
-		LOG.trace("" + dao.insertRviewComment(rviewComment));
-		//LOG.trace("" + dao.getAllRviewComments());
+		//LOG.trace("" + dao.insertRviewComment(rviewComment));
+		LOG.error("" + dao.getAllRviewComments());
 		
 		
 		 //rviewComment.setTitle("변경됨"); rviewComment.setCommentCode(2);
