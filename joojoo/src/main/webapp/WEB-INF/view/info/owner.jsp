@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,6 +20,11 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-desktop.css">
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+<!-- 데이트피커 -->
+<link rel="stylesheet" href="//cdn.rawgit.com/xdan/datetimepicker/master/jquery.datetimepicker.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="//cdn.rawgit.com/xdan/datetimepicker/master/jquery.datetimepicker.js"></script>
+
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -35,6 +41,13 @@
 	$(document).ready(function() {
 		$(":checked").wrap("<span style='background-color:red'>");
 	});
+	
+/* 	$(function(){
+		  $('.datetimepicker').datetimepicker({
+			  lang:'ko',
+			  format:'Y-m-d H:i'
+		  });
+		}); */
 
 </script>
 
@@ -213,6 +226,7 @@ fieldset div {
 		        }else{
 		        	 password1.setCustomValidity('');
 		        } 
+		        
 		    }, false);
 		    
 		   /*  var form3 = document.getElementById('form3');
@@ -232,6 +246,8 @@ fieldset div {
 		        }  
 		        
 		    }, false); */
+		    
+		    document.querySelector("#startDate").innerHTML = "값 변경 되나요?";
 		});
 		
 	/* 	function Open_modal(commentCode, title, content, storeName) {
@@ -408,12 +424,14 @@ fieldset div {
 				<!-- 모달 헤더 -->
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 class="modal-title"	id="modal_title${status.current.commentCode }"></h4>
+					<h4 class="modal-title"	id="modal_title${status.current.commentCode }">이벤트 수정</h4>
 				</div>
 				<!-- 모달 바디 -->
 				<div class="modal-body" id="here${status.current.commentCode }">
 				<c:url value="/info/update_event" var="action"></c:url>
 				<form:form modelAttribute="event${status.count }" method="post" action="${action}" id="form3" name="form3">
+				<fmt:formatDate value="${status.current.startDate}"  pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="startDate"/>
+				<fmt:formatDate value="${status.current.endDate}"  pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="endDate"/>
 					<fieldset>	
 						<div style="font-style: normal; color: red;">
 							<form:input path="commentCode" type="hidden" value="${status.current.commentCode }"></form:input>
@@ -421,15 +439,16 @@ fieldset div {
 							<form:input path="title" type="text"  maxLength="50" title="제목을 입력하세요." align="middle" required="true"></form:input><br>
 							내용
 							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
-							*이벤트 시작 시간
-							<form:input path="startDate" type="datetime" title="Please provide your userName" readonly="true"></form:input><br>
-							*이벤트 종료 시간
-							<form:input path="endDate" type="datetime" title="Please provide your userEmail" readonly="true"></form:input><br>
+							*이벤트 시작 시간<br>
+							<form:input id="startDate" value="${startDate }" path="startDate"  readonly="true"></form:input><br>
+							*이벤트 종료 시간<br>
+							<form:input id="endDate" value="${endDate }" path="endDate"  readonly="true"></form:input><br>
 							<form:input path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
 							서비스 종류	
-							<form:select path="serviceTypeName" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
+							<form:select path="serviceTypeName" items="${serviceTypeNames }" value="${status.current.serviceTypeName }" title="서비스종류를 선택하세요." required="true"></form:select><br>
 							인원	
-							<form:select path="personsLevel" items="${personsLevels }" title="인원을 선택하세요." required="true"></form:select><br>
+							<form:select path="personsLevel" items="${personsLevels }" value="${status.current.personsLevel }" title="인원을 선택하세요." required="true"></form:select><br>
+
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>

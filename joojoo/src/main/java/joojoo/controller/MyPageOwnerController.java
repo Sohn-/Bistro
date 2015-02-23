@@ -1,6 +1,9 @@
 package joojoo.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -62,6 +65,30 @@ public class MyPageOwnerController {
 	    		List<All> allEvent = eventService.SeachMyEvent(ownerId);
 	    		int count=1;
 	    		for(All event: allEvent){
+	    			SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분 ss초");
+	    			String startDateString = sdf.format(event.getStartDate());
+	    			String endDateString = sdf.format(event.getEndDate());
+	    			Date startDate = new Date();
+	    			Date endDate = new Date();
+	    			try {
+						startDate = sdf.parse(startDateString);
+						endDate = sdf.parse(endDateString);
+						event.setStartDate(startDate);
+						event.setEndDate(endDate);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	    			logger.error("시작날짜스트링-------"+startDateString);
+	    			logger.error("시작날짜-------startDate:"+startDate);
+	    			logger.error("시작날짜-------"+event.getStartDate());
+	    			//날짜를 보기 좋게 변경
+	    			/*SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분 ss초");
+					String startDateString = sdf.format(event.getStartDate());
+					String endDateString = sdf.format(event.getEndDate());
+					logger.error("시작날짜스트링-------"+startDateString);*/
+					model.addAttribute("startDateString"+count, startDateString);
+					model.addAttribute("endDateString"+count, endDateString);
 	    			model.addAttribute("event"+count, event);
 	    			count++;
 	    		}
@@ -145,6 +172,12 @@ public class MyPageOwnerController {
 	    	
 	    	model.addAttribute("allCoupon",allCoupon);
 			return "info/owner";
+		}
+	    
+	    @RequestMapping(value="/test", method=RequestMethod.POST)
+		public String test(HttpSession session, Model model){
+	    	
+			return "info/test";
 		}
 	    
 	    

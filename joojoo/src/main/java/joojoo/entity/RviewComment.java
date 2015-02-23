@@ -1,7 +1,8 @@
 package joojoo.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+
 
 /**
  * 새 테이블 모델 클래스.
