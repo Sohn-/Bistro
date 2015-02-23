@@ -179,13 +179,20 @@ fieldset div {
 	} --%>
 	 
 		$(document).ready(function(){
-			var updateSuccess = <%=request.getParameter("updateSuccess")%>
-	    	if(updateSuccess == true){
+			var updateOwner = <%=request.getParameter("updateOwner")%>
+			var updateEvent = <%=request.getParameter("updateEvent")%>
+	    	if(updateOwner == true){
 	    		alert("회원정보 수정 완료");
 	    	}
-	    	else if(updateSuccess == false){
-	    		alert("회원정보 업데이트에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
-	    	} 
+	    	else if(updateOwner == false){
+	    		alert("회원정보 수정에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
+	    	}
+	    	else if(updateEvent == true){
+	    		alert("이벤트 수정 성공");
+	    	}
+	    	else if(updateEvent == false){
+	    		alert("이벤트 수정에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
+	    	}
 			
 			$("#mailDupCheck").click(function(){
 				if($("#joinMail").val()==""){
@@ -408,8 +415,7 @@ fieldset div {
 				<tr>
 					<td>${event.title }</td>
 					<td>${event.content }</td>
-					<td><button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }"
-						<%-- onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');" --%>>
+					<td><button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }">
 					수정하기</button> </td>
 				</tr>
 			</c:forEach>
@@ -418,7 +424,6 @@ fieldset div {
 		</div>
 		
 		<c:forEach items="${allEvent}" var="event" varStatus="status">
-			<c:url	value="/info/update_event" var="action"></c:url>
 		<div class="modal fade" id="myModal${status.current.commentCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
 			<div class="modal-dialog"><div class="modal-content">
 				<!-- 모달 헤더 -->
@@ -430,8 +435,8 @@ fieldset div {
 				<div class="modal-body" id="here${status.current.commentCode }">
 				<c:url value="/info/update_event" var="action"></c:url>
 				<form:form modelAttribute="event${status.count }" method="post" action="${action}" id="form3" name="form3">
-				<fmt:formatDate value="${status.current.startDate}"  pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="startDate"/>
-				<fmt:formatDate value="${status.current.endDate}"  pattern="yyyy년 MM월 dd일 HH시 mm분 ss초" var="endDate"/>
+				<fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="startDate"/>
+				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="endDate"/>
 					<fieldset>	
 						<div style="font-style: normal; color: red;">
 							<form:input path="commentCode" type="hidden" value="${status.current.commentCode }"></form:input>
@@ -440,14 +445,20 @@ fieldset div {
 							내용
 							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
 							*이벤트 시작 시간<br>
-							<form:input id="startDate" value="${startDate }" path="startDate"  readonly="true"></form:input><br>
+							<form:input id="startDate" value="${startDate }" path="startDateStr"  readonly="true"></form:input><br>
 							*이벤트 종료 시간<br>
-							<form:input id="endDate" value="${endDate }" path="endDate"  readonly="true"></form:input><br>
+							<form:input id="endDate" value="${endDate }" path="endDateStr"  readonly="true"></form:input><br>
 							<form:input path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
 							서비스 종류	
-							<form:select path="serviceTypeName" items="${serviceTypeNames }" value="${status.current.serviceTypeName }" title="서비스종류를 선택하세요." required="true"></form:select><br>
+							<form:select path="serviceTypeName" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
+							인원
+							${status.current.personsLevel }	
+							<form:select path="personsLevel" items="${personsLevels }" title="인원을 선택하세요." required="true"></form:select><br>
+							${personsLevels }
+							<%-- 서비스 종류	
+							<input type="select" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"><br>
 							인원	
-							<form:select path="personsLevel" items="${personsLevels }" value="${status.current.personsLevel }" title="인원을 선택하세요." required="true"></form:select><br>
+							<input type="select"  items="${personsLevels }" title="인원을 선택하세요." required="true"><br> --%>
 
 							*는 수정할 수 없는 정보입니다.
 						</div>
