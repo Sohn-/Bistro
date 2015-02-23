@@ -181,6 +181,7 @@ fieldset div {
 		$(document).ready(function(){
 			var updateOwner = <%=request.getParameter("updateOwner")%>
 			var updateEvent = <%=request.getParameter("updateEvent")%>
+			var insertEvent = <%=request.getParameter("insertEvent")%>
 	    	if(updateOwner == true){
 	    		alert("회원정보 수정 완료");
 	    	}
@@ -192,6 +193,12 @@ fieldset div {
 	    	}
 	    	else if(updateEvent == false){
 	    		alert("이벤트 수정에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
+	    	}
+	    	else if(insertEvent == true){
+	    		alert("이벤트 등록 성공");
+	    	}
+	    	else if(insertEvent == false){
+	    		alert("이벤트 등록에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
 	    	}
 			
 			$("#mailDupCheck").click(function(){
@@ -419,8 +426,9 @@ fieldset div {
 					수정하기</button> </td>
 				</tr>
 			</c:forEach>
-			</table>				
-			<input type="button" name="button" value="새로운 이벤트 등록">
+			</table>
+			<button id="newevent" data-toggle="modal" data-target="#newEventModal">
+					새로운 이벤트 등록</button>				
 		</div>
 		
 		<c:forEach items="${allEvent}" var="event" varStatus="status">
@@ -452,14 +460,7 @@ fieldset div {
 							서비스 종류	
 							<form:select path="serviceTypeName" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
 							인원
-							${status.current.personsLevel }	
 							<form:select path="personsLevel" items="${personsLevels }" title="인원을 선택하세요." required="true"></form:select><br>
-							${personsLevels }
-							<%-- 서비스 종류	
-							<input type="select" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"><br>
-							인원	
-							<input type="select"  items="${personsLevels }" title="인원을 선택하세요." required="true"><br> --%>
-
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
@@ -475,6 +476,51 @@ fieldset div {
 			</div><!-- /.modal-dialog -->
 		</div>
 		</c:forEach>
+		
+		
+		<div class="modal fade" id="newEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
+			<div class="modal-dialog"><div class="modal-content">
+				<!-- 모달 헤더 -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title"	id="modal_title">이벤트 등록</h4>
+				</div>
+				<!-- 모달 바디 -->
+				<div class="modal-body" id="here">
+				<c:url value="/info/insert_event" var="action"></c:url>
+				<form:form modelAttribute="insertEvent" method="post" action="${action}" id="form3" name="form3">
+				<%-- <fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="startDate"/>
+				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="endDate"/> --%>
+					<fieldset>	
+						<div style="font-style: normal; color: red;">
+							제목
+							<form:input path="title" type="text"  maxLength="50" title="제목을 입력하세요." align="middle" required="true"></form:input><br>
+							내용
+							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
+							이벤트 시작 시간<br>
+							<form:input id="startDate" type="datetime-local" path="startDateStr"  required="true"></form:input><br>
+							이벤트 종료 시간<br>
+							<form:input id="endDate" type="datetime-local" path="endDateStr"  required="true"></form:input><br>
+							가게
+							
+							<form:select path="storeCode" items="${stores }" required="true"></form:select> --%>
+							서비스 종류	
+							<form:select path="serviceTypeName" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
+							인원
+							<form:select path="personsLevel" items="${personsLevels }" title="인원을 선택하세요." required="true"></form:select><br>
+						</div>
+					</fieldset>
+					<input type="submit" class="btn btn-warning btn-sm" value="등록하기"/>
+				</form:form>
+				</div>
+					<!-- 모달 푸터 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
+					</div>
+					
+				</div>	<!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
 		
 		<div id="tab4">
 			<div id="footer" class="container" align="left">
