@@ -845,6 +845,9 @@ fieldset .help {
 				
 				
 			</table>
+			
+			<form name=usedCouponForm method=get action="../review/write">
+			
 				사용쿠폰
 				<table style="width: 90%">
 				<tr>
@@ -859,12 +862,22 @@ fieldset .help {
 					<td><c:out value="${usedCoupon.storeName}"></c:out></td>
 					<td><c:out value="${usedCoupon.title}"></c:out></td>
 					<td><c:out value="${usedCoupon.couponCode }"></c:out></td>
-					<td><a href="../review/write"><input type="button" name="button"value="후기작성하기"></a> </td>				
+					
+		
+					<td><input type="submit" name="button"value="후기작성하기"></td>	
+					<td hidden><input type="text" name="storeName" value="${usedCoupon.storeName }"></td>
+					<td hidden><input type="number" name="storeCode" value="${usedCoupon.storeCode }"></td>
+								
 				</tr>
 				</c:forEach>
 				
 				
 			</table>
+			
+			
+			
+			
+			</form>
 				환불 쿠폰
 				<table style="width: 90%">
 				<tr>

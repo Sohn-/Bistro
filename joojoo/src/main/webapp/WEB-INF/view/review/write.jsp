@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page import="joojoo.entity.RviewComment" %>
@@ -8,13 +8,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
- <title>°Ô½ÃÆÇ</title>
+ <title>ê²Œì‹œíŒ</title>
 
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<!-- ¹öÆ°ºÎÆ®½ºÆ®·¦ -->
+<!-- ë²„íŠ¼ë¶€íŠ¸ìŠ¤íŠ¸ë© -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <!-- <link rel="stylesheet"  href="css/style-1000px.css">
@@ -41,28 +41,28 @@
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
-<script language = "javascript"> // ÀÚ¹Ù ½ºÅ©¸³Æ® ½ÃÀÛ
+<script language = "javascript"> // ìë°” ìŠ¤í¬ë¦½íŠ¸ ì‹œì‘
 function writeCheck()
   {
    var form = document.writeform;
    
    if( !form.title.value )
    {
-    alert( "Á¦¸ñÀ» Àû¾îÁÖ¼¼¿ä" );
+    alert( "ì œëª©ì„ ì ì–´ì£¼ì„¸ìš”" );
     form.title.focus();
     return;
    }
    
-   if( !form.password.value )
+    if( !form.starPoint.value )
    {
-    alert( "ºñ¹Ğ¹øÈ£¸¦ Àû¾îÁÖ¼¼¿ä" );
+    alert( "ë¹„ë°€ë²ˆí˜¸ë¥¼ ì ì–´ì£¼ì„¸ìš”" );
     form.password.focus();
     return;
-   }
+   } 
   
-  if( !form.memo.value )
+  if( !form.content.value )
    {
-    alert( "³»¿ëÀ» Àû¾îÁÖ¼¼¿ä" );
+    alert( "ë‚´ìš©ì„ ì ì–´ì£¼ì„¸ìš”" );
     form.memo.focus();
     return;
    }
@@ -71,7 +71,7 @@ function writeCheck()
   }
  </script>
 
-
+<% request.setCharacterEncoding("euc-kr");  %>
 
 </head>
 
@@ -83,7 +83,7 @@ function writeCheck()
 	<h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
 	<p>Welcom To JooJooClub</p>
 	
-	<!-- Çì´õ ¸Ş´º -->
+	<!-- í—¤ë” ë©”ë‰´ -->
 	<div align="right">
 		<nav id="nav">
 			<ul>				
@@ -97,7 +97,7 @@ function writeCheck()
 				
 				</c:if>			
 				<c:if test="${!empty loginUser }">
-				<li><span>${loginUser.userId}´Ô [Âù½º:${loginUser.chance }]</span>
+				<li><span>${loginUser.userId}ë‹˜ [ì°¬ìŠ¤:${loginUser.chance }]</span>
 				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>			   
 			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
 				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
@@ -105,14 +105,15 @@ function writeCheck()
 				</c:if>
 		    </ul>
 	    </nav>
-    </div><!-- Çì´õ ¸Ş´º ³¡ --> 
+    </div><!-- í—¤ë” ë©”ë‰´ ë --> 
     </div>
     </div>
     
     
-    <!--°¡ÀÚ! º»·ĞÀ¸·Î-->
-    
-     <form name=writeform method=post action="write_ok.jsp">
+    <!--ê°€ì! ë³¸ë¡ ìœ¼ë¡œ-->
+    <c:url value="/review/written" var="action"></c:url> 
+	<form:form method="post" action="${action}" name="writeform"> 
+     <%-- <form name=writeform method=post action="../review/written"> --%>
      
     <table>
    
@@ -121,36 +122,61 @@ function writeCheck()
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
      <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
       <td width="5"><img src="../img/table_left.gif" width="5" height="30" /></td>
-      <td>±Û¾²±â</td>
+      <td>ê¸€ì“°ê¸°</td>
       <td width="5"><img src="../img/table_right.gif" width="5" height="30" /></td>
      </tr>
     </table>
    <table>
      <tr>
       <td>&nbsp;</td>
-      <td align="center">Á¦¸ñ</td>
+      <td align="center">ì œëª©</td>
       <td><input name="title" size="50" maxlength="100"></td>
-      <td>&nbsp;</td>
-     </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td align="center">ID</td>
-      <td><input name="name" size="50" maxlength="50" value="${loginUser.userId }" readonly /></td>
-      <td>&nbsp;</td>
-     </tr>
-      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td align="center">ºñ¹Ğ¹øÈ£</td>
-      <td><input name="password" size="50" maxlength="50"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
      <tr>
       <td>&nbsp;</td>
-      <td align="center">³»¿ë</td>
-      <td><textarea name="memo" cols="50" rows="13"></textarea></td>
+      <td align="center">ê°€ê²Œ ì´ë¦„</td>
+      <td><input name="storeName" size="50" maxlength="100" value="${storeName }" readonly /></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+   <input type="hidden" name="storeCode" size="50" maxlength="100" value="${storeCode }" />
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center">ID</td>
+      <td><input name="userId" size="50" maxlength="50" value="${loginUser.userId }" readonly /></td>
+      <td>&nbsp;</td>
+     </tr>
+      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+   <!--  <tr>
+      <td>&nbsp;</td>
+      <td align="center">ë¹„ë°€ë²ˆí˜¸</td>
+      <td><input name="password" size="50" maxlength="50"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+      -->
+     <tr>
+      <td>&nbsp;</td>
+      <td align="center">í‰ì </td>
+      <td><input name="starPoint" size="50" maxlength="50"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+    
+     <!-- <tr>
+      <td>&nbsp;</td>
+      <td align="center">ë“±ë¡ì¼</td>
+      <td><input type="date" name="regDate" size="50" maxlength="50"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr> -->
+     
+     <tr>
+      <td>&nbsp;</td>
+      <td align="center">ë‚´ìš©</td>
+      <td><textarea name="content" cols="50" rows="13"></textarea></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
@@ -158,8 +184,8 @@ function writeCheck()
      <tr align="center">
       <td>&nbsp;</td>
       <td colspan="2">
-      <input type=button value="µî·Ï" OnClick="javascript:writeCheck();"> 
-		<input type=button value="Ãë¼Ò" OnClick="javascript:history.back(-1)">
+      <input type=button value="ë“±ë¡" OnClick="javascript:writeCheck();"> 
+		<input type=button value="ì·¨ì†Œ" OnClick="javascript:history.back(-1)">
      
       <td>&nbsp;</td>
      </tr>
@@ -169,7 +195,7 @@ function writeCheck()
   
  </table>
  
-    </form>
+   </form:form>
     
 
 </body> 

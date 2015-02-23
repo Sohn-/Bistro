@@ -35,8 +35,8 @@
 	user_id varchar2(20) NOT NULL, -->
 	
 	 <insert id="insertRviewComment" parameterType="RviewComment">
-		insert into rview_comment(user_id, title, content, star_point, store_code) 
-		values(#{userId}, #{title}, #{content}, #{starPoint}, #{storeCode})	
+		insert into rview_comment(user_id, title, content, star_point, store_code,reg_date) 
+		values(#{userId}, #{title}, #{content}, #{starPoint}, #{storeCode},#{regDate})	
 	</insert> 
 	
  	<update id="updateRviewComment" parameterType="RviewComment">
