@@ -1,5 +1,6 @@
 package joojoo.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,9 +27,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes({"loginUser","loginOwner"})
 public class MyPageUserController {
-	static final Logger LOG = LoggerFactory
-			.getLogger(MyPageUserController.class);
 	
+		static final Logger LOG = LoggerFactory
+				.getLogger(MyPageUserController.class);
+		
 		@Autowired
 	    private UserService userService;
 	   
@@ -50,7 +52,7 @@ public class MyPageUserController {
 	    	
 	    	model.addAttribute("updateUser", new Users());
 	    	
-	    	LOG.trace("수업 로그인 유저 세션정보"+session.getAttribute("loginUser").toString());
+	    	//LOG.trace("수업 로그인 유저 세션정보"+session.getAttribute("loginUser").toString());
 	    	
 	    	
 	    	
@@ -69,7 +71,7 @@ public class MyPageUserController {
 	    	coupon.setCouponStatus("미사용");
 	    	List<All> nonUsedCoupons = couponService.getCouponsByUserIdAndStatus(coupon);
 	    	model.addAttribute("nonUsedCoupons", nonUsedCoupons);
-	    	//LOG.trace("수업"+n);
+	    	LOG.trace("수업");
 	    	//2.사용
 	    	coupon.setCouponStatus("사용");
 	    	List<All> usedCoupons = couponService.getCouponsByUserIdAndStatus(coupon);
@@ -91,13 +93,15 @@ public class MyPageUserController {
 		}
 	    
 	    @RequestMapping(value="/info/user/wishList/delete", method=RequestMethod.GET)
-		public String deleteWishList(@RequestParam String[] del_wishListCodes, Model model,HttpSession session){
+		public String deleteWishList(String del_wishListCodes, Model model,HttpSession session){
 	    	
-	    	LOG.trace("??");
-	    	LOG.trace("수업"+del_wishListCodes);
-	    	LOG.error(""+del_wishListCodes);
-	    	System.out.println(del_wishListCodes);
-	    	//받은 코멘트 코드 넘버로 지우기...해야함 
+	    	
+	    	List<String> result = Arrays.asList(del_wishListCodes.split(","));
+	    	for(int i=0; i<result.size(); i++){
+	    		int delete_no = Integer.parseInt(result.get(i));
+	    		wishListService.deleteWishList(delete_no);
+	    	}
+	    
 			return "redirect:/info/user";
 	    	
 		}

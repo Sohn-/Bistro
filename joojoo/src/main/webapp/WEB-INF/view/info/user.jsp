@@ -765,7 +765,7 @@ fieldset .help {
 		
 		<div id="tab2">
 
-			<form:form method="get" modelAttribute="del_wishListCodes" action="${action} " name="wishListForm" id="wishListForm" > 
+			<form:form method="get" modelAttribute="wishList" action="${action} " name="wishListForm" id="wishListForm" > 
 			<input type="hidden" name="del_wishListCodes"/>
 			<table style="width: 100%">
 				<tr>
