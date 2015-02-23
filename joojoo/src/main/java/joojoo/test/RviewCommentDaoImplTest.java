@@ -18,12 +18,12 @@ public class RviewCommentDaoImplTest {
 			.getLogger(RviewCommentDaoImplTest.class);
 
 	@Autowired
-	@Qualifier("ReviewComment")
+	//@Qualifier("RviewComment")
 	RviewCommentDao dao;
 
 	public RviewCommentDaoImplTest() {
 		ApplicationContext ctx = new GenericXmlApplicationContext(
-				"spring/application-config.xml");
+				"spring/application-config2.xml");
 		dao = ctx.getBean(RviewCommentDao.class);
 
 	}
@@ -42,16 +42,17 @@ public class RviewCommentDaoImplTest {
 
 	public void rviewCommentTest() throws ParseException {
 		String userId = "user";
-		// String userName = "유저";
+		 String userName = "유저";
 		String title = "후기제목";
 		String content = "후기내용";
 		int starPoint = 5;
 		String storeName="스토어네임2";
 
-		//RviewComment rviewComment = new RviewComment(userId, title, content, starPoint, storeName);
+		RviewComment rviewComment = new RviewComment();
+		
 
 		//성공
-		//LOG.trace("" + dao.insertRviewComment(rviewComment));
+		LOG.trace("" + dao.insertRviewComment(rviewComment));
 		//LOG.trace("" + dao.getAllRviewComments());
 		
 		/*
@@ -61,22 +62,23 @@ public class RviewCommentDaoImplTest {
 
 		// dao.deleteRviewComment(1);
 
-		// dao.getRviewCommentsByUserId(userId);
-		// dao.getRviewCommentsByStoreCode(storeCode);
+		//dao.getRviewCommentsByUserId(userId);
+		 //dao.getRviewCommentsByStoreCode(2);
 
 		
 		String regionName = "강남"; 
 		String typeName = "고깃집"; 
 		String personsLevel = "4명이하"; 
 		String serviceTypeName = "서비스 메뉴 제공"; 
-		String keyword="내"; 
+		String keyword="게"; 
 		Category category = new Category(regionName, typeName, personsLevel, serviceTypeName, keyword);
 		 
 
-		 dao.getRviewCommentsByKeyword(category);
+		dao.getRviewCommentsByKeyword(category);
 		// dao.getRviewCommentsByUserName(userName);
 		// dao.getRviewCommentsByContent(content);
-		// dao.getRviewCommentsByTitle(title);
+		 //dao.getRviewCommentsByTitle("제목");
+		 //LOG.trace("수업"+dao.getRviewCommentBycommentCode(33));
 
 	}
 }

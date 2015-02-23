@@ -5,7 +5,7 @@
 
 <mapper namespace="joojoo.mapper.RviewCommentMapper">
 
-  	<resultMap type="RviewComment" id="RviewCommentMap">
+  	<!-- <resultMap type="RviewComment" id="RviewCommentMap">
 		
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />		
 		<id column="userId" jdbcType="VARCHAR" property="userId" />		
@@ -23,7 +23,7 @@
 		<result column="starPoint" jdbcType="INTEGER" property="starPoint" />			
 		<result column="storeCode" jdbcType="INTEGER" property="storeCode" />	
 		
-	</resultMap> 
+	</resultMap>  -->
 	
 <!-- 		comment_code number NOT NULL,
 	owner_id varchar2(20) NOT NULL,
@@ -54,8 +54,8 @@
 		WHERE comment_code = #{commentCode}
 	</delete>
 	
-	<select id= "getRviewCommentsByUserId" parameterType="String"
-						resultMap="RviewCommentMap">
+	<select id="getRviewCommentsByUserId" parameterType="String"
+						resultType="All">
 		select * 
 		from rview_comment 
 		join stores s using(store_code)
@@ -67,7 +67,7 @@
 	</select>
 	
 	<select id= "getRviewCommentsByStoreCode" parameterType="INTEGER"
-						resultMap="RviewCommentMap">
+						resultType="All">
 		select * 
 		from rview_comment 
 		join stores s using(store_code)
@@ -78,15 +78,13 @@
 		where store_code=#{storeCode}					
 	</select>
 	
-	<select id= "getRviewCommentsByKeyword" parameterType="RviewComment"
-						resultMap="RviewCommentMap">
+	<select id= "getRviewCommentsByKeyword" parameterType="Category"
+						resultType="All">
 		select * 
-		from rview_comment e
-		join stores s using(store_code)
-		join region r using(region_name)
-		join users u using(user_id)
-		join store_type t using(type_name)
-		join owners using(owner_id)	
+		from rview_comment 
+		join stores s using(store_code)	
+		join users u using(user_id)	
+		join owners o using(owner_id)	
 		
 		where title like '%${keyword}%'
 		or content like '%${keyword}%'
@@ -99,21 +97,19 @@
 	</select> 
 	
 	<select id= "getRviewCommentsByUserName" parameterType="String"
-						resultMap="RviewCommentMap">
+						resultType="All">
 		select * 
 		from rview_comment
 		join stores s using(store_code)
-		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where user_name like '%${userName}%'					
+		where u.user_name like '%${userName}%'					
 	</select>
 	
 	
 	
 	<select id= "getRviewCommentsByContent" parameterType="String"
-						resultMap="RviewCommentMap">
+						resultType="All">
 		select * 
 		from rview_comment
 		join stores s using(store_code)
@@ -125,7 +121,7 @@
 	</select>
 	
 	<select id= "getRviewCommentsByTitle" parameterType="String"
-						resultMap="RviewCommentMap">
+						resultType="All">
 		select * 
 		from rview_comment
 		join stores s using(store_code)
@@ -136,18 +132,19 @@
 		where title like '%${title}%'					
 	</select>
 	
-	<select id= "getAllRviewComments" resultMap="RviewCommentMap">
+	<select id= "getAllRviewComments" resultType="All">
 		select * 
 		from rview_comment
 	</select>
 	
-	<select id= "getRviewCommentBycommentCode" resultMap="RviewCommentMap">
+	
+	<select id= "getRviewCommentBycommentCode" parameterType="INTEGER" resultType="All">
 		select * 
 		from rview_comment
-		where comment_code = #{commentCode}
+		where comment_code = #{commentCode}	
 	</select>
 	
-	<select id= "getRviewCommentsByStoreName" parameterType="String" resultMap="RviewCommentMap">
+	<select id= "getRviewCommentsByStoreName" parameterType="String" resultType="All">
 		select * 
 		from rview_comment
 		join stores s using(store_code)

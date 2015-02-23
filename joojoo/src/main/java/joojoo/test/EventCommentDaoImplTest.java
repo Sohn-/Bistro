@@ -23,7 +23,7 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 	EventCommentDao dao;
 	
 	public EventCommentDaoImplTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
 		dao = ctx.getBean(EventCommentDao.class);
 		
 	}
@@ -76,7 +76,7 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		String serviceTypeName = "서비스 메뉴 제공";
 		String keyword="제목";
 		Category category = new Category(regionName, typeName, personsLevel, serviceTypeName, keyword);
-		dao.getEventCommentsByCategory(category);
+		//dao.getEventCommentsByCategory(category);
 		
 		
 		//dao.getEventCommentsByKeyword(category);
@@ -90,7 +90,7 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		//dao.getEventCommentsByOwnerId("sohn");
 		
 		//int commentCode = 1;
-		//dao.getEventCommentByCommentCode(commentCode);
+		dao.getEventCommentByCommentCode(1);
 
 	}
 }

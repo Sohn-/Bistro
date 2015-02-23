@@ -54,16 +54,16 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		
 		/*dao.getCouponsByOwnerId("sohn");
 		
-		//dao.getCouponsByOwnerId("sohn");
+		dao.getCouponsByOwnerId("sohn");*/
 		
-		dao.getCouponsByStatus(couponStatus);*/
+		dao.getCouponsByStatus(couponStatus);
 		
 		//dao.getCouponsByCouponCode(couponCode);
 		Coupon c = new Coupon();
 		c.setUserId("user");
 		c.setCouponStatus("미사용");
 		
-		LOG.trace("수업"+dao.getCouponsByStatusAndUserId(c));
+		//LOG.trace("수업"+dao.getCouponsByStatusAndUserId(c));
 		
 		
 		

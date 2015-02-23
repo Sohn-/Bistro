@@ -51,8 +51,9 @@ public class RviewCommentController {
 	
 	@RequestMapping(value = "/review", method=RequestMethod.GET,params={"commentCode"})
 	public String getDepartmentDetail(@RequestParam int commentCode,Model model){
-	      All rviewComment = rviewCommentService.SearchByCommentCode(commentCode);
-	      model.addAttribute("rviewComment",rviewComment);
+		LOG.trace(""+commentCode);
+	    All rviewComment = rviewCommentService.SearchByCommentCode(commentCode);
+	     /* model.addAttribute("rviewComment",rviewComment);*/
 	      return "review/review";
 	 }
 	
