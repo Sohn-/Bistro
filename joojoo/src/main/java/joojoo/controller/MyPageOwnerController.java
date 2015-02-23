@@ -94,7 +94,7 @@ public class MyPageOwnerController {
 	    	else if(loginUserObj != null){
 	    		All loginUser = (All)loginUserObj;
 	    		String userId = loginUser.getUserId();
-	    		path ="info/user";
+	    		path ="redirect:/info/user";
 
 	    	}
 	    	

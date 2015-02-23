@@ -28,7 +28,7 @@ public class DaoTest {
 
 	
 	public DaoTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
 		service = ctx.getBean(OwnerService.class);
 		
 	}
@@ -80,6 +80,8 @@ public class DaoTest {
 		//dept.setLocationId(2700);
 		//LOG.trace("결과 : "+dao.updateDepartment(dept));
 		//LOG.trace("결과 : "+dao.deleteDepartment(dept.getDepartmentId()));
+		
+		
 		
 	}
 	
