@@ -60,8 +60,11 @@ public class MyPageOwnerController {
 	    		
 	    		///이벤트글조회를 위한 코드
 	    		List<All> allEvent = eventService.SeachMyEvent(ownerId);
-	    		logger.error("여기는 showOwnerEventPage");
-	    		logger.trace("수업:"+allEvent);
+	    		int count=1;
+	    		for(All event: allEvent){
+	    			model.addAttribute("event"+count, event);
+	    			count++;
+	    		}
 	    		List<String> serviceTypeNames = new ArrayList<String>();
 	    		serviceTypeNames.add("금액 할인");
 	    		serviceTypeNames.add("서비스 메뉴 제공");
@@ -72,7 +75,7 @@ public class MyPageOwnerController {
 	    		personsLevels.add("10명이상");
 
 	    		model.addAttribute("allEvent",allEvent);
-	    		model.addAttribute("typeNames",serviceTypeNames);
+	    		model.addAttribute("serviceTypeNames",serviceTypeNames);
 	    		model.addAttribute("personsLevels",personsLevels);		    	
 	    		///이벤트글조회를 위한 코드 끝
 	    		

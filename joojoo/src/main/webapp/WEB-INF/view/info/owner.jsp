@@ -339,7 +339,8 @@ fieldset div {
 					</table>
 				</div>
 		</div>
-
+		
+		<!-- 탭2 정보수정 및 탈퇴 -->
 		<div id="tab2">
 			<div id="footer" class="container" align="left">
 				정보 수정 및 탈퇴<br>
@@ -379,7 +380,7 @@ fieldset div {
 			</div>
 		</div>
 
-
+		<!-- 탭3 이벤트 수정 및 등록-->
 		<div id="tab3">
 			<table style="width: 100%">
 				<tr>
@@ -401,7 +402,7 @@ fieldset div {
 		</div>
 		
 		<c:forEach items="${allEvent}" var="event" varStatus="status">
-			<c:url	value="/eventProcess?eventCommentCode=${status.current.commentCode }" var="action"></c:url>
+			<c:url	value="/info/update_event" var="action"></c:url>
 		<div class="modal fade" id="myModal${status.current.commentCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
 			<div class="modal-dialog"><div class="modal-content">
 				<!-- 모달 헤더 -->
@@ -412,7 +413,7 @@ fieldset div {
 				<!-- 모달 바디 -->
 				<div class="modal-body" id="here${status.current.commentCode }">
 				<c:url value="/info/update_event" var="action"></c:url>
-				<form:form modelAttribute="updateEvent" method="post" action="${action}" id="form3" name="form3">
+				<form:form modelAttribute="event${status.count }" method="post" action="${action}" id="form3" name="form3">
 					<fieldset>	
 						<div style="font-style: normal; color: red;">
 							<form:input path="commentCode" type="hidden" value="${status.current.commentCode }"></form:input>
@@ -423,7 +424,7 @@ fieldset div {
 							*이벤트 시작 시간
 							<form:input path="startDate" type="datetime" title="Please provide your userName" readonly="true"></form:input><br>
 							*이벤트 종료 시간
-							<form:input path="endDate" type="datetime" title="Please provide your userEmail" readonly="true"></form:input>
+							<form:input path="endDate" type="datetime" title="Please provide your userEmail" readonly="true"></form:input><br>
 							<form:input path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
 							서비스 종류	
 							<form:select path="serviceTypeName" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
