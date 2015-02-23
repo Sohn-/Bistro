@@ -53,7 +53,7 @@ public class RviewCommentController {
 	public String getDepartmentDetail(@RequestParam int commentCode,Model model){
 		LOG.trace(""+commentCode);
 	    All rviewComment = rviewCommentService.SearchByCommentCode(commentCode);
-	     /* model.addAttribute("rviewComment",rviewComment);*/
+	    model.addAttribute("rviewComment",rviewComment);
 	      return "review/review";
 	 }
 	
