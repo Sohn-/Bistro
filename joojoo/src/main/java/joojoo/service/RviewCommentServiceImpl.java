@@ -73,7 +73,7 @@ public class RviewCommentServiceImpl implements RviewCommentService {
 
 	@Override
 	public All SearchByCommentCode(int commentCode) {
-		return dao.getRviewCommentBycommentCode(commentCode);
+		return dao.getRviewCommentByCommentCode(commentCode);
 	}
 
 }

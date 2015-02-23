@@ -5,7 +5,7 @@
 
 <mapper namespace="joojoo.mapper.RviewCommentMapper">
 
-  	<!-- <resultMap type="RviewComment" id="RviewCommentMap">
+  	<resultMap type="RviewComment" id="RviewCommentMap">
 		
 		<id column="commentCode" jdbcType="INTEGER" property="commentCode" />		
 		<id column="userId" jdbcType="VARCHAR" property="userId" />		
@@ -23,7 +23,7 @@
 		<result column="starPoint" jdbcType="INTEGER" property="starPoint" />			
 		<result column="storeCode" jdbcType="INTEGER" property="storeCode" />	
 		
-	</resultMap>  -->
+	</resultMap> 
 	
 <!-- 		comment_code number NOT NULL,
 	owner_id varchar2(20) NOT NULL,
@@ -59,9 +59,7 @@
 		select * 
 		from rview_comment 
 		join stores s using(store_code)
-		join region r using(region_name)
 		join users u using(user_id)
-		join store_type t using(type_name)
 		join owners using(owner_id)	
 		where user_id=#{userId}					
 	</select>
@@ -103,12 +101,12 @@
 		join stores s using(store_code)
 		join users u using(user_id)
 		join owners using(owner_id)	 
-		where u.user_name like '%${userName}%'					
+		where u.user_name like '%${value}%'					
 	</select>
 	
 	
 	
-	<select id= "getRviewCommentsByContent" parameterType="String"
+	<select id= "getRviewCommentsByContent" parameterType="RviewComment"
 						resultType="All">
 		select * 
 		from rview_comment
@@ -117,7 +115,7 @@
 		join users u using(user_id)
 		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where content like '%${content}%'					
+		where content like '%${value}%'					
 	</select>
 	
 	<select id= "getRviewCommentsByTitle" parameterType="String"
@@ -129,7 +127,7 @@
 		join users u using(user_id)
 		join store_type t using(type_name)
 		join owners using(owner_id)	 
-		where title like '%${title}%'					
+		where title like '%${value}%'					
 	</select>
 	
 	<select id= "getAllRviewComments" resultType="All">
@@ -137,12 +135,20 @@
 		from rview_comment
 	</select>
 	
-	
-	<select id= "getRviewCommentBycommentCode" parameterType="INTEGER" resultType="All">
+	<select id= "getRviewCommentByCommentCode" parameterType="Integer"
+						resultType="All">
+		select * 
+		from rview_comment r
+		join stores s using(store_code)
+		join users using(user_id)
+		 		
+		where r.comment_code = #{commentCode}			
+	</select>
+	<!-- <select id= "getRviewCommentBycommentCode" parameterType="INTEGER" resultType="All">
 		select * 
 		from rview_comment
-		where comment_code = #{commentCode}	
-	</select>
+		where comment_code = #{commentCode}
+	</select> -->
 	
 	<select id= "getRviewCommentsByStoreName" parameterType="String" resultType="All">
 		select * 

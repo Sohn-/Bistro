@@ -52,13 +52,13 @@ public class RviewCommentDaoImplTest {
 		
 
 		//성공
-		LOG.trace("" + dao.insertRviewComment(rviewComment));
+		//LOG.trace("" + dao.insertRviewComment(rviewComment));
 		//LOG.trace("" + dao.getAllRviewComments());
 		
-		/*
-		 * rviewComment.setTitle("변경됨"); rviewComment.setCommentCode(2);
-		 * dao.updateRviewComment(rviewComment);
-		 */
+		
+		 //rviewComment.setTitle("변경됨"); rviewComment.setCommentCode(2);
+		 //dao.updateRviewComment(rviewComment);
+		 
 
 		// dao.deleteRviewComment(1);
 
@@ -74,11 +74,12 @@ public class RviewCommentDaoImplTest {
 		Category category = new Category(regionName, typeName, personsLevel, serviceTypeName, keyword);
 		 
 
-		dao.getRviewCommentsByKeyword(category);
-		// dao.getRviewCommentsByUserName(userName);
-		// dao.getRviewCommentsByContent(content);
-		 //dao.getRviewCommentsByTitle("제목");
-		 //LOG.trace("수업"+dao.getRviewCommentBycommentCode(33));
+		//dao.getRviewCommentsByKeyword(category);
+		 //dao.getRviewCommentsByUserName(userName);
+		 //dao.getRviewCommentsByContent(content);
+		 dao.getRviewCommentsByTitle("제목");
+		int num = 2;
+		 //LOG.trace("수업"+dao.getRviewCommentByCommentCode(num));
 
 	}
 }
