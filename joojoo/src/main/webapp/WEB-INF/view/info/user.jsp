@@ -141,7 +141,7 @@ $(document).ready(function(){
 		if(sub==1){
 			
 			var arr 
-			= $('input[name=del_wishListCode]:checked').serializeArray().map(function(item)
+			= $('input[name=wishListCheckBox]:checked').serializeArray().map(function(item)
 					{ return item.value });
 			var form = null;
 			if(arr != ""){
@@ -149,7 +149,7 @@ $(document).ready(function(){
 				 form.del_wishListCodes.value = arr;
 		
 				alert(form.del_wishListCodes.value);
-				form.action="../info/user/wishList/delete";
+				form.action="../info/user/wishList/delete"; 
 				form.submit();
 			}	
 			else{
@@ -765,7 +765,7 @@ fieldset .help {
 		
 		<div id="tab2">
 
-			<form:form method="post" modelAttribute="del_wishListCodes" action="${action} " name="wishListForm" id="wishListForm" > 
+			<form:form method="get" modelAttribute="del_wishListCodes" action="${action} " name="wishListForm" id="wishListForm" > 
 			<input type="hidden" name="del_wishListCodes"/>
 			<table style="width: 100%">
 				<tr>
@@ -774,6 +774,7 @@ fieldset .help {
 					<th>선택</th>
 									
 				</tr>
+				
 				<c:forEach items="${wishList }" var="wishList">
 	
 					<tr>

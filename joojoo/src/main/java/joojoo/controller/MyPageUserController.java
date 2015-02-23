@@ -21,12 +21,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes({"loginUser","loginOwner"})
 public class MyPageUserController {
 	static final Logger LOG = LoggerFactory
-			.getLogger(JoinController.class);
+			.getLogger(MyPageUserController.class);
 	
 		@Autowired
 	    private UserService userService;
@@ -89,10 +90,13 @@ public class MyPageUserController {
 	    	
 		}
 	    
-	    @RequestMapping(value="/info/user/wishList/delete", method=RequestMethod.POST)
-		public String deleteWishList(@ModelAttribute String del_wishListCodes, Model model,HttpSession session){
+	    @RequestMapping(value="/info/user/wishList/delete", method=RequestMethod.GET)
+		public String deleteWishList(@RequestParam String[] del_wishListCodes, Model model,HttpSession session){
 	    	
+	    	LOG.trace("??");
 	    	LOG.trace("수업"+del_wishListCodes);
+	    	LOG.error(""+del_wishListCodes);
+	    	System.out.println(del_wishListCodes);
 	    	//받은 코멘트 코드 넘버로 지우기...해야함 
 			return "redirect:/info/user";
 	    	
