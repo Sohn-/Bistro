@@ -165,6 +165,10 @@ fieldset .help {
 			</div>
 		</div>
 	</div>
+	
+	 <img  src="images/bar.png" style="width: 100%">
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
 
 	<div align="center" class="container">
 		<br><br>
@@ -268,6 +272,8 @@ fieldset .help {
 			${eventDetail.content}
 
 		</div>
-	</div>		
+	</div>	
+	</section>
+	</div>	
 </body>
 </html>
