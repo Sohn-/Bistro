@@ -1,24 +1,29 @@
 <%@page import="joojoo.entity.All"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
-<title>SearchPage</title>
 
+<title>SearchPage</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-1000px.css">
 <link rel="stylesheet" href="css/style-desktop.css">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -39,85 +44,85 @@ new(function(){});var d={v:function(a){return a},u:function(a){return-b.cos(a*b.
 </script>
 
 <script>
-	$(function() {
-		$("#tabs").tabs();
-	});
+$(function() {
+	$("#tabs").tabs();
+});
 
-	$(function() {
-		var tooltips = $("[title]").tooltip({
-			position : {
-				my : "left top",
-				at : "right+5 top-5"
-			}
-		});
-	});
-
-	$(document).ready(function() {
-		$('div#accordion').accordion({
-			event : "click hoverintent",collapsible : true,});
-	});
-
-	$(function() {
-		//scrollpane parts
-		var scrollPane = $(".scroll-pane"), scrollContent = $(".scroll-content");
-		//build slider
-		var scrollbar = $(".scroll-bar").slider({slide : function(event, ui) {
-			if (scrollContent.width() > scrollPane.width()) {
-				scrollContent.css(
-				"margin-left",	Math.round(ui.value/ 100* (scrollPane.width() - scrollContent.width()))	+ "px");
-			} else 
-			{
-				scrollContent.css("margin-left", 0);
-			}
+$(function() {
+	var tooltips = $("[title]").tooltip({
+		position : {
+			my : "left top",
+			at : "right+5 top-5"
 		}
 	});
+});
 
-	//append icon to handle
-	var handleHelper = scrollbar.find(".ui-slider-handle").mousedown(
-			function() {
-				scrollbar.width(handleHelper.width());	}).mouseup(
-						function() {
-							scrollbar.width("100%");}).append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")	
-							.wrap("<div class='ui-handle-helper-parent'></div>").parent();
+$(document).ready(function() {
+	$('div#accordion').accordion({
+		event : "click hoverintent",collapsible : true,});
+});
 
-	//change overflow to hidden now that slider handles the scrolling
-	scrollPane.css("overflow", "hidden");
-
-	//size scrollbar and handle proportionally to scroll distance
-	function sizeScrollbar() {
-		var remainder = scrollContent.width() - scrollPane.width();
-		var proportion = remainder / scrollContent.width();
-		var handleSize = scrollPane.width()- (proportion * scrollPane.width());
-		scrollbar.find(".ui-slider-handle").css({
-			width : handleSize,	"margin-left" : -handleSize / 2
-		});
-		handleHelper.width("").width(scrollbar.width() - handleSize);
-	}
-
-	//reset slider value based on scroll content position
-	function resetValue() {
-		var remainder = scrollPane.width() - scrollContent.width();
-		var leftVal = scrollContent.css("margin-left") === "auto" ? 0: parseInt(scrollContent.css("margin-left"));
-		var percentage = Math.round(leftVal / remainder * 100);
-		scrollbar.slider("value", percentage);
-	}
-
-	//if the slider is 100% and window gets larger, reveal content
-	function reflowContent() {
-		var showing = scrollContent.width()+ parseInt(scrollContent.css("margin-left"), 10);
-		var gap = scrollPane.width() - showing;
-		if (gap > 0) {
-			scrollContent.css("margin-left", parseInt(scrollContent.css("margin-left"), 10));
+$(function() {
+	//scrollpane parts
+	var scrollPane = $(".scroll-pane"), scrollContent = $(".scroll-content");
+	//build slider
+	var scrollbar = $(".scroll-bar").slider({slide : function(event, ui) {
+		if (scrollContent.width() > scrollPane.width()) {
+			scrollContent.css(
+			"margin-left",	Math.round(ui.value/ 100* (scrollPane.width() - scrollContent.width()))	+ "px");
+		} else 
+		{
+			scrollContent.css("margin-left", 0);
 		}
 	}
-	//change handle position on window resize
-	$(window).resize(function() {
-		resetValue();
-		sizeScrollbar();
-		reflowContent();
+});
+
+//append icon to handle
+var handleHelper = scrollbar.find(".ui-slider-handle").mousedown(
+		function() {
+			scrollbar.width(handleHelper.width());	}).mouseup(
+					function() {
+						scrollbar.width("100%");}).append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")	
+						.wrap("<div class='ui-handle-helper-parent'></div>").parent();
+
+//change overflow to hidden now that slider handles the scrolling
+scrollPane.css("overflow", "hidden");
+
+//size scrollbar and handle proportionally to scroll distance
+function sizeScrollbar() {
+	var remainder = scrollContent.width() - scrollPane.width();
+	var proportion = remainder / scrollContent.width();
+	var handleSize = scrollPane.width()- (proportion * scrollPane.width());
+	scrollbar.find(".ui-slider-handle").css({
+		width : handleSize,	"margin-left" : -handleSize / 2
 	});
-	//init scrollbar size
-	setTimeout(sizeScrollbar, 10);//safari wants a timeout
+	handleHelper.width("").width(scrollbar.width() - handleSize);
+}
+
+//reset slider value based on scroll content position
+function resetValue() {
+	var remainder = scrollPane.width() - scrollContent.width();
+	var leftVal = scrollContent.css("margin-left") === "auto" ? 0: parseInt(scrollContent.css("margin-left"));
+	var percentage = Math.round(leftVal / remainder * 100);
+	scrollbar.slider("value", percentage);
+}
+
+//if the slider is 100% and window gets larger, reveal content
+function reflowContent() {
+	var showing = scrollContent.width()+ parseInt(scrollContent.css("margin-left"), 10);
+	var gap = scrollPane.width() - showing;
+	if (gap > 0) {
+		scrollContent.css("margin-left", parseInt(scrollContent.css("margin-left"), 10));
+	}
+}
+//change handle position on window resize
+$(window).resize(function() {
+	resetValue();
+	sizeScrollbar();
+	reflowContent();
+});
+//init scrollbar size
+setTimeout(sizeScrollbar, 10);//safari wants a timeout
 });
 
 function Open_modal(commentCode, title, content, storeName) {
@@ -125,23 +130,18 @@ function Open_modal(commentCode, title, content, storeName) {
 	document.querySelector("#here" + commentCode).innerHTML = content;
 }
 </script>
-<script>
-(function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-45690170-1', 'jssor.com');
-        ga('require', 'displayfeatures');
-        ga('send', 'pageview');
+<script>
+(function (i, s, o, g, r, a, m) {    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () 
+{ (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)})
+(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-45690170-1', 'jssor.com');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');
 </script>
 
-
 <style type="text/css">
-
-
 body, input, textarea, select {
 line-height: 1.75em;
 font-size: 12pt;
@@ -376,45 +376,30 @@ fieldset .help {
 	</nav>
 	</form:form> <!-- 바디 카테고리 끝 --> 
 	
-	<br>
-
-	
+	<br>	
 	
 	<div style="height:20px;"></div>
-
-<div id="slider1_container" style="position:relative;padding:0px;margin:0 auto;top:0px;left:0px;width:960px;height:480px;background:#282828;">
-<div u="loading" style="position:absolute;top:0px;left:0px;">
-<div style="filter:alpha(opacity=70);opacity:0.7;position:absolute;display:block;background-color:#000000;top:0px;left:0px;width:100%;height:100%;">
-</div>
-<div style="position:absolute;display:block;background:url(../img/loading.gif) no-repeat center center;top:0px;left:0px;width:100%;height:100%;">
-</div>
-</div>
-<div u="slides" style="cursor:move;position:absolute;left:260px;top:0px;width:720px;height:480px;overflow:hidden;">
-
-
-
-<c:forEach items="${search_events}" var="event" varStatus="status">
-
-
-
-<div>
-<button  style="border-color: none;" id="event${status.current.commentCode }"data-toggle="modal"	data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
-				
-<img u="image" src="images/p${status.count}.jpg"  style="width: 650px; height: 400px;">
-</button>
-<br><br>
-<h3>
-<c:out value="${event.storeName}" />
-	[<c:out value="${event.title}" />]
-</h3>	
-<img u="thumb" src="images/p${status.count}.jpg"  style="width: 60px; height: 40px;">
-<div style="font-color: red; " align="center" ><h3>
+	<div id="slider1_container" style="position:relative;padding:0px;margin:0 auto;top:0px;left:0px;width:960px;height:480px;background:#282828;">
+	<div u="loading" style="position:absolute;top:0px;left:0px;">
+	<div style="filter:alpha(opacity=70);opacity:0.7;position:absolute;display:block;background-color:#000000;top:0px;left:0px;width:100%;height:100%;"></div>
+	<div style="position:absolute;display:block;background:url(../img/loading.gif) no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div></div>
+	<div u="slides" style="cursor:move;position:absolute;left:260px;top:0px;width:720px;height:480px;overflow:hidden;">
+	<c:forEach items="${search_events}" var="event" varStatus="status">
+	<div>
+	<button  style="border-color: none;" id="event${status.current.commentCode }"data-toggle="modal"	data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
+		<img u="image" src="images/p${status.count}.jpg"  style="width: 650px; height: 400px;">
+	</button>
+	<br><br>
+	<h3>
+	<c:out value="${event.storeName}" />[<c:out value="${event.title}" />]</h3>	
+	<img u="thumb" src="images/p${status.count}.jpg"  style="width: 60px; height: 40px;">
+	<div style="font-color: red; " align="center" ><h3>
+		
+	</h3></div>
+	</div>
 	
-</h3></div>
-</div>
-
-</c:forEach>
-</div>
+	</c:forEach>
+	</div>
 
 <span u="arrowleft" class="jssora05l" style="width:40px;height:40px;top:158px;left:248px;">
 </span>
