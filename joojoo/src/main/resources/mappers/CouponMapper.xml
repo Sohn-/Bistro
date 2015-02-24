@@ -59,6 +59,8 @@
 		from coupon
 		join event_comment using(comment_code)
 		join stores using(store_code)
+		join owners using(owner_id)
+		join users using(user_id)
 		where coupon.owner_id=#{ownerId}					
 	</select>
 	

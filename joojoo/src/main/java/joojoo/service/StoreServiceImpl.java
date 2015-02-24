@@ -19,26 +19,22 @@ public class StoreServiceImpl implements StoreService {
 	StoreDao dao;
 	
 	@Override
-	public boolean addStore(Stores store) {
+	public int addStore(Stores store) {
+		int result = dao.insertStore(store);
+		return result;
+	}
+	
+	@Override
+	public int updateStore(All store) {
+		int result = dao.updateStore(store);
 		
-		if( dao.insertStore(store)>0 )
-			return true;
-		else return false;
-		
+		return result;
 	}
 
 	@Override
-	public boolean updateStore(Stores store) {
-		if( dao.updateStore(store) >0 )
-			return true;
-		else return false;
-	}
-
-	@Override
-	public boolean deleteStore(int storeCode) {
-		if( dao.deleteStore(storeCode)>0 )
-			return true;
-		else return false;
+	public int deleteStore(int storeCode) {
+		int reuslt = dao.deleteStore(storeCode);
+		return reuslt;
 	}
 
 	@Override
@@ -66,6 +62,18 @@ public class StoreServiceImpl implements StoreService {
 	public List<All> showStoresByKeyword(Category category) {
 		List<All> result = null;
 		result = dao.getStoresBySearchKeyword(category);
+		return result;
+	}
+
+	@Override
+	public String showOwnerStore(All ownerStore) {
+		String result = dao.getStoreByStoreName(ownerStore);
+		return result;
+	}
+
+	@Override
+	public All showStoresByStoreCode(int storeCode) {
+		All result = dao.getStoreByStoreCode(storeCode);
 		return result;
 	}
 	

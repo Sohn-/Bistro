@@ -13,6 +13,7 @@ public interface EventCommentDao {
 	int insertEventComment(EventComment eventComment);
 	int updateEventComment(All eventComment);
 	int deleteEventComment(int commentCode);
+	int deleteEventCommentByOwnerId(String ownerId);
 	
 	List<All> getEventCommentsByOwnerId(String ownerId);
 	All getEventCommentByCommentCode(int commentCode);

@@ -8,12 +8,14 @@ import joojoo.entity.Stores;
 
 public interface StoreService {
 	
-	boolean addStore(Stores store);
-	boolean updateStore(Stores store);
-	boolean deleteStore(int storeCode);
+	int addStore(Stores store);
+	int updateStore(All store);
+	int deleteStore(int storeCode);
 	
 	List<All> showOwnerStores(String ownerId);
 	List<All> showStoresByCategory(Category category);
 	List<All> showStoresByKeyword(Category category);
 	List<All> showAllStore();
+	All showStoresByStoreCode(int storeCode);
+	String showOwnerStore(All ownerStore);
 }
