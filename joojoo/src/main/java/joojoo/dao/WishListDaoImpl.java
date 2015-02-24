@@ -49,6 +49,13 @@ public class WishListDaoImpl implements WishListDao{
 		String stmt = nameSpace + "getWishListsByUserId";
 		return sqlSession.selectList(stmt, userId);
 	}
+
+	@Override
+	public All getCommentCodeByWishListCode(int wishListCode) {
+		String stmt = nameSpace + "getCommentCodeByWishListCode";
+		return sqlSession.selectOne(stmt, wishListCode);
+	}
+
 	
 	
 	

@@ -24,6 +24,16 @@
 		where w.user_id=#{userId}	
 	
 	</select>
+	
+	<select id = "getCommentCodeByWishListCode" resultType="All">
+		select * 
+		from wish_list w
+		join event_comment e using(comment_code)	
+		join stores s using(store_code)
+		join owners o using(owner_id)
+		where w.wish_list_code=#{wishListCode}	
+	
+	</select>
   
   	
 	

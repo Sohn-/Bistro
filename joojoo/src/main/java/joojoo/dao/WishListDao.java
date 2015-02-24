@@ -13,7 +13,7 @@ public interface WishListDao {
 	int deleteWishList(int wishListCode);
 	
 	List<All> getWishListsByUserId(String userId);
-	
+	All getCommentCodeByWishListCode(int wishListCode);
 	
 
 }
