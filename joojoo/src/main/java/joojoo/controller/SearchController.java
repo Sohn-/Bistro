@@ -30,61 +30,16 @@ public class SearchController {
 	EventCommentService eventService;
 	@Autowired
 	StoreService storeService;
-	
-/*	@RequestMapping(value="/main_search", method=RequestMethod.POST)
-	public String showMain(Model model){
-		Category category = new Category();
-		model.addAttribute("category", category);
-		
-		List<All> events = eventService.SeachByKeyword(category);
-		model.addAttribute("events", events);
-		List<All> stores = storeService.showStoresByKeyword(category);
-		model.addAttribute("stores", stores);
-		return "main";
-	}
 
-	
-	@RequestMapping(value = "/main", method = RequestMethod.POST)
-	public String showResult(Model model, HttpSession session) {
-		String path = "redirect:/";
-		Category category = null;
-
-		if (session.getAttribute("category") != null) {
-			category = (Category) session.getAttribute("category");
-			model.addAttribute("category", category);
-
-			if (category.getKeyword() != null) {
-				List<All> events = eventService.SeachByKeyword(category);
-				model.addAttribute("events", events);
-				List<All> stores = storeService.showStoresByKeyword(category);
-				model.addAttribute("stores", stores);
-			} else if (category.getPersonsLevel() != "none"
-					|| category.getRegionName() != "none"
-					|| category.getServiceTypeName() != "none"
-					|| category.getTypeName() != "none") {
-				List<All> events = eventService.SeachByCategory(category);
-				model.addAttribute("events", events);
-				List<All> stores = storeService.showStoresByCategory(category);
-				model.addAttribute("stores", stores);
-			}
-		} else if (category == null) { //검색한적이 없으면 모두 출력
-			List<All> events = eventService.SeachAllEvent();
-			model.addAttribute("events", events);
-			List<All> stores = storeService.showAllStore();
-			model.addAttribute("stores", stores);
-		}
-		return path;
-	}*/
-	
 	@RequestMapping(value="/")
 	public String showMain(Model model, SessionStatus sessionStatus){
-		if(sessionStatus.isComplete() == true){ //세션 차있으면
+		/*if(sessionStatus.isComplete() == true){ //세션 차있으면
 			sessionStatus.setComplete();
-		}
+		}*/
 		Category category = new Category();
 		model.addAttribute("category", category);
 		
-		List<All> events = eventService.SeachAllEvent();
+		List<All> events = eventService.SearchValidEvent();
 		model.addAttribute("events", events);
 		logger.error("events"+events);
 		List<All> stores = storeService.showAllStore();

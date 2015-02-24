@@ -8,6 +8,7 @@ import joojoo.entity.All;
 import joojoo.entity.Users;
 import joojoo.service.CouponService;
 import joojoo.service.EventCommentService;
+import joojoo.util.GetSessionId;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,29 +19,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //@Controller
-public class BuyCouponController {
+public class CouponController {
 	static final Logger logger = LoggerFactory
-			.getLogger(BuyCouponController.class);
+			.getLogger(CouponController.class);
 	@Autowired
 	EventCommentService eventService;
 	
 	@Autowired
 	CouponService couponService;
 	
+	private GetSessionId sd = GetSessionId.getInstance();
+	
 	@RequestMapping(value="/buy_coupon")
-	public String showDetail(@RequestParam("eventCommentCode") int eventCommentCode, Model model, HttpSession session){
+	public String showDetail(@RequestParam("ecommentCode") String commentCodeStr, Model model, HttpSession session){
 		String path = "login/login";
+		String userId = sd.getSessionId(session);
 		
-		Object loginUserObj = session.getAttribute("loginUser");
-		if(loginUserObj == null){
-			model.addAttribute("needLogin");	//로그인 안되어있으면 로그인이 필요함.
+		int commentCode = Integer.parseInt(commentCodeStr);
 			
-		}
-		else{
-			Users loginUser = (Users) loginUserObj;
-			couponService.buyCoupon(loginUser.getUserId(), eventCommentCode);
-			path = "event/event_detail";
-		}
+		couponService.buyCoupon(userId, commentCode);
+		path = "event/event_detail";
 		
 		return path;
 	}

@@ -561,100 +561,6 @@ function soundPrev() {
 	
 	<br>
 
-<%-- 옆으로 넘어가는 방식
-	<div id="carousel-example-generic" class="carousel slide"	data-ride="carousel">
-	<!-- Indicators -->
-	
- 	<ol class="carousel-indicators">
-		
-		<li data-target="#carousel-example-generic" data-slide-to="0"	class="active"></li>
-		<c:forEach items="${events}" var="event" varStatus="status">
-		<li data-target="#carousel-example-generic" data-slide-to="${status.count-1 }"></li>
-		</c:forEach>
-		<!-- <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		<li data-target="#carousel-example-generic" data-slide-to="3"></li>
-		<li data-target="#carousel-example-generic" data-slide-to="4"></li>
-		<li data-target="#carousel-example-generic" data-slide-to="5"></li>
-		<li data-target="#carousel-example-generic" data-slide-to="6"></li> -->
-	</ol>
-	
-	<!-- Wrapper for slides -->
-	<div class="carousel-inner" role="listbox" align="center">
-	<c:forEach items="${events}" var="event" varStatus="status">
-		<c:if test="${status.count =='1'}">
-		
-			<div class="item active">
-				<button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
-					<img src="images/pic01.jpg" align="bottom">
-					<div class="carousel-caption">
-						<c:out value="${event.storeName}" />
-						[<c:out value="${event.title}" />]
-					</div>
-				</button>
-			</div>
-		</c:if>
-
-
-	 
-		<div class="item">
-			<button id="event${status.current.commentCode }"data-toggle="modal"	data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
-				<img src="images/pic01.jpg" align="bottom">
-				<div class="carousel-caption">
-					<c:out value="${event.storeName}" />
-						[<c:out value="${event.title}" />]
-				</div>
-			</button>
-		</div>
-		
-		</c:forEach>
-
-
-	<!-- 이벤트 클릭 시 모달 시작 -->
-	<c:forEach items="${events}" var="event" varStatus="status">
-	<c:url	value="/eventProcess?eventCommentCode=${status.current.commentCode }"	var="action"></c:url>
-		<div class="modal fade" id="myModal${status.current.commentCode }"	tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					
-					<!-- 모달 헤더 -->
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h4 class="modal-title"	id="modal_title${status.current.commentCode }"></h4>
-					</div>
-					
-					<!-- 모달 바디 -->
-					<div class="modal-body" id="here${status.current.commentCode }">
-						<c:out value="${event.storeAdress }" />
-					</div>
-					
-					<!-- 모달 푸터 -->
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default"	data-dismiss="modal">닫기</button>
-						<a href="${action }"><button class="btn btn-warning btn-sm">이벤트상세보기</button></a>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-	</c:forEach><!-- 이벤트 클릭 시 모달 끝 -->
-	JooJooClub EVENT
-	</div>
-
-	<!-- Controls -->
-	<a class="left carousel-control" href="#carousel-example-generic"	role="button" data-slide="prev"> 
-		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-		<span class="sr-only">Previous</span>
-	</a> 
-	
-	<a class="right carousel-control" href="#carousel-example-generic"	role="button" data-slide="next"> 
-		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-		<span class="sr-only">Next</span>
-	</a>
-	</div>
-
-
-	<div> --%>
-	
-	
 	<div style="height:20px;"></div>
 
 <div id="slider1_container" style="position:relative;padding:0px;margin:0 auto;top:0px;left:0px;width:960px;height:480px;background:#282828;">
@@ -669,9 +575,6 @@ function soundPrev() {
 
 
 <c:forEach items="${events}" var="event" varStatus="status">
-
-
-
 <div>
 <button  style="border-color: none;" id="event${status.current.commentCode }"data-toggle="modal"	data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
 				
