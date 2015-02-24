@@ -147,7 +147,7 @@ fieldset .help {
 
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-	<div id="header-wrapper" style="background-image: url(images/main.jpg)">
+	<div id="header-wrapper" >
 		<div id="header" class="container">
 			<h1 id="logo"><a href="<%=request.getContextPath()%>/">JooJooclub</a></h1>
 			<p>Welcom To JooJooClub</p>
