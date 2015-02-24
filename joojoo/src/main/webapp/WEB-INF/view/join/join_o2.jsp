@@ -260,15 +260,16 @@ fieldset .help {
       </div>
    </div>
    <img  src="../images/bar.png" style="width: 100%">
- <div id="features-wrapper">
-      <section id="features" class="container"> 
+ 	
+ 	<div class="container" style="background-color: #323232;">
+    <section id="features" class="container"> 
    <div id="tabs">
       <ul>
          <li><a href="#tab1">일반회원 가입하기</a></li>
          <li><a href="#tab2">업주회원 가입하기</a></li>
 
       </ul>
-      <div id="tab1">
+        <div id="tab1">
          <div id="footer" class="container" align="left">
             <div class="row">
             <c:url value="/join/result/user" var="action"></c:url> 
@@ -307,9 +308,9 @@ fieldset .help {
           <div id="footer" class="container" align="left">
             <div class="row2">
 
-              <c:url value="/join/result/owner" var="action"></c:url>
+            <c:url value="/join/result/owner" var="action"></c:url>
  <form:form  modelAttribute="joinStore" method="post" action="${action} "  id="form" class="form-4">
-   	<h1>가게를 등록 해 주세요!</h1>
+   	<h1>가게를 등록 asddddddddddd해 주세요!</h1>
    	<h3>가게 이름</h3><form:input path="storeName"  placeholder="상호명" required="true"/>
     <h3>가게 전화</h3><form:input path="storePhone"  placeholder="전화번호" required="true"/>
     <h3>위치 선택</h3><form:select path="regionName"  items="${regionNames }" required="true"/>
@@ -322,7 +323,7 @@ fieldset .help {
     
    
      <input type="submit" value="등록완료" />
-      
+        
 
 </form:form>
                

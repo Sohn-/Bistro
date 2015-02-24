@@ -44,9 +44,37 @@ public class JoinController {
    
    @RequestMapping(value="/join", method=RequestMethod.GET)
    public String showSelectJoinType(HttpSession session,Model model){
+	   
+	   
+	   
+	   
+	   
 	  if(session.getAttribute("loginUser") == null && session.getAttribute("loginOwner")==null ){
+		  model.addAttribute("joinStore",new Stores());
+		   
+		   List<String> regionNames = new ArrayList<String>();
+		   
+		   regionNames.add("강남");
+		   regionNames.add("건대");
+		   regionNames.add("신촌");
+		   regionNames.add("신림");
+		   regionNames.add("이태원");
+		   regionNames.add("종로");
+		   
+		   model.addAttribute("regionNames",regionNames);
+		   
+		   List<String> typeNames = new ArrayList<String>();
+		   typeNames.add("바");
+		   typeNames.add("룸");
+		   typeNames.add("고깃집");
+		   typeNames.add("횟집");
+		   typeNames.add("포차");
+		   typeNames.add("호프");
+		   model.addAttribute("typeNames",typeNames);
+		   
+		   
 		  model.addAttribute("joinUser", new Users());
-		  model.addAttribute("joinOwner", new Owners());
+		  model.addAttribute("joinOwner", new All());
 		  return "join/join";
 	  }
 	  else return "redirect:/";//일단 메인으로 가도록..

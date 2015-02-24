@@ -97,17 +97,28 @@
 </form:form> --%>
 
 <c:url value="/join/result/user" var="action"></c:url> 
-<form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" class="form-4"> 
+<form:form  modelAttribute="joinUser" method="post" action="${action} " id="form" > 
 
     <h1 align="center">회 원 가 입</h1>
     
     
-    	<h3>아이디</h3><form:input path="userId" id="joinId" placeholder="Id" required="true"/>
-        
-        <input type="button" value="중복확인" id="idDupCheck"/><br>
+    	<h3>아이디</h3>
+    	<table bordercolor="red"><tr>
+    	<td>
+    	<form:input path="userId" id="joinId" placeholder="Id" required="true"/>  
+    	</td>
+    	<td> 
+    	<input type="button" value="중복확인" id="idDupCheck"/>
     	<input type="hidden" name="checked" id="checked"/><br>
-    	<h3>비밀번호 </h3><form:input path="userPassword" id="pass" type="password" required="true" /><br>
-   
+    	</td>
+    	</tr></table>
+ <%--    	<form:input path="userId" id="joinId" placeholder="Id" required="true"/>        
+        <input type="button" value="중복확인" id="idDupCheck"/>
+    	<input type="hidden" name="checked" id="checked"/><br> --%>
+    	
+    	
+    	<h3>비밀번호 </h3>
+    	<form:input path="userPassword" id="pass" type="password" required="true" /><br>   
    
         <h3>비밀번호 확인</h3>
 		<input type="password" id="pass2" name="pass2" required="true" /><br>
