@@ -169,7 +169,7 @@ fieldset .help {
    <img  src="images/bar.png" style="width: 100%">
  <div id="features-wrapper">
       <section id="features" class="container"> 
-   <div id="tabs">
+   <div id="tabs" style="font-family:'Jeju Gothic', serif; ">
       <ul>
          <li><h3><a href="#tab1" style="width: 14.2cm; ">일반회원</a></h3></li>
          <li><h3><a href="#tab2" style="width: 14.2cm;">업주회원 </a></h3></li>
