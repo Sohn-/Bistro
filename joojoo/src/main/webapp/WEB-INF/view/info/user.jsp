@@ -139,17 +139,17 @@ $(document).ready(function(){
 	});
 	
 	function wishListSubmit(sub){
+		var arr = $('input[name=wishListCheckBox]:checked').serializeArray().map(function(item)
+				{ return item.value });
+		
+		var form = document.getElementById("wishListForm");
+		form.checked_wishListCodes.value = arr;
+		alert(form.checked_wishListCodes.value);
+		
 		if(sub==1){
 			
-			var arr 
-			= $('input[name=wishListCheckBox]:checked').serializeArray().map(function(item)
-					{ return item.value });
-			var form = null;
 			if(arr != ""){
-				 form = document.getElementById("wishListForm");
-				 form.del_wishListCodes.value = arr;
 		
-				alert(form.del_wishListCodes.value);
 				form.action="../info/user/wishList/delete"; 
 				form.submit();
 			}	
@@ -159,9 +159,20 @@ $(document).ready(function(){
 			 
 		
 		 }
+		//즉시 구매하면
 		if(sub==2){
-		 document.updateForm.action="../info/member/delete";
-		 document.updateForm.submit();
+			
+			if(arr != ""){
+				
+				form.action="../info/user/wishList/buy"; 
+				form.submit();
+			}	
+			else{
+				alert("구매할 항목을 선택해 주세요!");
+			}
+			
+			
+			
 		}
 		}
 	
@@ -695,16 +706,10 @@ fieldset .help {
 			<div align="right">
 				<nav id="nav">
 				<ul>
-					<li><a class="icon fa-home"
-						href="<%=request.getContextPath()%>/main"><span>Home</span></a></li>
-					<li><a class="icon fa-bar-chart-o"
-						href="<%=request.getContextPath()%>/login"><span>Login</span></a>
-					<li><a class="icon fa-cog"
-						href="<%=request.getContextPath()%>/join"><span>Join</span></a></li>
-					<li><a class="icon fa-retweet"
-						href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
-					<li><a class="icon fa-sitemap"
-						href="<%=request.getContextPath()%>/info/cart"><span>Cart</span></a></li>
+				<li><a class="icon fa-home"			href="<%=request.getContextPath()%>/"><span>Home</span></a></li>
+				<li><a class="icon fa-retweet"		href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap"		href="<%=request.getContextPath()%>/review"><span>ReviewBoard</span></a></li>
+				<li><a class="icon fa-bar-chart-o"	href="<%=request.getContextPath()%>/logout"><span>Logout</span></a>
 				</ul>
 				</nav>
 			</div>
@@ -767,7 +772,7 @@ fieldset .help {
 		<div id="tab2">
 
 			<form:form method="get" modelAttribute="wishList" action="${action} " name="wishListForm" id="wishListForm" > 
-			<input type="hidden" name="del_wishListCodes"/>
+			<input type="hidden" name="checked_wishListCodes"/>
 			<table style="width: 100%">
 				<tr>
 					<th>상호명</th>
@@ -817,7 +822,7 @@ fieldset .help {
 			
 			<input type="button" onclick="wishListSubmit(1)" value="장바구니에서 삭제"/>
 			
-			<a href="update_u.jsp"><input type="button" name="button" value="즉시구매"> </a>
+			<input type="button" onclick="wishListSubmit(2)" value="즉시구매" >
 			<a href="update_u.jsp"><input type="button" name="button" value="쿠폰 검색하러 가기"></a>
 			</form:form>
 			
@@ -841,8 +846,12 @@ fieldset .help {
 					<td><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
 					<td><c:out value="${nonUsedCoupon.title}"></c:out></td>
 					<td><c:out value="${nonUsedCoupon.couponCode }"></c:out></td>
-					<td><button id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
-					쿠폰 상세 보기</button></a> </td>				
+					<td>
+					
+					<input type="button" name="button"value="쿠폰 상세 보기" id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
+					
+					<%-- <button id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
+					쿠폰 상세 보기</button> --%> </td>				
 				</tr>
 				</c:forEach>
 				

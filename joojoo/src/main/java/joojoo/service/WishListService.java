@@ -11,5 +11,5 @@ public interface WishListService {
 	boolean deleteWishList(int wishListCode);
 	
 	List<All> showAllWishList(String userId);
-	
+	All getCommentCodeBywishListCode(int wishListCode);
 }

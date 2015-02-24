@@ -39,6 +39,14 @@ public class WishListServiceImpl implements WishListService {
 		return result;
 	}
 
+	
+
+	@Override
+	public All getCommentCodeBywishListCode(int wishListCode) {
+		All result = dao.getCommentCodeByWishListCode(wishListCode);
+		return result;
+	}
+
 
 
 	
