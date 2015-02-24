@@ -220,15 +220,17 @@ fieldset .help {
        <!-- 검색 폼 영역 -->
 
        <form  id="reviewlist" name="searchForm" action="" method="get" style="font-family:'Jeju Gothic', serif; ">
+       
        <p>
-           <select name="searchType" style="width: 40%">
+           <select name="searchType" style="width: 80%">
                <option value="ALL">전체검색</option>
                <option value="SUBJECT">제목</option>
                <option value="WRITER">작성자</option>
                <option value="CONTENTS">내용</option>
            </select>
-           <input type="text" name="searchText" value="" style="width: 40%"/>
-           <input type="submit" value="검색" align="left" />
+           <input type="text" name="searchText" value="" style="width: 80%"/>
+       
+           <input type="submit" value="검색" align="middle" style="width: 80%" />
        </p>
        </form>
 
@@ -273,7 +275,7 @@ fieldset .help {
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.userId}" /></td>
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.title }" /></td>
 									<%-- <td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.regDate}" /></td> --%>
-									<td style="padding-right: 2cm; width: 15cm; font-size: 12px" ><c:out	value="${rview.storeName}" /></td>
+									<td style="padding-right: 2cm; width: 15cm; font-size: 12px" ><c:out value="${rview.storeName}" /></td>
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.starPoint}" /></td>
 								</tr>
 							</table>
