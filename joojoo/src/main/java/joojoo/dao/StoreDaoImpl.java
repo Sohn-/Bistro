@@ -25,7 +25,7 @@ public class StoreDaoImpl implements StoreDao{
 	}
 
 	@Override
-	public int updateStore(Stores store) {
+	public int updateStore(All store) {
 		String stmt = nameSpace + "updateStore";
 		return sqlSession.update(stmt, store);
 	}
@@ -34,6 +34,12 @@ public class StoreDaoImpl implements StoreDao{
 	public int deleteStore(int storeCode) {
 		String stmt = nameSpace + "deleteStore";
 		return sqlSession.delete(stmt, storeCode);
+	}
+	
+	@Override
+	public int deleteStoreByOwnerId(String ownerId) {
+		String stmt = nameSpace + "deleteStoreByOwnerId";
+		return sqlSession.delete(stmt, ownerId);
 	}
 
 	@Override
@@ -47,6 +53,13 @@ public class StoreDaoImpl implements StoreDao{
 	public All getStoreByStoreCode(int storeCode) {
 		String stmt = nameSpace + "getStoreByStoreCode";
 		All result = sqlSession.selectOne(stmt,storeCode);
+		return result;
+	}
+	
+	@Override
+	public String getStoreByStoreName(All ownerStore) {
+		String stmt = nameSpace + "getStoreByStoreName";
+		String result = sqlSession.selectOne(stmt,ownerStore);
 		return result;
 	}
 

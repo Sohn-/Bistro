@@ -47,6 +47,15 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		return result;
 	}
 	
+	@Override
+	public int deleteEventCommentByOwnerId(String ownerId) {
+		String statement = nameSpace + "deleteEventCommentByOwnerId";
+		int result = sqlSession.delete(statement, ownerId);
+		
+		logger.trace("deleteEventCommentByOwnerId종료...");
+		return result;
+	}
+	
 	//int regionCode, int typeCode, int personsCode, int serviceTypeCode
 	/*@Override
 	public List<EventComment> getEventCommentsByCategory(Category category) { //테스트
@@ -120,6 +129,13 @@ public class EventCommentDaoImpl implements EventCommentDao{
 	public All getEventCommentByCommentCode(int commentCode) {
 		String statement = nameSpace + "getEventCommentByCommentCode";
 		All result = sqlSession.selectOne(statement, commentCode);
+		
+		return result;
+	}
+	@Override
+	public List<All> getEventCommentsValid() {
+		String statement = nameSpace + "getEventCommentsValid";
+		List<All> result = sqlSession.selectList(statement);
 		
 		return result;
 	}

@@ -9,6 +9,7 @@ import joojoo.entity.All;
 import joojoo.entity.Coupon;
 import joojoo.entity.Users;
 import joojoo.service.CouponService;
+import joojoo.service.EventCommentService;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
 import joojoo.service.UserService;
@@ -45,6 +46,9 @@ public class MyPageUserController {
 	    
 	    @Autowired
 	    private WishListService wishListService;
+	    
+	    @Autowired
+	    private EventCommentService eventCommentService;
 	    
 	    @RequestMapping(value="/info/user", method=RequestMethod.GET)
 		public String showInfoPage(Model model,HttpSession session){
@@ -92,13 +96,35 @@ public class MyPageUserController {
 		}
 	    
 	    @RequestMapping(value="/info/user/wishList/delete", method=RequestMethod.GET)
-		public String deleteWishList(String del_wishListCodes, Model model,HttpSession session){
+		public String deleteWishList(String checked_wishListCodes, Model model,HttpSession session){
 	    	
 	    	
-	    	List<String> result = Arrays.asList(del_wishListCodes.split(","));
+	    	List<String> result = Arrays.asList(checked_wishListCodes.split(","));
 	    	for(int i=0; i<result.size(); i++){
 	    		int delete_no = Integer.parseInt(result.get(i));
 	    		wishListService.deleteWishList(delete_no);
+	    	}
+	    
+			return "redirect:/info/user";
+	    	
+		}
+	    
+	    @RequestMapping(value="/info/user/wishList/buy", method=RequestMethod.GET)
+		public String buyWishList(String checked_wishListCodes, Model model,HttpSession session){
+	    	
+	    	String loginUserId = ((All)session.getAttribute("loginUser")).getUserId();
+	    	List<String> result = Arrays.asList(checked_wishListCodes.split(","));
+	    	for(int i=0; i<result.size(); i++){
+	    		int buy_no = Integer.parseInt(result.get(i));
+	    		
+	    		All buy_info = wishListService.getCommentCodeBywishListCode(buy_no);
+	    		int comment_code = buy_info.getCommentCode();
+	    		
+	    		wishListService.deleteWishList(buy_no);
+	    		couponService.buyCoupon(loginUserId, comment_code);
+	    		
+	    		
+	    		
 	    	}
 	    
 			return "redirect:/info/user";

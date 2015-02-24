@@ -38,6 +38,15 @@ public class CouponDaoImpl implements CouponDao{
 		logger.trace("updateCoupon종료...");
 		return result;
 	}
+	
+	@Override
+	public int updateCouponByEndDate() {
+		String statement = nameSpace + "updateCouponByEndDate";
+		int result = sqlSession.update(statement);
+		
+		logger.trace("updateCouponByEndDate종료...");
+		return result;
+	}
 
 	@Override
 	public int deleteCoupon(String couponCode) {
@@ -96,7 +105,6 @@ public class CouponDaoImpl implements CouponDao{
 		return result;
 	}
 
-	
 
 }
 

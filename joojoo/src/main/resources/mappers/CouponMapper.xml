@@ -30,6 +30,13 @@
 		coupon_status = #{couponStatus}
 		WHERE coupon_code = #{couponCode}
 	</update>
+	
+	<update id="updateCouponByEndDate">
+		UPDATE Coupon SET
+		coupon_status = '기간만료'
+		WHERE coupon_status = '미사용'
+		AND end_date <![CDATA[ < ]]> sysdate
+	</update>
  	
 	<delete id="deleteCoupon" parameterType="String">
 		DELETE FROM Coupon
@@ -55,11 +62,20 @@
 	<select id= "getCouponByOwnerId" parameterType="String"
 						resultType="All">
 		
-		select *
-		from coupon
-		join event_comment using(comment_code)
-		join stores using(store_code)
-		where coupon.owner_id=#{ownerId}					
+		select <!-- c.coupon_code, c.owner_id, c.user_id, c.comment_code, c.coupon_status, -->
+			c.*, e.*, s.*, o.*, u.*
+			<!-- e.title, e.content, e.start_date, e.end_date, e.service_type_name, e.persons_level,
+			o.owner_name, u.user_name -->
+		from coupon c
+		join event_comment e on e.comment_code=c.comment_code
+		join stores s on (s.store_code=e.store_code)
+		join owners o on (o.owner_id=c.owner_id)
+		join users u on (u.user_id=c.user_id) 
+		<!-- join event_comment e using(comment_code)
+		join stores s using(store_code)
+		join owners o using(owner_id)
+		join users u using(user_id) -->
+		where c.owner_id=#{ownerId}					
 	</select>
 	
 	<select id= "getCouponsByCommentCode" parameterType="INTEGER"

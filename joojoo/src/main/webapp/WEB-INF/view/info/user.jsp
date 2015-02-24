@@ -139,17 +139,17 @@ $(document).ready(function(){
 	});
 	
 	function wishListSubmit(sub){
+		var arr = $('input[name=wishListCheckBox]:checked').serializeArray().map(function(item)
+				{ return item.value });
+		
+		var form = document.getElementById("wishListForm");
+		form.checked_wishListCodes.value = arr;
+		alert(form.checked_wishListCodes.value);
+		
 		if(sub==1){
 			
-			var arr 
-			= $('input[name=wishListCheckBox]:checked').serializeArray().map(function(item)
-					{ return item.value });
-			var form = null;
 			if(arr != ""){
-				 form = document.getElementById("wishListForm");
-				 form.del_wishListCodes.value = arr;
 		
-				alert(form.del_wishListCodes.value);
 				form.action="../info/user/wishList/delete"; 
 				form.submit();
 			}	
@@ -159,9 +159,20 @@ $(document).ready(function(){
 			 
 		
 		 }
+		//즉시 구매하면
 		if(sub==2){
-		 document.updateForm.action="../info/member/delete";
-		 document.updateForm.submit();
+			
+			if(arr != ""){
+				
+				form.action="../info/user/wishList/buy"; 
+				form.submit();
+			}	
+			else{
+				alert("구매할 항목을 선택해 주세요!");
+			}
+			
+			
+			
 		}
 		}
 	
@@ -695,16 +706,10 @@ fieldset .help {
 			<div align="right">
 				<nav id="nav">
 				<ul>
-					<li><a class="icon fa-home"
-						href="<%=request.getContextPath()%>/main"><span>Home</span></a></li>
-					<li><a class="icon fa-bar-chart-o"
-						href="<%=request.getContextPath()%>/login"><span>Login</span></a>
-					<li><a class="icon fa-cog"
-						href="<%=request.getContextPath()%>/join"><span>Join</span></a></li>
-					<li><a class="icon fa-retweet"
-						href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
-					<li><a class="icon fa-sitemap"
-						href="<%=request.getContextPath()%>/info/cart"><span>Cart</span></a></li>
+				<li><a class="icon fa-home"			href="<%=request.getContextPath()%>/"><span>Home</span></a></li>
+				<li><a class="icon fa-retweet"		href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap"		href="<%=request.getContextPath()%>/review"><span>ReviewBoard</span></a></li>
+				<li><a class="icon fa-bar-chart-o"	href="<%=request.getContextPath()%>/logout"><span>Logout</span></a>
 				</ul>
 				</nav>
 			</div>
@@ -715,7 +720,7 @@ fieldset .help {
  <div id="features-wrapper">
       <section id="features" class="container"> 
 
-	<div id="tabs">
+	<div id="tabs" style="font-family:'Jeju Gothic', serif; ">
 	
 		
 		<ul>
@@ -734,20 +739,20 @@ fieldset .help {
 					<fieldset>
 
 						<div style="font-style: normal; color: red;">
-							<form:input disabled="true" path="userId" id="userId" type="text" required="true" value="${loginUser.userId }"/>
+							<form:input disabled="true" path="userId" id="userId" type="text" required="true" value="${loginUser.userId }" style="width: 40%;"/>
 							<form:input type="hidden" value="${loginUser.userId}" path="userId" required="true"/><br>
 							
-							<form:input path="userPassword" id="pass" name="pass2" type="password" required="true" value="${loginUser.userPassword }"/>
+							<form:input path="userPassword" id="pass" name="pass2" type="password" required="true" value="${loginUser.userPassword }" style="width: 40%;"/>
 								
-							<input type="password" id="pass2" name="pass2" required/><br>
+							<input type="password" id="pass2" name="pass2"  style="width: 40%;" required/><br>
 							
-							<form:input disabled="true" path="userName" id="userName" type="text" required="true" value="${loginUser.userName }"/>
+							<form:input disabled="true" path="userName" id="userName" type="text" required="true" value="${loginUser.userName }" style="width: 40%;"/>
 							<form:input type="hidden" value="${loginUser.userName}" path="userName" required="true"/><br>	
 								
 								
 							*<br>
-							<form:input path="userMail" id="userMail" type="email" required="true" value="${loginUser.userMail }"/>
-							<form:input path="userPhone" id="userPhone" type="text" required="true" value="${loginUser.userPhone }"/>
+							<form:input path="userMail" id="userMail" type="email" required="true" value="${loginUser.userMail }" style="width: 40%;"/>
+							<form:input path="userPhone" id="userPhone" type="text" required="true" value="${loginUser.userPhone }" style="width: 40%;"/>
 							*는 수정할 수 없는 정보입니다.
 							
 							 <form:input type="hidden" value="${loginUser.chance}" path="chance" required="true"/><br>
@@ -767,7 +772,7 @@ fieldset .help {
 		<div id="tab2">
 
 			<form:form method="get" modelAttribute="wishList" action="${action} " name="wishListForm" id="wishListForm" > 
-			<input type="hidden" name="del_wishListCodes"/>
+			<input type="hidden" name="checked_wishListCodes"/>
 			<table style="width: 100%">
 				<tr>
 					<th>상호명</th>
@@ -817,7 +822,7 @@ fieldset .help {
 			
 			<input type="button" onclick="wishListSubmit(1)" value="장바구니에서 삭제"/>
 			
-			<a href="update_u.jsp"><input type="button" name="button" value="즉시구매"> </a>
+			<input type="button" onclick="wishListSubmit(2)" value="즉시구매" >
 			<a href="update_u.jsp"><input type="button" name="button" value="쿠폰 검색하러 가기"></a>
 			</form:form>
 			
@@ -841,8 +846,12 @@ fieldset .help {
 					<td><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
 					<td><c:out value="${nonUsedCoupon.title}"></c:out></td>
 					<td><c:out value="${nonUsedCoupon.couponCode }"></c:out></td>
-					<td><button id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
-					쿠폰 상세 보기</button></a> </td>				
+					<td>
+					
+					<input type="button" name="button"value="쿠폰 상세 보기" id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
+					
+					<%-- <button id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
+					쿠폰 상세 보기</button> --%> </td>				
 				</tr>
 				</c:forEach>
 				

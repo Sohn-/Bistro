@@ -11,7 +11,7 @@
 		values(#{storeName}, #{storeAdress}, #{storePhone}, #{ownerId},#{regionName},#{typeName})
 	</insert>
   
-  	<update id="updateStore" parameterType="Stores">
+  	<update id="updateStore" parameterType="All">
   	
   	update stores
   	set store_name = #{storeName},
@@ -30,10 +30,22 @@
   	where store_code=#{storeCode}
   	</delete>
   	
+  	<delete id="deleteStoreByOwnerId" parameterType="String">
+  	delete from stores
+  	where owner_id=#{ownerId}
+  	</delete>
+  	
   	<select id = "getStoresByOwnerId" resultType="All">
 	select *
 	from stores
 	where owner_id=#{ownerId}
+	</select>
+	
+	<select id = "getStoreByStoreName" parameterType="All" resultType="String">
+	select store_code
+	from stores
+	where owner_id=#{ownerId}
+	and store_name=#{storeName}
 	</select>
   	
   	<select id = "getStoreByStoreCode" resultType="All">

@@ -1,6 +1,7 @@
 package joojoo.service;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import joojoo.dao.CouponDao;
@@ -38,6 +39,11 @@ public class CouponServiceImpl implements CouponService {
 	@Override
 	public int insertCoupon(Coupon coupon) {
 		return dao.insertCoupon(coupon);
+	}
+	
+	@Override
+	public int useCoupon(All coupon) {
+		return dao.updateCoupon(coupon);
 	}
 
 	@Override
@@ -78,36 +84,43 @@ public class CouponServiceImpl implements CouponService {
 	}
 
 	@Override
-	public int timeoverCoupon(String userId) {
+	public int timeoverCoupon() {
 
-		Calendar calendar = Calendar.getInstance();
-		java.util.Date date = calendar.getTime();
+		//Calendar calendar = Calendar.getInstance();
+		//Date date = calendar.getTime();
+		Date date = new Date();
 
 		List<All> eventComment = eventDao.getAllEventComments();
 		List<All> coupon = null;
 		int result = 0;
 
 		for (All eventComment2 : eventComment) {
-			if (eventComment2.getEndDate().after(date)) {
+			if (eventComment2.getEndDate().after(date) == true) {
 				coupon = dao.getCouponsByCommentCode(eventComment2
 						.getCommentCode());
 				for (All coupon2 : coupon) {
-					if (coupon2.getCouponStatusCode() == 0) {
-						coupon2.setCouponStatusCode(3);
+					if (coupon2.getCouponStatus().equals("미사용")) {
+						coupon2.setCouponStatus("기간만료");
 						dao.updateCoupon(coupon2);
 						result++;
 					}
-
 				}
-
 			}
-
 		}
 		return result;
 	}
-
+	
 	@Override
 	public List<All> getCouponsByUserIdAndStatus(Coupon coupon) {
 		return dao.getCouponsByStatusAndUserId(coupon);
 	}
+
+	@Override
+	public All getCouponByCouponCode(String couponCode) {
+		return dao.getCouponsByCouponCode(couponCode);
+	}
+
+
+
+	
 }
