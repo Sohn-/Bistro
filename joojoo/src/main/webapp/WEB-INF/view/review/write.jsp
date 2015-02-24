@@ -108,7 +108,9 @@ function writeCheck()
     </div><!-- 헤더 메뉴 끝 --> 
     </div>
     </div>
-    
+     <img  src="images/bar.png" style="width: 100%">
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
     
     <!--가자! 본론으로-->
     <c:url value="/review/written" var="action"></c:url> 
@@ -196,6 +198,8 @@ function writeCheck()
  </table>
  
    </form:form>
+   </section>
+   </div>
     
 
 </body> 
