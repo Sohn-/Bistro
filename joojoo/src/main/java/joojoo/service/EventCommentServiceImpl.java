@@ -44,6 +44,11 @@ public class EventCommentServiceImpl implements EventCommentService {
 	public List<All> SeachAllEvent() {	
 		return dao.getAllEventComments();
 	}
+	
+	@Override
+	public List<All> SearchValidEvent() {
+		return dao.getEventCommentsValid();
+	}
 
 	@Override
 	public int registEvent(EventComment eventComment) {
@@ -67,6 +72,8 @@ public class EventCommentServiceImpl implements EventCommentService {
 	public All SearchOneEvent(int commentCode) {
 		return dao.getEventCommentByCommentCode(commentCode);
 	}
+
+
 
 	
 

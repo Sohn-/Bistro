@@ -87,65 +87,8 @@ fieldset div {
 			}
 		});
 	});
-	
-<%--  	window.onload=function(){
-		var xhr = new XMLHttpRequest();
-		
-		document.querySelector("#btn_update_store")
-		.addEventListener("click", function(){
-			xhr.onreadystatechange=function(){
-				if(xhr.readyState==4 && xhr.status==200){
-					document.querySelector("#store_table")
-					.innerHTML=xhr.responseText+"<br>";
-					xhr.re
-				}
-			}
-			var url = "<%=request.getContextPath()%>/info/owner/update_store";
-			xhr.open("get", url, true);
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			/* var msg = document.querySelector("#comment").value; */
-			
-			xhr.send();
-		}, false);
-	} 
-	
-	$("#btn_update_store").bind("click", function(){
-		$.ajax({
-			
-			url : "/info/owner/update_store",
-			type : "get",
-			data : 	[{"storeCode" : $("storeCode").val()},
-					{"storeName" : $("storeName").val()},
-					{"storeAdress" : $("#storeAdress").val()},
-					{"storephone" : $("#storephone").val()},
-					{"regionName" : $("#regionName").val()},
-					{"ownerId" : $("#ownerId").val()},
-					{"typeName" : $("#typeName").val()}],
-			dataType: "json",
-			success : function(data){
-				$("#ajax").remove();
-				alert(data);
-				if(!data==null){
-					alert("data가 null입니다.");
-					return false;
-				}
-				var html='';
-				html += '<input id="storeName" name="storeName" title="Please provide your storeName" value="상점이름" align="middle"> * <br>'; 
-				html += '<input id="storeAddres" name="storeAddres" title="Please provide your storeAddres" value=" 상점주소"><br>'; 
-				html += '<input id="storeExtraAddress"	name="storeExtraAddress" title="Please provide your storeExtraAddress"	value=" 상점나머지주소"><br>'; 
-				html += '<input id="storeRegionName" name="storeRegionName" title="Please provide your storeRegionName"	value="지역"><br>'; 
-				html += '<input id="storephone" name="storephone"	title="Please provide your storephone" value=" 상점전화번호"><br>';
-				html += '<input id="ownerName" name="ownerName"	title="Please provide your ownerName" value="대표자"> *<br>';
-				html += '<input id="storeType" name="storeType"	title="Please provide your storeType" value=" 업종"><br>';
-				html += '*는 수정할 수 없는 정보입니다.';
-				
-				$("#ajax").after(html);
-				
-			}
-		});
-	}); --%>
-	
-		$(document).ready(function(){
+
+	$(document).ready(function(){
 			checkChange();
 		
 			$("#mailDupCheck").click(function(){
@@ -216,7 +159,7 @@ fieldset div {
 		    var updateStoreForm = document.getElementById('updateStoreForm');
 		    updateStoreForm.addEventListener('submit', function() {
 		    	if($("#storechecked").val()==""){
-					alert("상호명 중복체크 해주세요.");
+					alert("상호명 중복체크를 해주세요.");
 					event.preventDefault();
 					$("#storeName").focus();
 		    	}
@@ -225,7 +168,7 @@ fieldset div {
 		    var form_insertStore = document.getElementById('form_insertStore');
 		    form_insertStore.addEventListener('submit', function() {
 		    	if($("#insertStorechecked").val()==""){
-					alert("상호명 중복체크 해주세요.");
+					alert("상호명 중복체크를 해주세요.");
 					event.preventDefault();
 					$("#form_insertStore").focus();
 		    	}
@@ -241,6 +184,8 @@ fieldset div {
 			var updateStore = <%=request.getParameter("updateStore")%>;
 			var insertStore = <%=request.getParameter("insertStore")%>;
 			var deleteStore = <%=request.getParameter("deleteStore")%>;
+			var useCoupon = <%=request.getParameter("useCoupon")%>;
+			
 			
 	    	if(updateOwner == true){
 	    		alert("회원정보 수정 완료");
@@ -278,6 +223,13 @@ fieldset div {
 	    	else if(deleteStore == false){
 	    		alert("가게 삭제에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
 	    	}
+	    	else if(useCoupon == true){
+	    		alert("쿠폰이 사용되었습니다.");
+	    	}
+	    	else if(useCoupon == false){
+	    		alert("쿠폰 사용에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
+	    	}
+	    	
 		}
 </script>
 </head>
@@ -559,7 +511,7 @@ fieldset div {
 			<button id="newevent" data-toggle="modal" data-target="#newEventModal">
 					새로운 이벤트 등록</button>				
 		</div>
-		
+		<!-- -------------------------이벤트 수정하기 모달------------------------- -->
 		<c:forEach items="${allEvent}" var="event" varStatus="status">
 		<div class="modal fade" id="myModal${status.current.commentCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
 			<div class="modal-dialog"><div class="modal-content">
@@ -582,9 +534,9 @@ fieldset div {
 							내용
 							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
 							*이벤트 시작 시간<br>
-							<form:input id="startDate" value="${startDate }" path="startDateStr"  min="${minTime }"  readonly="true"></form:input><br>
+							<form:input id="startDate" value="${startDate }" path="startDateStr" readonly="true"></form:input><br>
 							*이벤트 종료 시간<br>
-							<form:input id="endDate" value="${endDate }" path="endDateStr"  min="${minTime }" readonly="true"></form:input><br>
+							<form:input id="endDate" value="${endDate }" path="endDateStr"  readonly="true"></form:input><br>
 							<form:input path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
 							서비스 종류	
 							<form:select path="serviceTypeName" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
@@ -605,8 +557,9 @@ fieldset div {
 			</div><!-- /.modal-dialog -->
 		</div>
 		</c:forEach>
+		<!-- -------------------------이벤트 수정하기 모달 끝------------------------- -->
 		
-		
+		<!-- -------------------------이벤트 등록하기 모달------------------------- -->
 		<div class="modal fade" id="newEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
 			<div class="modal-dialog"><div class="modal-content">
 				<!-- 모달 헤더 -->
@@ -627,15 +580,18 @@ fieldset div {
 							내용
 							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
 							이벤트 시작 시간<br>
-							<form:input id="startDate" type="datetime-local" path="startDateStr"  required="true"></form:input><br>
+							min=${minTime } 
+							max=${maxTime }
+							<form:input id="startDate" type="datetime-local" path="startDateStr" min="${minTime }" max="${maxTime }" required="true"></form:input><br>
 							이벤트 종료 시간<br>
-							<form:input id="endDate" type="datetime-local" path="endDateStr"  required="true"></form:input><br>
+							<form:input id="endDate" type="datetime-local" path="endDateStr" min="${minTime }" max="${maxTime }" required="true"></form:input><br>
 							가게
 							<form:select path="storeCodeStr" items="${storeNames }" required="true"></form:select>
 							서비스 종류	
 							<form:select path="serviceTypeName" accesskey="1" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
 							인원
 							<form:select path="personsLevel" items="${personsLevels }" title="인원을 선택하세요." required="true"></form:select><br>
+							*이벤트 시간은 이후 수정할 수 없습니다.
 						</div>
 					</fieldset>
 					<input type="submit" class="btn btn-warning btn-sm" value="등록하기"/>
@@ -649,12 +605,14 @@ fieldset div {
 				</div>	<!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div>
+		<!-- -------------------------이벤트 등록하기 모달------------------------- -->
 		
 		<div id="tab4">
 			<div id="footer" class="container" align="left">
 				미사용 쿠폰
 				<table style="width: 100%">
 					<tr>
+						<th>쿠폰번호</th>
 						<th>상호명</th>
 						<th>요약</th>
 						<th>쿠폰상세보기</th>
@@ -664,6 +622,7 @@ fieldset div {
 					<c:if test="${coupon.couponStatus eq '미사용'}">
 					<c:set var="isExist1" value="true"></c:set>
 					<tr>
+						<td>${coupon.couponCode }</td>
 						<td>${coupon.storeName }</td>
 						<td>${coupon.content }</td>
 						<td><button data-toggle="modal" data-target="#couponModal${coupon.couponCode }">
@@ -683,7 +642,7 @@ fieldset div {
 					<tr>
 						<th>상호명</th>
 						<th>요약</th>
-						<th>후기 작성 및 확인</th>
+						<th>후기 확인</th>
 					</tr>
 					<c:forEach items="${allCoupon}" var="coupon">
 					<c:if test="${coupon.couponStatus eq '사용'}">
@@ -691,8 +650,8 @@ fieldset div {
 					<tr>
 						<td>${coupon.storeName }</td>
 						<td>${coupon.content }</td>
-						<td><a href="${rview }"><input type="button"
-								name="button" value="후기작성"></a></td>
+						<td><a href="${rview }?storeName=${coupon.storeName }&storeCode=${coupon.storeCode}"><input type="button"
+								name="button" value="후기확인"></a></td>
 					</tr>
 					</c:if>
 					</c:forEach>
@@ -752,6 +711,7 @@ fieldset div {
 		</div>
 	</div>
 	
+	<!--  -----------쿠폰 상세보기 모달----------- -->
 	<c:forEach items="${allCoupon}" var="coupon" varStatus="status">
 	<div class="modal fade" id="couponModal${coupon.couponCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
 		<div class="modal-dialog"><div class="modal-content">
@@ -773,14 +733,16 @@ fieldset div {
 						<form:input path="ownerName" type="text" align="middle" readonly="true"></form:input><br>
 						구매자
 						<form:input path="userName" type="text" readonly="true"></form:input><br>
-						*이벤트 시작 시간<br>
-						<form:input id="startDate" path="startDateStr"  min="${minTime }"  readonly="true"></form:input><br>
-						*이벤트 종료 시간<br>
-						<form:input id="endDate" path="endDateStr"  min="${minTime }" readonly="true"></form:input><br>
+						이벤트 시작 시간<br>
+						<form:input id="startDate" path="startDateStr" readonly="true"></form:input><br>
+						이벤트 종료 시간<br>
+						<form:input id="endDate" path="endDateStr" readonly="true"></form:input><br>
 						가게
 						<form:input path="storeName" type="text" align="middle" readonly="true"></form:input><br>
 						이벤트이름
-						<form:input path="title" type="text" align="middle" readonly="true"></form:input><br>	
+						<form:input path="title" type="text" align="middle" readonly="true"></form:input><br>
+						이벤트내용
+						<form:input path="content" type="text" align="middle" readonly="true"></form:input><br>	
 					</div>
 				</fieldset>
 			</form:form>
@@ -794,7 +756,36 @@ fieldset div {
 		</div><!-- /.modal-dialog -->
 	</div>
 	</c:forEach>
+	<!--  -----------쿠폰 상세보기 모달 끝----------- -->
+	
+	<!--  -----------쿠폰 사용으로 변경 모달 ----------- -->
+	<c:forEach items="${allCoupon}" var="coupon" varStatus="status">
+	<c:url var="url" value="/info/use_coupon"></c:url>
+	<div class="modal fade" id="couponUseModal${coupon.couponCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
+		<div class="modal-dialog"><div class="modal-content">
+			<!-- 모달 헤더 -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title"	id="modal_title">쿠폰 사용하기</h4>
+			</div>
+			<!-- 모달 바디 -->
+			<div class="modal-body" id="here">
+			<form method="post" action="${url}?couponCode=${coupon.couponCode }" id="couponUse${coupon.couponCode }">
+					정말 사용하시겠습니까?<br>
+					미사용쿠폰으로 되돌릴 수 없습니다.?<br>
+					<input type="submit" class="btn btn-warning btn-sm" value="사용하기"/>
+			</form>
+			</div>
+					<!-- 모달 푸터 -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
+			</div>
 					
+			</div>	<!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div>
+	</c:forEach>
+	<!--  -----------쿠폰 사용으로 변경 모달 ----------- -->				
 	
 </body>
 </html>

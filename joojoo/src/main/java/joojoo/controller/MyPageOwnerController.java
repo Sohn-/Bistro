@@ -139,15 +139,37 @@ public class MyPageOwnerController {
 	    		///이벤트글조회를 위한 코드 끝
 	    		
 	    		///쿠폰조회를 위한 코드
+	    		couponService.timeoverCoupon(); //시간 지난 쿠폰을 변경
 	    		List<All> allCoupon = couponService.getCouponsByOwnerId(ownerId);
 	    		logger.error("쿠폰조회결과는.."+allCoupon);
 	    		count=1;
+	    		SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분");
 	    		for(All coupon: allCoupon){
+	    			String startDateStr = sdf.format(coupon.getStartDate());
+	    			String endDateStr = sdf.format(coupon.getEndDate());
+	    			coupon.setStartDateStr(startDateStr);
+	    			coupon.setEndDateStr(endDateStr);
+
 	    			model.addAttribute("coupon"+count, coupon);
 	    			count++;
 	    		}
 		    	model.addAttribute("allCoupon",allCoupon);
 	    		///쿠폰조회를 위한 코드 끝
+		    	
+		    	//현재시간이 최소시간, 최대시간은 현재로부터 30일이후까지
+		    	SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		    	int convert = 24*60*60*1000;
+		    	Date after30 = new Date();
+		    	Date date = new Date();
+		    	Calendar cal = Calendar.getInstance();
+		    	cal.setTime(after30);
+		    	cal.add(Calendar.MONTH, 1);//현재 시간을 1달 후로 변환
+		    	
+		    	String minTime = sdf2.format(date);
+		    	String maxTime = sdf2.format(cal.getTime());
+		    	model.addAttribute("minTime", minTime);
+		    	model.addAttribute("maxTime", maxTime);
+		    	logger.error("maxTime= "+maxTime);
 	    		
 		    	path = "info/owner";
 	    	}
@@ -214,15 +236,6 @@ public class MyPageOwnerController {
 	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 	    	insertEvent.setStartDate(sdf.parse(insertEvent.getStartDateStr()));
 	    	insertEvent.setEndDate(sdf.parse(insertEvent.getEndDateStr()));
-	    	
-	    	int convert = 24*60*60*1000;
-	    	Date after30 = new Date();
-	    	Date date = new Date();
-	    	after30.setTime(date.getTime()+ (30*convert)); //현재 시간을 30일 이후로 변환
-	    	String minTime = sdf.format(date);
-	    	String maxTime = sdf.format(after30);
-	    	model.addAttribute("minTime", minTime);
-	    	model.addAttribute("maxTime", maxTime);
 
 	    	int result = eventService.registEvent(insertEvent);
 	    	
@@ -313,15 +326,22 @@ public class MyPageOwnerController {
 			return "redirect:/info#tab1";
 		}
 	    
-	    @RequestMapping(value="/info/owner/coupon", method=RequestMethod.POST)
-		public String showOwnerCouponPage(HttpSession session, Model model){
-	    	All loginOwner = (All)(session.getAttribute("loginOwner"));
-	    	List<All> allCoupon = couponService.getCouponsByUserId(loginOwner.getOwnerId());
-	    	logger.error("여기는 showOwnerCouponPage");
-	    	logger.trace("수업:"+allCoupon);
+	    @RequestMapping(value="/info/use_coupon", method=RequestMethod.POST)
+		public String useCoupon(@RequestParam String couponCode, Model model){
+	    	logger.error("couponCode 정보.."+couponCode);
+	    	String couponStatus = "사용";
 	    	
-	    	model.addAttribute("allCoupon",allCoupon);
-			return "info/owner";
+	    	All coupon = couponService.getCouponByCouponCode(couponCode);
+	    	coupon.setCouponStatus(couponStatus);
+	    	int result = couponService.useCoupon(coupon);//쿠폰상태를 사용으로 변경
+	    	if(result >0){
+	    		model.addAttribute("useCoupon", true);
+	    	}
+	    	else{
+	    		model.addAttribute("useCoupon", false);
+	    	}
+	    	logger.error("유즈 쿠폰 종료");
+			return "redirect:/info#tab4";
 		}
 	    
 	    @RequestMapping(value="/info/storeNameCheck", method=RequestMethod.GET)
@@ -401,59 +421,4 @@ public class MyPageOwnerController {
 	    	return result;
 	    }
 	    
-	    
-	    
-		   /* @RequestMapping(value="/info/owner/update_store", method=RequestMethod.GET)
-			public ModelAndView updateOwnerStore(){
-		    	return new ModelAndView("ajax", "message", "Crunchify Spring MVC with Ajax and JQuery Demo..");
-			}
-		    
-		    @RequestMapping(value="/info/owner/update_store", method=RequestMethod.GET, 
-					produces="text/plain;charset=utf-8")
-			public @ResponseBody Stores ajaxReceive(@ModelAttribute Stores store, HttpSession session,Model model){
-		    	All loginOwner = (All)(session.getAttribute("loginOwner"));
-		    	boolean isUpdated = storeService.updateStore(store);
-		    	//List<All> stores = storeService.showAllStore(); //전제 다 출력하지말고 바꾼부분만 바꿔서 출력해볼까..
-		    	if(isUpdated == true){
-		    		model.addAttribute("stores",stores);
-		    	}
-		    	model.addAttribute("updatedStore", store);
-				return store;
-			}*/
-		    
-		   /* @RequestMapping(value="/info/owner/update_store", method=RequestMethod.GET, 
-					produces="text/plain;charset=utf-8")
-			public @ResponseBody Stores updateStoreAjax(@ModelAttribute Stores stores, Model model){
-		    	JSONObject jsonObj = new JSONObject();
-		    	
-		    	jsonObj.get("storeCode");
-		    	
-		    	
-		    	
-		    	String storeCode = req.getParameter("storeCode");
-		    	String storeName = req.getParameter("storeName");
-		    	String storeAdress = req.getParameter("storeAdress");
-		    	String storePhone = req.getParameter("storephone");
-		    	String ownerId = req.getParameter("ownerId");
-		    	String regionName = req.getParameter("regionName");	    	
-		    	String typeName = req.getParameter("typeName");
-		    	String starPoint = req.getParameter("starPoint");
-		    	
-		    	Stores store = new Stores(Integer.parseInt(storeCode), storeName, storeAdress, 
-		    			storePhone, ownerId, regionName, typeName, Integer.parseInt(starPoint));
-
-		    	
-		    	boolean isUpdated = storeService.updateStore(store);
-		    	//List<All> stores = storeService.showAllStore(); //전제 다 출력하지말고 바꾼부분만 바꿔서 출력해볼까..
-		    	if(isUpdated == true){
-		    		model.addAttribute("store",store);
-		    	}
-		    	model.addAttribute("updatedStore", store);
-				return store;
-			}*/
-		    
-	    
-		
-		
-	
 }

@@ -30,5 +30,7 @@ public interface EventCommentDao {
 	List<All> getEventCommentsByPersonsCode(int personsCode);
 	List<All> getEventCommentsByServiceTypeCode(int serviceTypeCode);
 	
+	List<All> getEventCommentsValid();
+	
 
 }

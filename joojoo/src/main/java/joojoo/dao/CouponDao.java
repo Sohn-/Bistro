@@ -11,6 +11,7 @@ public interface CouponDao {
 	
 	int insertCoupon(Coupon coupon);
 	int updateCoupon(All coupon);
+	int updateCouponByEndDate();
 	int deleteCoupon(String couponCode);
 	All getCouponsByCouponCode(String couponCode);
 	List<All> getCouponsByUserId(String userId);
@@ -18,5 +19,5 @@ public interface CouponDao {
 	List<All> getCouponsByCommentCode(int commentCode);
 	List<All> getCouponsByStatus(String couponStatus);
 	List<All> getCouponsByStatusAndUserId(Coupon coupon);
- 
+	
 }

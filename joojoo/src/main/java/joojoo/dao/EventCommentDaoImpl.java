@@ -132,5 +132,12 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		
 		return result;
 	}
+	@Override
+	public List<All> getEventCommentsValid() {
+		String statement = nameSpace + "getEventCommentsValid";
+		List<All> result = sqlSession.selectList(statement);
+		
+		return result;
+	}
 
 }
