@@ -18,7 +18,7 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	CouponService service;
 	
 	public CouponServiceTest(){
-		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config.xml");
+		ApplicationContext ctx = new GenericXmlApplicationContext("spring/application-config2.xml");
 		service = ctx.getBean(CouponService.class);
 		
 	}
@@ -42,7 +42,7 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		coupon.setCouponStatus("미사용");
 		coupon.setOwnerId("sohn");
 		coupon.setUserId("user");*/
-		LOG.trace("수업"+service.getCouponsByUserId("1234"));
+		//LOG.trace("수업"+service.getCouponsByUserId("1234"));
 		/*성공*/
 		//LOG.warn("getCouponsByUserId : "+service.getCouponsByUserId("user"));
 		//LOG.warn("getCouponsByOwnerId : "+service.getCouponsByOwnerId("sohn"));
@@ -53,7 +53,7 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		
 		/*실패*/
 	
-		//LOG.warn("buyCoupon : "+service.buyCoupon("user",1));
+		LOG.warn("buyCoupon : "+service.buyCoupon("user",1));
 			
 		
 		

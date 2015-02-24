@@ -136,6 +136,22 @@ public class MyPageUserController {
 		public String updateUserInfo(@ModelAttribute("updateUser") Users updateUser,
 				Model model,HttpSession session){
 	    	
+	    	
+	    	
+	    	
+	    	
+	    	int result = userService.updateUserInfo(updateUser);
+	    	if(result >0){
+	    		model.addAttribute("updateUser", true);
+	    	}
+	    	else{
+	    		model.addAttribute("updateUser", false);
+	    	}
+	    	
+			return "redirect:/info#tab1";
+	    	
+	    	
+	    	/*
 	    	LOG.error("수업 "+updateUser);
 	    	userService.updateUserInfo(updateUser);
 	    	//WebUtils.setSessionAttribute(session, "userSession", user);
@@ -148,6 +164,7 @@ public class MyPageUserController {
 	    	
 	    	
 	    	return "redirect:/info";
+	    	*/
 		}
 	    
 	  

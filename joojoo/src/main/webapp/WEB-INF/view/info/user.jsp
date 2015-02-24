@@ -320,376 +320,96 @@ fieldset .help {
 }
 </style>
 <script>
-	$(function() {
-		var tooltips = $("[title]").tooltip({
-			position : {
-				my : "left top",
-				at : "right+5 top-5"
+$(function() {
+	$("#tabs").tabs();
+});
+
+$(function() {
+	var tooltips = $("[title]").tooltip({
+		position : {
+			my : "left top",
+			at : "right+5 top-5"
+		}
+	});
+});
+
+$(document).ready(function(){
+		checkChange();
+	
+		$("#mailDupCheck").click(function(){
+			if($("#joinMail").val()==""){
+				alert("이메일을 입력해 주세요.");
+				$("#joinMail").focus();		
+			}else{
+				<c:url value="/join/mailCheck" var="mailchk"></c:url>
+				var url = "${mailchk}?joinMail="+$("#joinMail").val();
+				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
 			}
 		});
+		
+		
+		
+		
+		
+	    var password1 = document.getElementById('pass');
+	    var password2 = document.getElementById('pass2');
 
+	    var checkPasswordValidity = function() {
+	        if (password1.value != password2.value) {
+	            password1.setCustomValidity('비밀번호와 확인 비밀번호가 일치하지 않습니다.');
+	        } else {
+	            password1.setCustomValidity('');
+	        }        
+	    };
+	    
+	    password1.addEventListener('change', checkPasswordValidity, false);
+	    password2.addEventListener('change', checkPasswordValidity, false);
+ 
+	    var updateOwner = document.getElementById('updateOwner');
+	    updateOwner.addEventListener('submit', function() {
+	    	if($("#checked2").val()==""){
+				alert("이메일 중복체크를 해주세요.");
+				event.preventDefault();
+				$("#joinMail").focus();
+			}
+	         checkPasswordValidity();
+	        if (!this.checkValidity()) {
+	            event.preventDefault();
+	           // updateErrorMessage();
+	            password1.focus();
+	        }else{
+	        	 password1.setCustomValidity('');
+	        } 
+	        
+	    }, false);
+	    
+	   
+	    
+	    
 	});
 	
-	$(function() {
-		$("#tabs").tabs();
-	});
-
-	$(function() {
-		var tooltips = $("[title]").tooltip({
-			position : {
-				my : "left top",
-				at : "right+5 top-5"
-			}
-		});
-	});
-
-	$(function() {
-		$("#accordion").accordion({
-			event : "click hoverintent"
-		});
-	});
-
-	$.event.special.hoverintent = {
-		setup : function() {
-			$(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-		},
-		teardown : function() {
-			$(this).unbind("mouseover",
-					jQuery.event.special.hoverintent.handler);
-		},
-		handler : function(event) {
-			var currentX, currentY, timeout, args = arguments, target = $(event.target), previousX = event.pageX, previousY = event.pageY;
-
-			function track(event) {
-				currentX = event.pageX;
-				currentY = event.pageY;
-			};
-
-			function clear() {
-				target.unbind("mousemove", track).unbind("mouseout", clear);
-				clearTimeout(timeout);
-			}
-
-			function handler() {
-				var prop, orig = event;
-
-				if ((Math.abs(previousX - currentX) + Math.abs(previousY
-						- currentY)) < 7) {
-					clear();
-
-					event = $.Event("hoverintent");
-					for (prop in orig) {
-						if (!(prop in event)) {
-							event[prop] = orig[prop];
-						}
-					}
-					// Prevent accessing the original event since the new event
-					// is fired asynchronously and the old event is no longer
-					// usable (#6028)
-					delete event.originalEvent;
-
-					target.trigger(event);
-				} else {
-					previousX = currentX;
-					previousY = currentY;
-					timeout = setTimeout(handler, 100);
-				}
-			}
-
-			timeout = setTimeout(handler, 100);
-			target.bind({
-				mousemove : track,
-				mouseout : clear
-			});
-		}
-	};
-
-	$(function() {
-		//scrollpane parts
-		var scrollPane = $(".scroll-pane"), scrollContent = $(".scroll-content");
-
-		//build slider
-		var scrollbar = $(".scroll-bar")
-				.slider(
-						{
-							slide : function(event, ui) {
-								if (scrollContent.width() > scrollPane.width()) {
-									scrollContent
-											.css(
-													"margin-left",
-													Math
-															.round(ui.value
-																	/ 100
-																	* (scrollPane
-																			.width() - scrollContent
-																			.width()))
-															+ "px");
-								} else {
-									scrollContent.css("margin-left", 0);
-								}
-							}
-						});
-
-		//append icon to handle
-		var handleHelper = scrollbar.find(".ui-slider-handle").mousedown(
-				function() {
-					scrollbar.width(handleHelper.width());
-				}).mouseup(function() {
-			scrollbar.width("100%");
-		}).append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")
-				.wrap("<div class='ui-handle-helper-parent'></div>").parent();
-
-		//change overflow to hidden now that slider handles the scrolling
-		scrollPane.css("overflow", "hidden");
-
-		//size scrollbar and handle proportionally to scroll distance
-		function sizeScrollbar() {
-			var remainder = scrollContent.width() - scrollPane.width();
-			var proportion = remainder / scrollContent.width();
-			var handleSize = scrollPane.width()
-					- (proportion * scrollPane.width());
-			scrollbar.find(".ui-slider-handle").css({
-				width : handleSize,
-				"margin-left" : -handleSize / 2
-			});
-			handleHelper.width("").width(scrollbar.width() - handleSize);
-		}
-
-		//reset slider value based on scroll content position
-		function resetValue() {
-			var remainder = scrollPane.width() - scrollContent.width();
-			var leftVal = scrollContent.css("margin-left") === "auto" ? 0
-					: parseInt(scrollContent.css("margin-left"));
-			var percentage = Math.round(leftVal / remainder * 100);
-			scrollbar.slider("value", percentage);
-		}
-
-		//if the slider is 100% and window gets larger, reveal content
-		function reflowContent() {
-			var showing = scrollContent.width()
-					+ parseInt(scrollContent.css("margin-left"), 10);
-			var gap = scrollPane.width() - showing;
-			if (gap > 0) {
-				scrollContent.css("margin-left", parseInt(scrollContent
-						.css("margin-left"), 10)
-						+ gap);
-			}
-		}
-
-		//change handle position on window resize
-		$(window).resize(function() {
-			resetValue();
-			sizeScrollbar();
-			reflowContent();
-		});
-		//init scrollbar size
-		setTimeout(sizeScrollbar, 10);//safari wants a timeout
-	});
-
-	/* function Open_event(f) {
-		if (document.form1.userPassword.value == ""
-				|| document.form1.userId.value == "") {
-			$("#dialog").dialog({
-				autoOpen : false,
-				show : {
-					effect : "blind",
-					duration : 1000
-				},
-				hide : {
-					effect : "explode",
-					duration : 1000
-				}
-			});
-
-			$("#opener1").click(function() {
-				$("#dialog").dialog("open");
-			});
-			document.form1.userId.focus();
-			return false;
-		}
-		return true;
-	} */
-
-	$(function() {
-		$("#tabs").tabs();
-	});
-
-	$(function() {
-		var tooltips = $("[title]").tooltip({
-			position : {
-				my : "left top",
-				at : "right+5 top-5"
-			}
-		});
-	});
-
-	$(function() {
-		$("#accordion").accordion({
-			event : "click hoverintent"
-		});
-	});
-
-	$.event.special.hoverintent = {
-		setup : function() {
-			$(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-		},
-		teardown : function() {
-			$(this).unbind("mouseover",
-					jQuery.event.special.hoverintent.handler);
-		},
-		handler : function(event) {
-			var currentX, currentY, timeout, args = arguments, target = $(event.target), previousX = event.pageX, previousY = event.pageY;
-
-			function track(event) {
-				currentX = event.pageX;
-				currentY = event.pageY;
-			}
-			;
-
-			function clear() {
-				target.unbind("mousemove", track).unbind("mouseout", clear);
-				clearTimeout(timeout);
-			}
-
-			function handler() {
-				var prop, orig = event;
-
-				if ((Math.abs(previousX - currentX) + Math.abs(previousY
-						- currentY)) < 7) {
-					clear();
-
-					event = $.Event("hoverintent");
-					for (prop in orig) {
-						if (!(prop in event)) {
-							event[prop] = orig[prop];
-						}
-					}
-					// Prevent accessing the original event since the new event
-					// is fired asynchronously and the old event is no longer
-					// usable (#6028)
-					delete event.originalEvent;
-
-					target.trigger(event);
-				} else {
-					previousX = currentX;
-					previousY = currentY;
-					timeout = setTimeout(handler, 100);
-				}
-			}
-
-			timeout = setTimeout(handler, 100);
-			target.bind({
-				mousemove : track,
-				mouseout : clear
-			});
-		}
-	};
-
-	$(function() {
-		//scrollpane parts
-		var scrollPane = $(".scroll-pane"), scrollContent = $(".scroll-content");
-
-		//build slider
-		var scrollbar = $(".scroll-bar")
-				.slider(
-						{
-							slide : function(event, ui) {
-								if (scrollContent.width() > scrollPane.width()) {
-									scrollContent
-											.css(
-													"margin-left",
-													Math
-															.round(ui.value
-																	/ 100
-																	* (scrollPane
-																			.width() - scrollContent
-																			.width()))
-															+ "px");
-								} else {
-									scrollContent.css("margin-left", 0);
-								}
-							}
-						});
-
-		//append icon to handle
-		var handleHelper = scrollbar.find(".ui-slider-handle").mousedown(
-				function() {
-					scrollbar.width(handleHelper.width());
-				}).mouseup(function() {
-			scrollbar.width("100%");
-		}).append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")
-				.wrap("<div class='ui-handle-helper-parent'></div>").parent();
-
-		//change overflow to hidden now that slider handles the scrolling
-		scrollPane.css("overflow", "hidden");
-
-		//size scrollbar and handle proportionally to scroll distance
-		function sizeScrollbar() {
-			var remainder = scrollContent.width() - scrollPane.width();
-			var proportion = remainder / scrollContent.width();
-			var handleSize = scrollPane.width()
-					- (proportion * scrollPane.width());
-			scrollbar.find(".ui-slider-handle").css({
-				width : handleSize,
-				"margin-left" : -handleSize / 2
-			});
-			handleHelper.width("").width(scrollbar.width() - handleSize);
-		}
-
-		//reset slider value based on scroll content position
-		function resetValue() {
-			var remainder = scrollPane.width() - scrollContent.width();
-			var leftVal = scrollContent.css("margin-left") === "auto" ? 0
-					: parseInt(scrollContent.css("margin-left"));
-			var percentage = Math.round(leftVal / remainder * 100);
-			scrollbar.slider("value", percentage);
-		}
-
-		//if the slider is 100% and window gets larger, reveal content
-		function reflowContent() {
-			var showing = scrollContent.width()
-					+ parseInt(scrollContent.css("margin-left"), 10);
-			var gap = scrollPane.width() - showing;
-			if (gap > 0) {
-				scrollContent.css("margin-left", parseInt(scrollContent
-						.css("margin-left"), 10)
-						+ gap);
-			}
-		}
-
-		//change handle position on window resize
-		$(window).resize(function() {
-			resetValue();
-			sizeScrollbar();
-			reflowContent();
-		});
-		//init scrollbar size
-		setTimeout(sizeScrollbar, 10);//safari wants a timeout
-	});
-
-/* 	function Open_event(f) {
-		if (document.form1.userPassword.value == ""
-				|| document.form1.userId.value == "") {
-			$("#dialog").dialog({
-				autoOpen : false,
-				show : {
-					effect : "blind",
-					duration : 1000
-				},
-				hide : {
-					effect : "explode",
-					duration : 1000
-				}
-			});
-
-			$("#opener1").click(function() {
-				$("#dialog").dialog("open");
-			});
-			document.form1.userId.focus();
-			return false;
-		}
-		return true;
-	} */
+	function checkChange(){
+		var updateUser = <%=request.getParameter("updateUser")%>;
+		
+		var useCoupon = <%=request.getParameter("useCoupon")%>;
+		
+		
+    	if(updateUser == true){
+    		alert("회원정보 수정 완료");
+    	}
+    	else if(updateUser == false){
+    		alert("회원정보 수정에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
+    	}
+    	
+  
+    	else if(useCoupon == true){
+    		alert("쿠폰이 사용되었습니다.");
+    	}
+    	else if(useCoupon == false){
+    		alert("쿠폰 사용에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
+    	}
+    	
+	}
 </script>
 </head>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
@@ -729,9 +449,44 @@ fieldset .help {
 			<li><a href="#tab3">나의 쿠폰</a></li>
 
 		</ul>
-		
-		
 		<div id="tab1">
+			<div id="footer" class="container" align="left">
+				정보 수정<br>
+				<c:url value="/info/user/update" var="action"></c:url>
+				<form:form modelAttribute="updateUser" method="post" action="${action}" id="updateUser" name="updateUser">
+					<fieldset>	
+						<div style="font-style: normal; color: black;">
+							*아이디
+							<form:input path="userId" name="userId" 
+								title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
+							비밀번호 
+							<form:input path="userPassword" id="pass" type="password"
+								title="Please provide your password" required="true"></form:input><br>
+							비밀번호확인
+							<input type="password" id="pass2" name="pass2"  value="${updateUser.userPassword }" required="true" /><br>
+							*이름
+							<form:input path="userName" name="userName"
+								title="Please provide your userName" readonly="true"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
+							이메일
+							<form:input path="userMail" id="joinMail" type="email"
+								title="Please provide your userEmail" required="true"></form:input>
+							<input type="button" value="중복확인" id="mailDupCheck"/><br>
+							<input type="hidden" name="checked2" id="checked2"/><br>
+							전화번호	
+							<form:input path="userPhone" name="userPhone"
+								title="Please provide your userPhone" required="true"></form:input><br>
+							*는 수정할 수 없는 정보입니다.
+						</div>
+					</fieldset>
+					<input id="userSubmit" type="submit" value="수정하기"></input>
+				</form:form>
+				<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
+					탈퇴하기</button> -->
+				
+			</div>
+		</div>
+		
+		<%-- <div id="tab1">
 			<div id="footer" class="container" align="left">
 
 				회원정보 수정 및 탈퇴 <br>
@@ -766,7 +521,7 @@ fieldset .help {
 					</fieldset>
 				</form:form>
 			</div>
-		</div>
+		</div> --%>
 		
 		
 		<div id="tab2">
@@ -823,7 +578,7 @@ fieldset .help {
 			<input type="button" onclick="wishListSubmit(1)" value="장바구니에서 삭제"/>
 			
 			<input type="button" onclick="wishListSubmit(2)" value="즉시구매" >
-			<a href="update_u.jsp"><input type="button" name="button" value="쿠폰 검색하러 가기"></a>
+			
 			</form:form>
 			
 			
