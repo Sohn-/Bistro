@@ -119,4 +119,11 @@ values('한자꿀돼지6','신선한 계절과일 무료제공',to_date(sysdate,
 insert into event_comment(title, content, start_date, end_date, store_code, persons_level, service_type_name)
 values('한자꿀돼지9','신선한 계절과일 무료제공',to_date(sysdate, 'YYYY-MM-DD HH24:MI:SS'), to_date(sysdate, 'YYYY-MM-DD HH24:MI:SS'), 10, '4명이하', '서비스 메뉴 제공');
 
+insert into rview_comment(title, content, user_id, star_point, store_code)
+values('후기제목1','후기내용1', 'user', 5, 1);
 
+insert into rview_comment(title, content, user_id, star_point, store_code)
+values('후기제목2','후기내용2', 'user', 5, 1);
+
+insert into rview_comment(title, content, user_id, star_point, store_code)
+values('후기제목3','후기내용3', 'user', 5, 1);

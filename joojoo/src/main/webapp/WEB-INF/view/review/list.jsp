@@ -191,7 +191,7 @@ fieldset .help {
    
        <!-- 검색 폼 영역 -->
 
-       <form  id="reviewlist" name="searchForm" action="" method="get">
+       <form  id="reviewlist" name="searchForm" action="" method="get" style="font-family:'Jeju Gothic', serif; ">
        <p>
            <select name="searchType" style="width: 40%">
                <option value="ALL">전체검색</option>
@@ -231,7 +231,7 @@ fieldset .help {
 				<!-- 카테고리 구분 테이블 끝 -->
 
 				<!-- 바디 상점 결과 아코디언 시작 -->
-				<div id="accordion">
+				<div id="accordion" style="font-family:'Jeju Gothic', serif; ">
 					<!-- 상점 select 결과 가져오는 부분 시작 -->
 					<c:forEach items="${rviews }" var="rview">
 

@@ -204,6 +204,15 @@ body{-webkit-animation:bugfix infinite 1s;-webkit-font-smoothing:antialiased}
 <style type="text/css">
 
 
+body, input, textarea, select {
+line-height: 1.75em;
+font-size: 12pt;
+background-color: #323232;
+}
+table	{
+	border-color: red;
+	border-bottom-style: 3px solid;
+}
 form {
 	width: 10cm;
 }
@@ -418,7 +427,7 @@ fieldset .help {
 		</nav>
 		</div><!-- 헤더 메뉴 끝 -->
 
-		<!-- 키워드 검색 부분 -->
+		<%-- <!-- 키워드 검색 부분 -->
 		<div align="center">
 		<c:url value="/main/keyword" var="action"></c:url>
 		<form:form modelAttribute="category" method="post"	action="${action}">
@@ -427,14 +436,25 @@ fieldset .help {
 			<td><button type="submit" class="form-button-submit button "style="height: 45px">Search</button></td>
 			</tr></table>
 		</form:form>
-		</div><!-- 키워드 검색 부분 끝 -->			
+		</div><!-- 키워드 검색 부분 끝 -->			 --%>
 	</div><!-- 헤더 끝 -->
 </div><!-- 헤더 래퍼 끝 -->
 
 
 <!-- 헤더 바디 구분 띠 -->
 <img src="images/bar.png" style="width: 100%">
-
+	<div align="center" style="top: 1cm; background-color: #323232;">
+	<c:url value="/main/keyword" var="action"></c:url>
+		<form:form modelAttribute="category" method="post"	action="${action}">
+		<br>
+		<br>
+			<table border="1px solid red" bordercolor="red"><tr><td>	
+			<form:input path="keyword" name="keyword"	placeholder="keyWord" type="text" maxlength="30" />	</td><td>
+			<button type="submit" class="form-button-submit button "style="height: 43px; padding-top: 0.1cm;">Search</button></td><tr>
+			</table>
+		</form:form>
+	
+	</div>
 <!-- 바디 시작 -->
 <div id="features-wrapper">
 <!-- 바디 카테고리 시작 -->
