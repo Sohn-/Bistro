@@ -525,7 +525,6 @@ jssor_slider1_starter('slider1_container');
 	</div>
 	<!-- 바디 끝 -->
 
-
 	<!-- Footer -->
 	<div>
 		<div id="footer" class="container">
