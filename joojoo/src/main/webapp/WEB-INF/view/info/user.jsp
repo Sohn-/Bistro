@@ -458,23 +458,23 @@ $(document).ready(function(){
 						<div style="font-style: normal; color: black;">
 							*아이디
 							<form:input path="userId" name="userId" 
-								title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
+								title="Please provide your ID."	align="middle" readonly="true" style="width:40%" ></form:input><br>
 							비밀번호 
 							<form:input path="userPassword" id="pass" type="password"
-								title="Please provide your password" required="true"></form:input><br>
+								title="Please provide your password" required="true" style="width:40%"></form:input><br>
 							비밀번호확인
-							<input type="password" id="pass2" name="pass2"  value="${updateUser.userPassword }" required="true" /><br>
+							<input type="password" id="pass2" name="pass2"  value="${updateUser.userPassword }" required="true" style="width:40%"/><br>
 							*이름
 							<form:input path="userName" name="userName"
-								title="Please provide your userName" readonly="true"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
+								title="Please provide your userName" readonly="true" style="width:40%"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
 							이메일
 							<form:input path="userMail" id="joinMail" type="email"
-								title="Please provide your userEmail" required="true"></form:input>
+								title="Please provide your userEmail" required="true" style="width:40%"></form:input>
 							<input type="button" value="중복확인" id="mailDupCheck"/><br>
 							<input type="hidden" name="checked2" id="checked2"/><br>
 							전화번호	
-							<form:input path="userPhone" name="userPhone"
-								title="Please provide your userPhone" required="true"></form:input><br>
+							<form:input path="userPhone" type="text" name="userPhone"
+								title="Please provide your userPhone" required="true" style="width:40%"></form:input><br>
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
