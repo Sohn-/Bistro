@@ -597,6 +597,8 @@ $(document).ready(function(){
 				
 				
 				<c:forEach items="${nonUsedCoupons }" var="nonUsedCoupon" varStatus="status">
+				<c:if test="${nonUsedCoupon.couponStatus eq '미사용'}">
+					<c:set var="isExist1" value="true"></c:set>
 				<tr>
 					<td><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
 					<td><c:out value="${nonUsedCoupon.title}"></c:out></td>
@@ -608,7 +610,12 @@ $(document).ready(function(){
 					<%-- <button id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
 					쿠폰 상세 보기</button> --%> </td>				
 				</tr>
+				</c:if>
 				</c:forEach>
+					<c:if test="${isExist1 ne true }">
+					<td>미사용 쿠폰이 존재하지 않습니다.</td>
+					</c:if>
+				
 				
 				
 			</table>
@@ -623,8 +630,12 @@ $(document).ready(function(){
 					<th>쿠폰코드</th>
 					<th>후기 작성 및 확인</th>					
 				</tr>
+					
 				
 				<c:forEach items="${usedCoupons }" var="usedCoupon">
+				<c:if test="${usedCoupon.couponStatus eq '사용'}">
+					<c:set var="isExist2" value="true"></c:set>
+					
 				<tr>
 					<td><c:out value="${usedCoupon.storeName}"></c:out></td>
 					<td><c:out value="${usedCoupon.title}"></c:out></td>
@@ -636,7 +647,11 @@ $(document).ready(function(){
 					<td hidden><input type="number" name="storeCode" value="${usedCoupon.storeCode }"></td>
 								
 				</tr>
+				</c:if>
 				</c:forEach>
+				<c:if test="${isExist2 ne true }">
+					<td>사용 쿠폰이 존재하지 않습니다.</td>
+					</c:if>
 				
 				
 			</table>
@@ -655,13 +670,21 @@ $(document).ready(function(){
 				</tr>
 				
 				<c:forEach items="${refundCoupons }" var="refundCoupon">
+				
+				<c:if test="${refundCoupon.couponStatus eq '사용'}">
+					<c:set var="isExist3" value="true"></c:set>
 				<tr>
 					<td><c:out value="${refundCoupon.storeName}"></c:out></td>
 					<td><c:out value="${refundCoupon.title}"></c:out></td>
 					<td><c:out value="${refundCoupon.couponCode }"></c:out></td>
 					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
+				</c:if>
 				</c:forEach>
+				<c:if test="${isExist3 ne true }">
+					<td>환불 쿠폰이 존재하지 않습니다.</td>
+					</c:if>
+				
 			</table>
 				기간만료 사용불가 쿠폰
 				<table style="width: 90%">
@@ -672,13 +695,20 @@ $(document).ready(function(){
 					<th>만료정보</th>					
 				</tr>
 				<c:forEach items="${timeOverCoupons }" var="timeOverCoupon">
+				<c:if test="${timeOverCoupon.couponStatus eq '사용'}">
+					<c:set var="isExist4" value="true"></c:set>
 				<tr>
 					<td><c:out value="${timeOverCoupon.storeName}"></c:out></td>
 					<td><c:out value="${timeOverCoupon.title}"></c:out></td>
 					<td><c:out value="${timeOverCoupon.couponCode }"></c:out></td>
 					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
 				</tr>
+				</c:if>
 				</c:forEach>
+				  <c:if test="${isExist4 ne true }">
+					<td>기간만료 쿠폰이 존재하지 않습니다.</td>
+					</c:if>
+				
 			</table>
 			</div>
 		</div>
