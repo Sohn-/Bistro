@@ -250,7 +250,7 @@ fieldset .help {
 						 <td style="border: 1px gray solid;"><h4>글번호</h4></td>
              <td style="border: 1px gray solid;"><h4>작성자</h4></td>
              <td style="border: 1px gray solid;"><h4>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    글제목     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</h4></td>
-             <td style="border: 1px gray solid;"><h4>작성시간</h4></td>
+             <!-- <td style="border: 1px gray solid;"><h4>작성시간</h4></td> -->
              <td style="border: 1px gray solid;"><h4>가게이름</h4></td>
              <td style="border: 1px gray solid;"><h4>평균별점</h4></td>
 
@@ -268,13 +268,12 @@ fieldset .help {
 							<table width="80%" height="1cm" align="center">
 								<tr align="center" height="1cm">
 									<td style="padding-right: 2cm; width: 15cm"><c:out value="${rview.commentCode }"/></td>
-									<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
-									<td style="padding-right: 2cm; width: 15cm"> <a href="${url }">${rview.title }</a></td>
+									
 									
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.userId}" /></td>
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.title }" /></td>
 									<%-- <td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.regDate}" /></td> --%>
-									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.storeName}" /></td>
+									<td style="padding-right: 2cm; width: 15cm; font-size: 12px" ><c:out	value="${rview.storeName}" /></td>
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.starPoint}" /></td>
 								</tr>
 							</table>
@@ -282,8 +281,9 @@ fieldset .help {
 
 						<!-- 아코디언 상세내용 바디 -->
 						<div>
-							<p align="left">상점 이름:	<c:out value="${rview.storeName}" />
-							</p>
+							<p align="left">상점 이름:	<c:out value="${rview.storeName}"/></p>
+							<p align="left">평 점 :	<c:out value="${rview.starPoint}"/></p>
+							
 							
 							<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
 									<td style="padding-right: 2cm; width: 15cm"> <a href="${url }"> <input type="submit" value="후기보기" align="left" /></a></td>
