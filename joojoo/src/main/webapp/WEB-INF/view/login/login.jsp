@@ -167,8 +167,10 @@ fieldset .help {
     </div><!-- 헤더 메뉴 끝 --> 
     </div>
    <img  src="images/bar.png" style="width: 100%">
+ 
+ 
  <div id="features-wrapper">
-      <section id="features" class="container"> 
+   <section id="features" class="container"> 
    <div id="tabs">
       <ul>
          <li><h3><a href="#tab1" style="width: 14.2cm; ">일반회원</a></h3></li>
@@ -177,16 +179,15 @@ fieldset .help {
       </ul>
       
       
-      <div id="tab1" style="padding-left: 2cm;">
+      <div id="tab1" >
          <div id="footer" class="container" align="left">
             
-            <table >
-            <tr bordercolor="red">
-            <td bordercolor="red">
-            
-            <div class="row">
+            <table  bordercolor="red">
+            <tr bordercolor="red" >
+            <td bordercolor="red" style="padding-top: 0cm">           
+            <div style="padding-top: 2cm;">
 				<c:url value="/login/check_user" var="action"></c:url>
-               	<form:form  id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
+               	<form:form id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
                   <div >
                      <div>
                         <form:input path="userId" id="userId" name="userId" placeholder="ID 입력 " type="text" /> <br>
@@ -195,7 +196,7 @@ fieldset .help {
                   </div>        
                      <br>
                      <div >
-                     <input id="opener1" name="opener1" type="submit" value="Login" style="width: 8.7cm;"/>
+                     <input id="opener1" name="opener1" type="submit" value="Login" style="width: 10cm;"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
@@ -209,25 +210,30 @@ fieldset .help {
                   </div>
               	</form:form>         
             </div>
-            </td><td ><img alt="" src="images/jj.png" align="top"><td></tr>
+            </td><td style="paddinpadding-top:1cm; "><img alt="" src="images/jj4.png" align="middle" style="padding-top: 2cm;"><td></tr>
             </table>
          </div>
       </div>
-      <div id="tab2" style="padding-left: 16.5cm;">
-         <div id="footer" class="container" align="left">
-            <div class="row">
+      <div id="tab2" style="padding-left: 1cm;">
+         <div id="footer" class="container" align="left">         
+         
+         <table>
+         <tr><td><br><img alt="" src="images/jj4.png" align="middle"></td>
+         <td align="left">
+            <div>
 
                <c:url value="/login/check_owner" var="action"></c:url>
                	<form:form id="form2" name="form2" modelAttribute="owner" method="post" action="${action}" onsubmit="return Check_owner(this);">
                   <div >
                      <div>
+                     <br>
                          <form:input path= "ownerId" id = "ownerId" name="ownerId" placeholder="ID 입력 " type="text"  /><br>
                          <form:input path= "ownerPassword" id="ownerPassword" name="ownerPassword" placeholder="PASSWD 입력  " type="password" /> 
                      </div>
                   </div>
                   <br>
                      <div >
-                     <input id="opener2" name="opener2" type="submit" value="Login" style="width: 8.7cm;"/>
+                     <input id="opener2" name="opener2" type="submit" value="Login" style="width: 10cm;"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
@@ -247,7 +253,10 @@ fieldset .help {
 				
 
             </div>
-           
+            </td>
+            
+            </tr>
+           </table>
          </div>
       </div>
     
