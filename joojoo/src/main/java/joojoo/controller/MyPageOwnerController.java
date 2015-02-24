@@ -8,9 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
+import joojoo.entity.EventComment;
 import joojoo.entity.Owners;
 import joojoo.service.CouponService;
 import joojoo.service.EventCommentService;
@@ -21,6 +23,7 @@ import joojoo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -47,7 +50,7 @@ public class MyPageOwnerController {
 	    private EventCommentService eventService;
 
 	    @RequestMapping(value="/info", method=RequestMethod.GET)
-		public String showInfoControl(Model model,HttpSession session){
+		public String showInfoControl(Model model,HttpSession session, HttpServletRequest req){
 	    	String path = null;
 	    	
 	    	Object loginOwnerObj = session.getAttribute("loginOwner");
@@ -61,6 +64,17 @@ public class MyPageOwnerController {
 	    		All updateOwner = ownerService.getOwnersByOwnerId(ownerId);
 	    		model.addAttribute("updateOwner", updateOwner);
 	    		///업주정보수정을 위한 코드 끝
+	    		
+	    		///이벤트등록을 위한 코드
+	    		EventComment insertEvent = new EventComment();
+	    		model.addAttribute("insertEvent",insertEvent);
+	    		List<All> storesbyOwnerId = storeService.showOwnerStores(ownerId);
+	    		for(All store: storesbyOwnerId){
+	    			int storeCode = store.getStoreCode();
+	    			store.setStoreCodeStr(""+storeCode);
+	    		}
+	    		model.addAttribute("stores", storesbyOwnerId);
+	    		///이벤트등록을 위한 코드 끝
 	    		
 	    		///이벤트글조회를 위한 코드
 	    		List<All> allEvent = eventService.SeachMyEvent(ownerId);
@@ -114,7 +128,8 @@ public class MyPageOwnerController {
 	    	}
 	    	
 	    	else{	//로그인이 안된경우는 JSP에서 처리..
-	    		path="info/member_null";
+	    		model.addAttribute("needLogin", true);
+	    		path="redirect:/login";
 	    		
 	    	}
 			return path;
@@ -134,6 +149,23 @@ public class MyPageOwnerController {
 	    	logger.error("업데이트 오너 종료");
 	    	//마이페이지에서 updateSuccess가 true면 처음 들어갈때 if로 확인하여 alert 띄우기..
 			return "redirect:/info#tab2";
+		}
+	    
+	    @RequestMapping(value="/info/insert_event", method=RequestMethod.POST)
+		public String insertEvent(@ModelAttribute EventComment insertEvent, Model model){
+	    	logger.error("insertEvent 정보.."+insertEvent);
+	    	String storeCodeStr = insertEvent.getStoreCodeStr();
+	    	insertEvent.setStoreCode(Integer.parseInt(storeCodeStr));
+	    	int result = eventService.registEvent(insertEvent);
+	    	
+	    	if(result >0){
+	    		model.addAttribute("insertEvent", true);
+	    	}
+	    	else{
+	    		model.addAttribute("insertEvent", false);
+	    	}
+	    	logger.error("인서트 이벤트 종료");
+			return "redirect:/info#tab3";
 		}
 	    
 	    @RequestMapping(value="/info/update_event", method=RequestMethod.POST)

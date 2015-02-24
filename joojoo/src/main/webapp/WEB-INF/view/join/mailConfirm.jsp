@@ -1,11 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="joojoo.entity.RviewComment" %>
+<%@ page import="joojoo.entity.All" %>
+<%@ page import="java.util.*"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta charset="UTF-8">
-<title>íšŒì› ê°€ìž…</title>
+ <head>
+ <title>°Ô½ÃÆÇ</title>
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<!-- ¹öÆ°ºÎÆ®½ºÆ®·¦ -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet"  href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css"> -->
+
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/style-1000px.css"/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value="/css/style-desktop.css"/>"/>
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<!--   <link rel="stylesheet" href="css/joinform.css" /> -->
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.dropotron.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
+<script src="js/init.js"></script>
+<title>È¸¿ø °¡ÀÔ</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -18,20 +54,20 @@
 </script>
 </head>
 <body>
-	<h2>ì•„ì´ë”” ì¤‘ë³µ í™•ì¸</h2>
+	<h2>¸ÞÀÏ Áßº¹ È®ÀÎ</h2>
 	<c:if test="${!empty (result) }">
-		${joinMail}ëŠ” ì´ë¯¸ ë“±ë¡ëœ ë©”ì¼ìž…ë‹ˆë‹¤.<br>
+		${joinMail}´Â ÀÌ¹Ì µî·ÏµÈ ¸ÞÀÏÀÔ´Ï´Ù.<br>
 	</c:if>
 	<c:if test="${empty(result) }">
-		${joinMail }ëŠ” ì‚¬ìš©ê°€ëŠ¥í•œ ë©”ì¼ìž…ë‹ˆë‹¤.<br>
-		<input type="button" value="ì‚¬ìš©" id="use"><br>
+		${joinMail }´Â »ç¿ë°¡´ÉÇÑ ¸ÞÀÏÀÔ´Ï´Ù.<br>
+		<input type="button" value="»ç¿ë" id="use"><br>
 	</c:if>
 	<c:url value="/join/mailCheck" var="mailchk"></c:url>
-	ë‹¤ë¥¸ ë©”ì¼ë¡œ ì‹œë„í•˜ë ¤ë©´ ìƒˆë¡œ ì¤‘ë³µ ì²´í¬ë¥¼ í•˜ì„¸ìš”.
+	´Ù¸¥ ¸ÞÀÏ·Î ½ÃµµÇÏ·Á¸é »õ·Î Áßº¹ Ã¼Å©¸¦ ÇÏ¼¼¿ä.
 	<form action="${mailchk}">
-		<label for="joinMail">ë©”ì¼</label>
+		<label for="joinMail">¸ÞÀÏ</label>
 		<input type="text" id="joinMail" name="joinMail">
-		<input type="submit" value="ì „ì†¡"/>
+		<input type="submit" value="Àü¼Û"/>
 	</form>
 </body>
 </html>

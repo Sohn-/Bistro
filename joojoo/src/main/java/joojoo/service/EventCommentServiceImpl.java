@@ -46,11 +46,9 @@ public class EventCommentServiceImpl implements EventCommentService {
 	}
 
 	@Override
-	public int registEvent(EventComment eventComment, Stores store) {
+	public int registEvent(EventComment eventComment) {
 		int result = 0;
-		result = dao.insertEventComment(eventComment);
-		result += storeDao.insertStore(store);
-		
+		result = dao.insertEventComment(eventComment);		
 		return result;
 	}
 

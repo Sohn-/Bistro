@@ -717,7 +717,7 @@ jssor_slider1_starter('slider1_container');
 				<!-- 카테고리 구분 테이블 끝 -->
 
 				<!-- 바디 상점 결과 아코디언 시작 -->
-				<div id="accordion">
+				<div id="accordion" style="font-family:'Jeju Gothic', serif; ">
 					<!-- 상점 select 결과 가져오는 부분 시작 -->
 					<c:forEach items="${stores}" var="store">
 

@@ -29,11 +29,14 @@ public class EventComment implements Serializable {
 
 	/** start_date. */
 	private Date startDate;
+	private String startDateStr;
 
 	/** end_date. */
 	private Date endDate;
+	private String endDateStr;
 	
 	private int storeCode;
+	private String storeCodeStr;
 	
 	private String personsLevel;
 	private String serviceTypeName;
@@ -93,8 +96,28 @@ public class EventComment implements Serializable {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	public String getStartDateStr() {
+		return startDateStr;
+	}
+	public void setStartDateStr(String startDateStr) {
+		this.startDateStr = startDateStr;
+	}
+	public String getEndDateStr() {
+		return endDateStr;
+	}
+	public void setEndDateStr(String endDateStr) {
+		this.endDateStr = endDateStr;
+	}
 	public int getStoreCode() {
 		return storeCode;
+	}
+	
+	public String getStoreCodeStr() {
+		return storeCodeStr;
+	}
+	public void setStoreCodeStr(String storeCodeStr) {
+		this.storeCodeStr = storeCodeStr;
 	}
 	public void setStoreCode(int storeCode) {
 		this.storeCode = storeCode;

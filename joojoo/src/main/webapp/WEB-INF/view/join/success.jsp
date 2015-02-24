@@ -36,7 +36,7 @@
 <script src="js/init.js"></script>
 
 
- <script>
+<%--  <script>
 
  
  
@@ -61,7 +61,7 @@
       document.form1.userId.focus(); 
       return false; 
       } 
-   <%--    else{
+      else{
          var xhr = new XMLHttpRequest();
          
          xhr.onreadystatechange=function(){
@@ -82,7 +82,7 @@
          
          return true;
          
-      } --%>
+      }
       return true;
    }
 
@@ -148,7 +148,7 @@
             xhr.send();
          }, false);
       }
-   </script>
+   </script> --%>
 
 
 
@@ -171,6 +171,9 @@ fieldset .help {
 
 .ui-tooltip {
    width: 200px;
+}
+#header{
+	background-image: url(images/main.jpg);
 }
 </style>
 <%-- <script>
@@ -198,7 +201,7 @@ fieldset .help {
 </head>
 <c:url value="<%=request.getContextPath() %>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-   <div id="header-wrapper" style= "background-image: url(/images/main.jpg)">
+   <div id="header-wrapper">
 
       <div id="header" class="container">
 
@@ -220,17 +223,23 @@ fieldset .help {
          </div>
       </div>
    </div>
-   <img  src="/images/bar.png" style="width: 100%">
+   <!-- <img  src="/images/bar.png" style="width: 100%"> -->
    
-   <c:url value="/info/member" var="url"></c:url>
-<a href="${url }"><input type="button" value="마이페이지가기"> </a>
-
-
- <div id="features-wrapper">
+    <div id="features-wrapper">
       <section id="features" class="container"> 
    
-   </section>
-   </div>
+   
+     가입을 축하드립니다. 마이페이지에서 사용가능한 별을 확인하세요 
+   <c:url value="/info/member" var="url"></c:url>
+<a href="${url }"><input type="button" value="마이페이지가기"> </a>
+</section>
+</div>
+
+<!--  <div id="features-wrapper">
+      <section id="features" class="container"> 
+   
+   </section> -->
+   <!-- </div> -->
    
 
    

@@ -72,6 +72,7 @@ public class All {
 	
 	/////////////////////////////Stores
 	//private int storeCode;
+	private String storeCodeStr;
 	private String storeName;
 	private String storeAdress;
 	private String storePhone;
@@ -257,6 +258,14 @@ public class All {
 
 	public void setStoreCode(int storeCode) {
 		this.storeCode = storeCode;
+	}
+	
+	public String getStoreCodeStr() {
+		return storeCodeStr;
+	}
+
+	public void setStoreCodeStr(String storeCodeStr) {
+		this.storeCodeStr = storeCodeStr;
 	}
 
 	public String getDeleteRequest() {
