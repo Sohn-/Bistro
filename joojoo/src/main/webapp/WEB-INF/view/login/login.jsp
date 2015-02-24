@@ -86,7 +86,7 @@ new(function(){});var d={v:function(a){return a},u:function(a){return-b.cos(a*b.
 					duration : 1000
 				}
 			});
-			$("#dialog").dialog("close");
+			
 			$("#opener2").click(function() {
 				$("#dialog").dialog("open");
 			});
@@ -167,9 +167,12 @@ fieldset .help {
     </div><!-- 헤더 메뉴 끝 --> 
     </div>
    <img  src="images/bar.png" style="width: 100%">
+ 
+ 
  <div id="features-wrapper">
+
       <section id="features" class="container"> 
-   <div id="tabs">
+   <div id="tabs" style="font-family:'Jeju Gothic', serif; ">
       <ul>
          <li><h3><a href="#tab1" style="width: 14.2cm; ">일반회원</a></h3></li>
          <li><h3><a href="#tab2" style="width: 14.2cm;">업주회원 </a></h3></li>
@@ -177,25 +180,23 @@ fieldset .help {
       </ul>
       
       
-      <div id="tab1" style="padding-left: 2cm;">
+      <div id="tab1" >
          <div id="footer" class="container" align="left">
             
-            <table >
-            <tr bordercolor="red">
-            <td bordercolor="red">
+            <table>
+            <tr><td>           
             
-            <div class="row">
 				<c:url value="/login/check_user" var="action"></c:url>
-               	<form:form  id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
-                  <div >
+               	<form:form id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
+               
                      <div>
                         <form:input path="userId" id="userId" name="userId" placeholder="ID 입력 " type="text" /> <br>
                         <form:input path="userPassword" id="userPassword" name="userPassword" placeholder="PASSWD 입력  " type="password" />
  					</div>
-                  </div>        
+                        
                      <br>
                      <div >
-                     <input id="opener1" name="opener1" type="submit" value="Login" style="width: 8.7cm;"/>
+                     <input id="opener1" name="opener1" type="submit" value="Login" style="width: 10cm;"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
@@ -207,27 +208,37 @@ fieldset .help {
                      </h5>                          
                   <div>                     
                   </div>
+                  
               	</form:form>         
-            </div>
-            </td><td ><img alt="" src="images/jj.png" align="top"><td></tr>
+           
+           
+            </td>
+            
+               <br><td><img alt="" src="images/jj2.png" align="middle"></td>
+            </tr>
             </table>
          </div>
       </div>
-      <div id="tab2" style="padding-left: 16.5cm;">
-         <div id="footer" class="container" align="left">
-            <div class="row">
+      <div id="tab2" style="padding-left: 1cm;">
+         <div id="footer" class="container" align="left">         
+         
+         <table>
+         <tr><td><br><img alt="" src="images/jj2.png" align="middle"></td>
+         <td align="left">
+            <div>
 
                <c:url value="/login/check_owner" var="action"></c:url>
                	<form:form id="form2" name="form2" modelAttribute="owner" method="post" action="${action}" onsubmit="return Check_owner(this);">
                   <div >
                      <div>
+                     <br>
                          <form:input path= "ownerId" id = "ownerId" name="ownerId" placeholder="ID 입력 " type="text"  /><br>
                          <form:input path= "ownerPassword" id="ownerPassword" name="ownerPassword" placeholder="PASSWD 입력  " type="password" /> 
                      </div>
                   </div>
                   <br>
                      <div >
-                     <input id="opener2" name="opener2" type="submit" value="Login" style="width: 8.7cm;"/>
+                     <input id="opener2" name="opener2" type="submit" value="Login" style="width: 10cm;"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
                        <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
 
@@ -247,7 +258,10 @@ fieldset .help {
 				
 
             </div>
-           
+            </td>
+            
+            </tr>
+           </table>
          </div>
       </div>
     

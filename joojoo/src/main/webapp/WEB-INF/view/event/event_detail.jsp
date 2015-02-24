@@ -146,8 +146,8 @@ fieldset .help {
 </head>
 
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
-<body class="homepage" bgcolor=#333323>
-	<div id="header-wrapper" style="background-image: url(images/main.jpg)">
+<body class="homepage" bgcolor=#333323 >
+	<div id="header-wrapper" >
 		<div id="header" class="container">
 			<h1 id="logo"><a href="<%=request.getContextPath()%>/">JooJooclub</a></h1>
 			<p>Welcom To JooJooClub</p>
@@ -165,10 +165,14 @@ fieldset .help {
 			</div>
 		</div>
 	</div>
+	
+	 <img  src="images/bar.png" style="width: 100%">
+ <div id="features-wrapper">
+      <section id="features" class="container"> 
 
 	<div align="center" class="container">
 		<br><br>
-		<div style="background-color: rgb(255, 195, 185);">
+		<div style="background-color: #FACC2E;">
 			<h2>${eventDetail.title}</h2>
 		</div>
 		<div id="carousel-example-generic" class="carousel slide"	data-ride="carousel">
@@ -268,6 +272,30 @@ fieldset .help {
 			${eventDetail.content}
 
 		</div>
-	</div>		
+	</div>	
+	</section>
+	</div>	
+	
+		<div>
+		<div id="footer" class="container">
+			<div align="center">
+				<br> <br> <a
+					href="<%=request.getContextPath()%>/footer/servicePolicy">이용약관</a>
+				&nbsp; &nbsp; <a
+					href="<%=request.getContextPath()%>/footer/privacyPolicy">개인정보보호방침</a>
+				&nbsp; &nbsp; <a
+					href="<%=request.getContextPath()%>/footer/youthPolicy">청소년보호정책</a>
+				&nbsp; &nbsp; <a
+					href="<%=request.getContextPath()%>/footer/helpCenter">고객센터</a> <br>
+				<br>
+				<div style="font-size: 12px;">
+					사업자등록번호:130-50-61004 (주)주주총회 대표이사: 정주주 주소: 이클립시 디비구 자바동 123-45 <br>
+					주주총회앱의 모든 콘텐츠는 저작권법의 보호를 받으므로, 무단 전재, 복사, 배포 등을 금합니다. <br>
+					Copyright (c) JooJooClub All Rights Reserved.
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,6 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="joojoo.entity.All"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<<<<<<< HEAD
 <%@ page import="joojoo.entity.RviewComment" %>
 <%@ page import="joojoo.entity.All" %>
 <%@ page import="java.util.*"%>
@@ -11,12 +14,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>게시판 목록</title>
    
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro.git
 
+<<<<<<< HEAD
 
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"  href="css/style-1000px.css">
+=======
+<title>게시판Page</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro.git
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-1000px.css">
 <link rel="stylesheet" href="css/style-desktop.css">
+<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -26,29 +48,28 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.dropotron.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
-      $(function() {
-      $("#tabs").tabs();
-      });
 
-      $(function() {
-      var tooltips = $("[title]").tooltip({
-         position : {
-            my : "left top",
-            at : "right+5 top-5"
-         }
-      });
-      });
 
-      $(function() {       
-       $("#accordion").accordion();
-   });
-   
+$(document).ready(function() {
+	$('div#accordion').accordion({
+		event : "click hoverintent",collapsible : true,});
+});
+
+
       $(function() {
        //scrollpane parts
        var scrollPane = $( ".scroll-pane" ),
@@ -205,7 +226,7 @@ fieldset .help {
    
        <!-- 검색 폼 영역 -->
 
-       <form  id="reviewlist" name="searchForm" action="" method="get">
+       <form  id="reviewlist" name="searchForm" action="" method="get" style="font-family:'Jeju Gothic', serif; ">
        <p>
            <select name="searchType" style="width: 40%">
                <option value="ALL">전체검색</option>
@@ -224,18 +245,73 @@ fieldset .help {
    
       <% List<All> list = (List<All>)request.getAttribute("rviews"); %>
       <h4> 총 글 갯수 : <%=list.size() %> </h4>
-      <div id="accordion-resizer" class="container" align="center" style="background-color: gray">  
+      
+      <div id="accordion-resizer" align="center"
+				style="background-color: #323232">
+
+				<!-- 카테고리 구분 테이블 -->
+				<table width="75%" align="center" cellpadding="0" cellspacing="0"
+					border="1" align="center"
+					style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
+					<tr align="center">
+						 <td style="border: 1px gray solid;"><h4>글번호</h4></td>
+             <td style="border: 1px gray solid;"><h4>작성자</h4></td>
+             <td style="border: 1px gray solid;"><h4>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    글제목     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</h4></td>
+             <td style="border: 1px gray solid;"><h4>작성시간</h4><td>
+             <td style="border: 1px gray solid;"><h4>가게이름</h4></td>
+             <td style="border: 1px gray solid;"><h4>평균별점</h4></td>
+
+					</tr>
+				</table>
+				<!-- 카테고리 구분 테이블 끝 -->
+
+				<!-- 바디 상점 결과 아코디언 시작 -->
+				<div id="accordion" style="font-family:'Jeju Gothic', serif; ">
+					<!-- 상점 select 결과 가져오는 부분 시작 -->
+					<c:forEach items="${rviews }" var="rview">
+
+						<!-- 아코디언 카테고리 헤더 -->
+						<div align="center" style="height: 1cm;">
+							<table width="80%" height="1cm" align="center">
+								<tr align="center" height="1cm">
+									<td style="padding-right: 2cm; width: 15cm"><c:out value="${rview.commentCode }"/></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.userId}" /></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.title }" /></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.regDate}" /></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.storeName}" /></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.starPoint}" /></td>
+								</tr>
+							</table>
+						</div>
+
+						<!-- 아코디언 상세내용 바디 -->
+						<div>
+							<p align="left">상점 이름:	<c:out value="${rview.storeName}" />
+							</p>
+						</div>
+						
+					</c:forEach>
+					<!-- 상점 select 결과 가져오는 부분 끝 -->
+				</div>
+				<!-- 바디 상점 결과 아코디언 끝 -->
+			</div>
+      
+      
+      
+      
+<%--       <div id="accordion-resizer" class="container" align="center" style="background-color: gray">  
       
        <table width="80%" align="center" cellpadding="5" cellspacing="0"   border="1"  align="center" style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
           <tr align="center">            
              <td style="border: 1px gray solid;"><h4>글번호</h4></td>
              <td style="border: 1px gray solid;"><h4>작성자</h4></td>
-             <td style="border: 1px gray solid;"><h4>글제목</h4></td>
+             <td style="border: 1px gray solid;"><h4>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    글제목     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</h4></td>
              <td style="border: 1px gray solid;"><h4>작성시간</h4><td>
              <td style="border: 1px gray solid;"><h4>가게이름</h4></td>
              <td style="border: 1px gray solid;"><h4>평균별점</h4></td>
           </tr>
        </table> <!-- 카테고리 구분 테이블 끝 -->        
+<<<<<<< HEAD
        <div id="accordion" class="container">         
            <!-- 상점 select 결과 가져오는 부분 시작 -->
            
@@ -267,7 +343,53 @@ fieldset .help {
        </section>
        </div>
        </div>
+=======
+
+
        
+       
+       <div id="accordion">
+					<!-- 상점 select 결과 가져오는 부분 시작 -->
+					<c:forEach items="${rviews }" var="rview">
+
+						<!-- 아코디언 카테고리 헤더 -->
+						<div align="center" style="height: 1cm;">
+							<table width="80%" height="1cm" align="center">
+								<tr align="center" height="1cm">
+									<td style="padding-right: 2cm; width: 15cm"><c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
+                        														<a href="${url }">${rview.title }</a></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.userId}" /></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.title }" /></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.regDate}" /></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.storeName}" /></td>
+									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.starPoint}" /></td>
+								</tr>
+							</table>
+						</div>
+
+						<!-- 아코디언 상세내용 바디 -->
+						<div>
+							<p align="left">상점 이름:	<c:out value="${store.storeName}" />
+							</p>
+							<p align="left">상점 주소:	<c:out value="${store.storeAdress}" />
+							</p>
+							<p align="left">상점 위치:	<c:out value="${store.regionName}" />
+							</p>
+							<p align="left">상점 업종:	<c:out value="${store.typeName}" />
+							</p>
+							<p align="left">상점 전화번호:	<c:out value="${store.storePhone}" />
+							</p>
+						</div>
+						
+					</c:forEach>
+					<!-- 상점 select 결과 가져오는 부분 끝 -->
+				</div>
+				</div> --%>
+				</section>
+				</div>
+				</div>
+				
+
        
        
        
