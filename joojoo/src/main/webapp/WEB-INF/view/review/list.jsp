@@ -14,17 +14,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>게시판 목록</title>
    
-=======
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
->>>>>>> branch 'master' of https://github.com/Sohn-/Bistro.git
 
-<<<<<<< HEAD
 
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"  href="css/style-1000px.css">
-=======
 <title>게시판Page</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +29,6 @@
 <meta name="keywords" content="" />
 
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
->>>>>>> branch 'master' of https://github.com/Sohn-/Bistro.git
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-1000px.css">
 <link rel="stylesheet" href="css/style-desktop.css">
