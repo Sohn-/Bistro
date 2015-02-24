@@ -86,7 +86,7 @@ new(function(){});var d={v:function(a){return a},u:function(a){return-b.cos(a*b.
 					duration : 1000
 				}
 			});
-			$("#dialog").dialog("close");
+			
 			$("#opener2").click(function() {
 				$("#dialog").dialog("open");
 			});
