@@ -304,7 +304,7 @@ fieldset .help {
 		   <li><a href="#tab2">업주회원 가입하기</a></li>		
 		</ul>
 		
-		<div id="tab1">	
+		<div id="tab1" style="background-color:#f6f6f6;">	
 			<c:url value="/join/result/user" var="action"></c:url> 
 			<form:form modelAttribute="joinUser" method="post" action="${action} " id="form"> 			
 				<h1 align="center">일 반 회 원 가 입</h1>		
@@ -350,8 +350,8 @@ fieldset .help {
 					
 	    </div>
 	    
-	    <div id="tab2">
-	    <h1 align="center">업 주 회 원 가 입</h1>
+	    <div id="tab2" style="background-color:#f6f6f6;">
+	    <h1 align="center" >업 주 회 원 가 입</h1>
 			<c:url value="/join/join_o2" var="action"></c:url> 
 			
 			<!-- <table align="center" background="">
