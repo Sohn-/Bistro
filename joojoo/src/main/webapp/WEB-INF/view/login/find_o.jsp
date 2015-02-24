@@ -154,6 +154,13 @@ $(function() {
          </div>
       </div>      
    </div>
+   
+      <img  src="images/bar.png" style="width: 100%">
+ 
+ 
+ <div id="features-wrapper">
+
+      <section id="features" class="container"> 
 
    <div id="tabs">
       <ul>
@@ -212,6 +219,8 @@ $(function() {
             </div>
          </div>
       </div>
+       </section>
+   </div>
       
    </div>
      <div id="footer-wrapper">
@@ -224,6 +233,7 @@ $(function() {
          </div>
       </div>
    </div>  
+  
    
 </body>
 </html>

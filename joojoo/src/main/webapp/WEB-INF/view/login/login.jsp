@@ -183,18 +183,17 @@ fieldset .help {
       <div id="tab1" >
          <div id="footer" class="container" align="left">
             
-            <table  bordercolor="red">
-            <tr bordercolor="red" >
-            <td bordercolor="red" style="padding-top: 0cm">           
-            <div style="padding-top: 2cm;">
+            <table>
+            <tr><td>           
+            
 				<c:url value="/login/check_user" var="action"></c:url>
                	<form:form id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
-                  <div >
+               
                      <div>
                         <form:input path="userId" id="userId" name="userId" placeholder="ID 입력 " type="text" /> <br>
                         <form:input path="userPassword" id="userPassword" name="userPassword" placeholder="PASSWD 입력  " type="password" />
  					</div>
-                  </div>        
+                        
                      <br>
                      <div >
                      <input id="opener1" name="opener1" type="submit" value="Login" style="width: 10cm;"/>
@@ -209,9 +208,14 @@ fieldset .help {
                      </h5>                          
                   <div>                     
                   </div>
+                  
               	</form:form>         
-            </div>
-            </td><td style="paddinpadding-top:1cm; "><img alt="" src="images/jj4.png" align="middle" style="padding-top: 2cm;"><td></tr>
+           
+           
+            </td>
+            
+               <br><td><img alt="" src="images/jj2.png" align="middle"></td>
+            </tr>
             </table>
          </div>
       </div>
@@ -219,7 +223,7 @@ fieldset .help {
          <div id="footer" class="container" align="left">         
          
          <table>
-         <tr><td><br><img alt="" src="images/jj4.png" align="middle"></td>
+         <tr><td><br><img alt="" src="images/jj2.png" align="middle"></td>
          <td align="left">
             <div>
 
