@@ -41,36 +41,11 @@
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
-<script type="text/javascript">
 
-function deleteChk(){
-	if($("#deleteChk").val()=="true"){
-	
-		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-		    document.form.submit();
-		}else{   //취소
-		    return;
-		}
-
-	
-	 }
-	else{
-		alert("삭제 권한이 없습니다.");
-	}
-	}
-
-
-</script>
 
 
 
 </head>
-
-<c:if test="${ loginUser.userId == rviewComment.userId }">
-	<input type="hidden" id="deleteChk" value="true"/> 
-
-</c:if>
-
 
  <body>
  
@@ -105,93 +80,37 @@ function deleteChk(){
     </div><!-- 헤더 메뉴 끝 --> 
     </div>
     </div>
+    
+    
+    <!--가자! 본론으로-->
+    
     <table>
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
      <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
       <td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
-      <td>내 용</td>
+      <td>삭제</td>
       <td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
      </tr>
     </table>
-   <table width="413">
-     <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">글번호</td>
-      <td width="319">
-      <c:out value="${rviewComment.commentCode}"></c:out>
-      </td>
-      <td width="0">&nbsp;</td>
-     </tr>
-	 <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-    <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">작성일</td>
-      <td width="319"> <c:out value="${rviewComment.regDate}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
-	 <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-    <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">작성자</td>
-      <td width="319"> <c:out value="${rviewComment.userId}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-    <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">가게 이름</td>
-      <td width="319"> <c:out value="${rviewComment.storeName}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
-      <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-    <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">제목</td>
-      <td width="319"> <c:out value="${rviewComment.title}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
+   <table>
      
-     <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">평점</td>
-      <td width="319"> <c:out value="${rviewComment.starPoint}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-                <tr>
-      <td width="0"></td>
-                   <td width="399" colspan="2" height="200"><c:out value="${rviewComment.content}"></c:out>
-
-                </tr>
-
-
-
-
-			<tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-     <tr height="1" bgcolor="#82B5DF"><td colspan="4" width="407"></td></tr>
+     
+     		<h3>글을 삭제하시겠습니까?</h3>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+     <tr height="1" bgcolor="#82B5DF"><td colspan="4"></td></tr>
      <tr align="center">
-      <td width="0">&nbsp;</td>
-      <td colspan="2" width="800">
-     
-	<input type=button value="목록" OnClick="window.location='review'">
-	<input type=button value="수정" OnClick="window.location='review/modify?commentCode=${rviewComment.commentCode}'" >
-	<input type=button value="삭제" onclick="deleteChk()">
-      <td width="0"></td>
+      <td>&nbsp;</td>
+      <td colspan="2"><input type=button value="삭제">
+       <input type=button value="취소">
+      <td>&nbsp;</td>
      </tr>
-    </table>
-   </td>
-  </tr>
-			
-
-
     </table>
    </td>
   </tr>
  </table>
     
-    <!--가자! 본론으로-->
   
 
 </body> 

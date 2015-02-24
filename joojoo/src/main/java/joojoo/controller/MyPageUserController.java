@@ -71,7 +71,6 @@ public class MyPageUserController {
 	    	coupon.setCouponStatus("미사용");
 	    	List<All> nonUsedCoupons = couponService.getCouponsByUserIdAndStatus(coupon);
 	    	model.addAttribute("nonUsedCoupons", nonUsedCoupons);
-	    	LOG.trace("수업");
 	    	//2.사용
 	    	coupon.setCouponStatus("사용");
 	    	List<All> usedCoupons = couponService.getCouponsByUserIdAndStatus(coupon);
@@ -107,15 +106,14 @@ public class MyPageUserController {
 		}
 	    
 	    
-	    @RequestMapping(value="/info/member/update", method=RequestMethod.POST)
+	    @RequestMapping(value="/info/user/update", method=RequestMethod.POST)
 		public String updateUserInfo(@ModelAttribute("updateUser") Users updateUser,
 				Model model,HttpSession session){
 	    	
-	    	LOG.trace("수업 "+updateUser);
+	    	LOG.error("수업 "+updateUser);
 	    	userService.updateUserInfo(updateUser);
 	    	//WebUtils.setSessionAttribute(session, "userSession", user);
 	    	LOG.trace("수업2 세션 업뎃 전"+session.getAttribute("loginUser").toString());
-	    	session.removeAttribute("loginUser");
 	    	session.setAttribute("loginUser", updateUser);
 	    	LOG.trace("수업3 세션 업뎃 후"+session.getAttribute("loginUser").toString());
 	    	
@@ -123,7 +121,7 @@ public class MyPageUserController {
 	    	
 	    	
 	    	
-	    	return "redirect:/info/user";
+	    	return "redirect:/info";
 		}
 	    
 	  

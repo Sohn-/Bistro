@@ -56,14 +56,14 @@ function writeCheck()
     if( !form.starPoint.value )
    {
     alert( "비밀번호를 적어주세요" );
-    form.password.focus();
+    form.starPoint.focus();
     return;
    } 
   
   if( !form.content.value )
    {
     alert( "내용을 적어주세요" );
-    form.memo.focus();
+    form.content.focus();
     return;
    }
  
@@ -114,7 +114,8 @@ function writeCheck()
     <c:url value="/review/written" var="action"></c:url> 
 	<form:form method="post" action="${action}" name="writeform"> 
      <%-- <form name=writeform method=post action="../review/written"> --%>
-     
+	
+	
     <table>
    
   <tr>
@@ -134,6 +135,9 @@ function writeCheck()
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+     
+     
+     
      <tr>
       <td>&nbsp;</td>
       <td align="center">가게 이름</td>
@@ -164,7 +168,15 @@ function writeCheck()
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-    
+     
+    <!-- <tr>
+      <td>&nbsp;</td>
+      <td align="center">사진 업로드</td>
+      <td><input type="file" name="uploadFile" size="50" maxlength="100"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr> -->
+     
      <!-- <tr>
       <td>&nbsp;</td>
       <td align="center">등록일</td>

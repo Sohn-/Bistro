@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page import="joojoo.entity.RviewComment" %>
@@ -8,13 +8,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
- <title>∞‘Ω√∆«</title>
+ <title>Í≤åÏãúÌåê</title>
 
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<!-- πˆ∆∞∫Œ∆ÆΩ∫∆Æ∑¶ -->
+<!-- Î≤ÑÌäºÎ∂ÄÌä∏Ïä§Ìä∏Îû© -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <!-- <link rel="stylesheet"  href="css/style-1000px.css">
@@ -41,36 +41,38 @@
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
-<script type="text/javascript">
-
-function deleteChk(){
-	if($("#deleteChk").val()=="true"){
-	
-		if (confirm("¡§∏ª ªË¡¶«œΩ√∞⁄Ω¿¥œ±Ó??") == true){    //»Æ¿Œ
-		    document.form.submit();
-		}else{   //√Îº“
-		    return;
-		}
-
-	
-	 }
-	else{
-		alert("ªË¡¶ ±««—¿Ã æ¯Ω¿¥œ¥Ÿ.");
-	}
-	}
-
-
-</script>
-
+<script language = "javascript"> // ÏûêÎ∞î Ïä§ÌÅ¨Î¶ΩÌä∏ ÏãúÏûë
+function modifyCheck()
+  {
+   var form = document.writeform;
+   
+   if( !form.title.value )
+   {
+    alert( "Ï†úÎ™©ÏùÑ Ï†ÅÏñ¥Ï£ºÏÑ∏Ïöî" );
+    form.title.focus();
+    return;
+   }
+   
+    if( !form.starPoint.value )
+   {
+    alert( "ÎπÑÎ∞ÄÎ≤àÌò∏Î•º Ï†ÅÏñ¥Ï£ºÏÑ∏Ïöî" );
+    form.password.focus();
+    return;
+   } 
+  
+  if( !form.content.value )
+   {
+    alert( "ÎÇ¥Ïö©ÏùÑ Ï†ÅÏñ¥Ï£ºÏÑ∏Ïöî" );
+    form.memo.focus();
+    return;
+   }
+  alert("ÏàòÏ†ï ÏôÑÎ£å");
+  form.submit();
+  }
+ </script>
 
 
 </head>
-
-<c:if test="${ loginUser.userId == rviewComment.userId }">
-	<input type="hidden" id="deleteChk" value="true"/> 
-
-</c:if>
-
 
  <body>
  
@@ -80,7 +82,7 @@ function deleteChk(){
 	<h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
 	<p>Welcom To JooJooClub</p>
 	
-	<!-- «Ï¥ı ∏ﬁ¥∫ -->
+	<!-- Ìó§Îçî Î©îÎâ¥ -->
 	<div align="right">
 		<nav id="nav">
 			<ul>				
@@ -94,7 +96,7 @@ function deleteChk(){
 				
 				</c:if>			
 				<c:if test="${!empty loginUser }">
-				<li><span>${loginUser.userId}¥‘ [¬˘Ω∫:${loginUser.chance }]</span>
+				<li><span>${loginUser.userId}Îãò [Ï∞¨Ïä§:${loginUser.chance }]</span>
 				<li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>			   
 			    <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
 				<li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>				
@@ -102,97 +104,99 @@ function deleteChk(){
 				</c:if>
 		    </ul>
 	    </nav>
-    </div><!-- «Ï¥ı ∏ﬁ¥∫ ≥° --> 
+    </div><!-- Ìó§Îçî Î©îÎâ¥ ÎÅù --> 
     </div>
     </div>
+    
+    
+    <!--Í∞ÄÏûê! Î≥∏Î°†ÏúºÎ°ú-->
+    <c:url value="/review/modified" var="action"></c:url> 
+	<form:form method="post" action="${action}" name="writeform"> 
+     
+     
     <table>
+   
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
      <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
-      <td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
-      <td>≥ª øÎ</td>
-      <td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
+      <td width="5"><img src="../img/table_left.gif" width="5" height="30" /></td>
+      <td>Í∏ÄÏì∞Í∏∞</td>
+      <td width="5"><img src="../img/table_right.gif" width="5" height="30" /></td>
      </tr>
     </table>
-   <table width="413">
+   <table>
      <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">±€π¯»£</td>
-      <td width="319">
-      <c:out value="${rviewComment.commentCode}"></c:out>
-      </td>
-      <td width="0">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center">Ï†úÎ™©</td>
+      <td><input name="title" size="50" maxlength="100" value="${modifyComment.title }"/></td>
+      <td>&nbsp;</td>
      </tr>
-	 <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-    <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">¿€º∫¿œ</td>
-      <td width="319"> <c:out value="${rviewComment.regDate}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
-	 <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-    <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">¿€º∫¿⁄</td>
-      <td width="319"> <c:out value="${rviewComment.userId}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-    <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">∞°∞‘ ¿Ã∏ß</td>
-      <td width="319"> <c:out value="${rviewComment.storeName}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
-      <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-    <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">¡¶∏Ò</td>
-      <td width="319"> <c:out value="${rviewComment.title}"></c:out></td>
-      <td width="0">&nbsp;</td>
-     </tr>
-     
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
      <tr>
-      <td width="0">&nbsp;</td>
-      <td align="center" width="76">∆Ú¡°</td>
-      <td width="319"> <c:out value="${rviewComment.starPoint}"></c:out></td>
-      <td width="0">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="center">Í∞ÄÍ≤å Ïù¥Î¶Ñ</td>
+      <td><input name="storeName" size="50" maxlength="100" value="${modifyComment.storeName }" readonly /></td>
+      <td>&nbsp;</td>
      </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-                <tr>
-      <td width="0"></td>
-                   <td width="399" colspan="2" height="200"><c:out value="${rviewComment.content}"></c:out>
-
-                </tr>
-
-
-
-
-			<tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
-     <tr height="1" bgcolor="#82B5DF"><td colspan="4" width="407"></td></tr>
-     <tr align="center">
-      <td width="0">&nbsp;</td>
-      <td colspan="2" width="800">
-     
-	<input type=button value="∏Ò∑œ" OnClick="window.location='review'">
-	<input type=button value="ºˆ¡§" OnClick="window.location='review/modify?commentCode=${rviewComment.commentCode}'" >
-	<input type=button value="ªË¡¶" onclick="deleteChk()">
-      <td width="0"></td>
-     </tr>
-    </table>
-   </td>
-  </tr>
-			
-
-
-    </table>
-   </td>
-  </tr>
- </table>
-    
-    <!--∞°¿⁄! ∫ª∑–¿∏∑Œ-->
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
   
+   <input type="hidden" name="commentCode" size="50" maxlength="100" value="${modifyComment.commentCode}" />
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center">ID</td>
+      <td><input name="userId" size="50" maxlength="50" value="${loginUser.userId }" readonly /></td>
+      <td>&nbsp;</td>
+     </tr>
+      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+   <!--  <tr>
+      <td>&nbsp;</td>
+      <td align="center">ÎπÑÎ∞ÄÎ≤àÌò∏</td>
+      <td><input name="password" size="50" maxlength="50"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+      -->
+     <tr>
+      <td>&nbsp;</td>
+      <td align="center">ÌèâÏ†ê</td>
+      <td><input name="starPoint" size="50" maxlength="50" value="${modifyComment.starPoint }"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+    
+     <!-- <tr>
+      <td>&nbsp;</td>
+      <td align="center">Îì±Î°ùÏùº</td>
+      <td><input type="date" name="regDate" size="50" maxlength="50"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr> -->
+     
+     <tr>
+      <td>&nbsp;</td>
+      <td align="center">ÎÇ¥Ïö©</td>
+      <td><textarea name="content" cols="50" rows="13" >${modifyComment.content } </textarea></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+     <tr height="1" bgcolor="#82B5DF"><td colspan="4"></td></tr>
+     <tr align="center">
+      <td>&nbsp;</td>
+      <td colspan="2">
+      <input type=button value="ÏàòÏ†ï" OnClick="javascript:modifyCheck();"> 
+		<input type=button value="Ï∑®ÏÜå" OnClick="javascript:history.back(-1)">
+     
+      <td>&nbsp;</td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+  
+ </table>
+ 
+   </form:form>
+    
 
 </body> 
 

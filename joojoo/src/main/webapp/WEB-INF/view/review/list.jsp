@@ -4,30 +4,23 @@
 <%@ page import="joojoo.entity.RviewComment" %>
 <%@ page import="joojoo.entity.All" %>
 <%@ page import="java.util.*"%>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-    <title>게시판 목록</title>
-    <style type="text/css">
-        * {font-size: 9pt;}
-        p {width: 600px; text-align: right;}
-        table thead tr th {background-color: gray;}
-    #header{
-     background-image: url(images/main.jpg);
-   }
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>게시판 목록</title>
+   
 
-    </style>
- 
-     <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"  href="css/style-1000px.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-desktop.css">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 
 
 
@@ -133,7 +126,15 @@
       document.querySelector("#here"+commentCode).innerHTML=content;
    }
 </script>
+
 <style type="text/css">
+
+* {font-size: 9pt;}
+p {width: 600px; text-align: right;}
+table thead tr th {background-color: gray;}
+#header{
+background-image: url(images/main.jpg);
+}
 form { 
 width: 10cm; 
 } 
@@ -167,7 +168,6 @@ fieldset .help {
 
 </head>
 
-    </head>
 <c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
    <div id="header-wrapper">                        
    <div id="header" class="container"> 
@@ -181,18 +181,18 @@ fieldset .help {
             <c:if test="${empty loginUser }">
             
             <li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>
-            <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a>
+            <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/login"><span>Login</span></a></li>
              <li><a class="icon fa-cog" href="<%=request.getContextPath() %>/join"><span>Join</span></a></li>            
              <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
             <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>
             
             </c:if>         
             <c:if test="${!empty loginUser }">
-            <li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span>
+            <li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span></li>
             <li><a class="icon fa-home" href="<%=request.getContextPath() %>/"><span>Home</span></a></li>            
              <li><a class="icon fa-retweet" href="<%=request.getContextPath() %>/info"><span>MyPage</span></a></li>
             <li><a class="icon fa-sitemap" href="<%=request.getContextPath() %>/review"><span>ReviewBoard</span></a></li>            
-            <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/logout"><span>Logout</span></a>            
+            <li><a class="icon fa-bar-chart-o" href="<%=request.getContextPath() %>/logout"><span>Logout</span></a></li>         
             </c:if>
           </ul>
        </nav>
@@ -260,57 +260,10 @@ fieldset .help {
                  </table>
               </div>
               </c:forEach>
-                         
-              <!-- 아코디언 상세내용 바디 -->            
-               
-              
-<%--             <!-- 상점 select 결과 가져오는 부분 끝 -->                        
-      </div><!-- 바디 상점 결과 아코디언 끝 -->     
-      
-      
-      
-      
-      
-      
-      
-      <div id="listtable">
-       <table border="1" summary="게시판 목록" style="border-color: white">
-      <h4> 총 글 갯수 : <%=list.size() %> </h4>
-      
-       
-   
-          <tr><th>글번호</th>  <th>작성자 ID</th><th>글 제목</th><th>글 작성 시간</th><th>가게 이름</th><th>별점</th></tr>
-         <c:forEach items="${rviews }" var="rview">
-   
-      <tr>
-      <td><c:out value="${rview.commentCode}"></c:out></td>
-      <td><c:out value="${rview.userId}"></c:out></td>
-      <td>
-         <c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
-         <a href="${url }">${rview.title }</a>
-      </td>
-      <td><c:out value="${rview.regDate}"></c:out></td>
-      <td><c:out value="${rview.storeName}"></c:out></td>
-      <td><c:out value="${rview.starPoint}"></c:out></td>
-      
-      </tr>
-      
-         </c:forEach>
-           <tfoot>
-               <tr>
-                    <td align="center" colspan="6">1</td>
-               </tr>
-           </tfoot> --%>
-    <!--    </table> -->
+  
        </div>
        </div>
-       <br>
-<%--        <p>
-
-         
-           <c:url value="/review/write" var="url"></c:url>
-         <a href="${url }"> <input type="button" value="글쓰기" align="left" /></a>
-       </p> --%>
+     
        </section>
        </div>
        </div>
