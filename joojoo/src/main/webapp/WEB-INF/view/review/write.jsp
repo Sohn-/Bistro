@@ -31,7 +31,13 @@
   <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <!--   <link rel="stylesheet" href="css/joinform.css" /> -->
 
+<style type="text/css">
 
+#header {
+	background-image: url(../images/main.jpg);
+}
+
+</style>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -76,10 +82,10 @@ function writeCheck()
 </head>
 
  <body>
- 
- <c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
-	<div id="header-wrapper">                        
+ <div id="header-wrapper">                        
 	<div id="header" class="container"> 
+ <c:url value="<%=request.getContextPath() %>" var="cp"></c:url>
+	
 	<h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
 	<p>Welcom To JooJooClub</p>
 	
@@ -108,8 +114,9 @@ function writeCheck()
     </div><!-- 헤더 메뉴 끝 --> 
     </div>
     </div>
-     <img  src="images/bar.png" style="width: 100%">
- <div id="features-wrapper">
+     <img  src="../images/bar.png" style="width: 100%">
+     
+ 	<!-- <div id="features-wrapper"> -->
       <section id="features" class="container"> 
     
     <!--가자! 본론으로-->
@@ -123,7 +130,7 @@ function writeCheck()
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
-     <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
+     <tr style="background:url('../img/table_mid.gif') repeat-x; text-align:center;">
       <td width="5"><img src="../img/table_left.gif" width="5" height="30" /></td>
       <td>글쓰기</td>
       <td width="5"><img src="../img/table_right.gif" width="5" height="30" /></td>
@@ -203,16 +210,17 @@ function writeCheck()
      
       <td>&nbsp;</td>
      </tr>
+    
     </table>
    </td>
   </tr>
-  
+   
  </table>
  
+    
    </form:form>
    </section>
-   </div>
-    
+   <!-- </div> -->
 
 </body> 
 

@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<<<<<<< HEAD
+
 <%@ page import="joojoo.entity.RviewComment" %>
 <%@ page import="joojoo.entity.All" %>
 <%@ page import="java.util.*"%>
@@ -29,9 +29,9 @@
 <meta name="keywords" content="" />
 
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/style-1000px.css">
-<link rel="stylesheet" href="css/style-desktop.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style-1000px.css">
+<link rel="stylesheet" href="../css/style-desktop.css">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 

@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -834,12 +835,14 @@ fieldset .help {
 					<th>쿠폰확인</th>					
 				</tr>
 				
-				<c:forEach items="${nonUsedCoupons }" var="nonUsedCoupon">
+				
+				<c:forEach items="${nonUsedCoupons }" var="nonUsedCoupon" varStatus="status">
 				<tr>
 					<td><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
 					<td><c:out value="${nonUsedCoupon.title}"></c:out></td>
 					<td><c:out value="${nonUsedCoupon.couponCode }"></c:out></td>
-					<td><a href="update_u.jsp"><input type="button" name="button"value="쿠폰상세정보"></a> </td>				
+					<td><button id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
+					쿠폰 상세 보기</button></a> </td>				
 				</tr>
 				</c:forEach>
 				
@@ -915,6 +918,61 @@ fieldset .help {
 			</table>
 			</div>
 		</div>
+		
+		
+		<!-- 아직 사용 안한 쿠폰 상세 정보 모달!! -->
+		<c:forEach items="${nonUsedCoupons}" var="event" varStatus="status">
+		<div class="modal fade" id="myModal${status.current.couponCode }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog"><div class="modal-content">
+				<!-- 모달 헤더 -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title"	id="modal_title${status.current.couponCode }">미사용 쿠폰 상세보기</h4>
+				</div>
+				<!-- 모달 바디 -->
+				<div class="modal-body" id="here${status.current.commentCode }">
+				<c:url value="/info/user/coupon/refund" var="action"></c:url>
+				<form:form modelAttribute="nonUsedCoupon${status.count }" method="post" action="${action}" id="form3" name="form3">
+				<fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="startDate"/>
+				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="endDate"/>
+					<fieldset>	
+						<div style="font-style: normal; color: black;">
+							쿠폰 코드
+							<input type="text" value="${status.current.couponCode }" readonly/>
+							이벤트 제목
+							<input type="text" value="${status.current.title }" align="middle"  readonly/><br>
+							이벤트 내용
+							<input type="text" value="${status.current.content }"  readonly><br>
+							이벤트 시작 시간<br>
+							<input id="startDate" value="${startDate }" readonly><br>
+							이벤트 종료 시간<br>
+							<input id="endDate" value="${endDate }" readonly><br>
+							<input type="text" value="${status.current.storeName }" align="middle" readonly />
+							서비스 종류	
+							<input type="text" value="${status.current.serviceTypeName }" align="middle"  readonly /><br>
+							인원
+							<input type="text" value="${status.current.personsLevel}" align="middle"  readonly /><br>
+							
+						</div>
+					</fieldset>
+					
+				</form:form>
+				</div>
+					<!-- 모달 푸터 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
+					</div>
+					
+				</div>	<!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		</c:forEach>
+		
+		<!-- 아직 사용 안한 쿠폰 모달 끝 -->
+		
+		
+		
+		
 		</div>
 		</section>
 		</div>
