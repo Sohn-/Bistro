@@ -319,7 +319,17 @@ fieldset .help {
 #accordion-resizer {
 	padding: 0px;
 	width: 100%;
+	
 }
+
+#accordion {
+	padding: 0px;
+	width: 100%;
+	background-color: gray;
+	border-color: gray;
+	
+}
+
 
 #header {
 	background-image: url(images/main.jpg);
@@ -752,7 +762,7 @@ jssor_slider1_starter('slider1_container');
 					<c:forEach items="${stores}" var="store">
 
 						<!-- 아코디언 카테고리 헤더 -->
-						<div align="center" style="height: 1cm;">
+						<div align="center" style="height: 1cm; ">
 							<table width="80%" height="1cm" align="center">
 								<tr align="center" height="1cm">
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${store.storeName}" /></td>
