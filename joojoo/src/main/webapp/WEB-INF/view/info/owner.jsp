@@ -312,7 +312,7 @@ fieldset div {
 				<%-- <fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="endDate"/> --%>
 					<fieldset>	
-						<div style="font-style: normal; color: red;">
+						<div style="font-style: normal; color: black;">
 							<form:input id="storeCode" path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
 							상호명(*내 가게의 상호명과 중복불가)
 							<form:input id="storeName" path="storeName" type="text"  onChange="javaScript:change();" maxLength="50" title="상호명을 입력하세요." align="middle" required="true"></form:input><br>				
@@ -427,11 +427,11 @@ fieldset div {
 		<!-- 탭2 정보수정 및 탈퇴 -->
 		<div id="tab2">
 			<div id="footer" class="container" align="left">
-				정보 수정<br>
+				<h3 align="center" >정보 수정</h3>
 				<c:url value="/info/update_owner" var="action"></c:url>
 				<form:form modelAttribute="updateOwner" method="post" action="${action}" id="updateOwner" name="updateOwner">
 					<fieldset>	
-						<div style="font-style: normal; color: red;">
+						<div style="font-style: normal; color: black;">
 							*아이디
 							<form:input path="ownerId" name="userId" 
 								title="Please provide your ID."	align="middle" readonly="true"></form:input><br>

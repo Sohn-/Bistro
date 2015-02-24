@@ -451,7 +451,7 @@ $(document).ready(function(){
 		</ul>
 		<div id="tab1">
 			<div id="footer" class="container" align="left">
-				정보 수정<br>
+				<h3 align="center">정보 수정</h3>
 				<c:url value="/info/user/update" var="action"></c:url>
 				<form:form modelAttribute="updateUser" method="post" action="${action}" id="updateUser" name="updateUser">
 					<fieldset>	

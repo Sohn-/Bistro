@@ -54,7 +54,14 @@ public class MyPageUserController {
 		public String showInfoPage(Model model,HttpSession session){
 	    	
 	    	
-	    	model.addAttribute("updateUser", new Users());
+	    	Object loginUserObj = session.getAttribute("loginUser");
+	    	
+	    	
+	    	All loginUser = (All)loginUserObj;
+	    	String userId = loginUser.getUserId();
+	    	///업주정보수정을 위한 코드
+    		All updateUser = userService.getUserInfo(userId);
+    		model.addAttribute("updateUser", updateUser);
 	    	
 	    	//LOG.trace("수업 로그인 유저 세션정보"+session.getAttribute("loginUser").toString());
 	    	
