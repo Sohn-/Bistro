@@ -70,6 +70,12 @@ function modifyCheck()
   form.submit();
   }
  </script>
+ 
+ <style type="text/css">
+ #header {
+	background-image: url(../images/main.jpg);
+}
+ </style>
 
 
 </head>
@@ -108,7 +114,10 @@ function modifyCheck()
     </div>
     </div>
     
-    
+      <img src="../images/bar.png" style="width: 100%">
+
+	<div class="container" style="background-color: white;">
+		<section id="features"> 
     <!--가자! 본론으로-->
     <c:url value="/review/modified" var="action"></c:url> 
 	<form:form method="post" action="${action}" name="writeform"> 
@@ -196,6 +205,8 @@ function modifyCheck()
  </table>
  
    </form:form>
+   </section>
+   </div>
     
 
 </body> 
