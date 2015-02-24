@@ -1,5 +1,7 @@
 package joojoo.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -48,8 +51,8 @@ public class RviewCommentController {
 	}
 	
 	@RequestMapping(value="/review/written", method=RequestMethod.POST)
-	public String writeComplete(Model model,String title, String content, int starPoint
-			, int storeCode, String userId){
+	public String writeComplete( 
+			Model model,String title, String content, int starPoint, int storeCode, String userId) {
 		
 		LOG.error(title);
 		RviewComment addRviewComment = new RviewComment();
@@ -62,6 +65,20 @@ public class RviewCommentController {
 		addRviewComment.setUserId(userId);
 		
 		rviewCommentService.registRview(addRviewComment);
+		
+		
+		/*File newfile = new File("c:\\db\\uploaded\\"+file.getOriginalFilename());
+		
+		try {
+			file.transferTo(newfile);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("file",file.getOriginalFilename());
+		*/
+		
 		return "redirect:/review";
 	}
 	
@@ -71,6 +88,33 @@ public class RviewCommentController {
 	    All rviewComment = rviewCommentService.SearchByCommentCode(commentCode);
 	    model.addAttribute("rviewComment",rviewComment);
 	      return "review/review";
+	 }
+	
+	@RequestMapping(value = "/review/modify", method=RequestMethod.GET)
+	public String goModifyPage(@RequestParam int commentCode,Model model){
+		LOG.trace(""+commentCode);
+	    All modifyComment = rviewCommentService.SearchByCommentCode(commentCode);
+	    model.addAttribute("modifyComment",modifyComment);
+	      return "review/modify";
+	 }
+	
+	@RequestMapping(value = "/review/modified", method=RequestMethod.POST)
+	public String goModifiedPage(String title, String content, int starPoint
+			,String userId, int commentCode,Model model){
+		
+		
+		RviewComment modifiedRviewComment = new RviewComment();
+		modifiedRviewComment.setContent(content);
+		Date d = new Date();
+		modifiedRviewComment.setRegDate(d);
+		modifiedRviewComment.setStarPoint(starPoint);
+		
+		modifiedRviewComment.setTitle(title);
+		modifiedRviewComment.setUserId(userId);
+		modifiedRviewComment.setCommentCode(commentCode);
+		
+		rviewCommentService.modifyRview(modifiedRviewComment);
+		return "redirect:/review";
 	 }
 	
 	

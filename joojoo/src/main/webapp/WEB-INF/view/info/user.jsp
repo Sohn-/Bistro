@@ -66,7 +66,7 @@ $(document).ready(function(){
 			alert("비밀번호 확인을 입력해주세요.");
 			$("#password2").focus();		
 		}
-	 document.updateForm.action="../info/member/update";
+	 document.updateForm.action="../info/user/update";
 	 document.updateForm.submit();
 	 }
 	if(sub==2){
@@ -729,7 +729,7 @@ fieldset .help {
 			<div id="footer" class="container" align="left">
 
 				회원정보 수정 및 탈퇴 <br>
-				<%-- <form:form  modelAttribute="updateUser" method="post" action="${action} " name="updateForm" id="updateForm" > 
+				<form:form  modelAttribute="updateUser" method="post" action="${action} " name="updateForm" id="updateForm" > 
 					<fieldset>
 
 						<div style="font-style: normal; color: red;">
@@ -758,7 +758,7 @@ fieldset .help {
 						<input type="button" onclick="mysubmit(2)" value="탈퇴하기"/>
 
 					</fieldset>
-				</form:form> --%>
+				</form:form>
 			</div>
 		</div>
 		
