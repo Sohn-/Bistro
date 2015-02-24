@@ -1,6 +1,8 @@
 package joojoo.service;
 
+import joojoo.dao.EventCommentDao;
 import joojoo.dao.OwnersDao;
+import joojoo.dao.StoreDao;
 import joojoo.entity.All;
 import joojoo.entity.Owners;
 
@@ -18,6 +20,11 @@ public class OwnerServiceImpl implements OwnerService {
 
 	@Autowired
 	OwnersDao dao;
+	@Autowired
+	EventCommentDao eventDao;
+	@Autowired
+	StoreDao storeDao;
+	
 	@Override
 	public int addOwner(Owners owner) {
 		int result=dao.insertOwner(owner);
@@ -32,6 +39,8 @@ public class OwnerServiceImpl implements OwnerService {
 
 	@Override
 	public int outOwner(String ownerId) {
+		eventDao.deleteEventCommentByOwnerId(ownerId);
+		storeDao.deleteStoreByOwnerId(ownerId);
 		int result=dao.deleteOwner(ownerId);
 		return result;
 	}

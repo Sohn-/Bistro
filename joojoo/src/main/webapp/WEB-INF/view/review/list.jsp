@@ -14,9 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>게시판 목록</title>
    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+
 
 
 <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -29,9 +27,9 @@
 <meta name="keywords" content="" />
 
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style-desktop.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style-desktop.css">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
@@ -252,7 +250,7 @@ fieldset .help {
 						 <td style="border: 1px gray solid;"><h4>글번호</h4></td>
              <td style="border: 1px gray solid;"><h4>작성자</h4></td>
              <td style="border: 1px gray solid;"><h4>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    글제목     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</h4></td>
-             <td style="border: 1px gray solid;"><h4>작성시간</h4><td>
+             <td style="border: 1px gray solid;"><h4>작성시간</h4></td>
              <td style="border: 1px gray solid;"><h4>가게이름</h4></td>
              <td style="border: 1px gray solid;"><h4>평균별점</h4></td>
 
@@ -270,9 +268,12 @@ fieldset .help {
 							<table width="80%" height="1cm" align="center">
 								<tr align="center" height="1cm">
 									<td style="padding-right: 2cm; width: 15cm"><c:out value="${rview.commentCode }"/></td>
+									<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
+									<td style="padding-right: 2cm; width: 15cm"> <a href="${url }">${rview.title }</a></td>
+									
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.userId}" /></td>
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.title }" /></td>
-									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.regDate}" /></td>
+									<%-- <td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.regDate}" /></td> --%>
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.storeName}" /></td>
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${rview.starPoint}" /></td>
 								</tr>
@@ -283,6 +284,10 @@ fieldset .help {
 						<div>
 							<p align="left">상점 이름:	<c:out value="${rview.storeName}" />
 							</p>
+							
+							<c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
+									<td style="padding-right: 2cm; width: 15cm"> <a href="${url }"> <input type="submit" value="후기보기" align="left" /></a></td>
+						
 						</div>
 						
 					</c:forEach>
@@ -385,7 +390,28 @@ fieldset .help {
 				</div>
 				
 
-       
+       	<!-- Footer -->
+	<div>
+		<div id="footer" class="container">
+			<div align="center">
+				<br> <br> <a
+					href="<%=request.getContextPath()%>/footer/servicePolicy">이용약관</a>
+				&nbsp; &nbsp; <a
+					href="<%=request.getContextPath()%>/footer/privacyPolicy">개인정보보호방침</a>
+				&nbsp; &nbsp; <a
+					href="<%=request.getContextPath()%>/footer/youthPolicy">청소년보호정책</a>
+				&nbsp; &nbsp; <a
+					href="<%=request.getContextPath()%>/footer/helpCenter">고객센터</a> <br>
+				<br>
+				<div style="font-size: 12px;">
+					사업자등록번호:130-50-61004 (주)주주총회 대표이사: 정주주 주소: 이클립시 디비구 자바동 123-45 <br>
+					주주총회앱의 모든 콘텐츠는 저작권법의 보호를 받으므로, 무단 전재, 복사, 배포 등을 금합니다. <br>
+					Copyright (c) JooJooClub All Rights Reserved.
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
        
        
        

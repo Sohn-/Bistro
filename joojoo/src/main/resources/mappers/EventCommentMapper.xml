@@ -49,6 +49,11 @@
 		WHERE comment_code = #{commentCode}
 	</delete>
 	
+	<delete id="deleteEventCommentByOwnerId" parameterType="String">
+		DELETE FROM event_comment
+		WHERE owner_id = #{ownerId}
+	</delete>
+	
 	<!--  int regionCode, int typeCode, int personsCode, int serviceTypeCode -->
 	 <select id= "getEventCommentsByCategory" parameterType="EventComment"
 						resultType="All">
@@ -178,6 +183,14 @@
 		join owners using(owner_id)
 		 		
 		where comment_code = #{commentCode}			
+	</select>
+	
+	<select id= "getEventCommentsValid" resultType="All">
+		select * 
+		from event_comment e
+		join stores s using(store_code)
+		join owners using(owner_id)		
+		where end_date <![CDATA[ < ]]> sysdate			
 	</select>
 
 </mapper>

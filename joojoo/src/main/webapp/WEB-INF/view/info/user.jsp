@@ -720,7 +720,7 @@ fieldset .help {
  <div id="features-wrapper">
       <section id="features" class="container"> 
 
-	<div id="tabs">
+	<div id="tabs" style="font-family:'Jeju Gothic', serif; ">
 	
 		
 		<ul>
@@ -739,20 +739,20 @@ fieldset .help {
 					<fieldset>
 
 						<div style="font-style: normal; color: red;">
-							<form:input disabled="true" path="userId" id="userId" type="text" required="true" value="${loginUser.userId }"/>
+							<form:input disabled="true" path="userId" id="userId" type="text" required="true" value="${loginUser.userId }" style="width: 40%;"/>
 							<form:input type="hidden" value="${loginUser.userId}" path="userId" required="true"/><br>
 							
-							<form:input path="userPassword" id="pass" name="pass2" type="password" required="true" value="${loginUser.userPassword }"/>
+							<form:input path="userPassword" id="pass" name="pass2" type="password" required="true" value="${loginUser.userPassword }" style="width: 40%;"/>
 								
-							<input type="password" id="pass2" name="pass2" required/><br>
+							<input type="password" id="pass2" name="pass2"  style="width: 40%;" required/><br>
 							
-							<form:input disabled="true" path="userName" id="userName" type="text" required="true" value="${loginUser.userName }"/>
+							<form:input disabled="true" path="userName" id="userName" type="text" required="true" value="${loginUser.userName }" style="width: 40%;"/>
 							<form:input type="hidden" value="${loginUser.userName}" path="userName" required="true"/><br>	
 								
 								
 							*<br>
-							<form:input path="userMail" id="userMail" type="email" required="true" value="${loginUser.userMail }"/>
-							<form:input path="userPhone" id="userPhone" type="text" required="true" value="${loginUser.userPhone }"/>
+							<form:input path="userMail" id="userMail" type="email" required="true" value="${loginUser.userMail }" style="width: 40%;"/>
+							<form:input path="userPhone" id="userPhone" type="text" required="true" value="${loginUser.userPhone }" style="width: 40%;"/>
 							*는 수정할 수 없는 정보입니다.
 							
 							 <form:input type="hidden" value="${loginUser.chance}" path="chance" required="true"/><br>

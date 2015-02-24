@@ -57,6 +57,15 @@ new(function(){});var d={v:function(a){return a},u:function(a){return-b.cos(a*b.
 	$(document).ready(function() {
 		$('div#accordion').accordion({
 			event : "click hoverintent",collapsible : true,});
+		
+		var deleteOwner = <%=request.getParameter("deleteOwner")%>;
+		if(deleteOwner == true){
+    		alert("회원 탈퇴 완료");
+    	}
+    	else if(deleteOwner == false){
+    		alert("회원 탈퇴에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
+    	}
+		
 	});
 
 	$(function() {
@@ -319,7 +328,17 @@ fieldset .help {
 #accordion-resizer {
 	padding: 0px;
 	width: 100%;
+	
 }
+
+#accordion {
+	padding: 0px;
+	width: 100%;
+	background-color: gray;
+	border-color: gray;
+	
+}
+
 
 #header {
 	background-image: url(images/main.jpg);
@@ -752,7 +771,7 @@ jssor_slider1_starter('slider1_container');
 					<c:forEach items="${stores}" var="store">
 
 						<!-- 아코디언 카테고리 헤더 -->
-						<div align="center" style="height: 1cm;">
+						<div align="center" style="height: 1cm; ">
 							<table width="80%" height="1cm" align="center">
 								<tr align="center" height="1cm">
 									<td style="padding-right: 2cm; width: 15cm"><c:out	value="${store.storeName}" /></td>
