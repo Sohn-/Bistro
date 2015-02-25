@@ -79,7 +79,6 @@ public class SearchController {
 		//model.addAttribute("category", category);
 		logger.error("처음 받은 카테고리는..."+category);
 		// model.addAttribute("category", category);
-		logger.error("검색전 카테고리는..." + category);
 		List<All> search_events = eventService.SeachByKeyword(category);
 		model.addAttribute("search_events", search_events);
 
