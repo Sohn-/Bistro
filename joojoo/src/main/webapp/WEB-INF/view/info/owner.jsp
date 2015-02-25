@@ -38,12 +38,13 @@
 table, th, td {
 	/* border: 1px solid black; */
 	border-collapse: collapse;
-	font-size: 20px;	
+	font-size: 14px;	
 }
 
 th, td {
 	padding: 5px;
 	text-align: left;
+	 background-color: #F1F1C1; 
 }
 
 table#tab2 {
@@ -86,6 +87,16 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 .ex1 tbody tr:hover th {background:#F2F684; color:#1BA6B2}
 .ex1 tfoot tr {border-top:6px solid #E9F7F6; color:#1BA6B2}
 .ex1 tfoot th {text-align:center; padding-left:10px}
+
+	input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+	font-size: 14px;
+	
+	}
 </style>
 <script>
 	$(function() {
@@ -566,56 +577,65 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						<table border="">						
 						
 						<tr>
-						<td style="text-align: left;" align="left">아이디</td>
-						<td><form:input path="ownerId" name="userId"  title="Please provide your ID."	align="middle" readonly="true"></form:input></td>
-						<td style="text-decoration:  red;">*</td>
+						<td style="text-align: left; background-color: white;" align="left" >아이디</td>
+						<td style="background-color: white"><form:input path="ownerId" name="userId"  title="Please provide your ID."	align="middle" readonly="true"></form:input></td>
+						<td style="text-decoration:  red; background-color: white">*</td>
 						</tr>
 						<tr>
-						<td style="text-align: left;" align="left">비밀번호</td>
-						<td><form:input path="ownerPassword" id="pass" type="password"	title="Please provide your password" required="true"></form:input></td>
-						<td></td>
+						<td style="text-align: left; background-color: white;" align="left">비밀번호</td>
+						<td style="background-color: white"><form:input path="ownerPassword" id="pass" type="password"	title="Please provide your password" required="true"></form:input></td>
+						<td style="background-color: white"></td>
 						</tr>
 						<tr>
-						<td style="text-align: left;" align="left">비밀번호확인</td>
-						<td><input type="password" id="pass2" name="pass2"  value="${updateOwner.ownerPassword }" required="true" />						</td>
-						<td></td>
+						<td style="text-align: left; background-color: white;" align="left">비밀번호확인</td>
+						<td style="background-color: white"><input type="password" id="pass2" name="pass2"  value="${updateOwner.ownerPassword }" required="true" />						</td>
+						<td style="background-color: white"></td>
 						</tr>
 						<tr>
-						<td style="text-align: left;" align="left">이름</td>
-						<td><form:input path="ownerName" name="ownerName"	title="Please provide your userName" readonly="true"></form:input>
-						<td>*</td>
+						<td style="text-align: left;background-color: white" align="left">이름</td>
+						<td style="background-color: white"><form:input path="ownerName" name="ownerName"	title="Please provide your userName" readonly="true"></form:input>
+						<td style="background-color: white">*</td>
 						</tr>
 						<tr>
-						<td style="text-align: left;" align="left">이메일</td>
-						<td><form:input path="ownerMail" id="joinMail" type="email"	title="Please provide your userEmail" required="true"></form:input></td>
-						<td>&nbsp; <input type="button" value="V" id="mailDupCheck" class="btn btn-primary btn-sm "><input type="hidden" name="checked2" id="checked2"/>
+						<td style="text-align: left; background-color: white;" align="left">이메일</td>
+						<td style="background-color: white"><form:input path="ownerMail" id="joinMail" type="email"	title="Please provide your userEmail" required="true"></form:input></td>
+						<td style="background-color: white">&nbsp; <input type="button" value="V" id="mailDupCheck" class="btn btn-primary btn-sm "><input type="hidden" name="checked2" id="checked2"/>
 						</tr>
 						<tr>
-						<td style="text-align: left;" align="left">전화번호</td>
-						<td><form:input path="ownerPhone" name="ownerPhone"	title="Please provide your userPhone" required="true"></form:input></td>
-						<td></td>
+						<td style="text-align: left; background-color: white;" align="left">전화번호</td>
+						<td style="background-color: white"><form:input path="ownerPhone" name="ownerPhone"	title="Please provide your userPhone" required="true"></form:input></td>
+						<td style="background-color: white"></td>
 						</tr>
 						<tr>
-						<td style="text-align: left;" align="left">사업자등록번호</td>
-						<td><form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" readonly="true" ></form:input></td>
-						<td>*</td>
+						<td style="text-align: left; background-color: white" align="left">사업자등록번호</td>
+						<td style="background-color: white"><form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" readonly="true" ></form:input></td>
+						<td style="background-color: white">*</td>
 						</tr>						
 						</table>
 						
 						</div>								
 					</fieldset>
+					</form:form>
 					<div style="font-style: normal; color: red; width: 20cm" >
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					
-					  *는 수정할 수 없는 정보입니다.<br>
-					<input id="ownerSubmit" type="submit" value="수정하기" class="btn btn-primary btn-lg btn-block"></input>
+					<br>
+					
+					<div align="center">
+					<font  style="font-size: 14px;">  *는 수정할 수 없는 정보입니다.</font>
+					</div> 
+					<br>
+					<input id="ownerSubmit" type="submit" value="수정하기" />
+					</div>	
+											
 					</div>
+						
 					<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button>  -->
-					</form:form>	
+					
 					<%-- 	<div style="font-style: normal; color: red; width: 20cm" >
 							*아이디
 							<form:input path="ownerId" name="userId"  title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
@@ -645,7 +665,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button> -->
 				
-			</div>
+			
 		</div>
 		
 		<!-- ----------------------회원 탈퇴 모달-------------------------- -->
@@ -677,11 +697,11 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 
 		<!-- 탭3 이벤트 수정 및 등록-->
 		<div id="tab3">
-			<table style="width: 100%">
+			<table style="width: 90%">
 				<tr>
-					<td>글제목</td>
-					<td>요약</td>
-					<td>글관리</td>
+					<td style="background-color: #F2CB61">글제목</td>
+					<td style="background-color: #F2CB61">요약</td>
+					<td style="background-color: #F2CB61">글관리</td>
 				</tr>
 			<c:forEach items="${allEvent}" var="event" varStatus="status">
 				<tr>
@@ -794,13 +814,13 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 		<div id="tab4">
 			<div id="footer" class="container" align="left">
 				미사용 쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 					<tr>
-						<th>쿠폰번호</th>
-						<th>상호명</th>
-						<th>요약</th>
-						<th>쿠폰상세보기</th>
-						<th>쿠폰사용</th>
+						<th style="background-color: #F2CB61">쿠폰번호</th>
+						<th style="background-color: #F2CB61">상호명</th>
+						<th style="background-color: #F2CB61">요약</th>
+						<th style="background-color: #F2CB61">쿠폰상세보기</th>
+						<th style="background-color: #F2CB61">쿠폰사용</th>
 					</tr>
 				<c:forEach items="${allCoupon}" var="coupon">
 					<c:if test="${coupon.couponStatus eq '미사용'}">
@@ -817,16 +837,16 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					</c:if>
 				</c:forEach>
 				<c:if test="${isExist1 ne true }">
-					<td>미사용 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">미사용 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				</table>
 				사용쿠폰
 				<c:url var="rview" value="/review/write"></c:url>
-				<table style="width: 100%">
+				<table style="width: 90%">
 					<tr>
-						<th>상호명</th>
-						<th>요약</th>
-						<th>후기 확인</th>
+						<th style="background-color: #F2CB61">상호명</th>
+						<th style="background-color: #F2CB61">요약</th>
+						<th style="background-color: #F2CB61">후기 확인</th>
 					</tr>
 					<c:forEach items="${allCoupon}" var="coupon">
 					<c:if test="${coupon.couponStatus eq '사용'}">
@@ -840,16 +860,16 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					</c:if>
 					</c:forEach>
 					<c:if test="${isExist2 ne true }">
-					<td>사용 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">사용 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				</table>
 				환불 쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 					<tr>
-						<th>상호명</th>
-						<th>요약</th>
-						<th>구매자</th>
-						<th>상세정보</th>
+						<th style="background-color: #F2CB61">상호명</th>
+						<th style="background-color: #F2CB61">요약</th>
+						<th style="background-color: #F2CB61">구매자</th>
+						<th style="background-color: #F2CB61">상세정보</th>
 					</tr>
 					<c:forEach items="${allCoupon}" var="coupon">
 					<c:if test="${coupon.couponStatus eq '환불'}">
@@ -864,16 +884,16 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					</c:if>
 					</c:forEach>
 					<c:if test="${isExist3 ne true }">
-					<td>환불 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">환불 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				</table>
 				기간만료쿠폰
-				<table style="width: 100%">
+				<table style="width: 90%">
 					<tr>
-						<th>상호명</th>
-						<th>요약</th>
-						<th>구매자</th>
-						<th>상세정보</th>
+						<th style="background-color: #F2CB61">상호명</th>
+						<th style="background-color: #F2CB61">요약</th>
+						<th style="background-color: #F2CB61">구매자</th>
+						<th style="background-color: #F2CB61">상세정보</th>
 					</tr>
 				<c:forEach items="${allCoupon}" var="coupon">
 					<c:if test="${coupon.couponStatus eq '기간만료'}">
@@ -882,13 +902,13 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						<td>${coupon.storeName }</td>
 						<td>${coupon.content }</td>
 						<td>${coupon.userId }</td>
-						<td><button data-toggle="modal" data-target="#couponModal${coupon.couponCode }">
-					쿠폰상세보기</button></td>
+						<td><input type="button" data-toggle="modal" data-target="#couponModal${coupon.couponCode }"
+					value="쿠폰상세보기"/></td>
 					</tr>
 					</c:if>
 				</c:forEach>
 				<c:if test="${isExist4 ne true }">
-					<td>기간만료 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">기간만료 쿠폰이 존재하지 않습니다.</td>
 				</c:if>
 				</table>
 			</div>

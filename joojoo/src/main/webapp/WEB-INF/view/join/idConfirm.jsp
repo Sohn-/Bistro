@@ -55,7 +55,9 @@
 </script>
 </head>
 <body>
+<div align="left">
 	<h2>아이디 중복 확인</h2>
+	
 	<c:if test="${!empty (result) }">
 		${joinId}는 이미 사용중인 아이디입니다.<br>
 	</c:if>
@@ -64,11 +66,15 @@
 		<input type="button" value="사용" id="use"><br>
 	</c:if>
 	<c:url value="/join/idCheck" var="idchk"></c:url>
+	<br>
 	다른 ID로 시도하려면 새로 중복 체크를 하세요.
 	<form action="${idchk}">
 		<label for="joinId">아이디</label>
+
 		<input type="text" id="joinId" name="joinId" style="width: 40%">
+
 		<input type="submit" value="전송"/>
 	</form>
+	</div>
 </body>
 </html>

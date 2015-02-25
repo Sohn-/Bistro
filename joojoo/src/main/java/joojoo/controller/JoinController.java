@@ -3,6 +3,7 @@ package joojoo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
@@ -74,7 +75,7 @@ public class JoinController {
 		   
 		   
 		  model.addAttribute("joinUser", new Users());
-		  model.addAttribute("joinOwner", new All());
+		  model.addAttribute("joinOwner", new Owners());
 		  return "join/join";
 	  }
 	  else return "redirect:/";//일단 메인으로 가도록..
@@ -83,7 +84,7 @@ public class JoinController {
    
    @RequestMapping(value="/join/result/user", method=RequestMethod.POST)
    public String showUserSuccessPage(@ModelAttribute Users joinUser,Model model,
-		   							SessionStatus sessionStatus,HttpSession session){
+		   							SessionStatus sessionStatus,HttpSession session) {
 	   if(userService.addUser(joinUser)>0){
 		   LOG.trace("수업 : 회원 가입 성공");
 	   }
@@ -91,7 +92,17 @@ public class JoinController {
 		   LOG.trace("수업 : 회원 가입 실패..");
 	   }
 	   
-	   session.setAttribute("loginUser", joinUser);
+	   
+	  All joinUser2 = new All();
+	  joinUser2.setUserId(joinUser.getUserId());
+	  joinUser2.setUserPassword(joinUser.getUserPassword());
+	  joinUser2.setUserMail(joinUser.getUserMail());
+	  joinUser2.setUserPhone(joinUser.getUserPhone());
+	  joinUser2.setUserName(joinUser.getUserName());
+	  joinUser2.setChance(joinUser.getChance());
+	   
+	   
+	   session.setAttribute("loginUser", joinUser2);
 	   //sessionStatus.setComplete();
       return "redirect:/join/user/success";
    
@@ -166,14 +177,22 @@ public class JoinController {
 		   							,HttpSession session,
 		   								Model model,SessionStatus sessionStatus){
 	   
-	   Owners owner = new Owners();
-	   owner =(Owners)session.getAttribute("joinOwner");
+	   All joinOwner2 = new All();
+	   Owners joinOwner =(Owners)session.getAttribute("joinOwner");
 	   
-	   ownerService.addOwner(owner);
-	   LOG.trace("수업"+owner);
+	 
+	   joinOwner2.setOwnerId(joinOwner.getOwnerId());
+	   joinOwner2.setOwnerName(joinOwner.getOwnerName());
+	   joinOwner2.setOwnerMail(joinOwner.getOwnerMail());
+	   joinOwner2.setOwnerPassword(joinOwner.getOwnerPassword());
+	   joinOwner2.setOwnerPhone(joinOwner.getOwnerPhone());
+	   joinOwner2.setLicenseNumber(joinOwner.getLicenseNumber());
+	   
+	   ownerService.addOwner(joinOwner);
+	   LOG.trace("수업"+joinOwner);
 	   storeService.addStore(joinStore);
 	  
-	   session.setAttribute("loginOwner", owner);
+	   session.setAttribute("loginOwner", joinOwner2);
 	  
 	  
       return "redirect:/join/owner/success";
