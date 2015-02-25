@@ -38,12 +38,13 @@
 table, th, td {
 	/* border: 1px solid black; */
 	border-collapse: collapse;
-	font-size: 20px;	
+	font-size: 14px;	
 }
 
 th, td {
 	padding: 5px;
 	text-align: left;
+	 background-color: #F1F1C1; 
 }
 
 table#tab2 {
@@ -86,6 +87,15 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 .ex1 tbody tr:hover th {background:#F2F684; color:#1BA6B2}
 .ex1 tfoot tr {border-top:6px solid #E9F7F6; color:#1BA6B2}
 .ex1 tfoot th {text-align:center; padding-left:10px}
+
+	input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+	
+	}
 </style>
 <script>
 	$(function() {
@@ -566,9 +576,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						<table border="">						
 						
 						<tr>
-						<td style="text-align: left;" align="left">아이디</td>
+						<td style="text-align: left; background-color: white;" align="left" >아이디</td>
 						<td><form:input path="ownerId" name="userId"  title="Please provide your ID."	align="middle" readonly="true"></form:input></td>
-						<td style="text-decoration:  red;">*</td>
+						<td style="text-decoration:  red; background-color: white">*</td>
 						</tr>
 						<tr>
 						<td style="text-align: left;" align="left">비밀번호</td>
@@ -610,8 +620,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					
-					  *는 수정할 수 없는 정보입니다.<br>
-					<input id="ownerSubmit" type="submit" value="수정하기" class="btn btn-primary btn-lg btn-block"></input>
+					<br>
+					<div align="center">  *는 수정할 수 없는 정보입니다.<br><input id="ownerSubmit" type="submit" value="수정하기" ></input>
+					</div>					
 					</div>
 					<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button>  -->
