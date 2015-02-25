@@ -431,11 +431,11 @@ fieldset .help {
 	</c:if>
 	<div>
 		<button  style="border-color: none;" id="event${status.current.commentCode }"data-toggle="modal"	data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
-		<img u="image" src="images/p${status.current.commentCode}.jpg"  style="width: 650px; height: 400px;">
+		<img u="image" src="images/event_${status.current.commentCode}.jpg"  style="width: 650px; height: 400px;">
 		</button>
 		<br><br>
 		<h3><c:out value="${event.storeName}" />[<c:out value="${event.title}" />]</h3>	
-		<img u="thumb" src="images/p${status.count}.jpg"  style="width: 60px; height: 40px;">
+		<img u="thumb" src="images/event_${status.current.commentCode}.jpg"  style="width: 60px; height: 40px;">
 		<div style="font-color: red; " align="center" ><h3>
 		</h3>
 	</div>

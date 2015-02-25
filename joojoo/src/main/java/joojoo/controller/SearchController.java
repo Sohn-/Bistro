@@ -105,9 +105,9 @@ GetSessionId gs = GetSessionId.getInstance();
 	public String searchCategoryResult(@ModelAttribute Category category_category, Model model){
 		
 		logger.error("처음 받은 카테고리는..."+category_category);
-		/*GetSessionId gs = GetSessionId.getInstance();
-		gs.categorySetNone(category_category);*/
-		if (category_category.getPersonsLevel() == null) {
+		GetSessionId gs = GetSessionId.getInstance();
+		gs.categorySetNone(category_category);
+		/*if (category_category.getPersonsLevel() == null) {
 			category_category.setPersonsLevel("none");
 		}
 		if (category_category.getRegionName() == null) {
@@ -118,7 +118,7 @@ GetSessionId gs = GetSessionId.getInstance();
 		}
 		if (category_category.getTypeName() == null) {
 			category_category.setTypeName("none");
-		}
+		}*/
 		
 		List<All> search_events = eventService.SeachByCategory(category_category);		
 		model.addAttribute("search_events", search_events);
