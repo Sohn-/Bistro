@@ -178,6 +178,10 @@ fieldset .help {
      .scroll-bar-wrap .ui-handle-helper-parent { position: relative; width: 100%; height: 100%; margin: 0 auto; }
      .scroll-bar-wrap .ui-slider-handle { top:.2em; height: 1.5em; }
      .scroll-bar-wrap .ui-slider-handle .ui-icon { margin: -8px auto 0; position: relative; top: 50%; }  
+     
+     td{
+     color: black;
+     }
 </style>
 
 </head>
@@ -222,7 +226,7 @@ fieldset .help {
        <form  id="reviewlist" name="searchForm" action="" method="get" style="font-family:'Jeju Gothic', serif; ">
        
        <p>
-           <select name="searchType" style="width: 80%">
+           <select name="searchType" style="width: 80%;font-family:'Jeju Gothic', serif; color: black;">
                <option value="ALL">전체검색</option>
                <option value="SUBJECT">제목</option>
                <option value="WRITER">작성자</option>
@@ -249,12 +253,12 @@ fieldset .help {
 					border="1" align="center"
 					style="border-collapse: collapse; border: 1px gray solid; background-color: #323232; font-family:'Jeju Gothic', serif;">
 					<tr align="center">
-						 <td align="center" style="border: 1px gray solid;background-color: #F2CB61; font-family:'Jeju Gothic', serif;"><h4>글번호</h4></td>
-             <td style="border: 1px gray solid; background-color: #F2CB61; font-family:'Jeju Gothic', serif;"><h4>작성자</h4></td>
-             <td style="border: 1px gray solid; background-color: #F2CB61"><h4>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    글제목     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</h4></td>
+						 <td align="center" style="border: 1px gray solid;background-color: #F2CB61; color: black;"><h4>글번호</h4></td>
+             <td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>작성자</h4></td>
+             <td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    글제목     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</h4></td>
              <!-- <td style="border: 1px gray solid;"><h4>작성시간</h4></td> -->
-             <td style="border: 1px gray solid; background-color: #F2CB61"><h4>가게이름</h4></td>
-             <td style="border: 1px gray solid; background-color: #F2CB61"><h4>평균별점</h4></td>
+             <td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>가게이름</h4></td>
+             <td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>평균별점</h4></td>
 
 					</tr>
 					<c:forEach items="${rviews }" var="rview">
@@ -263,7 +267,7 @@ fieldset .help {
 					 <td align="center" style="border: 1px black solid; background-color: white"><c:out value="${rview.commentCode }"/></td>
 					 <td align="center" style="border: 1px black solid; background-color: white"><c:out	value="${rview.userId}" /></td>
 					 <td align="center" style="border: 1px black solid; background-color: white"><c:url value="/review?commentCode=${rview.commentCode}" var="url"></c:url>
-                        <a href="${url }">${rview.title }</a></td>
+                        <a href="${url }" style=" color: black;">${rview.title }</a></td>
 					 <td align="center" style="border: 1px black solid; background-color: white"><c:out value="${rview.storeName}" /></td>
             		 <td align="center" style="border: 1px black solid; background-color: white"><c:out	value="${rview.starPoint}" /></td>
 					

@@ -20,6 +20,7 @@ import joojoo.service.EventCommentService;
 import joojoo.service.OwnerService;
 import joojoo.service.StoreService;
 import joojoo.service.UserService;
+import joojoo.util.GetSessionId;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,6 +51,8 @@ public class MyPageOwnerController {
 	    
 	    @Autowired
 	    private EventCommentService eventService;
+	    
+	    private GetSessionId sd = GetSessionId.getInstance();
 
 	    @RequestMapping(value="/info", method=RequestMethod.GET)
 		public String showInfoControl(Model model,HttpSession session, HttpServletRequest req){
@@ -167,8 +170,12 @@ public class MyPageOwnerController {
 		    	
 		    	String minTime = sdf2.format(date);
 		    	String maxTime = sdf2.format(cal.getTime());
+		    	
+		    	cal.add(Calendar.HOUR, 1);
+		    	String endDateMinTime = sdf2.format(cal.getTime());
 		    	model.addAttribute("minTime", minTime);
 		    	model.addAttribute("maxTime", maxTime);
+		    	model.addAttribute("endDateMinTime", endDateMinTime);
 		    	logger.error("maxTime= "+maxTime);
 	    		
 		    	path = "info/owner";
@@ -208,7 +215,7 @@ public class MyPageOwnerController {
 	    
 	    @RequestMapping(value="/info/delete_owner", method=RequestMethod.POST)
 		public String updateOwner(Model model, HttpSession session, SessionStatus status){
-	    	int result = ownerService.outOwner(this.getSessionId(session));
+	    	int result = ownerService.outOwner(sd.getSessionId(session));
 	    	if(result >0){
 	    		model.addAttribute("deleteOwner", true);
 	    		status.setComplete();
@@ -226,7 +233,7 @@ public class MyPageOwnerController {
 	    	String storeCodeStr = insertEvent.getStoreCodeStr();
 	    	//가게이름으로 해당 코드 찾아서 insertEvent에 셋하기
 	    	All ownerStore = new All();
-	    	ownerStore.setOwnerId(this.getSessionId(session));
+	    	ownerStore.setOwnerId(sd.getSessionId(session));
 	    	ownerStore.setStoreName(insertEvent.getStoreCodeStr());
 	    	int storeCode = Integer.parseInt(storeService.showOwnerStore(ownerStore)); //어떤 오너의 가게이름에 해당하는 코드를 가져옴
 	    	logger.error("storeCode가 이걸로 변환되었음 : "+storeCode);
@@ -352,7 +359,7 @@ public class MyPageOwnerController {
 	 	   //result = userService.mailDuplicateCheck(storeName);
 	 	   ownerStore.setStoreName(storeName);
 	 	   logger.error("storename....."+storeName);
-	 	   ownerStore.setOwnerId(this.getSessionId(session));
+	 	   ownerStore.setOwnerId(sd.getSessionId(session));
 	 	   result = storeService.showOwnerStore(ownerStore);
 	 	   
 	 	   int storeCode = Integer.parseInt(storeCodeStr);
@@ -390,7 +397,7 @@ public class MyPageOwnerController {
 	 	   //result = userService.mailDuplicateCheck(storeName);
 	 	   ownerStore.setStoreName(insertStoreName);
 	 	   logger.error("insertStoreName....."+insertStoreName);
-	 	   ownerStore.setOwnerId(this.getSessionId(session));
+	 	   ownerStore.setOwnerId(sd.getSessionId(session));
 	 	   result = storeService.showOwnerStore(ownerStore);
 	 	   
 	 	   model.addAttribute("result", result);
@@ -400,25 +407,6 @@ public class MyPageOwnerController {
 	 	   return "info/insertStoreNameConfirm";
 	 	   
 	    
-	    }
-	    
-	    
-	    public String getSessionId(HttpSession session){
-	    	Object loginOwnerObj = session.getAttribute("loginOwner");
-	    	Object loginUserObj = session.getAttribute("loginUser");
-	    	String result = null;
-	    	
-	    	if(loginOwnerObj != null){
-	    		All loginOwner = (All)loginOwnerObj;
-	    		String ownerId = loginOwner.getOwnerId();
-	    		result = ownerId;
-	    	}
-	    	else if(loginUserObj != null){
-	    		All loginUser = (All)loginUserObj;
-	    		String userId = loginUser.getUserId();
-	    		result = userId;
-	    	}
-	    	return result;
 	    }
 	    
 }

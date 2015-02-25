@@ -164,7 +164,7 @@ $(document).ready(function(){
 			
 			if(arr != ""){
 				
-				form.action="../info/user/wishList/buy"; 
+				form.action= "../info/user/wishList/buy"; 
 				form.submit();
 			}	
 			else{
@@ -219,16 +219,18 @@ $(document).ready(function(){
 
 <style type="text/css">
 table, th, td {
-	border: 1px solid black;
+	border: 0px solid black;
 	border-collapse: collapse;
 }
 
 th, td {
 	padding: 5px;
 	text-align: left;
+	 background-color: #F1F1C1; 
+	font-size: 14px;
 }
 
-table#t01 {
+table#t01,tab03 {
 	width: 100%;
 	background-color: #f1f1c1;
 }
@@ -241,6 +243,9 @@ label {
 fieldset .help {
 	margin-top: 2em;
 	display: inline-block;
+}
+.updateUserinfo td{
+background-color: white;
 }
 
 .ui-tooltip {
@@ -325,6 +330,20 @@ fieldset .help {
 .ui-tooltip {
 	width: 210px;
 }
+
+input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	}
+	input[type="submit"]{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	
+	}
 </style>
 <script>
 $(function() {
@@ -350,7 +369,7 @@ $(document).ready(function(){
 			}else{
 				<c:url value="/join/mailCheck" var="mailchk"></c:url>
 				var url = "${mailchk}?joinMail="+$("#joinMail").val();
-				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+				window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
 			}
 		});
 		
@@ -427,7 +446,7 @@ $(document).ready(function(){
 
 			<!-- Logo -->
 			<h1 id="logo">
-				<a href="<%=request.getContextPath()%>/main">JooJooclub</a>
+				<a href="<%=request.getContextPath()%>/">JooJooclub</a>
 			</h1>
 			<p>Welcom To JooJooClub</p>
 			<div align="right">
@@ -458,10 +477,11 @@ $(document).ready(function(){
 		</ul>
 		<div id="tab1">
 			<div id="footer" class="container" align="left">
-				<h3 align="center">정보 수정</h3>
+				<!-- <h3 align="left" style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 정보 수정</h3><hr width="80%" align="left"> -->
 				<c:url value="/info/user/update" var="action"></c:url>
 				<form:form modelAttribute="updateUser" method="post" action="${action}" id="updateUser" name="updateUser">
 					<fieldset>	
+<%-- 
 						<div style="font-style: normal; color: black;">
 							*아이디
 							<form:input path="userId" name="userId" 
@@ -482,10 +502,52 @@ $(document).ready(function(){
 							전화번호	
 							<form:input path="userPhone" name="userPhone"
 								title="Please provide your userPhone" required="true"></form:input><br>
-							*는 수정할 수 없는 정보입니다.
+							*는 수정할 수 없는 정보입니다. --%>
+
+						<div style="font-style: normal; color: black; width: 26cm">
+						<table id="updateUserinfo">
+						<tr>
+							<td style="text-align: left; background-color: white;" align="left">아이디</td>
+							<td style="background-color: white"><form:input path="userId" name="userId" 
+								title="Please provide your ID."	align="middle" readonly="true"   ></form:input></td>
+							<td style="text-decoration:  red; background-color: white;">*</td>
+							</tr>
+							<tr>	
+							<td style="text-align: left;background-color: white;" align="left">비밀번호</td> 
+							<td style="background-color: white"><form:input path="userPassword" id="pass" type="password"
+								title="Please provide your password" required="true" ></form:input></td>
+							
+							</tr>
+							<tr>
+							<td style="text-align: left; background-color: white;" align="left">비밀번호확인</td>
+							<td style="background-color: white"><input type="password" id="pass2" name="pass2"  value="${updateUser.userPassword }" required="true" style="width:40%"/></td>
+							<td style="background-color: white"></td>
+							</tr>
+							<tr>
+							<td style="text-align: left; background-color: white;" align="left">이름</td>
+							<td style="background-color: white"><form:input path="userName" name="userName"
+								title="Please provide your userName" readonly="true" ></form:input></td> 
+							<td style="background-color: white">*</td>
+							</tr>
+							<tr>
+								<!-- value="${updateOwner.ownerName}" -->
+							<td style="text-align: left; background-color: white;" align="left">이메일</td>
+							<td style="background-color: white"><form:input path="userMail" id="joinMail" type="email"
+								title="Please provide your userEmail" required="true" ></form:input></td>
+							<td style="background-color: white"><input type="button" value="V" id="mailDupCheck"/></td>
+							<input type="hidden" name="checked2" id="checked2"/></tr>
+							<tr>
+							<td style="text-align: left; background-color: white;" align="left">전화번호</td>
+							<td><form:input path="userPhone" type="text" name="userPhone"
+								title="Please provide your userPhone" required="true" ></form:input></td>
+								
+								</tr>
+								</table>
+							<br><div align="center"><font  style="font-size: 14px; color: red;" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*는 수정할 수 없는 정보입니다.</font></div>
+
 						</div>
 					</fieldset>
-					<input id="userSubmit" type="submit" value="수정하기"></input>
+					<div align="center"><input id="userSubmit" type="submit" value="수정하기" align="middle"></input></div>
 				</form:form>
 				<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button> -->
@@ -535,19 +597,19 @@ $(document).ready(function(){
 
 			<form:form method="get" modelAttribute="wishList" action="${action} " name="wishListForm" id="wishListForm" > 
 			<input type="hidden" name="checked_wishListCodes"/>
-			<table style="width: 100%">
+			<table style="width: 100%" align="center">
 				<tr>
-					<th>상호명</th>
-					<th>글제목</th>
-					<th>선택</th>
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">글제목</th>
+					<th style="background-color: #F2CB61" align="center">선택</th>
 									
 				</tr>
 				
 				<c:forEach items="${wishList }" var="wishList">
 	
 					<tr>
-					<td><c:out value="${wishList.storeName}"></c:out></td>
-					<td><c:out value="${wishList.title}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${wishList.storeName}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${wishList.title}"></c:out></td>
 					<%-- <td id="hd" hidden><c:out value="${wishList.wishListCode}"/></td> --%>
 					
 					<%-- <td>
@@ -567,10 +629,10 @@ $(document).ready(function(){
 			<br>
 
 			<table id="t01">
-				<tr>
-					<th>선택한쿠폰 개수</th>
-					<th>나의 별</th>
-					<th>구매 결과 잔여 별</th>
+				<tr align="center">
+					<th style="background-color: #F2CB61" align="center">선택한쿠폰 개수</th>
+					<th style="background-color: #F2CB61" align="center">나의 별</th>
+					<th style="background-color: #F2CB61" align="center">구매 결과 잔여 별</th>
 				</tr>
 				<tr>
 				<%-- <td><c:out value="${wishList.storeName}"></c:out></td> --%>
@@ -596,10 +658,10 @@ $(document).ready(function(){
 				미사용 쿠폰
 				<table style="width: 90%">
 				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰코드</th>
-					<th>쿠폰확인</th>					
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">요약</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰코드</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰확인</th>					
 				</tr>
 				
 				
@@ -607,10 +669,10 @@ $(document).ready(function(){
 				<c:if test="${nonUsedCoupon.couponStatus eq '미사용'}">
 					<c:set var="isExist1" value="true"></c:set>
 				<tr>
-					<td><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
-					<td><c:out value="${nonUsedCoupon.title}"></c:out></td>
-					<td><c:out value="${nonUsedCoupon.couponCode }"></c:out></td>
-					<td>
+					<td style="background-color: #F1F1C1"><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${nonUsedCoupon.title}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${nonUsedCoupon.couponCode }"></c:out></td>
+					<td style="background-color: #F1F1C1">
 					
 					<input type="button" name="button"value="쿠폰 상세 보기" id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
 					
@@ -620,7 +682,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 					<c:if test="${isExist1 ne true }">
-					<td>미사용 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="3">미사용 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 				
@@ -632,10 +694,10 @@ $(document).ready(function(){
 				사용쿠폰
 				<table style="width: 90%">
 				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰코드</th>
-					<th>후기 작성 및 확인</th>					
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">요약</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰코드</th>
+					<th style="background-color: #F2CB61" align="center">후기 작성 및 확인</th>					
 				</tr>
 					
 				
@@ -644,9 +706,9 @@ $(document).ready(function(){
 					<c:set var="isExist2" value="true"></c:set>
 					
 				<tr>
-					<td><c:out value="${usedCoupon.storeName}"></c:out></td>
-					<td><c:out value="${usedCoupon.title}"></c:out></td>
-					<td><c:out value="${usedCoupon.couponCode }"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${usedCoupon.storeName}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${usedCoupon.title}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${usedCoupon.couponCode }"></c:out></td>
 					
 		
 					<td><input type="submit" name="button"value="후기작성하기"></td>	
@@ -657,7 +719,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				<c:if test="${isExist2 ne true }">
-					<td>사용 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">사용 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 				
@@ -670,10 +732,10 @@ $(document).ready(function(){
 				환불 쿠폰
 				<table style="width: 90%">
 				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰코드</th>
-					<th>환불정보</th>					
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">요약</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰코드</th>
+					<th style="background-color: #F2CB61" align="center">환불정보</th>					
 				</tr>
 				
 				<c:forEach items="${refundCoupons }" var="refundCoupon">
@@ -689,17 +751,17 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				<c:if test="${isExist3 ne true }">
-					<td>환불 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">환불 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 			</table>
 				기간만료 사용불가 쿠폰
 				<table style="width: 90%">
 				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰코드</th>
-					<th>만료정보</th>					
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">요약</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰코드</th>
+					<th style="background-color: #F2CB61" align="center">만료정보</th>					
 				</tr>
 				<c:forEach items="${timeOverCoupons }" var="timeOverCoupon">
 				<c:if test="${timeOverCoupon.couponStatus eq '사용'}">
@@ -713,7 +775,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				  <c:if test="${isExist4 ne true }">
-					<td>기간만료 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">기간만료 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 			</table>

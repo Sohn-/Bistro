@@ -70,7 +70,9 @@
 	다른 ID로 시도하려면 새로 중복 체크를 하세요.
 	<form action="${idchk}">
 		<label for="joinId">아이디</label>
-		<input type="text" id="joinId" name="joinId" style="width:400px">
+
+		<input type="text" id="joinId" name="joinId" style="width: 40%">
+
 		<input type="submit" value="전송"/>
 	</form>
 	</div>
