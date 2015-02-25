@@ -64,19 +64,20 @@
 		 
 		<where>
 		<if test='regionName != "none" '>
-    		region_name = #{regionName}
+    		region_name = '${regionName}'
   		</if>
   		<if test='typeName != "none" '>
-  			and type_name = #{typeName}
+  			and type_name = '${typeName}'
   		</if>
   		<if test='personsLevel != "none" '>
-  			and persons_level = #{personsLevel}
+  			and persons_level = '${personsLevel}'
   		</if>
   		<if test='serviceTypeName != "none"'>
-  			and service_type_name = #{serviceTypeName}
+  			and service_type_name = '${serviceTypeName}'
   		</if>
+  		and end_date <![CDATA[ > ]]> sysdate
   		</where>
-  		and end_date <![CDATA[ < ]]> sysdate		
+  				
 	</select>
 	
 	<select id= "getEventCommentsByKeyword" parameterType="EventComment"
@@ -86,7 +87,7 @@
 		join stores s using(store_code)
 		join owners using(owner_id)	
 		
-		where end_date <![CDATA[ < ]]> sysdate
+		where end_date <![CDATA[ > ]]> sysdate
 		and (title like '%${keyword}%'
 		or content like '%${keyword}%'
 		or store_name like '%${keyword}%'
@@ -137,7 +138,7 @@
 		from event_comment e
 		join stores s using(store_code)
 		join owners using(owner_id)		
-		where end_date <![CDATA[ < ]]> sysdate			
+		where end_date <![CDATA[ > ]]> sysdate			
 	</select>
 
 </mapper>

@@ -170,8 +170,12 @@ public class MyPageOwnerController {
 		    	
 		    	String minTime = sdf2.format(date);
 		    	String maxTime = sdf2.format(cal.getTime());
+		    	
+		    	cal.add(Calendar.HOUR, 1);
+		    	String endDateMinTime = sdf2.format(cal.getTime());
 		    	model.addAttribute("minTime", minTime);
 		    	model.addAttribute("maxTime", maxTime);
+		    	model.addAttribute("endDateMinTime", endDateMinTime);
 		    	logger.error("maxTime= "+maxTime);
 	    		
 		    	path = "info/owner";
