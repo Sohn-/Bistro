@@ -336,7 +336,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<!-- 모달 바디 -->
 				<div class="modal-body" id="here${status.current.storeCode }">
 				<c:url value="/info/update_store" var="action"></c:url>
-				<form:form modelAttribute="store${status.count }" method="post" action="${action}" id="updateStoreForm" name="updateStoreForm">
+				<%-- <form:form modelAttribute="store${status.count }" method="post" action="${action}" id="updateStoreForm" name="updateStoreForm">
 					<fieldset>	
 						<div style="font-style: normal; width: 15cm" >
 						<table border="">						
@@ -393,9 +393,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					</div>
 					<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button>  -->
-					</form:form>
+					</form:form> --%>
 				
-				<%-- <form:form modelAttribute="store${status.count }" method="post" action="${action}" id="updateStoreForm" name="updateStoreForm">
+				<form:form modelAttribute="store${status.count }" method="post" action="${action}" id="updateStoreForm" name="updateStoreForm">
 				<fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="endDate"/>
 					<fieldset>	
@@ -421,21 +421,19 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						</div>
 					</fieldset>
 					<input type="submit" class="btn btn-warning btn-sm" value="수정하기"/>
-				</form:form> --%>
+				</form:form> 
 				</div>
 					<!-- 모달 푸터 -->
 					<div class="modal-footer">
-					<button id="ownerSubmit" type="submit"  width="20cm"  >수정하기</button>
-						<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
+					<!-- <button id="ownerSubmit" type="submit"  width="20cm"  >수정하기</button> -->
+					<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
 					</div>
 					
 				</div>	<!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div>
 		</c:forEach>
-		
-		
-		
+
 		<!-- ----------------------가게별 수정 모달 끝-------------------------- -->
 		
 		
@@ -451,7 +449,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<div class="modal-body" id="here">
 				<c:url value="/info/insert_store" var="action"></c:url>
 				<form:form modelAttribute="insertStore" method="post" action="${action}" id="form_insertStore" name="form_insertStore">
-					<%-- <fieldset>	
+					<fieldset>	
 						<div style="font-style: normal; color: red;">
 							<form:input id="ownerId" path="ownerId" type="hidden" value="${status.current.ownerId }"></form:input>
 							상호명(*내 가게의 상호명과 중복불가)
@@ -467,8 +465,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							업종
 							<form:select path="typeName" items="${typeNames }" title="업종을 선택하세요." required="true"></form:select><br>
 						</div>
-					</fieldset> --%>
-					<fieldset>	
+					</fieldset> 
+					<%-- <fieldset>	
 						<div style="font-style: normal; width: 15cm" >
 						<table border="">						
 						
@@ -511,14 +509,14 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						
 						</div>		
 											
-					</fieldset>
-					<!-- <input type="submit" class="btn btn-warning btn-sm" value="등록하기"/> -->
+					</fieldset> --%>
+					<input type="submit" class="btn btn-warning btn-sm" value="등록하기"/>
 				</form:form>
 				</div>
 					<!-- 모달 푸터 -->
 					<div class="modal-footer">
-					<button type="submit" class="btn btn-warning btn-sm">등록하기</button>
-						<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
+					<!-- <button type="submit" class="btn btn-warning btn-sm">등록하기</button> -->
+					<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
 					</div>
 					
 				</div>	<!-- /.modal-content -->

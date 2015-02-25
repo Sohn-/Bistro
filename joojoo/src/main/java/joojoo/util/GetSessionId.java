@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
+import joojoo.entity.Category;
 
 public class GetSessionId {
 	private static GetSessionId instance = new GetSessionId();
@@ -94,5 +95,20 @@ public class GetSessionId {
 			personsLevels.put("personsLevel", "10명이상");*/
 			
 			return personsLevels;
+	 }
+	 
+	 public void categorySetNone(Category category){
+		if (category.getPersonsLevel() == null) {
+			category.setPersonsLevel("none");
+		}
+		if (category.getRegionName() == null) {
+			category.setRegionName("none");
+		}
+		if (category.getServiceTypeName() == null) {
+			category.setServiceTypeName("none");
+		}
+		if (category.getTypeName() == null) {
+			category.setTypeName("none");
+		}
 	 }
 }

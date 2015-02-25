@@ -129,6 +129,21 @@ function Open_modal(commentCode, title, content, storeName) {
 	document.querySelector("#modal_title" + commentCode).innerHTML = storeName+ "(" + title + ")";
 	document.querySelector("#here" + commentCode).innerHTML = content;
 }
+
+$(document).ready(function(){
+	$("#regionRadioId").click(function(){
+		$("#regionRadioId").focus();		
+	});
+	$("#regionRadioId").click(function(){
+		$("#typeRadioId").focus();		
+	});
+	$("#regionRadioId").click(function(){
+		$("#personsLevelRadioId").focus();		
+	});
+	$("#regionRadioId").click(function(){
+		$("#serviceTypeRadioId").focus();		
+	});
+});
 </script>
 
 <script>
@@ -315,12 +330,13 @@ fieldset .help {
 <img src="images/bar.png" style="width: 100%">
 	<div align="center" style="top: 1cm; background-color: #323232;">
 	<c:url value="/main/keyword" var="action"></c:url>
-		<form:form modelAttribute="category1" method="post"	action="${action}">
+		<%-- <form:form modelAttribute="category1" method="post"	action="${action}"> --%>
+		<form:form modelAttribute="category_keyword" method="post"	action="${action}">
 		<br>
 		<br>
 			<table border="1px solid red" bordercolor="red"><tr><td>	
-			<form:input path="keyword" name="keyword"	placeholder="keyWord" type="text" maxlength="30" />	</td><td>
-			<button type="submit" class="form-button-submit button "style="height: 43px; padding-top: 0.1cm;">Search</button></td><tr>
+			<form:input  path="keyword" name="keyword"	placeholder="keyWord" type="text" maxlength="30" />	</td><td>
+			<input type="submit" class="form-button-submit button "style="height: 43px; padding-top: 0.1cm;" value="Search"></td><tr>
 			</table>
 		</form:form>
 	
@@ -330,54 +346,56 @@ fieldset .help {
 <!-- 바디 카테고리 시작 -->
 	<section id="features" class="container"> 
 	<c:url	var="action" value="/main/category"></c:url>
-	<%-- <form:form action="${action}" modelAttribute="category2"> --%>
-	<form action="${action}" method="post">
+	<form:form action="${action}" modelAttribute="category_category" method="post">
 	<nav id="nav">
 		<ul>
-		<li><a href=""><span>Region</span></a>
+		<li><a href="#regionRadioId"><span>Region</span></a>	
 			<ul>
-				<li>&nbsp; &nbsp;강남 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value=강남></li>
-				<li>&nbsp; &nbsp;건대 &nbsp; &nbsp; &nbsp;&nbsp;<input	type="radio" name="regionName" value="건대"></li>
-				<li>&nbsp; &nbsp;신림 &nbsp;&nbsp;<input type="radio"	name="regionName" value="신림"></li>
-				<li>&nbsp; &nbsp;신촌 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="신촌"></li>
-				<li>&nbsp; &nbsp;이태원 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="이태원"></li>
-				<li>&nbsp; &nbsp;종로 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="종로"></li>
+			 	<form:radiobuttons id="regionRadioId" path="regionName" items="${regionNames }"/>
+				<!-- <li>&nbsp; &nbsp;강남 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="강남"></input></li>
+				<li>&nbsp; &nbsp;건대 &nbsp; &nbsp; &nbsp;&nbsp;<input	type="radio" name="regionName" value="건대"></input></li>
+				<li>&nbsp; &nbsp;신림 &nbsp;&nbsp;<input type="radio"	name="regionName" value="신림"></input></li>
+				<li>&nbsp; &nbsp;신촌 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="신촌"></input></li>
+				<li>&nbsp; &nbsp;이태원 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="이태원"></input></li>
+				<li>&nbsp; &nbsp;종로 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="종로"></input></li> -->
 			</ul>
 		</li>
-			
-		<li><a href=""><span>Type</span></a>
+		<li><a href="#typeRadioId"><span>Type</span></a>		
 			<ul>
-				<li>&nbsp; &nbsp;바 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="바"></li>
-				<li>&nbsp; &nbsp;룸주점 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="룸"></li>
-				<li>&nbsp; &nbsp;고기집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="고깃집"></li>
-				<li>&nbsp; &nbsp;횟집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="횟집"></li>
-				<li>&nbsp; &nbsp;포장마차 &nbsp; &nbsp; <input type="radio"	name="typeName" value="포차"></li>
-				<li>&nbsp; &nbsp;호프집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="호프"></li>
-			</ul>
-		</li>
-
-		<li><a href=""><span>persons</span></a>
-			<ul>
-				<li>&nbsp; &nbsp;4인이하&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <input	type="radio" name="personsLevel" value="4명이하"></li>
-				<li>&nbsp; &nbsp;5~10인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input	type="radio" name="personsLevel" value="5~10명"></li>
-				<li>&nbsp; &nbsp;10인이상 &nbsp; &nbsp; <input type="radio"	name="personsLevel" value="10명이상"></li>
+				
+				<form:radiobuttons id="typeRadioId" path="typeName" items="${typeNames }"/>
+				<!-- <li>&nbsp; &nbsp;바 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="바"></input></li>
+				<li>&nbsp; &nbsp;룸주점 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="룸"></input></li>
+				<li>&nbsp; &nbsp;고기집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="고깃집"></input></li>
+				<li>&nbsp; &nbsp;횟집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="횟집"></input></li>
+				<li>&nbsp; &nbsp;포장마차 &nbsp; &nbsp; <input type="radio"	name="typeName" value="포차"></input></li>
+				<li>&nbsp; &nbsp;호프집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="호프"></input></li> -->
 			</ul>
 		</li>
 
-		<li><a href=""><span>Service</span></a>
+		<li><a href="#personsLevelRadioId"><span>persons</span></a>
 			<ul>
-				<li>&nbsp; &nbsp;서비스 메뉴 제공&nbsp; <input type="radio"	name="serviceType" value="서비스 메뉴 제공"></li>
-				<li>&nbsp;	&nbsp;금액 할인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input	type="radio" name="serviceType" value="금액 할인"></li>
+				<form:radiobuttons id="personsLevelRadioId" path="personsLevel" items="${personsLevels }"/>
+				<!-- <li>&nbsp; &nbsp;4인이하&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <input	type="radio" name="personsLevel" value="4명이하"></input></li>
+				<li>&nbsp; &nbsp;5~10인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input	type="radio" name="personsLevel" value="5~10명"></input></li>
+				<li>&nbsp; &nbsp;10인이상 &nbsp; &nbsp; <input type="radio"	name="personsLevel" value="10명이상"></input></li> -->
 			</ul>
 		</li>
 
-		<!-- <li><input type="submit" value="Search"/></li> -->
+		<li><a href="serviceTypeRadioId"><span>Service</span></a>			 
+			<ul>
+				<form:radiobuttons id="serviceTypeRadioId" path="serviceTypeName" items="${serviceTypeNames }"/>
+				<!-- <li>&nbsp; &nbsp;서비스 메뉴 제공&nbsp; <input type="radio"	name="serviceType" value="서비스 메뉴 제공"></input></li>
+				<li>&nbsp;	&nbsp;금액 할인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input	type="radio" name="serviceType" value="금액 할인"></input></li> -->
+			</ul>
+		</li>
+
 		<li>
-			<button type="submit" class="btn btn-warning btn-sm">Search</button>
+			<input type="submit" class="btn btn-warning btn-sm" value="Search"/>
 		</li>
 		</ul>
 	</nav>
-	</form> <!-- 바디 카테고리 끝 --> 
+	</form:form>
 	
 	<br>	
 	<div style="height:20px;"></div>
