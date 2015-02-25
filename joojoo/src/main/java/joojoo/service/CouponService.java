@@ -29,5 +29,9 @@ public interface CouponService {
 	All getCouponByCouponCode(String couponCode);
 	
 	int publishCoupons(int couponCount,int commentCode);
+	
+	int leftCouponCount(int comment_code);
+	
+	int getPublishedCouponCount(int comment_code);
 
 }

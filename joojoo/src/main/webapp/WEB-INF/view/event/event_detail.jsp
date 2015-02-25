@@ -224,21 +224,31 @@ fieldset .help {
 		<br>
 		
 		<div align="right">
-		<c:if test="${!empty loginUser }">
-	
+		<c:if test="${!empty loginUser  && leftCouponNo !='0'}">
+		
 		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModalCart">장바구니담기</button>
 		
 		<%-- <c:url value="/buy_check?eventCommentCode=${eventDetail.commentCode}" var="action"></c:url> 
 		<a href="${action }"> --%>
 			<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModalBuyCoupon">구매하기</button>
-		<!-- </a> -->
 		</c:if>
+			
+			
+			<c:if test="${leftCouponNo =='0'}">
+				<h3>무폰이 모두 판매되었습니다. ㅠ_ㅠ</h3>
+			</c:if>
+			
+		<!-- </a> -->
+		
+		
+		
 		<c:if test="${!empty loginOwner || (empty loginUser && empty loginOwner)}">
 		비회원 및 업주회원은 구매 및 장바구니를 이용할 수 없습니다.
 		</c:if>
 		</div>	
-		<br>	
+		<br>		
 		<div>
+			<h4>남은 쿠폰 갯수 : ${leftCouponNo }/ ${publishedCouponNo } </h4>
 			${eventDetail.content}
 		</div>
 	</div>	

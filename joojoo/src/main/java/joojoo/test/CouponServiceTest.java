@@ -54,7 +54,9 @@ static final Logger LOG = LoggerFactory.getLogger(CouponServiceTest.class);
 		/*실패*/
 	
 		//LOG.warn("buyCoupon : "+service.buyCoupon("user",24));
-		service.publishCoupons(4, 1);
+		//service.publishCoupons(4, 1);
+		LOG.error(""+service.leftCouponCount(1));;
+		service.getPublishedCouponCount(1);
 			
 		
 		

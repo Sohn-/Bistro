@@ -43,6 +43,13 @@ public class EventDetailController {
 		model.addAttribute("eventDetail", eventDetail);
 		logger.error("eventDetail 확인---------------------"+eventDetail);
 		
+		int leftCouponNo = couponService.leftCouponCount(eventCommentCode);
+		model.addAttribute("leftCouponNo",leftCouponNo);
+		
+		int publishedCouponNo = couponService.getPublishedCouponCount(eventCommentCode);
+		model.addAttribute("publishedCouponNo",publishedCouponNo);
+		
+		
 		return "event/event_detail";
 	}
 	
@@ -68,6 +75,8 @@ public class EventDetailController {
 		
 		
 		userService.updateUserChance(u);
+		loginUser.setChance(currentChace-1);
+		session.setAttribute("loginUser", loginUser);
 		
 		
 		return "redirect:/info"; //파라매터 줘야되나?

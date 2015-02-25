@@ -1,6 +1,7 @@
 package joojoo.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -8,8 +9,6 @@ import joojoo.dao.CouponDao;
 import joojoo.dao.EventCommentDao;
 import joojoo.entity.All;
 import joojoo.entity.Coupon;
-import joojoo.entity.EventComment;
-import joojoo.test.StoreDaoTest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +58,7 @@ public class CouponServiceImpl implements CouponService {
 				coupon = coupon2;
 				break;
 			}
+		
 			LOG.trace("수업:" + coupon2);
 		}
 
@@ -143,6 +143,29 @@ public class CouponServiceImpl implements CouponService {
 		
 
 		return result;
+	}
+
+	@Override
+	public int leftCouponCount(int comment_code) {
+		List<All> coupons = new ArrayList<All>();
+		coupons.addAll(dao.getCouponsByCommentCode(comment_code));
+		int result = 0;
+		for(int i=0; i<coupons.size(); i++){
+			String userID = coupons.get(i).getUserId() ;
+			if(userID == null){
+				result ++;
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public int getPublishedCouponCount(int comment_code) {
+		List<All> coupons = new ArrayList<All>();
+		coupons.addAll(dao.getCouponsByCommentCode(comment_code));
+		
+		return coupons.size();
+		
 	}
 
 
