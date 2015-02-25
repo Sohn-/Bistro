@@ -3,6 +3,7 @@ package joojoo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import joojoo.entity.All;
@@ -83,13 +84,17 @@ public class JoinController {
    
    @RequestMapping(value="/join/result/user", method=RequestMethod.POST)
    public String showUserSuccessPage(@ModelAttribute Users joinUser,Model model,
-		   							SessionStatus sessionStatus,HttpSession session){
+		   							SessionStatus sessionStatus,HttpSession session) {
 	   if(userService.addUser(joinUser)>0){
 		   LOG.trace("수업 : 회원 가입 성공");
 	   }
 	   else{
 		   LOG.trace("수업 : 회원 가입 실패..");
 	   }
+	   
+	   
+	  
+	   
 	   
 	   session.setAttribute("loginUser", joinUser);
 	   //sessionStatus.setComplete();

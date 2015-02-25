@@ -53,7 +53,7 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		
 		/*실패*/
 	
-		LOG.warn("buyCoupon : "+service.buyCoupon("user",1));
+		LOG.warn("buyCoupon : "+service.buyCoupon("user",24));
 			
 		
 		

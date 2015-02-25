@@ -3,6 +3,7 @@ package joojoo.test;
 import java.util.List;
 
 import joojoo.dao.CouponDao;
+import joojoo.entity.All;
 import joojoo.entity.Coupon;
 
 import org.slf4j.Logger;
@@ -40,10 +41,17 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		String couponStatus = "미사용";
 		Coupon coupon = new Coupon(couponCode, ownerId, userId, commentCode, couponStatus);
 		
+		All coupon1 = new All();
+		coupon1.setCouponStatus("미사용");
+		coupon1.setCouponCode("joojoo");
+		coupon1.setOwnerId("sohn");
+		coupon1.setUserId("user");
+		coupon1.setCommentCode(1);
+		
 		//dao.insertCoupon(coupon);
 		
 		//coupon.setCouponStatusCode(3);
-		//dao.updateCoupon(coupon);
+		dao.updateCoupon(coupon1);
 		
 		//dao.deleteCoupon("1324");
 		
@@ -56,7 +64,7 @@ static final Logger LOG = LoggerFactory.getLogger(CouponDaoImplTest.class);
 		
 		dao.getCouponsByOwnerId("sohn");*/
 		
-		dao.getCouponsByStatus(couponStatus);
+		//dao.getCouponsByStatus(couponStatus);
 		
 		//dao.getCouponsByCouponCode(couponCode);
 		Coupon c = new Coupon();

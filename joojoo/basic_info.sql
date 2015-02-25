@@ -83,7 +83,7 @@ values('제목3','내용3',to_date(sysdate, 'yyyy-mm-dd HH24:MI:SS'), to_date(sy
 insert into rview_comment(title, content, user_id, star_point, store_code)
 values('제목','내용', 'user', 5, 1);
 
-insert into Coupon values('joojoo','sohn','user',1,'미사용');	
+insert into coupon(coupon_code,owner_id,comment_code,coupon_status) values('joojoo12345','sohn',24,'미사용');	
 	
 insert into Coupon values('joojoo','sohn','user',2,'미사용');	
 insert into wish_list(user_id, comment_code) values ('user',23);
