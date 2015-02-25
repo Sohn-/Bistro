@@ -219,7 +219,7 @@ table, th, td {
 th, td {
 	padding: 5px;
 	text-align: left;
-	/* background-color: #F1F1C1; */
+	 background-color: #F1F1C1; 
 	font-size: 14px;
 }
 
@@ -330,7 +330,7 @@ input[type="button"],
 	input[type="password"],
 	input[type="mail"]{
 	font-family:'Jeju Gothic', serif;
-	
+		font-size: 14px;
 	}
 	input[type="submit"]{
 	font-family:'Jeju Gothic', serif;
@@ -439,7 +439,7 @@ $(document).ready(function(){
 
 			<!-- Logo -->
 			<h1 id="logo">
-				<a href="<%=request.getContextPath()%>/main">JooJooclub</a>
+				<a href="<%=request.getContextPath()%>/">JooJooclub</a>
 			</h1>
 			<p>Welcom To JooJooClub</p>
 			<div align="right">
@@ -652,7 +652,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 					<c:if test="${isExist1 ne true }">
-					<td>미사용 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="3">미사용 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 				
@@ -689,7 +689,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				<c:if test="${isExist2 ne true }">
-					<td>사용 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">사용 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 				
@@ -721,7 +721,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				<c:if test="${isExist3 ne true }">
-					<td>환불 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">환불 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 			</table>
@@ -745,7 +745,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				  <c:if test="${isExist4 ne true }">
-					<td>기간만료 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">기간만료 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 			</table>
