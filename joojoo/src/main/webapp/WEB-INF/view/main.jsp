@@ -180,7 +180,6 @@ label {
 	display: inline-block;
 	width: 5em;
 }
-
 fieldset .help {
 	margin-top: 2em;
 	display: inline-block;

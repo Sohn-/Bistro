@@ -360,7 +360,6 @@ fieldset .help {
 				<li>&nbsp; &nbsp;종로 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="종로"></input></li> -->
 			</ul>
 		</li>
-			
 		<li><a href="#typeRadioId"><span>Type</span></a>		
 			<ul>
 				
