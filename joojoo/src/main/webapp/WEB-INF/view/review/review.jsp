@@ -21,9 +21,9 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/style-desktop.css"> -->
 
-<link type="text/css" rel="stylesheet" href="<c:url value="/css/style-1000px.css"/>"/>
-<link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"/>"/>
-<link type="text/css" rel="stylesheet" href="<c:url value="/css/style-desktop.css"/>"/>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style-1000px.css">
+<link rel="stylesheet" href="../css/style-desktop.css">
 
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
@@ -61,6 +61,26 @@ function deleteChk(){
 
 
 </script>
+<style type="text/css">
+#header{
+background-image: url(images/main.jpg);
+}
+	input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+	color: black;
+	
+	}
+/* 	th, td {
+	padding: 5px;
+	text-align: left;
+} */
+
+
+</style>
 
 
 
@@ -108,22 +128,25 @@ function deleteChk(){
     
        <img src="images/bar.png" style="width: 100%">
 
-	<div class="container" style="background-color: white;">
+	<div class="container" align="center" background-color: white;">
 		<section id="features"> 
-    <table>
+		<div align="right" style="width: 20cm">
+    <table align="center">
   <tr>
    <td>
-    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <table width="80%" cellpadding="0" cellspacing="0" border="0" style="font-family:'Jeju Gothic', serif; color: black;">
+    <tr><td></td></tr>
+    <br><br>
      <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
-      <td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
-      <td>내 용</td>
-      <td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
+    
+      <td style="background-color: #F2CB61; width: 20cm" align="center">내 용 </td>
+     
      </tr>
     </table>
-   <table width="413">
+   <table width="413" style="font-family:'Jeju Gothic', serif; color: black;">
      <tr>
       <td width="0">&nbsp;</td>
-      <td align="center" width="76">글번호</td>
+      <td align="center" width="76">글번호 : </td>
       <td width="319">
       <c:out value="${rviewComment.commentCode}"></c:out>
       </td>
@@ -132,36 +155,39 @@ function deleteChk(){
 	 <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
     <tr>
       <td width="0">&nbsp;</td>
-      <td align="center" width="76">작성일</td>
+      <td align="center" width="76">작성일 : </td>
       <td width="319"> <c:out value="${rviewComment.regDate}"></c:out></td>
       <td width="0">&nbsp;</td>
      </tr>
 	 <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
     <tr>
       <td width="0">&nbsp;</td>
-      <td align="center" width="76">작성자</td>
+      <td align="center" width="76">작성자 : </td>
       <td width="319"> <c:out value="${rviewComment.userId}"></c:out></td>
       <td width="0">&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
     <tr>
       <td width="0">&nbsp;</td>
-      <td align="center" width="76">가게 이름</td>
+      <td align="center" width="76">가게이름 : </td>
       <td width="319"> <c:out value="${rviewComment.storeName}"></c:out></td>
       <td width="0">&nbsp;</td>
      </tr>
       <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
     <tr>
       <td width="0">&nbsp;</td>
-      <td align="center" width="76">제목</td>
+      <td align="center" width="76">제 목 : </td>
       <td width="319"> <c:out value="${rviewComment.title}"></c:out></td>
       <td width="0">&nbsp;</td>
      </tr>
      
      <tr>
       <td width="0">&nbsp;</td>
-      <td align="center" width="76">평점</td>
-      <td width="319"> <c:out value="${rviewComment.starPoint}"></c:out></td>
+      <td align="center" width="76" style="color: blue">평점 : </td>
+      <td width="319">&nbsp;&nbsp; <c:out value="${rviewComment.starPoint}"></c:out> <div style="CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(images/icon_star2.gif) 0px 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 90px; PADDING-TOP: 0px; HEIGHT: 18px;">
+  <p style="WIDTH: 99%; PADDING-RIGHT:0px; PADDING-LEFT:0px; BACKGROUND: url(images/icon_star.gif) 0px 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; HEIGHT: 18px;">
+  </p>
+  </div></td>
       <td width="0">&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
@@ -170,12 +196,14 @@ function deleteChk(){
                    <td width="399" colspan="2" height="200"><c:out value="${rviewComment.content}"></c:out>
 
                 </tr>
+                
 
 
 
 
 			<tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
      <tr height="1" bgcolor="#82B5DF"><td colspan="4" width="407"></td></tr>
+     
      <tr align="center">
       <td width="0">&nbsp;</td>
       <td colspan="2" width="800">
@@ -195,6 +223,7 @@ function deleteChk(){
    </td>
   </tr>
  </table>
+ </div>
  </section>
  </div>
     
