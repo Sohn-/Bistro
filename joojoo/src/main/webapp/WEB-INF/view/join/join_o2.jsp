@@ -162,6 +162,7 @@
                my : "left top",
                at : "right+5 top-5"
             }
+        
          });
       });
       
@@ -211,6 +212,24 @@ fieldset .help {
 .ui-tooltip {
    width: 200px;
 }
+input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	}
+	input[type="submit"]{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	
+	}
+	
+	select{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	}
 </style>
 <%-- <script>
 
@@ -236,7 +255,7 @@ fieldset .help {
 </script> --%>
 </head>
 <c:url value="<%=request.getContextPath() %>" var="path"></c:url>
-<body class="homepage" bgcolor=#333323>
+<body class="homepage" style="background-color:#323232;">
    <div id="header-wrapper" style= "background-image: url(../images/main.jpg)">
 
       <div id="header" class="container">
@@ -262,14 +281,14 @@ fieldset .help {
    <img  src="../images/bar.png" style="width: 100%">
  	
  	<div class="container" style="background-color: #323232;">
-    <section id="features" class="container"> 
-   <div id="tabs">
+    <section id="features" class="container" style="background-color: #323232;"> 
+   <div id="tabs" style="font-family:'Jeju Gothic', serif;">
       <ul>
-         <li><a href="#tab1">일반회원 가입하기</a></li>
-         <li><a href="#tab2">업주회원 가입하기</a></li>
+        <!--  <li><a href="#tab1">일반회원 가입하기</a></li> -->
+         <li><a href="#tab2" >업주회원 가입하기</a></li>
 
       </ul>
-        <div id="tab1">
+<%--         <div id="tab1">
          <div id="footer" class="container" align="left">
             <div class="row">
             <c:url value="/join/result/user" var="action"></c:url> 
@@ -303,29 +322,60 @@ fieldset .help {
 </form:form>
             </div>
          </div>
-      </div>
-      <div id="tab2">
+      </div> --%>
+      <div id="tab2" style=" background-color:#323232 ">
           <div id="footer" class="container" align="left">
             <div class="row2">
 
-            <c:url value="/join/result/owner" var="action"></c:url>
- <form:form  modelAttribute="joinStore" method="post" action="${action} "  id="form" class="form-4">
-   	<h1>가게를 등록 asddddddddddd해 주세요!</h1>
-   	<h3>가게 이름</h3><form:input path="storeName"  placeholder="상호명" required="true"/>
-    <h3>가게 전화</h3><form:input path="storePhone"  placeholder="전화번호" required="true"/>
-    <h3>위치 선택</h3><form:select path="regionName"  items="${regionNames }" required="true"/>
-    
-   
-    
-    <h3>가게 주소</h3><form:input path="storeAdress"  placeholder="상세주소" required="true"/>
-    <h3>위치 선택</h3><form:select path="typeName"  items="${typeNames }" required="true"/>
-    <form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>
-    
-   
-     <input type="submit" value="등록완료" />
-        
-
-</form:form>
+       <c:url value="/join/result/owner" var="action"></c:url>
+ <form:form  modelAttribute="joinStore" method="post" action="${action} "  id="form" class="form-2">
+			
+			<!-- <table align="center" background="">
+				<tr>
+			<td> -->
+			
+		<%-- 	<form:form modelAttribute="joinOwner" method="post"	action="${action} " id="form2" >  --%>
+			
+			<div align="center">
+				<table align="center" background="">
+				<tr>
+				<td>
+					<%-- <form:input path="ownerId" id="joinId2" placeholder="아이디" required="true" />	<br>			
+					<form:input path="ownerPassword" id="pass" type="password"	required="true"  placeholder="비밀번호"/><br>			
+					<input type="password" id="pass2" name="pass2" required="true"  placeholder="비밀번호 재확인"/>	<br>		
+					<form:input path="ownerName" required="true"  placeholder="이름"/>	<br>	
+					<form:input path="ownerMail" id="joinMail2" type="email" required="true"  placeholder="이메일"/>	<br>					
+					<form:input path="ownerPhone" required="true"  placeholder="휴대전화번호"/><br>
+					<form:input path="licenseNumber" id="joinLicense" required="true"  placeholder="사업자등록번호" /><br>					
+					<input type="submit" value="업주등록(다음단계로)" class="btn btn-primary btn-lg btn-block"/><br> --%>
+			<div style="width: 20cm; font-size: 14px; font-family:'Jeju Gothic', serif;" >		<!-- <br> -->
+			 <form:input path="storeName"  placeholder="상호명" required="true" type="text" /><br>
+			<form:input path="storePhone"  placeholder="전화번호" required="true" type="text" /><br>
+			<form:select path="regionName" type="text" items="${regionNames }" required="true"/><br>
+			<form:input path="storeAdress"  placeholder="상세주소" required="true"/><br>
+			<form:select path="typeName"  items="${typeNames }" required="true" type="text"/><br>
+			<form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>			
+			<input type="submit" id="next" value="업주 및 상점 등록 확인" class="btn btn-primary btn-lg btn-block"style="width:20cm"/> 
+			</div>
+			 		
+				</td>
+				<td>
+					<!-- &nbsp;		
+					<input type="button" value="V" id="idDupCheck2" class="btn btn-primary btn-xs" /><br>
+					<input type="hidden" name="checked" id="checked" /><br>
+					
+					<br><br><br><br><br><br><br> <br>&nbsp;
+					<input type="button" value="V" id="mailDupCheck2"  class="btn btn-primary btn-xs"/>	<br>
+					<input type="hidden" name="checked2" id="checked2" />	<br>
+					
+					<br><br><br>&nbsp;
+					<input type="button" value="V" id="licenseDupCheck"  class="btn btn-primary btn-xs"/><br>
+					<input type="hidden" name="checked3" id="checked3" /><br>  -->
+				</td>
+				</tr>
+				</table>  	             
+			</div>
+			</form:form>
                
                   
             
@@ -336,6 +386,25 @@ fieldset .help {
    </div>
    </section>
    </div>
+   
+   <!-- Footer -->
+	<div>
+		<div id="footer" class="container">
+			<div align="center">
+				<br> <br> <a href="<%=request.getContextPath()%>/footer/servicePolicy">이용약관</a>	&nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/privacyPolicy">개인정보보호방침</a>		&nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/youthPolicy">청소년보호정책</a>			&nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/helpCenter">고객센터</a> <br>	<br>
+				<div style="font-size: 12px;">
+					사업자등록번호:130-50-61004 (주)주주총회 대표이사: 정주주 주소: 이클립시 디비구 자바동 123-45 <br>
+					주주총회앱의 모든 콘텐츠는 저작권법의 보호를 받으므로, 무단 전재, 복사, 배포 등을 금합니다. <br>
+					Copyright (c) JooJooClub All Rights Reserved.
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+   
    
 
    
