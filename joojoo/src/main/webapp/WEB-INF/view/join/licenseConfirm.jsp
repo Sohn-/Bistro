@@ -54,6 +54,7 @@
 </script>
 </head>
 <body>
+<div align="center">
 	<h2>사업자 등록번호 중복 확인</h2>
 	<c:if test="${!empty (result) }">
 		${joinLicense}는 이미 등록된 번호입니다.<br>
@@ -66,8 +67,9 @@
 	다른 번호로 시도하려면 새로 중복 체크를 하세요.
 	<form action="${licensechk}">
 		<label for="joinLicense">메일</label>
-		<input type="text" id="joinLicense" name="joinLicense">
+		<input type="text" id="joinLicense" name="joinLicense" style="width: 40%">
 		<input type="submit" value="전송"/>
 	</form>
+	</div>
 </body>
 </html>
