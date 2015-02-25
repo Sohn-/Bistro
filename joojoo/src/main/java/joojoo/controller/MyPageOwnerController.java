@@ -2,13 +2,14 @@ package joojoo.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -58,7 +59,7 @@ public class MyPageOwnerController {
 	    private GetSessionId sd = GetSessionId.getInstance();
 
 	    @RequestMapping(value="/info", method=RequestMethod.GET)
-		public String showInfoControl(Model model,HttpSession session, HttpServletRequest req){
+		public String showInfoControl(Model model,HttpSession session, HttpServletRequest req) throws UnsupportedEncodingException{
 	    	String path = null;
 	    	GetSessionId gs = GetSessionId.getInstance();
 	    		    	
@@ -79,10 +80,10 @@ public class MyPageOwnerController {
 	    		List<All> allStore = storeService.showOwnerStores(ownerId);
 	    		int count=1;
 	    		for(All store: allStore){
-	    			String storeName = store.getStoreName();
-	    			String storeFilePath="storeImage"+ownerId+storeName;
+	    			int storeCode = store.getStoreCode();
+	    			String storeFilePath="storeImage"+storeCode;
 	    			store.setStoreFile(storeFilePath);
-	    			model.addAttribute("storeFilePath"+count, storeFilePath);
+	    			model.addAttribute("storeImage"+storeCode, storeFilePath);
 	    			model.addAttribute("store"+count, store);
 	    			count++;
 	    		}
@@ -294,9 +295,13 @@ public class MyPageOwnerController {
 		}
 	    
 	    @RequestMapping(value="/info/insert_store", method=RequestMethod.POST)
-		public String insertStore(@ModelAttribute Stores insertStore, Model model, @RequestParam("uploadStoreFile") MultipartFile file) throws ParseException, IllegalStateException, IOException{
+		public String insertStore(@ModelAttribute Stores insertStore, Model model, @RequestParam("uploadStoreFile") MultipartFile file, HttpSession session) throws ParseException, IllegalStateException, IOException{
 	    	logger.error("insertEvent 정보.."+insertStore);
 	    	int result = storeService.addStore(insertStore);
+	    	All ownerStore = new All();
+	    	ownerStore.setOwnerId(sd.getSessionId(session));
+	    	ownerStore.setStoreName(insertStore.getStoreName());
+	    	int storeCode = Integer.parseInt(storeService.showOwnerStore(ownerStore));
 	    	
 	    	if(result >0){
 	    		model.addAttribute("insertStore", true);
@@ -305,7 +310,7 @@ public class MyPageOwnerController {
 	    		model.addAttribute("insertStore", false);
 	    	}
 	    	
-	    	String fileName = "storeImage"+insertStore.getOwnerId()+insertStore.getStoreName()+".jpg";
+	    	String fileName = "storeImage"+storeCode+".jpg";
 			logger.error("c:\\db\\upload\\"+fileName);
 			file.transferTo(new File("c:\\db\\uploaded\\"+fileName));
 			model.addAttribute("fileName", fileName);

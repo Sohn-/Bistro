@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@page import="joojoo.entity.All"%>
 <%@page import="java.util.List"%>
@@ -432,8 +433,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<input type="button" value="중복확인" id="storeDupCheck" name="storeDupCheck"/><br>
 							<input type="hidden" name="storechecked" id="storechecked" value=""/><br>
 							이미지
+							<c:set var="storeImagePath" value="storeImage${status.current.ownerId }${status.current.storeName }"></c:set>
 							<%-- <img src="c:\\db\\upload\\storeImage${someStore.ownerId }${someStore.storeName }"/> --%>
-							<img src="<%=request.getContextPath()%>/upload/storeImagePath${status.count }"/>
+							<img src="<%=request.getContextPath()%>/upload/storeImage${status.current.storeCode}"/>
 							<form:input path="storeFile" type="file" name="storeFile"></form:input>
 							지역
 							<form:select path="regionName" items="${regionNames }" title="지역을 선택하세요." required="true"></form:select><br>
