@@ -382,7 +382,7 @@ fieldset .help {
 			</ul>
 		</li>
 
-		<li><a href="serviceTypeRadioId"><span>Service</span></a>			 
+		<li><a href="#serviceTypeRadioId"><span>Service</span></a>			 
 			<ul>
 				<form:radiobuttons id="serviceTypeRadioId" path="serviceTypeName" items="${serviceTypeNames }"/>
 				<!-- <li>&nbsp; &nbsp;서비스 메뉴 제공&nbsp; <input type="radio"	name="serviceType" value="서비스 메뉴 제공"></input></li>

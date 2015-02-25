@@ -225,7 +225,28 @@ fieldset .help {
 
        <form  id="reviewlist" name="searchForm" action="" method="get" style="font-family:'Jeju Gothic', serif; ">
        
-       <p>
+       <div style="width: 10cm">
+       <table>
+       	<tr>
+	       	<td style="width: 10cm">   <select name="searchType" style="width: 80%;font-family:'Jeju Gothic', serif; color: black;">
+	               <option value="ALL">전체검색</option>
+	               <option value="SUBJECT">제목</option>
+	               <option value="WRITER">작성자</option>
+	               <option value="CONTENTS">내용</option>
+	               </select>
+       		
+       		</td>
+       		<td style="width: 10cm">
+       		 	<input type="text" name="searchText" value="" style="width: 80%"/>
+       		</td style="width: 10cm">
+       		<td>
+       			<input type="submit" value="검색" align="middle" style="width: 80%" />
+       		</td>
+       	</tr>
+       
+       </table>
+       </div>
+       <!-- <p>
            <select name="searchType" style="width: 80%;font-family:'Jeju Gothic', serif; color: black;">
                <option value="ALL">전체검색</option>
                <option value="SUBJECT">제목</option>
@@ -235,7 +256,7 @@ fieldset .help {
            <input type="text" name="searchText" value="" style="width: 80%"/>
        
            <input type="submit" value="검색" align="middle" style="width: 80%" />
-       </p>
+       </p> -->
        </form>
 
        <!-- //검색 폼 영역 -->
