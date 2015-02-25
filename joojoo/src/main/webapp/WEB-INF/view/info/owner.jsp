@@ -279,7 +279,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
  
  <div id="features-wrapper">
       <section id="features" class="container"> 
-	<div id="tabs">
+	<div id="tabs" style="font-family:'Jeju Gothic', serif;" >
 		<ul>
 			<li><a href="#tab1">상점등록</a></li>
 			<li><a href="#tab2">정보수정</a></li>
@@ -292,7 +292,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 			<%-- <caption>상점등록</caption> --%>
 				<thead>
 			<tr>
-			<th scope="col">상호명</th><th scope="col">수정</th><th scope="col">삭제</th>			
+			<th scope="col" style="background-color: #F2CB61" align="center">상호명</th>
+			<th scope="col" style="background-color: #F2CB61" align="center">수정</th>
+			<th scope="col" style="background-color: #F2CB61" align="center">삭제</th>			
 			</tr>
 			</thead>
 			<c:forEach items="${allStore}" var="store" varStatus="status" >
@@ -307,7 +309,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 			
 			</table>	<br>		
 			
-			<button id="newstore" data-toggle="modal" data-target="#newStoreModal"  class="btn btn-primary btn-lg btn-block">		새로운 가게 등록</button> 
+			<input type="button" id="newstore" data-toggle="modal" data-target="#newStoreModal"  class="btn btn-primary btn-lg btn-block"value="새로운 가게 등록"/> 
 			<!-- <input   id="newstore" data-toggle="modal" data-target="#newStoreModal"  type="submit" value="새로운 가게 등록" align="left" size="15cm" class="btn btn-primary btn-lg btn-block">				
 		 --></div>
 		

@@ -76,24 +76,21 @@
 	</select>
 	
 	<select id="getStoresByCategory"  resultType="All">
- 	 SELECT * FROM stores
-  <where> 
-    <if test='regionName != "none"'>
-         region_name=#{regionName}
-    </if> 
-    <if test='typeName != "none"'>
-        and type_name=#{typeName}
-    </if>
-  </where>
-</select>
+	SELECT * FROM stores
+	<where>
+		<if test='regionName != "none"'>
+			region_name='${regionName}'
+		</if>
+		<if test='typeName != "none"'>
+			and type_name='${typeName}'
+		</if>
+	</where>
+	</select>
 
-
-	
 	<select id= "getStoresBySearchKeyword" resultType="All">
 		select * 
 		from stores s 
-		
-		
+
 		where region_name like '%${keyword}%'
 		or type_name like '%${keyword}%'
 		or store_name like '%${keyword}%'
@@ -101,7 +98,6 @@
 		or store_adress like '%${keyword}%'
 		
 	</select>
-	
 	
   
 </mapper>

@@ -64,75 +64,21 @@
 		 
 		<where>
 		<if test='regionName != "none" '>
-    		region_name = #{regionName}
+    		region_name = '${regionName}'
   		</if>
   		<if test='typeName != "none" '>
-  			and type_name = #{typeName}
+  			and type_name = '${typeName}'
   		</if>
   		<if test='personsLevel != "none" '>
-  			and persons_level = #{personsLevel}
+  			and persons_level = '${personsLevel}'
   		</if>
   		<if test='serviceTypeName != "none"'>
-  			and service_type_name = #{serviceTypeName}
+  			and service_type_name = '${serviceTypeName}'
   		</if>
-  		</where>		
+  		and end_date <![CDATA[ > ]]> sysdate
+  		</where>
+  				
 	</select>
-	
-	<!-- <select id= "getEventCommentsByRegionCode" parameterType="Integer"
-						resultMap="EventCommentMap">
-		select * 
-		from event_comment e
-		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
-		join owners using(owner_id)	
-		 		
-		where region_code = #{regionCode}		
-	</select>
-	
-	<select id= "getEventCommentsByTypeCode" parameterType="Integer"
-						resultMap="EventCommentMap">
-		select * 
-		from event_comment e
-		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
-		join owners using(owner_id)	
-		 		
-		where type_code = #{typeCode}		
-	</select>
-	
-	<select id= "getEventCommentsByPersonsCode" parameterType="Integer"
-						resultMap="EventCommentMap">
-		select * 
-		from event_comment e
-		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
-		join owners using(owner_id)	
-		 		
-		where persons_code = #{personsCode}		
-	</select>
-	
-	<select id= "getEventCommentsByServiceTypeCode" parameterType="Integer"
-						resultMap="EventCommentMap">
-		select * 
-		from event_comment e
-		join stores s using(store_code)
-		join region r using(region_code)
-		join store_type t using(type_code)
-		join persons p using(persons_code)
-		join service_type using(service_type_code)
-		join owners using(owner_id)	
-		 		
-		where service_type_code = #{serviceTypeCode}			
-	</select> -->
 	
 	<select id= "getEventCommentsByKeyword" parameterType="EventComment"
 						resultType="All">
@@ -141,7 +87,8 @@
 		join stores s using(store_code)
 		join owners using(owner_id)	
 		
-		where title like '%${keyword}%'
+		where end_date <![CDATA[ > ]]> sysdate
+		and (title like '%${keyword}%'
 		or content like '%${keyword}%'
 		or store_name like '%${keyword}%'
 		or store_adress like '%${keyword}%'
@@ -149,7 +96,8 @@
 		or region_name like '%${keyword}%'
 		or type_name like '%${keyword}%'
 		or persons_level like '%${keyword}%'
-		or service_type_name like '%${keyword}%'
+		or service_type_name like '%${keyword}%')
+		 	
 
 	</select>
 	
@@ -190,7 +138,7 @@
 		from event_comment e
 		join stores s using(store_code)
 		join owners using(owner_id)		
-		where end_date <![CDATA[ < ]]> sysdate			
+		where end_date <![CDATA[ > ]]> sysdate			
 	</select>
 
 </mapper>
