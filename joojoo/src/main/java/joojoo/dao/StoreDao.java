@@ -17,7 +17,7 @@ public interface StoreDao {
 	
 	List<All> getStoresByOwnerId(String ownerId);
 	All getStoreByStoreCode(int storeCode);
-	String getStoreByStoreName(All ownerStore);
+	String getStoreByStoreName(All stores1);
 	List<All> getStoresByStoreType(int typeCode);
 	List<All> getStoresByRegion(int regionode);
 	List<All> getStoresByCategory(Category category);

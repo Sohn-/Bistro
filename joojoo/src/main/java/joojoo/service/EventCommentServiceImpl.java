@@ -73,6 +73,11 @@ public class EventCommentServiceImpl implements EventCommentService {
 		return dao.getEventCommentByCommentCode(commentCode);
 	}
 
+	@Override
+	public int getCommentCode(EventComment eventComment) {
+		return dao.getCommentCodeByOthers(eventComment);
+	}
+
 
 
 	

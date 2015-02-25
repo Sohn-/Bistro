@@ -84,6 +84,12 @@ public class UserServiceImp implements UserService{
 		return result;
 	}
 
+	@Override
+	public int updateUserChance(Users user) {
+		int result = dao.updateUserChance(user);
+		return result;
+	}
+
 /*	@Override
 
 

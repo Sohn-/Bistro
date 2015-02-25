@@ -73,6 +73,14 @@ public class UsersDaoImpl implements UsersDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int updateUserChance(Users user) {
+		
+		
+		String stmt = nameSpace + "updateUserChance";
+		return sqlSession.update(stmt, user);
+	}
 	
 
 	

@@ -48,6 +48,7 @@ static final Logger logger = LoggerFactory.getLogger(EventCommentServiceTest.cla
 		logger.trace("수업:"+eventComment);
 		
 		service.requestDeleteEvent(eventComment);
+		
 	
 	}
 

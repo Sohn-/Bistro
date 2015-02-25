@@ -1,6 +1,7 @@
 package joojoo.test;
 
 import joojoo.dao.StoreDao;
+import joojoo.entity.All;
 import joojoo.entity.Category;
 import joojoo.entity.Stores;
 import joojoo.entity.Users;
@@ -55,10 +56,15 @@ public class StoreDaoTest {
 		//LOG.trace("수업 "+dao.getStoreByStoreCode(1));
 		//LOG.trace("수업"+dao.getStoresByOwnerId("sohn"));
 		//LOG.trace("수업"+dao.getStoresByOwnerId("sohn"));
-		LOG.trace("수업"+dao.getStoresBySearchKeyword(c));
+		//LOG.trace("수업"+dao.getStoresBySearchKeyword(c));
 		//LOG.trace("수업"+dao.getStoresByCategory(c));
 		
-	
+		All store1 = new All();
+		store1.setOwnerId("sohn");
+		store1.setStoreName("가게이름");
+		store1.setStoreAdress("가게주소");
+		
+		LOG.error(""+dao.getStoreByStoreName(store1));
 		
 	}
 	

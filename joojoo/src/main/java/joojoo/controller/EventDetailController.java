@@ -1,7 +1,14 @@
 package joojoo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import joojoo.entity.All;
+import joojoo.entity.Users;
+import joojoo.entity.WishList;
+import joojoo.service.CouponService;
 import joojoo.service.EventCommentService;
+import joojoo.service.UserService;
+import joojoo.service.WishListService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +27,15 @@ public class EventDetailController {
 	@Autowired
 	EventCommentService eventService;
 	
+	@Autowired
+	CouponService couponService;
+	
+	@Autowired
+	WishListService wishListService;
+	
+	@Autowired
+	UserService userService;
+	
 	@RequestMapping(value="/eventProcess", method=RequestMethod.GET)
 	public String showDetail(@RequestParam("eventCommentCode") int eventCommentCode, Model model){
 		
@@ -30,12 +46,55 @@ public class EventDetailController {
 		return "event/event_detail";
 	}
 	
-/*	@RequestMapping(value="/coupon_buy", method=RequestMethod.GET)
-	public String couponBuy(){
-		return "event/event_Detail"; //파라매터 줘야되나?
+	/*/buy_coupon?ecommentCode=${eventDetail.commentCode }*/
+	@RequestMapping(value="/buy_coupon", method=RequestMethod.GET, params={"ecommentCode"} )
+	public String couponBuy(String ecommentCode, HttpSession session){
+		
+		logger.error(""+ecommentCode);
+		All loginUser =(All) session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
+		
+		
+		
+		int ecommentCode2 = Integer.parseInt(ecommentCode);
+		couponService.buyCoupon(userId, ecommentCode2);
+		int currentChace = loginUser.getChance();
+		
+		
+		Users u = new Users();
+		u.setUserId(userId);
+		u.setChance(currentChace-1);
+		
+		
+		
+		userService.updateUserChance(u);
+		
+		
+		return "redirect:/info"; //파라매터 줘야되나?
 	}
+	/*/info/user/cart/add?ecommentCode=${eventDetail.commentCode }*/
 	
-	@RequestMapping(value="/logi", method=RequestMethod.POST, 
+	@RequestMapping(value="/info/user/cart/add", method=RequestMethod.GET, params={"ecommentCode"} )
+	public String addWishList(String ecommentCode, HttpSession session){
+		
+		logger.error(""+ecommentCode);
+		All loginUser =(All) session.getAttribute("loginUser");
+		String userId = loginUser.getUserId();
+		
+		
+		
+		int ecommentCode2 = Integer.parseInt(ecommentCode);
+		
+		WishList wishList = new WishList();
+		wishList.setUserId(userId);
+		wishList.setCommentCode(ecommentCode2);
+		
+		wishListService.addWishList(wishList);
+		
+		
+		return "redirect:/info"; //파라매터 줘야되나?
+	}
+	/*@RequestMapping(value="/logi", method=RequestMethod.POST, 
 			produces="text/plain;charset=utf-8")
 	public @ResponseBody String ajaxReceive(@RequestParam String msg){
 		logger.trace("흠 이게 되나");

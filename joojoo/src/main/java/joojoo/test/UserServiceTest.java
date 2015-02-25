@@ -38,7 +38,7 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 	public void insertTest24(){
 		
 		Users user = new Users();
-		user.setUserId("nnn");
+		user.setUserId("user");
 		user.setUserPassword("fdfg");
 		user.setUserName("b");
 		user.setUserMail("nn");
@@ -46,7 +46,8 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		user.setChance(2);
 		
 		//service.addUser(user);
-		LOG.trace("수업"+service.updateUserInfo(user));
+		//LOG.trace("수업"+service.updateUserInfo(user));
+		LOG.error(""+service.updateUserChance(user));
 		
 		
 	

@@ -139,5 +139,12 @@ public class EventCommentDaoImpl implements EventCommentDao{
 		
 		return result;
 	}
+	@Override
+	public int getCommentCodeByOthers(EventComment eventComment) {
+		String statement = nameSpace + "getCommentCodeByOthers";
+		int result = sqlSession.selectOne(statement, eventComment);
+		
+		return result;
+	}
 
 }

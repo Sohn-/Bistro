@@ -12,7 +12,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class CouponServiceTest {
 
-static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
+static final Logger LOG = LoggerFactory.getLogger(CouponServiceTest.class);
 	
 	@Autowired
 	CouponService service;
@@ -53,7 +53,8 @@ static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
 		
 		/*실패*/
 	
-		LOG.warn("buyCoupon : "+service.buyCoupon("user",24));
+		//LOG.warn("buyCoupon : "+service.buyCoupon("user",24));
+		service.publishCoupons(4, 1);
 			
 		
 		

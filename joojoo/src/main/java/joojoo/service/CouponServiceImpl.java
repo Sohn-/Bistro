@@ -1,6 +1,6 @@
 package joojoo.service;
 
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +8,7 @@ import joojoo.dao.CouponDao;
 import joojoo.dao.EventCommentDao;
 import joojoo.entity.All;
 import joojoo.entity.Coupon;
+import joojoo.entity.EventComment;
 import joojoo.test.StoreDaoTest;
 
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(rollbackFor = java.lang.Exception.class)
 public class CouponServiceImpl implements CouponService {
-	static final Logger LOG = LoggerFactory.getLogger(StoreDaoTest.class);
+	static final Logger LOG = LoggerFactory.getLogger(CouponServiceImpl.class);
 	@Autowired
 	CouponDao dao;
 
@@ -118,6 +119,30 @@ public class CouponServiceImpl implements CouponService {
 	@Override
 	public All getCouponByCouponCode(String couponCode) {
 		return dao.getCouponsByCouponCode(couponCode);
+	}
+
+	@Override
+	public int publishCoupons(int couponCount,int commentCode) {
+		
+		All eventComment = eventDao.getEventCommentByCommentCode(commentCode);
+		int result = -1;
+		
+		//LOG.error("??????"+eventComment);
+		for(int i=0; i<couponCount; i++){
+			Coupon coupon = new Coupon();
+			coupon.setCommentCode(commentCode);
+			String couponCode=(""+i+""+eventComment.getCommentCode()+"").hashCode()+"";
+			LOG.error(couponCode);
+			coupon.setCouponCode(couponCode);
+			coupon.setOwnerId(eventComment.getOwnerId());
+			coupon.setCouponStatus("미사용");
+			
+			result = dao.insertCoupon(coupon);
+			
+		}
+		
+
+		return result;
 	}
 
 

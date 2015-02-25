@@ -142,8 +142,8 @@ public class MyPageOwnerController {
 	    		///이벤트글조회를 위한 코드 끝
 	    		
 	    		///쿠폰조회를 위한 코드
-	    		couponService.timeoverCoupon(); //시간 지난 쿠폰을 변경
-	    		List<All> allCoupon = couponService.getCouponsByOwnerId(ownerId);
+	    		/*couponService.timeoverCoupon(); //시간 지난 쿠폰을 변경
+*/	    		List<All> allCoupon = couponService.getCouponsByOwnerId(ownerId);
 	    		logger.error("쿠폰조회결과는.."+allCoupon);
 	    		count=1;
 	    		SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분");
@@ -228,13 +228,14 @@ public class MyPageOwnerController {
 		}
 	    
 	    @RequestMapping(value="/info/insert_event", method=RequestMethod.POST)
-		public String insertEvent(@ModelAttribute EventComment insertEvent, Model model, HttpSession session) throws ParseException{
+		public String insertEvent(@ModelAttribute EventComment insertEvent, Model model, HttpSession session,int couponCount) throws ParseException{
 	    	logger.error("insertEvent 정보.."+insertEvent);
 	    	String storeCodeStr = insertEvent.getStoreCodeStr();
 	    	//가게이름으로 해당 코드 찾아서 insertEvent에 셋하기
 	    	All ownerStore = new All();
 	    	ownerStore.setOwnerId(sd.getSessionId(session));
 	    	ownerStore.setStoreName(insertEvent.getStoreCodeStr());
+	    	//ownerStore.setStoreAdress(insertEvent.gets
 	    	int storeCode = Integer.parseInt(storeService.showOwnerStore(ownerStore)); //어떤 오너의 가게이름에 해당하는 코드를 가져옴
 	    	logger.error("storeCode가 이걸로 변환되었음 : "+storeCode);
 	    	insertEvent.setStoreCode(storeCode);
@@ -243,11 +244,21 @@ public class MyPageOwnerController {
 	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 	    	insertEvent.setStartDate(sdf.parse(insertEvent.getStartDateStr()));
 	    	insertEvent.setEndDate(sdf.parse(insertEvent.getEndDateStr()));
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	
 
 	    	int result = eventService.registEvent(insertEvent);
 	    	
+	    	
 	    	if(result >0){
 	    		model.addAttribute("insertEvent", true);
+	    		int commentCode = eventService.getCommentCode(insertEvent);
+	    		couponService.publishCoupons(couponCount, commentCode);
 	    	}
 	    	else{
 	    		model.addAttribute("insertEvent", false);
