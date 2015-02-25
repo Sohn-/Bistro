@@ -1,24 +1,22 @@
 package joojoo.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import joojoo.entity.All;
+import joojoo.entity.Paging;
 import joojoo.entity.RviewComment;
 import joojoo.service.RviewCommentService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -36,6 +34,14 @@ public class RviewCommentController {
 		
 		model.addAttribute("rviews",rviews);
 		LOG.error(""+rviews);
+		
+		int totalCount = rviews.size();
+		
+		/*Paging paging = new Paging();
+        paging.setPageNo(1);
+        paging.setPageSize(2);
+        paging.setTotalCount(totalCount);*/
+
 		
 		return "review/list";
 	}

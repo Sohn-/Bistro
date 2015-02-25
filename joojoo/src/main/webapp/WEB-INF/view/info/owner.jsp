@@ -36,8 +36,9 @@
 
 <style type="text/css">
 table, th, td {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	border-collapse: collapse;
+	font-size: 20px;	
 }
 
 th, td {
@@ -45,7 +46,7 @@ th, td {
 	text-align: left;
 }
 
-table#t01 {
+table#tab2 {
 	width: 100%;
 	background-color: #f1f1c1;
 }
@@ -72,7 +73,19 @@ fieldset .help {
 fieldset div {
 	margin-bottom: 2em;
 }
-
+table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse; border-spacing : 0 ;}
+.ex1 th, .ex1 td {padding:5px 10px}
+.ex1 caption {font-weight:700; font-size:20px; padding:5px; color:#1BA6B2; text-align:center; margin-bottom:5px}
+.ex1 thead th {background:gray; color:#fff; text-align:center; }
+.ex1 tbody th {text-align:left; width:12%}
+.ex1 tbody td.date1 {text-align:center; width:8%}
+.ex1 tbody td.desc {text-align:left; width:35%}
+.ex1 tbody tr.odd {background:#f9f9f9}
+.ex1 tbody tr.odd th {background:#f2f2f2}
+.ex1 tbody tr:hover {background:#F3F5BB}
+.ex1 tbody tr:hover th {background:#F2F684; color:#1BA6B2}
+.ex1 tfoot tr {border-top:6px solid #E9F7F6; color:#1BA6B2}
+.ex1 tfoot th {text-align:center; padding-left:10px}
 </style>
 <script>
 	$(function() {
@@ -263,9 +276,10 @@ fieldset div {
 		</div>
 	</div>
    <img  src="images/bar.png" style="width: 100%">
+ 
  <div id="features-wrapper">
       <section id="features" class="container"> 
-	<div id="tabs">
+	<div id="tabs" style="font-family:'Jeju Gothic', serif;" >
 		<ul>
 			<li><a href="#tab1">상점등록</a></li>
 			<li><a href="#tab2">정보수정</a></li>
@@ -274,27 +288,30 @@ fieldset div {
 		</ul>
 
 		<div id="tab1">
-			<table style="width: 100%">
+			<table style="width: 100%; border: 1px solid black; text-align: center;" class="ex1" >
+			<%-- <caption>상점등록</caption> --%>
+				<thead>
+			<tr>
+			<th scope="col" style="background-color: #F2CB61" align="center">상호명</th>
+			<th scope="col" style="background-color: #F2CB61" align="center">수정</th>
+			<th scope="col" style="background-color: #F2CB61" align="center">삭제</th>			
+			</tr>
+			</thead>
+			<c:forEach items="${allStore}" var="store" varStatus="status" >
 				<tr>
-					<td>상호명</td>
-					<td>수정</td>
-					<td>삭제</td>
-				</tr>
-			<c:forEach items="${allStore}" var="store" varStatus="status">
-				<tr>
-					<td>${store.storeName }</td>
-					<td><button id="store${status.current.storeCode }" data-toggle="modal" data-target="#myModalstore${status.current.storeCode }">
+					<td align="center"><h3>${store.storeName }</h3></td>
+					<td><button id="store${status.current.storeCode }" data-toggle="modal" data-target="#myModalstore${status.current.storeCode }"  class="btn btn-primary btn-lg btn-block">
 					수정하기</button></td>
-					<td><button id="dstore${status.current.storeCode }" data-toggle="modal" data-target="#dmyModalstore${status.current.storeCode }">
+					<td><button id="dstore${status.current.storeCode }" data-toggle="modal" data-target="#dmyModalstore${status.current.storeCode }"  class="btn btn-primary btn-lg btn-block">
 					삭제하기</button> </td>
 				</tr>
 			</c:forEach>
-			</table>
 			
-			<button id="newstore" data-toggle="modal" data-target="#newStoreModal">
-					새로운 가게 등록</button>
-							
-		</div>
+			</table>	<br>		
+			
+			<input type="button" id="newstore" data-toggle="modal" data-target="#newStoreModal"  class="btn btn-primary btn-lg btn-block"value="새로운 가게 등록"/> 
+			<!-- <input   id="newstore" data-toggle="modal" data-target="#newStoreModal"  type="submit" value="새로운 가게 등록" align="left" size="15cm" class="btn btn-primary btn-lg btn-block">				
+		 --></div>
 		
 		 <!-- ----------------------가게별 수정 모달-------------------------- -->
 		<c:forEach items="${allStore}" var="store" varStatus="status">
@@ -309,8 +326,67 @@ fieldset div {
 				<div class="modal-body" id="here${status.current.storeCode }">
 				<c:url value="/info/update_store" var="action"></c:url>
 				<form:form modelAttribute="store${status.count }" method="post" action="${action}" id="updateStoreForm" name="updateStoreForm">
-				<%-- <fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="startDate"/>
-				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="endDate"/> --%>
+					<fieldset>	
+						<div style="font-style: normal; width: 15cm" >
+						<table border="">						
+						
+						<tr>
+						<td style="text-align: left;" align="left">상호명</td>
+						<td><form:input id="storeCode" path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
+						<form:input id="storeName" path="storeName" type="text"  onChange="javaScript:change();" maxLength="50" title="상호명을 입력하세요." align="middle" required="true"></form:input>
+						</td>
+						<td style="text-decoration:  red;">						
+						<input type="button" value="중복확인" id="storeDupCheck"/>
+							<input type="hidden" name="storechecked" id="storechecked"/><br>
+						</td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">지역</td>
+						<td><form:select path="regionName" items="${regionNames }" title="지역을 선택하세요." required="true"></form:select></td>
+						<td></td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">상세주소</td>
+						<td><form:input path="storeAdress" type="text" maxLength="300" title="상세주소를 입력하세요." required="true"></form:input></td>
+						<td></td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">업주ID</td>
+						<td><form:input path="ownerId" readonly="true"></form:input>
+						<td>*</td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">가게번호</td>
+						<td><form:input path="storePhone" type="text" maxLength="300" title="전화번호를 입력하세요." required="true"></form:input></td>
+						<td><input type="button" value="V" id="mailDupCheck" class="btn btn-primary btn-sm "><input type="hidden" name="checked2" id="checked2"/>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">업종</td>
+						<td><form:select path="typeName" items="${typeNames }" title="업종을 선택하세요." required="true"></form:select></td>
+						<td></td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">평점</td>
+						<td><form:input path="starPoint" readonly="true"></form:input></td>
+						<td>*</td>
+						</tr>						
+						</table>
+						
+						</div>		
+											
+					</fieldset>
+						<div style="font-style: normal; color: red; width: 20cm" >
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					*는 수정할 수 없는 정보입니다.<br>
+					<!-- <input id="ownerSubmit" type="submit" value="수정하기" width="20cm" ></input> -->
+					</div>
+					<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
+					탈퇴하기</button>  -->
+					</form:form>
+				
+				<%-- <form:form modelAttribute="store${status.count }" method="post" action="${action}" id="updateStoreForm" name="updateStoreForm">
+				<fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="startDate"/>
+				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="endDate"/>
 					<fieldset>	
 						<div style="font-style: normal; color: red;">
 							<form:input id="storeCode" path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
@@ -334,10 +410,11 @@ fieldset div {
 						</div>
 					</fieldset>
 					<input type="submit" class="btn btn-warning btn-sm" value="수정하기"/>
-				</form:form>
+				</form:form> --%>
 				</div>
 					<!-- 모달 푸터 -->
 					<div class="modal-footer">
+					<button id="ownerSubmit" type="submit"  width="20cm"  >수정하기</button>
 						<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
 					</div>
 					
@@ -345,6 +422,9 @@ fieldset div {
 			</div><!-- /.modal-dialog -->
 		</div>
 		</c:forEach>
+		
+		
+		
 		<!-- ----------------------가게별 수정 모달 끝-------------------------- -->
 		
 		
@@ -360,7 +440,7 @@ fieldset div {
 				<div class="modal-body" id="here">
 				<c:url value="/info/insert_store" var="action"></c:url>
 				<form:form modelAttribute="insertStore" method="post" action="${action}" id="form_insertStore" name="form_insertStore">
-					<fieldset>	
+					<%-- <fieldset>	
 						<div style="font-style: normal; color: red;">
 							<form:input id="ownerId" path="ownerId" type="hidden" value="${status.current.ownerId }"></form:input>
 							상호명(*내 가게의 상호명과 중복불가)
@@ -376,12 +456,57 @@ fieldset div {
 							업종
 							<form:select path="typeName" items="${typeNames }" title="업종을 선택하세요." required="true"></form:select><br>
 						</div>
+					</fieldset> --%>
+					<fieldset>	
+						<div style="font-style: normal; width: 15cm" >
+						<table border="">						
+						
+						<tr>
+						<td style="text-align: left;" align="left">상호명</td>
+						<td><form:input id="ownerId" path="ownerId" type="hidden" value="${status.current.ownerId }"></form:input>
+						<form:input id="storeName" path="storeName" type="text"  onChange="javaScript:change();" maxLength="50" title="상호명을 입력하세요." align="middle" required="true"></form:input>
+						</td>
+						<td style="text-decoration:  red;">						
+						<input type="button" value="V" id="storeDupCheck"/>
+							<input type="hidden" name="storechecked" id="storechecked"/>
+						</td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">지역</td>
+						<td><form:select path="regionName" items="${regionNames }" title="지역을 선택하세요." required="true"></form:select></td>
+						<td></td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">상세주소</td>
+						<td><form:input path="storeAdress" type="text" maxLength="300" title="상세주소를 입력하세요." required="true"></form:input></td>
+						<td></td>
+						</tr>						
+						<tr>
+						<td style="text-align: left;" align="left">가게번호</td>
+						<td><form:input path="storePhone" type="text" maxLength="300" title="전화번호를 입력하세요." required="true"></form:input></td>
+						<td><input type="button" value="V" id="mailDupCheck" class="btn btn-primary btn-sm "><input type="hidden" name="checked2" id="checked2"/>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">업종</td>
+						<td><form:select path="typeName" items="${typeNames }" title="업종을 선택하세요." required="true"></form:select></td>
+						<td></td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">평점</td>
+						<td><form:input path="starPoint" readonly="true"></form:input></td>
+						<td>*</td>
+						</tr>						
+						</table>
+						
+						</div>		
+											
 					</fieldset>
-					<input type="submit" class="btn btn-warning btn-sm" value="등록하기"/>
+					<!-- <input type="submit" class="btn btn-warning btn-sm" value="등록하기"/> -->
 				</form:form>
 				</div>
 					<!-- 모달 푸터 -->
 					<div class="modal-footer">
+					<button type="submit" class="btn btn-warning btn-sm">등록하기</button>
 						<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
 					</div>
 					
@@ -403,17 +528,24 @@ fieldset div {
 				</div>
 				<!-- 모달 바디 -->
 				<div class="modal-body" id="here${status.current.storeCode }">
+				정말 삭제하시겠습니까?<br>
 				<!-- id="form_deleteStore" name="form_deleteStore" -->
-				<form method="post" action="${url}?storeCode=${status.current.storeCode }">
+				<%-- <form method="post" action="${url}?storeCode=${status.current.storeCode }">
 					정말 삭제하시겠습니까?<br>
 					<input type="hidden" name="storeCode"/>
 					<input type="submit" class="btn btn-warning btn-sm" value="삭제하기"/>
-				</form>
+				</form> --%>
 				</div>
 				
 					<!-- 모달 푸터 -->
 					<div class="modal-footer">
+					<form method="post" action="${url}?storeCode=${status.current.storeCode }">
+					<!-- 정말 삭제하시겠습니까?<br> -->
+					<input type="hidden" name="storeCode"/>
+					<button type="submit" class="btn btn-warning btn-sm" >삭제하기</button>
 						<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
+				</form>
+					
 					</div>
 					
 				</div>	<!-- /.modal-content -->
@@ -426,18 +558,69 @@ fieldset div {
 		
 		<!-- 탭2 정보수정 및 탈퇴 -->
 		<div id="tab2">
-			<div id="footer" class="container" align="left">
-				정보 수정<br>
+			<div id="footer" class="container"   align="left">				
 				<c:url value="/info/update_owner" var="action"></c:url>
 				<form:form modelAttribute="updateOwner" method="post" action="${action}" id="updateOwner" name="updateOwner">
 					<fieldset>	
-						<div style="font-style: normal; color: red;">
+						<div style="font-style: normal; width: 26cm" >
+						<table border="">						
+						
+						<tr>
+						<td style="text-align: left;" align="left">아이디</td>
+						<td><form:input path="ownerId" name="userId"  title="Please provide your ID."	align="middle" readonly="true"></form:input></td>
+						<td style="text-decoration:  red;">*</td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">비밀번호</td>
+						<td><form:input path="ownerPassword" id="pass" type="password"	title="Please provide your password" required="true"></form:input></td>
+						<td></td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">비밀번호확인</td>
+						<td><input type="password" id="pass2" name="pass2"  value="${updateOwner.ownerPassword }" required="true" />						</td>
+						<td></td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">이름</td>
+						<td><form:input path="ownerName" name="ownerName"	title="Please provide your userName" readonly="true"></form:input>
+						<td>*</td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">이메일</td>
+						<td><form:input path="ownerMail" id="joinMail" type="email"	title="Please provide your userEmail" required="true"></form:input></td>
+						<td>&nbsp; <input type="button" value="V" id="mailDupCheck" class="btn btn-primary btn-sm "><input type="hidden" name="checked2" id="checked2"/>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">전화번호</td>
+						<td><form:input path="ownerPhone" name="ownerPhone"	title="Please provide your userPhone" required="true"></form:input></td>
+						<td></td>
+						</tr>
+						<tr>
+						<td style="text-align: left;" align="left">사업자등록번호</td>
+						<td><form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" readonly="true" ></form:input></td>
+						<td>*</td>
+						</tr>						
+						</table>
+						
+						</div>								
+					</fieldset>
+					<div style="font-style: normal; color: red; width: 20cm" >
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					  *는 수정할 수 없는 정보입니다.<br>
+					<input id="ownerSubmit" type="submit" value="수정하기" class="btn btn-primary btn-lg btn-block"></input>
+					</div>
+					<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
+					탈퇴하기</button>  -->
+					</form:form>	
+					<%-- 	<div style="font-style: normal; color: red; width: 20cm" >
 							*아이디
-							<form:input path="ownerId" name="userId" 
-								title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
+							<form:input path="ownerId" name="userId"  title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
 							비밀번호 
-							<form:input path="ownerPassword" id="pass" type="password"
-								title="Please provide your password" required="true"></form:input><br>
+							<form:input path="ownerPassword" id="pass" type="password"	title="Please provide your password" required="true"></form:input><br>
 							비밀번호확인
 							<input type="password" id="pass2" name="pass2"  value="${updateOwner.ownerPassword }" required="true" /><br>
 							*이름
@@ -455,9 +638,10 @@ fieldset div {
 							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" readonly="true"></form:input><br>
 							*는 수정할 수 없는 정보입니다.
 						</div>
-					</fieldset>
-					<input id="ownerSubmit" type="submit" value="수정하기"></input>
-				</form:form>
+						 --%>
+						
+				
+				
 				<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button> -->
 				
