@@ -164,7 +164,7 @@ $(document).ready(function(){
 			
 			if(arr != ""){
 				
-				form.action="../info/user/wishList/buy"; 
+				form.action= "../info/user/wishList/buy"; 
 				form.submit();
 			}	
 			else{
@@ -183,18 +183,25 @@ $(document).ready(function(){
 		var count = frm.wishListCheckBox.length;
 		var currentChance = frm.currentChance.value;
 		var afterChance = frm.afterChance.value;
-		  for(var i=0; i < count; i++ ){
-		       if( frm.wishListCheckBox[i].checked == true ){
-		    	
-			    sum += 1; 
-			   
-		       }
-		       
-		   }
-		  
+		
+		
+		
+		
+		if(count!=undefined){
+			  
+			for(var i=0; i < count; i++ ){
+			       if( frm.wishListCheckBox[i].checked == true ){
+				    sum += 1; 
+			       }
+			   }
+			 }
+			 else{
+			  	if(frm.wishListCheckBox.checked == true){
+			   sum=1;
+			  }
+			}
 		  frm.wishListCount.value = sum;  
 		  frm.afterChance.value= currentChance-sum; 
-		 
 		}
 
 	
@@ -474,6 +481,29 @@ $(document).ready(function(){
 				<c:url value="/info/user/update" var="action"></c:url>
 				<form:form modelAttribute="updateUser" method="post" action="${action}" id="updateUser" name="updateUser">
 					<fieldset>	
+<%-- 
+						<div style="font-style: normal; color: black;">
+							*아이디
+							<form:input path="userId" name="userId" 
+								title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
+							비밀번호 
+							<form:input path="userPassword" id="pass" type="password"
+								title="Please provide your password" required="true"></form:input><br>
+							비밀번호확인
+							<input type="password" id="pass2" name="pass2"  value="${updateUser.userPassword }" required="true" /><br>
+							*이름
+							<form:input path="userName" name="userName"
+								title="Please provide your userName" readonly="true"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
+							이메일
+							<form:input path="userMail" id="joinMail" type="email"
+								title="Please provide your userEmail" required="true"></form:input>
+							<input type="button" value="중복확인" id="mailDupCheck"/><br>
+							<input type="hidden" name="checked2" id="checked2"/><br>
+							전화번호	
+							<form:input path="userPhone" name="userPhone"
+								title="Please provide your userPhone" required="true"></form:input><br>
+							*는 수정할 수 없는 정보입니다. --%>
+
 						<div style="font-style: normal; color: black; width: 26cm">
 						<table id="updateUserinfo">
 						<tr>
@@ -514,7 +544,7 @@ $(document).ready(function(){
 								</tr>
 								</table>
 							<br><div align="center"><font  style="font-size: 14px; color: red;" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*는 수정할 수 없는 정보입니다.</font></div>
-							
+
 						</div>
 					</fieldset>
 					<div align="center"><input id="userSubmit" type="submit" value="수정하기" align="middle"></input></div>

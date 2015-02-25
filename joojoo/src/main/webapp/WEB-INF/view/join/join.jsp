@@ -1,27 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@page import="joojoo.entity.All"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
+<title>MyPage</title>
 
-<title>JoinPage</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-
-<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/style-1000px.css">
-<link rel="stylesheet" href="css/style-desktop.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="css/style-1000px.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style-desktop.css">
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
@@ -29,8 +30,50 @@
 <script src="js/skel.min.js"></script>
 <script src="js/skel-layers.min.js"></script>
 <script src="js/init.js"></script>
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<style type="text/css">
+table, th, td {
+	
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+	text-align: left;
+}
+
+table#t01 {
+	width: 100%;
+	background-color: #f1f1c1;
+}
+
+label {
+	display: inline-block;
+	width: 5em;
+}
+
+fieldset .help {
+	margin-top: 2em;
+	display: inline-block;
+}
+
+.ui-tooltip {
+	width: 200px;
+}
+
+
+#header {
+	background-image: url(images/main.jpg);
+}
+
+fieldset div {
+	margin-bottom: 2em;
+}
+
+</style>
 <script>    
  $(document).ready(function(){	   
   $("#idDupCheck2").click(function(){
@@ -106,7 +149,11 @@ $("#licenseDupCheck").click(function(){
       }else{
          <c:url value="/join/idCheck" var="idchk"></c:url>
          var url = "${idchk}?joinId="+$("#joinId").val();
-         window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
+
+         var popOptions = "dialogWidth: 500px; dialogHeight: 30px; center: yes; resizable: yes; status: no; scroll: no;"; 
+         window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no") ;
+      		/* window.showModelessDialog(url,window,popOptions); */
+
       }
    });
    
@@ -132,17 +179,7 @@ $("#licenseDupCheck").click(function(){
         }        
     };
     
-    
-/*    $("#licenseDupCheck").click(function(){
-      if($("#joinLicense").val()==""){
-         alert("사업자등록번호를 입력해 주세요.");
-         $("#joinLicense").focus();      
-      }else{
-         <c:url value="/join/licenseCheck" var="licensechk"></c:url>
-         var url = "${licensechk}?joinLicense="+$("#joinLicense").val();
-         window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
-      }
-   }); */
+
     
     password1.addEventListener('change', checkPasswordValidity, false);
     password2.addEventListener('change', checkPasswordValidity, false);
