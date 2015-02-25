@@ -215,7 +215,7 @@ fieldset .help {
 input[type="button"],
 	input[type="submit"],
 	input[type="text"],
-	input[type="password"],
+	
 	input[type="mail"]{
 	font-family:'Jeju Gothic', serif;
 		font-size: 14px;

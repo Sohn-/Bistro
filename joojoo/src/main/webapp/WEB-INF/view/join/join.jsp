@@ -76,7 +76,7 @@ fieldset div {
 input[type="button"],
 	input[type="submit"],
 	input[type="text"],
-	input[type="password"],
+
 	input[type="email"]{
 	font-family:'Jeju Gothic', serif;
 		font-size: 14px;
@@ -85,6 +85,10 @@ input[type="button"],
 	font-family:'Jeju Gothic', serif;
 		font-size: 14px;
 	
+	}
+	input[type="password"]{
+	font-size: 14px;
+
 	}
 
 </style>
@@ -314,7 +318,7 @@ fieldset .help {
 	input[type="button"],
 	input[type="submit"],
 	input[type="text"],
-	input[type="password"],
+	
 	input[type="mail"]{
 	font-family:'Jeju Gothic', serif;
 	color: black;
@@ -376,7 +380,8 @@ fieldset .help {
 					<td>
 						<form:input path="userId" id="joinId" placeholder="아이디" required="true" size="20" /><br> 
 						<form:input path="userPassword" id="pass" type="password"	required="true" placeholder="비밀번호" /><br>   
-						<input type="password"  id="pass2" name="pass2" required="true"	placeholder="비밀번호 재확인" /><br>      	
+						<input type="password"  id="pass2" name="pass2" required="true"	placeholder="비밀번호 재확인" /><br> 
+						      	
 						<form:input path="userName" required="true" placeholder="이름" />   <br> 			
 						<form:input path="userMail" id="joinMail" type="email" required="true"	placeholder="e-mail" /><br>
 						<form:input path="userPhone" required="true" placeholder="휴대전화번호" /><br>   
