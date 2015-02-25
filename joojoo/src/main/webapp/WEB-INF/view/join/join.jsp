@@ -40,7 +40,7 @@
 	}
 		<c:url value="/join/idCheck2" var="idchk"></c:url>
 		var url = "${idchk}?joinId2="+$("#joinId2").val();
-		window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")			
+		window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")			
 });
 
 $("#mailDupCheck2").click(function(){
@@ -50,7 +50,7 @@ $("#mailDupCheck2").click(function(){
 	}else{
 		<c:url value="/join/mailCheck2" var="mailchk"></c:url>
 		var url = "${mailchk}?joinMail2="+$("#joinMail2").val();
-		window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")
+		window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
 	}
 });		
 $("#licenseDupCheck").click(function(){
@@ -60,7 +60,7 @@ $("#licenseDupCheck").click(function(){
 	}else{
 		<c:url value="/join/licenseCheck" var="licensechk"></c:url>
 		var url = "${licensechk}?joinLicense="+$("#joinLicense").val();
-		window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")
+		window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
 	}
 });		
   var password1 = document.getElementById('pass');
@@ -106,7 +106,7 @@ $("#licenseDupCheck").click(function(){
       }else{
          <c:url value="/join/idCheck" var="idchk"></c:url>
          var url = "${idchk}?joinId="+$("#joinId").val();
-         window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")
+         window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
       }
    });
    
@@ -117,7 +117,7 @@ $("#licenseDupCheck").click(function(){
       }else{
          <c:url value="/join/mailCheck" var="mailchk"></c:url>
          var url = "${mailchk}?joinMail="+$("#joinMail").val();
-         window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")
+         window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
       }
    });
    
@@ -258,6 +258,16 @@ fieldset .help {
 #header {
 	background-image: url(images/main.jpg);
 }
+
+
+	input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+	
+	}
 </style>
 
 </head>
@@ -307,7 +317,7 @@ fieldset .help {
 		<div id="tab1" style="background-color:#f6f6f6;">	
 			<c:url value="/join/result/user" var="action"></c:url> 
 			<form:form modelAttribute="joinUser" method="post" action="${action} " id="form"> 			
-				<h1 align="center">일 반 회 원 가 입</h1>		
+				<h2 align="center" style="color:black;">일 반 회 원 가 입</h2>		
 				<div align="center">		
 					<table align="center" background="">
 					<tr>
@@ -351,7 +361,7 @@ fieldset .help {
 	    </div>
 	    
 	    <div id="tab2" style="background-color:#f6f6f6;">
-	    <h1 align="center" >업 주 회 원 가 입</h1>
+	    <h2 align="center" style="color:black;">업 주 회 원 가 입</h2>
 			<c:url value="/join/join_o2" var="action"></c:url> 
 			
 			<!-- <table align="center" background="">
@@ -375,9 +385,9 @@ fieldset .help {
 					<br>
 			<form:input path="storeName"  placeholder="상호명" required="true"/><br>
 			<form:input path="storePhone"  placeholder="전화번호" required="true"/><br>
-			<form:select path="regionName"  items="${regionNames }" required="true"/><br>
+			<form:select path="regionName"  items="${regionNames }" required="true" style="font-family:'Jeju Gothic', serif;"/><br>
 			<form:input path="storeAdress"  placeholder="상세주소" required="true"/><br>
-			<form:select path="typeName"  items="${typeNames }" required="true"/><br>
+			<form:select path="typeName"  items="${typeNames }" required="true" style="font-family:'Jeju Gothic', serif;"/><br>
 			<form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>			
 			<input type="submit" id="next" value="업주 및 상점 등록 확인" class="btn btn-primary btn-lg btn-block"/>
 			

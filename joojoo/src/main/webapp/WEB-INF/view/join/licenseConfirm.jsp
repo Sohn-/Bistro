@@ -54,7 +54,8 @@
 </script>
 </head>
 <body>
-<div align="center">
+<div align="left">
+
 	<h2>사업자 등록번호 중복 확인</h2>
 	<c:if test="${!empty (result) }">
 		${joinLicense}는 이미 등록된 번호입니다.<br>
@@ -70,6 +71,7 @@
 		<input type="text" id="joinLicense" name="joinLicense" style="width: 40%">
 		<input type="submit" value="전송"/>
 	</form>
+	
 	</div>
 </body>
 </html>
