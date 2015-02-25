@@ -345,7 +345,7 @@ $(document).ready(function(){
 			}else{
 				<c:url value="/join/mailCheck" var="mailchk"></c:url>
 				var url = "${mailchk}?joinMail="+$("#joinMail").val();
-				window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+				window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
 			}
 		});
 		
