@@ -347,7 +347,7 @@ fieldset .help {
 					
 					
 					
-					
+					<%-- <c:url value="/join/result/owner" var="action"></c:url> --%>
 
 					
 					
@@ -383,14 +383,13 @@ fieldset .help {
 					<form:input path="licenseNumber" id="joinLicense" required="true"  placeholder="사업자등록번호" /><br>					
 					<input type="submit" value="업주등록(다음단계로)" class="btn btn-primary btn-lg btn-block"/><br>
 					<br>
-					
-			<form:input path="storeName"  placeholder="상호명" required="true"/><br>
+			<%-- <form:input path="storeName"  placeholder="상호명" required="true"/><br>
 			<form:input path="storePhone"  placeholder="전화번호" required="true"/><br>
 			<form:select path="regionName"  items="${regionNames }" required="true" style="font-family:'Jeju Gothic', serif;"/><br>
 			<form:input path="storeAdress"  placeholder="상세주소" required="true"/><br>
 			<form:select path="typeName"  items="${typeNames }" required="true" style="font-family:'Jeju Gothic', serif;"/><br>
 			<form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>			
-			<input type="submit" id="next" value="업주 및 상점 등록 확인" class="btn btn-primary btn-lg btn-block"/>
+			<input type="submit" id="next" value="업주 및 상점 등록 확인" class="btn btn-primary btn-lg btn-block"/> --%>
 			
 			 		
 				</td>
