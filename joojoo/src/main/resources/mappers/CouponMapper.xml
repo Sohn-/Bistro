@@ -30,13 +30,6 @@
 		coupon_status = #{couponStatus}
 		WHERE coupon_code = #{couponCode}
 	</update>
-	
-	<update id="updateCouponByEndDate">
-		UPDATE Coupon SET
-		coupon_status = '기간만료'
-		WHERE coupon_status = '미사용'
-		AND end_date <![CDATA[ < ]]> sysdate
-	</update>
  	
 	<delete id="deleteCoupon" parameterType="String">
 		DELETE FROM Coupon
