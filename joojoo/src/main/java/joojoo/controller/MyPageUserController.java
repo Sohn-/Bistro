@@ -57,7 +57,7 @@ public class MyPageUserController {
 	    	Object loginUserObj = session.getAttribute("loginUser");
 	    	
 	    	
-	    	Users loginUser = (Users)loginUserObj;
+	    	All loginUser = (All)loginUserObj;
 	    	String userId = loginUser.getUserId();
 	    	///업주정보수정을 위한 코드
     		All updateUser = userService.getUserInfo(userId);
