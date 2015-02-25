@@ -174,7 +174,7 @@ public class MyPageOwnerController {
 		    	String endDateMinTime = sdf2.format(cal.getTime());
 		    	
 		    	cal.setTime(endDateMin);
-		    	cal.add(Calendar.MONDAY, 1);
+		    	cal.add(Calendar.HOUR, 24);
 		    	String endDateMaxTime = sdf2.format(cal.getTime());
 		    	
 		    	model.addAttribute("minTime", minTime);
@@ -233,7 +233,7 @@ public class MyPageOwnerController {
 		}
 	    
 	    @RequestMapping(value="/info/insert_event", method=RequestMethod.POST)
-		public String insertEvent(@ModelAttribute EventComment insertEvent, Model model, @RequestParam("uploadStoreFile") MultipartFile file,  HttpSession session,int couponCount) throws ParseException, IllegalStateException, IOException{
+		public String insertEvent(@ModelAttribute EventComment insertEvent, Model model, @RequestParam("uploadEventFile") MultipartFile file,  HttpSession session,int couponCount) throws ParseException, IllegalStateException, IOException{
 	    	logger.error("insertEvent 정보.."+insertEvent);
 	    	//getCommentCodeByOthers
 	    	
@@ -275,7 +275,7 @@ public class MyPageOwnerController {
 		}
 	    
 	    @RequestMapping(value="/info/update_event", method=RequestMethod.POST)
-		public String updateEvent(@ModelAttribute("event1") All updateEvent, @RequestParam("uploadStoreFile") MultipartFile file, Model model) throws IllegalStateException, IOException{
+		public String updateEvent(@ModelAttribute("event1") All updateEvent, @RequestParam("eventFile") MultipartFile file, Model model) throws IllegalStateException, IOException{
 	    	logger.error("updateEvent 정보.."+updateEvent);
 	    	
 	    	SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분");

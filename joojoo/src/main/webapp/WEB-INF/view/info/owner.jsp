@@ -843,7 +843,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<!-- 모달 바디 -->
 				<div class="modal-body" id="here">
 				<c:url value="/info/insert_event" var="action"></c:url>
-				<form:form modelAttribute="insertEvent" method="post" action="${action}" id="form3" name="form3">
+				<form:form modelAttribute="insertEvent" method="post" action="${action}" id="form3" name="form3" enctype="multipart/form-data">
 				<%-- <fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="endDate"/> --%>
 					<fieldset>	
@@ -868,9 +868,6 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							발행할 쿠폰 매수
 							<input type="number" name="couponCount" />
 							<br>
-							
-							*이벤트 시간은 이후 수정할 수 없습니다.
-
 							*이벤트 시간은 이후 수정할 수 없습니다.<br>
 							현재 가능한 이벤트 시작시간<br> [${minTime } ~ ${maxTime }]<br>
 							현재 가능한 이벤트 종료시간<br> [${endDateMinTime } ~ ${endDateMaxTime }]  
