@@ -66,7 +66,7 @@
 	다른 메일로 시도하려면 새로 중복 체크를 하세요.
 	<form action="${mailchk}">
 		<label for="joinMail2">메일</label>
-		<input type="text" id="joinMail2" name="joinMail2">
+		<input type="text" id="joinMail2" name="joinMail2" style="width: 40%">
 		<input type="submit" value="전송"/>
 	</form>
 </body>

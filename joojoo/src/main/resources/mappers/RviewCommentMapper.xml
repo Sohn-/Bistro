@@ -132,6 +132,8 @@
 	<select id= "getAllRviewComments" resultType="All">
 		select * 
 		from rview_comment
+		join stores s using(store_code)
+		join event_comment e using(comment_code)
 	</select>
 	
 	<select id= "getRviewCommentByCommentCode" parameterType="Integer"
