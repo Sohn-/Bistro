@@ -527,7 +527,7 @@ jssor_slider1_starter('slider1_container');
 
 	<!-- Footer -->
 	<div>
-		<div id="footer" class="container">
+		<div id="footer-wrapper" class="container">
 			<div align="center">
 				<br> <br> <a href="<%=request.getContextPath()%>/footer/servicePolicy">이용약관</a>	&nbsp; &nbsp; 
 				<a href="<%=request.getContextPath()%>/footer/privacyPolicy">개인정보보호방침</a>		&nbsp; &nbsp; 
@@ -541,8 +541,10 @@ jssor_slider1_starter('slider1_container');
 				<br>
 			</div>
 		</div>
+	
 	</div>
 
+       
 </body>
 </html>
 

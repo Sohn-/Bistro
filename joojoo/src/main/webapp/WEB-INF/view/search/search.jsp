@@ -1,7 +1,6 @@
 <%@page import="joojoo.entity.All"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -261,7 +260,9 @@ fieldset .help {
 #header {
 	background-image: url(images/main.jpg);
 }
-
+ #wrap #left { display:inline; float:left; width:220px; height:500px; margin-left:10px; background:#33CCFF; }
+ #wrap #content { float:left; width:500px; height:500px; margin-left:10px; background:#BFF484; }
+ #wrap #right { float:left; width:220px; height:500px; margin-left:10px; background:#73534D; }
 </style>
 
 </head>
@@ -313,18 +314,30 @@ fieldset .help {
 
 <!-- 헤더 바디 구분 띠 -->
 <img src="images/bar.png" style="width: 100%">
-	<div align="center" style="top: 1cm; background-color: #323232;">
+
+
+	<div align="center" style="top: 1cm; background-color: #323232; display:inline;" >
 	<c:url value="/main/keyword" var="action"></c:url>
 		<form:form modelAttribute="category" method="post"	action="${action}">
 		<br>
 		<br>
-			<table border="1px solid red" bordercolor="red"><tr><td>	
-			<form:input path="keyword" name="keyword"	placeholder="keyWord" type="text" maxlength="30" />	</td><td>
-			<button type="submit" class="form-button-submit button "style="height: 43px; padding-top: 0.1cm;">Search</button></td><tr>
-			</table>
+		<div id="left" style="top: 1cm; background-color: #323232; display:inline;">aa</div>
+		<div id="content"><form:input path="keyword" name="keyword"	placeholder="keyWord" type="text" maxlength="30" />	
+			</div>
+		<div id="top" style="top: 1cm; background-color: #323232; display:inline;">	<button type="submit" class="form-button-submit button "style="height: 43px; padding-top: 0.1cm;">Search</button>
+			</div>
+			<!-- <table border="1px solid red" bordercolor="red"><tr>
+			<td>	 -->
+			<!-- </td>
+			<td> -->
+		<!-- </td>
+			<tr>
+			</table> -->
 		</form:form>
 	
 	</div>
+
+	
 <!-- 바디 시작 -->
 <div id="features-wrapper">
 <!-- 바디 카테고리 시작 -->

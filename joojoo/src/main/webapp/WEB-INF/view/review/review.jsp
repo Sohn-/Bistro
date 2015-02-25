@@ -200,6 +200,161 @@ function deleteChk(){
     
     <!--가자! 본론으로-->
     
+
+<div class="container">
+	<div >
+		<ul>
+			<li><a href="list.do">스프링  게시판</a></li>
+			<li><a href="../logout.do">로그아웃</a></li>		
+		</ul>
+		<form action="list.do" method="get">		
+			<select id="type" name="type">
+				<option value="subject">제목</option>
+				<option value="content">내용</option>
+				<option value="writer">작성자</option>
+			</select>
+			<input type="text" id="keyword" name="keyword" value="<%if(request.getParameter("keyword") != null){ out.print(request.getParameter("keyword")); } else { out.print(""); }%>" />
+			<input type="submit" value="검색" />			
+		</form>
+	</div>	
+	
+	<table border="0" class="boardTable">
+		<thead>
+		<tr>
+			<th>글번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>댓글수</th>
+			<th>조회수</th>
+			<th>추천수</th>
+			<th>작성일</th>	
+		</tr>
+		</thead>
+		<tbody>
+		<c:forEach var="board" items="${boardList}">
+		<tr>
+			<td class="idx">${board.rnum}</td>
+			<td align="left" class="subject">
+				<c:if test="${board.comment >= 10}"><img src="<%=request.getContextPath()%>/img/hit.jpg" /></c:if>
+				<a href="view.do?idx=${board.idx}">${board.subject}</a></td>
+			<td class="writer"><c:choose><c:when test="${board.writerId == userId}"><strong>${board.writer}</strong></c:when><c:otherwise>${board.writer}</c:otherwise></c:choose></td>
+			<td class="comment">${board.comment}</td>
+			<td class="hitcount">${board.hitcount}</td>
+			<td class="recommendcount">${board.recommendcount}</td>
+			<td class="writeDate">${board.writeDate}</td>		
+		</tr>
+		</c:forEach>
+		</tbody>
+	</table>
+	<br />
+	${pageHtml}
+	<br /><br />
+	<input type="button" value="목록" class="writeBt" onclick="moveAction(2)"/>
+	<input type="button" value="쓰기" class="writeBt" onclick="moveAction(1)"/>	
+</div>
+
+
+<div class="wrapper">	
+	<h3>새 글 쓰기</h3>
+	<form action="write.do" method="post" onsubmit="return writeFormCheck()" enctype="multipart/form-data">	
+	<table class="boardWrite">	
+		<tr>
+			<th><label for="subject">제목</label></th>
+			<td>
+				<input type="text" id="subject" name="subject" class="boardSubject"/>
+				<input type="hidden" id="writer" name="writer" value="${userName}" />
+				<input type="hidden" id="writerId" name="writerId" value="${userId}" />
+			</td>			
+		</tr>
+		<tr>
+			<th><label for="content">내용</label></th>
+			<td><textarea id="content" name="content" class="boardContent"></textarea></td>			
+		</tr>
+		<tr>
+			<th><label for="file">파일</label></th>
+			<td><input type="file" id="file" name="file" /><span class="date">&nbsp;&nbsp;*&nbsp;임의로 파일명이 변경될 수 있습니다.</span></td>			
+		</tr>				
+	</table>
+	<br />
+	<input type="reset" value="재작성" class="writeBt"/>
+	<input type="submit" value="확인" class="writeBt"/>	
+	</form>
+</div>
+
+<div class="wrapper">	
+	<table class="boardView">
+		<tr>
+			<td colspan="4"><h3>${board.subject}</h3></td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<th>조회수</th>
+			<th>추천수</th>
+			<th>작성일</th>
+		</tr>
+		<tr>
+			<td>${board.writer}</td>
+			<td>${board.hitcount}</td>
+			<td>${board.recommendcount}</td>
+			<td>${board.writeDate}</td>
+		</tr>
+		<tr>
+			<th colspan="4">내용</th>
+		</tr>
+		<c:if test="${board.fileName != null }">
+		<tr>
+			<td colspan="4" align="left"><span class="date">첨부파일:&nbsp;<a href="<%=request.getContextPath()%>/files/${board.fileName}" target="_blank">${board.fileName}</a></span></td>
+		</tr>
+		</c:if>	
+		<tr>
+			<td colspan="4" align="left"><p>${board.content}</p><br /><br /></td>
+		</tr>		
+	</table>
+	<table class="commentView">
+		<tr>
+			<th colspan="2">댓글</th>
+		</tr>		
+		<c:forEach var="comment" items="${commentList}">
+		<tr>
+			<td class="writer">				
+				<p>${comment.writer}
+				<c:if test="${comment.writerId == userId}">
+					<br /><a onclick="commentDelete(${comment.idx}, ${board.idx})"><small>댓글 삭제</small></a>					
+				</c:if>
+				</p>
+			</td>
+			<td class="content" align="left">
+				<span class="date">${comment.writeDate}</span>
+				<p>${comment.content}</p>
+			</td>
+		</tr>
+		</c:forEach>
+		<tr>
+			<td class="writer"><strong>댓글 쓰기</strong></td>
+			<td class="content">
+				<form action="commentWrite.do" method="post">
+					<input type="hidden" id="writer" name="writer" value="${userName}" />
+					<input type="hidden" id="writerId" name="writerId" value="${userId}" />
+					<input type="hidden" id="linkedArticleNum" name="linkedArticleNum" value="${board.idx}" />
+					<textarea id="content" name="content" class="commentForm"></textarea>
+					<input type="submit" value="확인" class="commentBt" />
+				</form>
+			</td>
+		</tr>
+	</table>
+	<br />
+	<c:choose>
+		<c:when test="${board.writerId == userId}">
+			<input type="button" value="삭제" class="writeBt" onclick="moveAction(1)" />
+			<input type="button" value="수정" class="writeBt" onclick="moveAction(2)" />
+			<input type="button" value="목록" class="writeBt" onclick="moveAction(3)" />
+		</c:when>
+		<c:otherwise>
+			<input type="button" value="추천" class="writeBt" onclick="moveAction(4)" />
+			<input type="button" value="목록" class="writeBt" onclick="moveAction(3)" />
+		</c:otherwise>
+	</c:choose>
+</div>
     
     	<!-- Footer -->
 	<div>
