@@ -75,7 +75,7 @@ public class SearchController {
 
 
 	@RequestMapping(value="/main/keyword",  method=RequestMethod.POST)
-	public String searchKeywordResult(@ModelAttribute("category") Category category, Model model){
+	public String searchKeywordResult(@ModelAttribute("category1") Category category, Model model){
 		//model.addAttribute("category", category);
 		logger.error("처음 받은 카테고리는..."+category);
 		// model.addAttribute("category", category);
@@ -163,6 +163,7 @@ public class SearchController {
 		model.addAttribute("category2", category);
 		return "search/search";
 	}
+	
 	
 	@ExceptionHandler
 	public String exceptionParameter(RuntimeException e){

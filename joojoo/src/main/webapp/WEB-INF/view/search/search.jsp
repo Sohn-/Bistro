@@ -384,7 +384,7 @@ fieldset .help {
 	<div id="slider1_container" style="position:relative;padding:0px;margin:0 auto;top:0px;left:0px;width:960px;height:480px;background:#282828;">
 	<div u="loading" style="position:absolute;top:0px;left:0px;">
 	<div style="filter:alpha(opacity=70);opacity:0.7;position:absolute;display:block;background-color:#000000;top:0px;left:0px;width:100%;height:100%;"></div>
-	<div style="position:absolute;display:block;background:url(../img/loading.gif) no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div></div>
+	<div style="position:absolute;display:block;/* background:url(../img/loading.gif) no-repeat center center; */top:0px;left:0px;width:100%;height:100%;"></div></div>
 	<div u="slides" style="cursor:move;position:absolute;left:260px;top:0px;width:720px;height:480px;overflow:hidden;">
 	
 	<c:forEach items="${search_events}" var="event" varStatus="status">
