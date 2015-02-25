@@ -90,7 +90,12 @@ static final Logger LOG = LoggerFactory.getLogger(EventCommentDaoImplTest.class)
 		//dao.getEventCommentsByOwnerId("sohn");
 		
 		//int commentCode = 1;
-		dao.getEventCommentByCommentCode(1);
+		//dao.getEventCommentByCommentCode(1);
+		/*EventComment e = new EventComment();
+		e.setContent(content);
+		e.setTitle("집같이편안한);
+		
+		dao.getCommentCodeByOthers(e);*/
 
 	}
 }

@@ -812,7 +812,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<%-- <fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="endDate"/> --%>
 					<fieldset>	
-						<div style="font-style: normal; color: red;">
+						<div style="font-style: normal; color: black;">
 							제목
 							<form:input path="title" type="text"  maxLength="50" title="제목을 입력하세요." align="middle" required="true"></form:input><br>
 							내용
@@ -827,9 +827,17 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<form:select path="serviceTypeName" accesskey="1" items="${serviceTypeNames }" title="서비스종류를 선택하세요." required="true"></form:select><br>
 							인원
 							<form:select path="personsLevel" items="${personsLevels }" title="인원을 선택하세요." required="true"></form:select><br>
+
+							발행할 쿠폰 매수
+							<input type="number" name="couponCount" />
+							<br>
+							
+							*이벤트 시간은 이후 수정할 수 없습니다.
+
 							*이벤트 시간은 이후 수정할 수 없습니다.<br>
 							현재 가능한 이벤트 시작시간<br> [${minTime } ~ ${maxTime }]<br>
 							현재 가능한 이벤트 종료시간<br> [${endDateMinTime } ~ ${endDateMaxTime }]  
+
 
 						</div>
 					</fieldset>

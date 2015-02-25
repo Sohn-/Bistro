@@ -18,5 +18,7 @@ public interface UserService {
 	All UsersLogin(Users user);//로그인
 	
 	All getUserInfo(String userId);
+	
+	int updateUserChance(Users user);
 
 }

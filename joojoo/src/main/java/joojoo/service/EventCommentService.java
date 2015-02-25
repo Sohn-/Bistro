@@ -18,6 +18,6 @@ public interface EventCommentService {
 	int modifyEvent(All eventComment); //업주회원 마이페이지 이벤트 수정
 	int requestDeleteEvent(All eventComment); //업주회원 마이페이지 삭제 요청
 	All SearchOneEvent(int commentCode); //이벤트 하나 상세 조회	
-	
+	int getCommentCode(EventComment eventComment);
 
 }

@@ -35,7 +35,7 @@ public class UserDaoTest {
 	public void daoTest(){
 		Users user1 = new Users();
 		user1.setUserId("aaa");
-		user1.setChance(5);
+		user1.setChance(4);
 		user1.setUserMail("aaa1");
 		user1.setUserName("aaa1");
 		user1.setUserPassword("aaa");
@@ -44,12 +44,14 @@ public class UserDaoTest {
 		
 		//LOG.trace("수업 1 : 부서의 개수는 [dao]: "+dao.insertUser(user1)); //OK
 		//LOG.trace(user1.toString());
-		LOG.trace("수업 1 :  "+dao.updateUser(user1)); //OK
+		//LOG.trace("수업 1 :  "+dao.updateUser(user1)); //OK
 		//LOG.trace("수업 1:" +dao.getUsersByUserId("ansoog1"));
 		//LOG.trace("수업 1:" +dao.getUsersByUserMail("asdf24243324"));
 		//LOG.trace("수업 1:" +dao.getUsersForIdFind(user1));
 		//LOG.trace("수업1:"+dao.getUsersForPassWordFind(user1));
 		//LOG.trace("수업"+dao.updateUser(user1));
+		
+		dao.updateUserChance(user1);
 		
 	}
 	

@@ -46,6 +46,7 @@
 	from stores
 	where owner_id=#{ownerId}
 	and store_name=#{storeName}
+	<!-- and store_adress=#{storeAdress} -->
 	</select>
   	
   	<select id = "getStoreByStoreCode" resultType="All">
