@@ -130,6 +130,23 @@ function Open_modal(commentCode, title, content, storeName) {
 	document.querySelector("#modal_title" + commentCode).innerHTML = storeName+ "(" + title + ")";
 	document.querySelector("#here" + commentCode).innerHTML = content;
 }
+
+
+$(document).ready(function(){
+	$("#regionRadioId").click(function(){
+		$("#regionRadioId").focus();		
+	});
+	$("#regionRadioId").click(function(){
+		$("#typeRadioId").focus();		
+	});
+	$("#regionRadioId").click(function(){
+		$("#personsLevelRadioId").focus();		
+	});
+	$("#regionRadioId").click(function(){
+		$("#serviceTypeRadioId").focus();		
+	});
+});
+
 </script>
 <script>
 (function (i, s, o, g, r, a, m) {
@@ -163,7 +180,6 @@ label {
 	display: inline-block;
 	width: 5em;
 }
-
 fieldset .help {
 	margin-top: 2em;
 	display: inline-block;
@@ -278,23 +294,6 @@ fieldset .help {
 
 
 </style>
-<script>
-function soundOff() {  
-  parent.document.frames["soundMenu"].document.getElementById("bgsound").stop(); 
-}
-
-function soundOn() {  
-  parent.document.frames["soundMenu"].document.getElementById("bgsound").play(); 
-}
-
-function soundNext() {  
-  parent.document.frames["soundMenu"].document.getElementById("bgsound").next(); 
-}
-
-function soundPrev() {  
-  parent.document.frames["soundMenu"].document.getElementById("bgsound").previous(); 
-}
-</script>
 </head>
 
 <body class="homepage" bgcolor=#333323>
@@ -343,7 +342,8 @@ function soundPrev() {
 
 		<div align="center" style="top: 1cm; background-color: #323232;">
 		<c:url value="/main/keyword" var="action"></c:url>
-		<form:form modelAttribute="category1" method="post" action="${action}">
+		<%-- <form:form modelAttribute="category1" method="post" action="${action}"> --%>
+		<form:form modelAttribute="category_keyword" method="post" action="${action}">
 		<br>
 		<br>
 			<table border="1px solid red" bordercolor="red"><tr><td>	
@@ -355,68 +355,56 @@ function soundPrev() {
 	</div>
 
 <!-- 바디 시작 -->
-<div id="features-wrapper" style="background-color: #323232;">
+<!-- style="background-color: #323232;" -->
+<div id="features-wrapper" >
 <!-- 바디 카테고리 시작 -->
 <!-- 키워드 검색 부분 -->	
 
-	<section id="features" class="container"> 	
+	<section id="features" class="container"> 		
 	
 	<c:url	var="action" value="/main/category"></c:url>
-	<%--form 한 그룹만 떼어서 해도 안돼 --%>
-	<%-- <form action="${action}" method="post">
-			<ul>
-			 	<form:radiobuttons path="regionName" items="${regionNames }"/>
-				<li>&nbsp; &nbsp;강남 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="강남"></input></li>
-				<li>&nbsp; &nbsp;건대 &nbsp; &nbsp; &nbsp;&nbsp;<input	type="radio" name="regionName" value="건대"></input></li>
-				<li>&nbsp; &nbsp;신림 &nbsp;&nbsp;<input type="radio"	name="regionName" value="신림"></input></li>
-				<li>&nbsp; &nbsp;신촌 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="신촌"></input></li>
-				<li>&nbsp; &nbsp;이태원 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="이태원"></input></li>
-				<li>&nbsp; &nbsp;종로 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="종로"></input></li>
-				<input type="submit" class="btn btn-warning btn-sm" value="Search"/>
-			</ul>
-		</form> --%> 		
-				
-	<form action="${action}" method="post">
+	<form:form action="${action}" modelAttribute="category_category" method="post">
 	<nav id="nav">
 		<ul>
-		<li><a href=""><span>Region</span></a>
+		<li><a href="#regionRadioId"><span>Region</span></a>	
 			<ul>
-			 	<%-- <form:radiobuttons path="regionName" items="${regionNames }"/> --%>
-				<li>&nbsp; &nbsp;강남 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="강남"></input></li>
+			 	<form:radiobuttons id="regionRadioId" path="regionName" items="${regionNames }"/>
+				<!-- <li>&nbsp; &nbsp;강남 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="강남"></input></li>
 				<li>&nbsp; &nbsp;건대 &nbsp; &nbsp; &nbsp;&nbsp;<input	type="radio" name="regionName" value="건대"></input></li>
 				<li>&nbsp; &nbsp;신림 &nbsp;&nbsp;<input type="radio"	name="regionName" value="신림"></input></li>
 				<li>&nbsp; &nbsp;신촌 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="신촌"></input></li>
 				<li>&nbsp; &nbsp;이태원 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="이태원"></input></li>
-				<li>&nbsp; &nbsp;종로 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="종로"></input></li>
+				<li>&nbsp; &nbsp;종로 &nbsp; &nbsp; &nbsp; <input type="radio"	name="regionName" value="종로"></input></li> -->
 			</ul>
 		</li>
 			
-		<li><a href=""><span>Type</span></a>
+		<li><a href="#typeRadioId"><span>Type</span></a>		
 			<ul>
-				<%-- <form:radiobuttons path="typeName" items="${typeNames }"/> --%>
-				<li>&nbsp; &nbsp;바 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="바"></input></li>
+				
+				<form:radiobuttons id="typeRadioId" path="typeName" items="${typeNames }"/>
+				<!-- <li>&nbsp; &nbsp;바 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input type="radio" name="typeName" value="바"></input></li>
 				<li>&nbsp; &nbsp;룸주점 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="룸"></input></li>
 				<li>&nbsp; &nbsp;고기집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="고깃집"></input></li>
 				<li>&nbsp; &nbsp;횟집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="횟집"></input></li>
 				<li>&nbsp; &nbsp;포장마차 &nbsp; &nbsp; <input type="radio"	name="typeName" value="포차"></input></li>
-				<li>&nbsp; &nbsp;호프집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="호프"></input></li>
+				<li>&nbsp; &nbsp;호프집 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<input	type="radio" name="typeName" value="호프"></input></li> -->
 			</ul>
 		</li>
 
-		<li><a href=""><span>persons</span></a>
+		<li><a href="#personsLevelRadioId"><span>persons</span></a>
 			<ul>
-				<%-- <form:radiobuttons path="personsLevel" items="${personsLevels }"/> --%>
-				<li>&nbsp; &nbsp;4인이하&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <input	type="radio" name="personsLevel" value="4명이하"></input></li>
+				<form:radiobuttons id="personsLevelRadioId" path="personsLevel" items="${personsLevels }"/>
+				<!-- <li>&nbsp; &nbsp;4인이하&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <input	type="radio" name="personsLevel" value="4명이하"></input></li>
 				<li>&nbsp; &nbsp;5~10인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input	type="radio" name="personsLevel" value="5~10명"></input></li>
-				<li>&nbsp; &nbsp;10인이상 &nbsp; &nbsp; <input type="radio"	name="personsLevel" value="10명이상"></input></li>
+				<li>&nbsp; &nbsp;10인이상 &nbsp; &nbsp; <input type="radio"	name="personsLevel" value="10명이상"></input></li> -->
 			</ul>
 		</li>
 
-		<li><a href=""><span>Service</span></a>
+		<li><a href="#serviceTypeRadioId"><span>Service</span></a>			 
 			<ul>
-				<%-- <form:radiobuttons path="serviceTypeName" items="${serviceTypeNames }"/> --%>
-				<li>&nbsp; &nbsp;서비스 메뉴 제공&nbsp; <input type="radio"	name="serviceType" value="서비스 메뉴 제공"></input></li>
-				<li>&nbsp;	&nbsp;금액 할인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input	type="radio" name="serviceType" value="금액 할인"></input></li>
+				<form:radiobuttons id="serviceTypeRadioId" path="serviceTypeName" items="${serviceTypeNames }"/>
+				<!-- <li>&nbsp; &nbsp;서비스 메뉴 제공&nbsp; <input type="radio"	name="serviceType" value="서비스 메뉴 제공"></input></li>
+				<li>&nbsp;	&nbsp;금액 할인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input	type="radio" name="serviceType" value="금액 할인"></input></li> -->
 			</ul>
 		</li>
 
@@ -425,9 +413,8 @@ function soundPrev() {
 		</li>
 		</ul>
 	</nav>
-	</form>
+	</form:form>
  <%--바디 카테고리 끝 --%> 
-	
 	<br>
 
 	<div style="height:20px;"></div>
@@ -444,11 +431,11 @@ function soundPrev() {
 	</c:if>
 	<div>
 		<button  style="border-color: none;" id="event${status.current.commentCode }"data-toggle="modal"	data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
-		<img u="image" src="images/p${status.count}.jpg"  style="width: 650px; height: 400px;">
+		<img u="image" src="images/event_${status.current.commentCode}.jpg"  style="width: 650px; height: 400px;">
 		</button>
 		<br><br>
 		<h3><c:out value="${event.storeName}" />[<c:out value="${event.title}" />]</h3>	
-		<img u="thumb" src="images/p${status.count}.jpg"  style="width: 60px; height: 40px;">
+		<img u="thumb" src="images/event_${status.current.commentCode}.jpg"  style="width: 60px; height: 40px;">
 		<div style="font-color: red; " align="center" ><h3>
 		</h3>
 	</div>
@@ -516,9 +503,9 @@ jssor_slider1_starter('slider1_container');
 				<!-- 카테고리 구분 테이블 -->
 				<table width="75%" align="center" cellpadding="0" cellspacing="0"	border="1" align="center"	style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
 					<tr align="center">
-						<td style="border: 1px gray solid;"><h4>상호명</h4></td>
-						<td style="border: 1px gray solid;"><h4>지역</h4></td>
-						<td style="border: 1px gray solid;"><h4>업종</h4></td>
+						<td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>상호명</h4></td>
+						<td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>지역</h4></td>
+						<td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>업종</h4></td>
 					</tr>
 				</table>
 				<!-- 카테고리 구분 테이블 끝 -->
