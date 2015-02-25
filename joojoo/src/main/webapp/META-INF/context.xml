@@ -34,11 +34,11 @@
                maxActive="100" maxIdle="30" maxWait="10000"
                username="joojoo" password="tiger" driverClassName="oracle.jdbc.OracleDriver"
                url="jdbc:oracle:thin:@localhost:1521:XE"/>
- <!-- 
-    <Resources>
-    	<PreResources
-    	className="org.apache.catalina.webresources.DirResourceSet"
-    	base="c:\db\uploaded\" 
-    	webAppMount="/WEB-INF/upload"></PreResources>
-    </Resources>     -->       
+   <Resources>
+		<PreResources
+			base="c:\db\uploaded\"
+			className="org.apache.catalina.webresources.DirResourceSet"
+			webAppMount="/WEB-INF/upload">
+		</PreResources>
+	</Resources>    
 </Context>

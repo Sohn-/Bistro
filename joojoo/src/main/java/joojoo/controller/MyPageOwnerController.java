@@ -1,5 +1,7 @@
 package joojoo.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class MyPageOwnerController {
 	static final Logger logger = LoggerFactory
@@ -57,6 +60,7 @@ public class MyPageOwnerController {
 	    @RequestMapping(value="/info", method=RequestMethod.GET)
 		public String showInfoControl(Model model,HttpSession session, HttpServletRequest req){
 	    	String path = null;
+	    	GetSessionId gs = GetSessionId.getInstance();
 	    		    	
 	    	Object loginOwnerObj = session.getAttribute("loginOwner");
 	    	Object loginUserObj = session.getAttribute("loginUser");
@@ -75,28 +79,21 @@ public class MyPageOwnerController {
 	    		List<All> allStore = storeService.showOwnerStores(ownerId);
 	    		int count=1;
 	    		for(All store: allStore){
+	    			String storeName = store.getStoreName();
+	    			String storeFilePath="storeImage"+ownerId+storeName;
+	    			store.setStoreFile(storeFilePath);
+	    			model.addAttribute("storeFilePath"+count, storeFilePath);
 	    			model.addAttribute("store"+count, store);
 	    			count++;
 	    		}
 	    		logger.error("allStore...."+allStore);
 	    		model.addAttribute("allStore",allStore);
+	    		model.addAttribute("count", count-1);
 	    		
-	    		List<String> regionNames = new ArrayList<String>();
-	    		regionNames.add("강남");
-	    		regionNames.add("건대");
-	    		regionNames.add("신림");
-	    		regionNames.add("신촌");
-	    		regionNames.add("이태원");
-	    		regionNames.add("종로");
+	    		List<String> regionNames = gs.getRegionNames();	
 	    		model.addAttribute("regionNames",regionNames);
 	    		
-	    		List<String> typeNames = new ArrayList<String>();
-	    		typeNames.add("바");
-	    		typeNames.add("룸");
-	    		typeNames.add("고깃집");
-	    		typeNames.add("횟집");
-	    		typeNames.add("포차");
-	    		typeNames.add("호프");
+	    		List<String> typeNames = gs.getTypeNames();
 	    		model.addAttribute("typeNames",typeNames); 
 	    		///가게조회를 위한 코드 끝
 	    		
@@ -129,16 +126,11 @@ public class MyPageOwnerController {
 	    		}
 	    		model.addAttribute("allEvent",allEvent);
 
-	    		List<String> serviceTypeNames = new ArrayList<String>();
-	    		serviceTypeNames.add("금액 할인");
-	    		serviceTypeNames.add("서비스 메뉴 제공");
-	    		model.addAttribute("serviceTypeNames",serviceTypeNames);
+	    		List<String> serviceTypeNames = gs.getServiceTypeNames();
+	    		model.addAttribute("serviceTypeNames",serviceTypeNames);	
 	    		
-	    		List<String> personsLevels = new ArrayList<String>();
-	    		personsLevels.add("4명이하");
-	    		personsLevels.add("5~10명");
-	    		personsLevels.add("10명이상");
-	    		model.addAttribute("personsLevels",personsLevels);   	
+	    		List<String> personsLevels = gs.getPersonsLevels();		
+	    		model.addAttribute("personsLevels",personsLevels);	
 	    		///이벤트글조회를 위한 코드 끝
 	    		
 	    		///쿠폰조회를 위한 코드
@@ -164,6 +156,7 @@ public class MyPageOwnerController {
 		    	int convert = 24*60*60*1000;
 		    	Date after30 = new Date();
 		    	Date date = new Date();
+		    	Date endDateMin = new Date();
 		    	Calendar cal = Calendar.getInstance();
 		    	cal.setTime(after30);
 		    	cal.add(Calendar.MONTH, 1);//현재 시간을 1달 후로 변환
@@ -172,10 +165,17 @@ public class MyPageOwnerController {
 		    	String maxTime = sdf2.format(cal.getTime());
 		    	
 		    	cal.add(Calendar.HOUR, 1);
+		    	endDateMin = cal.getTime();
 		    	String endDateMinTime = sdf2.format(cal.getTime());
+		    	
+		    	cal.setTime(endDateMin);
+		    	cal.add(Calendar.MONDAY, 1);
+		    	String endDateMaxTime = sdf2.format(cal.getTime());
+		    	
 		    	model.addAttribute("minTime", minTime);
 		    	model.addAttribute("maxTime", maxTime);
 		    	model.addAttribute("endDateMinTime", endDateMinTime);
+		    	model.addAttribute("endDateMaxTime", endDateMaxTime);
 		    	logger.error("maxTime= "+maxTime);
 	    		
 		    	path = "info/owner";
@@ -271,18 +271,27 @@ public class MyPageOwnerController {
 		public String updateEvent(@ModelAttribute("event1") All updateEvent, Model model){
 	    	logger.error("updateEvent 정보.."+updateEvent);
 	    	
-	    	SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분 ss초");
+	    	SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분");
+	    	
 			Date startDate = new Date();
 			Date endDate = new Date();
 			try {
 				startDate = sdf.parse(updateEvent.getStartDateStr());
 				endDate = sdf.parse(updateEvent.getEndDateStr());
+				logger.error("startDate = "+startDate);
 				updateEvent.setStartDate(startDate);
 				updateEvent.setEndDate(endDate);
+				
+				
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			String storeName = updateEvent.getStoreCodeStr();
+			updateEvent.setStoreName(storeName);
+			logger.error("storeName="+storeName);
+			
+			logger.error("업데이트 전 updateEvent"+updateEvent);
 	    	int result = eventService.modifyEvent(updateEvent);
 	    	if(result >0){
 	    		model.addAttribute("updateEvent", true);
@@ -291,12 +300,12 @@ public class MyPageOwnerController {
 	    		model.addAttribute("updateEvent", false);
 	    	}
 	    	logger.error("업데이트 이벤트 종료");
-	    	//마이페이지에서 updateSuccess가 true면 처음 들어갈때 if로 확인하여 alert 띄우기..
+
 			return "redirect:/info#tab3";
 		}
 	    
 	    @RequestMapping(value="/info/insert_store", method=RequestMethod.POST)
-		public String insertStore(@ModelAttribute Stores insertStore, Model model, HttpSession session) throws ParseException{
+		public String insertStore(@ModelAttribute Stores insertStore, Model model, @RequestParam("uploadStoreFile") MultipartFile file) throws ParseException, IllegalStateException, IOException{
 	    	logger.error("insertEvent 정보.."+insertStore);
 	    	int result = storeService.addStore(insertStore);
 	    	
@@ -306,6 +315,12 @@ public class MyPageOwnerController {
 	    	else{
 	    		model.addAttribute("insertStore", false);
 	    	}
+	    	
+	    	String fileName = "storeImage"+insertStore.getOwnerId()+insertStore.getStoreName()+".jpg";
+			logger.error("c:\\db\\upload\\"+fileName);
+			file.transferTo(new File("c:\\db\\uploaded\\"+fileName));
+			model.addAttribute("fileName", fileName);
+	
 	    	logger.error("인서트 이벤트 종료");
 			return "redirect:/info#tab1";
 		}
@@ -360,7 +375,8 @@ public class MyPageOwnerController {
 	    	}
 	    	logger.error("유즈 쿠폰 종료");
 			return "redirect:/info#tab4";
-		}
+		}   
+	    
 	    
 	    @RequestMapping(value="/info/storeNameCheck", method=RequestMethod.GET)
 	    public String showStoreNameCheckPage(@RequestParam String storeName, @RequestParam("storeCode") String storeCodeStr, Model model, HttpSession session, HttpServletRequest req){
