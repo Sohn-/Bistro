@@ -142,6 +142,15 @@ fieldset div {
 fieldset .help {
 	display: inline-block;
 }
+	input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+	color: black;
+	
+	}
 </style>
 </head>
 

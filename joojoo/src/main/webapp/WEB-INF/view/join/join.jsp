@@ -16,9 +16,9 @@
 <meta name="keywords" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/style-desktop.css">
+<link rel="stylesheet" href="/css/style-1000px.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style-desktop.css">
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -317,7 +317,7 @@ fieldset .help {
 	input[type="password"],
 	input[type="mail"]{
 	font-family:'Jeju Gothic', serif;
-	color: gray;
+	color: black;
 	
 	}
 </style>
@@ -371,12 +371,12 @@ fieldset .help {
 			<form:form modelAttribute="joinUser" method="post" action="${action} " id="form"> 			
 				<h2 align="left" style="color:black;">&nbsp;&nbsp;&nbsp;일 반 회 원 가 입</h2>		
 				<div align="center">		
-					<table align="center" background="">
+					<table align="center" background="" style="color:black">
 					<tr>
 					<td>
 						<form:input path="userId" id="joinId" placeholder="아이디" required="true" size="20" /><br> 
 						<form:input path="userPassword" id="pass" type="password"	required="true" placeholder="비밀번호" /><br>   
-						<input type="password" id="pass2" name="pass2" required="true"	placeholder="비밀번호 재확인" /><br>      	
+						<input type="password"  id="pass2" name="pass2" required="true"	placeholder="비밀번호 재확인" /><br>      	
 						<form:input path="userName" required="true" placeholder="이름" />   <br> 			
 						<form:input path="userMail" id="joinMail" type="email" required="true"	placeholder="e-mail" /><br>
 						<form:input path="userPhone" required="true" placeholder="휴대전화번호" /><br>   
