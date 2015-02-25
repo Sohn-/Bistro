@@ -98,6 +98,10 @@ public class All {
 	//private String userId;
 	//private int commentCode;
 
+	/////////////////////////////ImagesPath
+	private String storeFile;
+	private String eventFile;
+	
 	public int getRegionCode() {
 		return regionCode;
 	}
@@ -436,6 +440,22 @@ public class All {
 
 	public void setCheckPassword(String checkPassword) {
 		this.checkPassword = checkPassword;
+	}
+
+	public String getStoreFile() {
+		return storeFile;
+	}
+
+	public void setStoreFile(String storeFile) {
+		this.storeFile = storeFile;
+	}
+
+	public String getEventFile() {
+		return eventFile;
+	}
+
+	public void setEventFile(String eventFile) {
+		this.eventFile = eventFile;
 	}
 
 	@Override

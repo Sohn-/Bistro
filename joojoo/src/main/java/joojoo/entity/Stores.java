@@ -11,6 +11,7 @@ public class Stores  {
 	private String regionName;
 	private String typeName;
 	private int starPoint;
+	private String storeFile;
 
 	
 	public Stores(){}
@@ -108,6 +109,16 @@ public class Stores  {
 
 	public void setStarPoint(int starPoint) {
 		this.starPoint = starPoint;
+	}
+
+
+	public String getStoreFile() {
+		return storeFile;
+	}
+
+
+	public void setStoreFile(String storeFile) {
+		this.storeFile = storeFile;
 	}
 
 
