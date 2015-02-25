@@ -164,7 +164,7 @@ $(document).ready(function(){
 			
 			if(arr != ""){
 				
-				form.action="../info/user/wishList/buy"; 
+				form.action= "../info/user/wishList/buy"; 
 				form.submit();
 			}	
 			else{
@@ -183,18 +183,25 @@ $(document).ready(function(){
 		var count = frm.wishListCheckBox.length;
 		var currentChance = frm.currentChance.value;
 		var afterChance = frm.afterChance.value;
-		  for(var i=0; i < count; i++ ){
-		       if( frm.wishListCheckBox[i].checked == true ){
-		    	
-			    sum += 1; 
-			   
-		       }
-		       
-		   }
-		  
+		
+		
+		
+		
+		if(count!=undefined){
+			  
+			for(var i=0; i < count; i++ ){
+			       if( frm.wishListCheckBox[i].checked == true ){
+				    sum += 1; 
+			       }
+			   }
+			 }
+			 else{
+			  	if(frm.wishListCheckBox.checked == true){
+			   sum=1;
+			  }
+			}
 		  frm.wishListCount.value = sum;  
 		  frm.afterChance.value= currentChance-sum; 
-		 
 		}
 
 	
@@ -219,7 +226,7 @@ table, th, td {
 th, td {
 	padding: 5px;
 	text-align: left;
-	background-color: #F1F1C1;
+	 background-color: #F1F1C1; 
 	font-size: 14px;
 }
 
@@ -236,6 +243,9 @@ label {
 fieldset .help {
 	margin-top: 2em;
 	display: inline-block;
+}
+.updateUserinfo td{
+background-color: white;
 }
 
 .ui-tooltip {
@@ -320,6 +330,20 @@ fieldset .help {
 .ui-tooltip {
 	width: 210px;
 }
+
+input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	}
+	input[type="submit"]{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	
+	}
 </style>
 <script>
 $(function() {
@@ -422,7 +446,7 @@ $(document).ready(function(){
 
 			<!-- Logo -->
 			<h1 id="logo">
-				<a href="<%=request.getContextPath()%>/main">JooJooclub</a>
+				<a href="<%=request.getContextPath()%>/">JooJooclub</a>
 			</h1>
 			<p>Welcom To JooJooClub</p>
 			<div align="right">
@@ -453,34 +477,77 @@ $(document).ready(function(){
 		</ul>
 		<div id="tab1">
 			<div id="footer" class="container" align="left">
-				<h3 align="center">정보 수정</h3>
+				<!-- <h3 align="left" style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 정보 수정</h3><hr width="80%" align="left"> -->
 				<c:url value="/info/user/update" var="action"></c:url>
 				<form:form modelAttribute="updateUser" method="post" action="${action}" id="updateUser" name="updateUser">
 					<fieldset>	
+<%-- 
 						<div style="font-style: normal; color: black;">
 							*아이디
 							<form:input path="userId" name="userId" 
-								title="Please provide your ID."	align="middle" readonly="true" style="width:40%" ></form:input><br>
+								title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
 							비밀번호 
 							<form:input path="userPassword" id="pass" type="password"
-								title="Please provide your password" required="true" style="width:40%"></form:input><br>
+								title="Please provide your password" required="true"></form:input><br>
 							비밀번호확인
-							<input type="password" id="pass2" name="pass2"  value="${updateUser.userPassword }" required="true" style="width:40%"/><br>
+							<input type="password" id="pass2" name="pass2"  value="${updateUser.userPassword }" required="true" /><br>
 							*이름
 							<form:input path="userName" name="userName"
-								title="Please provide your userName" readonly="true" style="width:40%"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
+								title="Please provide your userName" readonly="true"></form:input><br> <!-- value="${updateOwner.ownerName}" -->
 							이메일
 							<form:input path="userMail" id="joinMail" type="email"
-								title="Please provide your userEmail" required="true" style="width:40%"></form:input>
+								title="Please provide your userEmail" required="true"></form:input>
 							<input type="button" value="중복확인" id="mailDupCheck"/><br>
 							<input type="hidden" name="checked2" id="checked2"/><br>
 							전화번호	
-							<form:input path="userPhone" type="text" name="userPhone"
-								title="Please provide your userPhone" required="true" style="width:40%"></form:input><br>
-							*는 수정할 수 없는 정보입니다.
+							<form:input path="userPhone" name="userPhone"
+								title="Please provide your userPhone" required="true"></form:input><br>
+							*는 수정할 수 없는 정보입니다. --%>
+
+						<div style="font-style: normal; color: black; width: 26cm">
+						<table id="updateUserinfo">
+						<tr>
+							<td style="text-align: left; background-color: white;" align="left">아이디</td>
+							<td style="background-color: white"><form:input path="userId" name="userId" 
+								title="Please provide your ID."	align="middle" readonly="true"   ></form:input></td>
+							<td style="text-decoration:  red; background-color: white;">*</td>
+							</tr>
+							<tr>	
+							<td style="text-align: left;background-color: white;" align="left">비밀번호</td> 
+							<td style="background-color: white"><form:input path="userPassword" id="pass" type="password"
+								title="Please provide your password" required="true" ></form:input></td>
+							
+							</tr>
+							<tr>
+							<td style="text-align: left; background-color: white;" align="left">비밀번호확인</td>
+							<td style="background-color: white"><input type="password" id="pass2" name="pass2"  value="${updateUser.userPassword }" required="true" style="width:40%"/></td>
+							<td style="background-color: white"></td>
+							</tr>
+							<tr>
+							<td style="text-align: left; background-color: white;" align="left">이름</td>
+							<td style="background-color: white"><form:input path="userName" name="userName"
+								title="Please provide your userName" readonly="true" ></form:input></td> 
+							<td style="background-color: white">*</td>
+							</tr>
+							<tr>
+								<!-- value="${updateOwner.ownerName}" -->
+							<td style="text-align: left; background-color: white;" align="left">이메일</td>
+							<td style="background-color: white"><form:input path="userMail" id="joinMail" type="email"
+								title="Please provide your userEmail" required="true" ></form:input></td>
+							<td style="background-color: white"><input type="button" value="V" id="mailDupCheck"/></td>
+							<input type="hidden" name="checked2" id="checked2"/></tr>
+							<tr>
+							<td style="text-align: left; background-color: white;" align="left">전화번호</td>
+							<td><form:input path="userPhone" type="text" name="userPhone"
+								title="Please provide your userPhone" required="true" ></form:input></td>
+								
+								</tr>
+								</table>
+							<br><div align="center"><font  style="font-size: 14px; color: red;" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*는 수정할 수 없는 정보입니다.</font></div>
+
 						</div>
 					</fieldset>
-					<input id="userSubmit" type="submit" value="수정하기"></input>
+					<div align="center"><input id="userSubmit" type="submit" value="수정하기" align="middle"></input></div>
 				</form:form>
 				<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button> -->
@@ -615,7 +682,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 					<c:if test="${isExist1 ne true }">
-					<td>미사용 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="3">미사용 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 				
@@ -652,7 +719,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				<c:if test="${isExist2 ne true }">
-					<td>사용 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">사용 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 				
@@ -684,7 +751,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				<c:if test="${isExist3 ne true }">
-					<td>환불 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">환불 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 			</table>
@@ -708,7 +775,7 @@ $(document).ready(function(){
 				</c:if>
 				</c:forEach>
 				  <c:if test="${isExist4 ne true }">
-					<td>기간만료 쿠폰이 존재하지 않습니다.</td>
+					<td colspan="4">기간만료 쿠폰이 존재하지 않습니다.</td>
 					</c:if>
 				
 			</table>

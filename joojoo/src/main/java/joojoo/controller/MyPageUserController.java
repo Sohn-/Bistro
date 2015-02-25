@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
-@SessionAttributes({"loginUser","loginOwner"})
+/*@SessionAttributes({"loginUser","loginOwner"})*/
 public class MyPageUserController {
 	
 		static final Logger LOG = LoggerFactory
@@ -68,7 +68,7 @@ public class MyPageUserController {
 	    	
 	    	
 	    	
-	    	String loginUserId = ((All)session.getAttribute("loginUser")).getUserId();
+	    	String loginUserId = loginUser.getUserId();
 	    	
 	    	//<---------wishList--------->
 	    	List<All> wishLists = wishListService.showAllWishList(loginUserId);
