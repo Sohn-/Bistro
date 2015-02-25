@@ -330,7 +330,7 @@ public class MyPageOwnerController {
 			return "redirect:/info#tab1";
 		}
 	    @RequestMapping(value="/info/update_store", method=RequestMethod.POST)
-		public String updateStore(@ModelAttribute("store1") All updateStore, Model model){
+		public String updateStore(@ModelAttribute("store1") All updateStore, @RequestParam("storeFile") MultipartFile file, Model model) throws IllegalStateException, IOException{
 	    	logger.error("updateStore 정보.."+updateStore);
 	    	
 	    	
@@ -341,6 +341,14 @@ public class MyPageOwnerController {
 	    	else{
 	    		model.addAttribute("updateStore", false);
 	    	}
+	    	int storeCode = updateStore.getStoreCode();
+	    	String fileName = "storeImage"+storeCode+".jpg";
+	    	
+	    	if(file != null){
+			file.transferTo(new File("c:\\db\\uploaded\\"+fileName));
+			model.addAttribute("fileName", fileName);
+	    	}
+			
 	    	logger.error("업데이트 스토어 종료");
 			return "redirect:/info#tab1";
 		}

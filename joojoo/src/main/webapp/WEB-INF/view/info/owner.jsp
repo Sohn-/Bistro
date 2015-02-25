@@ -135,16 +135,27 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				}
 			});
 			
-			$("#storeDupCheck").click(function(){
-				if($("#storeName").val()==""){
+			var count = ${count};
+			var storeDupCheck = new Array();
+			var storeName= new Array();
+			var storeCode = new Array();
+			for(i=1; i<=count; i++){
+				storeDupCheck[i] = "#storeDupCheck"+i;
+				storeName[i] = "#storeName"+i;
+				storeCode[i] = "#storeCode"+i;
+			}
+			for(i=1; i<=count; i++){
+			$(storeDupCheck[i]).click(function(){
+				if($(storeName[i]).val()==""){
 					alert("상호명을 입력해 주세요.");
-					$("#storeName").focus();		
+					$(storeName[i]).focus();		
 				}else{
 					<c:url value="/info/storeNameCheck" var="storeNamechk"></c:url>
-					var url = "${storeNamechk}?storeName="+$("#storeName").val()+"&storeCode="+$("#storeCode").val(); 
+					var url = "${storeNamechk}?storeName="+$(storeName[i]).val()+"&storeCode="+$(storeCode[i]).val(); 
 					window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
 				}
 			});
+			}
 			
 			$("#insertStoreDupCheck ").click(function(){
 				if($("#insertStoreName").val()==""){
@@ -220,7 +231,31 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 	    // 파일의 풀 경로를 fname에 변수에 저장  
 	    var fext = fname.substr(fname.length-3).toLowerCase();
 	    // 파일의 풀 경로에서 끝에서 3번째까지의 글자를 잘라 소문자로 변경 후 변수에 저장
-	    if(fext != 'jpg'){
+	    if(fname == ""){
+	    	alert("이미지를 등록하세요.");
+	    	$("#uploadStoreFile").focus();
+	    	return false;
+	    }
+	    
+	    else if(fext != 'jpg'){
+	        alert("jpg파일만 가능합니다.");
+	        return false;
+	    }
+	    return true;
+	}
+	
+	function checkfile2(){
+	    var fname = document.getElementById('storeFile').value;
+	    // 파일의 풀 경로를 fname에 변수에 저장  
+	    var fext = fname.substr(fname.length-3).toLowerCase();
+	    // 파일의 풀 경로에서 끝에서 3번째까지의 글자를 잘라 소문자로 변경 후 변수에 저장
+	    if(fname == ""){
+	    	alert("이미지를 등록하세요.");
+	    	$("#storeFile").focus();
+	    	return false;
+	    }
+	    
+	    else if(fext != 'jpg'){
 	        alert("jpg파일만 가능합니다.");
 	        return false;
 	    }
@@ -430,13 +465,11 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<form:input id="storeCode" path="storeCode" type="hidden" value="${status.current.storeCode }"></form:input>
 							상호명(*내 가게의 상호명과 중복불가)
 							<form:input id="storeName" path="storeName" type="text" maxLength="50" title="상호명을 입력하세요." align="middle" required="true"></form:input><br>				
-							<input type="button" value="중복확인" id="storeDupCheck" name="storeDupCheck"/><br>
-							<input type="hidden" name="storechecked" id="storechecked" value=""/><br>
+							<input type="button" value="중복확인" id="storeDupCheck${status.count }" name="storeDupCheck"/><br>
+							<input type="hidden" name="storechecked" id="storechecked${status.count }"/><br>
 							이미지
-							<c:set var="storeImagePath" value="storeImage${status.current.ownerId }${status.current.storeName }"></c:set>
-							<%-- <img src="c:\\db\\upload\\storeImage${someStore.ownerId }${someStore.storeName }"/> --%>
 							<img src="<%=request.getContextPath()%>/upload/storeImage${status.current.storeCode}"/>
-							<form:input path="storeFile" type="file" name="storeFile"></form:input>
+							<input  type="file" id="storeFile" name="storeFile"></input>
 							지역
 							<form:select path="regionName" items="${regionNames }" title="지역을 선택하세요." required="true"></form:select><br>
 							상세주소
@@ -452,7 +485,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
-					<input type="submit" class="btn btn-warning btn-sm" value="수정하기"/>
+					<input type="submit" class="btn btn-warning btn-sm" value="수정하기" onclick="return checkfile();"/>
 				</form:form> 
 				</div>
 					<!-- 모달 푸터 -->
@@ -490,7 +523,6 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<input type="hidden" name="insertStorechecked" id="insertStorechecked"/><br>
 							이미지
 							<input type="file" id="uploadStoreFile" name="uploadStoreFile">
-
 							지역
 							<form:select path="regionName" items="${regionNames }" title="지역을 선택하세요." required="true"></form:select><br>
 							상세주소
