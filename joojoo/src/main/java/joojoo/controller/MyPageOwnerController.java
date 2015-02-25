@@ -122,6 +122,10 @@ public class MyPageOwnerController {
 	    		List<All> allEvent = eventService.SeachMyEvent(ownerId);
 	    		count=1;
 	    		for(All event: allEvent){
+	    			int commentCode = event.getCommentCode();
+	    			String eventFilePath="eventImage"+commentCode;
+	    			event.setEventFile(eventFilePath);
+	    			model.addAttribute("eventImage"+commentCode, eventFilePath);
 	    			model.addAttribute("event"+count, event);
 	    			count++;
 	    		}
@@ -229,8 +233,10 @@ public class MyPageOwnerController {
 		}
 	    
 	    @RequestMapping(value="/info/insert_event", method=RequestMethod.POST)
-		public String insertEvent(@ModelAttribute EventComment insertEvent, Model model, HttpSession session,int couponCount) throws ParseException{
+		public String insertEvent(@ModelAttribute EventComment insertEvent, Model model, @RequestParam("uploadStoreFile") MultipartFile file,  HttpSession session,int couponCount) throws ParseException, IllegalStateException, IOException{
 	    	logger.error("insertEvent 정보.."+insertEvent);
+	    	//getCommentCodeByOthers
+	    	
 	    	String storeCodeStr = insertEvent.getStoreCodeStr();
 	    	//가게이름으로 해당 코드 찾아서 insertEvent에 셋하기
 	    	All ownerStore = new All();
@@ -246,30 +252,30 @@ public class MyPageOwnerController {
 	    	insertEvent.setStartDate(sdf.parse(insertEvent.getStartDateStr()));
 	    	insertEvent.setEndDate(sdf.parse(insertEvent.getEndDateStr()));
 	    	
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	
 
 	    	int result = eventService.registEvent(insertEvent);
 	    	
-	    	
+	    	int commentCode = 0;
 	    	if(result >0){
 	    		model.addAttribute("insertEvent", true);
-	    		int commentCode = eventService.getCommentCode(insertEvent);
+	    		commentCode = eventService.getCommentCode(insertEvent);
 	    		couponService.publishCoupons(couponCount, commentCode);
 	    	}
 	    	else{
 	    		model.addAttribute("insertEvent", false);
 	    	}
+	    	
+	    	String fileName = "eventImage"+commentCode+".jpg";
+			logger.error("c:\\db\\upload\\"+fileName);
+			file.transferTo(new File("c:\\db\\uploaded\\"+fileName));
+			model.addAttribute("fileName", fileName);
+	    	
 	    	logger.error("인서트 이벤트 종료");
 			return "redirect:/info#tab3";
 		}
 	    
 	    @RequestMapping(value="/info/update_event", method=RequestMethod.POST)
-		public String updateEvent(@ModelAttribute("event1") All updateEvent, Model model){
+		public String updateEvent(@ModelAttribute("event1") All updateEvent, @RequestParam("uploadStoreFile") MultipartFile file, Model model) throws IllegalStateException, IOException{
 	    	logger.error("updateEvent 정보.."+updateEvent);
 	    	
 	    	SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분");
@@ -300,6 +306,14 @@ public class MyPageOwnerController {
 	    	else{
 	    		model.addAttribute("updateEvent", false);
 	    	}
+	    	int commentCode = updateEvent.getCommentCode();
+	    	String fileName = "storeImage"+commentCode+".jpg";
+	    	
+	    	if(file != null){
+			file.transferTo(new File("c:\\db\\uploaded\\"+fileName));
+			model.addAttribute("fileName", fileName);
+	    	}
+	    	
 	    	logger.error("업데이트 이벤트 종료");
 
 			return "redirect:/info#tab3";

@@ -431,11 +431,11 @@ fieldset .help {
 	</c:if>
 	<div>
 		<button  style="border-color: none;" id="event${status.current.commentCode }"data-toggle="modal"	data-target="#myModal${status.current.commentCode }" onclick="Open_modal('${status.current.commentCode }','${status.current.title }', '${status.current.content }', '${status.current.storeName }');">
-		<img u="image" src="images/event_${status.current.commentCode}.jpg"  style="width: 650px; height: 400px;">
+		<img u="image" src="<%=request.getContextPath()%>/upload/eventImage${event.commentCode}.jpg"  style="width: 650px; height: 400px;">
 		</button>
 		<br><br>
 		<h3><c:out value="${event.storeName}" />[<c:out value="${event.title}" />]</h3>	
-		<img u="thumb" src="images/event_${status.current.commentCode}.jpg"  style="width: 60px; height: 40px;">
+		<img u="thumb" src="<%=request.getContextPath()%>/upload/eventImage${event.commentCode}.jpg"  style="width: 60px; height: 40px;">
 		<div style="font-color: red; " align="center" ><h3>
 		</h3>
 	</div>
@@ -532,11 +532,13 @@ jssor_slider1_starter('slider1_container');
 
 						<!-- 아코디언 상세내용 바디 -->
 						<div>
+						<img src="<%=request.getContextPath()%>/upload/storeImage${store.storeCode}.jpg"/>
 							<p align="left">상점 이름:	<c:out value="${store.storeName}" /></p>
 							<p align="left">상점 주소:	<c:out value="${store.storeAdress}" /></p>
 							<p align="left">상점 위치:	<c:out value="${store.regionName}" /></p>
 							<p align="left">상점 업종:	<c:out value="${store.typeName}" />	</p>
 							<p align="left">상점 전화번호:	<c:out value="${store.storePhone}" /></p>
+							
 						</div>						
 					</c:forEach><!-- 상점 select 결과 가져오는 부분 끝 -->
 				</div><!-- 바디 상점 결과 아코디언 끝 -->

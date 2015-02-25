@@ -244,7 +244,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 	    return true;
 	}
 	
-	function checkfile2(){
+	/* function checkfile2(){
 	    var fname = document.getElementById('storeFile').value;
 	    // 파일의 풀 경로를 fname에 변수에 저장  
 	    var fext = fname.substr(fname.length-3).toLowerCase();
@@ -260,7 +260,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 	        return false;
 	    }
 	    return true;
-	}
+	} */
 	
 		
 		function checkChange(){
@@ -468,8 +468,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<input type="button" value="중복확인" id="storeDupCheck${status.count }" name="storeDupCheck"/><br>
 							<input type="hidden" name="storechecked" id="storechecked${status.count }"/><br>
 							이미지
-							<img src="<%=request.getContextPath()%>/upload/storeImage${status.current.storeCode}"/>
-							<input  type="file" id="storeFile" name="storeFile"></input>
+							<img src="<%=request.getContextPath()%>/upload/storeImage${status.current.storeCode}.jpg"/>
+							<input  type="file" id="storeFile" name="storeFile" src="<%=request.getContextPath()%>/upload/storeImage${status.current.storeCode}.jpg"></input>
 							지역
 							<form:select path="regionName" items="${regionNames }" title="지역을 선택하세요." required="true"></form:select><br>
 							상세주소
@@ -791,7 +791,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<!-- 모달 바디 -->
 				<div class="modal-body" id="here${status.current.commentCode }">
 				<c:url value="/info/update_event" var="action"></c:url>
-				<form:form modelAttribute="event${status.count }" method="post" action="${action}" id="form3" name="form3">
+				<form:form modelAttribute="event${status.count }" method="post" action="${action}" id="form3" name="form3"  enctype="multipart/form-data">
 				<fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="endDate"/>
 					<fieldset>	
@@ -801,6 +801,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<form:input path="title" type="text"  maxLength="50" title="제목을 입력하세요." align="middle" required="true"></form:input><br>
 							내용
 							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
+							이미지
+							<img src="<%=request.getContextPath()%>/upload/eventImage${status.current.commentCode}.jpg"/>
+							<input  type="file" id="eventFile" name="eventFile" src="<%=request.getContextPath()%>/upload/eventImage${status.current.commentCode}.jpg"></input>
 							가게
 							<form:select path="storeCodeStr" items="${storeNames }" required="true"></form:select>
 							*이벤트 시작 시간<br>
@@ -815,7 +818,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
-					<input type="submit" class="btn btn-warning btn-sm" value="수정하기"/>
+					<input type="submit" class="btn btn-warning btn-sm" value="수정하기" onclick="return checkFile();"/>
 				</form:form>
 				</div>
 					<!-- 모달 푸터 -->
@@ -849,6 +852,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<form:input path="title" type="text"  maxLength="50" title="제목을 입력하세요." align="middle" required="true"></form:input><br>
 							내용
 							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
+							이미지
+							<input type="file" id="uploadEventFile" name="uploadEventFile">
 							이벤트 시작 시간<br>
 							<form:input id="startDate" type="datetime-local" path="startDateStr" min="${minTime }" max="${maxTime }" required="true"></form:input><br>
 							이벤트 종료 시간<br>
@@ -873,7 +878,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 
 						</div>
 					</fieldset>
-					<input type="submit" class="btn btn-warning btn-sm" value="등록하기"/>
+					<input type="submit" class="btn btn-warning btn-sm" value="등록하기" onclick="return checkFile();"/>
 				</form:form>
 				</div>
 					<!-- 모달 푸터 -->
