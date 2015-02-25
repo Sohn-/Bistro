@@ -133,7 +133,7 @@ $("#licenseDupCheck").click(function(){
     };
     
     
-   $("#licenseDupCheck").click(function(){
+/*    $("#licenseDupCheck").click(function(){
       if($("#joinLicense").val()==""){
          alert("사업자등록번호를 입력해 주세요.");
          $("#joinLicense").focus();      
@@ -142,7 +142,7 @@ $("#licenseDupCheck").click(function(){
          var url = "${licensechk}?joinLicense="+$("#joinLicense").val();
          window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
       }
-   });
+   }); */
     
     password1.addEventListener('change', checkPasswordValidity, false);
     password2.addEventListener('change', checkPasswordValidity, false);

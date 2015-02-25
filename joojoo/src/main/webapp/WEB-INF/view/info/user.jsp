@@ -212,16 +212,18 @@ $(document).ready(function(){
 
 <style type="text/css">
 table, th, td {
-	border: 1px solid black;
+	border: 0px solid black;
 	border-collapse: collapse;
 }
 
 th, td {
 	padding: 5px;
 	text-align: left;
+	background-color: #F1F1C1;
+	font-size: 14px;
 }
 
-table#t01 {
+table#t01,tab03 {
 	width: 100%;
 	background-color: #f1f1c1;
 }
@@ -528,19 +530,19 @@ $(document).ready(function(){
 
 			<form:form method="get" modelAttribute="wishList" action="${action} " name="wishListForm" id="wishListForm" > 
 			<input type="hidden" name="checked_wishListCodes"/>
-			<table style="width: 100%">
+			<table style="width: 100%" align="center">
 				<tr>
-					<th>상호명</th>
-					<th>글제목</th>
-					<th>선택</th>
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">글제목</th>
+					<th style="background-color: #F2CB61" align="center">선택</th>
 									
 				</tr>
 				
 				<c:forEach items="${wishList }" var="wishList">
 	
 					<tr>
-					<td><c:out value="${wishList.storeName}"></c:out></td>
-					<td><c:out value="${wishList.title}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${wishList.storeName}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${wishList.title}"></c:out></td>
 					<%-- <td id="hd" hidden><c:out value="${wishList.wishListCode}"/></td> --%>
 					
 					<%-- <td>
@@ -560,10 +562,10 @@ $(document).ready(function(){
 			<br>
 
 			<table id="t01">
-				<tr>
-					<th>선택한쿠폰 개수</th>
-					<th>나의 별</th>
-					<th>구매 결과 잔여 별</th>
+				<tr align="center">
+					<th style="background-color: #F2CB61" align="center">선택한쿠폰 개수</th>
+					<th style="background-color: #F2CB61" align="center">나의 별</th>
+					<th style="background-color: #F2CB61" align="center">구매 결과 잔여 별</th>
 				</tr>
 				<tr>
 				<%-- <td><c:out value="${wishList.storeName}"></c:out></td> --%>
@@ -589,10 +591,10 @@ $(document).ready(function(){
 				미사용 쿠폰
 				<table style="width: 90%">
 				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰코드</th>
-					<th>쿠폰확인</th>					
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">요약</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰코드</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰확인</th>					
 				</tr>
 				
 				
@@ -600,10 +602,10 @@ $(document).ready(function(){
 				<c:if test="${nonUsedCoupon.couponStatus eq '미사용'}">
 					<c:set var="isExist1" value="true"></c:set>
 				<tr>
-					<td><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
-					<td><c:out value="${nonUsedCoupon.title}"></c:out></td>
-					<td><c:out value="${nonUsedCoupon.couponCode }"></c:out></td>
-					<td>
+					<td style="background-color: #F1F1C1"><c:out value="${nonUsedCoupon.storeName}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${nonUsedCoupon.title}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${nonUsedCoupon.couponCode }"></c:out></td>
+					<td style="background-color: #F1F1C1">
 					
 					<input type="button" name="button"value="쿠폰 상세 보기" id="nonUsedCoupon${status.current.couponCode }" data-toggle="modal" data-target="#myModal${status.current.couponCode }">
 					
@@ -625,10 +627,10 @@ $(document).ready(function(){
 				사용쿠폰
 				<table style="width: 90%">
 				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰코드</th>
-					<th>후기 작성 및 확인</th>					
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">요약</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰코드</th>
+					<th style="background-color: #F2CB61" align="center">후기 작성 및 확인</th>					
 				</tr>
 					
 				
@@ -637,9 +639,9 @@ $(document).ready(function(){
 					<c:set var="isExist2" value="true"></c:set>
 					
 				<tr>
-					<td><c:out value="${usedCoupon.storeName}"></c:out></td>
-					<td><c:out value="${usedCoupon.title}"></c:out></td>
-					<td><c:out value="${usedCoupon.couponCode }"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${usedCoupon.storeName}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${usedCoupon.title}"></c:out></td>
+					<td style="background-color: #F1F1C1"><c:out value="${usedCoupon.couponCode }"></c:out></td>
 					
 		
 					<td><input type="submit" name="button"value="후기작성하기"></td>	
@@ -663,10 +665,10 @@ $(document).ready(function(){
 				환불 쿠폰
 				<table style="width: 90%">
 				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰코드</th>
-					<th>환불정보</th>					
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">요약</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰코드</th>
+					<th style="background-color: #F2CB61" align="center">환불정보</th>					
 				</tr>
 				
 				<c:forEach items="${refundCoupons }" var="refundCoupon">
@@ -689,10 +691,10 @@ $(document).ready(function(){
 				기간만료 사용불가 쿠폰
 				<table style="width: 90%">
 				<tr>
-					<th>상호명</th>
-					<th>요약</th>
-					<th>쿠폰코드</th>
-					<th>만료정보</th>					
+					<th style="background-color: #F2CB61" align="center">상호명</th>
+					<th style="background-color: #F2CB61" align="center">요약</th>
+					<th style="background-color: #F2CB61" align="center">쿠폰코드</th>
+					<th style="background-color: #F2CB61" align="center">만료정보</th>					
 				</tr>
 				<c:forEach items="${timeOverCoupons }" var="timeOverCoupon">
 				<c:if test="${timeOverCoupon.couponStatus eq '사용'}">
