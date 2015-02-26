@@ -364,7 +364,7 @@ $(document).ready(function(){
 	
 	
 	
-		checkChange();
+	checkChange();
 	
 		$("#mailDupCheck").click(function(){
 			if($("#joinMail").val()==""){
@@ -419,6 +419,7 @@ $(document).ready(function(){
 	});
 	
 	function checkChange(){
+		alert("ddd");
 		var updateUser = <%=request.getParameter("updateUser")%>;
 		
 		var useCoupon = <%=request.getParameter("useCoupon")%>;
@@ -459,9 +460,7 @@ $(document).ready(function(){
 </head>
 
 <%-- <c:if test="${!empty loginUser  && leftCouponNo !='0'}"> --%>
-<c:if test="${!empty alert}">
-	myalert(1);
-</c:if>
+
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
 	<div id="header-wrapper" >
