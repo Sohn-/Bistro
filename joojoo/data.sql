@@ -12,7 +12,33 @@ insert into owners values('banana', '123', '윤은혜', 'banana@gamil.com', '010
 insert into owners values('apple', 'redred', '이한희', 'apple@gamil.com', '010-3481-7979', 1223456786);
 insert into owners values('choco31', 'choco22', '방승원', 'choco31n@gamil.com', '010-3481-4646', 123456785);
 insert into owners values('grape', '6555', '유지연', 'grape@gamil.com', '010-3481-1465', 1237456784);
+insert into owners values('151adf', '1df234', '정승환', '335@gamil.com', '010-3481-7979', 2222525657);
+insert into owners values('adsg22', '1adf234', '김유미', '23521@gamil.com', '010-3408-1313', 4234556788);
+insert into owners values('ahu4', '12ag34', '백조원', 'saf1@gamil.com', '010-3445-9746', 78234567687);
+insert into owners values('htyhy3', '12d34', '이바울', 'aesr2@gamil.com', '010-2421-7979', 25233456786);
+insert into owners values('ghha2', '12a234', '김정은', 'ah42@gamil.com', '010-3255-4646', 12234526785);
+insert into owners values('aeeszg', '1s234', '김정희', 'ddd2@gamil.com', '010-3434-1465', 235561784);
+insert into owners values('aetae', '12df345', '안서연', 'aq35r@gamil.com', '010-3231-7979', 3643656786);
+insert into owners values('ttez', '123g45', '임윤아', 'ateawe2@gamil.com', '010-5481-4646', 734456785);
+insert into owners values('eatete', '1d23', '서주현', 'asdfa2@gamil.com', '010-2681-1465', 6244536784);
+insert into owners values('qaer', 'redred', '김정유', 'dfs3e@gamil.com', '010-8581-7979', 235456786);
+insert into owners values('qwert', 'choco22', '신성록', 'dfffffn@gamil.com', '017-3481-4646', 39356785);
+insert into owners values('jsha', '6555', '김태연', 'ha3@gamil.com', '010-3481-1185', 156784);
 
+
+
+insert into owners values('137f', '1df1234', '유상무', '36635@gamil.com', '010-3481-7979', 48640643);
+insert into owners values('ad3ads', '1adf234', '유세윤', '2373521@gamil.com', '010-3408-1313', 9768768);
+insert into owners values('ate33', '612ag34', '백희원', 'saf341@gamil.com', '010-3445-9746', 72632687);
+insert into owners values('ahth3', '812d34', '이성원', 'ae9sr26@gamil.com', '010-2421-7979', 8485236786);
+insert into owners values('gds6', '182a234', '김정민', 'a9h42@gamil.com', '010-3255-4646', 145726785);
+insert into owners values('s7szg', '10ss234', '윤승현', '1ddd2@gamil.com', '010-3434-1465', 23523684);
+insert into owners values('a2ae', '112d7f345', '엄기현', 'a6q35r@gamil.com', '010-3231-7979', 33736786);
+insert into owners values('4hgtez', '4123g45', '김기리', 'at3eawe2@gamil.com', '010-5481-4646', 73463785);
+insert into owners values('f7ete', '01d23', '진지희', 'asdf8a2@gamil.com', '010-2681-1465', 624453214);
+insert into owners values('dy56', '0redred', '윤유선', 'df23e@gamil.com', '010-8581-7979', 7235262);
+insert into owners values('uuu5', '5choco22', '문채원', 'd75ffffn@gamil.com', '017-3481-4646', 34626785);
+insert into owners values('hihihi2', '96555', '이특', 'h9a3@gamil.com', '010-3481-1185', 15642684);
 
 insert into users values('user', '1234', '이수연', 'sat2@email', '010-3424-2321', 5);
 insert into users values('cysohn', '1234', '이사랑', 'sh35@gmail.com', '011-3424-2421', 5);
@@ -94,33 +120,7 @@ values('꿀돼지 종로점','서울특별시 종로구 창신동 97-12','02-678
 
 
 
-insert into owners values('151adf', '1df234', '정승환', '335@gamil.com', '010-3481-7979', 2222525657);
-insert into owners values('adsg22', '1adf234', '김유미', '23521@gamil.com', '010-3408-1313', 4234556788);
-insert into owners values('ahu4', '12ag34', '백조원', 'saf1@gamil.com', '010-3445-9746', 78234567687);
-insert into owners values('htyhy3', '12d34', '이바울', 'aesr2@gamil.com', '010-2421-7979', 25233456786);
-insert into owners values('ghha2', '12a234', '김정은', 'ah42@gamil.com', '010-3255-4646', 12234526785);
-insert into owners values('aeeszg', '1s234', '김정희', 'ddd2@gamil.com', '010-3434-1465', 235561784);
-insert into owners values('aetae', '12df345', '안서연', 'aq35r@gamil.com', '010-3231-7979', 3643656786);
-insert into owners values('ttez', '123g45', '임윤아', 'ateawe2@gamil.com', '010-5481-4646', 734456785);
-insert into owners values('eatete', '1d23', '서주현', 'asdfa2@gamil.com', '010-2681-1465', 6244536784);
-insert into owners values('qaer', 'redred', '김정유', 'dfs3e@gamil.com', '010-8581-7979', 235456786);
-insert into owners values('qwert', 'choco22', '신성록', 'dfffffn@gamil.com', '017-3481-4646', 39356785);
-insert into owners values('jsha', '6555', '김태연', 'ha3@gamil.com', '010-3481-1185', 156784);
 
-
-
-insert into owners values('137f', '1df1234', '유상무', '36635@gamil.com', '010-3481-7979', 48640643);
-insert into owners values('ad3ads', '1adf234', '유세윤', '2373521@gamil.com', '010-3408-1313', 9768768);
-insert into owners values('ate33', '612ag34', '백희원', 'saf341@gamil.com', '010-3445-9746', 72632687);
-insert into owners values('ahth3', '812d34', '이성원', 'ae9sr26@gamil.com', '010-2421-7979', 8485236786);
-insert into owners values('gds6', '182a234', '김정민', 'a9h42@gamil.com', '010-3255-4646', 145726785);
-insert into owners values('s7szg', '10ss234', '윤승현', '1ddd2@gamil.com', '010-3434-1465', 23523684);
-insert into owners values('a2ae', '112d7f345', '엄기현', 'a6q35r@gamil.com', '010-3231-7979', 33736786);
-insert into owners values('4hgtez', '4123g45', '김기리', 'at3eawe2@gamil.com', '010-5481-4646', 73463785);
-insert into owners values('f7ete', '01d23', '진지희', 'asdf8a2@gamil.com', '010-2681-1465', 624453214);
-insert into owners values('dy56', '0redred', '윤유선', 'df23e@gamil.com', '010-8581-7979', 7235262);
-insert into owners values('uuu5', '5choco22', '문채원', 'd75ffffn@gamil.com', '017-3481-4646', 34626785);
-insert into owners values('hihihi2', '96555', '이특', 'h9a3@gamil.com', '010-3481-1185', 15642684);
 
 
 insert into stores(store_name, store_adress, store_phone, owner_id, region_name, type_name)
