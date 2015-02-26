@@ -196,15 +196,11 @@ fieldset .help {
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img src="images/pic01.jpg" align="bottom">
+					<img src="<%=request.getContextPath()%>/upload/storeImage${eventDetail.storeCode}.jpg" align="bottom">
 					<div class="carousel-caption">${eventDetail.title}</div>
 				</div>
 				<div class="item">
-					<img src="images/pic01.jpg" align="bottom">
-					<div class="carousel-caption">${eventDetail.title}</div>
-				</div>
-				<div class="item">
-					<img src="images/pic01.jpg" align="bottom">
+					<img src="<%=request.getContextPath()%>/upload/eventImage${eventDetail.commentCode}.jpg" align="bottom">
 					<div class="carousel-caption">${eventDetail.title}</div>
 				</div>
 				${eventDetail.title}

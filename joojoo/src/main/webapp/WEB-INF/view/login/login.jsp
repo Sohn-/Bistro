@@ -203,7 +203,7 @@ fieldset .help {
                      </div>
                      <br>    
                      <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="docs" id="idlabel"  href="find"><span>아이디/비밀번호찾기</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="docs" id="idlabel"  href="findform?who=user"><span>아이디/비밀번호찾기</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a id="join" href="join"><span>회원가입</span></a>                               
                      </h5>                          
                   <div>                     
@@ -245,7 +245,7 @@ fieldset .help {
                      </div>
  				 <br>    
                      <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="docs" id="idlabel"  href="find"><span>아이디/비밀번호찾기</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="docs" id="idlabel"  href="findform?who=owner"><span>아이디/비밀번호찾기</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a id="join" href="join"><span>회원가입</span></a>                               
                      </h5>                          
                   <div>                     

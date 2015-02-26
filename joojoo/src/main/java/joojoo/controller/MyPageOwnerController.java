@@ -82,7 +82,7 @@ public class MyPageOwnerController {
 	    		for(All store: allStore){
 	    			int storeCode = store.getStoreCode();
 	    			String storeFilePath="storeImage"+storeCode;
-	    			store.setStoreFile(storeFilePath);
+	    			store.setStoreFilePath(storeFilePath);
 	    			model.addAttribute("storeImage"+storeCode, storeFilePath);
 	    			model.addAttribute("store"+count, store);
 	    			count++;
@@ -124,7 +124,7 @@ public class MyPageOwnerController {
 	    		for(All event: allEvent){
 	    			int commentCode = event.getCommentCode();
 	    			String eventFilePath="eventImage"+commentCode;
-	    			event.setEventFile(eventFilePath);
+	    			event.setEventFilePath(eventFilePath);
 	    			model.addAttribute("eventImage"+commentCode, eventFilePath);
 	    			model.addAttribute("event"+count, event);
 	    			count++;
@@ -274,8 +274,8 @@ public class MyPageOwnerController {
 			return "redirect:/info#tab3";
 		}
 	    
-	    @RequestMapping(value="/info/update_event", method=RequestMethod.POST)
-		public String updateEvent(@ModelAttribute("event1") All updateEvent, @RequestParam("eventFile") MultipartFile file, Model model) throws IllegalStateException, IOException{
+	    /*@RequestMapping(value="/info/update_event", method=RequestMethod.POST)
+		public String updateEvent(@RequestParam("eventFile") MultipartFile file, @ModelAttribute("event1") All updateEvent, Model model) throws IllegalStateException, IOException{
 	    	logger.error("updateEvent 정보.."+updateEvent);
 	    	
 	    	SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분");
@@ -317,6 +317,43 @@ public class MyPageOwnerController {
 	    	logger.error("업데이트 이벤트 종료");
 
 			return "redirect:/info#tab3";
+		}*/
+	    
+	    @RequestMapping(value="/info/update_event", method=RequestMethod.POST)
+		public String updateEvent(@ModelAttribute("event1") All updateEvent, Model model){
+	    	logger.error("updateEvent 정보.."+updateEvent);
+	    	
+	    	SimpleDateFormat sdf = new SimpleDateFormat("20yy년 MM월 dd일 HH시 mm분");
+	    	
+			Date startDate = new Date();
+			Date endDate = new Date();
+			try {
+				startDate = sdf.parse(updateEvent.getStartDateStr());
+				endDate = sdf.parse(updateEvent.getEndDateStr());
+				logger.error("startDate = "+startDate);
+				updateEvent.setStartDate(startDate);
+				updateEvent.setEndDate(endDate);
+				
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			String storeName = updateEvent.getStoreCodeStr();
+			updateEvent.setStoreName(storeName);
+			logger.error("storeName="+storeName);
+			
+			logger.error("업데이트 전 updateEvent"+updateEvent);
+	    	int result = eventService.modifyEvent(updateEvent);
+	    	if(result >0){
+	    		model.addAttribute("updateEvent", true);
+	    	}
+	    	else{
+	    		model.addAttribute("updateEvent", false);
+	    	}
+	    	logger.error("업데이트 이벤트 종료");
+
+			return "redirect:/info#tab3";
 		}
 	    
 	    @RequestMapping(value="/info/insert_store", method=RequestMethod.POST)
@@ -343,7 +380,7 @@ public class MyPageOwnerController {
 	    	logger.error("인서트 이벤트 종료");
 			return "redirect:/info#tab1";
 		}
-	    @RequestMapping(value="/info/update_store", method=RequestMethod.POST)
+	    /*@RequestMapping(value="/info/update_store", method=RequestMethod.POST)
 		public String updateStore(@ModelAttribute("store1") All updateStore, @RequestParam("storeFile") MultipartFile file, Model model) throws IllegalStateException, IOException{
 	    	logger.error("updateStore 정보.."+updateStore);
 	    	
@@ -357,12 +394,30 @@ public class MyPageOwnerController {
 	    	}
 	    	int storeCode = updateStore.getStoreCode();
 	    	String fileName = "storeImage"+storeCode+".jpg";
-	    	
+	    	String filePath = "c:\\db\\uploaded\\"+"storeImage"+storeCode+".jpg";
+	    	updateStore.setStoreFile(file, filePath);
 	    	if(file != null){
-			file.transferTo(new File("c:\\db\\uploaded\\"+fileName));
-			model.addAttribute("fileName", fileName);
+	    		file.
+	    		file.transferTo(new File(filePath));
+	    		model.addAttribute("fileName", fileName);
 	    	}
 			
+	    	logger.error("업데이트 스토어 종료");
+			return "redirect:/info#tab1";
+		}*/
+	    
+	    @RequestMapping(value="/info/update_store", method=RequestMethod.POST)
+		public String updateStore(@ModelAttribute("store1") All updateStore, Model model){
+	    	logger.error("updateStore 정보.."+updateStore);
+	    	
+	    	
+	    	int result = storeService.updateStore(updateStore);
+	    	if(result >0){
+	    		model.addAttribute("updateStore", true);
+	    	}
+	    	else{
+	    		model.addAttribute("updateStore", false);
+	    	}
 	    	logger.error("업데이트 스토어 종료");
 			return "redirect:/info#tab1";
 		}
