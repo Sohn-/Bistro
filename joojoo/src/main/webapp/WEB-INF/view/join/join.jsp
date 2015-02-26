@@ -327,8 +327,7 @@ fieldset .help {
 #header {
 	background-image: url(images/main.jpg);
 }
-<<<<<<< HEAD
-=======
+
 
 
 	input[type="button"],
@@ -340,7 +339,7 @@ fieldset .help {
 	color: black;
 	
 	}
->>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
+
 </style>
 
 </head>
@@ -437,11 +436,9 @@ fieldset .help {
 	    </div>
 	    
 	    <div id="tab2" style="background-color:#f6f6f6;">
-<<<<<<< HEAD
-	    <h1 align="center" >업 주 회 원 가 입</h1>
-=======
+
 	    <h2 align="left" style="color:black;"> &nbsp;&nbsp;&nbsp;업 주 회 원 가 입</h2>
->>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
+
 			<c:url value="/join/join_o2" var="action"></c:url> 
 			
 			<!-- <table align="center" background="">
