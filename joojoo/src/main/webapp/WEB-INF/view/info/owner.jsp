@@ -391,7 +391,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<li><span>${loginOwner.ownerId}님</span></li>
 			</c:if>
 
-			<c:if test="${!empty loginUser || !empty loginOwner }">
+			<c:if test="${!empty loginOwner }">
 				<li><a class="icon fa-home"			href="<%=request.getContextPath()%>/"><span>Home</span></a></li>
 				<li><a class="icon fa-retweet"		href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
 				<li><a class="icon fa-sitemap"		href="<%=request.getContextPath()%>/review"><span>ReviewBoard</span></a></li>
@@ -784,6 +784,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							*사업자등록번호
 							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" readonly="true"></form:input><br>
 							*는 수정할 수 없는 정보입니다.
+							<br>
+					<input id="ownerSubmit" type="submit" value="수정하기" />
 							</div>
 							
 							</fieldset>
@@ -833,13 +835,12 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<tr>
 					<td>${event.title }</td>
 					<td>${event.content }</td>
-					<td><button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }">
-					수정하기</button> </td>
+					<td><input type="button" id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }" value="수정하기"/> </td>
 				</tr>
 			</c:forEach>
 			</table>
-			<button id="newevent" data-toggle="modal" data-target="#newEventModal">
-					새로운 이벤트 등록</button>				
+			<input type="button" id="newevent" data-toggle="modal" data-target="#newEventModal" value="새로운 이벤트 등록"/>
+				
 		</div>
 		<!-- -------------------------이벤트 수정하기 모달------------------------- -->
 		<c:forEach items="${allEvent}" var="event" varStatus="status">
@@ -970,10 +971,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						<td>${coupon.couponCode }</td>
 						<td>${coupon.storeName }</td>
 						<td>${coupon.content }</td>
-						<td><button data-toggle="modal" data-target="#couponModal${coupon.couponCode }">
-					상세보기</button></td>
-					<td><button data-toggle="modal" data-target="#couponUseModal${coupon.couponCode }">
-					사용하기</button></td>
+						<td><input type="button" data-toggle="modal" data-target="#couponModal${coupon.couponCode }"value="상세보기"/></td>
+					<td><input type="button" data-toggle="modal" data-target="#couponUseModal${coupon.couponCode }" value="사용하기"/>
+					</td>
 					</tr>
 					</c:if>
 				</c:forEach>
@@ -1019,8 +1019,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						<td>${coupon.storeName }</td>
 						<td>${coupon.content }</td>
 						<td>${coupon.userId }</td>
-						<td><button data-toggle="modal" data-target="#couponModal${coupon.couponCode }">
-					쿠폰상세보기</button></td>
+						<td><input type="button"  data-toggle="modal" data-target="#couponModal${coupon.couponCode }" value="쿠폰상세보기"/>
+					</td>
 					</tr>
 					</c:if>
 					</c:forEach>
