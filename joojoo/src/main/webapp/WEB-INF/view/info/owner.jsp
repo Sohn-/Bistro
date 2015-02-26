@@ -97,6 +97,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 	font-size: 14px;
 	
 	}
+	
 </style>
 <script>
 	$(function() {
