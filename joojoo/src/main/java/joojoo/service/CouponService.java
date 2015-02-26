@@ -4,6 +4,7 @@ import java.util.List;
 
 import joojoo.entity.All;
 import joojoo.entity.Coupon;
+import joojoo.entity.EventComment;
 
 public interface CouponService {
 	
@@ -26,5 +27,11 @@ public interface CouponService {
 	List<All> getCouponsByUserIdAndStatus(Coupon coupon);
 	
 	All getCouponByCouponCode(String couponCode);
+	
+	int publishCoupons(int couponCount,int commentCode);
+	
+	int leftCouponCount(int comment_code);
+	
+	int getPublishedCouponCount(int comment_code);
 
 }

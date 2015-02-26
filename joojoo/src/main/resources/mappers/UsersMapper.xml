@@ -23,6 +23,14 @@
   	
   	</update>
   	
+  	<update id="updateUserChance" parameterType="Users">
+  	
+  	update users
+  	set chance = #{chance}
+  	where user_id=#{userId}  	
+  	
+  	</update>
+  	
   	<delete id="deleteUser" parameterType="String">
   	delete from users
   	where user_id=#{userId}

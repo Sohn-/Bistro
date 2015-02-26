@@ -108,6 +108,12 @@
 		left join owners using(owner_id)	
 	</select>
 	
+	<select id= "getCommentCodeByOthers" resultType="Integer">
+		select comment_code
+		from event_comment
+		WHERE title = #{title} and content=#{content} and store_code=#{storeCode} 
+	</select>
+	
 	<select id= "getEventCommentsByOwnerId" parameterType="EventComment"
 						resultType="All">
 		select * 

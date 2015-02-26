@@ -1,6 +1,10 @@
 package joojoo.entity;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -98,6 +102,13 @@ public class All {
 	//private String userId;
 	//private int commentCode;
 
+	/////////////////////////////ImagesPath
+	private MultipartFile storeFile;
+	private MultipartFile eventFile;
+	
+	private String storeFilePath;
+	private String eventFilePath;
+	
 	public int getRegionCode() {
 		return regionCode;
 	}
@@ -438,6 +449,39 @@ public class All {
 		this.checkPassword = checkPassword;
 	}
 
+	
+	public MultipartFile getStoreFile() {
+		return storeFile;
+	}
+
+	public void setStoreFile(MultipartFile storeFile) {
+		this.storeFile = storeFile;
+	}
+
+	public MultipartFile getEventFile() {
+		return eventFile;
+	}
+
+	public void setEventFile(MultipartFile eventFile) {
+		this.eventFile = eventFile;
+	}
+
+	public String getStoreFilePath() {
+		return storeFilePath;
+	}
+
+	public void setStoreFilePath(String storeFilePath) {
+		this.storeFilePath = storeFilePath;
+	}
+
+	public String getEventFilePath() {
+		return eventFilePath;
+	}
+
+	public void setEventFilePath(String eventFilePath) {
+		this.eventFilePath = eventFilePath;
+	}
+
 	@Override
 	public String toString() {
 		return "All [checkPassword=" + checkPassword + ", regionCode="
@@ -463,6 +507,13 @@ public class All {
 				+ userPassword + ", userName=" + userName + ", userMail="
 				+ userMail + ", userPhone=" + userPhone + ", chance=" + chance
 				+ ", wishListCode=" + wishListCode + "]";
+	}
+
+	public void setStoreFile(MultipartFile file, String filePath) throws IllegalStateException, IOException {
+		if(file != null){
+    		file.transferTo(new File(filePath));
+    	}
+		
 	}
 
 	

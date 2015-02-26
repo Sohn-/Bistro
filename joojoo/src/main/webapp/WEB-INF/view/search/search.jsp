@@ -275,9 +275,23 @@ fieldset .help {
 #header {
 	background-image: url(images/main.jpg);
 }
+<<<<<<< HEAD
  #wrap #left { display:inline; float:left; width:220px; height:500px; margin-left:10px; background:#33CCFF; }
  #wrap #content { float:left; width:500px; height:500px; margin-left:10px; background:#BFF484; }
  #wrap #right { float:left; width:220px; height:500px; margin-left:10px; background:#73534D; }
+=======
+
+	input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+	color: black;
+	
+	}
+
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 </style>
 
 </head>
@@ -389,7 +403,7 @@ fieldset .help {
 			</ul>
 		</li>
 
-		<li><a href="serviceTypeRadioId"><span>Service</span></a>			 
+		<li><a href="#serviceTypeRadioId"><span>Service</span></a>			 
 			<ul>
 				<form:radiobuttons id="serviceTypeRadioId" path="serviceTypeName" items="${serviceTypeNames }"/>
 				<!-- <li>&nbsp; &nbsp;서비스 메뉴 제공&nbsp; <input type="radio"	name="serviceType" value="서비스 메뉴 제공"></input></li>
@@ -490,23 +504,23 @@ jssor_slider1_starter('slider1_container');
 
 			<!-- 바디 상점 검색 시작 -->
 			<div id="accordion-resizer" align="center"
-				style="background-color: #323232">
+				style="background-color: #323232;font-family:'Jeju Gothic',serif;">
 
 				<!-- 카테고리 구분 테이블 -->
 				<table width="75%" align="center" cellpadding="0" cellspacing="0"
 					border="1" align="center"
 					style="border-collapse: collapse; border: 1px gray solid; background-color: #323232;">
 					<tr align="center">
-						<td style="border: 1px gray solid;"><h4>상호명</h4></td>
-						<td style="border: 1px gray solid;"><h4>지역</h4></td>
-						<td style="border: 1px gray solid;"><h4>업종</h4></td>
+						<td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>상호명</h4></td>
+						<td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>지역</h4></td>
+						<td style="border: 1px gray solid; background-color: #F2CB61; color: black;"><h4>업종</h4></td>
 
 					</tr>
 				</table>
 				<!-- 카테고리 구분 테이블 끝 -->
 
 				<!-- 바디 상점 결과 아코디언 시작 -->
-				<div id="accordion">
+				<div id="accordion" style="font-family:'Jeju Gothic',serif;">
 					<!-- 상점 select 결과 가져오는 부분 시작 -->
 					<c:forEach items="${search_stores}" var="store">
 

@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>MyPage</title>
+<title>JoinPage</title>
 
 
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -16,9 +16,9 @@
 <meta name="keywords" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style-1000px.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/style-desktop.css">
+<link rel="stylesheet" href="/css/style-1000px.css">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style-desktop.css">
 <link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -72,6 +72,24 @@ fieldset .help {
 fieldset div {
 	margin-bottom: 2em;
 }
+
+input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+
+	input[type="email"]{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	}
+	input[type="submit"]{
+	font-family:'Jeju Gothic', serif;
+		font-size: 14px;
+	
+	}
+	input[type="password"]{
+	font-size: 14px;
+
+	}
 
 </style>
 <script>    
@@ -309,6 +327,20 @@ fieldset .help {
 #header {
 	background-image: url(images/main.jpg);
 }
+<<<<<<< HEAD
+=======
+
+
+	input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+	color: black;
+	
+	}
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 </style>
 
 </head>
@@ -358,14 +390,17 @@ fieldset .help {
 		<div id="tab1" style="background-color:#f6f6f6;">	
 			<c:url value="/join/result/user" var="action"></c:url> 
 			<form:form modelAttribute="joinUser" method="post" action="${action} " id="form"> 			
-				<h1 align="center">일 반 회 원 가 입</h1>		
+
+				<h2 align="left" style="color:black;">&nbsp;&nbsp;&nbsp;일 반 회 원 가 입</h2>		
+
 				<div align="center">		
-					<table align="center" background="">
+					<table align="center" background="" style="color:black">
 					<tr>
 					<td>
 						<form:input path="userId" id="joinId" placeholder="아이디" required="true" size="20" /><br> 
 						<form:input path="userPassword" id="pass" type="password"	required="true" placeholder="비밀번호" /><br>   
-						<input type="password" id="pass2" name="pass2" required="true"	placeholder="비밀번호 재확인" /><br>      	
+						<input type="password"  id="pass2" name="pass2" required="true"	placeholder="비밀번호 재확인" /><br> 
+						      	
 						<form:input path="userName" required="true" placeholder="이름" />   <br> 			
 						<form:input path="userMail" id="joinMail" type="email" required="true"	placeholder="e-mail" /><br>
 						<form:input path="userPhone" required="true" placeholder="휴대전화번호" /><br>   
@@ -378,7 +413,7 @@ fieldset .help {
 						<input type="button" value="v" id="idDupCheck"	class="btn btn-primary btn-xs" /><br>            
 						<input type="hidden" name="checked" id="checked" /><br>
 						
-						&nbsp;<br><br><br><br><br><br><br> <br>&nbsp;
+						&nbsp;<br><br><br><br><br><br> <br>&nbsp;
 						<!-- 모달들어가는 부분  -->
 						<input type="button" value="v" id="mailDupCheck" class="btn btn-primary btn-xs" />
 						<input type="hidden" name="checked2" id="checked2" />
@@ -402,7 +437,11 @@ fieldset .help {
 	    </div>
 	    
 	    <div id="tab2" style="background-color:#f6f6f6;">
+<<<<<<< HEAD
 	    <h1 align="center" >업 주 회 원 가 입</h1>
+=======
+	    <h2 align="left" style="color:black;"> &nbsp;&nbsp;&nbsp;업 주 회 원 가 입</h2>
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 			<c:url value="/join/join_o2" var="action"></c:url> 
 			
 			<!-- <table align="center" background="">
@@ -436,14 +475,14 @@ fieldset .help {
 				</td>
 				<td>
 					&nbsp;		
-					<input type="button" value="V" id="idDupCheck2" class="btn btn-primary btn-xs" /><br>
+					<input type="button" style="font-size: 14px;" value="V" id="idDupCheck2" class="btn btn-primary btn-xs" /><br>
 					<input type="hidden" name="checked" id="checked" /><br>
 					
-					<br><br><br><br><br><br><br> <br>&nbsp;
+					<br><br><br><br><br><br> <br>&nbsp;
 					<input type="button" value="V" id="mailDupCheck2"  class="btn btn-primary btn-xs"/>	<br>
 					<input type="hidden" name="checked2" id="checked2" />	<br>
 					
-					<br><br><br>&nbsp;
+					<br><br>&nbsp;
 					<input type="button" value="V" id="licenseDupCheck"  class="btn btn-primary btn-xs"/><br>
 					<input type="hidden" name="checked3" id="checked3" /><br> 
 				</td>
@@ -469,6 +508,25 @@ fieldset .help {
 </div>
 </section> 
 </div>
+
+<!-- Footer -->
+	<div >
+		<div id="footer" class="container">
+			<div align="center">
+				<br> <br> <a href="<%=request.getContextPath()%>/footer/servicePolicy">이용약관</a>	&nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/privacyPolicy">개인정보보호방침</a>		&nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/youthPolicy">청소년보호정책</a>			&nbsp; &nbsp; 
+				<a href="<%=request.getContextPath()%>/footer/helpCenter">고객센터</a> <br>	<br>
+				<div style="font-size: 12px;">
+					사업자등록번호:130-50-61004 (주)주주총회 대표이사: 정주주 주소: 이클립시 디비구 자바동 123-45 <br>
+					주주총회앱의 모든 콘텐츠는 저작권법의 보호를 받으므로, 무단 전재, 복사, 배포 등을 금합니다. <br>
+					Copyright (c) JooJooClub All Rights Reserved.
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 

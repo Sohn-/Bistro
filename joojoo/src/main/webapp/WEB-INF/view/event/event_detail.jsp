@@ -142,6 +142,15 @@ fieldset div {
 fieldset .help {
 	display: inline-block;
 }
+	input[type="button"],
+	input[type="submit"],
+	input[type="text"],
+	input[type="password"],
+	input[type="mail"]{
+	font-family:'Jeju Gothic', serif;
+	color: black;
+	
+	}
 </style>
 </head>
 
@@ -187,15 +196,11 @@ fieldset .help {
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img src="images/pic01.jpg" align="bottom">
+					<img src="<%=request.getContextPath()%>/upload/storeImage${eventDetail.storeCode}.jpg" align="bottom">
 					<div class="carousel-caption">${eventDetail.title}</div>
 				</div>
 				<div class="item">
-					<img src="images/pic01.jpg" align="bottom">
-					<div class="carousel-caption">${eventDetail.title}</div>
-				</div>
-				<div class="item">
-					<img src="images/pic01.jpg" align="bottom">
+					<img src="<%=request.getContextPath()%>/upload/eventImage${eventDetail.commentCode}.jpg" align="bottom">
 					<div class="carousel-caption">${eventDetail.title}</div>
 				</div>
 				${eventDetail.title}
@@ -215,20 +220,31 @@ fieldset .help {
 		<br>
 		
 		<div align="right">
-		<c:if test="${!empty loginUser }">
+		<c:if test="${!empty loginUser  && leftCouponNo !='0'}">
+		
 		<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModalCart">장바구니담기</button>
 		
 		<%-- <c:url value="/buy_check?eventCommentCode=${eventDetail.commentCode}" var="action"></c:url> 
 		<a href="${action }"> --%>
 			<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModalBuyCoupon">구매하기</button>
-		<!-- </a> -->
 		</c:if>
+			
+			
+			<c:if test="${leftCouponNo =='0'}">
+				<h3>무폰이 모두 판매되었습니다. ㅠ_ㅠ</h3>
+			</c:if>
+			
+		<!-- </a> -->
+		
+		
+		
 		<c:if test="${!empty loginOwner || (empty loginUser && empty loginOwner)}">
 		비회원 및 업주회원은 구매 및 장바구니를 이용할 수 없습니다.
 		</c:if>
 		</div>	
-		<br>	
+		<br>		
 		<div>
+			<h4>남은 쿠폰 갯수 : ${leftCouponNo }/ ${publishedCouponNo } </h4>
 			${eventDetail.content}
 		</div>
 	</div>	
@@ -237,7 +253,7 @@ fieldset .help {
 	
 	
 	
-	<div class="modal fade" id="myModalCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<%-- <div class="modal fade" id="myModalCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -249,26 +265,29 @@ fieldset .help {
 						장바구니 담기에 성공하였습니다. <br> 이벤트 페이지로 돌아가려면 [OK] 버튼을,<br>
 						장바구니를 확인 하려면 [장바구니확인] 버튼을 누르세요.
 					</div>
-					<c:url value="/info/cart" var="action"></c:url>
+					<c:url value="/info" var="action"></c:url>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
 						<a href="${action }"><button type="button"	class="btn btn-primary">장바구니 확인</button></a>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+		</div><!-- /.modal --> --%>
 		
 		<c:url value="/buy_coupon?ecommentCode=${eventDetail.commentCode }" var="url"></c:url>
-		<div class="modal fade" id="myModalBuyCoupon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
+		<div class="modal fade" id="myModalBuyCoupon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog"><div class="modal-content">
 				<!-- 모달 헤더 -->
 				<div class="modal-header">
+					
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					<h4 class="modal-title"	id="modal_title">쿠폰 구매</h4>
 				</div>
 				<!-- 모달 바디 -->
 				<div class="modal-body">
-				<form method="post" action="${url}">
+				<form method="get" action="${url}">
+				${eventDetail.commentCode }번 글
+				 <input type="hidden" name="ecommentCode" value="${eventDetail.commentCode }" />
 					쿠폰을 구매하시겠습니까?<br>
 					<button type="submit" class="btn btn-warning btn-sm" >구매하기</button>
 				</form>
@@ -282,6 +301,38 @@ fieldset .help {
 				</div>	<!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div>
+		
+		
+		<c:url value="/info/user/cart/add?ecommentCode=${eventDetail.commentCode }" var="url"></c:url>
+		<div class="modal fade" id="myModalCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"	aria-hidden="true">
+			<div class="modal-dialog"><div class="modal-content">
+				<!-- 모달 헤더 -->
+				<div class="modal-header">
+					
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title"	id="modal_title">위시리스트 담기</h4>
+				</div>
+				<!-- 모달 바디 -->
+				<div class="modal-body">
+				<form method="get" action="${url}">
+				${eventDetail.commentCode }번 글
+				 <input type="hidden" name="ecommentCode" value="${eventDetail.commentCode }" />
+					위시리스트에 추가하시겠습니까?<br>
+					<button type="submit" class="btn btn-warning btn-sm" >추가하기</button>
+				</form>
+				</div>
+				
+					<!-- 모달 푸터 -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">닫기</button>
+				</div>
+					
+				</div>	<!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		
+		
+		
 		
 		<div class="modal fade" id="myModalBuyCouponSucess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">

@@ -20,6 +20,9 @@ public interface UsersDao {
 	All getUsersForIdFind(Users user); //아이디찾기용 (잊어버렸을때)
 	All getUsersForPassWordFind(Users user); //비번찾기용
 	int updateChance(int chance);
+	
+	int updateUserChance(Users user);
+	
 
 	
 

@@ -334,7 +334,7 @@ fieldset .help {
 input[type="button"],
 	input[type="submit"],
 	input[type="text"],
-	input[type="password"],
+
 	input[type="mail"]{
 	font-family:'Jeju Gothic', serif;
 		font-size: 14px;
@@ -440,7 +440,7 @@ $(document).ready(function(){
 </head>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-	<div id="header-wrapper" style="background-image: url(../images/main.jpg)">
+	<div id="header-wrapper" >
 
 		<div id="header" class="container">
 

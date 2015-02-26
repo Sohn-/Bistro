@@ -133,19 +133,6 @@ $(function() {
        });
     }
  };
- 
-	$(document).ready(function(){
- $("#storeDupCheck").click(function(){
-		if(("#storeName").val()==""){
-			alert("상호명을 입력해 주세요.");
-			$("#storeName").focus();		
-		}else{
-			<c:url value="/info/storeNameCheck" var="storeNamechk"></c:url>
-			var url = "${storeNamechk}?storeName="+$("#storeName").val()+"&storeCode="+$("#storeCode").val(); 
-			window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no");
-		}
-	});
-	});
 </script>
 </head>
 
@@ -186,20 +173,20 @@ $(function() {
             <div class="row">
 
               <c:url value="/findprocess" var="action"></c:url>
-               	 <form:form modelAttribute="owner" method="post" action="${action}">                  
+               	 <form:form modelAttribute="user" method="post" action="${action}">                  
                   <div class="row 90%">
                      <div>              
                        
-                        <form:input path="ownerName" name="ownerName" 	placeholder="이름"  			type="text" />
-                        <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/> 
-                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />
-                        <input type="hidden" name="command" value="findOwnerId"></input>                     
+                        <form:input path="userName" name="userName" 	placeholder="이름"  			type="text" />
+                       <%--  <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/>  --%>
+                        <form:input path="userMail" name="userMail" 	placeholder="e-mail"  		type="text" />
+                        <input type="hidden" name="command" value="findUserId"></input>                     
                      </div>
                   </div>   
                   
                   <div class="row 80%">
                      <div class="12u">
-                        <input type="submit" class="form-button-submit button icon fa-envelope" value="Search">
+                        <a href="#" class="form-button-submit button icon fa-envelope">Search</a>
                      </div>
                   </div>
                </form:form>
@@ -212,14 +199,14 @@ $(function() {
             <div class="row">
 
               <c:url value="/findprocess" var="action"></c:url>
-               	 <form:form modelAttribute="owner" method="post" action="${action}">                  
+               	 <form:form modelAttribute="user" method="post" action="${action}">                  
                   <div class="row 90%">
                      <div>              
-                        <form:input path="ownerId" name="ownerId" 	placeholder="id "  			type="text"/> 
-                        <form:input path="ownerName" name="ownerName" 	placeholder="이름"  			type="text" />
-                        <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/> 
-                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />
-                        <input type="hidden" name="command" value="findOwnerPassword"></input>                       
+                        <form:input path="userId" name="userId" 	placeholder="id "  			type="text"/> 
+                        <form:input path="userName" name="userName" 	placeholder="이름"  			type="text" />
+                       <%--  <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/>  --%>
+                        <form:input path="userMail" name="userMail" 	placeholder="e-mail"  		type="text" />
+                        <input type="hidden" name="command" value="findUserPassword"></input>                       
                      </div>
                   </div>   
                   

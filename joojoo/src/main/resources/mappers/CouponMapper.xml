@@ -18,8 +18,8 @@
 	</resultMap>  
 	
  	<insert id="insertCoupon" parameterType="Coupon">
-		insert into Coupon 
-		values(#{couponCode},#{ownerId},#{userId},#{commentCode}, #{couponStatus})	
+		insert into Coupon (coupon_code, owner_id, comment_code, coupon_status)
+		values (#{couponCode}, #{ownerId}, #{commentCode}, #{couponStatus})	
 	</insert> 
  
  	<update id="updateCoupon" parameterType="All">
