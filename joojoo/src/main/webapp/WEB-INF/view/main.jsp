@@ -565,8 +565,8 @@ jssor_slider1_starter('slider1_container');
 	<!-- 바디 끝 -->
 
 	<!-- Footer -->
-	<div>
-		<div id="footer-wrapper" class="container">
+	<div style="background-color: white;">
+		<div id="footer-wrapper" class="container" style="background-color: white;">
 			<div align="center">
 				<br> <br> <a href="<%=request.getContextPath()%>/footer/servicePolicy">이용약관</a>	&nbsp; &nbsp; 
 				<a href="<%=request.getContextPath()%>/footer/privacyPolicy">개인정보보호방침</a>		&nbsp; &nbsp; 

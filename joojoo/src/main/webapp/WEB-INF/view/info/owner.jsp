@@ -113,14 +113,6 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 		});
 	});
 	
-	function checking(){
-    	if($("#storechecked").val()==""){
-			alert("상호명 중복체크를 해주세요.");
-			event.preventDefault();
-			$("#storeName").focus();
-    	}
-	}
-
 	$(document).ready(function(){
 			checkChange();
 		
@@ -211,7 +203,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 		        
 		    }, false);
 		    
-		    
+		   /*  
 		    var count = ${count};
 		    var storeForm = new Array();
 		   
@@ -223,8 +215,23 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 			}
 			
 			for(var i=1; i<=count; i++){
-		    storeForm[i].addEventListener('submit', checking());
-			}
+		    storeForm[i].addEventListener('submit', function(){
+		    	if($("#storechecked").val()==""){
+					alert("상호명 중복체크를 해주세요.");
+					event.preventDefault();
+					$("#storeName").focus();
+		    	}
+			});
+			} */
+			
+			var storeForm = document.getElementById('storeForm');
+			storeForm.addEventListener('submit', function(){
+		    	if($("#storechecked").val()==""){
+					alert("상호명 중복체크를 해주세요.");
+					event.preventDefault();
+					$("#storeName").focus();
+		    	}
+			});
 		    
 		    var form_insertStore = document.getElementById('form_insertStore');
 		    form_insertStore.addEventListener('submit', function() {
@@ -368,33 +375,41 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 </head>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-	<div id="header-wrapper" style="background-image: url(images/main.jpg)">
+	<div id="header-wrapper" style="background-color: #323232;">
+	<div id="header" class="container">
+	<h1 id="logo"><a href="<%=request.getContextPath()%>">JooJooclub</a></h1>
+	<p>Welcom To JooJooClub</p>
+		<!-- 헤더 메뉴 -->
+		<div align="right">
+		<nav id="nav">
+			<ul>			
+			<c:if test="${!empty loginUser }">
+				<li><span>${loginUser.userId}님 [찬스:${loginUser.chance }]</span></li>
+			</c:if>
+			
+			<c:if test="${!empty loginOwner }">
+				<li><span>${loginOwner.ownerId}님</span></li>
+			</c:if>
 
-		<div id="header" class="container">
-
-			<!-- Logo -->
-			<h1 id="logo">
-				<a href="<%=request.getContextPath()%>/">JooJooclub</a>
-			</h1>
-			<p>Welcom To JooJooClub</p>
-			<div align="right">
-				<nav id="nav">
-				<ul>
-					<li><a class="icon fa-home"
-						href="<%=request.getContextPath()%>/"><span>Home</span></a></li>
-					<li><a class="icon fa-bar-chart-o"
-						href="<%=request.getContextPath()%>/login"><span>Login</span></a>
-					<li><a class="icon fa-cog"
-						href="<%=request.getContextPath()%>/join"><span>Join</span></a></li>
-					<li><a class="icon fa-retweet"
-						href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
-					<li><a class="icon fa-sitemap"
-						href="<%=request.getContextPath()%>/info/cart"><span>Cart</span></a></li>
-				</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
+			<c:if test="${!empty loginOwner }">
+				<li><a class="icon fa-home"			href="<%=request.getContextPath()%>/"><span>Home</span></a></li>
+				<li><a class="icon fa-retweet"		href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap"		href="<%=request.getContextPath()%>/review"><span>ReviewBoard</span></a></li>
+				<li><a class="icon fa-bar-chart-o"	href="<%=request.getContextPath()%>/logout"><span>Logout</span></a>
+			</c:if>
+			
+			<c:if test="${empty loginOwner && empty loginUser }">
+				<li><a class="icon fa-home"			href="<%=request.getContextPath()%>/"><span>Home</span></a></li>
+				<li><a class="icon fa-bar-chart-o"	href="<%=request.getContextPath()%>/login"><span>Login</span></a>
+				<li><a class="icon fa-cog"			href="<%=request.getContextPath()%>/join"><span>Join</span></a></li>
+				<li><a class="icon fa-retweet"		href="<%=request.getContextPath()%>/info"><span>MyPage</span></a></li>
+				<li><a class="icon fa-sitemap"		href="<%=request.getContextPath()%>/review"><span>ReviewBoard</span></a></li>
+			</c:if>
+			</ul>
+		</nav>
+		</div><!-- 헤더 메뉴 끝 -->				
+	</div><!-- 헤더 끝 -->
+</div><!-- 헤더 래퍼 끝 -->
    <img  src="images/bar.png" style="width: 100%">
  
  <div id="features-wrapper">
@@ -505,7 +520,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					</form:form> --%>
 					
 				<%-- enctype="multipart/form-data" --%>
-				<form:form modelAttribute="store${status.count }" method="post" action="${action}" id="storeForm${status.count }" name="storeForm">
+				<form:form modelAttribute="store${status.count }" method="post" action="${action}" id="storeForm" name="storeForm">
 				<fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="endDate"/>
 					<fieldset>	
@@ -514,7 +529,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							상호명(*내 가게의 상호명과 중복불가)
 							<form:input id="storeName" path="storeName" type="text" maxLength="50" title="상호명을 입력하세요." align="middle" required="true"></form:input><br>				
 							<input type="button" value="중복확인" id="storeDupCheck" name="storeDupCheck"/><br>
-							<input type="hidden" name="storechecked" id="storechecked"/><br>
+							<input type="hidden" name="storechecked" id="storechecked${status.count }"/><br>
 							*이미지
 							<img src="<%=request.getContextPath()%>/upload/storeImage${status.current.storeCode}.jpg"/>
 							<!-- <input type="file" id="storeFile" name="storeFile"></input> -->
@@ -685,7 +700,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<c:url value="/info/update_owner" var="action"></c:url>
 				<form:form modelAttribute="updateOwner" method="post" action="${action}" id="updateOwner" name="updateOwner">
 					<fieldset>	
-						<div style="font-style: normal; width: 26cm" >
+						<%-- <div style="font-style: normal; width: 26cm" >
 						<table border="">						
 						
 						<tr>
@@ -743,12 +758,12 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					<input id="ownerSubmit" type="submit" value="수정하기" />
 					</div>	
 											
-					</div>
+					</div> --%>
 						
 					<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button>  -->
 					
-					<%-- 	<div style="font-style: normal; color: red; width: 20cm" >
+					 	<div style="font-style: normal; color: red; width: 20cm" >
 							*아이디
 							<form:input path="ownerId" name="userId"  title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
 							비밀번호 
@@ -769,16 +784,17 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							*사업자등록번호
 							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" readonly="true"></form:input><br>
 							*는 수정할 수 없는 정보입니다.
-						</div>
-						 --%>
-						
-				
-				
+							<br>
+					<input id="ownerSubmit" type="submit" value="수정하기" />
+							</div>
+							
+							</fieldset>
+							</form:form>
+							</div>
+						</div>	
 				<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button> -->
-				
 			
-		</div>
 		
 		<!-- ----------------------회원 탈퇴 모달-------------------------- -->
 		<c:url value="/info/delete_owner" var="url"></c:url>
@@ -819,13 +835,12 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<tr>
 					<td>${event.title }</td>
 					<td>${event.content }</td>
-					<td><button id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }">
-					수정하기</button> </td>
+					<td><input type="button" id="event${status.current.commentCode }" data-toggle="modal" data-target="#myModal${status.current.commentCode }" value="수정하기"/> </td>
 				</tr>
 			</c:forEach>
 			</table>
-			<button id="newevent" data-toggle="modal" data-target="#newEventModal">
-					새로운 이벤트 등록</button>				
+			<input type="button" id="newevent" data-toggle="modal" data-target="#newEventModal" value="새로운 이벤트 등록"/>
+				
 		</div>
 		<!-- -------------------------이벤트 수정하기 모달------------------------- -->
 		<c:forEach items="${allEvent}" var="event" varStatus="status">
@@ -956,10 +971,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						<td>${coupon.couponCode }</td>
 						<td>${coupon.storeName }</td>
 						<td>${coupon.content }</td>
-						<td><button data-toggle="modal" data-target="#couponModal${coupon.couponCode }">
-					상세보기</button></td>
-					<td><button data-toggle="modal" data-target="#couponUseModal${coupon.couponCode }">
-					사용하기</button></td>
+						<td><input type="button" data-toggle="modal" data-target="#couponModal${coupon.couponCode }"value="상세보기"/></td>
+					<td><input type="button" data-toggle="modal" data-target="#couponUseModal${coupon.couponCode }" value="사용하기"/>
+					</td>
 					</tr>
 					</c:if>
 				</c:forEach>
@@ -1005,8 +1019,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 						<td>${coupon.storeName }</td>
 						<td>${coupon.content }</td>
 						<td>${coupon.userId }</td>
-						<td><button data-toggle="modal" data-target="#couponModal${coupon.couponCode }">
-					쿠폰상세보기</button></td>
+						<td><input type="button"  data-toggle="modal" data-target="#couponModal${coupon.couponCode }" value="쿠폰상세보기"/>
+					</td>
 					</tr>
 					</c:if>
 					</c:forEach>

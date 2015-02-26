@@ -133,6 +133,26 @@ $(function() {
        });
     }
  };
+ 
+ $(document).ready(function(){
+		
+		$("#idsubmit").click(function(){
+			if(("#userNamePass").val()=="" || ("#userMailId").val()==""){
+				alert("양식을 모두 입력해 주세요.");
+				$("#userNameId").focus();
+			}
+			
+		});
+
+	 	$("#passsubmit").click(function(){
+			if(("#userIdPass").val()=="" || ("#userNamePass").val()=="" || ("#userMailPass").val()==""){
+				alert("양식을 모두 입력해 주세요.");
+				$("#userIdPass").focus();
+			}
+			
+		});
+	 	
+	});
 </script>
 </head>
 
@@ -186,7 +206,7 @@ $(function() {
                   
                   <div class="row 80%">
                      <div class="12u">
-                        <a href="#" class="form-button-submit button icon fa-envelope">Search</a>
+                        <input type="submit" class="form-button-submit button icon fa-envelope" value="Search">
                      </div>
                   </div>
                </form:form>
@@ -212,7 +232,7 @@ $(function() {
                   
                   <div class="row 80%">
                      <div class="12u">
-                        <a href="#" class="form-button-submit button icon fa-envelope">Search</a>
+                        <input type="submit" class="form-button-submit button icon fa-envelope" value="Search">
                      </div>
                   </div>
                </form:form>

@@ -257,7 +257,7 @@ background-image: url(images/main.jpg);
     <!--가자! 본론으로-->
     
 
-<div class="container">
+<%-- <div class="container">
 	<div >
 		<ul>
 			<li><a href="list.do">스프링  게시판</a></li>
@@ -365,8 +365,8 @@ background-image: url(images/main.jpg);
 		<tr>
 			<td colspan="4" align="left"><p>${board.content}</p><br /><br /></td>
 		</tr>		
-	</table>
-	<table class="commentView">
+	</table> --%>
+	<%-- <table class="commentView">
 		<tr>
 			<th colspan="2">댓글</th>
 		</tr>		
@@ -410,7 +410,7 @@ background-image: url(images/main.jpg);
 			<input type="button" value="목록" class="writeBt" onclick="moveAction(3)" />
 		</c:otherwise>
 	</c:choose>
-</div>
+</div> --%>
     
     	<!-- Footer -->
 	<div>
