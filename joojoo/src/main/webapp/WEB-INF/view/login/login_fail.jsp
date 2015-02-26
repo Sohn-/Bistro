@@ -123,7 +123,7 @@ label {
 
 fieldset .help {
    margin-top: 2em;
-   display: inline-block;
+   /* display: inline-block; */
 }
 
 .ui-tooltip {
@@ -131,6 +131,20 @@ fieldset .help {
 }
 #header{
 	background-image: url(images/main.jpg);
+}
+table,td,tr{
+	
+	border-collapse:collapse;
+	margin:10px;
+	padding:15px;
+	vertical-align: top;
+}
+
+div{
+	
+	/* border-collapse:collapse;
+	margin:1px;
+	padding:10px; */
 }
 </style>
 
@@ -172,29 +186,33 @@ fieldset .help {
  <div id="features-wrapper">
 
       <section id="features" class="container"> 
-   <div id="tabs" style="font-family:'Jeju Gothic', serif; ">
+   <div id="tabs" style="font-family:'Jeju Gothic', serif;">
       <ul>
-         <li><h3><a href="#tab1" style="width: 14.2cm; ">일반회원</a></h3></li>
-         <li><h3><a href="#tab2" style="width: 14.2cm;">업주회원 </a></h3></li>
+         <li><h3><a href="#tab1" style="width: 15cm; ">일반회원</a></h3></li>
+         <li><h3><a href="#tab2" style="width: 15cm;">업주회원 </a></h3></li>
 
       </ul>
       
       
-      <div id="tab1" >
-         <div id="footer" class="container" align="left">
+      <div id="tab1">
+        <!--  <div class="container" align="left"  style="border : 2px solid blue"> -->
             
             <table>
-            <tr><td>           
-            
+    
+            <tr>         
+            <td ></td>
+             <td>
+             
 				<c:url value="/login/check_user" var="action"></c:url>
-               	<form:form id="form1" name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
-               
-                     <div>
+               	<form:form id="form1"  name="form1" modelAttribute="user" method="post" action="${action}" onsubmit="return Check_user(this);">
+              
+              		<h4 style="color : red">일치하는 사용자가 없습니다. 다시 시도해 주세요.</h4><br>
+                     <div >
                         <form:input path="userId" id="userId" name="userId" placeholder="ID 입력 " type="text" /> <br>
                         <form:input path="userPassword" id="userPassword" name="userPassword" placeholder="PASSWD 입력  " type="password" />
  					</div>
                         
-                     <br>
+                  
                      <div >
                      <input id="opener1" name="opener1" type="submit" value="Login" style="width: 10cm;"/>
                         <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
@@ -206,20 +224,88 @@ fieldset .help {
                     <a class="docs" id="idlabel"  href="find"><span>아이디/비밀번호찾기</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a id="join" href="join"><span>회원가입</span></a>                               
                      </h5>                          
-                  <div>                     
-                  </div>
+                 
+               
                   
-              	</form:form>         
-           
-           
-            </td>
+              	</form:form>  
+              	
+              
+           </td>
             
-               <br><td><img alt="" src="images/jj2.png" align="middle"></td>
+              <td><img alt="" src="images/jj2.png" align="middle"><br></td>
             </tr>
             </table>
-         </div>
+         <!-- </div> -->
       </div>
-      <div id="tab2" style="padding-left: 1cm;">
+      
+      
+         <div id="tab2" >
+        <!--  <div class="container" align="left"  style="border : 2px solid blue"> -->
+            
+            <table>
+    
+            <tr>  <td><img alt="" src="images/jj2.png" align="middle"></td> 
+            
+            <td>
+             &nbsp;&nbsp;   &nbsp;&nbsp;   
+           </td>
+             <td>
+             
+				 <c:url value="/login/check_owner" var="action"></c:url>
+               	<form:form id="form2" name="form2" modelAttribute="owner" method="post" action="${action}" onsubmit="return Check_owner(this);">
+              
+              		<h4 style="color : red">일치하는 사용자가 없습니다. 다시 시도해 주세요.</h4><br>
+                    <div>
+                     <br>
+                         <form:input path= "ownerId" id = "ownerId" name="ownerId" placeholder="ID 입력 " type="text"  /><br>
+                         <form:input path= "ownerPassword" id="ownerPassword" name="ownerPassword" placeholder="PASSWD 입력  " type="password" /> 
+                     </div>
+                        
+                        
+                     <div >
+                     <input id="opener2" name="opener2" type="submit" value="Login" style="width: 10cm;"/>
+                        <!-- <button id="send" type="submit" class="form-button-submit button icon fa-envelope">Login</button> -->
+                       <!--  <button type="button" onclick="loadXMLDoc()">Change Content..</button> -->
+
+                     </div>
+                   
+                     <br>  
+                  
+                      <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="docs" id="idlabel"  href="find"><span>아이디/비밀번호찾기</span></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a id="join" href="join"><span>회원가입</span></a>                               
+                     </h5>                          
+            
+              	</form:form>  
+              	
+              	 <div id="dialog" style="display: none" align="center" >		
+		 			<h5>ID와 PASSWORD를 </h5><h5>를 입력하세요 </h5>				 
+					</div>
+             
+          		 </td>
+          		 <td>
+          		&nbsp;&nbsp;&nbsp;&nbsp;
+          		</td>
+            
+            
+            </tr>
+            </table>
+         <!-- </div> -->
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <!-- 원래꺼 -->
+      
+      
+   <%--    <div id="tab2" style="padding-left: 1cm;">
          <div id="footer" class="container" align="left">         
          
          <table>
@@ -263,7 +349,7 @@ fieldset .help {
             </tr>
            </table>
          </div>
-      </div>
+      </div> --%>
     
                  
    </div>

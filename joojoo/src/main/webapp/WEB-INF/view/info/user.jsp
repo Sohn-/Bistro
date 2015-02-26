@@ -360,6 +360,10 @@ $(function() {
 });
 
 $(document).ready(function(){
+	
+	
+	
+	
 		checkChange();
 	
 		$("#mailDupCheck").click(function(){
@@ -418,6 +422,10 @@ $(document).ready(function(){
 		var updateUser = <%=request.getParameter("updateUser")%>;
 		
 		var useCoupon = <%=request.getParameter("useCoupon")%>;
+		var addWishList = <%=request.getParameter("addWishList")%>;
+		var buyCoupon = <%=request.getParameter("buyCoupon")%>;
+		
+		var deleteWishList = <%=request.getParameter("deleteWishList")%>;
 		
 		
     	if(updateUser == true){
@@ -434,10 +442,26 @@ $(document).ready(function(){
     	else if(useCoupon == false){
     		alert("쿠폰 사용에 실패하였습니다.\n 문제가 계속될 경우 관리자에게 문의하세요.");
     	}
+    	else if(addWishList == true){
+    		alert("장바구니에 추가되었습니다.");
+    	}
+    	else if(buyCoupon == true){
+    		alert("쿠폰 구매가 완료되었습니다.");
+    	}
+    	else if(deleteWishList == true){
+    		alert("삭제가 완료되었습니다.");
+    	}
     	
 	}
+	
+	
 </script>
 </head>
+
+<%-- <c:if test="${!empty loginUser  && leftCouponNo !='0'}"> --%>
+<c:if test="${!empty alert}">
+	myalert(1);
+</c:if>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
 	<div id="header-wrapper" >

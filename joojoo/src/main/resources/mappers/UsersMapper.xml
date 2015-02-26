@@ -8,7 +8,7 @@
 
 
 	<insert id="insertUser" parameterType="Users">
-		insert into users (user_id, user_password, user_name, user_mail, user_phone, chance)
+		insert into users (user_id,  user_name,user_password, user_mail, user_phone, chance)
 		values(#{userId}, #{userName}, #{userPassword}, #{userMail},#{userPhone},#{chance})
 	</insert>
   
