@@ -113,14 +113,6 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 		});
 	});
 	
-	function checking(){
-    	if($("#storechecked").val()==""){
-			alert("상호명 중복체크를 해주세요.");
-			event.preventDefault();
-			$("#storeName").focus();
-    	}
-	}
-
 	$(document).ready(function(){
 			checkChange();
 		
@@ -211,7 +203,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 		        
 		    }, false);
 		    
-		    
+		   /*  
 		    var count = ${count};
 		    var storeForm = new Array();
 		   
@@ -223,8 +215,22 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 			}
 			
 			for(var i=1; i<=count; i++){
-		    storeForm[i].addEventListener('submit', checking());
-			}
+		    storeForm[i].addEventListener('submit', function(){
+		    	if($("#storechecked").val()==""){
+					alert("상호명 중복체크를 해주세요.");
+					event.preventDefault();
+					$("#storeName").focus();
+		    	}
+			});
+			} */
+			var storeForm = document.getElementById('storeForm');
+			storeForm.addEventListener('submit', function(){
+		    	if($("#storechecked").val()==""){
+					alert("상호명 중복체크를 해주세요.");
+					event.preventDefault();
+					$("#storeName").focus();
+		    	}
+			});
 		    
 		    var form_insertStore = document.getElementById('form_insertStore');
 		    form_insertStore.addEventListener('submit', function() {
@@ -514,7 +520,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							상호명(*내 가게의 상호명과 중복불가)
 							<form:input id="storeName" path="storeName" type="text" maxLength="50" title="상호명을 입력하세요." align="middle" required="true"></form:input><br>				
 							<input type="button" value="중복확인" id="storeDupCheck" name="storeDupCheck"/><br>
-							<input type="hidden" name="storechecked" id="storechecked"/><br>
+							<input type="hidden" name="storechecked" id="storechecked${status.count }"/><br>
 							*이미지
 							<img src="<%=request.getContextPath()%>/upload/storeImage${status.current.storeCode}.jpg"/>
 							<!-- <input type="file" id="storeFile" name="storeFile"></input> -->

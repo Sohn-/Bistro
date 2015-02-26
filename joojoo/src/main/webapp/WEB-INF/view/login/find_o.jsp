@@ -134,18 +134,25 @@ $(function() {
     }
  };
  
-	$(document).ready(function(){
- $("#storeDupCheck").click(function(){
-		if(("#storeName").val()==""){
-			alert("상호명을 입력해 주세요.");
-			$("#storeName").focus();		
-		}else{
-			<c:url value="/info/storeNameCheck" var="storeNamechk"></c:url>
-			var url = "${storeNamechk}?storeName="+$("#storeName").val()+"&storeCode="+$("#storeCode").val(); 
-			window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no");
+$(document).ready(function(){
+	
+	$("#idsubmit").click(function(){
+		if(("#ownerNamePass").val()=="" || ("#licenseNumberId").val()=="" || ("#ownerMailId").val()==""){
+			alert("양식을 모두 입력해 주세요.");
+			$("#ownerNameId").focus();
 		}
+		
 	});
+
+ 	$("#passsubmit").click(function(){
+		if(("#ownerIdPass").val()=="" || ("#ownerNamePass").val()=="" || ("#licenseNumberPass").val()=="" || ("#ownerMailPass").val()==""){
+			alert("양식을 모두 입력해 주세요.");
+			$("#ownerIdPass").focus();
+		}
+		
 	});
+ 	
+});
 </script>
 </head>
 
@@ -190,16 +197,16 @@ $(function() {
                   <div class="row 90%">
                      <div>              
                        
-                        <form:input path="ownerName" name="ownerName" 	placeholder="이름"  			type="text" />
-                        <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/> 
-                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />
+                        <form:input path="ownerName" name="ownerName" id="ownerNameId"	placeholder="이름" type="text" />
+                        <form:input path="licenseNumber" name="licenseNumber" id="licenseNumberId"	placeholder="사업자등록번호"  	type="text"/> 
+                        <form:input path="ownerMail" name="ownerMail" id="ownerMailId"	placeholder="e-mail" type="text" />
                         <input type="hidden" name="command" value="findOwnerId"></input>                     
                      </div>
                   </div>   
                   
                   <div class="row 80%">
                      <div class="12u">
-                        <input type="submit" class="form-button-submit button icon fa-envelope" value="Search">
+                        <input type="submit" id="idsubmit" class="form-button-submit button icon fa-envelope" value="Search">
                      </div>
                   </div>
                </form:form>
@@ -215,17 +222,17 @@ $(function() {
                	 <form:form modelAttribute="owner" method="post" action="${action}">                  
                   <div class="row 90%">
                      <div>              
-                        <form:input path="ownerId" name="ownerId" 	placeholder="id "  			type="text"/> 
-                        <form:input path="ownerName" name="ownerName" 	placeholder="이름"  			type="text" />
-                        <form:input path="licenseNumber" name="licenseNumber" 	placeholder="사업자등록번호"  	type="text"/> 
-                        <form:input path="ownerMail" name="ownerMail" 	placeholder="e-mail"  		type="text" />
+                        <form:input path="ownerId" name="ownerId" id="ownerIdPass" placeholder="id " type="text"/> 
+                        <form:input path="ownerName" name="ownerName" id="ownerNamePass"	placeholder="이름" type="text" />
+                        <form:input path="licenseNumber" name="licenseNumber" id="licenseNumberPass" 	placeholder="사업자등록번호" type="text"/> 
+                        <form:input path="ownerMail" name="ownerMail" id="ownerMailPass" placeholder="e-mail" type="text" />
                         <input type="hidden" name="command" value="findOwnerPassword"></input>                       
                      </div>
                   </div>   
                   
                   <div class="row 80%">
                      <div class="12u">
-                        <a href="#" class="form-button-submit button icon fa-envelope">Search</a>
+                        <input type="submit" id="passsubmit" class="form-button-submit button icon fa-envelope" value="Search">
                      </div>
                   </div>
                </form:form>
