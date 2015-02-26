@@ -42,7 +42,6 @@ public class EventComment implements Serializable {
 	private String serviceTypeName;
 	private String deleteRequest;
 	
-	private String eventFile;
 	/**
 	 * 생성자.
 	 */
@@ -143,13 +142,6 @@ public class EventComment implements Serializable {
 		this.deleteRequest = deleteRequest;
 	}
 	
-	
-	public String getEventFile() {
-		return eventFile;
-	}
-	public void setEventFile(String eventFile) {
-		this.eventFile = eventFile;
-	}
 	@Override
 	public String toString() {
 		return "EventComment [commentCode=" + commentCode + ", title=" + title

@@ -88,7 +88,9 @@ public class FindController {
 			}
 		}
 		else if(command.equals("findOwnerId")){
+			logger.error("Owner"+owner);
 			findOwner = ownerService.findId(owner);
+			logger.error("findOwnerId"+findOwner);
 			
 			if(findOwner != null){
 				model.addAttribute("findOwnerId", findOwner.getOwnerId());
@@ -130,7 +132,7 @@ public class FindController {
 	}
 	
 	@RequestMapping(value="/id_success", method=RequestMethod.POST)
-	public String findIdSuccess(Model model){
+	public String findIdSuccess(){
 
 		return "login/id_success";
 	}
