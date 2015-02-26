@@ -92,12 +92,12 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 	input[type="button"],
 	input[type="submit"],
 	input[type="text"],
-	input[type="password"],
 	input[type="mail"]{
 	font-family:'Jeju Gothic', serif;
 	font-size: 14px;
 	
 	}
+	
 </style>
 <script>
 	$(function() {
@@ -692,7 +692,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<c:url value="/info/update_owner" var="action"></c:url>
 				<form:form modelAttribute="updateOwner" method="post" action="${action}" id="updateOwner" name="updateOwner">
 					<fieldset>	
-						<div style="font-style: normal; width: 26cm" >
+						<%-- <div style="font-style: normal; width: 26cm" >
 						<table border="">						
 						
 						<tr>
@@ -750,12 +750,12 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					<input id="ownerSubmit" type="submit" value="수정하기" />
 					</div>	
 											
-					</div>
+					</div> --%>
 						
 					<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button>  -->
 					
-					<%-- 	<div style="font-style: normal; color: red; width: 20cm" >
+					 	<div style="font-style: normal; color: red; width: 20cm" >
 							*아이디
 							<form:input path="ownerId" name="userId"  title="Please provide your ID."	align="middle" readonly="true"></form:input><br>
 							비밀번호 
@@ -776,14 +776,16 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							*사업자등록번호
 							<form:input path="licenseNumber" name="licenseNumber"	title="Please provide your storeType" readonly="true"></form:input><br>
 							*는 수정할 수 없는 정보입니다.
-						</div>
-						 --%>
+							</div>
+							</fieldset>
+							<input id="ownerSubmit" type="submit" value="수정하기" />
+							</form:form>
+						 
 						
 				
 				
 				<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button> -->
-				
 			
 		</div>
 		
