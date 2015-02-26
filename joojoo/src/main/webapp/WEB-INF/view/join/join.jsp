@@ -382,7 +382,7 @@ fieldset .help {
 						<form:input path="userPassword" id="pass" type="password"	required="true" placeholder="비밀번호" /><br>   
 						<input type="password"  id="pass2" name="pass2" required="true"	placeholder="비밀번호 재확인" /><br> 
 						      	
-						<form:input path="userName" required="true" placeholder="이름" />   <br> 			
+						<form:input path="userName" id="joinName" required="true" placeholder="이름" />   <br> 			
 						<form:input path="userMail" id="joinMail" type="email" required="true"	placeholder="e-mail" /><br>
 						<form:input path="userPhone" required="true" placeholder="휴대전화번호" /><br>   
 						<form:input type="hidden" value="5" path="chance" required="true" /><br>

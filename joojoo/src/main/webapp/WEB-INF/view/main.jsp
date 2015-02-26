@@ -168,9 +168,18 @@ line-height: 1.75em;
 font-size: 12pt;
 background-color: #323232;
 }
+/* table,td,tr{
+	
+	border-collapse:collapse;
+	margin:10px;
+	padding:15px;
+	vertical-align: top;
+} */
 table	{
 	border-color: red;
 	border-bottom-style: 3px solid;
+	border-collapse:collapse;
+	vertical-align: top;
 }
 form {
 	width: 10cm;
@@ -346,9 +355,13 @@ fieldset .help {
 		<form:form modelAttribute="category_keyword" method="post" action="${action}">
 		<br>
 		<br>
-			<table border="1px solid red" bordercolor="red"><tr><td>	
-			<form:input path="keyword" name="keyword"	placeholder="검색어를 입력하세요" type="text" maxlength="30" />	</td><td>
-			<input type="submit" class="form-button-submit button "style="height: 43px; padding-top: 0.1cm;" value="Search"></td><tr>
+			<table border="1px solid red" bordercolor="red"><tr>
+			<td>	
+			<form:input path="keyword" name="keyword"	placeholder="검색어를 입력하세요" type="text" maxlength="30" />
+			</td>
+			<td>
+			<input type="submit" class="form-button-submit button "style="height: 43px; " value="Search"></td>
+			
 			</table>
 		</form:form>
 	

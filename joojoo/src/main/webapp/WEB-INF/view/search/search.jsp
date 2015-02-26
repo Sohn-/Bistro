@@ -344,9 +344,10 @@ fieldset .help {
 		<form:form modelAttribute="category_keyword" method="post"	action="${action}">
 		<br>
 		<br>
-			<table border="1px solid red" bordercolor="red"><tr><td>	
+			<table border="1px solid red" bordercolor="red"><tr>
+			<td>	
 			<form:input  path="keyword" name="keyword"	placeholder="keyWord" type="text" maxlength="30" />	</td><td>
-			<input type="submit" class="form-button-submit button "style="height: 43px; padding-top: 0.1cm;" value="Search"></td><tr>
+			<input type="submit" class="form-button-submit button "style="height: 43px;" value="Search"></td><tr>
 			</table>
 		</form:form>
 	

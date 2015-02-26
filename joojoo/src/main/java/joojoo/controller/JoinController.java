@@ -100,7 +100,7 @@ public class JoinController {
 	  joinUser2.setUserPhone(joinUser.getUserPhone());
 	  joinUser2.setUserName(joinUser.getUserName());
 	  joinUser2.setChance(joinUser.getChance());
-	   
+	   LOG.error(""+joinUser2);
 	   
 	   session.setAttribute("loginUser", joinUser2);
 	   //sessionStatus.setComplete();

@@ -55,7 +55,7 @@ public class EventDetailController {
 	
 	/*/buy_coupon?ecommentCode=${eventDetail.commentCode }*/
 	@RequestMapping(value="/buy_coupon", method=RequestMethod.GET, params={"ecommentCode"} )
-	public String couponBuy(String ecommentCode, HttpSession session){
+	public String couponBuy(String ecommentCode, HttpSession session,Model model){
 		
 		logger.error(""+ecommentCode);
 		All loginUser =(All) session.getAttribute("loginUser");
@@ -79,12 +79,16 @@ public class EventDetailController {
 		session.setAttribute("loginUser", loginUser);
 		
 		
-		return "redirect:/info"; //파라매터 줘야되나?
+		model.addAttribute("buyCoupon",true);
+		
+		
+		
+		return "redirect:/info/#tab3"; //파라매터 줘야되나?
 	}
 	/*/info/user/cart/add?ecommentCode=${eventDetail.commentCode }*/
 	
 	@RequestMapping(value="/info/user/cart/add", method=RequestMethod.GET, params={"ecommentCode"} )
-	public String addWishList(String ecommentCode, HttpSession session){
+	public String addWishList(String ecommentCode, HttpSession session,Model model){
 		
 		logger.error(""+ecommentCode);
 		All loginUser =(All) session.getAttribute("loginUser");
@@ -100,8 +104,8 @@ public class EventDetailController {
 		
 		wishListService.addWishList(wishList);
 		
-		
-		return "redirect:/info"; //파라매터 줘야되나?
+		model.addAttribute("addWishList",true);
+		return "redirect:/info/#tab2"; //파라매터 줘야되나?
 	}
 	/*@RequestMapping(value="/logi", method=RequestMethod.POST, 
 			produces="text/plain;charset=utf-8")

@@ -63,7 +63,7 @@ public class MyPageUserController {
     		All updateUser = userService.getUserInfo(userId);
     		model.addAttribute("updateUser", updateUser);
 	    	
-	    	//LOG.trace("수업 로그인 유저 세션정보"+session.getAttribute("loginUser").toString());
+	    	LOG.error("수업 로그인 유저 세션정보"+session.getAttribute("loginUser").toString());
 	    	
 	    	
 	    	
@@ -110,9 +110,10 @@ public class MyPageUserController {
 	    	for(int i=0; i<result.size(); i++){
 	    		int delete_no = Integer.parseInt(result.get(i));
 	    		wishListService.deleteWishList(delete_no);
+	    		model.addAttribute("deleteWishList",true);
 	    	}
 	    
-			return "redirect:/info/user";
+			return "redirect:/info/#tab2";
 	    	
 		}
 	    
@@ -129,12 +130,12 @@ public class MyPageUserController {
 	    		
 	    		wishListService.deleteWishList(buy_no);
 	    		couponService.buyCoupon(loginUserId, comment_code);
-	    		
+	    		model.addAttribute("buyCoupon",true);
 	    		
 	    		
 	    	}
 	    
-			return "redirect:/info/user";
+			return "redirect:/info/#tab3";
 	    	
 		}
 	    
