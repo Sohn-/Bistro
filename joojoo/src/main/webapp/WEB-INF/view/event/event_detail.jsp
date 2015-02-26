@@ -181,7 +181,7 @@ fieldset .help {
 
 	<div align="center" class="container">
 		<br><br>
-		<div style="background-color: #FACC2E;">
+		<div style="background-color: #f1f1c1;color: black; ">
 			<h2>${eventDetail.title}</h2>
 		</div>
 		<div id="carousel-example-generic" class="carousel slide"	data-ride="carousel">
@@ -194,7 +194,7 @@ fieldset .help {
 			</ol>
 
 			<!-- Wrapper for slides -->
-			<div class="carousel-inner" role="listbox">
+			<div class="carousel-inner" role="listbox"  style="background-color: white;color: black; ">
 				<div class="item active">
 					<img src="images/pic01.jpg" align="bottom">
 					<div class="carousel-caption">${eventDetail.title}</div>
