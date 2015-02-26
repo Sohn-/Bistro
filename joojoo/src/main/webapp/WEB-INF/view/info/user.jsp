@@ -464,7 +464,7 @@ $(document).ready(function(){
 </c:if>
 <c:url value="<%=request.getContextPath()%>" var="path"></c:url>
 <body class="homepage" bgcolor=#333323>
-	<div id="header-wrapper" style="background-image: url(../images/main.jpg)">
+	<div id="header-wrapper" >
 
 		<div id="header" class="container">
 

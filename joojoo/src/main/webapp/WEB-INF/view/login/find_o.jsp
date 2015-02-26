@@ -133,6 +133,19 @@ $(function() {
        });
     }
  };
+ 
+	$(document).ready(function(){
+ $("#storeDupCheck").click(function(){
+		if(("#storeName").val()==""){
+			alert("상호명을 입력해 주세요.");
+			$("#storeName").focus();		
+		}else{
+			<c:url value="/info/storeNameCheck" var="storeNamechk"></c:url>
+			var url = "${storeNamechk}?storeName="+$("#storeName").val()+"&storeCode="+$("#storeCode").val(); 
+			window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no");
+		}
+	});
+	});
 </script>
 </head>
 
@@ -186,7 +199,7 @@ $(function() {
                   
                   <div class="row 80%">
                      <div class="12u">
-                        <a href="#" class="form-button-submit button icon fa-envelope">Search</a>
+                        <input type="submit" class="form-button-submit button icon fa-envelope" value="Search">
                      </div>
                   </div>
                </form:form>

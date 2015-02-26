@@ -1,7 +1,6 @@
 <%@page import="joojoo.entity.All"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -276,6 +275,11 @@ fieldset .help {
 #header {
 	background-image: url(images/main.jpg);
 }
+<<<<<<< HEAD
+ #wrap #left { display:inline; float:left; width:220px; height:500px; margin-left:10px; background:#33CCFF; }
+ #wrap #content { float:left; width:500px; height:500px; margin-left:10px; background:#BFF484; }
+ #wrap #right { float:left; width:220px; height:500px; margin-left:10px; background:#73534D; }
+=======
 
 	input[type="button"],
 	input[type="submit"],
@@ -287,6 +291,7 @@ fieldset .help {
 	
 	}
 
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 </style>
 
 </head>
@@ -338,8 +343,10 @@ fieldset .help {
 
 <!-- 헤더 바디 구분 띠 -->
 <img src="images/bar.png" style="width: 100%">
-	<div align="center" style="top: 1cm; background-color: #323232;">
+
+	<div align="center" style="top: 1cm; background-color: #323232; display:inline;" >
 	<c:url value="/main/keyword" var="action"></c:url>
+
 		<%-- <form:form modelAttribute="category1" method="post"	action="${action}"> --%>
 		<form:form modelAttribute="category_keyword" method="post"	action="${action}">
 		<br>
@@ -352,6 +359,10 @@ fieldset .help {
 		</form:form>
 	
 	</div>
+	
+	<br><br>
+
+	
 <!-- 바디 시작 -->
 <div id="features-wrapper">
 <!-- 바디 카테고리 시작 -->
@@ -406,6 +417,7 @@ fieldset .help {
 		</li>
 		</ul>
 	</nav>
+
 	</form:form>
 	
 	<br>	

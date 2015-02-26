@@ -101,7 +101,7 @@ input[type="button"],
 	}
 		<c:url value="/join/idCheck2" var="idchk"></c:url>
 		var url = "${idchk}?joinId2="+$("#joinId2").val();
-		window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")			
+		window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")			
 });
 
 $("#mailDupCheck2").click(function(){
@@ -111,7 +111,7 @@ $("#mailDupCheck2").click(function(){
 	}else{
 		<c:url value="/join/mailCheck2" var="mailchk"></c:url>
 		var url = "${mailchk}?joinMail2="+$("#joinMail2").val();
-		window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
+		window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")
 	}
 });		
 $("#licenseDupCheck").click(function(){
@@ -121,7 +121,7 @@ $("#licenseDupCheck").click(function(){
 	}else{
 		<c:url value="/join/licenseCheck" var="licensechk"></c:url>
 		var url = "${licensechk}?joinLicense="+$("#joinLicense").val();
-		window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
+		window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")
 	}
 });		
   var password1 = document.getElementById('pass');
@@ -168,9 +168,11 @@ $("#licenseDupCheck").click(function(){
          <c:url value="/join/idCheck" var="idchk"></c:url>
          var url = "${idchk}?joinId="+$("#joinId").val();
 
+
          var popOptions = "dialogWidth: 500px; dialogHeight: 30px; center: yes; resizable: yes; status: no; scroll: no;"; 
          window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no") ;
       		/* window.showModelessDialog(url,window,popOptions); */
+
 
       }
    });
@@ -182,7 +184,7 @@ $("#licenseDupCheck").click(function(){
       }else{
          <c:url value="/join/mailCheck" var="mailchk"></c:url>
          var url = "${mailchk}?joinMail="+$("#joinMail").val();
-         window.open(url, "_blank", "width=400, height=400, toolbar=no, menubar=no, resizable=no")
+         window.open(url, "_blank", "width=600, height=400, toolbar=no, menubar=no, resizable=no")
       }
    });
    
@@ -197,6 +199,18 @@ $("#licenseDupCheck").click(function(){
         }        
     };
     
+
+   $("#licenseDupCheck").click(function(){
+      if($("#joinLicense").val()==""){
+         alert("사업자등록번호를 입력해 주세요.");
+         $("#joinLicense").focus();      
+      }else{
+         <c:url value="/join/licenseCheck" var="licensechk"></c:url>
+         var url = "${licensechk}?joinLicense="+$("#joinLicense").val();
+         window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+      }
+   });
+
 
     
     password1.addEventListener('change', checkPasswordValidity, false);
@@ -313,6 +327,8 @@ fieldset .help {
 #header {
 	background-image: url(images/main.jpg);
 }
+<<<<<<< HEAD
+=======
 
 
 	input[type="button"],
@@ -324,6 +340,7 @@ fieldset .help {
 	color: black;
 	
 	}
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 </style>
 
 </head>
@@ -373,7 +390,9 @@ fieldset .help {
 		<div id="tab1" style="background-color:#f6f6f6;">	
 			<c:url value="/join/result/user" var="action"></c:url> 
 			<form:form modelAttribute="joinUser" method="post" action="${action} " id="form"> 			
+
 				<h2 align="left" style="color:black;">&nbsp;&nbsp;&nbsp;일 반 회 원 가 입</h2>		
+
 				<div align="center">		
 					<table align="center" background="" style="color:black">
 					<tr>
@@ -418,7 +437,11 @@ fieldset .help {
 	    </div>
 	    
 	    <div id="tab2" style="background-color:#f6f6f6;">
+<<<<<<< HEAD
+	    <h1 align="center" >업 주 회 원 가 입</h1>
+=======
 	    <h2 align="left" style="color:black;"> &nbsp;&nbsp;&nbsp;업 주 회 원 가 입</h2>
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
 			<c:url value="/join/join_o2" var="action"></c:url> 
 			
 			<!-- <table align="center" background="">
@@ -442,9 +465,9 @@ fieldset .help {
 					<br>
 			<%-- <form:input path="storeName"  placeholder="상호명" required="true"/><br>
 			<form:input path="storePhone"  placeholder="전화번호" required="true"/><br>
-			<form:select path="regionName"  items="${regionNames }" required="true" style="font-family:'Jeju Gothic', serif;"/><br>
+			<form:select path="regionName"  items="${regionNames }" required="true"/><br>
 			<form:input path="storeAdress"  placeholder="상세주소" required="true"/><br>
-			<form:select path="typeName"  items="${typeNames }" required="true" style="font-family:'Jeju Gothic', serif;"/><br>
+			<form:select path="typeName"  items="${typeNames }" required="true"/><br>
 			<form:input type="hidden" value="${joinOwner.ownerId}" path="ownerId"/><br>			
 			<input type="submit" id="next" value="업주 및 상점 등록 확인" class="btn btn-primary btn-lg btn-block"/> --%>
 			
@@ -479,6 +502,9 @@ fieldset .help {
 			
 		</div>
 
+
+
+
 </div>
 </section> 
 </div>
@@ -502,4 +528,7 @@ fieldset .help {
 	</div>
 
 </body>
+
+
+
 </html>

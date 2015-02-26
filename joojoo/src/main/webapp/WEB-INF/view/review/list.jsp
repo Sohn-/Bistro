@@ -3,41 +3,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <%@ page import="joojoo.entity.RviewComment" %>
 <%@ page import="joojoo.entity.All" %>
 <%@ page import="java.util.*"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>게시판 목록</title>
-   
 
-
-
-<link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"  href="css/style-1000px.css">
-<title>게시판Page</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-
-<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/style-1000px.css">
-<link rel="stylesheet" href="../css/style-desktop.css">
-<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/style-1000px.css" />
+<link rel="stylesheet" href="css/style-desktop.css" />
+<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet"	href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -45,7 +34,6 @@
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.dropotron.min.js"></script>
 <script src="js/skel.min.js"></script>
@@ -53,7 +41,9 @@
 <script src="js/init.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="http://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 <script>
 
 
@@ -145,12 +135,15 @@ $(document).ready(function() {
 
 * {font-size: 9pt;}
 p {width: 600px; text-align: right;}
-table thead tr th {background-color: gray;}
+
+
+/* table thead tr th {background-color: gray;}
+ */
 #header{
 background-image: url(images/main.jpg);
 }
-form { 
-width: 10cm; 
+form { /* 
+width: 10cm;  */
 } 
 label {
    display: inline-block;
@@ -218,11 +211,18 @@ fieldset .help {
     </div>
     
    <img  src="images/bar.png" style="width: 100%"></img>
- <div id="features-wrapper">
-      <section id="features" class="container"> 
+ <div >
+      <section  > 
    
        <!-- 검색 폼 영역 -->
-
+<%-- 
+<<<<<<< HEAD
+      	<form  id="reviewlist" name="searchForm" action="" method="get" style="font-family:'Jeju Gothic', serif; ">
+       <!--  <table bgcolor="red" ><tr>      
+      	<td align="right"> -->
+      	<nav style="outline-width: 10cm; width: 20%">
+           <select name="searchType" style="font-family:'Jeju Gothic', serif; color: black;">
+======= --%>
        <form  id="reviewlist" name="searchForm" action="" method="get" style="font-family:'Jeju Gothic', serif; ">
        
        <div style="width: 10cm">
@@ -248,18 +248,35 @@ fieldset .help {
        </div>
        <!-- <p>
            <select name="searchType" style="width: 80%;font-family:'Jeju Gothic', serif; color: black;">
+>>>>>>> branch 'master' of https://github.com/Sohn-/Bistro
                <option value="ALL">전체검색</option>
                <option value="SUBJECT">제목</option>
                <option value="WRITER">작성자</option>
                <option value="CONTENTS">내용</option>
            </select>
+<<<<<<< HEAD
+          </nav>
+     <!--     </td> 
+         <td align="left">  <br></br> -->
+        	<nav style="width: 50%;">  <input type="text" name="searchText" value="" />  </nav>     
+      <!--    </td>  
+         <td>   -->
+        	<nav style="width: 20%;">   <input type="submit" value="검색" align="middle" /></nav>
+        <!--  </td>
+       </tr> </table>  
+       -->
+<!-- ======= -->
            <input type="text" name="searchText" value="" style="width: 80%"/>
        
            <input type="submit" value="검색" align="middle" style="width: 80%" />
        </p> -->
+<!-- >>>>>>> branch 'master' of https://github.com/Sohn-/Bistro -->
        </form>
 
+	
+
        <!-- //검색 폼 영역 -->
+      
        <!-- 게시판 목록 영역 -->
 
    
@@ -297,7 +314,7 @@ fieldset .help {
 					
 				</table>
 				</div>
-				
+				   <input type="button" value="후기쓰기" class="writeBt" onclick="moveAction(1)"/>	
 				<!-- 카테고리 구분 테이블 끝 -->
 
 				<!-- 바디 상점 결과 아코디언 시작 -->
@@ -430,7 +447,110 @@ fieldset .help {
 				</section>
 				</div>
 				</div>
-				
+		
+
+
+<div class="wrapper">	
+	<h3>새 글 쓰기</h3>
+	<form action="write.do" method="post" onsubmit="return writeFormCheck()" enctype="multipart/form-data">	
+	<table class="boardWrite">	
+		<tr>
+			<th><label for="subject">제목</label></th>
+			<td>
+				<input type="text" id="subject" name="subject" class="boardSubject"/>
+				<input type="hidden" id="writer" name="writer" value="${userName}" />
+				<input type="hidden" id="writerId" name="writerId" value="${userId}" />
+			</td>			
+		</tr>
+		<tr>
+			<th><label for="content">내용</label></th>
+			<td><textarea id="content" name="content" class="boardContent"></textarea></td>			
+		</tr>
+		<tr>
+			<th><label for="file">파일</label></th>
+			<td><input type="file" id="file" name="file" /><span class="date">&nbsp;&nbsp;*&nbsp;임의로 파일명이 변경될 수 있습니다.</span></td>			
+		</tr>				
+	</table>
+	<br />
+	<input type="reset" value="재작성" class="writeBt"/>
+	<input type="submit" value="확인" class="writeBt"/>	
+	</form>
+</div>
+
+<div class="wrapper">	
+	<table class="boardView">
+		<tr>
+			<td colspan="4"><h3>${board.subject}</h3></td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<th>조회수</th>
+			<th>추천수</th>
+			<th>작성일</th>
+		</tr>
+		<tr>
+			<td>${board.writer}</td>
+			<td>${board.hitcount}</td>
+			<td>${board.recommendcount}</td>
+			<td>${board.writeDate}</td>
+		</tr>
+		<tr>
+			<th colspan="4">내용</th>
+		</tr>
+		<c:if test="${board.fileName != null }">
+		<tr>
+			<td colspan="4" align="left"><span class="date">첨부파일:&nbsp;<a href="<%=request.getContextPath()%>/files/${board.fileName}" target="_blank">${board.fileName}</a></span></td>
+		</tr>
+		</c:if>	
+		<tr>
+			<td colspan="4" align="left"><p>${board.content}</p><br /><br /></td>
+		</tr>		
+	</table>
+	<table class="commentView">
+		<tr>
+			<th colspan="2">댓글</th>
+		</tr>		
+		<c:forEach var="comment" items="${commentList}">
+		<tr>
+			<td class="writer">				
+				<p>${comment.writer}
+				<c:if test="${comment.writerId == userId}">
+					<br /><a onclick="commentDelete(${comment.idx}, ${board.idx})"><small>댓글 삭제</small></a>					
+				</c:if>
+				</p>
+			</td>
+			<td class="content" align="left">
+				<span class="date">${comment.writeDate}</span>
+				<p>${comment.content}</p>
+			</td>
+		</tr>
+		</c:forEach>
+		<tr>
+			<td class="writer"><strong>댓글 쓰기</strong></td>
+			<td class="content">
+				<form action="commentWrite.do" method="post">
+					<input type="hidden" id="writer" name="writer" value="${userName}" />
+					<input type="hidden" id="writerId" name="writerId" value="${userId}" />
+					<input type="hidden" id="linkedArticleNum" name="linkedArticleNum" value="${board.idx}" />
+					<textarea id="content" name="content" class="commentForm"></textarea>
+					<input type="submit" value="확인" class="commentBt" />
+				</form>
+			</td>
+		</tr>
+	</table>
+	<br />
+	<c:choose>
+		<c:when test="${board.writerId == userId}">
+			<input type="button" value="삭제" class="writeBt" onclick="moveAction(1)" />
+			<input type="button" value="수정" class="writeBt" onclick="moveAction(2)" />
+			<input type="button" value="목록" class="writeBt" onclick="moveAction(3)" />
+		</c:when>
+		<c:otherwise>
+			<input type="button" value="추천" class="writeBt" onclick="moveAction(4)" />
+			<input type="button" value="목록" class="writeBt" onclick="moveAction(3)" />
+		</c:otherwise>
+	</c:choose>
+</div>		
 				
 <%-- <jsp:include page="paging.jsp" flush="true">
     <jsp:param name="firstPageNo" value="${paging.firstPageNo}" />

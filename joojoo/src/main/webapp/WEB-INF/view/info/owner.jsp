@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@page import="joojoo.entity.All"%>
 <%@page import="java.util.List"%>
@@ -134,14 +135,36 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				}
 			});
 			
+			/* var count = ${count};
+			var storeDupCheck = new Array();
+			var storeName= new Array();
+			var storeCode = new Array();
+			for(i=1; i<=count; i++){
+				storeDupCheck[i] = "#storeDupCheck"+i;
+				storeName[i] = "#storeName"+i;
+				storeCode[i] = "#storeCode"+i;
+			}
+			for(i=1; i<=count; i++){
+			$(storeDupCheck[i]).click(function(){
+				if((storeName[i]).val()==""){
+					alert("상호명을 입력해 주세요.");
+					$(storeName[i]).focus();		
+				}else{
+					<c:url value="/info/storeNameCheck" var="storeNamechk"></c:url>
+					var url = "${storeNamechk}?storeName="+$(storeName[i]).val()+"&storeCode="+$(storeCode[i]).val(); 
+					window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no");
+				}
+			});
+			} */
+			
 			$("#storeDupCheck").click(function(){
-				if($("#storeName").val()==""){
+				if(("#storeName").val()==""){
 					alert("상호명을 입력해 주세요.");
 					$("#storeName").focus();		
 				}else{
 					<c:url value="/info/storeNameCheck" var="storeNamechk"></c:url>
 					var url = "${storeNamechk}?storeName="+$("#storeName").val()+"&storeCode="+$("#storeCode").val(); 
-					window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no")
+					window.open(url, "_blank", "width=600, height=300, toolbar=no, menubar=no, resizable=no");
 				}
 			});
 			
@@ -191,7 +214,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 		    
 		    var count = ${count};
 		    var storeForm = new Array();
-		    
+		   
 		    
 			for(var i=1; i<=count; i++){
 				var idx = i.toString();
@@ -200,7 +223,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 			}
 			
 			for(var i=1; i<=count; i++){
-		    storeForm[i].addEventListener('submit', checking);
+		    storeForm[i].addEventListener('submit', checking());
 			}
 		    
 		    var form_insertStore = document.getElementById('form_insertStore');
@@ -214,18 +237,78 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 		    
 		    
 		});
-	function checkfile(){
+	 function checkfile(){
 	    var fname = document.getElementById('uploadStoreFile').value;
 	    // 파일의 풀 경로를 fname에 변수에 저장  
 	    var fext = fname.substr(fname.length-3).toLowerCase();
 	    // 파일의 풀 경로에서 끝에서 3번째까지의 글자를 잘라 소문자로 변경 후 변수에 저장
-	    if(fext != 'jpg'){
+	    if(fname == ""){
+	    	alert("이미지를 등록하세요.");
+	    	//$("#uploadStoreFile").focus();
+	    	return false;
+	    }
+	    
+	    else if(fext != 'jpg'){
 	        alert("jpg파일만 가능합니다.");
 	        return false;
 	    }
 	    return true;
 	}
 	
+	/*  function checkfile2(count){
+	    var fname = document.getElementById('storeFile'+count).value;
+	    // 파일의 풀 경로를 fname에 변수에 저장  
+	    var fext = fname.substr(fname.length-3).toLowerCase();
+	    // 파일의 풀 경로에서 끝에서 3번째까지의 글자를 잘라 소문자로 변경 후 변수에 저장
+	    if(fname == ""){
+	    	alert("이미지를 등록하세요.");
+	    	//$("#storeFile"+count).focus();
+	    	return false;
+	    }
+	    
+	    else if(fext != 'jpg'){
+	        alert("jpg파일만 가능합니다.");
+	        return false;
+	    }
+	    return true;
+	}  */
+	 
+	 function checkfile3(){
+		    var fname = document.getElementById('uploadEventFile').value;
+		    // 파일의 풀 경로를 fname에 변수에 저장  
+		    var fext = fname.substr(fname.length-3).toLowerCase();
+		    // 파일의 풀 경로에서 끝에서 3번째까지의 글자를 잘라 소문자로 변경 후 변수에 저장
+		    if(fname == ""){
+		    	alert("이미지를 등록하세요.");
+		    	//$("#uploadEventFile").focus();
+		    	return false;
+		    }
+		    
+		    else if(fext != 'jpg'){
+		        alert("jpg파일만 가능합니다.");
+		        return false;
+		    }
+		    return true;
+		}
+	 
+	/*  function checkfile4(){
+		    var fname = document.getElementById('eventFile').value;
+		    // 파일의 풀 경로를 fname에 변수에 저장  
+		    var fext = fname.substr(fname.length-3).toLowerCase();
+		    // 파일의 풀 경로에서 끝에서 3번째까지의 글자를 잘라 소문자로 변경 후 변수에 저장
+		    if(fname == ""){
+		    	alert("이미지를 등록하세요.");
+		    	//$("#eventFile").focus();
+		    	return false;
+		    }
+		    
+		    else if(fext != 'jpg'){
+		        alert("jpg파일만 가능합니다.");
+		        return false;
+		    }
+		    return true;
+		} 
+	  */
 		
 		function checkChange(){
 			var updateOwner = <%=request.getParameter("updateOwner")%>;
@@ -420,8 +503,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 					<!-- <button id="ownerExit" data-toggle="modal" data-target="#ownerExitModal">
 					탈퇴하기</button>  -->
 					</form:form> --%>
-				
-				<form:form modelAttribute="store${status.count }" method="post" action="${action}" id="storeForm${status.count }" name="storeForm" enctype="multipart/form-data">
+					
+				<%-- enctype="multipart/form-data" --%>
+				<form:form modelAttribute="store${status.count }" method="post" action="${action}" id="storeForm${status.count }" name="storeForm">
 				<fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="endDate"/>
 					<fieldset>	
@@ -430,11 +514,10 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							상호명(*내 가게의 상호명과 중복불가)
 							<form:input id="storeName" path="storeName" type="text" maxLength="50" title="상호명을 입력하세요." align="middle" required="true"></form:input><br>				
 							<input type="button" value="중복확인" id="storeDupCheck" name="storeDupCheck"/><br>
-							<input type="hidden" name="storechecked" id="storechecked" value=""/><br>
-							이미지
-							<%-- <img src="c:\\db\\upload\\storeImage${someStore.ownerId }${someStore.storeName }"/> --%>
-							<img src="<%=request.getContextPath()%>/upload/storeImagePath${status.count }"/>
-							<form:input path="storeFile" type="file" name="storeFile"></form:input>
+							<input type="hidden" name="storechecked" id="storechecked"/><br>
+							*이미지
+							<img src="<%=request.getContextPath()%>/upload/storeImage${status.current.storeCode}.jpg"/>
+							<!-- <input type="file" id="storeFile" name="storeFile"></input> -->
 							지역
 							<form:select path="regionName" items="${regionNames }" title="지역을 선택하세요." required="true"></form:select><br>
 							상세주소
@@ -450,7 +533,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
-					<input type="submit" class="btn btn-warning btn-sm" value="수정하기"/>
+					<input type="submit" class="btn btn-warning btn-sm" value="수정하기" />
 				</form:form> 
 				</div>
 					<!-- 모달 푸터 -->
@@ -488,7 +571,6 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<input type="hidden" name="insertStorechecked" id="insertStorechecked"/><br>
 							이미지
 							<input type="file" id="uploadStoreFile" name="uploadStoreFile">
-
 							지역
 							<form:select path="regionName" items="${regionNames }" title="지역을 선택하세요." required="true"></form:select><br>
 							상세주소
@@ -757,6 +839,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<!-- 모달 바디 -->
 				<div class="modal-body" id="here${status.current.commentCode }">
 				<c:url value="/info/update_event" var="action"></c:url>
+				<%-- enctype="multipart/form-data" --%>
 				<form:form modelAttribute="event${status.count }" method="post" action="${action}" id="form3" name="form3">
 				<fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분" var="endDate"/>
@@ -767,6 +850,9 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<form:input path="title" type="text"  maxLength="50" title="제목을 입력하세요." align="middle" required="true"></form:input><br>
 							내용
 							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
+							*이미지
+							<img src="<%=request.getContextPath()%>/upload/eventImage${status.current.commentCode}.jpg"/>
+							<!-- <input type="file" id="eventFile" name="eventFile"></input> -->
 							가게
 							<form:select path="storeCodeStr" items="${storeNames }" required="true"></form:select>
 							*이벤트 시작 시간<br>
@@ -781,7 +867,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							*는 수정할 수 없는 정보입니다.
 						</div>
 					</fieldset>
-					<input type="submit" class="btn btn-warning btn-sm" value="수정하기"/>
+					<input type="submit" class="btn btn-warning btn-sm" value="수정하기" onclick="return checkFile4();"/>
 				</form:form>
 				</div>
 					<!-- 모달 푸터 -->
@@ -806,7 +892,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				<!-- 모달 바디 -->
 				<div class="modal-body" id="here">
 				<c:url value="/info/insert_event" var="action"></c:url>
-				<form:form modelAttribute="insertEvent" method="post" action="${action}" id="form3" name="form3">
+				<form:form modelAttribute="insertEvent" method="post" action="${action}" id="form3" name="form3" enctype="multipart/form-data">
 				<%-- <fmt:formatDate value="${status.current.startDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="startDate"/>
 				<fmt:formatDate value="${status.current.endDate}" pattern="20yy년 MM월 dd일 HH시 mm분 ss초" var="endDate"/> --%>
 					<fieldset>	
@@ -815,6 +901,8 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							<form:input path="title" type="text"  maxLength="50" title="제목을 입력하세요." align="middle" required="true"></form:input><br>
 							내용
 							<form:input path="content" type="text" maxLength="300" title="내용을 입력하세요." required="true"></form:input><br>
+							이미지
+							<input type="file" id="uploadEventFile" name="uploadEventFile">
 							이벤트 시작 시간<br>
 							<form:input id="startDate" type="datetime-local" path="startDateStr" min="${minTime }" max="${maxTime }" required="true"></form:input><br>
 							이벤트 종료 시간<br>
@@ -829,9 +917,6 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 							발행할 쿠폰 매수
 							<input type="number" name="couponCount" />
 							<br>
-							
-							*이벤트 시간은 이후 수정할 수 없습니다.
-
 							*이벤트 시간은 이후 수정할 수 없습니다.<br>
 							현재 가능한 이벤트 시작시간<br> [${minTime } ~ ${maxTime }]<br>
 							현재 가능한 이벤트 종료시간<br> [${endDateMinTime } ~ ${endDateMaxTime }]  
@@ -839,7 +924,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 
 						</div>
 					</fieldset>
-					<input type="submit" class="btn btn-warning btn-sm" value="등록하기"/>
+					<input type="submit" class="btn btn-warning btn-sm" value="등록하기" onclick="return checkFile3();"/>
 				</form:form>
 				</div>
 					<!-- 모달 푸터 -->
@@ -850,6 +935,7 @@ table.ex1 {width:98%; margin:0 auto; text-align:right; border-collapse:collapse;
 				</div>	<!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div>
+		
 		<!-- -------------------------이벤트 등록하기 모달------------------------- -->
 		
 		<div id="tab4">
